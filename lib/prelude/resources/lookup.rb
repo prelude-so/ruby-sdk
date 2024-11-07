@@ -8,7 +8,7 @@ module Prelude
         @client = client
       end
 
-      # Perform a phone number lookup
+      # Look up for phone number
       #
       # @param phone_number [String] An E.164 formatted phone number to look up.
       #

@@ -10,6 +10,7 @@ module Prelude
 
       # @!attribute [rw] status
       #   The status of the check. Possible values are:
+      #   * `unknown` - The status is unknown.
       #   * `valid` - The code is valid.
       #   * `invalid` - The code is invalid.
       #   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
@@ -21,6 +22,7 @@ module Prelude
       optional :status, enum: -> { Prelude::Models::CheckCreateResponse::Status }
 
       # The status of the check. Possible values are:
+      #   * `unknown` - The status is unknown.
       #   * `valid` - The code is valid.
       #   * `invalid` - The code is invalid.
       #   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
@@ -29,6 +31,7 @@ module Prelude
       #   * `expired_auth` - The authentication has expired and cannot be checked.
       #
       class Status < Prelude::Enum
+        UNKNOWN = :unknown
         VALID = :valid
         INVALID = :invalid
         WITHOUT_ATTEMPT = :without_attempt
@@ -45,6 +48,7 @@ module Prelude
       #   #   @option data [String, nil] :status
       #   #     The status of the check. Possible values are:
       #   #
+      #   #     - `unknown` - The status is unknown.
       #   #     - `valid` - The code is valid.
       #   #     - `invalid` - The code is invalid.
       #   #     - `without_attempt` - No attempt was sent yet, so a check cannot be completed.

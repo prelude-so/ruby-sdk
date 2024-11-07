@@ -18,4 +18,9 @@ class Prelude::Test::Resources::AuthenticationTest < Minitest::Test
     )
     assert_kind_of(Prelude::Models::AuthenticationCreateResponse, response)
   end
+
+  def test_retrieve
+    response = @prelude.authentication.retrieve("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+    assert_kind_of(Prelude::Models::AuthenticationRetrieveResponse, response)
+  end
 end
