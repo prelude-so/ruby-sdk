@@ -7,61 +7,36 @@ module Prelude
 
     # Client option
     # @return [String]
-    attr_reader :api_key
+    attr_reader :api_token
 
-    # Client option
-    # @return [String]
-    attr_reader :customer_uuid
+    # @return [Prelude::Resources::Verification]
+    attr_reader :verification
 
-    # @return [Prelude::Resources::Authentication]
-    attr_reader :authentication
-
-    # @return [Prelude::Resources::Check]
-    attr_reader :check
-
-    # @return [Prelude::Resources::Retry]
-    attr_reader :retry_
-
-    # @return [Prelude::Resources::Lookup]
-    attr_reader :lookup
+    # @return [Prelude::Resources::Transactional]
+    attr_reader :transactional
 
     # @!visibility private
     def auth_headers
-      {"x-api-key" => @api_key}
+      {"Authorization" => "Bearer #{@api_token}"}
     end
 
     # Creates and returns a new client for interacting with the API.
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
-    # @param api_key [String, nil] Defaults to `ENV["PRELUDE_API_KEY"]`
-    # @param customer_uuid [String, nil] Defaults to `ENV["PRELUDE_CUSTOMER_UUID"]`
+    # @param api_token [String, nil] Bearer token for authorizing API requests. Defaults to `ENV["API_TOKEN"]`
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
-    def initialize(
-      base_url: nil,
-      api_key: nil,
-      customer_uuid: nil,
-      max_retries: DEFAULT_MAX_RETRIES,
-      timeout: 60
-    )
-      base_url ||= "https://api.ding.live/v1"
+    def initialize(base_url: nil, api_token: nil, max_retries: DEFAULT_MAX_RETRIES, timeout: 60)
+      base_url ||= "https://api.prelude.dev"
 
-      customer_uuid_header = [customer_uuid, ENV["PRELUDE_CUSTOMER_UUID"]].find { |v| !v.nil? }
-      if customer_uuid_header.nil?
-        raise ArgumentError, "customer_uuid is required"
-      end
-      headers = {"CUSTOMER_UUID" => customer_uuid_header}
-
-      @api_key = [api_key, ENV["PRELUDE_API_KEY"]].find { |v| !v.nil? }
-      if @api_key.nil?
-        raise ArgumentError, "api_key is required"
+      @api_token = [api_token, ENV["API_TOKEN"]].find { |v| !v.nil? }
+      if @api_token.nil?
+        raise ArgumentError, "api_token is required"
       end
 
-      super(base_url: base_url, max_retries: max_retries, timeout: timeout, headers: headers)
+      super(base_url: base_url, max_retries: max_retries, timeout: timeout)
 
-      @authentication = Prelude::Resources::Authentication.new(client: self)
-      @check = Prelude::Resources::Check.new(client: self)
-      @retry_ = Prelude::Resources::Retry.new(client: self)
-      @lookup = Prelude::Resources::Lookup.new(client: self)
+      @verification = Prelude::Resources::Verification.new(client: self)
+      @transactional = Prelude::Resources::Transactional.new(client: self)
     end
 
     # @!visibility private

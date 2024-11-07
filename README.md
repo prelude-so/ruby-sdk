@@ -7,7 +7,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/stainless-sdks/prelude-ruby).
+Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/prelude-so/ruby-sdk).
 
 The underlying REST API documentation can be found on [docs.prelude.so](https://docs.prelude.so).
 
@@ -17,7 +17,7 @@ To use this gem during the beta, install directly from GitHub with Bundler by
 adding the following to your application's `Gemfile`:
 
 ```ruby
-gem "prelude", git: "https://github.com/stainless-sdks/prelude-ruby", branch: "main"
+gem "prelude", git: "https://github.com/prelude-so/ruby-sdk", branch: "main"
 ```
 
 To fetch an initial copy of the gem:
@@ -39,13 +39,12 @@ bundle update prelude
 require "prelude"
 
 prelude = Prelude::Client.new(
-  api_key: "My API Key", # defaults to ENV["PRELUDE_API_KEY"]
-  customer_uuid: "My Customer Uuid"
+  api_token: "My API Token" # defaults to ENV["API_TOKEN"]
 )
 
-authentication = prelude.authentication.create
+verification = prelude.verification.create
 
-puts(authentication.authentication_uuid)
+puts(verification.id)
 ```
 
 ### Errors
@@ -56,7 +55,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  authentication = prelude.authentication.create
+  verification = prelude.verification.create
 rescue Prelude::HTTP::Error => e
   puts(e.code) # 400
 end
@@ -90,12 +89,11 @@ You can use the `max_retries` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 prelude = Prelude::Client.new(
-  max_retries: 0, # default is 2
-  customer_uuid: "My Customer Uuid"
+  max_retries: 0 # default is 2
 )
 
 # Or, configure per-request:
-prelude.authentication.create(max_retries: 5)
+prelude.verification.create(max_retries: 5)
 ```
 
 ### Timeouts
@@ -109,12 +107,11 @@ You can use the `timeout` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 prelude = Prelude::Client.new(
-  timeout: nil, # default is 60
-  customer_uuid: "My Customer Uuid"
+  timeout: nil # default is 60
 )
 
 # Or, configure per-request:
-prelude.authentication.create(timeout: 5)
+prelude.verification.create(timeout: 5)
 ```
 
 ## Versioning
