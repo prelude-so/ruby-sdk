@@ -74,7 +74,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_default_request_default_retry_attempts
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
@@ -86,7 +90,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_given_request_default_retry_attempts
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
@@ -98,7 +107,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_default_request_given_retry_attempts
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
@@ -111,7 +124,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_given_request_given_retry_attempts
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 3)
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid",
+      max_retries: 3
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
@@ -124,7 +142,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_retry_after_seconds
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid",
+      max_retries: 1
+    )
     requester = MockRequester.new(500, {}, {"retry-after" => "1.3", "x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
@@ -137,7 +160,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_retry_after_date
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid",
+      max_retries: 1
+    )
     requester = MockRequester.new(
       500,
       {},
@@ -158,7 +186,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_retry_after_ms
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key", max_retries: 1)
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid",
+      max_retries: 1
+    )
     requester = MockRequester.new(500, {}, {"retry-after-ms" => "1300", "x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
@@ -171,7 +204,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_retry_count_header
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
@@ -186,7 +223,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_omit_retry_count_header
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
@@ -202,7 +243,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_overwrite_retry_count_header
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
@@ -218,7 +263,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_redirect_307
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::APIConnectionError) do
@@ -237,7 +286,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_redirect_303
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(303, {}, {"location" => "/redirected"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::APIConnectionError) do
@@ -253,7 +306,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_redirect_auth_keep_same_origin
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::APIConnectionError) do
@@ -269,7 +326,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_redirect_auth_strip_cross_origin
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(307, {}, {"location" => "https://example.com/redirected"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::APIConnectionError) do
@@ -282,7 +343,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_default_headers
-    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_key: "My API Key")
+    prelude = Prelude::Client.new(
+      base_url: "http://localhost:4010",
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
+    )
     requester = MockRequester.new(200, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     prelude.authentication.create(

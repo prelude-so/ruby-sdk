@@ -8,7 +8,8 @@ class Prelude::Test::Resources::CheckTest < Minitest::Test
   def setup
     @prelude = Prelude::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_key: "My API Key"
+      api_key: "My API Key",
+      customer_uuid: "My Customer Uuid"
     )
   end
 
