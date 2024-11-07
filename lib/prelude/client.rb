@@ -9,6 +9,10 @@ module Prelude
     # @return [String]
     attr_reader :api_key
 
+    # Client option
+    # @return [String]
+    attr_reader :customer_uuid
+
     # @return [Prelude::Resources::Authentication]
     attr_reader :authentication
 
@@ -30,16 +34,29 @@ module Prelude
     #
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     # @param api_key [String, nil] Defaults to `ENV["PRELUDE_API_KEY"]`
+    # @param customer_uuid [String, nil] Defaults to `ENV["PRELUDE_CUSTOMER_UUID"]`
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
-    def initialize(base_url: nil, api_key: nil, max_retries: DEFAULT_MAX_RETRIES, timeout: 60)
+    def initialize(
+      base_url: nil,
+      api_key: nil,
+      customer_uuid: nil,
+      max_retries: DEFAULT_MAX_RETRIES,
+      timeout: 60
+    )
       base_url ||= "https://api.ding.live/v1"
+
+      customer_uuid_header = [customer_uuid, ENV["PRELUDE_CUSTOMER_UUID"]].find { |v| !v.nil? }
+      if customer_uuid_header.nil?
+        raise ArgumentError, "customer_uuid is required"
+      end
+      headers = {"CUSTOMER_UUID" => customer_uuid_header}
 
       @api_key = [api_key, ENV["PRELUDE_API_KEY"]].find { |v| !v.nil? }
       if @api_key.nil?
         raise ArgumentError, "api_key is required"
       end
 
-      super(base_url: base_url, max_retries: max_retries, timeout: timeout)
+      super(base_url: base_url, max_retries: max_retries, timeout: timeout, headers: headers)
 
       @authentication = Prelude::Resources::Authentication.new(client: self)
       @check = Prelude::Resources::Check.new(client: self)

@@ -39,7 +39,8 @@ bundle update prelude
 require "prelude"
 
 prelude = Prelude::Client.new(
-  api_key: "My API Key" # defaults to ENV["PRELUDE_API_KEY"]
+  api_key: "My API Key", # defaults to ENV["PRELUDE_API_KEY"]
+  customer_uuid: "My Customer Uuid"
 )
 
 authentication = prelude.authentication.create
@@ -89,7 +90,8 @@ You can use the `max_retries` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 prelude = Prelude::Client.new(
-  max_retries: 0 # default is 2
+  max_retries: 0, # default is 2
+  customer_uuid: "My Customer Uuid"
 )
 
 # Or, configure per-request:
@@ -107,7 +109,8 @@ You can use the `timeout` option to configure or disable this:
 ```ruby
 # Configure the default for all requests:
 prelude = Prelude::Client.new(
-  timeout: nil # default is 60
+  timeout: nil, # default is 60
+  customer_uuid: "My Customer Uuid"
 )
 
 # Or, configure per-request:
