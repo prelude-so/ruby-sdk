@@ -3,8 +3,6 @@
 module Prelude
   module Test
     module Resources
-      module Authentication
-      end
     end
   end
 end

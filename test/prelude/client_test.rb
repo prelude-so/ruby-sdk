@@ -74,17 +74,11 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_default_request_default_retry_attempts
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"}
-      )
+      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(3, requester.attempts.length)
   end
@@ -92,31 +86,24 @@ class PreludeTest < Minitest::Test
   def test_client_given_request_default_retry_attempts
     prelude = Prelude::Client.new(
       base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid",
+      api_token: "My API Token",
       max_retries: 3
     )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"}
-      )
+      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(4, requester.attempts.length)
   end
 
   def test_client_default_request_given_retry_attempts
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"},
+      prelude.verification.create(
+        {target: {"type" => "phone_number", "value" => "+30123456789"}},
         max_retries: 3
       )
     end
@@ -126,15 +113,14 @@ class PreludeTest < Minitest::Test
   def test_client_given_request_given_retry_attempts
     prelude = Prelude::Client.new(
       base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid",
+      api_token: "My API Token",
       max_retries: 3
     )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"},
+      prelude.verification.create(
+        {target: {"type" => "phone_number", "value" => "+30123456789"}},
         max_retries: 4
       )
     end
@@ -144,16 +130,13 @@ class PreludeTest < Minitest::Test
   def test_client_retry_after_seconds
     prelude = Prelude::Client.new(
       base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid",
+      api_token: "My API Token",
       max_retries: 1
     )
     requester = MockRequester.new(500, {}, {"retry-after" => "1.3", "x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"}
-      )
+      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(2, requester.attempts.length)
     assert_equal(requester.attempts.last[:headers]["x-stainless-mock-slept"], 1.3)
@@ -162,8 +145,7 @@ class PreludeTest < Minitest::Test
   def test_client_retry_after_date
     prelude = Prelude::Client.new(
       base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid",
+      api_token: "My API Token",
       max_retries: 1
     )
     requester = MockRequester.new(
@@ -177,9 +159,7 @@ class PreludeTest < Minitest::Test
     )
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"}
-      )
+      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(2, requester.attempts.length)
     assert_equal(requester.attempts.last[:headers]["x-stainless-mock-slept"], 2)
@@ -188,34 +168,25 @@ class PreludeTest < Minitest::Test
   def test_client_retry_after_ms
     prelude = Prelude::Client.new(
       base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid",
+      api_token: "My API Token",
       max_retries: 1
     )
     requester = MockRequester.new(500, {}, {"retry-after-ms" => "1300", "x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"}
-      )
+      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(2, requester.attempts.length)
     assert_equal(requester.attempts.last[:headers]["x-stainless-mock-slept"], 1.3)
   end
 
   def test_retry_count_header
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"}
-      )
+      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
 
     retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
@@ -223,17 +194,13 @@ class PreludeTest < Minitest::Test
   end
 
   def test_omit_retry_count_header
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"},
+      prelude.verification.create(
+        {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {"x-stainless-retry-count" => nil}
       )
     end
@@ -243,17 +210,13 @@ class PreludeTest < Minitest::Test
   end
 
   def test_overwrite_retry_count_header
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
     assert_raises(Prelude::HTTP::InternalServerError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"},
+      prelude.verification.create(
+        {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {"x-stainless-retry-count" => "42"}
       )
     end
@@ -263,16 +226,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_redirect_307
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::APIConnectionError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"},
+      prelude.verification.create(
+        {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {}
       )
     end
@@ -286,16 +245,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_redirect_303
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(303, {}, {"location" => "/redirected"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::APIConnectionError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"},
+      prelude.verification.create(
+        {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {}
       )
     end
@@ -306,16 +261,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_redirect_auth_keep_same_origin
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::APIConnectionError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"},
+      prelude.verification.create(
+        {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {"Authorization" => "Bearer xyz"}
       )
     end
@@ -326,16 +277,12 @@ class PreludeTest < Minitest::Test
   end
 
   def test_client_redirect_auth_strip_cross_origin
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(307, {}, {"location" => "https://example.com/redirected"})
     prelude.requester = requester
     assert_raises(Prelude::HTTP::APIConnectionError) do
-      prelude.authentication.create(
-        {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"},
+      prelude.verification.create(
+        {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {"Authorization" => "Bearer xyz"}
       )
     end
@@ -343,16 +290,10 @@ class PreludeTest < Minitest::Test
   end
 
   def test_default_headers
-    prelude = Prelude::Client.new(
-      base_url: "http://localhost:4010",
-      api_key: "My API Key",
-      customer_uuid: "My Customer Uuid"
-    )
+    prelude = Prelude::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(200, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
-    prelude.authentication.create(
-      {customer_uuid: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e", phone_number: "+1234567890"}
-    )
+    prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     headers = requester.attempts[0][:headers]
     refute_empty(headers["x-stainless-lang"])
     refute_empty(headers["x-stainless-package-version"])
