@@ -12,20 +12,20 @@ module Prelude
       #   call this endpoint to report their authenticity to our systems.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
-      #   @option params [Feedback, nil] :feedback You should send a feedback event back to Watch API when your user demonstrates
+      #   @option params [Feedback] :feedback You should send a feedback event back to Watch API when your user demonstrates
       #     authentic behaviour.
+      #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
       # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Prelude::Models::WatchFeedbackResponse]
-      def feedback(params = {}, opts = {})
+      # @return [Prelude::Models::WatchFeedBackResponse]
+      def feed_back(params = {}, opts = {})
         req = {
           method: :post,
           path: "/v2/watch/feedback",
           body: params,
           headers: {"Content-Type" => "application/json"},
-          model: Prelude::Models::WatchFeedbackResponse
+          model: Prelude::Models::WatchFeedBackResponse
         }
         @client.request(req, opts)
       end
