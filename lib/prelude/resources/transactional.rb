@@ -8,7 +8,7 @@ module Prelude
         @client = client
       end
 
-      # Send a transactional message
+      # Send a transactional message to your user.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [String] :template_id The template identifier.
