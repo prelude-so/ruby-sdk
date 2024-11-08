@@ -2,14 +2,14 @@
 
 module Prelude
   module Models
-    class WatchFeedbackResponse < Prelude::BaseModel
+    class WatchFeedBackResponse < Prelude::BaseModel
       # @!attribute [rw] id
       #   A unique identifier for your feedback request.
       #   @return [String]
       optional :id, String
 
       # @!parse
-      #   # Create a new instance of WatchFeedbackResponse from a Hash of raw data.
+      #   # Create a new instance of WatchFeedBackResponse from a Hash of raw data.
       #   #
       #   # @param data [Hash{Symbol => Object}] .
       #   #   @option data [String, nil] :id A unique identifier for your feedback request.
