@@ -9,11 +9,14 @@ module Prelude
     # @return [String]
     attr_reader :api_token
 
+    # @return [Prelude::Resources::Transactional]
+    attr_reader :transactional
+
     # @return [Prelude::Resources::Verification]
     attr_reader :verification
 
-    # @return [Prelude::Resources::Transactional]
-    attr_reader :transactional
+    # @return [Prelude::Resources::Watch]
+    attr_reader :watch
 
     # @!visibility private
     def auth_headers
@@ -35,28 +38,29 @@ module Prelude
 
       super(base_url: base_url, max_retries: max_retries, timeout: timeout)
 
-      @verification = Prelude::Resources::Verification.new(client: self)
       @transactional = Prelude::Resources::Transactional.new(client: self)
+      @verification = Prelude::Resources::Verification.new(client: self)
+      @watch = Prelude::Resources::Watch.new(client: self)
     end
 
     # @!visibility private
-    def make_status_error(message:, body:, response:)
+    private def make_status_error(message:, body:, response:)
       case response.code.to_i
-      when 400
+      in 400
         Prelude::HTTP::BadRequestError.new(message: message, response: response, body: body)
-      when 401
+      in 401
         Prelude::HTTP::AuthenticationError.new(message: message, response: response, body: body)
-      when 403
+      in 403
         Prelude::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
-      when 404
+      in 404
         Prelude::HTTP::NotFoundError.new(message: message, response: response, body: body)
-      when 409
+      in 409
         Prelude::HTTP::ConflictError.new(message: message, response: response, body: body)
-      when 422
+      in 422
         Prelude::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
-      when 429
+      in 429
         Prelude::HTTP::RateLimitError.new(message: message, response: response, body: body)
-      when 500..599
+      in 500..599
         Prelude::HTTP::InternalServerError.new(message: message, response: response, body: body)
       else
         Prelude::HTTP::APIStatusError.new(message: message, response: response, body: body)

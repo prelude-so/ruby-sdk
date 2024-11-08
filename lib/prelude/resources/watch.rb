@@ -2,53 +2,53 @@
 
 module Prelude
   module Resources
-    class Verification
+    class Watch
       # @param client [Prelude::Client]
       def initialize(client:)
         @client = client
       end
 
-      # Create a new verification for a specific phone number. If another non-expired
-      #   verification exists (the request is performed within the verification window),
-      #   this endpoint will perform a retry instead.
+      # Once the user with a trustworthy phone number demonstrates authentic behaviour,
+      #   call this endpoint to report their authenticity to our systems.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
-      #   @option params [Metadata, nil] :metadata The metadata for this verification. This object will be returned with every
-      #     response or webhook sent that refers to this verification.
-      #   @option params [Options, nil] :options Verification options
-      #   @option params [Signals, nil] :signals The signals used for anti-fraud.
+      #   @option params [Feedback, nil] :feedback You should send a feedback event back to Watch API when your user demonstrates
+      #     authentic behaviour.
       #
       # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Prelude::Models::VerificationCreateResponse]
-      def create(params = {}, opts = {})
+      # @return [Prelude::Models::WatchFeedbackResponse]
+      def feedback(params = {}, opts = {})
         req = {
           method: :post,
-          path: "/v2/verification",
+          path: "/v2/watch/feedback",
           body: params,
           headers: {"Content-Type" => "application/json"},
-          model: Prelude::Models::VerificationCreateResponse
+          model: Prelude::Models::WatchFeedbackResponse
         }
         @client.request(req, opts)
       end
 
-      # Check the validity of a verification code.
+      # Identify trustworthy phone numbers to mitigate fake trafic or trafic involved in
+      #   fraud and international revenue share fraud (IRSF) patterns. This endpoint must
+      #   be implemented in conjuction with the `watch/feedback` endpoint.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
-      #   @option params [String, nil] :code The OTP code to validate.
+      #   @option params [Signals, nil] :signals It is highly recommended that you provide the signals to increase prediction
+      #     performance.
       #
       # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Prelude::Models::VerificationCheckResponse]
-      def check(params = {}, opts = {})
+      # @return [Prelude::Models::WatchPredictResponse]
+      def predict(params = {}, opts = {})
         req = {
           method: :post,
-          path: "/v2/verification/check",
+          path: "/v2/watch/predict",
           body: params,
           headers: {"Content-Type" => "application/json"},
-          model: Prelude::Models::VerificationCheckResponse
+          model: Prelude::Models::WatchPredictResponse
         }
         @client.request(req, opts)
       end
