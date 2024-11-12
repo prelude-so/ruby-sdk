@@ -5,6 +5,16 @@ module Prelude
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
+    # Default per-request timeout.
+    DEFAULT_TIMEOUT_IN_SECONDS = 60
+
+    # Default initial retry delay in seconds.
+    # Overall delay is calculated using exponential backoff + jitter.
+    DEFAULT_INITIAL_RETRY_DELAY = 0.5
+
+    # Default max retry delay in seconds.
+    DEFAULT_MAX_RETRY_DELAY = 8.0
+
     # Client option
     # @return [String]
     attr_reader :api_token
@@ -28,15 +38,29 @@ module Prelude
     # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     # @param api_token [String, nil] Bearer token for authorizing API requests. Defaults to `ENV["API_TOKEN"]`
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
-    def initialize(base_url: nil, api_token: nil, max_retries: DEFAULT_MAX_RETRIES, timeout: 60)
+    def initialize(
+      base_url: nil,
+      api_token: ENV["API_TOKEN"],
+      max_retries: DEFAULT_MAX_RETRIES,
+      timeout: DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: DEFAULT_MAX_RETRY_DELAY
+    )
       base_url ||= "https://api.prelude.dev"
 
-      @api_token = [api_token, ENV["API_TOKEN"]].find { |v| !v.nil? }
-      if @api_token.nil?
+      if api_token.nil?
         raise ArgumentError, "api_token is required"
       end
 
-      super(base_url: base_url, max_retries: max_retries, timeout: timeout)
+      @api_token = api_token.to_s
+
+      super(
+        base_url: base_url,
+        timeout: timeout,
+        max_retries: max_retries,
+        initial_retry_delay: initial_retry_delay,
+        max_retry_delay: max_retry_delay
+      )
 
       @transactional = Prelude::Resources::Transactional.new(client: self)
       @verification = Prelude::Resources::Verification.new(client: self)
