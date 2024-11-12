@@ -36,8 +36,8 @@ module Prelude
       # Check the validity of a verification code.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      #   @option params [String] :code The OTP code to validate.
       #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
-      #   @option params [String, nil] :code The OTP code to validate.
       #
       # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
       #

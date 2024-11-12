@@ -9,7 +9,7 @@ module Prelude
       optional :id, String
 
       # @!attribute [rw] prediction
-      #   A label indicating the trustworthyness of the phone number.
+      #   A label indicating the trustworthiness of the phone number.
       #   @return [Symbol, Prelude::Models::WatchPredictResponse::Prediction]
       optional :prediction, enum: -> { Prelude::Models::WatchPredictResponse::Prediction }
 
@@ -17,7 +17,7 @@ module Prelude
       #   @return [Prelude::Models::WatchPredictResponse::Reasoning]
       optional :reasoning, -> { Prelude::Models::WatchPredictResponse::Reasoning }
 
-      # A label indicating the trustworthyness of the phone number.
+      # A label indicating the trustworthiness of the phone number.
       class Prediction < Prelude::Enum
         ALLOW = :allow
         BLOCK = :block
@@ -57,7 +57,7 @@ module Prelude
       #   #
       #   # @param data [Hash{Symbol => Object}] .
       #   #   @option data [String, nil] :id A unique identifier for your prediction request.
-      #   #   @option data [String, nil] :prediction A label indicating the trustworthyness of the phone number.
+      #   #   @option data [String, nil] :prediction A label indicating the trustworthiness of the phone number.
       #   #   @option data [Object, nil] :reasoning
       #   def initialize(data = {}) = super
     end

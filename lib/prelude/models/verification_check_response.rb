@@ -13,6 +13,10 @@ module Prelude
       #   @return [Prelude::Models::VerificationCheckResponse::Metadata]
       optional :metadata, -> { Prelude::Models::VerificationCheckResponse::Metadata }
 
+      # @!attribute [rw] request_id
+      #   @return [String]
+      optional :request_id, String
+
       # @!attribute [rw] status
       #   The status of the check.
       #   @return [Symbol, Prelude::Models::VerificationCheckResponse::Status]
@@ -44,6 +48,7 @@ module Prelude
       #   # @param data [Hash{Symbol => Object}] .
       #   #   @option data [String, nil] :id The verification identifier.
       #   #   @option data [Object, nil] :metadata The metadata for this verification.
+      #   #   @option data [String, nil] :request_id
       #   #   @option data [String, nil] :status The status of the check.
       #   def initialize(data = {}) = super
     end

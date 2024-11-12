@@ -8,12 +8,12 @@ module Prelude
         @client = client
       end
 
-      # Once the user with a trustworthy phone number demonstrates authentic behaviour,
+      # Once the user with a trustworthy phone number demonstrates authentic behavior,
       #   call this endpoint to report their authenticity to our systems.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Feedback] :feedback You should send a feedback event back to Watch API when your user demonstrates
-      #     authentic behaviour.
+      #     authentic behavior.
       #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
       # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -30,9 +30,9 @@ module Prelude
         @client.request(req, opts)
       end
 
-      # Identify trustworthy phone numbers to mitigate fake trafic or trafic involved in
-      #   fraud and international revenue share fraud (IRSF) patterns. This endpoint must
-      #   be implemented in conjuction with the `watch/feedback` endpoint.
+      # Identify trustworthy phone numbers to mitigate fake traffic or traffic involved
+      #   in fraud and international revenue share fraud (IRSF) patterns. This endpoint
+      #   must be implemented in conjunction with the `watch/feedback` endpoint.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
       #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.

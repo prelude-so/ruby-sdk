@@ -18,7 +18,9 @@ class Prelude::Test::Resources::VerificationTest < Minitest::Test
   end
 
   def test_check_required_params
-    response = @prelude.verification.check({target: {"type" => "phone_number", "value" => "+30123456789"}})
+    response = @prelude.verification.check(
+      {code: "12345", target: {"type" => "phone_number", "value" => "+30123456789"}}
+    )
     assert_kind_of(Prelude::Models::VerificationCheckResponse, response)
   end
 end
