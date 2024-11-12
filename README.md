@@ -42,7 +42,7 @@ prelude = Prelude::Client.new(
   api_token: "My API Token" # defaults to ENV["API_TOKEN"]
 )
 
-verification = prelude.verification.create
+verification = prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
 
 puts(verification.id)
 ```
@@ -55,7 +55,7 @@ non-success status code (i.e., 4xx or 5xx response), a subclass of
 
 ```ruby
 begin
-  verification = prelude.verification.create
+  verification = prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
 rescue Prelude::HTTP::Error => e
   puts(e.code) # 400
 end
@@ -93,7 +93,7 @@ prelude = Prelude::Client.new(
 )
 
 # Or, configure per-request:
-prelude.verification.create(max_retries: 5)
+prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"}, max_retries: 5)
 ```
 
 ### Timeouts
@@ -111,7 +111,7 @@ prelude = Prelude::Client.new(
 )
 
 # Or, configure per-request:
-prelude.verification.create(timeout: 5)
+prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"}, timeout: 5)
 ```
 
 ## Versioning
