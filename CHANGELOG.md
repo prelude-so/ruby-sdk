@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-11-13)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Chores
+
+* **internal:** version bump ([#3](https://github.com/prelude-so/ruby-sdk/issues/3)) ([48187f6](https://github.com/prelude-so/ruby-sdk/commit/48187f6ad06e4653d9acf74300bed6bc2e55465d))
+
 ## 0.1.0-alpha.1 (2024-11-13)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/prelude-so/ruby-sdk/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
