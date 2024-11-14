@@ -2,7 +2,7 @@
 
 require_relative "test_helper"
 
-class Prelude::Test::BaseClientTest < Minitest::Test
+class PreludeSDK::Test::BaseClientTest < Minitest::Test
   parallelize_me!
 
   def test_from_uri_string
@@ -14,7 +14,7 @@ class Prelude::Test::BaseClientTest < Minitest::Test
         path: "/c",
         query: {"d" => ["e"]}
       },
-      Prelude::BaseClient.new(
+      PreludeSDK::BaseClient.new(
         base_url: "h://nope/ignored"
       ).resolve_uri_elements(
         url: "h://a.b/c?d=e"
@@ -31,7 +31,7 @@ class Prelude::Test::BaseClientTest < Minitest::Test
         path: "/c",
         query: {"d" => ["e"], "f" => ["g"]}
       },
-      Prelude::BaseClient.new(
+      PreludeSDK::BaseClient.new(
         base_url: "h://nope"
       ).resolve_uri_elements(
         host: "a.b",
@@ -54,7 +54,7 @@ class Prelude::Test::BaseClientTest < Minitest::Test
         path: "/c/c2",
         query: {}
       },
-      Prelude::BaseClient.new(
+      PreludeSDK::BaseClient.new(
         base_url: "h://a.b/c"
       ).resolve_uri_elements(
         path: "c2"

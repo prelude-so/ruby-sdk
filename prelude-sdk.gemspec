@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/prelude/version"
+require_relative "lib/prelude-sdk/version"
 
 Gem::Specification.new do |s|
-  s.name = "prelude"
-  s.version = Prelude::VERSION
+  s.name = "prelude-sdk"
+  s.version = PreludeSDK::VERSION
   s.summary = "Ruby library to access the Prelude API"
   s.authors = ["Prelude"]
   s.email = "hello@prelude.so"

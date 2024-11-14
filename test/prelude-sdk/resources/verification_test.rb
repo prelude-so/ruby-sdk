@@ -2,11 +2,11 @@
 
 require_relative "../test_helper"
 
-class Prelude::Test::Resources::VerificationTest < Minitest::Test
+class PreludeSDK::Test::Resources::VerificationTest < Minitest::Test
   parallelize_me!
 
   def setup
-    @prelude = Prelude::Client.new(
+    @prelude = PreludeSDK::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
       api_token: "My API Token"
     )
@@ -14,13 +14,13 @@ class Prelude::Test::Resources::VerificationTest < Minitest::Test
 
   def test_create_required_params
     response = @prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
-    assert_kind_of(Prelude::Models::VerificationCreateResponse, response)
+    assert_kind_of(PreludeSDK::Models::VerificationCreateResponse, response)
   end
 
   def test_check_required_params
     response = @prelude.verification.check(
       {code: "12345", target: {"type" => "phone_number", "value" => "+30123456789"}}
     )
-    assert_kind_of(Prelude::Models::VerificationCheckResponse, response)
+    assert_kind_of(PreludeSDK::Models::VerificationCheckResponse, response)
   end
 end

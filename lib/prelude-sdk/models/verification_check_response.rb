@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   module Models
-    class VerificationCheckResponse < Prelude::BaseModel
+    class VerificationCheckResponse < PreludeSDK::BaseModel
       # @!attribute [rw] id
       #   The verification identifier.
       #   @return [String]
@@ -10,8 +10,8 @@ module Prelude
 
       # @!attribute [rw] metadata
       #   The metadata for this verification.
-      #   @return [Prelude::Models::VerificationCheckResponse::Metadata]
-      optional :metadata, -> { Prelude::Models::VerificationCheckResponse::Metadata }
+      #   @return [PreludeSDK::Models::VerificationCheckResponse::Metadata]
+      optional :metadata, -> { PreludeSDK::Models::VerificationCheckResponse::Metadata }
 
       # @!attribute [rw] request_id
       #   @return [String]
@@ -19,10 +19,10 @@ module Prelude
 
       # @!attribute [rw] status
       #   The status of the check.
-      #   @return [Symbol, Prelude::Models::VerificationCheckResponse::Status]
-      optional :status, enum: -> { Prelude::Models::VerificationCheckResponse::Status }
+      #   @return [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
+      optional :status, enum: -> { PreludeSDK::Models::VerificationCheckResponse::Status }
 
-      class Metadata < Prelude::BaseModel
+      class Metadata < PreludeSDK::BaseModel
         # @!attribute [rw] correlation_id
         #   @return [String]
         optional :correlation_id, String
@@ -36,7 +36,7 @@ module Prelude
       end
 
       # The status of the check.
-      class Status < Prelude::Enum
+      class Status < PreludeSDK::Enum
         SUCCESS = :success
         FAILURE = :failure
         EXPIRED = :expired

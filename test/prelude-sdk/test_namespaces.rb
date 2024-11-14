@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   module Test
     module Resources
     end

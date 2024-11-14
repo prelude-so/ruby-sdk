@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Prelude
-  class Client < Prelude::BaseClient
+module PreludeSDK
+  class Client < PreludeSDK::BaseClient
     # Default max number of retries to attempt after a failed retryable request.
     DEFAULT_MAX_RETRIES = 2
 
@@ -19,13 +19,13 @@ module Prelude
     # @return [String]
     attr_reader :api_token
 
-    # @return [Prelude::Resources::Transactional]
+    # @return [PreludeSDK::Resources::Transactional]
     attr_reader :transactional
 
-    # @return [Prelude::Resources::Verification]
+    # @return [PreludeSDK::Resources::Verification]
     attr_reader :verification
 
-    # @return [Prelude::Resources::Watch]
+    # @return [PreludeSDK::Resources::Watch]
     attr_reader :watch
 
     # @!visibility private
@@ -62,32 +62,32 @@ module Prelude
         max_retry_delay: max_retry_delay
       )
 
-      @transactional = Prelude::Resources::Transactional.new(client: self)
-      @verification = Prelude::Resources::Verification.new(client: self)
-      @watch = Prelude::Resources::Watch.new(client: self)
+      @transactional = PreludeSDK::Resources::Transactional.new(client: self)
+      @verification = PreludeSDK::Resources::Verification.new(client: self)
+      @watch = PreludeSDK::Resources::Watch.new(client: self)
     end
 
     # @!visibility private
     private def make_status_error(message:, body:, response:)
       case response.code.to_i
       in 400
-        Prelude::HTTP::BadRequestError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::BadRequestError.new(message: message, response: response, body: body)
       in 401
-        Prelude::HTTP::AuthenticationError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::AuthenticationError.new(message: message, response: response, body: body)
       in 403
-        Prelude::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
       in 404
-        Prelude::HTTP::NotFoundError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::NotFoundError.new(message: message, response: response, body: body)
       in 409
-        Prelude::HTTP::ConflictError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::ConflictError.new(message: message, response: response, body: body)
       in 422
-        Prelude::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
       in 429
-        Prelude::HTTP::RateLimitError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::RateLimitError.new(message: message, response: response, body: body)
       in 500..599
-        Prelude::HTTP::InternalServerError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::InternalServerError.new(message: message, response: response, body: body)
       else
-        Prelude::HTTP::APIStatusError.new(message: message, response: response, body: body)
+        PreludeSDK::HTTP::APIStatusError.new(message: message, response: response, body: body)
       end
     end
   end

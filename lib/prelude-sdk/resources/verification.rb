@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   module Resources
     class Verification
-      # @param client [Prelude::Client]
+      # @param client [PreludeSDK::Client]
       def initialize(client:)
         @client = client
       end
@@ -19,16 +19,16 @@ module Prelude
       #   @option params [Options, nil] :options Verification options
       #   @option params [Signals, nil] :signals The signals used for anti-fraud.
       #
-      # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Prelude::Models::VerificationCreateResponse]
+      # @return [PreludeSDK::Models::VerificationCreateResponse]
       def create(params = {}, opts = {})
         req = {
           method: :post,
           path: "/v2/verification",
           body: params,
           headers: {"Content-Type" => "application/json"},
-          model: Prelude::Models::VerificationCreateResponse
+          model: PreludeSDK::Models::VerificationCreateResponse
         }
         @client.request(req, opts)
       end
@@ -39,16 +39,16 @@ module Prelude
       #   @option params [String] :code The OTP code to validate.
       #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
-      # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Prelude::Models::VerificationCheckResponse]
+      # @return [PreludeSDK::Models::VerificationCheckResponse]
       def check(params = {}, opts = {})
         req = {
           method: :post,
           path: "/v2/verification/check",
           body: params,
           headers: {"Content-Type" => "application/json"},
-          model: Prelude::Models::VerificationCheckResponse
+          model: PreludeSDK::Models::VerificationCheckResponse
         }
         @client.request(req, opts)
       end
