@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   module Models
-    class TransactionalSendResponse < Prelude::BaseModel
+    class TransactionalSendResponse < PreludeSDK::BaseModel
       # @!attribute [rw] id
       #   The message identifier.
       #   @return [String]

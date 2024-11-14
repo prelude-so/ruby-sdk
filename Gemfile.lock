@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    prelude (0.1.0.pre.alpha.1)
+    prelude-sdk (0.1.0.pre.alpha.1)
       connection_pool
 
 GEM
@@ -42,7 +42,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest
-  prelude!
+  prelude-sdk!
   rake
   rubocop
   webrick

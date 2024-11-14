@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   module Models
-    class VerificationCreateResponse < Prelude::BaseModel
+    class VerificationCreateResponse < PreludeSDK::BaseModel
       # @!attribute [rw] id
       #   The verification identifier.
       #   @return [String]
@@ -10,13 +10,17 @@ module Prelude
 
       # @!attribute [rw] metadata
       #   The metadata for this verification.
-      #   @return [Prelude::Models::VerificationCreateResponse::Metadata]
-      optional :metadata, -> { Prelude::Models::VerificationCreateResponse::Metadata }
+      #   @return [PreludeSDK::Models::VerificationCreateResponse::Metadata]
+      optional :metadata, -> { PreludeSDK::Models::VerificationCreateResponse::Metadata }
 
       # @!attribute [rw] method_
       #   The method used for verifying this phone number.
-      #   @return [Symbol, Prelude::Models::VerificationCreateResponse::Method]
-      optional :method_, api_name: :method, enum: -> { Prelude::Models::VerificationCreateResponse::Method }
+      #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
+      optional :method_,
+               api_name: :method,
+               enum: -> {
+                 PreludeSDK::Models::VerificationCreateResponse::Method
+               }
 
       # @!attribute [rw] request_id
       #   @return [String]
@@ -24,10 +28,10 @@ module Prelude
 
       # @!attribute [rw] status
       #   The status of the verification.
-      #   @return [Symbol, Prelude::Models::VerificationCreateResponse::Status]
-      optional :status, enum: -> { Prelude::Models::VerificationCreateResponse::Status }
+      #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
+      optional :status, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Status }
 
-      class Metadata < Prelude::BaseModel
+      class Metadata < PreludeSDK::BaseModel
         # @!attribute [rw] correlation_id
         #   @return [String]
         optional :correlation_id, String
@@ -41,12 +45,12 @@ module Prelude
       end
 
       # The method used for verifying this phone number.
-      class Method < Prelude::Enum
+      class Method < PreludeSDK::Enum
         MESSAGE = :message
       end
 
       # The status of the verification.
-      class Status < Prelude::Enum
+      class Status < PreludeSDK::Enum
         SUCCESS = :success
         RETRY = :retry
         BLOCKED = :blocked

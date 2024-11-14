@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   # Specify HTTP behaviour to use for a specific request. These options supplement or override those
   # provided at the client level.
   #
@@ -25,12 +25,12 @@ module Prelude
 
     # @!visibility private
     #
-    # @param opts [Prelude::RequestOptions, Hash{Symbol => Object}]
+    # @param opts [PreludeSDK::RequestOptions, Hash{Symbol => Object}]
     #
     # @raise [ArgumentError]
     def self.validate!(opts)
       case opts
-      in Prelude::RequestOptions | Hash
+      in PreludeSDK::RequestOptions | Hash
         opts.to_h.each_key do |k|
           unless options.include?(k)
             raise ArgumentError, "Request `opts` keys must be one of #{options}, got #{k.inspect}"

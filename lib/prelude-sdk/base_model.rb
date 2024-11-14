@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   # @!visibility private
   module Converter
     # Based on `value`, returns a value that conforms to `type`, to the extent possible:
@@ -8,7 +8,7 @@ module Prelude
     # - If it's possible and safe to convert the given `value` to `type`, such a converted value.
     # - Otherwise, the given `value` unaltered.
     #
-    # @param type [Class, Prelude::Converter]
+    # @param type [Class, PreludeSDK::Converter]
     # @param value [Object]
     #
     # @raise [StandardError]
@@ -43,7 +43,7 @@ module Prelude
   # When we don't know what to expect for the value.
   # @!visibility private
   class Unknown
-    include Prelude::Converter
+    include PreludeSDK::Converter
 
     # @param value [Object]
     #
@@ -56,7 +56,7 @@ module Prelude
   # Ruby has no Boolean class; this is something for models to refer to.
   # @!visibility private
   class BooleanModel
-    include Prelude::Converter
+    include PreludeSDK::Converter
 
     # @param value [Boolean, Object]
     #
@@ -76,7 +76,7 @@ module Prelude
   # values safely.
   # @!visibility private
   class Enum
-    include Prelude::Converter
+    include PreludeSDK::Converter
 
     # @param value [Symbol, String, Object]
     #
@@ -99,7 +99,7 @@ module Prelude
   # Array of items of a given type.
   # @!visibility private
   class ArrayOf
-    include Prelude::Converter
+    include PreludeSDK::Converter
 
     # @param items_type_info [Proc, Object, nil]
     # @param enum [Proc, nil]
@@ -122,7 +122,7 @@ module Prelude
   end
 
   class BaseModel
-    include Prelude::Converter
+    include PreludeSDK::Converter
 
     # @!visibility private
     #
@@ -150,10 +150,10 @@ module Prelude
 
       define_method(name_sym) do
         field_type = type_fn.call
-        Prelude::Converter.convert(field_type, @data[key])
+        PreludeSDK::Converter.convert(field_type, @data[key])
       rescue StandardError
         name = self.class.name.split("::").last
-        raise Prelude::ConversionError,
+        raise PreludeSDK::ConversionError,
               "Failed to parse #{name}.#{name_sym} as #{field_type.inspect}. " \
               "To get the unparsed API response, use #{name}[:#{key}]."
       end

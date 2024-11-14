@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   # @!visibility private
   class PooledNetRequester
     def initialize
@@ -46,7 +46,7 @@ module Prelude
       content_type = headers["content-type"]
 
       get_pool(req, timeout: timeout).with do |conn|
-        uri = Prelude::Util.unparse_uri(req, absolute: false)
+        uri = PreludeSDK::Util.unparse_uri(req, absolute: false)
 
         request = Net::HTTPGenericRequest.new(
           method.to_s.upcase,

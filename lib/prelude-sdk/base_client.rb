@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   # @!visibility private
   class BaseClient
     MAX_REDIRECTS = 20 # from whatwg fetch spec
 
     # @!attribute requester
-    # @return [Prelude::PooledNetRequester]
+    # @return [PreludeSDK::PooledNetRequester]
     attr_accessor :requester
 
     # @param base_url [String]
@@ -25,12 +25,12 @@ module Prelude
       headers: {},
       idempotency_header: nil
     )
-      self.requester = Prelude::PooledNetRequester.new
+      self.requester = PreludeSDK::PooledNetRequester.new
       base_url_parsed = URI.parse(base_url)
-      @headers = Prelude::Util.normalized_headers(
+      @headers = PreludeSDK::Util.normalized_headers(
         {
           "X-Stainless-Lang" => "ruby",
-          "X-Stainless-Package-Version" => Prelude::VERSION,
+          "X-Stainless-Package-Version" => PreludeSDK::VERSION,
           "X-Stainless-Runtime" => RUBY_ENGINE,
           "X-Stainless-Runtime-Version" => RUBY_ENGINE_VERSION,
           "Accept" => "application/json"
@@ -40,7 +40,7 @@ module Prelude
       @host = base_url_parsed.host
       @scheme = base_url_parsed.scheme
       @port = base_url_parsed.port
-      @base_path = Prelude::Util.normalize_path(base_url_parsed.path)
+      @base_path = PreludeSDK::Util.normalize_path(base_url_parsed.path)
       @idempotency_header = idempotency_header&.to_s&.downcase
       @max_retries = max_retries
       @timeout = timeout
@@ -88,13 +88,13 @@ module Prelude
     def resolve_uri_elements(req)
       from_args =
         if (url = req[:url])
-          Prelude::Util.parse_uri(url)
+          PreludeSDK::Util.parse_uri(url)
         else
-          path = Prelude::Util.normalize_path("/#{@base_path}/#{req.fetch(:path)}")
+          path = PreludeSDK::Util.normalize_path("/#{@base_path}/#{req.fetch(:path)}")
           req.slice(:scheme, :host, :port, :query).merge(path: path)
         end
 
-      query = Prelude::Util.deep_merge(
+      query = PreludeSDK::Util.deep_merge(
         from_args[:query] || {},
         req[:extra_query] || {},
         concat: true
@@ -109,15 +109,15 @@ module Prelude
     end
 
     # @param req [Hash{Symbol => Object}]
-    # @param opts [Prelude::RequestOptions, Hash{Symbol => Object}]
+    # @param opts [PreludeSDK::RequestOptions, Hash{Symbol => Object}]
     #
     # @return [Hash{Symbol => Object}]
     private def build_request(req, opts)
-      options = Prelude::Util.deep_merge(req, opts)
+      options = PreludeSDK::Util.deep_merge(req, opts)
       method = options.fetch(:method)
       body, extra_body = options.values_at(:body, :extra_body)
 
-      headers = Prelude::Util.normalized_headers(
+      headers = PreludeSDK::Util.normalized_headers(
         @headers,
         auth_headers,
         *options.values_at(:headers, :extra_headers)
@@ -136,7 +136,7 @@ module Prelude
       if [:get, :head, :options].include?(method)
         body = nil
       elsif extra_body
-        body = Prelude::Util.deep_merge(body, extra_body)
+        body = PreludeSDK::Util.deep_merge(body, extra_body)
       end
 
       body =
@@ -234,7 +234,7 @@ module Prelude
 
       span =
         if retry_header
-          Prelude::Util.suppress(ArgumentError) do
+          PreludeSDK::Util.suppress(ArgumentError) do
             Time.httpdate(retry_header) - now
           end
         end
@@ -253,12 +253,12 @@ module Prelude
     # @param status [Integer]
     # @param location_header [URI::Generic]
     #
-    # @raise [Prelude::HTTP::Error]
+    # @raise [PreludeSDK::HTTP::Error]
     # @return [Hash{Symbol => Object}]
     private def follow_redirect(request, status:, location_header:)
-      uri = Prelude::Util.unparse_uri(request)
+      uri = PreludeSDK::Util.unparse_uri(request)
       location =
-        Prelude::Util.suppress(ArgumentError) do
+        PreludeSDK::Util.suppress(ArgumentError) do
           URI.join(uri, location_header)
         end
 
@@ -292,7 +292,7 @@ module Prelude
       end
 
       # from undici
-      if Prelude::Util.uri_origin(uri) != Prelude::Util.uri_origin(location)
+      if PreludeSDK::Util.uri_origin(uri) != PreludeSDK::Util.uri_origin(location)
         drop = %w[authorization cookie proxy-authorization host]
         request = {**request, headers: request.fetch(:headers).except(*drop)}
       end
@@ -311,7 +311,7 @@ module Prelude
     # @param retry_count [Integer]
     # @param send_retry_header [Boolean]
     #
-    # @raise [Prelude::HTTP::Error]
+    # @raise [PreludeSDK::HTTP::Error]
     # @return [Net::HTTPResponse]
     private def send_request(
       request,
@@ -384,19 +384,19 @@ module Prelude
     end
 
     # @param req [Hash{Symbol => Object}]
-    # @param opts [Prelude::RequestOptions, Hash{Symbol => Object}]
+    # @param opts [PreludeSDK::RequestOptions, Hash{Symbol => Object}]
     #
     # @return [Object]
     private def parse_response(req, opts, response)
       parsed = parse_body(response)
-      raw_data = Prelude::Util.dig(parsed, req[:unwrap])
+      raw_data = PreludeSDK::Util.dig(parsed, req[:unwrap])
 
       page, model = req.values_at(:page, :model)
       case [page, model]
       in [Class, _]
         page.new(client: self, model: model, req: req, opts: opts, response: response, raw_data: raw_data)
       in [nil, _] unless model.nil?
-        Prelude::Converter.convert(model, raw_data)
+        PreludeSDK::Converter.convert(model, raw_data)
       in [nil, nil]
         raw_data
       end
@@ -407,12 +407,12 @@ module Prelude
     # Params req & opts are kept separate up until this point so that we can
     # validate opts as it was given to us by the user.
     # @param req [Hash{Symbol => Object}]
-    # @param opts [Prelude::RequestOptions, Hash{Symbol => Object}]
+    # @param opts [PreludeSDK::RequestOptions, Hash{Symbol => Object}]
     #
-    # @raise [Prelude::HTTP::Error]
+    # @raise [PreludeSDK::HTTP::Error]
     # @return [Object]
     def request(req, opts)
-      Prelude::RequestOptions.validate!(opts)
+      PreludeSDK::RequestOptions.validate!(opts)
       validate_request!(req)
       request = build_request(req, opts)
 
@@ -431,7 +431,7 @@ module Prelude
 
     # @return [String]
     def inspect
-      base_url = Prelude::Util.unparse_uri(scheme: @scheme, host: @host, port: @port, path: @base_path)
+      base_url = PreludeSDK::Util.unparse_uri(scheme: @scheme, host: @host, port: @port, path: @base_path)
       "#<#{self.class.name}:0x#{object_id.to_s(16)} base_url=#{base_url} max_retries=#{@max_retries} timeout=#{@timeout}>"
     end
   end
@@ -440,7 +440,7 @@ module Prelude
   end
 
   module HTTP
-    class Error < Prelude::Error
+    class Error < PreludeSDK::Error
     end
 
     class ResponseError < Error

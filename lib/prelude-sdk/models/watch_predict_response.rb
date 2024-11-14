@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   module Models
-    class WatchPredictResponse < Prelude::BaseModel
+    class WatchPredictResponse < PreludeSDK::BaseModel
       # @!attribute [rw] id
       #   A unique identifier for your prediction request.
       #   @return [String]
@@ -10,24 +10,24 @@ module Prelude
 
       # @!attribute [rw] prediction
       #   A label indicating the trustworthiness of the phone number.
-      #   @return [Symbol, Prelude::Models::WatchPredictResponse::Prediction]
-      optional :prediction, enum: -> { Prelude::Models::WatchPredictResponse::Prediction }
+      #   @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
+      optional :prediction, enum: -> { PreludeSDK::Models::WatchPredictResponse::Prediction }
 
       # @!attribute [rw] reasoning
-      #   @return [Prelude::Models::WatchPredictResponse::Reasoning]
-      optional :reasoning, -> { Prelude::Models::WatchPredictResponse::Reasoning }
+      #   @return [PreludeSDK::Models::WatchPredictResponse::Reasoning]
+      optional :reasoning, -> { PreludeSDK::Models::WatchPredictResponse::Reasoning }
 
       # A label indicating the trustworthiness of the phone number.
-      class Prediction < Prelude::Enum
+      class Prediction < PreludeSDK::Enum
         ALLOW = :allow
         BLOCK = :block
       end
 
-      class Reasoning < Prelude::BaseModel
+      class Reasoning < PreludeSDK::BaseModel
         # @!attribute [rw] cause
         #   A label explaining why the phone number was classified as not trustworthy
-        #   @return [Symbol, Prelude::Models::WatchPredictResponse::Reasoning::Cause]
-        optional :cause, enum: -> { Prelude::Models::WatchPredictResponse::Reasoning::Cause }
+        #   @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause]
+        optional :cause, enum: -> { PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause }
 
         # @!attribute [rw] score
         #   Indicates the risk of the phone number being genuine or involved in fraudulent patterns. The higher the riskier.
@@ -35,7 +35,7 @@ module Prelude
         optional :score, Float
 
         # A label explaining why the phone number was classified as not trustworthy
-        class Cause < Prelude::Enum
+        class Cause < PreludeSDK::Enum
           NONE = :none
           SMART_ANTIFRAUD = :smart_antifraud
           REPEAT_NUMBER = :repeat_number

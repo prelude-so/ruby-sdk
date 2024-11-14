@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   module Models
-    class WatchFeedBackResponse < Prelude::BaseModel
+    class WatchFeedBackResponse < PreludeSDK::BaseModel
       # @!attribute [rw] id
       #   A unique identifier for your feedback request.
       #   @return [String]
