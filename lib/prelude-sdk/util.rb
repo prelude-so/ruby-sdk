@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   # @!visibility private
   class Util
     # Use this to indicate that a value should be explicitly removed from a data structure
-    # when using `Prelude::Util.deep_merge`.
+    # when using `PreludeSDK::Util.deep_merge`.
     # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
     # `{}` would produce `{a: 1}`.
     OMIT = Object.new.freeze

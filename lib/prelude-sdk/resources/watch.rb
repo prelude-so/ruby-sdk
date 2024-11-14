@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Prelude
+module PreludeSDK
   module Resources
     class Watch
-      # @param client [Prelude::Client]
+      # @param client [PreludeSDK::Client]
       def initialize(client:)
         @client = client
       end
@@ -16,16 +16,16 @@ module Prelude
       #     authentic behavior.
       #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
-      # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Prelude::Models::WatchFeedBackResponse]
+      # @return [PreludeSDK::Models::WatchFeedBackResponse]
       def feed_back(params = {}, opts = {})
         req = {
           method: :post,
           path: "/v2/watch/feedback",
           body: params,
           headers: {"Content-Type" => "application/json"},
-          model: Prelude::Models::WatchFeedBackResponse
+          model: PreludeSDK::Models::WatchFeedBackResponse
         }
         @client.request(req, opts)
       end
@@ -39,16 +39,16 @@ module Prelude
       #   @option params [Signals, nil] :signals It is highly recommended that you provide the signals to increase prediction
       #     performance.
       #
-      # @param opts [Hash{Symbol => Object}, Prelude::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
-      # @return [Prelude::Models::WatchPredictResponse]
+      # @return [PreludeSDK::Models::WatchPredictResponse]
       def predict(params = {}, opts = {})
         req = {
           method: :post,
           path: "/v2/watch/predict",
           body: params,
           headers: {"Content-Type" => "application/json"},
-          model: Prelude::Models::WatchPredictResponse
+          model: PreludeSDK::Models::WatchPredictResponse
         }
         @client.request(req, opts)
       end

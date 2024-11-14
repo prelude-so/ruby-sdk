@@ -6,7 +6,7 @@
 # - Define shared testing namespace so that we don't need to indent test files as much
 # - Setting up testing dependencies
 
-require_relative "../../lib/prelude"
+require_relative "../../lib/prelude-sdk"
 require_relative "test_namespaces"
 
 require "minitest"

@@ -22,9 +22,9 @@ RuboCop::RakeTask.new(:format) do |t|
 end
 
 task(:build) do
-  sh(*%w[gem build -- prelude.gemspec])
+  sh(*%w[gem build -- prelude-sdk.gemspec])
 end
 
 task(release: [:build]) do
-  sh(*%w[gem push], *FileList["prelude-*.gem"])
+  sh(*%w[gem push], *FileList["prelude-sdk-*.gem"])
 end
