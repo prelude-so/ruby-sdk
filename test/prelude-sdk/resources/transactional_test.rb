@@ -16,7 +16,12 @@ class PreludeSDK::Test::Resources::TransactionalTest < Minitest::Test
     skip(
       "skipped: currently no good way to test endpoints defining callbacks, Prism mock server will fail trying to reach the provided callback url"
     )
-    response = @prelude.transactional.send({template_id: "template_id", to: "to"})
+    response = @prelude.transactional.send(
+      {
+        template_id: "template_01jd1xq0cffycayqtdkdbv4d61",
+        to: "+30123456789"
+      }
+    )
     assert_kind_of(PreludeSDK::Models::TransactionalSendResponse, response)
   end
 end
