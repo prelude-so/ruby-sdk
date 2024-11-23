@@ -26,8 +26,8 @@ module PreludeSDK
         req = {
           method: :post,
           path: "/v2/transactional",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: PreludeSDK::Models::TransactionalSendResponse
         }
         @client.request(req, opts)
