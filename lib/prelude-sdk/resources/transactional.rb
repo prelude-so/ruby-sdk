@@ -22,7 +22,7 @@ module PreludeSDK
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [PreludeSDK::Models::TransactionalSendResponse]
-      def send(params = {}, opts = {})
+      def send_(params = {}, opts = {})
         req = {
           method: :post,
           path: "/v2/transactional",
