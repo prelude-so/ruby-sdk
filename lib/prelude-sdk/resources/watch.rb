@@ -23,8 +23,8 @@ module PreludeSDK
         req = {
           method: :post,
           path: "/v2/watch/feedback",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: PreludeSDK::Models::WatchFeedBackResponse
         }
         @client.request(req, opts)
@@ -46,8 +46,8 @@ module PreludeSDK
         req = {
           method: :post,
           path: "/v2/watch/predict",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: PreludeSDK::Models::WatchPredictResponse
         }
         @client.request(req, opts)
