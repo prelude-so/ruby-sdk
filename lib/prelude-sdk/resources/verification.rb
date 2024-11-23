@@ -26,8 +26,8 @@ module PreludeSDK
         req = {
           method: :post,
           path: "/v2/verification",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: PreludeSDK::Models::VerificationCreateResponse
         }
         @client.request(req, opts)
@@ -46,8 +46,8 @@ module PreludeSDK
         req = {
           method: :post,
           path: "/v2/verification/check",
-          body: params,
           headers: {"Content-Type" => "application/json"},
+          body: params,
           model: PreludeSDK::Models::VerificationCheckResponse
         }
         @client.request(req, opts)
