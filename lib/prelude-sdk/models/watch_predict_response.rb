@@ -6,16 +6,16 @@ module PreludeSDK
       # @!attribute [rw] id
       #   A unique identifier for your prediction request.
       #   @return [String]
-      optional :id, String
+      required :id, String
 
       # @!attribute [rw] prediction
       #   A label indicating the trustworthiness of the phone number.
       #   @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
-      optional :prediction, enum: -> { PreludeSDK::Models::WatchPredictResponse::Prediction }
+      required :prediction, enum: -> { PreludeSDK::Models::WatchPredictResponse::Prediction }
 
       # @!attribute [rw] reasoning
       #   @return [PreludeSDK::Models::WatchPredictResponse::Reasoning]
-      optional :reasoning, -> { PreludeSDK::Models::WatchPredictResponse::Reasoning }
+      required :reasoning, -> { PreludeSDK::Models::WatchPredictResponse::Reasoning }
 
       # A label indicating the trustworthiness of the phone number.
       class Prediction < PreludeSDK::Enum
@@ -56,9 +56,9 @@ module PreludeSDK
       #   # Create a new instance of WatchPredictResponse from a Hash of raw data.
       #   #
       #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String, nil] :id A unique identifier for your prediction request.
-      #   #   @option data [String, nil] :prediction A label indicating the trustworthiness of the phone number.
-      #   #   @option data [Object, nil] :reasoning
+      #   #   @option data [String] :id A unique identifier for your prediction request.
+      #   #   @option data [String] :prediction A label indicating the trustworthiness of the phone number.
+      #   #   @option data [Object] :reasoning
       #   def initialize(data = {}) = super
     end
   end
