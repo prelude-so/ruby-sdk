@@ -12,9 +12,9 @@ module PreludeSDK
       #   call this endpoint to report their authenticity to our systems.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Feedback] :feedback You should send a feedback event back to Watch API when your user demonstrates
+      #   @option params [PreludeSDK::Models::WatchFeedBackParams::Feedback] :feedback You should send a feedback event back to Watch API when your user demonstrates
       #     authentic behavior.
-      #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
+      #   @option params [PreludeSDK::Models::WatchFeedBackParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
@@ -35,8 +35,8 @@ module PreludeSDK
       #   must be implemented in conjunction with the `watch/feedback` endpoint.
       #
       # @param params [Hash{Symbol => Object}] Attributes to send in this request.
-      #   @option params [Target] :target The target. Currently this can only be an E.164 formatted phone number.
-      #   @option params [Signals, nil] :signals It is highly recommended that you provide the signals to increase prediction
+      #   @option params [PreludeSDK::Models::WatchPredictParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
+      #   @option params [PreludeSDK::Models::WatchPredictParams::Signals, nil] :signals It is highly recommended that you provide the signals to increase prediction
       #     performance.
       #
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
