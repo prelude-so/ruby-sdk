@@ -78,13 +78,10 @@ class PreludeSDK::Test::UtilTest < Minitest::Test
     assert_nil(PreludeSDK::Util.dig([], 1))
     assert_equal(1, PreludeSDK::Util.dig([nil, [nil, 1]], [1, 1]))
     assert_equal(1, PreludeSDK::Util.dig({a: [nil, 1]}, [:a, 1]))
-
-    assert_raises(NoMatchingPatternError) do
-      PreludeSDK::Util.dig([], 1.0)
-    end
-    assert_raises(NoMatchingPatternError) do
-      PreludeSDK::Util.dig(Object, 1)
-    end
+    assert_nil(PreludeSDK::Util.dig([], 1.0))
+    assert_nil(PreludeSDK::Util.dig(Object, 1))
+    assert_equal(2, PreludeSDK::Util.dig([], 1.0, 2))
+    assert_equal(2, PreludeSDK::Util.dig([], 1.0) { 2 })
   end
 
   def test_uri_parsing

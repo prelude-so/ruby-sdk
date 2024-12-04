@@ -51,12 +51,12 @@ puts(verification.id)
 
 When the library is unable to connect to the API, or if the API returns a
 non-success status code (i.e., 4xx or 5xx response), a subclass of
-`PreludeSDK::HTTP::Error` will be thrown:
+`PreludeSDK::Error` will be thrown:
 
 ```ruby
 begin
   verification = prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
-rescue PreludeSDK::HTTP::Error => e
+rescue PreludeSDK::Error => e
   puts(e.code) # 400
 end
 ```
