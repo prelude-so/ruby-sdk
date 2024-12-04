@@ -77,7 +77,7 @@ class PreludeSDKTest < Minitest::Test
     prelude = PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(3, requester.attempts.length)
@@ -91,7 +91,7 @@ class PreludeSDKTest < Minitest::Test
     )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(4, requester.attempts.length)
@@ -101,7 +101,7 @@ class PreludeSDKTest < Minitest::Test
     prelude = PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create(
         {target: {"type" => "phone_number", "value" => "+30123456789"}},
         max_retries: 3
@@ -118,7 +118,7 @@ class PreludeSDKTest < Minitest::Test
     )
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create(
         {target: {"type" => "phone_number", "value" => "+30123456789"}},
         max_retries: 4
@@ -135,7 +135,7 @@ class PreludeSDKTest < Minitest::Test
     )
     requester = MockRequester.new(500, {}, {"retry-after" => "1.3", "x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(2, requester.attempts.length)
@@ -158,7 +158,7 @@ class PreludeSDKTest < Minitest::Test
       }
     )
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(2, requester.attempts.length)
@@ -173,7 +173,7 @@ class PreludeSDKTest < Minitest::Test
     )
     requester = MockRequester.new(500, {}, {"retry-after-ms" => "1300", "x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
     assert_equal(2, requester.attempts.length)
@@ -185,7 +185,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
     end
 
@@ -198,7 +198,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create(
         {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {"x-stainless-retry-count" => nil}
@@ -214,7 +214,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
 
-    assert_raises(PreludeSDK::HTTP::InternalServerError) do
+    assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create(
         {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {"x-stainless-retry-count" => "42"}
@@ -229,7 +229,7 @@ class PreludeSDKTest < Minitest::Test
     prelude = PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::APIConnectionError) do
+    assert_raises(PreludeSDK::APIConnectionError) do
       prelude.verification.create(
         {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {}
@@ -248,7 +248,7 @@ class PreludeSDKTest < Minitest::Test
     prelude = PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(303, {}, {"location" => "/redirected"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::APIConnectionError) do
+    assert_raises(PreludeSDK::APIConnectionError) do
       prelude.verification.create(
         {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {}
@@ -264,7 +264,7 @@ class PreludeSDKTest < Minitest::Test
     prelude = PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(307, {}, {"location" => "/redirected"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::APIConnectionError) do
+    assert_raises(PreludeSDK::APIConnectionError) do
       prelude.verification.create(
         {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {"Authorization" => "Bearer xyz"}
@@ -280,7 +280,7 @@ class PreludeSDKTest < Minitest::Test
     prelude = PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(307, {}, {"location" => "https://example.com/redirected"})
     prelude.requester = requester
-    assert_raises(PreludeSDK::HTTP::APIConnectionError) do
+    assert_raises(PreludeSDK::APIConnectionError) do
       prelude.verification.create(
         {target: {"type" => "phone_number", "value" => "+30123456789"}},
         extra_headers: {"Authorization" => "Bearer xyz"}
