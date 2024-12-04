@@ -49,7 +49,7 @@ module PreludeSDK
       base_url ||= "https://api.prelude.dev"
 
       if api_token.nil?
-        raise ArgumentError, "api_token is required"
+        raise ArgumentError.new("api_token is required")
       end
 
       @api_token = api_token.to_s
@@ -65,30 +65,6 @@ module PreludeSDK
       @transactional = PreludeSDK::Resources::Transactional.new(client: self)
       @verification = PreludeSDK::Resources::Verification.new(client: self)
       @watch = PreludeSDK::Resources::Watch.new(client: self)
-    end
-
-    # @!visibility private
-    private def make_status_error(message:, body:, response:)
-      case response.code.to_i
-      in 400
-        PreludeSDK::HTTP::BadRequestError.new(message: message, response: response, body: body)
-      in 401
-        PreludeSDK::HTTP::AuthenticationError.new(message: message, response: response, body: body)
-      in 403
-        PreludeSDK::HTTP::PermissionDeniedError.new(message: message, response: response, body: body)
-      in 404
-        PreludeSDK::HTTP::NotFoundError.new(message: message, response: response, body: body)
-      in 409
-        PreludeSDK::HTTP::ConflictError.new(message: message, response: response, body: body)
-      in 422
-        PreludeSDK::HTTP::UnprocessableEntityError.new(message: message, response: response, body: body)
-      in 429
-        PreludeSDK::HTTP::RateLimitError.new(message: message, response: response, body: body)
-      in 500..599
-        PreludeSDK::HTTP::InternalServerError.new(message: message, response: response, body: body)
-      else
-        PreludeSDK::HTTP::APIStatusError.new(message: message, response: response, body: body)
-      end
     end
   end
 end
