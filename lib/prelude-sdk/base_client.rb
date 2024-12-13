@@ -46,14 +46,10 @@ module PreludeSDK
     end
 
     # @return [Hash{String => String}]
-    def auth_headers
-      {}
-    end
+    def auth_headers = {}
 
     # @return [String]
-    def generate_idempotency_key
-      "stainless-ruby-retry-#{SecureRandom.uuid}"
-    end
+    def generate_idempotency_key = "stainless-ruby-retry-#{SecureRandom.uuid}"
 
     # @param req [Hash{Symbol => Object}]
     #   @option req [Hash{Symbol => Object}, Array, Object, nil] :body
@@ -70,34 +66,6 @@ module PreludeSDK
       else
         # Body can be at least a Hash or Array, just check for Hash shape for now.
       end
-    end
-
-    # @param req [Hash{Symbol => Object}]
-    #   @option req [String] :host
-    #   @option req [String] :scheme
-    #   @option req [String] :path
-    #   @option req [String] :port
-    #   @option req [Hash{String => Array<String>}] :query
-    #   @option req [Hash{String => Array<String>}] :extra_query
-    #
-    # @return [URI::Generic]
-    def resolve_url(req)
-      base_path, base_query = @base_url.fetch_values(:path, :query)
-      slashed = base_path.end_with?("/") ? base_path : "#{base_path}/"
-
-      req_path, req_query = PreludeSDK::Util.parse_uri(req.fetch(:path)).fetch_values(:path, :query)
-      override = URI::Generic.build(**req.slice(:scheme, :host, :port), path: req_path)
-
-      joined = URI.join(URI::Generic.build(@base_url.except(:path, :query)), slashed, override)
-
-      query = PreludeSDK::Util.deep_merge(
-        joined.path == base_path ? base_query : {},
-        req_query,
-        *req.values_at(:query, :extra_query).compact,
-        concat: true
-      )
-      joined.query = PreludeSDK::Util.encode_query(query)
-      joined
     end
 
     # @param req [Hash{Symbol => Object}]
@@ -139,7 +107,7 @@ module PreludeSDK
           body
         end
 
-      url = resolve_url(options)
+      url = PreludeSDK::Util.join_parsed_uri(@base_url, options)
       {method: method, url: url, headers: headers, body: body}
     end
 
@@ -357,7 +325,7 @@ module PreludeSDK
       in [Class, _]
         page.new(client: self, model: model, req: req, opts: opts, response: response, raw_data: raw_data)
       in [nil, _] unless model.nil?
-        PreludeSDK::Converter.convert(model, raw_data)
+        PreludeSDK::Converter.coerce(model, raw_data)
       in [nil, nil]
         raw_data
       end

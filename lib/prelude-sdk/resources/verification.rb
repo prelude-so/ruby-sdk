@@ -23,11 +23,12 @@ module PreludeSDK
       #
       # @return [PreludeSDK::Models::VerificationCreateResponse]
       def create(params = {}, opts = {})
+        parsed = PreludeSDK::Models::VerificationCreateParams.dump(params)
         req = {
           method: :post,
           path: "/v2/verification",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: PreludeSDK::Models::VerificationCreateResponse
         }
         @client.request(req, opts)
@@ -43,11 +44,12 @@ module PreludeSDK
       #
       # @return [PreludeSDK::Models::VerificationCheckResponse]
       def check(params = {}, opts = {})
+        parsed = PreludeSDK::Models::VerificationCheckParams.dump(params)
         req = {
           method: :post,
           path: "/v2/verification/check",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: PreludeSDK::Models::VerificationCheckResponse
         }
         @client.request(req, opts)
