@@ -78,7 +78,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(PreludeSDK::InternalServerError) do
-      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
+      prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
     end
     assert_equal(3, requester.attempts.length)
   end
@@ -92,7 +92,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(500, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(PreludeSDK::InternalServerError) do
-      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
+      prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
     end
     assert_equal(4, requester.attempts.length)
   end
@@ -136,10 +136,10 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(500, {}, {"retry-after" => "1.3", "x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(PreludeSDK::InternalServerError) do
-      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
+      prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
     end
     assert_equal(2, requester.attempts.length)
-    assert_equal(requester.attempts.last[:headers]["x-stainless-mock-slept"], 1.3)
+    assert_equal(1.3, requester.attempts.last[:headers]["x-stainless-mock-slept"])
   end
 
   def test_client_retry_after_date
@@ -159,10 +159,10 @@ class PreludeSDKTest < Minitest::Test
     )
     prelude.requester = requester
     assert_raises(PreludeSDK::InternalServerError) do
-      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
+      prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
     end
     assert_equal(2, requester.attempts.length)
-    assert_equal(requester.attempts.last[:headers]["x-stainless-mock-slept"], 2)
+    assert_equal(2, requester.attempts.last[:headers]["x-stainless-mock-slept"])
   end
 
   def test_client_retry_after_ms
@@ -174,10 +174,10 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(500, {}, {"retry-after-ms" => "1300", "x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
     assert_raises(PreludeSDK::InternalServerError) do
-      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
+      prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
     end
     assert_equal(2, requester.attempts.length)
-    assert_equal(requester.attempts.last[:headers]["x-stainless-mock-slept"], 1.3)
+    assert_equal(1.3, requester.attempts.last[:headers]["x-stainless-mock-slept"])
   end
 
   def test_retry_count_header
@@ -186,7 +186,7 @@ class PreludeSDKTest < Minitest::Test
     prelude.requester = requester
 
     assert_raises(PreludeSDK::InternalServerError) do
-      prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
+      prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
     end
 
     retry_count_headers = requester.attempts.map { |a| a[:headers]["x-stainless-retry-count"] }
@@ -235,12 +235,12 @@ class PreludeSDKTest < Minitest::Test
         extra_headers: {}
       )
     end
-    assert_equal(requester.attempts[1][:url].path, "/redirected")
-    assert_equal(requester.attempts[1][:method], requester.attempts[0][:method])
-    assert_equal(requester.attempts[1][:body], requester.attempts[0][:body])
+    assert_equal("/redirected", requester.attempts[1][:url].path)
+    assert_equal(requester.attempts[0][:method], requester.attempts[1][:method])
+    assert_equal(requester.attempts[0][:body], requester.attempts[1][:body])
     assert_equal(
-      requester.attempts[1][:headers]["content-type"],
-      requester.attempts[0][:headers]["content-type"]
+      requester.attempts[0][:headers]["content-type"],
+      requester.attempts[1][:headers]["content-type"]
     )
   end
 
@@ -254,8 +254,8 @@ class PreludeSDKTest < Minitest::Test
         extra_headers: {}
       )
     end
-    assert_equal(requester.attempts[1][:url].path, "/redirected")
-    assert_equal(requester.attempts[1][:method], :get)
+    assert_equal("/redirected", requester.attempts[1][:url].path)
+    assert_equal(:get, requester.attempts[1][:method])
     assert_nil(requester.attempts[1][:body])
     assert_nil(requester.attempts[1][:headers]["Content-Type"])
   end
@@ -271,8 +271,8 @@ class PreludeSDKTest < Minitest::Test
       )
     end
     assert_equal(
-      requester.attempts[1][:headers]["authorization"],
-      requester.attempts[0][:headers]["authorization"]
+      requester.attempts[0][:headers]["authorization"],
+      requester.attempts[1][:headers]["authorization"]
     )
   end
 
@@ -293,7 +293,7 @@ class PreludeSDKTest < Minitest::Test
     prelude = PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token")
     requester = MockRequester.new(200, {}, {"x-stainless-mock-sleep" => "true"})
     prelude.requester = requester
-    prelude.verification.create({target: {"type" => "phone_number", "value" => "+30123456789"}})
+    prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
     headers = requester.attempts[0][:headers]
     refute_empty(headers["x-stainless-lang"])
     refute_empty(headers["x-stainless-package-version"])
