@@ -3,8 +3,6 @@
 require_relative "../test_helper"
 
 class PreludeSDK::Test::Resources::VerificationTest < Minitest::Test
-  parallelize_me!
-
   def setup
     @prelude = PreludeSDK::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
