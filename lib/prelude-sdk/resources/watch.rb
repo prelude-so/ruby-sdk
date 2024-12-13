@@ -20,11 +20,12 @@ module PreludeSDK
       #
       # @return [PreludeSDK::Models::WatchFeedBackResponse]
       def feed_back(params = {}, opts = {})
+        parsed = PreludeSDK::Models::WatchFeedBackParams.dump(params)
         req = {
           method: :post,
           path: "/v2/watch/feedback",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: PreludeSDK::Models::WatchFeedBackResponse
         }
         @client.request(req, opts)
@@ -43,11 +44,12 @@ module PreludeSDK
       #
       # @return [PreludeSDK::Models::WatchPredictResponse]
       def predict(params = {}, opts = {})
+        parsed = PreludeSDK::Models::WatchPredictParams.dump(params)
         req = {
           method: :post,
           path: "/v2/watch/predict",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: PreludeSDK::Models::WatchPredictResponse
         }
         @client.request(req, opts)

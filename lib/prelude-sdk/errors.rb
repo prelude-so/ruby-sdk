@@ -105,7 +105,7 @@ module PreludeSDK
     def initialize(url:, status:, body:, request:, response:, message: nil)
       message ||= {url: url, status: status, body: body}
       super(
-        url: url,
+        url: url.to_s,
         status: status,
         body: body,
         request: request,
