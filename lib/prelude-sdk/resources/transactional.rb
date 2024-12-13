@@ -23,11 +23,12 @@ module PreludeSDK
       #
       # @return [PreludeSDK::Models::TransactionalSendResponse]
       def send_(params = {}, opts = {})
+        parsed = PreludeSDK::Models::TransactionalSendParams.dump(params)
         req = {
           method: :post,
           path: "/v2/transactional",
           headers: {"Content-Type" => "application/json"},
-          body: params,
+          body: parsed,
           model: PreludeSDK::Models::TransactionalSendResponse
         }
         @client.request(req, opts)
