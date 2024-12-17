@@ -8,8 +8,8 @@ class PreludeSDK::Test::BaseModelTest < Minitest::Test
     B = :b
   end
 
-  A1 = PreludeSDK::ArrayOf.new(-> { Integer })
-  A2 = PreludeSDK::ArrayOf.new(enum: -> { E1 })
+  A1 = PreludeSDK::ArrayOf[-> { Integer }]
+  A2 = PreludeSDK::ArrayOf[enum: -> { E1 }]
 
   def test_basic
     assert(E1.include?(PreludeSDK::Converter))
