@@ -10,13 +10,20 @@ module PreludeSDK
 
       # Send a transactional message to your user.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, PreludeSDK::Models::TransactionalSendParams] Attributes to send in this request.
+      #
       #   @option params [String] :template_id The template identifier.
+      #
       #   @option params [String] :to The recipient's phone number.
+      #
       #   @option params [String, nil] :callback_url The callback URL.
+      #
       #   @option params [String, nil] :correlation_id A unique, user-defined identifier that will be included in webhook events.
+      #
       #   @option params [String, nil] :expires_at The message expiration date.
+      #
       #   @option params [String, nil] :from The Sender ID.
+      #
       #   @option params [Hash, nil] :variables The variables to be replaced in the template.
       #
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -27,7 +34,6 @@ module PreludeSDK
         req = {
           method: :post,
           path: "/v2/transactional",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: PreludeSDK::Models::TransactionalSendResponse
         }
