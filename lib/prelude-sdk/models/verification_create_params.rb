@@ -66,6 +66,15 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the target. Currently this can only be "phone_number".
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :phone_number
+        #   # ...
+        # end
+        # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
         end
@@ -225,6 +234,23 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the user's device.
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :android
+        #   # ...
+        # in :ios
+        #   # ...
+        # in :ipados
+        #   # ...
+        # in :tvos
+        #   # ...
+        # in :web
+        #   # ...
+        # end
+        # ```
         class DevicePlatform < PreludeSDK::Enum
           ANDROID = :android
           IOS = :ios
