@@ -31,7 +31,7 @@ module PreludeSDK
       #   #
       #   # @param id [String, nil] The verification identifier.
       #   #
-      #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata, nil] The metadata for this verification.
+      #   # @param metadata [Object, nil] The metadata for this verification.
       #   #
       #   # @param request_id [String, nil]
       #   #
@@ -40,19 +40,6 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # The status of the check.
-      #
-      # @example
-      #
-      # ```ruby
-      # case enum
-      # in :success
-      #   # ...
-      # in :failure
-      #   # ...
-      # in :expired_or_not_found
-      #   # ...
-      # end
-      # ```
       class Status < PreludeSDK::Enum
         SUCCESS = :success
         FAILURE = :failure
