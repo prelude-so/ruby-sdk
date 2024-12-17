@@ -12,7 +12,10 @@ class PreludeSDK::Test::Resources::VerificationTest < Minitest::Test
 
   def test_create_required_params
     response = @prelude.verification.create(target: {"type" => "phone_number", "value" => "+30123456789"})
-    assert_kind_of(PreludeSDK::Models::VerificationCreateResponse, response)
+
+    assert_pattern do
+      response => PreludeSDK::Models::VerificationCreateResponse
+    end
   end
 
   def test_check_required_params
@@ -22,6 +25,9 @@ class PreludeSDK::Test::Resources::VerificationTest < Minitest::Test
         "type" => "phone_number", "value" => "+30123456789"
       }
     )
-    assert_kind_of(PreludeSDK::Models::VerificationCheckResponse, response)
+
+    assert_pattern do
+      response => PreludeSDK::Models::VerificationCheckResponse
+    end
   end
 end
