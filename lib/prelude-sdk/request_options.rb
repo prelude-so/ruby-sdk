@@ -7,14 +7,14 @@ module PreludeSDK
   # When making a request, you can pass an actual {RequestOptions} instance, or simply pass a Hash
   # with symbol keys matching the attributes on this class.
   class RequestOptions
-    # @!visibility private
+    # @private
     #
     # @return [Array<Symbol>]
     private_class_method def self.options
       @options ||= []
     end
 
-    # @!visibility private
+    # @private
     #
     # @param name [Symbol]
     private_class_method def self.option(name)
@@ -23,7 +23,7 @@ module PreludeSDK
       options << name
     end
 
-    # @!visibility private
+    # @private
     #
     # @param opts [PreludeSDK::RequestOptions, Hash{Symbol => Object}]
     #
@@ -39,19 +39,6 @@ module PreludeSDK
       else
         raise ArgumentError.new("Request `opts` must be a Hash or RequestOptions, got #{opts.inspect}")
       end
-    end
-
-    # Returns a new instance of RequestOptions.
-    #
-    # @param values [Hash{Symbol => Object}] initial option values to set on the instance.
-    #   @option values [String] :idempotency_key
-    #   @option values [Hash{Symbol => String}] :extra_headers
-    #   @option values [Hash{Symbol => Array<String>}] :extra_query
-    #   @option values [Hash{Symbol => Object}] :extra_body
-    #   @option values [Integer] :max_retries
-    #   @option values [Integer] :timeout
-    def initialize(values = {})
-      @values = values
     end
 
     # @!attribute idempotency_key
@@ -91,40 +78,47 @@ module PreludeSDK
     # @!attribute timeout
     # Request timeout in seconds.
     #
-    #   @return [Integer]
+    #   @return [Float]
     option :timeout
+
+    # Returns a new instance of RequestOptions.
+    #
+    # @param values [Hash{Symbol => Object}] initial option values to set on the instance.
+    #   @option values [String] :idempotency_key
+    #   @option values [Hash{Symbol => String}] :extra_headers
+    #   @option values [Hash{Symbol => Array<String>}] :extra_query
+    #   @option values [Hash{Symbol => Object}] :extra_body
+    #   @option values [Integer] :max_retries
+    #   @option values [Integer] :timeout
+    def initialize(values = {})
+      @values = values
+    end
 
     # Lookup an option previously set on this instance.
     #
+    # @param key [Symbol] Key to look up by.
+    #
     # @return [Object]
-    def [](key)
-      @values[key]
-    end
+    def [](key) = @values[key]
 
     # Return a Hash containing the options set on this instance.
     #
     # @return [Hash{Symbol => Object}]
-    def to_h
-      @values
-    end
+    def to_h = @values
 
     alias_method :to_hash, :to_h
-
-    # @return [String]
-    def inspect
-      "#<#{self.class}:0x#{object_id.to_s(16)} #{@values.inspect}>"
-    end
-
-    # @return [String]
-    def to_s
-      @values.to_s
-    end
 
     # @param keys [Array<Symbol>, nil]
     #
     # @return [Hash{Symbol => Object}]
-    def deconstruct_keys(keys)
-      @values.deconstruct_keys(keys)
+    def deconstruct_keys(keys) = @values.deconstruct_keys(keys)
+
+    # @return [String]
+    def to_s = @values.to_s
+
+    # @return [String]
+    def inspect
+      "#<#{self.class}:0x#{object_id.to_s(16)} #{@values.inspect}>"
     end
   end
 end
