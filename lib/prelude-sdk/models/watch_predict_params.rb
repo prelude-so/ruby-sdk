@@ -50,6 +50,15 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the target. Currently this can only be "phone_number".
+        #
+        # @example
+        #
+        # ```ruby
+        # case enum
+        # in :phone_number
+        #   # ...
+        # end
+        # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
         end

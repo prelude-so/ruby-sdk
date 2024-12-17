@@ -52,11 +52,33 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # The method used for verifying this phone number.
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :message
+      #   # ...
+      # end
+      # ```
       class Method < PreludeSDK::Enum
         MESSAGE = :message
       end
 
       # The status of the verification.
+      #
+      # @example
+      #
+      # ```ruby
+      # case enum
+      # in :success
+      #   # ...
+      # in :retry
+      #   # ...
+      # in :blocked
+      #   # ...
+      # end
+      # ```
       class Status < PreludeSDK::Enum
         SUCCESS = :success
         RETRY = :retry

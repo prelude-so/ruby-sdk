@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module PreludeSDK
+  # rubocop:disable Metrics/ModuleLength
+
   # @private
   #
   module Util
@@ -271,4 +273,6 @@ module PreludeSDK
       end
     end
   end
+
+  # rubocop:enable Metrics/ModuleLength
 end
