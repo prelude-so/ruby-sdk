@@ -18,7 +18,7 @@ module PreludeSDK
       # @!parse
       #   # @param code [String] The OTP code to validate.
       #   #
-      #   # @param target [PreludeSDK::Models::VerificationCheckParams::Target] The target. Currently this can only be an E.164 formatted phone number.
+      #   # @param target [Object] The target. Currently this can only be an E.164 formatted phone number.
       #   #
       #   def initialize(code:, target:) = super
 
@@ -49,15 +49,6 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the target. Currently this can only be "phone_number".
-        #
-        # @example
-        #
-        # ```ruby
-        # case enum
-        # in :phone_number
-        #   # ...
-        # end
-        # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
         end
