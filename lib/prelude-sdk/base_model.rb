@@ -148,6 +148,10 @@ module PreludeSDK
   class ArrayOf
     include PreludeSDK::Converter
 
+    private_class_method :new
+
+    def self.[](...) = new(...)
+
     # @param other [Object]
     #
     # @return [Boolean]
