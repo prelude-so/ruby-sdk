@@ -28,8 +28,8 @@ module PreludeSDK
     # @return [PreludeSDK::Resources::Watch]
     attr_reader :watch
 
-    # @!visibility private
-    def auth_headers
+    # @private
+    private def auth_headers
       {"Authorization" => "Bearer #{@api_token}"}
     end
 
