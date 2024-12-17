@@ -3,65 +3,94 @@
 module PreludeSDK
   module Models
     class TransactionalSendResponse < PreludeSDK::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   The message identifier.
+      #
       #   @return [String]
       required :id, String
 
-      # @!attribute [rw] created_at
+      # @!attribute created_at
       #   The message creation date.
+      #
       #   @return [Time]
       required :created_at, Time
 
-      # @!attribute [rw] expires_at
+      # @!attribute expires_at
       #   The message expiration date.
+      #
       #   @return [Time]
       required :expires_at, Time
 
-      # @!attribute [rw] template_id
+      # @!attribute template_id
       #   The template identifier.
+      #
       #   @return [String]
       required :template_id, String
 
-      # @!attribute [rw] to
+      # @!attribute to
       #   The recipient's phone number.
+      #
       #   @return [String]
       required :to, String
 
-      # @!attribute [rw] variables
+      # @!attribute variables
       #   The variables to be replaced in the template.
+      #
       #   @return [Hash]
       required :variables, Hash
 
-      # @!attribute [rw] callback_url
+      # @!attribute callback_url
       #   The callback URL.
+      #
       #   @return [String]
       optional :callback_url, String
 
-      # @!attribute [rw] correlation_id
+      # @!attribute correlation_id
       #   A unique, user-defined identifier that will be included in webhook events.
+      #
       #   @return [String]
       optional :correlation_id, String
 
-      # @!attribute [rw] from
+      # @!attribute from
       #   The Sender ID.
+      #
       #   @return [String]
       optional :from, String
 
       # @!parse
-      #   # Create a new instance of TransactionalSendResponse from a Hash of raw data.
+      #   # @param id [String] The message identifier.
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id The message identifier.
-      #   #   @option data [String] :created_at The message creation date.
-      #   #   @option data [String] :expires_at The message expiration date.
-      #   #   @option data [String] :template_id The template identifier.
-      #   #   @option data [String] :to The recipient's phone number.
-      #   #   @option data [Hash] :variables The variables to be replaced in the template.
-      #   #   @option data [String, nil] :callback_url The callback URL.
-      #   #   @option data [String, nil] :correlation_id A unique, user-defined identifier that will be included in webhook events.
-      #   #   @option data [String, nil] :from The Sender ID.
-      #   def initialize(data = {}) = super
+      #   # @param created_at [String] The message creation date.
+      #   #
+      #   # @param expires_at [String] The message expiration date.
+      #   #
+      #   # @param template_id [String] The template identifier.
+      #   #
+      #   # @param to [String] The recipient's phone number.
+      #   #
+      #   # @param variables [Hash] The variables to be replaced in the template.
+      #   #
+      #   # @param callback_url [String, nil] The callback URL.
+      #   #
+      #   # @param correlation_id [String, nil] A unique, user-defined identifier that will be included in webhook events.
+      #   #
+      #   # @param from [String, nil] The Sender ID.
+      #   #
+      #   def initialize(
+      #     id:,
+      #     created_at:,
+      #     expires_at:,
+      #     template_id:,
+      #     to:,
+      #     variables:,
+      #     callback_url: nil,
+      #     correlation_id: nil,
+      #     from: nil
+      #   )
+      #     super
+      #   end
+
+      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
     end
   end
 end

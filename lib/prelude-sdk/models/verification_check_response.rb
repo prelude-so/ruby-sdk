@@ -3,24 +3,41 @@
 module PreludeSDK
   module Models
     class VerificationCheckResponse < PreludeSDK::BaseModel
-      # @!attribute [rw] status
+      # @!attribute status
       #   The status of the check.
+      #
       #   @return [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
       required :status, enum: -> { PreludeSDK::Models::VerificationCheckResponse::Status }
 
-      # @!attribute [rw] id
+      # @!attribute id
       #   The verification identifier.
+      #
       #   @return [String]
       optional :id, String
 
-      # @!attribute [rw] metadata
+      # @!attribute metadata
       #   The metadata for this verification.
+      #
       #   @return [PreludeSDK::Models::VerificationCheckResponse::Metadata]
       optional :metadata, -> { PreludeSDK::Models::VerificationCheckResponse::Metadata }
 
-      # @!attribute [rw] request_id
+      # @!attribute request_id
+      #
       #   @return [String]
       optional :request_id, String
+
+      # @!parse
+      #   # @param status [String] The status of the check.
+      #   #
+      #   # @param id [String, nil] The verification identifier.
+      #   #
+      #   # @param metadata [Object, nil] The metadata for this verification.
+      #   #
+      #   # @param request_id [String, nil]
+      #   #
+      #   def initialize(status:, id: nil, metadata: nil, request_id: nil) = super
+
+      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # The status of the check.
       class Status < PreludeSDK::Enum
@@ -30,27 +47,20 @@ module PreludeSDK
       end
 
       class Metadata < PreludeSDK::BaseModel
-        # @!attribute [rw] correlation_id
+        # @!attribute correlation_id
+        #
         #   @return [String]
         optional :correlation_id, String
 
         # @!parse
-        #   # Create a new instance of Metadata from a Hash of raw data.
+        #   # The metadata for this verification.
         #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String, nil] :correlation_id
-        #   def initialize(data = {}) = super
-      end
+        #   # @param correlation_id [String, nil]
+        #   #
+        #   def initialize(correlation_id: nil) = super
 
-      # @!parse
-      #   # Create a new instance of VerificationCheckResponse from a Hash of raw data.
-      #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :status The status of the check.
-      #   #   @option data [String, nil] :id The verification identifier.
-      #   #   @option data [Object, nil] :metadata The metadata for this verification.
-      #   #   @option data [String, nil] :request_id
-      #   def initialize(data = {}) = super
+        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      end
     end
   end
 end

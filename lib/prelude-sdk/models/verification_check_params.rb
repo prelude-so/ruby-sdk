@@ -3,39 +3,55 @@
 module PreludeSDK
   module Models
     class VerificationCheckParams < PreludeSDK::BaseModel
-      # @!attribute [rw] code
+      # @!attribute code
       #   The OTP code to validate.
+      #
       #   @return [String]
       required :code, String
 
-      # @!attribute [rw] target
+      # @!attribute target
       #   The target. Currently this can only be an E.164 formatted phone number.
+      #
       #   @return [PreludeSDK::Models::VerificationCheckParams::Target]
       required :target, -> { PreludeSDK::Models::VerificationCheckParams::Target }
 
+      # @!parse
+      #   # @param code [String] The OTP code to validate.
+      #   #
+      #   # @param target [Object] The target. Currently this can only be an E.164 formatted phone number.
+      #   #
+      #   def initialize(code:, target:) = super
+
+      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+
       class Target < PreludeSDK::BaseModel
-        # @!attribute [rw] type
+        # @!attribute type
         #   The type of the target. Currently this can only be "phone_number".
+        #
         #   @return [Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type]
         required :type, enum: -> { PreludeSDK::Models::VerificationCheckParams::Target::Type }
 
-        # @!attribute [rw] value
+        # @!attribute value
         #   An E.164 formatted phone number to verify.
+        #
         #   @return [String]
         required :value, String
+
+        # @!parse
+        #   # The target. Currently this can only be an E.164 formatted phone number.
+        #   #
+        #   # @param type [String] The type of the target. Currently this can only be "phone_number".
+        #   #
+        #   # @param value [String] An E.164 formatted phone number to verify.
+        #   #
+        #   def initialize(type:, value:) = super
+
+        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the target. Currently this can only be "phone_number".
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
         end
-
-        # @!parse
-        #   # Create a new instance of Target from a Hash of raw data.
-        #   #
-        #   # @param data [Hash{Symbol => Object}] .
-        #   #   @option data [String] :type The type of the target. Currently this can only be "phone_number".
-        #   #   @option data [String] :value An E.164 formatted phone number to verify.
-        #   def initialize(data = {}) = super
       end
     end
   end

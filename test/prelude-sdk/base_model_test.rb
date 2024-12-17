@@ -3,8 +3,6 @@
 require_relative "test_helper"
 
 class PreludeSDK::Test::BaseModelTest < Minitest::Test
-  parallelize_me!
-
   class E1 < PreludeSDK::Enum
     A = :a
     B = :b
