@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module PreludeSDK
+  # rubocop:disable Metrics/ModuleLength
+
   # @private
   #
   module Util
@@ -191,9 +193,7 @@ module PreludeSDK
 
     # @private
     #
-    # @param url [String]
-    # @param url [URI::Generic, String]
-    # @param input [Object]
+    # @param input [Hash, Object]
     #
     # @return [Hash, Object]
     def self.coerce_hash(input)
@@ -273,4 +273,6 @@ module PreludeSDK
       end
     end
   end
+
+  # rubocop:enable Metrics/ModuleLength
 end

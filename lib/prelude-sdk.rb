@@ -16,6 +16,7 @@ require "connection_pool"
 # Package files.
 require_relative "prelude-sdk/base_client"
 require_relative "prelude-sdk/base_model"
+require_relative "prelude-sdk/base_page"
 require_relative "prelude-sdk/errors"
 require_relative "prelude-sdk/request_options"
 require_relative "prelude-sdk/pooled_net_requester"
