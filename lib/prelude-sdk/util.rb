@@ -2,7 +2,8 @@
 
 module PreludeSDK
   # @!visibility private
-  class Util
+  #
+  module Util
     # Use this to indicate that a value should be explicitly removed from a data structure
     # when using `PreludeSDK::Util.deep_merge`.
     # E.g. merging `{a: 1}` and `{a: OMIT}` should produce `{}`, where merging `{a: 1}` and
@@ -12,14 +13,19 @@ module PreludeSDK
     # Recursively merge one hash with another.
     # If the values at a given key are not both hashes, just take the new value.
     #
-    # @param value [Hash, Array, Symbol, String, Integer, Float, nil, Object]
     # @param values [Array<Hash, Array, Symbol, String, Integer, Float, nil, Object>]
+    # @param sentinel [nil, Object] the value to return if no values are provided
     # @param concat [true, false] whether to merge sequences by concatenation
     #
     # @return [Object]
-    def self.deep_merge(value, *values, concat: false)
-      values.reduce(value) do |acc, val|
-        _deep_merge(acc, val, concat: concat)
+    def self.deep_merge(*values, sentinel: nil, concat: false)
+      case values
+      in [value, *values]
+        values.reduce(value) do |acc, val|
+          _deep_merge(acc, val, concat: concat)
+        end
+      else
+        sentinel
       end
     end
 
@@ -52,7 +58,7 @@ module PreludeSDK
     end
 
     # @param exceptions [Array<Exception>]
-    # @param sentinel [Object, nil]
+    # @param sentinel [nil, Object]
     # @param blk [Proc]
     #
     # @return [Object, nil]
@@ -73,13 +79,20 @@ module PreludeSDK
       in [_, nil, nil]
         data
       in [Hash, Symbol, _] | [Array, Integer, _]
-        data[pick]
-      in [Hash | Array, Enumerable, _]
-        data.dig(*pick)
-      in [_, _, Proc]
-        blk.call(pick)
-      in [_, _, nil]
-        default
+        blk.nil? ? data.fetch(pick, default) : data.fetch(pick, &blk)
+      in [Hash | Array, Array, _]
+        pick.reduce(data) do |acc, key|
+          case acc
+          in Hash if acc.key?(key)
+            acc.fetch(key)
+          in Array if key.is_a?(Integer) && key < acc.length
+            acc[key]
+          else
+            return blk.nil? ? default : blk.call
+          end
+        end
+      in _
+        blk.nil? ? default : blk.call
       end
     end
 

@@ -3,17 +3,18 @@
 module PreludeSDK
   module Models
     class WatchFeedBackResponse < PreludeSDK::BaseModel
-      # @!attribute [rw] id
+      # @!attribute id
       #   A unique identifier for your feedback request.
+      #
       #   @return [String]
       required :id, String
 
       # @!parse
-      #   # Create a new instance of WatchFeedBackResponse from a Hash of raw data.
+      #   # @param id [String] A unique identifier for your feedback request.
       #   #
-      #   # @param data [Hash{Symbol => Object}] .
-      #   #   @option data [String] :id A unique identifier for your feedback request.
-      #   def initialize(data = {}) = super
+      #   def initialize(id:) = super
+
+      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
     end
   end
 end

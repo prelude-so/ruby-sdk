@@ -11,9 +11,11 @@ module PreludeSDK
       # Once the user with a trustworthy phone number demonstrates authentic behavior,
       #   call this endpoint to report their authenticity to our systems.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, PreludeSDK::Models::WatchFeedBackParams] Attributes to send in this request.
+      #
       #   @option params [PreludeSDK::Models::WatchFeedBackParams::Feedback] :feedback You should send a feedback event back to Watch API when your user demonstrates
       #     authentic behavior.
+      #
       #   @option params [PreludeSDK::Models::WatchFeedBackParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
@@ -24,7 +26,6 @@ module PreludeSDK
         req = {
           method: :post,
           path: "/v2/watch/feedback",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: PreludeSDK::Models::WatchFeedBackResponse
         }
@@ -35,8 +36,10 @@ module PreludeSDK
       #   in fraud and international revenue share fraud (IRSF) patterns. This endpoint
       #   must be implemented in conjunction with the `watch/feedback` endpoint.
       #
-      # @param params [Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [Hash{Symbol => Object}, PreludeSDK::Models::WatchPredictParams] Attributes to send in this request.
+      #
       #   @option params [PreludeSDK::Models::WatchPredictParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
+      #
       #   @option params [PreludeSDK::Models::WatchPredictParams::Signals, nil] :signals It is highly recommended that you provide the signals to increase prediction
       #     performance.
       #
@@ -48,7 +51,6 @@ module PreludeSDK
         req = {
           method: :post,
           path: "/v2/watch/predict",
-          headers: {"Content-Type" => "application/json"},
           body: parsed,
           model: PreludeSDK::Models::WatchPredictResponse
         }
