@@ -15,17 +15,11 @@ class PreludeSDK::Test::Resources::WatchTest < Minitest::Test
       feedback: {"type" => "CONFIRM_TARGET"},
       target: {"type" => "phone_number", "value" => "+30123456789"}
     )
-
-    assert_pattern do
-      response => PreludeSDK::Models::WatchFeedBackResponse
-    end
+    assert_kind_of(PreludeSDK::Models::WatchFeedBackResponse, response)
   end
 
   def test_predict_required_params
     response = @prelude.watch.predict(target: {"type" => "phone_number", "value" => "+30123456789"})
-
-    assert_pattern do
-      response => PreludeSDK::Models::WatchPredictResponse
-    end
+    assert_kind_of(PreludeSDK::Models::WatchPredictResponse, response)
   end
 end
