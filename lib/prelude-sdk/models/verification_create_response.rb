@@ -43,7 +43,7 @@ module PreludeSDK
       #   #
       #   # @param status [String] The status of the verification.
       #   #
-      #   # @param metadata [Object, nil] The metadata for this verification.
+      #   # @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata, nil] The metadata for this verification.
       #   #
       #   # @param request_id [String, nil]
       #   #

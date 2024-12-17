@@ -16,9 +16,9 @@ module PreludeSDK
       optional :signals, -> { PreludeSDK::Models::WatchPredictParams::Signals }
 
       # @!parse
-      #   # @param target [Object] The target. Currently this can only be an E.164 formatted phone number.
+      #   # @param target [PreludeSDK::Models::WatchPredictParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
-      #   # @param signals [Object, nil] It is highly recommended that you provide the signals to increase prediction
+      #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals, nil] It is highly recommended that you provide the signals to increase prediction
       #   #   performance.
       #   #
       #   def initialize(target:, signals: nil) = super

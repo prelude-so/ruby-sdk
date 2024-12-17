@@ -25,7 +25,7 @@ module PreludeSDK
       #   #
       #   # @param prediction [String] A label indicating the trustworthiness of the phone number.
       #   #
-      #   # @param reasoning [Object]
+      #   # @param reasoning [PreludeSDK::Models::WatchPredictResponse::Reasoning]
       #   #
       #   def initialize(id:, prediction:, reasoning:) = super
 
