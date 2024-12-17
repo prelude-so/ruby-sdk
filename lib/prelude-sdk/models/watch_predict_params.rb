@@ -16,9 +16,9 @@ module PreludeSDK
       optional :signals, -> { PreludeSDK::Models::WatchPredictParams::Signals }
 
       # @!parse
-      #   # @param target [PreludeSDK::Models::WatchPredictParams::Target] The target. Currently this can only be an E.164 formatted phone number.
+      #   # @param target [Object] The target. Currently this can only be an E.164 formatted phone number.
       #   #
-      #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals, nil] It is highly recommended that you provide the signals to increase prediction
+      #   # @param signals [Object, nil] It is highly recommended that you provide the signals to increase prediction
       #   #   performance.
       #   #
       #   def initialize(target:, signals: nil) = super
@@ -50,15 +50,6 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the target. Currently this can only be "phone_number".
-        #
-        # @example
-        #
-        # ```ruby
-        # case enum
-        # in :phone_number
-        #   # ...
-        # end
-        # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
         end
