@@ -18,7 +18,7 @@ module PreludeSDK
       # @!parse
       #   # @param code [String] The OTP code to validate.
       #   #
-      #   # @param target [Object] The target. Currently this can only be an E.164 formatted phone number.
+      #   # @param target [PreludeSDK::Models::VerificationCheckParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
       #   def initialize(code:, target:) = super
 

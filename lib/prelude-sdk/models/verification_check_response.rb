@@ -31,7 +31,7 @@ module PreludeSDK
       #   #
       #   # @param id [String, nil] The verification identifier.
       #   #
-      #   # @param metadata [Object, nil] The metadata for this verification.
+      #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata, nil] The metadata for this verification.
       #   #
       #   # @param request_id [String, nil]
       #   #

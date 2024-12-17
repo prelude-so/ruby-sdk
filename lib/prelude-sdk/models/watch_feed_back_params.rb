@@ -16,10 +16,10 @@ module PreludeSDK
       required :target, -> { PreludeSDK::Models::WatchFeedBackParams::Target }
 
       # @!parse
-      #   # @param feedback [Object] You should send a feedback event back to Watch API when your user demonstrates
+      #   # @param feedback [PreludeSDK::Models::WatchFeedBackParams::Feedback] You should send a feedback event back to Watch API when your user demonstrates
       #   #   authentic behavior.
       #   #
-      #   # @param target [Object] The target. Currently this can only be an E.164 formatted phone number.
+      #   # @param target [PreludeSDK::Models::WatchFeedBackParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
       #   def initialize(feedback:, target:) = super
 
