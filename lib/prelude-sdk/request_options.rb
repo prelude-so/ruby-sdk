@@ -111,7 +111,9 @@ module PreludeSDK
     # @param keys [Array<Symbol>, nil]
     #
     # @return [Hash{Symbol => Object}]
-    def deconstruct_keys(keys) = @values.deconstruct_keys(keys)
+    def deconstruct_keys(keys)
+      @values.deconstruct_keys(keys)
+    end
 
     # @return [String]
     def to_s = @values.to_s
