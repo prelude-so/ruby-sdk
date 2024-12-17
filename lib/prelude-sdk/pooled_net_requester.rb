@@ -9,8 +9,6 @@ module PreludeSDK
       @pools = {}
     end
 
-    # @private
-    #
     # @param url [URL::Generic]
     # @param timeout [Float]
     #
@@ -37,8 +35,6 @@ module PreludeSDK
       end
     end
 
-    # @private
-    #
     # @param req [Hash{Symbol => Object}]
     #   @option req [Symbol] :method
     #   @option req [URI::Generic] :url
@@ -48,7 +44,6 @@ module PreludeSDK
     #
     # @return [Net::HTTPResponse]
     def execute(req)
-      # rubocop:disable Metrics/BlockLength
       method, url, headers, body, timeout = req.fetch_values(:method, :url, :headers, :body, :timeout)
       content_type = headers["content-type"]
 
@@ -78,7 +73,7 @@ module PreludeSDK
               [k.to_s, v].flatten
             end
           request.set_form(form_data, content_type)
-          headers = headers.except("content-type")
+          headers = headers.merge("content-type" => nil)
         else
           request.body = body
         end
@@ -94,6 +89,5 @@ module PreludeSDK
     rescue ConnectionPool::TimeoutError
       raise PreludeSDK::APIConnectionError.new(url: url)
     end
-    # rubocop:enable Metrics/BlockLength
   end
 end

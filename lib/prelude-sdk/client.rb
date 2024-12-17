@@ -29,7 +29,7 @@ module PreludeSDK
     attr_reader :watch
 
     # @private
-    private def auth_headers
+    def auth_headers
       {"Authorization" => "Bearer #{@api_token}"}
     end
 
