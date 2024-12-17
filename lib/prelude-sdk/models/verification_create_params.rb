@@ -28,14 +28,14 @@ module PreludeSDK
       optional :signals, -> { PreludeSDK::Models::VerificationCreateParams::Signals }
 
       # @!parse
-      #   # @param target [Object] The target. Currently this can only be an E.164 formatted phone number.
+      #   # @param target [PreludeSDK::Models::VerificationCreateParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
-      #   # @param metadata [Object, nil] The metadata for this verification. This object will be returned with every
+      #   # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata, nil] The metadata for this verification. This object will be returned with every
       #   #   response or webhook sent that refers to this verification.
       #   #
-      #   # @param options [Object, nil] Verification options
+      #   # @param options [PreludeSDK::Models::VerificationCreateParams::Options, nil] Verification options
       #   #
-      #   # @param signals [Object, nil] The signals used for anti-fraud.
+      #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals, nil] The signals used for anti-fraud.
       #   #
       #   def initialize(target:, metadata: nil, options: nil, signals: nil) = super
 
