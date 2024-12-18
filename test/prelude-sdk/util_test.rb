@@ -4,88 +4,92 @@ require_relative "test_helper"
 
 class PreludeSDK::Test::UtilTest < Minitest::Test
   def test_left_map
-    assert_nil(PreludeSDK::Util.deep_merge({a: 1}, nil))
+    assert_pattern do
+      PreludeSDK::Util.deep_merge({a: 1}, nil) => nil
+    end
   end
 
   def test_right_map
-    assert_equal(
-      {a: 1},
-      PreludeSDK::Util.deep_merge(nil, {a: 1})
-    )
+    assert_pattern do
+      PreludeSDK::Util.deep_merge(nil, {a: 1}) => {a: 1}
+    end
   end
 
   def test_disjoint_maps
-    assert_equal(
-      {a: 1, b: 2},
-      PreludeSDK::Util.deep_merge({b: 2}, {a: 1})
-    )
+    assert_pattern do
+      PreludeSDK::Util.deep_merge({b: 2}, {a: 1}) => {a: 1, b: 2}
+    end
   end
 
   def test_overlapping_maps
-    assert_equal(
-      {a: 1, b: 2, c: 4},
-      PreludeSDK::Util.deep_merge({b: 2, c: 3}, {a: 1, c: 4})
-    )
+    assert_pattern do
+      PreludeSDK::Util.deep_merge({b: 2, c: 3}, {a: 1, c: 4}) => {a: 1, b: 2, c: 4}
+    end
   end
 
   def test_nested
-    assert_equal(
-      {b: {b2: 2}},
-      PreludeSDK::Util.deep_merge({b: {b2: 1}}, {b: {b2: 2}})
-    )
+    assert_pattern do
+      PreludeSDK::Util.deep_merge({b: {b2: 1}}, {b: {b2: 2}}) => {b: {b2: 2}}
+    end
   end
 
   def test_nested_left_map
-    assert_equal(
-      {b: 6},
-      PreludeSDK::Util.deep_merge({b: {b2: 1}}, {b: 6})
-    )
+    assert_pattern do
+      PreludeSDK::Util.deep_merge({b: {b2: 1}}, {b: 6}) => {b: 6}
+    end
   end
 
   def test_omission
-    assert_equal(
-      {b: {b2: 1, b3: {d: 5}}},
-      PreludeSDK::Util.deep_merge(
-        {b: {b2: 1, b3: {c: 4, d: 5}}},
-        {b: {b2: 1, b3: {c: PreludeSDK::Util::OMIT, d: 5}}}
-      )
+    merged = PreludeSDK::Util.deep_merge(
+      {b: {b2: 1, b3: {c: 4, d: 5}}},
+      {b: {b2: 1, b3: {c: PreludeSDK::Util::OMIT, d: 5}}}
     )
+
+    assert_pattern do
+      merged => {b: {b2: 1, b3: {d: 5}}}
+    end
   end
 
   def test_concat
-    assert_equal(
-      {a: {b: [1, 2, 3, 4]}},
-      PreludeSDK::Util.deep_merge(
-        {a: {b: [1, 2]}},
-        {a: {b: [3, 4]}},
-        concat: true
-      )
+    merged = PreludeSDK::Util.deep_merge(
+      {a: {b: [1, 2]}},
+      {a: {b: [3, 4]}},
+      concat: true
     )
+
+    assert_pattern do
+      merged => {a: {b: [1, 2, 3, 4]}}
+    end
   end
 
   def test_concat_false
-    assert_equal(
+    merged = PreludeSDK::Util.deep_merge(
+      {a: {b: [1, 2]}},
       {a: {b: [3, 4]}},
-      PreludeSDK::Util.deep_merge(
-        {a: {b: [1, 2]}},
-        {a: {b: [3, 4]}},
-        concat: false
-      )
+      concat: false
     )
+
+    assert_pattern do
+      merged => {a: {b: [3, 4]}}
+    end
   end
 
   def test_dig
-    assert_equal(1, PreludeSDK::Util.dig(1, nil))
-    assert_nil(PreludeSDK::Util.dig({a: 1}, :b))
-    assert_equal(1, PreludeSDK::Util.dig({a: 1}, :a))
-    assert_equal(1, PreludeSDK::Util.dig({a: {b: 1}}, [:a, :b]))
-    assert_nil(PreludeSDK::Util.dig([], 1))
-    assert_equal(1, PreludeSDK::Util.dig([nil, [nil, 1]], [1, 1]))
-    assert_equal(1, PreludeSDK::Util.dig({a: [nil, 1]}, [:a, 1]))
-    assert_nil(PreludeSDK::Util.dig([], 1.0))
-    assert_nil(PreludeSDK::Util.dig(Object, 1))
-    assert_equal(2, PreludeSDK::Util.dig([], 1.0, 2))
-    assert_equal(2, PreludeSDK::Util.dig([], 1.0) { 2 })
+    assert_pattern do
+      PreludeSDK::Util.dig(1, nil) => 1
+      PreludeSDK::Util.dig({a: 1}, :b) => nil
+      PreludeSDK::Util.dig({a: 1}, :a) => 1
+      PreludeSDK::Util.dig({a: {b: 1}}, [:a, :b]) => 1
+
+      PreludeSDK::Util.dig([], 1) => nil
+      PreludeSDK::Util.dig([nil, [nil, 1]], [1, 1]) => 1
+      PreludeSDK::Util.dig({a: [nil, 1]}, [:a, 1]) => 1
+      PreludeSDK::Util.dig([], 1.0) => nil
+
+      PreludeSDK::Util.dig(Object, 1) => nil
+      PreludeSDK::Util.dig([], 1.0, 2) => 2
+      PreludeSDK::Util.dig([], 1.0) { 2 } => 2
+    end
   end
 
   def test_uri_parsing
