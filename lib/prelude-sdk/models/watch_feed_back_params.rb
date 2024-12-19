@@ -21,7 +21,7 @@ module PreludeSDK
       #   #
       #   # @param target [PreludeSDK::Models::WatchFeedBackParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
-      #   def initialize(feedback:, target:) = super
+      #   def initialize(feedback:, target:, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -39,7 +39,7 @@ module PreludeSDK
         #   # @param type [String] `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   #   (e.g. phone number) is trustworthy.
         #   #
-        #   def initialize(type:) = super
+        #   def initialize(type:, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -78,7 +78,7 @@ module PreludeSDK
         #   #
         #   # @param value [String] An E.164 formatted phone number to verify.
         #   #
-        #   def initialize(type:, value:) = super
+        #   def initialize(type:, value:, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 

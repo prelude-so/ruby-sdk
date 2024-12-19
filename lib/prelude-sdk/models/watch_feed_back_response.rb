@@ -12,7 +12,7 @@ module PreludeSDK
       # @!parse
       #   # @param id [String] A unique identifier for your feedback request.
       #   #
-      #   def initialize(id:) = super
+      #   def initialize(id:, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
     end

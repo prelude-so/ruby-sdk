@@ -85,7 +85,8 @@ module PreludeSDK
       #     variables:,
       #     callback_url: nil,
       #     correlation_id: nil,
-      #     from: nil
+      #     from: nil,
+      #     **
       #   )
       #     super
       #   end
