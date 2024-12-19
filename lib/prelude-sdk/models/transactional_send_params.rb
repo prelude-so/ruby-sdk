@@ -60,7 +60,7 @@ module PreludeSDK
       #   #
       #   # @param variables [Hash{Symbol => String}, nil] The variables to be replaced in the template.
       #   #
-      #   def initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, variables: nil) = super
+      #   def initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, variables: nil, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
     end
