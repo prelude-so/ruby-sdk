@@ -27,7 +27,7 @@ module PreludeSDK
       #   #
       #   # @param reasoning [PreludeSDK::Models::WatchPredictResponse::Reasoning]
       #   #
-      #   def initialize(id:, prediction:, reasoning:) = super
+      #   def initialize(id:, prediction:, reasoning:, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -67,7 +67,7 @@ module PreludeSDK
         #   # @param score [Float, nil] Indicates the risk of the phone number being genuine or involved in fraudulent
         #   #   patterns. The higher the riskier.
         #   #
-        #   def initialize(cause: nil, score: nil) = super
+        #   def initialize(cause: nil, score: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 

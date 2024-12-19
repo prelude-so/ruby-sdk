@@ -47,7 +47,7 @@ module PreludeSDK
       #   #
       #   # @param request_id [String, nil]
       #   #
-      #   def initialize(id:, method_:, status:, metadata: nil, request_id: nil) = super
+      #   def initialize(id:, method_:, status:, metadata: nil, request_id: nil, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -96,7 +96,7 @@ module PreludeSDK
         #   #
         #   # @param correlation_id [String, nil]
         #   #
-        #   def initialize(correlation_id: nil) = super
+        #   def initialize(correlation_id: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
       end

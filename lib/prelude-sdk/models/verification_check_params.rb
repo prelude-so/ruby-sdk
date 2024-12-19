@@ -20,7 +20,7 @@ module PreludeSDK
       #   #
       #   # @param target [PreludeSDK::Models::VerificationCheckParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
-      #   def initialize(code:, target:) = super
+      #   def initialize(code:, target:, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -44,7 +44,7 @@ module PreludeSDK
         #   #
         #   # @param value [String] An E.164 formatted phone number to verify.
         #   #
-        #   def initialize(type:, value:) = super
+        #   def initialize(type:, value:, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 

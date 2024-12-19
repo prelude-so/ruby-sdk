@@ -21,7 +21,7 @@ module PreludeSDK
       #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals, nil] It is highly recommended that you provide the signals to increase prediction
       #   #   performance.
       #   #
-      #   def initialize(target:, signals: nil) = super
+      #   def initialize(target:, signals: nil, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -45,7 +45,7 @@ module PreludeSDK
         #   #
         #   # @param value [String] An E.164 formatted phone number to verify.
         #   #
-        #   def initialize(type:, value:) = super
+        #   def initialize(type:, value:, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -102,7 +102,7 @@ module PreludeSDK
         #   #
         #   # @param ip [String, nil] The IPv4 address of the user's device
         #   #
-        #   def initialize(device_id: nil, device_model: nil, device_type: nil, ip: nil) = super
+        #   def initialize(device_id: nil, device_model: nil, device_type: nil, ip: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
       end

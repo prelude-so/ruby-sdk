@@ -37,7 +37,7 @@ module PreludeSDK
       #   #
       #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals, nil] The signals used for anti-fraud.
       #   #
-      #   def initialize(target:, metadata: nil, options: nil, signals: nil) = super
+      #   def initialize(target:, metadata: nil, options: nil, signals: nil, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -61,7 +61,7 @@ module PreludeSDK
         #   #
         #   # @param value [String] An E.164 formatted phone number to verify.
         #   #
-        #   def initialize(type:, value:) = super
+        #   def initialize(type:, value:, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -93,7 +93,7 @@ module PreludeSDK
         #   #
         #   # @param correlation_id [String, nil] A user-defined identifier to correlate this verification with.
         #   #
-        #   def initialize(correlation_id: nil) = super
+        #   def initialize(correlation_id: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
       end
@@ -151,7 +151,7 @@ module PreludeSDK
         #   #   switch behavior for specific use cases. Contact us if you need to use this
         #   #   functionality.
         #   #
-        #   def initialize(app_realm: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil) = super
+        #   def initialize(app_realm: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
       end
@@ -226,7 +226,8 @@ module PreludeSDK
         #     device_platform: nil,
         #     ip: nil,
         #     is_trusted_user: nil,
-        #     os_version: nil
+        #     os_version: nil,
+        #     **
         #   )
         #     super
         #   end
