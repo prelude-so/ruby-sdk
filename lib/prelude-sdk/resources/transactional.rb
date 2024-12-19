@@ -24,7 +24,7 @@ module PreludeSDK
       #
       #   @option params [String, nil] :from The Sender ID.
       #
-      #   @option params [Hash, nil] :variables The variables to be replaced in the template.
+      #   @option params [Hash{Symbol => String}, nil] :variables The variables to be replaced in the template.
       #
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
