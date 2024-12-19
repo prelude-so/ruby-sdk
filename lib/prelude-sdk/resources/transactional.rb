@@ -33,7 +33,7 @@ module PreludeSDK
         parsed = PreludeSDK::Models::TransactionalSendParams.dump(params)
         req = {
           method: :post,
-          path: "/v2/transactional",
+          path: "v2/transactional",
           body: parsed,
           model: PreludeSDK::Models::TransactionalSendResponse
         }
