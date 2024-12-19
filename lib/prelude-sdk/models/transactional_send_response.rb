@@ -36,8 +36,8 @@ module PreludeSDK
       # @!attribute variables
       #   The variables to be replaced in the template.
       #
-      #   @return [Hash]
-      required :variables, Hash
+      #   @return [Hash{Symbol => String}]
+      required :variables, PreludeSDK::HashOf[String]
 
       # @!attribute callback_url
       #   The callback URL.
@@ -68,7 +68,7 @@ module PreludeSDK
       #   #
       #   # @param to [String] The recipient's phone number.
       #   #
-      #   # @param variables [Hash] The variables to be replaced in the template.
+      #   # @param variables [Hash{Symbol => String}] The variables to be replaced in the template.
       #   #
       #   # @param callback_url [String, nil] The callback URL.
       #   #
