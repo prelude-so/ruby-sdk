@@ -25,7 +25,7 @@ module PreludeSDK
         parsed = PreludeSDK::Models::WatchFeedBackParams.dump(params)
         req = {
           method: :post,
-          path: "/v2/watch/feedback",
+          path: "v2/watch/feedback",
           body: parsed,
           model: PreludeSDK::Models::WatchFeedBackResponse
         }
@@ -50,7 +50,7 @@ module PreludeSDK
         parsed = PreludeSDK::Models::WatchPredictParams.dump(params)
         req = {
           method: :post,
-          path: "/v2/watch/predict",
+          path: "v2/watch/predict",
           body: parsed,
           model: PreludeSDK::Models::WatchPredictResponse
         }

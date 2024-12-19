@@ -30,7 +30,7 @@ module PreludeSDK
         parsed = PreludeSDK::Models::VerificationCreateParams.dump(params)
         req = {
           method: :post,
-          path: "/v2/verification",
+          path: "v2/verification",
           body: parsed,
           model: PreludeSDK::Models::VerificationCreateResponse
         }
@@ -52,7 +52,7 @@ module PreludeSDK
         parsed = PreludeSDK::Models::VerificationCheckParams.dump(params)
         req = {
           method: :post,
-          path: "/v2/verification/check",
+          path: "v2/verification/check",
           body: parsed,
           model: PreludeSDK::Models::VerificationCheckResponse
         }
