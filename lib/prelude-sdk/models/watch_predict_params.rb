@@ -61,6 +61,8 @@ module PreludeSDK
         # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
+
+          finalize!
         end
       end
 

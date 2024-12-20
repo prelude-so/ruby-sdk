@@ -46,6 +46,8 @@ module PreludeSDK
       class Prediction < PreludeSDK::Enum
         ALLOW = :allow
         BLOCK = :block
+
+        finalize!
       end
 
       class Reasoning < PreludeSDK::BaseModel
@@ -92,6 +94,8 @@ module PreludeSDK
           SMART_ANTIFRAUD = :smart_antifraud
           REPEAT_NUMBER = :repeat_number
           INVALID_LINE = :invalid_line
+
+          finalize!
         end
       end
     end

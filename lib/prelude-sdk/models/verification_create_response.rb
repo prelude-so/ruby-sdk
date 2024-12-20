@@ -63,6 +63,8 @@ module PreludeSDK
       # ```
       class Method < PreludeSDK::Enum
         MESSAGE = :message
+
+        finalize!
       end
 
       # The status of the verification.
@@ -83,6 +85,8 @@ module PreludeSDK
         SUCCESS = :success
         RETRY = :retry
         BLOCKED = :blocked
+
+        finalize!
       end
 
       class Metadata < PreludeSDK::BaseModel
