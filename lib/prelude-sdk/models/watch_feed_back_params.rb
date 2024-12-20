@@ -55,6 +55,8 @@ module PreludeSDK
         # ```
         class Type < PreludeSDK::Enum
           CONFIRM_TARGET = :CONFIRM_TARGET
+
+          finalize!
         end
       end
 
@@ -94,6 +96,8 @@ module PreludeSDK
         # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
+
+          finalize!
         end
       end
     end

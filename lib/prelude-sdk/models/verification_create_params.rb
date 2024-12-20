@@ -77,6 +77,8 @@ module PreludeSDK
         # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
+
+          finalize!
         end
       end
 
@@ -258,6 +260,8 @@ module PreludeSDK
           IPADOS = :ipados
           TVOS = :tvos
           WEB = :web
+
+          finalize!
         end
       end
     end

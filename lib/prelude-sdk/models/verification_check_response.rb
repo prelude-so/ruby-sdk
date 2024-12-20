@@ -57,6 +57,8 @@ module PreludeSDK
         SUCCESS = :success
         FAILURE = :failure
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found
+
+        finalize!
       end
 
       class Metadata < PreludeSDK::BaseModel
