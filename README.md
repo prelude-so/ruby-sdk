@@ -7,7 +7,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-Documentation for the most recent version of this gem can be found [on RubyDoc](https://rubydoc.info/github/prelude-so/ruby-sdk).
+Documentation for the most recent release of this gem can be found [on RubyDoc](https://gemdocs.org/gems/prelude-sdk/latest).
 
 The underlying REST API documentation can be found on [docs.prelude.so](https://docs.prelude.so).
 
