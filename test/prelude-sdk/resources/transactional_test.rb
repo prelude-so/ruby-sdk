@@ -3,7 +3,7 @@
 require_relative "../test_helper"
 
 class PreludeSDK::Test::Resources::TransactionalTest < Minitest::Test
-  def setup
+  def before_all
     @prelude = PreludeSDK::Client.new(
       base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
       api_token: "My API Token"
