@@ -64,9 +64,9 @@ module PreludeSDK
         optional :score, Float
 
         # @!parse
-        #   # @param cause [String, nil] A label explaining why the phone number was classified as not trustworthy
+        #   # @param cause [String] A label explaining why the phone number was classified as not trustworthy
         #   #
-        #   # @param score [Float, nil] Indicates the risk of the phone number being genuine or involved in fraudulent
+        #   # @param score [Float] Indicates the risk of the phone number being genuine or involved in fraudulent
         #   #   patterns. The higher the riskier.
         #   #
         #   def initialize(cause: nil, score: nil, **) = super

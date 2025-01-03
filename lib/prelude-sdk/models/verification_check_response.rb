@@ -29,11 +29,11 @@ module PreludeSDK
       # @!parse
       #   # @param status [String] The status of the check.
       #   #
-      #   # @param id [String, nil] The verification identifier.
+      #   # @param id [String] The verification identifier.
       #   #
-      #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata, nil] The metadata for this verification.
+      #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata] The metadata for this verification.
       #   #
-      #   # @param request_id [String, nil]
+      #   # @param request_id [String]
       #   #
       #   def initialize(status:, id: nil, metadata: nil, request_id: nil, **) = super
 
@@ -70,7 +70,7 @@ module PreludeSDK
         # @!parse
         #   # The metadata for this verification.
         #   #
-        #   # @param correlation_id [String, nil]
+        #   # @param correlation_id [String]
         #   #
         #   def initialize(correlation_id: nil, **) = super
 

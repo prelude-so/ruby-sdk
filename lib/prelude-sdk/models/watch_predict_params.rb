@@ -18,7 +18,7 @@ module PreludeSDK
       # @!parse
       #   # @param target [PreludeSDK::Models::WatchPredictParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
-      #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals, nil] It is highly recommended that you provide the signals to increase prediction
+      #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals] It is highly recommended that you provide the signals to increase prediction
       #   #   performance.
       #   #
       #   def initialize(target:, signals: nil, **) = super
@@ -95,14 +95,14 @@ module PreludeSDK
         #   # It is highly recommended that you provide the signals to increase prediction
         #   #   performance.
         #   #
-        #   # @param device_id [String, nil] The unique identifier for the user's device. For Android, this corresponds to
+        #   # @param device_id [String] The unique identifier for the user's device. For Android, this corresponds to
         #   #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         #   #
-        #   # @param device_model [String, nil] The model of the user's device.
+        #   # @param device_model [String] The model of the user's device.
         #   #
-        #   # @param device_type [String, nil] The type of the user's device.
+        #   # @param device_type [String] The type of the user's device.
         #   #
-        #   # @param ip [String, nil] The IPv4 address of the user's device
+        #   # @param ip [String] The IPv4 address of the user's device
         #   #
         #   def initialize(device_id: nil, device_model: nil, device_type: nil, ip: nil, **) = super
 

@@ -40,7 +40,7 @@ module PreludeSDK
       #
       #   @option params [PreludeSDK::Models::WatchPredictParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
-      #   @option params [PreludeSDK::Models::WatchPredictParams::Signals, nil] :signals It is highly recommended that you provide the signals to increase prediction
+      #   @option params [PreludeSDK::Models::WatchPredictParams::Signals] :signals It is highly recommended that you provide the signals to increase prediction
       #     performance.
       #
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.

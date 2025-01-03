@@ -16,15 +16,15 @@ module PreludeSDK
       #
       #   @option params [String] :to The recipient's phone number.
       #
-      #   @option params [String, nil] :callback_url The callback URL.
+      #   @option params [String] :callback_url The callback URL.
       #
-      #   @option params [String, nil] :correlation_id A unique, user-defined identifier that will be included in webhook events.
+      #   @option params [String] :correlation_id A unique, user-defined identifier that will be included in webhook events.
       #
-      #   @option params [String, nil] :expires_at The message expiration date.
+      #   @option params [String] :expires_at The message expiration date.
       #
-      #   @option params [String, nil] :from The Sender ID.
+      #   @option params [String] :from The Sender ID.
       #
-      #   @option params [Hash{Symbol => String}, nil] :variables The variables to be replaced in the template.
+      #   @option params [Hash{Symbol => String}] :variables The variables to be replaced in the template.
       #
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
