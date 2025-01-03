@@ -70,11 +70,11 @@ module PreludeSDK
       #   #
       #   # @param variables [Hash{Symbol => String}] The variables to be replaced in the template.
       #   #
-      #   # @param callback_url [String, nil] The callback URL.
+      #   # @param callback_url [String] The callback URL.
       #   #
-      #   # @param correlation_id [String, nil] A unique, user-defined identifier that will be included in webhook events.
+      #   # @param correlation_id [String] A unique, user-defined identifier that will be included in webhook events.
       #   #
-      #   # @param from [String, nil] The Sender ID.
+      #   # @param from [String] The Sender ID.
       #   #
       #   def initialize(
       #     id:,

@@ -30,12 +30,12 @@ module PreludeSDK
       # @!parse
       #   # @param target [PreludeSDK::Models::VerificationCreateParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
-      #   # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata, nil] The metadata for this verification. This object will be returned with every
+      #   # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata] The metadata for this verification. This object will be returned with every
       #   #   response or webhook sent that refers to this verification.
       #   #
-      #   # @param options [PreludeSDK::Models::VerificationCreateParams::Options, nil] Verification options
+      #   # @param options [PreludeSDK::Models::VerificationCreateParams::Options] Verification options
       #   #
-      #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals, nil] The signals used for anti-fraud.
+      #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals] The signals used for anti-fraud.
       #   #
       #   def initialize(target:, metadata: nil, options: nil, signals: nil, **) = super
 
@@ -93,7 +93,7 @@ module PreludeSDK
         #   # The metadata for this verification. This object will be returned with every
         #   #   response or webhook sent that refers to this verification.
         #   #
-        #   # @param correlation_id [String, nil] A user-defined identifier to correlate this verification with.
+        #   # @param correlation_id [String] A user-defined identifier to correlate this verification with.
         #   #
         #   def initialize(correlation_id: nil, **) = super
 
@@ -134,22 +134,22 @@ module PreludeSDK
         # @!parse
         #   # Verification options
         #   #
-        #   # @param app_realm [String, nil] The Android SMS Retriever API hash code that identifies your app. This allows
+        #   # @param app_realm [String] The Android SMS Retriever API hash code that identifies your app. This allows
         #   #   you to automatically retrieve and fill the OTP code on Android devices.
         #   #
-        #   # @param custom_code [String, nil] The custom code to use for OTP verification. This feature is only available for
+        #   # @param custom_code [String] The custom code to use for OTP verification. This feature is only available for
         #   #   compatibility purposes and subject to Prelude’s approval. Contact us to discuss
         #   #   your use case.
         #   #
-        #   # @param locale [String, nil] A BCP-47 formatted locale string with the language the text message will be sent
+        #   # @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
         #   #   to. If there's no locale set, the language will be determined by the country
         #   #   code of the phone number. If the language specified doesn't exist, it defaults
         #   #   to US English.
         #   #
-        #   # @param sender_id [String, nil] The Sender ID to use for this message. The Sender ID needs to be enabled by
+        #   # @param sender_id [String] The Sender ID to use for this message. The Sender ID needs to be enabled by
         #   #   Prelude.
         #   #
-        #   # @param template_id [String, nil] The identifier of a verification settings template. It is used to be able to
+        #   # @param template_id [String] The identifier of a verification settings template. It is used to be able to
         #   #   switch behavior for specific use cases. Contact us if you need to use this
         #   #   functionality.
         #   #
@@ -205,21 +205,21 @@ module PreludeSDK
         # @!parse
         #   # The signals used for anti-fraud.
         #   #
-        #   # @param app_version [String, nil] The version of your application.
+        #   # @param app_version [String] The version of your application.
         #   #
-        #   # @param device_id [String, nil] The unique identifier for the user's device. For Android, this corresponds to
+        #   # @param device_id [String] The unique identifier for the user's device. For Android, this corresponds to
         #   #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         #   #
-        #   # @param device_model [String, nil] The model of the user's device.
+        #   # @param device_model [String] The model of the user's device.
         #   #
-        #   # @param device_platform [String, nil] The type of the user's device.
+        #   # @param device_platform [String] The type of the user's device.
         #   #
-        #   # @param ip [String, nil] The IP address of the user's device.
+        #   # @param ip [String] The IP address of the user's device.
         #   #
-        #   # @param is_trusted_user [Boolean, nil] This signal should provide a higher level of trust, indicating that the user is
+        #   # @param is_trusted_user [Boolean] This signal should provide a higher level of trust, indicating that the user is
         #   #   genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
         #   #
-        #   # @param os_version [String, nil] The version of the user's device operating system.
+        #   # @param os_version [String] The version of the user's device operating system.
         #   #
         #   def initialize(
         #     app_version: nil,

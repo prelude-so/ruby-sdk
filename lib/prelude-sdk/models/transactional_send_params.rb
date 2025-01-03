@@ -50,15 +50,15 @@ module PreludeSDK
       #   #
       #   # @param to [String] The recipient's phone number.
       #   #
-      #   # @param callback_url [String, nil] The callback URL.
+      #   # @param callback_url [String] The callback URL.
       #   #
-      #   # @param correlation_id [String, nil] A unique, user-defined identifier that will be included in webhook events.
+      #   # @param correlation_id [String] A unique, user-defined identifier that will be included in webhook events.
       #   #
-      #   # @param expires_at [String, nil] The message expiration date.
+      #   # @param expires_at [String] The message expiration date.
       #   #
-      #   # @param from [String, nil] The Sender ID.
+      #   # @param from [String] The Sender ID.
       #   #
-      #   # @param variables [Hash{Symbol => String}, nil] The variables to be replaced in the template.
+      #   # @param variables [Hash{Symbol => String}] The variables to be replaced in the template.
       #   #
       #   def initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, variables: nil, **) = super
 
