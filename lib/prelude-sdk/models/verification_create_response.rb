@@ -43,9 +43,9 @@ module PreludeSDK
       #   #
       #   # @param status [String] The status of the verification.
       #   #
-      #   # @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata, nil] The metadata for this verification.
+      #   # @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata] The metadata for this verification.
       #   #
-      #   # @param request_id [String, nil]
+      #   # @param request_id [String]
       #   #
       #   def initialize(id:, method_:, status:, metadata: nil, request_id: nil, **) = super
 
@@ -98,7 +98,7 @@ module PreludeSDK
         # @!parse
         #   # The metadata for this verification.
         #   #
-        #   # @param correlation_id [String, nil]
+        #   # @param correlation_id [String]
         #   #
         #   def initialize(correlation_id: nil, **) = super
 
