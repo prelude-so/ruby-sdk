@@ -4,6 +4,7 @@ module PreludeSDK
   module Resources
     class Watch
       # @param client [PreludeSDK::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -21,6 +22,7 @@ module PreludeSDK
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [PreludeSDK::Models::WatchFeedBackResponse]
+      #
       def feed_back(params = {}, opts = {})
         parsed = PreludeSDK::Models::WatchFeedBackParams.dump(params)
         req = {
@@ -46,6 +48,7 @@ module PreludeSDK
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [PreludeSDK::Models::WatchPredictResponse]
+      #
       def predict(params = {}, opts = {})
         parsed = PreludeSDK::Models::WatchPredictParams.dump(params)
         req = {
