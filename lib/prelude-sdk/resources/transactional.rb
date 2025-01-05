@@ -4,6 +4,7 @@ module PreludeSDK
   module Resources
     class Transactional
       # @param client [PreludeSDK::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -29,6 +30,7 @@ module PreludeSDK
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [PreludeSDK::Models::TransactionalSendResponse]
+      #
       def send_(params = {}, opts = {})
         parsed = PreludeSDK::Models::TransactionalSendParams.dump(params)
         req = {

@@ -4,6 +4,7 @@ module PreludeSDK
   module Resources
     class Verification
       # @param client [PreludeSDK::Client]
+      #
       def initialize(client:)
         @client = client
       end
@@ -26,6 +27,7 @@ module PreludeSDK
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [PreludeSDK::Models::VerificationCreateResponse]
+      #
       def create(params = {}, opts = {})
         parsed = PreludeSDK::Models::VerificationCreateParams.dump(params)
         req = {
@@ -48,6 +50,7 @@ module PreludeSDK
       # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [PreludeSDK::Models::VerificationCheckResponse]
+      #
       def check(params = {}, opts = {})
         parsed = PreludeSDK::Models::VerificationCheckParams.dump(params)
         req = {
