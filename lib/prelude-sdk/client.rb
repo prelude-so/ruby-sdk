@@ -29,6 +29,9 @@ module PreludeSDK
     attr_reader :watch
 
     # @private
+    #
+    # @return [Hash{String => String}]
+    #
     private def auth_headers
       {"Authorization" => "Bearer #{@api_token}"}
     end
@@ -40,6 +43,13 @@ module PreludeSDK
     # @param api_token [String, nil] Bearer token for authorizing API requests. Defaults to `ENV["API_TOKEN"]`
     #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
+    #
+    # @param timeout [Float]
+    #
+    # @param initial_retry_delay [Float]
+    #
+    # @param max_retry_delay [Float]
+    #
     def initialize(
       base_url: nil,
       api_token: ENV["API_TOKEN"],
