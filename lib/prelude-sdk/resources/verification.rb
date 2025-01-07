@@ -13,7 +13,7 @@ module PreludeSDK
       #   verification exists (the request is performed within the verification window),
       #   this endpoint will perform a retry instead.
       #
-      # @param params [Hash{Symbol => Object}, PreludeSDK::Models::VerificationCreateParams] Attributes to send in this request.
+      # @param params [PreludeSDK::Models::VerificationCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
@@ -41,7 +41,7 @@ module PreludeSDK
 
       # Check the validity of a verification code.
       #
-      # @param params [Hash{Symbol => Object}, PreludeSDK::Models::VerificationCheckParams] Attributes to send in this request.
+      # @param params [PreludeSDK::Models::VerificationCheckParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :code The OTP code to validate.
       #

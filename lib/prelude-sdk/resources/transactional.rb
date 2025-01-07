@@ -11,7 +11,7 @@ module PreludeSDK
 
       # Send a transactional message to your user.
       #
-      # @param params [Hash{Symbol => Object}, PreludeSDK::Models::TransactionalSendParams] Attributes to send in this request.
+      # @param params [PreludeSDK::Models::TransactionalSendParams, Hash{Symbol => Object}] Attributes to send in this request.
       #
       #   @option params [String] :template_id The template identifier.
       #
