@@ -102,10 +102,16 @@ module PreludeSDK
 
       class Options < PreludeSDK::BaseModel
         # @!attribute app_realm
-        #   The Android SMS Retriever API hash code that identifies your app. This allows you to automatically retrieve and fill the OTP code on Android devices.
+        #   This allows you to automatically retrieve and fill the OTP code on mobile apps. Currently only Android devices are supported.
         #
-        #   @return [String]
-        optional :app_realm, String
+        #   @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
+        optional :app_realm, -> { PreludeSDK::Models::VerificationCreateParams::Options::AppRealm }
+
+        # @!attribute code_size
+        #   The size of the code generated. It should be between 4 and 8. Defaults to the code size specified from the Dashboard.
+        #
+        #   @return [Integer]
+        optional :code_size, Integer
 
         # @!attribute custom_code
         #   The custom code to use for OTP verification. This feature is only available for compatibility purposes and subject to Prelude’s approval. Contact us to discuss your use case.
@@ -134,8 +140,11 @@ module PreludeSDK
         # @!parse
         #   # Verification options
         #   #
-        #   # @param app_realm [String] The Android SMS Retriever API hash code that identifies your app. This allows
-        #   #   you to automatically retrieve and fill the OTP code on Android devices.
+        #   # @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm] This allows you to automatically retrieve and fill the OTP code on mobile apps.
+        #   #   Currently only Android devices are supported.
+        #   #
+        #   # @param code_size [Integer] The size of the code generated. It should be between 4 and 8. Defaults to the
+        #   #   code size specified from the Dashboard.
         #   #
         #   # @param custom_code [String] The custom code to use for OTP verification. This feature is only available for
         #   #   compatibility purposes and subject to Prelude’s approval. Contact us to discuss
@@ -153,9 +162,55 @@ module PreludeSDK
         #   #   switch behavior for specific use cases. Contact us if you need to use this
         #   #   functionality.
         #   #
-        #   def initialize(app_realm: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil, **) = super
+        #   def initialize(app_realm: nil, code_size: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+
+        class AppRealm < PreludeSDK::BaseModel
+          # @!attribute platform
+          #   The platform the SMS will be sent to. We are currently only supporting "android".
+          #
+          #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
+          required :platform,
+                   enum: -> {
+                     PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform
+                   }
+
+          # @!attribute value
+          #   The Android SMS Retriever API hash code that identifies your app.
+          #
+          #   @return [String]
+          required :value, String
+
+          # @!parse
+          #   # This allows you to automatically retrieve and fill the OTP code on mobile apps.
+          #   #   Currently only Android devices are supported.
+          #   #
+          #   # @param platform [String] The platform the SMS will be sent to. We are currently only supporting
+          #   #   "android".
+          #   #
+          #   # @param value [String] The Android SMS Retriever API hash code that identifies your app.
+          #   #
+          #   def initialize(platform:, value:, **) = super
+
+          # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+
+          # The platform the SMS will be sent to. We are currently only supporting "android".
+          #
+          # @example
+          #
+          # ```ruby
+          # case enum
+          # in :android
+          #   # ...
+          # end
+          # ```
+          class Platform < PreludeSDK::Enum
+            ANDROID = :android
+
+            finalize!
+          end
+        end
       end
 
       class Signals < PreludeSDK::BaseModel
