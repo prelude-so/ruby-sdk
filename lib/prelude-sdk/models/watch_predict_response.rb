@@ -7,7 +7,7 @@ module PreludeSDK
     # ```ruby
     # watch_predict_response => {
     #   id: String,
-    #   prediction: PreludeSDK::Models::WatchPredictResponse::Prediction,
+    #   prediction: enum: PreludeSDK::Models::WatchPredictResponse::Prediction,
     #   reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
     # }
     # ```
@@ -63,7 +63,7 @@ module PreludeSDK
       #
       # ```ruby
       # reasoning => {
-      #   cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause,
+      #   cause: enum: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause,
       #   score: Float
       # }
       # ```

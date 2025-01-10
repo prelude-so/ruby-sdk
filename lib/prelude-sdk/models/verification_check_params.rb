@@ -28,7 +28,7 @@ module PreludeSDK
       #
       # ```ruby
       # target => {
-      #   type: PreludeSDK::Models::VerificationCheckParams::Target::Type,
+      #   type: enum: PreludeSDK::Models::VerificationCheckParams::Target::Type,
       #   value: String
       # }
       # ```
