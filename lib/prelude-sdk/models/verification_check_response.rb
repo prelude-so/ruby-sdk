@@ -2,6 +2,16 @@
 
 module PreludeSDK
   module Models
+    # @example
+    #
+    # ```ruby
+    # verification_check_response => {
+    #   status: PreludeSDK::Models::VerificationCheckResponse::Status,
+    #   id: String,
+    #   metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
+    #   request_id: String
+    # }
+    # ```
     class VerificationCheckResponse < PreludeSDK::BaseModel
       # @!attribute status
       #   The status of the check.
@@ -44,7 +54,7 @@ module PreludeSDK
       # @example
       #
       # ```ruby
-      # case enum
+      # case status
       # in :success
       #   # ...
       # in :failure
@@ -61,6 +71,13 @@ module PreludeSDK
         finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # metadata => {
+      #   correlation_id: String
+      # }
+      # ```
       class Metadata < PreludeSDK::BaseModel
         # @!attribute correlation_id
         #

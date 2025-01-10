@@ -2,6 +2,17 @@
 
 module PreludeSDK
   module Models
+    # @example
+    #
+    # ```ruby
+    # verification_create_response => {
+    #   id: String,
+    #   method_: PreludeSDK::Models::VerificationCreateResponse::Method,
+    #   status: PreludeSDK::Models::VerificationCreateResponse::Status,
+    #   metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
+    #   request_id: String
+    # }
+    # ```
     class VerificationCreateResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   The verification identifier.
@@ -56,7 +67,7 @@ module PreludeSDK
       # @example
       #
       # ```ruby
-      # case enum
+      # case method
       # in :message
       #   # ...
       # end
@@ -72,7 +83,7 @@ module PreludeSDK
       # @example
       #
       # ```ruby
-      # case enum
+      # case status
       # in :success
       #   # ...
       # in :retry
@@ -89,6 +100,13 @@ module PreludeSDK
         finalize!
       end
 
+      # @example
+      #
+      # ```ruby
+      # metadata => {
+      #   correlation_id: String
+      # }
+      # ```
       class Metadata < PreludeSDK::BaseModel
         # @!attribute correlation_id
         #

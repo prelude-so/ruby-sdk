@@ -25,6 +25,14 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # target => {
+      #   type: PreludeSDK::Models::WatchPredictParams::Target::Type,
+      #   value: String
+      # }
+      # ```
       class Target < PreludeSDK::BaseModel
         # @!attribute type
         #   The type of the target. Currently this can only be "phone_number".
@@ -54,7 +62,7 @@ module PreludeSDK
         # @example
         #
         # ```ruby
-        # case enum
+        # case type
         # in :phone_number
         #   # ...
         # end
@@ -66,6 +74,16 @@ module PreludeSDK
         end
       end
 
+      # @example
+      #
+      # ```ruby
+      # signals => {
+      #   device_id: String,
+      #   device_model: String,
+      #   device_type: String,
+      #   ip: String
+      # }
+      # ```
       class Signals < PreludeSDK::BaseModel
         # @!attribute device_id
         #   The unique identifier for the user's device. For Android, this corresponds to the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
