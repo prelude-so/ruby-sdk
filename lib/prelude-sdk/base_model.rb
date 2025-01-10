@@ -559,8 +559,12 @@ module PreludeSDK
         case [enum, union, item_type]
         in [Proc, nil, nil]
           enum
+        in [Class | PreludeSDK::Converter, nil, nil]
+          -> { enum }
         in [nil, Proc, nil]
           union
+        in [nil, Class | PreludeSDK::Converter, nil]
+          -> { union }
         in [nil, nil, Proc]
           item_type
         in [nil, nil, Class | PreludeSDK::Converter]
@@ -688,8 +692,12 @@ module PreludeSDK
         case [enum, union, item_type]
         in [Proc, nil, nil]
           enum
+        in [Class | PreludeSDK::Converter, nil, nil]
+          -> { enum }
         in [nil, Proc, nil]
           union
+        in [nil, Class | PreludeSDK::Converter, nil]
+          -> { union }
         in [nil, nil, Proc]
           item_type
         in [nil, nil, Class | PreludeSDK::Converter]

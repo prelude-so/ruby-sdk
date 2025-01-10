@@ -29,7 +29,7 @@ module PreludeSDK
       #
       # ```ruby
       # target => {
-      #   type: PreludeSDK::Models::WatchPredictParams::Target::Type,
+      #   type: enum: PreludeSDK::Models::WatchPredictParams::Target::Type,
       #   value: String
       # }
       # ```

@@ -6,7 +6,7 @@ module PreludeSDK
     #
     # ```ruby
     # verification_check_response => {
-    #   status: PreludeSDK::Models::VerificationCheckResponse::Status,
+    #   status: enum: PreludeSDK::Models::VerificationCheckResponse::Status,
     #   id: String,
     #   metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
     #   request_id: String
