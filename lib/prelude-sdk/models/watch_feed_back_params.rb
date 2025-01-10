@@ -29,7 +29,7 @@ module PreludeSDK
       #
       # ```ruby
       # feedback => {
-      #   type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type
+      #   type: enum: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type
       # }
       # ```
       class Feedback < PreludeSDK::BaseModel
@@ -71,7 +71,7 @@ module PreludeSDK
       #
       # ```ruby
       # target => {
-      #   type: PreludeSDK::Models::WatchFeedBackParams::Target::Type,
+      #   type: enum: PreludeSDK::Models::WatchFeedBackParams::Target::Type,
       #   value: String
       # }
       # ```

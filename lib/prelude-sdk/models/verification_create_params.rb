@@ -45,7 +45,7 @@ module PreludeSDK
       #
       # ```ruby
       # target => {
-      #   type: PreludeSDK::Models::VerificationCreateParams::Target::Type,
+      #   type: enum: PreludeSDK::Models::VerificationCreateParams::Target::Type,
       #   value: String
       # }
       # ```
@@ -196,7 +196,7 @@ module PreludeSDK
         #
         # ```ruby
         # app_realm => {
-        #   platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform,
+        #   platform: enum: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform,
         #   value: String
         # }
         # ```
@@ -254,7 +254,7 @@ module PreludeSDK
       #   app_version: String,
       #   device_id: String,
       #   device_model: String,
-      #   device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform,
+      #   device_platform: enum: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform,
       #   ip: String,
       #   **_
       # }

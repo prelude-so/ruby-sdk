@@ -7,8 +7,8 @@ module PreludeSDK
     # ```ruby
     # verification_create_response => {
     #   id: String,
-    #   method_: PreludeSDK::Models::VerificationCreateResponse::Method,
-    #   status: PreludeSDK::Models::VerificationCreateResponse::Status,
+    #   method_: enum: PreludeSDK::Models::VerificationCreateResponse::Method,
+    #   status: enum: PreludeSDK::Models::VerificationCreateResponse::Status,
     #   metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
     #   request_id: String
     # }
@@ -25,10 +25,10 @@ module PreludeSDK
       #
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
       required :method_,
-               api_name: :method,
                enum: -> {
                  PreludeSDK::Models::VerificationCreateResponse::Method
-               }
+               },
+               api_name: :method
 
       # @!attribute status
       #   The status of the verification.
