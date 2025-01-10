@@ -41,6 +41,14 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+      # @example
+      #
+      # ```ruby
+      # target => {
+      #   type: PreludeSDK::Models::VerificationCreateParams::Target::Type,
+      #   value: String
+      # }
+      # ```
       class Target < PreludeSDK::BaseModel
         # @!attribute type
         #   The type of the target. Currently this can only be "phone_number".
@@ -70,7 +78,7 @@ module PreludeSDK
         # @example
         #
         # ```ruby
-        # case enum
+        # case type
         # in :phone_number
         #   # ...
         # end
@@ -82,6 +90,13 @@ module PreludeSDK
         end
       end
 
+      # @example
+      #
+      # ```ruby
+      # metadata => {
+      #   correlation_id: String
+      # }
+      # ```
       class Metadata < PreludeSDK::BaseModel
         # @!attribute correlation_id
         #   A user-defined identifier to correlate this verification with.
@@ -100,6 +115,17 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
       end
 
+      # @example
+      #
+      # ```ruby
+      # options => {
+      #   app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+      #   code_size: Integer,
+      #   custom_code: String,
+      #   locale: String,
+      #   sender_id: String
+      # }
+      # ```
       class Options < PreludeSDK::BaseModel
         # @!attribute app_realm
         #   This allows you to automatically retrieve and fill the OTP code on mobile apps. Currently only Android devices are supported.
@@ -166,6 +192,14 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+        # @example
+        #
+        # ```ruby
+        # app_realm => {
+        #   platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform,
+        #   value: String
+        # }
+        # ```
         class AppRealm < PreludeSDK::BaseModel
           # @!attribute platform
           #   The platform the SMS will be sent to. We are currently only supporting "android".
@@ -200,7 +234,7 @@ module PreludeSDK
           # @example
           #
           # ```ruby
-          # case enum
+          # case platform
           # in :android
           #   # ...
           # end
@@ -213,6 +247,18 @@ module PreludeSDK
         end
       end
 
+      # @example
+      #
+      # ```ruby
+      # signals => {
+      #   app_version: String,
+      #   device_id: String,
+      #   device_model: String,
+      #   device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform,
+      #   ip: String,
+      #   **_
+      # }
+      # ```
       class Signals < PreludeSDK::BaseModel
         # @!attribute app_version
         #   The version of your application.
@@ -296,7 +342,7 @@ module PreludeSDK
         # @example
         #
         # ```ruby
-        # case enum
+        # case device_platform
         # in :android
         #   # ...
         # in :ios
