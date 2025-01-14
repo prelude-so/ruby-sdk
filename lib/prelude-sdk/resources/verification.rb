@@ -17,6 +17,8 @@ module PreludeSDK
       #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
+      #   @option params [String] :dispatch_id The identifier of the dispatch that came from the front-end SDK.
+      #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Metadata] :metadata The metadata for this verification. This object will be returned with every
       #     response or webhook sent that refers to this verification.
       #
