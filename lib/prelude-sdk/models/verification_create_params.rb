@@ -9,6 +9,12 @@ module PreludeSDK
       #   @return [PreludeSDK::Models::VerificationCreateParams::Target]
       required :target, -> { PreludeSDK::Models::VerificationCreateParams::Target }
 
+      # @!attribute dispatch_id
+      #   The identifier of the dispatch that came from the front-end SDK.
+      #
+      #   @return [String]
+      optional :dispatch_id, String
+
       # @!attribute metadata
       #   The metadata for this verification. This object will be returned with every response or webhook sent that refers to this verification.
       #
@@ -30,6 +36,8 @@ module PreludeSDK
       # @!parse
       #   # @param target [PreludeSDK::Models::VerificationCreateParams::Target] The target. Currently this can only be an E.164 formatted phone number.
       #   #
+      #   # @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
+      #   #
       #   # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata] The metadata for this verification. This object will be returned with every
       #   #   response or webhook sent that refers to this verification.
       #   #
@@ -37,7 +45,7 @@ module PreludeSDK
       #   #
       #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals] The signals used for anti-fraud.
       #   #
-      #   def initialize(target:, metadata: nil, options: nil, signals: nil, **) = super
+      #   def initialize(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
