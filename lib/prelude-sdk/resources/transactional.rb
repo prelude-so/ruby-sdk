@@ -3,12 +3,6 @@
 module PreludeSDK
   module Resources
     class Transactional
-      # @param client [PreludeSDK::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Send a transactional message to your user.
       #
       # @param params [PreludeSDK::Models::TransactionalSendParams, Hash{Symbol => Object}] Attributes to send in this request.
@@ -40,6 +34,12 @@ module PreludeSDK
           model: PreludeSDK::Models::TransactionalSendResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [PreludeSDK::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end
