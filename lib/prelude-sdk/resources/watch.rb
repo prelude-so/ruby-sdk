@@ -3,12 +3,6 @@
 module PreludeSDK
   module Resources
     class Watch
-      # @param client [PreludeSDK::Client]
-      #
-      def initialize(client:)
-        @client = client
-      end
-
       # Once the user with a trustworthy phone number demonstrates authentic behavior,
       #   call this endpoint to report their authenticity to our systems.
       #
@@ -58,6 +52,12 @@ module PreludeSDK
           model: PreludeSDK::Models::WatchPredictResponse
         }
         @client.request(req, opts)
+      end
+
+      # @param client [PreludeSDK::Client]
+      #
+      def initialize(client:)
+        @client = client
       end
     end
   end
