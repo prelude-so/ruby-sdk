@@ -7,7 +7,7 @@ module PreludeSDK
       #   verification exists (the request is performed within the verification window),
       #   this endpoint will perform a retry instead.
       #
-      # @param params [PreludeSDK::Models::VerificationCreateParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [PreludeSDK::Models::VerificationCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
@@ -20,7 +20,7 @@ module PreludeSDK
       #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Signals] :signals The signals used for anti-fraud.
       #
-      # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [PreludeSDK::Models::VerificationCreateResponse]
       #
@@ -37,13 +37,13 @@ module PreludeSDK
 
       # Check the validity of a verification code.
       #
-      # @param params [PreludeSDK::Models::VerificationCheckParams, Hash{Symbol => Object}] Attributes to send in this request.
+      # @param params [PreludeSDK::Models::VerificationCheckParams, Hash{Symbol=>Object}] Attributes to send in this request.
       #
       #   @option params [String] :code The OTP code to validate.
       #
       #   @option params [PreludeSDK::Models::VerificationCheckParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
-      # @param opts [Hash{Symbol => Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
+      # @param opts [Hash{Symbol=>Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
       #
       # @return [PreludeSDK::Models::VerificationCheckResponse]
       #

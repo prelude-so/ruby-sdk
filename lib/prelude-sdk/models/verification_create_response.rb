@@ -3,7 +3,6 @@
 module PreludeSDK
   module Models
     # @example
-    #
     # ```ruby
     # verification_create_response => {
     #   id: String,
@@ -65,7 +64,6 @@ module PreludeSDK
       # The method used for verifying this phone number.
       #
       # @example
-      #
       # ```ruby
       # case method
       # in :message
@@ -81,7 +79,6 @@ module PreludeSDK
       # The status of the verification.
       #
       # @example
-      #
       # ```ruby
       # case status
       # in :success
@@ -101,7 +98,6 @@ module PreludeSDK
       end
 
       # @example
-      #
       # ```ruby
       # metadata => {
       #   correlation_id: String

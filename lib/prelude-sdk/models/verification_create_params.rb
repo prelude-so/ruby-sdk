@@ -50,7 +50,6 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # target => {
       #   type: enum: PreludeSDK::Models::VerificationCreateParams::Target::Type,
@@ -84,7 +83,6 @@ module PreludeSDK
         # The type of the target. Currently this can only be "phone_number".
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :phone_number
@@ -99,7 +97,6 @@ module PreludeSDK
       end
 
       # @example
-      #
       # ```ruby
       # metadata => {
       #   correlation_id: String
@@ -124,7 +121,6 @@ module PreludeSDK
       end
 
       # @example
-      #
       # ```ruby
       # options => {
       #   app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
@@ -201,7 +197,6 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # @example
-        #
         # ```ruby
         # app_realm => {
         #   platform: enum: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform,
@@ -240,7 +235,6 @@ module PreludeSDK
           # The platform the SMS will be sent to. We are currently only supporting "android".
           #
           # @example
-          #
           # ```ruby
           # case platform
           # in :android
@@ -256,7 +250,6 @@ module PreludeSDK
       end
 
       # @example
-      #
       # ```ruby
       # signals => {
       #   app_version: String,
@@ -348,7 +341,6 @@ module PreludeSDK
         # The type of the user's device.
         #
         # @example
-        #
         # ```ruby
         # case device_platform
         # in :android

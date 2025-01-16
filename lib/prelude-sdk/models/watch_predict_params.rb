@@ -26,7 +26,6 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # target => {
       #   type: enum: PreludeSDK::Models::WatchPredictParams::Target::Type,
@@ -60,7 +59,6 @@ module PreludeSDK
         # The type of the target. Currently this can only be "phone_number".
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :phone_number
@@ -75,7 +73,6 @@ module PreludeSDK
       end
 
       # @example
-      #
       # ```ruby
       # signals => {
       #   device_id: String,

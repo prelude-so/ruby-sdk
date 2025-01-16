@@ -30,7 +30,7 @@ module PreludeSDK
 
     # @private
     #
-    # @return [Hash{String => String}]
+    # @return [Hash{String=>String}]
     #
     private def auth_headers
       {"Authorization" => "Bearer #{@api_token}"}
