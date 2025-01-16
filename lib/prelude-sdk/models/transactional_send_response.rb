@@ -3,7 +3,6 @@
 module PreludeSDK
   module Models
     # @example
-    #
     # ```ruby
     # transactional_send_response => {
     #   id: String,
@@ -48,7 +47,7 @@ module PreludeSDK
       # @!attribute variables
       #   The variables to be replaced in the template.
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       required :variables, PreludeSDK::HashOf[String]
 
       # @!attribute callback_url
@@ -80,7 +79,7 @@ module PreludeSDK
       #   #
       #   # @param to [String] The recipient's phone number.
       #   #
-      #   # @param variables [Hash{Symbol => String}] The variables to be replaced in the template.
+      #   # @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
       #   #
       #   # @param callback_url [String] The callback URL.
       #   #

@@ -25,7 +25,6 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # target => {
       #   type: enum: PreludeSDK::Models::VerificationCheckParams::Target::Type,
@@ -59,7 +58,6 @@ module PreludeSDK
         # The type of the target. Currently this can only be "phone_number".
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :phone_number

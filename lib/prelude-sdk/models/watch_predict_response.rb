@@ -3,7 +3,6 @@
 module PreludeSDK
   module Models
     # @example
-    #
     # ```ruby
     # watch_predict_response => {
     #   id: String,
@@ -43,7 +42,6 @@ module PreludeSDK
       # A label indicating the trustworthiness of the phone number.
       #
       # @example
-      #
       # ```ruby
       # case prediction
       # in :allow
@@ -60,7 +58,6 @@ module PreludeSDK
       end
 
       # @example
-      #
       # ```ruby
       # reasoning => {
       #   cause: enum: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause,
@@ -93,7 +90,6 @@ module PreludeSDK
         # A label explaining why the phone number was classified as not trustworthy
         #
         # @example
-        #
         # ```ruby
         # case cause
         # in :none

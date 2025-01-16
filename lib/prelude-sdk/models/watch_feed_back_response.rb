@@ -3,7 +3,6 @@
 module PreludeSDK
   module Models
     # @example
-    #
     # ```ruby
     # watch_feed_back_response => {
     #   id: String
