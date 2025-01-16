@@ -26,7 +26,6 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # @example
-      #
       # ```ruby
       # feedback => {
       #   type: enum: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type
@@ -53,7 +52,6 @@ module PreludeSDK
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target (e.g. phone number) is trustworthy.
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :CONFIRM_TARGET
@@ -68,7 +66,6 @@ module PreludeSDK
       end
 
       # @example
-      #
       # ```ruby
       # target => {
       #   type: enum: PreludeSDK::Models::WatchFeedBackParams::Target::Type,
@@ -102,7 +99,6 @@ module PreludeSDK
         # The type of the target. Currently this can only be "phone_number".
         #
         # @example
-        #
         # ```ruby
         # case type
         # in :phone_number

@@ -42,7 +42,7 @@ module PreludeSDK
       # @!attribute variables
       #   The variables to be replaced in the template.
       #
-      #   @return [Hash{Symbol => String}]
+      #   @return [Hash{Symbol=>String}]
       optional :variables, PreludeSDK::HashOf[String]
 
       # @!parse
@@ -58,7 +58,7 @@ module PreludeSDK
       #   #
       #   # @param from [String] The Sender ID.
       #   #
-      #   # @param variables [Hash{Symbol => String}] The variables to be replaced in the template.
+      #   # @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
       #   #
       #   def initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, variables: nil, **) = super
 
