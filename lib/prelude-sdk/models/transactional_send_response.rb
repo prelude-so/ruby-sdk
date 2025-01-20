@@ -50,23 +50,35 @@ module PreludeSDK
       #   @return [Hash{Symbol=>String}]
       required :variables, PreludeSDK::HashOf[String]
 
-      # @!attribute callback_url
+      # @!attribute [r] callback_url
       #   The callback URL.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :callback_url, String
 
-      # @!attribute correlation_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :callback_url
+
+      # @!attribute [r] correlation_id
       #   A unique, user-defined identifier that will be included in webhook events.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :correlation_id, String
 
-      # @!attribute from
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :correlation_id
+
+      # @!attribute [r] from
       #   The Sender ID.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :from, String
+
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :from
 
       # @!parse
       #   # @param id [String] The message identifier.

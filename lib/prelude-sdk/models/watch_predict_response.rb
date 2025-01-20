@@ -65,17 +65,25 @@ module PreludeSDK
       # }
       # ```
       class Reasoning < PreludeSDK::BaseModel
-        # @!attribute cause
+        # @!attribute [r] cause
         #   A label explaining why the phone number was classified as not trustworthy
         #
-        #   @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause]
+        #   @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause, nil]
         optional :cause, enum: -> { PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause }
 
-        # @!attribute score
+        # @!parse
+        #   # @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause]
+        #   attr_writer :cause
+
+        # @!attribute [r] score
         #   Indicates the risk of the phone number being genuine or involved in fraudulent patterns. The higher the riskier.
         #
-        #   @return [Float]
+        #   @return [Float, nil]
         optional :score, Float
+
+        # @!parse
+        #   # @return [Float]
+        #   attr_writer :score
 
         # @!parse
         #   # @param cause [String] A label explaining why the phone number was classified as not trustworthy
