@@ -15,35 +15,55 @@ module PreludeSDK
       #   @return [String]
       required :to, String
 
-      # @!attribute callback_url
+      # @!attribute [r] callback_url
       #   The callback URL.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :callback_url, String
 
-      # @!attribute correlation_id
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :callback_url
+
+      # @!attribute [r] correlation_id
       #   A unique, user-defined identifier that will be included in webhook events.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :correlation_id, String
 
-      # @!attribute expires_at
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :correlation_id
+
+      # @!attribute [r] expires_at
       #   The message expiration date.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :expires_at, String
 
-      # @!attribute from
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :expires_at
+
+      # @!attribute [r] from
       #   The Sender ID.
       #
-      #   @return [String]
+      #   @return [String, nil]
       optional :from, String
 
-      # @!attribute variables
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :from
+
+      # @!attribute [r] variables
       #   The variables to be replaced in the template.
       #
-      #   @return [Hash{Symbol=>String}]
+      #   @return [Hash{Symbol=>String}, nil]
       optional :variables, PreludeSDK::HashOf[String]
+
+      # @!parse
+      #   # @return [Hash{Symbol=>String}]
+      #   attr_writer :variables
 
       # @!parse
       #   # @param template_id [String] The template identifier.

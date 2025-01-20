@@ -9,11 +9,15 @@ module PreludeSDK
       #   @return [PreludeSDK::Models::WatchPredictParams::Target]
       required :target, -> { PreludeSDK::Models::WatchPredictParams::Target }
 
-      # @!attribute signals
+      # @!attribute [r] signals
       #   It is highly recommended that you provide the signals to increase prediction performance.
       #
-      #   @return [PreludeSDK::Models::WatchPredictParams::Signals]
+      #   @return [PreludeSDK::Models::WatchPredictParams::Signals, nil]
       optional :signals, -> { PreludeSDK::Models::WatchPredictParams::Signals }
+
+      # @!parse
+      #   # @return [PreludeSDK::Models::WatchPredictParams::Signals]
+      #   attr_writer :signals
 
       # @!parse
       #   # @param target [PreludeSDK::Models::WatchPredictParams::Target] The target. Currently this can only be an E.164 formatted phone number.
@@ -82,29 +86,45 @@ module PreludeSDK
       # }
       # ```
       class Signals < PreludeSDK::BaseModel
-        # @!attribute device_id
+        # @!attribute [r] device_id
         #   The unique identifier for the user's device. For Android, this corresponds to the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :device_id, String
 
-        # @!attribute device_model
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :device_id
+
+        # @!attribute [r] device_model
         #   The model of the user's device.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :device_model, String
 
-        # @!attribute device_type
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :device_model
+
+        # @!attribute [r] device_type
         #   The type of the user's device.
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :device_type, String
 
-        # @!attribute ip
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :device_type
+
+        # @!attribute [r] ip
         #   The IPv4 address of the user's device
         #
-        #   @return [String]
+        #   @return [String, nil]
         optional :ip, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :ip
 
         # @!parse
         #   # It is highly recommended that you provide the signals to increase prediction
