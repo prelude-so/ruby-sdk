@@ -16,7 +16,7 @@ module PreludeSDK
       required :id, String
 
       # @!parse
-      #   # @param id [String] A unique identifier for your feedback request.
+      #   # @param id [String]
       #   #
       #   def initialize(id:, **) = super
 

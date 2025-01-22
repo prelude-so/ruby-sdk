@@ -10,7 +10,8 @@ module PreludeSDK
       required :target, -> { PreludeSDK::Models::WatchPredictParams::Target }
 
       # @!attribute [r] signals
-      #   It is highly recommended that you provide the signals to increase prediction performance.
+      #   It is highly recommended that you provide the signals to increase prediction
+      #     performance.
       #
       #   @return [PreludeSDK::Models::WatchPredictParams::Signals, nil]
       optional :signals, -> { PreludeSDK::Models::WatchPredictParams::Signals }
@@ -20,10 +21,8 @@ module PreludeSDK
       #   attr_writer :signals
 
       # @!parse
-      #   # @param target [PreludeSDK::Models::WatchPredictParams::Target] The target. Currently this can only be an E.164 formatted phone number.
-      #   #
-      #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals] It is highly recommended that you provide the signals to increase prediction
-      #   #   performance.
+      #   # @param target [PreludeSDK::Models::WatchPredictParams::Target]
+      #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals]
       #   #
       #   def initialize(target:, signals: nil, **) = super
 
@@ -32,7 +31,7 @@ module PreludeSDK
       # @example
       # ```ruby
       # target => {
-      #   type: enum: PreludeSDK::Models::WatchPredictParams::Target::Type,
+      #   type: PreludeSDK::Models::WatchPredictParams::Target::Type,
       #   value: String
       # }
       # ```
@@ -52,9 +51,8 @@ module PreludeSDK
         # @!parse
         #   # The target. Currently this can only be an E.164 formatted phone number.
         #   #
-        #   # @param type [String] The type of the target. Currently this can only be "phone_number".
-        #   #
-        #   # @param value [String] An E.164 formatted phone number to verify.
+        #   # @param type [String]
+        #   # @param value [String]
         #   #
         #   def initialize(type:, value:, **) = super
 
@@ -87,7 +85,8 @@ module PreludeSDK
       # ```
       class Signals < PreludeSDK::BaseModel
         # @!attribute [r] device_id
-        #   The unique identifier for the user's device. For Android, this corresponds to the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+        #   The unique identifier for the user's device. For Android, this corresponds to
+        #     the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         #
         #   @return [String, nil]
         optional :device_id, String
@@ -130,14 +129,10 @@ module PreludeSDK
         #   # It is highly recommended that you provide the signals to increase prediction
         #   #   performance.
         #   #
-        #   # @param device_id [String] The unique identifier for the user's device. For Android, this corresponds to
-        #   #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
-        #   #
-        #   # @param device_model [String] The model of the user's device.
-        #   #
-        #   # @param device_type [String] The type of the user's device.
-        #   #
-        #   # @param ip [String] The IPv4 address of the user's device
+        #   # @param device_id [String]
+        #   # @param device_model [String]
+        #   # @param device_type [String]
+        #   # @param ip [String]
         #   #
         #   def initialize(device_id: nil, device_model: nil, device_type: nil, ip: nil, **) = super
 

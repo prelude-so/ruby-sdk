@@ -5,7 +5,7 @@ module PreludeSDK
     # @example
     # ```ruby
     # verification_check_response => {
-    #   status: enum: PreludeSDK::Models::VerificationCheckResponse::Status,
+    #   status: PreludeSDK::Models::VerificationCheckResponse::Status,
     #   id: String,
     #   metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
     #   request_id: String
@@ -48,12 +48,9 @@ module PreludeSDK
       #   attr_writer :request_id
 
       # @!parse
-      #   # @param status [String] The status of the check.
-      #   #
-      #   # @param id [String] The verification identifier.
-      #   #
-      #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata] The metadata for this verification.
-      #   #
+      #   # @param status [String]
+      #   # @param id [String]
+      #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata]
       #   # @param request_id [String]
       #   #
       #   def initialize(status:, id: nil, metadata: nil, request_id: nil, **) = super
