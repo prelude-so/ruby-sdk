@@ -4,7 +4,8 @@ module PreludeSDK
   module Models
     class WatchFeedBackParams < PreludeSDK::BaseModel
       # @!attribute feedback
-      #   You should send a feedback event back to Watch API when your user demonstrates authentic behavior.
+      #   You should send a feedback event back to Watch API when your user demonstrates
+      #     authentic behavior.
       #
       #   @return [PreludeSDK::Models::WatchFeedBackParams::Feedback]
       required :feedback, -> { PreludeSDK::Models::WatchFeedBackParams::Feedback }
@@ -16,10 +17,8 @@ module PreludeSDK
       required :target, -> { PreludeSDK::Models::WatchFeedBackParams::Target }
 
       # @!parse
-      #   # @param feedback [PreludeSDK::Models::WatchFeedBackParams::Feedback] You should send a feedback event back to Watch API when your user demonstrates
-      #   #   authentic behavior.
-      #   #
-      #   # @param target [PreludeSDK::Models::WatchFeedBackParams::Target] The target. Currently this can only be an E.164 formatted phone number.
+      #   # @param feedback [PreludeSDK::Models::WatchFeedBackParams::Feedback]
+      #   # @param target [PreludeSDK::Models::WatchFeedBackParams::Target]
       #   #
       #   def initialize(feedback:, target:, **) = super
 
@@ -28,12 +27,13 @@ module PreludeSDK
       # @example
       # ```ruby
       # feedback => {
-      #   type: enum: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type
+      #   type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type
       # }
       # ```
       class Feedback < PreludeSDK::BaseModel
         # @!attribute type
-        #   `CONFIRM_TARGET` should be sent when you are sure that the user with this target (e.g. phone number) is trustworthy.
+        #   `CONFIRM_TARGET` should be sent when you are sure that the user with this target
+        #     (e.g. phone number) is trustworthy.
         #
         #   @return [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type]
         required :type, enum: -> { PreludeSDK::Models::WatchFeedBackParams::Feedback::Type }
@@ -42,14 +42,14 @@ module PreludeSDK
         #   # You should send a feedback event back to Watch API when your user demonstrates
         #   #   authentic behavior.
         #   #
-        #   # @param type [String] `CONFIRM_TARGET` should be sent when you are sure that the user with this target
-        #   #   (e.g. phone number) is trustworthy.
+        #   # @param type [String]
         #   #
         #   def initialize(type:, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-        # `CONFIRM_TARGET` should be sent when you are sure that the user with this target (e.g. phone number) is trustworthy.
+        # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
+        #   (e.g. phone number) is trustworthy.
         #
         # @example
         # ```ruby
@@ -68,7 +68,7 @@ module PreludeSDK
       # @example
       # ```ruby
       # target => {
-      #   type: enum: PreludeSDK::Models::WatchFeedBackParams::Target::Type,
+      #   type: PreludeSDK::Models::WatchFeedBackParams::Target::Type,
       #   value: String
       # }
       # ```
@@ -88,9 +88,8 @@ module PreludeSDK
         # @!parse
         #   # The target. Currently this can only be an E.164 formatted phone number.
         #   #
-        #   # @param type [String] The type of the target. Currently this can only be "phone_number".
-        #   #
-        #   # @param value [String] An E.164 formatted phone number to verify.
+        #   # @param type [String]
+        #   # @param value [String]
         #   #
         #   def initialize(type:, value:, **) = super
 

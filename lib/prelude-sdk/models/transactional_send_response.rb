@@ -81,23 +81,15 @@ module PreludeSDK
       #   attr_writer :from
 
       # @!parse
-      #   # @param id [String] The message identifier.
-      #   #
-      #   # @param created_at [String] The message creation date.
-      #   #
-      #   # @param expires_at [String] The message expiration date.
-      #   #
-      #   # @param template_id [String] The template identifier.
-      #   #
-      #   # @param to [String] The recipient's phone number.
-      #   #
-      #   # @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
-      #   #
-      #   # @param callback_url [String] The callback URL.
-      #   #
-      #   # @param correlation_id [String] A unique, user-defined identifier that will be included in webhook events.
-      #   #
-      #   # @param from [String] The Sender ID.
+      #   # @param id [String]
+      #   # @param created_at [String]
+      #   # @param expires_at [String]
+      #   # @param template_id [String]
+      #   # @param to [String]
+      #   # @param variables [Hash{Symbol=>String}]
+      #   # @param callback_url [String]
+      #   # @param correlation_id [String]
+      #   # @param from [String]
       #   #
       #   def initialize(
       #     id:,
