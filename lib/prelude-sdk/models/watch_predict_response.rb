@@ -6,7 +6,7 @@ module PreludeSDK
     # ```ruby
     # watch_predict_response => {
     #   id: String,
-    #   prediction: enum: PreludeSDK::Models::WatchPredictResponse::Prediction,
+    #   prediction: PreludeSDK::Models::WatchPredictResponse::Prediction,
     #   reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
     # }
     # ```
@@ -29,10 +29,8 @@ module PreludeSDK
       required :reasoning, -> { PreludeSDK::Models::WatchPredictResponse::Reasoning }
 
       # @!parse
-      #   # @param id [String] A unique identifier for your prediction request.
-      #   #
-      #   # @param prediction [String] A label indicating the trustworthiness of the phone number.
-      #   #
+      #   # @param id [String]
+      #   # @param prediction [String]
       #   # @param reasoning [PreludeSDK::Models::WatchPredictResponse::Reasoning]
       #   #
       #   def initialize(id:, prediction:, reasoning:, **) = super
@@ -60,7 +58,7 @@ module PreludeSDK
       # @example
       # ```ruby
       # reasoning => {
-      #   cause: enum: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause,
+      #   cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause,
       #   score: Float
       # }
       # ```
@@ -76,7 +74,8 @@ module PreludeSDK
         #   attr_writer :cause
 
         # @!attribute [r] score
-        #   Indicates the risk of the phone number being genuine or involved in fraudulent patterns. The higher the riskier.
+        #   Indicates the risk of the phone number being genuine or involved in fraudulent
+        #     patterns. The higher the riskier.
         #
         #   @return [Float, nil]
         optional :score, Float
@@ -86,10 +85,8 @@ module PreludeSDK
         #   attr_writer :score
 
         # @!parse
-        #   # @param cause [String] A label explaining why the phone number was classified as not trustworthy
-        #   #
-        #   # @param score [Float] Indicates the risk of the phone number being genuine or involved in fraudulent
-        #   #   patterns. The higher the riskier.
+        #   # @param cause [String]
+        #   # @param score [Float]
         #   #
         #   def initialize(cause: nil, score: nil, **) = super
 

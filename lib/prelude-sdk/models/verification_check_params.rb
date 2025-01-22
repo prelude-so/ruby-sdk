@@ -16,9 +16,8 @@ module PreludeSDK
       required :target, -> { PreludeSDK::Models::VerificationCheckParams::Target }
 
       # @!parse
-      #   # @param code [String] The OTP code to validate.
-      #   #
-      #   # @param target [PreludeSDK::Models::VerificationCheckParams::Target] The target. Currently this can only be an E.164 formatted phone number.
+      #   # @param code [String]
+      #   # @param target [PreludeSDK::Models::VerificationCheckParams::Target]
       #   #
       #   def initialize(code:, target:, **) = super
 
@@ -27,7 +26,7 @@ module PreludeSDK
       # @example
       # ```ruby
       # target => {
-      #   type: enum: PreludeSDK::Models::VerificationCheckParams::Target::Type,
+      #   type: PreludeSDK::Models::VerificationCheckParams::Target::Type,
       #   value: String
       # }
       # ```
@@ -47,9 +46,8 @@ module PreludeSDK
         # @!parse
         #   # The target. Currently this can only be an E.164 formatted phone number.
         #   #
-        #   # @param type [String] The type of the target. Currently this can only be "phone_number".
-        #   #
-        #   # @param value [String] An E.164 formatted phone number to verify.
+        #   # @param type [String]
+        #   # @param value [String]
         #   #
         #   def initialize(type:, value:, **) = super
 

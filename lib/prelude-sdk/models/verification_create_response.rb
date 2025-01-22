@@ -6,8 +6,8 @@ module PreludeSDK
     # ```ruby
     # verification_create_response => {
     #   id: String,
-    #   method_: enum: PreludeSDK::Models::VerificationCreateResponse::Method,
-    #   status: enum: PreludeSDK::Models::VerificationCreateResponse::Status,
+    #   method_: PreludeSDK::Models::VerificationCreateResponse::Method,
+    #   status: PreludeSDK::Models::VerificationCreateResponse::Status,
     #   metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
     #   request_id: String
     # }
@@ -55,14 +55,10 @@ module PreludeSDK
       #   attr_writer :request_id
 
       # @!parse
-      #   # @param id [String] The verification identifier.
-      #   #
-      #   # @param method_ [String] The method used for verifying this phone number.
-      #   #
-      #   # @param status [String] The status of the verification.
-      #   #
-      #   # @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata] The metadata for this verification.
-      #   #
+      #   # @param id [String]
+      #   # @param method_ [String]
+      #   # @param status [String]
+      #   # @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata]
       #   # @param request_id [String]
       #   #
       #   def initialize(id:, method_:, status:, metadata: nil, request_id: nil, **) = super
