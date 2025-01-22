@@ -79,7 +79,7 @@ module PreludeSDK
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, PreludeSDK::Converter] :model
+    #   @option req [Class, PreludeSDK::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, PreludeSDK::RequestOptions] .
     #
@@ -374,7 +374,7 @@ module PreludeSDK
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, PreludeSDK::Converter] :model
+    #   @option req [Class, PreludeSDK::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, PreludeSDK::RequestOptions] .
     #
@@ -427,7 +427,7 @@ module PreludeSDK
     #
     #   @option req [Class, nil] :page
     #
-    #   @option req [Class, PreludeSDK::Converter] :model
+    #   @option req [Class, PreludeSDK::Converter, Symbol, Boolean, Integer, Float] :model
     #
     # @param opts [Hash{Symbol=>Object}, PreludeSDK::RequestOptions] .
     #
