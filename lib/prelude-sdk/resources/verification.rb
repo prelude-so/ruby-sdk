@@ -7,7 +7,7 @@ module PreludeSDK
       #   verification exists (the request is performed within the verification window),
       #   this endpoint will perform a retry instead.
       #
-      # @param params [PreludeSDK::Models::VerificationCreateParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [PreludeSDK::Models::VerificationCreateParams, Hash{Symbol=>Object}] .
       #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
@@ -20,42 +20,42 @@ module PreludeSDK
       #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Signals] :signals The signals used for anti-fraud.
       #
-      # @param opts [Hash{Symbol=>Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [PreludeSDK::Models::VerificationCreateResponse]
       #
-      def create(params = {}, opts = {})
-        parsed = PreludeSDK::Models::VerificationCreateParams.dump(params)
-        req = {
+      def create(params)
+        parsed, options = PreludeSDK::Models::VerificationCreateParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "v2/verification",
           body: parsed,
-          model: PreludeSDK::Models::VerificationCreateResponse
-        }
-        @client.request(req, opts)
+          model: PreludeSDK::Models::VerificationCreateResponse,
+          options: options
+        )
       end
 
       # Check the validity of a verification code.
       #
-      # @param params [PreludeSDK::Models::VerificationCheckParams, Hash{Symbol=>Object}] Attributes to send in this request.
+      # @param params [PreludeSDK::Models::VerificationCheckParams, Hash{Symbol=>Object}] .
       #
       #   @option params [String] :code The OTP code to validate.
       #
       #   @option params [PreludeSDK::Models::VerificationCheckParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
-      # @param opts [Hash{Symbol=>Object}, PreludeSDK::RequestOptions] Options to specify HTTP behaviour for this request.
+      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}] :request_options
       #
       # @return [PreludeSDK::Models::VerificationCheckResponse]
       #
-      def check(params = {}, opts = {})
-        parsed = PreludeSDK::Models::VerificationCheckParams.dump(params)
-        req = {
+      def check(params)
+        parsed, options = PreludeSDK::Models::VerificationCheckParams.dump_request(params)
+        @client.request(
           method: :post,
           path: "v2/verification/check",
           body: parsed,
-          model: PreludeSDK::Models::VerificationCheckResponse
-        }
-        @client.request(req, opts)
+          model: PreludeSDK::Models::VerificationCheckResponse,
+          options: options
+        )
       end
 
       # @param client [PreludeSDK::Client]
