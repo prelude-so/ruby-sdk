@@ -3,6 +3,10 @@
 module PreludeSDK
   module Models
     class VerificationCheckParams < PreludeSDK::BaseModel
+      # @!parse
+      #   extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
       # @!attribute code
       #   The OTP code to validate.
       #
@@ -18,8 +22,9 @@ module PreludeSDK
       # @!parse
       #   # @param code [String]
       #   # @param target [PreludeSDK::Models::VerificationCheckParams::Target]
+      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(code:, target:, **) = super
+      #   def initialize(code:, target:, request_options: {}, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 

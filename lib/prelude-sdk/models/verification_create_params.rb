@@ -3,6 +3,10 @@
 module PreludeSDK
   module Models
     class VerificationCreateParams < PreludeSDK::BaseModel
+      # @!parse
+      #   extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
       # @!attribute target
       #   The target. Currently this can only be an E.164 formatted phone number.
       #
@@ -56,8 +60,9 @@ module PreludeSDK
       #   # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata]
       #   # @param options [PreludeSDK::Models::VerificationCreateParams::Options]
       #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals]
+      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, **) = super
+      #   def initialize(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 

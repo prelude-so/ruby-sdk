@@ -3,6 +3,10 @@
 module PreludeSDK
   module Models
     class WatchPredictParams < PreludeSDK::BaseModel
+      # @!parse
+      #   extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
       # @!attribute target
       #   The target. Currently this can only be an E.164 formatted phone number.
       #
@@ -23,8 +27,9 @@ module PreludeSDK
       # @!parse
       #   # @param target [PreludeSDK::Models::WatchPredictParams::Target]
       #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals]
+      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(target:, signals: nil, **) = super
+      #   def initialize(target:, signals: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 

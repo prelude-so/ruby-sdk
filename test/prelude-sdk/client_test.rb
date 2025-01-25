@@ -124,8 +124,8 @@ class PreludeSDKTest < Minitest::Test
 
     assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create(
-        {target: {"type" => "phone_number", "value" => "+30123456789"}},
-        max_retries: 3
+        target: {"type" => "phone_number", "value" => "+30123456789"},
+        request_options: {max_retries: 3}
       )
     end
 
@@ -143,8 +143,8 @@ class PreludeSDKTest < Minitest::Test
 
     assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create(
-        {target: {"type" => "phone_number", "value" => "+30123456789"}},
-        max_retries: 4
+        target: {"type" => "phone_number", "value" => "+30123456789"},
+        request_options: {max_retries: 4}
       )
     end
 
@@ -224,8 +224,8 @@ class PreludeSDKTest < Minitest::Test
 
     assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create(
-        {target: {"type" => "phone_number", "value" => "+30123456789"}},
-        extra_headers: {"x-stainless-retry-count" => nil}
+        target: {"type" => "phone_number", "value" => "+30123456789"},
+        request_options: {extra_headers: {"x-stainless-retry-count" => nil}}
       )
     end
 
@@ -240,8 +240,8 @@ class PreludeSDKTest < Minitest::Test
 
     assert_raises(PreludeSDK::InternalServerError) do
       prelude.verification.create(
-        {target: {"type" => "phone_number", "value" => "+30123456789"}},
-        extra_headers: {"x-stainless-retry-count" => "42"}
+        target: {"type" => "phone_number", "value" => "+30123456789"},
+        request_options: {extra_headers: {"x-stainless-retry-count" => "42"}}
       )
     end
 
@@ -256,8 +256,8 @@ class PreludeSDKTest < Minitest::Test
 
     assert_raises(PreludeSDK::APIConnectionError) do
       prelude.verification.create(
-        {target: {"type" => "phone_number", "value" => "+30123456789"}},
-        extra_headers: {}
+        target: {"type" => "phone_number", "value" => "+30123456789"},
+        request_options: {extra_headers: {}}
       )
     end
 
@@ -277,8 +277,8 @@ class PreludeSDKTest < Minitest::Test
 
     assert_raises(PreludeSDK::APIConnectionError) do
       prelude.verification.create(
-        {target: {"type" => "phone_number", "value" => "+30123456789"}},
-        extra_headers: {}
+        target: {"type" => "phone_number", "value" => "+30123456789"},
+        request_options: {extra_headers: {}}
       )
     end
 
@@ -295,8 +295,8 @@ class PreludeSDKTest < Minitest::Test
 
     assert_raises(PreludeSDK::APIConnectionError) do
       prelude.verification.create(
-        {target: {"type" => "phone_number", "value" => "+30123456789"}},
-        extra_headers: {"Authorization" => "Bearer xyz"}
+        target: {"type" => "phone_number", "value" => "+30123456789"},
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
       )
     end
 
@@ -313,8 +313,8 @@ class PreludeSDKTest < Minitest::Test
 
     assert_raises(PreludeSDK::APIConnectionError) do
       prelude.verification.create(
-        {target: {"type" => "phone_number", "value" => "+30123456789"}},
-        extra_headers: {"Authorization" => "Bearer xyz"}
+        target: {"type" => "phone_number", "value" => "+30123456789"},
+        request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
       )
     end
 
