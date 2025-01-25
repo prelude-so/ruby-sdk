@@ -3,6 +3,10 @@
 module PreludeSDK
   module Models
     class TransactionalSendParams < PreludeSDK::BaseModel
+      # @!parse
+      #   extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
       # @!attribute template_id
       #   The template identifier.
       #
@@ -73,8 +77,21 @@ module PreludeSDK
       #   # @param expires_at [String]
       #   # @param from [String]
       #   # @param variables [Hash{Symbol=>String}]
+      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, variables: nil, **) = super
+      #   def initialize(
+      #     template_id:,
+      #     to:,
+      #     callback_url: nil,
+      #     correlation_id: nil,
+      #     expires_at: nil,
+      #     from: nil,
+      #     variables: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
     end

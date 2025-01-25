@@ -3,6 +3,10 @@
 module PreludeSDK
   module Models
     class WatchFeedBackParams < PreludeSDK::BaseModel
+      # @!parse
+      #   extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
       # @!attribute feedback
       #   You should send a feedback event back to Watch API when your user demonstrates
       #     authentic behavior.
@@ -19,8 +23,9 @@ module PreludeSDK
       # @!parse
       #   # @param feedback [PreludeSDK::Models::WatchFeedBackParams::Feedback]
       #   # @param target [PreludeSDK::Models::WatchFeedBackParams::Target]
+      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(feedback:, target:, **) = super
+      #   def initialize(feedback:, target:, request_options: {}, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
