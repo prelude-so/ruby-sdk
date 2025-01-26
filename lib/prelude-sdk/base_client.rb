@@ -151,7 +151,7 @@ module PreludeSDK
         end
 
       url = PreludeSDK::Util.join_parsed_uri(@base_url, {**req, path: path})
-      encoded = PreludeSDK::Util.encode_body(headers, body)
+      headers, encoded = PreludeSDK::Util.encode_content(headers, body)
       max_retries = opts.fetch(:max_retries, @max_retries)
       timeout = opts.fetch(:timeout, @timeout)
       {method: method, url: url, headers: headers, body: encoded, max_retries: max_retries, timeout: timeout}
@@ -328,7 +328,7 @@ module PreludeSDK
       in PreludeSDK::APIConnectionError if retry_count >= max_retries
         raise status
       in (400..) if retry_count >= max_retries || (response && !should_retry?(status, headers: response))
-        body = PreludeSDK::Util.decode_body(response, suppress_error: true)
+        body = PreludeSDK::Util.decode_content(response, suppress_error: true)
 
         raise PreludeSDK::APIStatusError.for(
           url: url,
@@ -377,7 +377,7 @@ module PreludeSDK
     # @return [Object]
     #
     private def parse_response(req, response)
-      parsed = PreludeSDK::Util.decode_body(response)
+      parsed = PreludeSDK::Util.decode_content(response)
       unwrapped = PreludeSDK::Util.dig(parsed, req[:unwrap])
 
       page = req[:page]
