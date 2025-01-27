@@ -30,7 +30,7 @@ module PreludeSDK
 
       # @!parse
       #   # @param id [String]
-      #   # @param prediction [String]
+      #   # @param prediction [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
       #   # @param reasoning [PreludeSDK::Models::WatchPredictResponse::Reasoning]
       #   #
       #   def initialize(id:, prediction:, reasoning:, **) = super
@@ -85,7 +85,7 @@ module PreludeSDK
         #   attr_writer :score
 
         # @!parse
-        #   # @param cause [String]
+        #   # @param cause [Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause]
         #   # @param score [Float]
         #   #
         #   def initialize(cause: nil, score: nil, **) = super

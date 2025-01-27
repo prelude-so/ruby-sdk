@@ -82,8 +82,8 @@ module PreludeSDK
 
       # @!parse
       #   # @param id [String]
-      #   # @param created_at [String]
-      #   # @param expires_at [String]
+      #   # @param created_at [Time]
+      #   # @param expires_at [Time]
       #   # @param template_id [String]
       #   # @param to [String]
       #   # @param variables [Hash{Symbol=>String}]

@@ -89,7 +89,7 @@ module PreludeSDK
         # @!parse
         #   # The target. Currently this can only be an E.164 formatted phone number.
         #   #
-        #   # @param type [String]
+        #   # @param type [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type]
         #   # @param value [String]
         #   #
         #   def initialize(type:, value:, **) = super
@@ -263,7 +263,7 @@ module PreludeSDK
           #   # This allows you to automatically retrieve and fill the OTP code on mobile apps.
           #   #   Currently only Android devices are supported.
           #   #
-          #   # @param platform [String]
+          #   # @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
           #   # @param value [String]
           #   #
           #   def initialize(platform:, value:, **) = super
@@ -379,7 +379,7 @@ module PreludeSDK
         #   # @param app_version [String]
         #   # @param device_id [String]
         #   # @param device_model [String]
-        #   # @param device_platform [String]
+        #   # @param device_platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform]
         #   # @param ip [String]
         #   # @param is_trusted_user [Boolean]
         #   # @param os_version [String]
