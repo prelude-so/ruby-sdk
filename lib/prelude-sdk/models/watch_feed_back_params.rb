@@ -47,7 +47,7 @@ module PreludeSDK
         #   # You should send a feedback event back to Watch API when your user demonstrates
         #   #   authentic behavior.
         #   #
-        #   # @param type [String]
+        #   # @param type [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type]
         #   #
         #   def initialize(type:, **) = super
 
@@ -93,7 +93,7 @@ module PreludeSDK
         # @!parse
         #   # The target. Currently this can only be an E.164 formatted phone number.
         #   #
-        #   # @param type [String]
+        #   # @param type [Symbol, PreludeSDK::Models::WatchFeedBackParams::Target::Type]
         #   # @param value [String]
         #   #
         #   def initialize(type:, value:, **) = super

@@ -56,8 +56,8 @@ module PreludeSDK
 
       # @!parse
       #   # @param id [String]
-      #   # @param method_ [String]
-      #   # @param status [String]
+      #   # @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
+      #   # @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
       #   # @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata]
       #   # @param request_id [String]
       #   #
