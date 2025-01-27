@@ -12,7 +12,7 @@ class PreludeSDK::Test::BaseModelTest < Minitest::Test
   A2 = PreludeSDK::ArrayOf[enum: -> { E1 }]
 
   def test_basic
-    assert(E1.include?(PreludeSDK::Converter))
+    assert(E1.is_a?(PreludeSDK::Converter))
     assert(A1.is_a?(PreludeSDK::Converter))
   end
 
@@ -32,7 +32,7 @@ class PreludeSDK::Test::BaseModelTest < Minitest::Test
     end
 
     assert_pattern do
-      PreludeSDK::Converter.dump(A2, %w[a b c]) => [:a, :b, :c]
+      PreludeSDK::Converter.dump(A2, %w[a b c]) => %w[a b c]
     end
   end
 
@@ -210,7 +210,7 @@ class PreludeSDK::Test::BaseModelTest < Minitest::Test
 
     models.product(inputs).each do |model, input|
       assert_pattern do
-        PreludeSDK::Converter.dump(model, input) => {a: now, renamed: :a, c: [1, 2, 3]}
+        PreludeSDK::Converter.dump(model, input) => {a: now, renamed: "a", c: [1, 2, 3]}
       end
     end
   end
@@ -233,7 +233,7 @@ class PreludeSDK::Test::BaseModelTest < Minitest::Test
   end
 
   def test_basic_union
-    assert(U1.include?(PreludeSDK::Converter))
+    assert(U1.is_a?(PreludeSDK::Converter))
 
     assert_pattern do
       M1.new => U1
@@ -261,10 +261,10 @@ class PreludeSDK::Test::BaseModelTest < Minitest::Test
     now = Time.now
     cases = {
       nil => nil,
-      M1.new(a: now, b: "a", c: [1.0, 2.0, 3.0], y: 1) => {a: now, renamed: :a, c: [1, 2, 3]},
-      M3.new(b: "a", y: 1) => {renamed_again: :a},
-      {type: :a, b: "a", y: 1} => {type: :a, renamed: :a},
-      {type: "b", b: "a", y: 1} => {type: "b", renamed_again: :a},
+      M1.new(a: now, b: :a, c: [1.0, 2.0, 3.0], y: 1) => {a: now, renamed: :a, c: [1, 2, 3]},
+      M3.new(b: "a", y: 1) => {renamed_again: "a"},
+      {type: :a, b: "a", y: 1} => {type: :a, renamed: "a"},
+      {type: "b", b: "a", y: 1} => {type: "b", renamed_again: "a"},
       {type: :c, xyz: 1} => {type: :c, xyz: 1}
     }
 
@@ -307,5 +307,28 @@ class PreludeSDK::Test::BaseModelTest < Minitest::Test
       C1.new.b => nil
       C1.new.c => nil
     end
+  end
+
+  class E2 < PreludeSDK::Enum
+    A = :a
+    B = :b
+  end
+
+  class U3 < PreludeSDK::Union
+    discriminator :type
+    variant :a, M1
+    variant :b, M3
+  end
+
+  def test_basic_eql
+    assert_equal(PreludeSDK::Unknown, PreludeSDK::Unknown)
+    refute_equal(PreludeSDK::Unknown, PreludeSDK::BooleanModel)
+    assert_equal(PreludeSDK::BooleanModel, PreludeSDK::BooleanModel)
+
+    assert_equal(E1, E2)
+    assert_equal(E1, E2)
+
+    refute_equal(U1, U2)
+    assert_equal(U1, U3)
   end
 end
