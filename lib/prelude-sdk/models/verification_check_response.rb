@@ -48,7 +48,7 @@ module PreludeSDK
       #   attr_writer :request_id
 
       # @!parse
-      #   # @param status [String]
+      #   # @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
       #   # @param id [String]
       #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata]
       #   # @param request_id [String]

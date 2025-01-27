@@ -56,7 +56,7 @@ module PreludeSDK
         # @!parse
         #   # The target. Currently this can only be an E.164 formatted phone number.
         #   #
-        #   # @param type [String]
+        #   # @param type [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type]
         #   # @param value [String]
         #   #
         #   def initialize(type:, value:, **) = super
