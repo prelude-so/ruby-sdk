@@ -1,0 +1,81 @@
+module PreludeSDK
+  module Models
+    type watch_predict_response =
+      {
+        id: String,
+        prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
+        reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+      }
+
+    class WatchPredictResponse < PreludeSDK::BaseModel
+      attr_accessor id: String
+
+      attr_accessor prediction: PreludeSDK::Models::WatchPredictResponse::prediction
+
+      attr_accessor reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+
+      def initialize:
+        (
+          id: String,
+          prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
+          reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+        ) -> void
+        | (
+          ?PreludeSDK::Models::watch_predict_response
+          | PreludeSDK::BaseModel data
+        ) -> void
+
+      def to_h: -> PreludeSDK::Models::watch_predict_response
+
+      type prediction = :allow | :block
+
+      class Prediction < PreludeSDK::Enum
+        ALLOW: :allow
+        BLOCK: :block
+
+        def self.values: -> Array[PreludeSDK::Models::WatchPredictResponse::prediction]
+      end
+
+      type reasoning =
+        {
+          cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause,
+          score: Float
+        }
+
+      class Reasoning < PreludeSDK::BaseModel
+        attr_reader cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause?
+
+        def cause=: (
+          PreludeSDK::Models::WatchPredictResponse::Reasoning::cause
+        ) -> void
+
+        attr_reader score: Float?
+
+        def score=: (Float) -> void
+
+        def initialize:
+          (
+            cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause,
+            score: Float
+          ) -> void
+          | (
+            ?PreludeSDK::Models::WatchPredictResponse::reasoning
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::WatchPredictResponse::reasoning
+
+        type cause = :none | :smart_antifraud | :repeat_number | :invalid_line
+
+        class Cause < PreludeSDK::Enum
+          NONE: :none
+          SMART_ANTIFRAUD: :smart_antifraud
+          REPEAT_NUMBER: :repeat_number
+          INVALID_LINE: :invalid_line
+
+          def self.values: -> Array[PreludeSDK::Models::WatchPredictResponse::Reasoning::cause]
+        end
+      end
+    end
+  end
+end

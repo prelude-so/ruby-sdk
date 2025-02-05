@@ -1,0 +1,70 @@
+module PreludeSDK
+  module Models
+    type verification_check_response =
+      {
+        status: PreludeSDK::Models::VerificationCheckResponse::status,
+        id: String,
+        metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
+        request_id: String
+      }
+
+    class VerificationCheckResponse < PreludeSDK::BaseModel
+      attr_accessor status: PreludeSDK::Models::VerificationCheckResponse::status
+
+      attr_reader id: String?
+
+      def id=: (String) -> void
+
+      attr_reader metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata?
+
+      def metadata=: (
+        PreludeSDK::Models::VerificationCheckResponse::Metadata
+      ) -> void
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> void
+
+      def initialize:
+        (
+          status: PreludeSDK::Models::VerificationCheckResponse::status,
+          id: String,
+          metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
+          request_id: String
+        ) -> void
+        | (
+          ?PreludeSDK::Models::verification_check_response
+          | PreludeSDK::BaseModel data
+        ) -> void
+
+      def to_h: -> PreludeSDK::Models::verification_check_response
+
+      type status = :success | :failure | :expired_or_not_found
+
+      class Status < PreludeSDK::Enum
+        SUCCESS: :success
+        FAILURE: :failure
+        EXPIRED_OR_NOT_FOUND: :expired_or_not_found
+
+        def self.values: -> Array[PreludeSDK::Models::VerificationCheckResponse::status]
+      end
+
+      type metadata = { correlation_id: String }
+
+      class Metadata < PreludeSDK::BaseModel
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> void
+
+        def initialize:
+          (correlation_id: String) -> void
+          | (
+            ?PreludeSDK::Models::VerificationCheckResponse::metadata
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::VerificationCheckResponse::metadata
+      end
+    end
+  end
+end
