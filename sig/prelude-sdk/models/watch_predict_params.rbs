@@ -1,0 +1,105 @@
+module PreludeSDK
+  module Models
+    type watch_predict_params =
+      {
+        target: PreludeSDK::Models::WatchPredictParams::Target,
+        signals: PreludeSDK::Models::WatchPredictParams::Signals
+      }
+      & PreludeSDK::request_parameters
+
+    class WatchPredictParams < PreludeSDK::BaseModel
+      extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
+      attr_accessor target: PreludeSDK::Models::WatchPredictParams::Target
+
+      attr_reader signals: PreludeSDK::Models::WatchPredictParams::Signals?
+
+      def signals=: (PreludeSDK::Models::WatchPredictParams::Signals) -> void
+
+      def initialize:
+        (
+          target: PreludeSDK::Models::WatchPredictParams::Target,
+          signals: PreludeSDK::Models::WatchPredictParams::Signals,
+          request_options: PreludeSDK::request_opts
+        ) -> void
+        | (
+          ?PreludeSDK::Models::watch_predict_params | PreludeSDK::BaseModel data
+        ) -> void
+
+      def to_h: -> PreludeSDK::Models::watch_predict_params
+
+      type target =
+        {
+          type: PreludeSDK::Models::WatchPredictParams::Target::type_,
+          value: String
+        }
+
+      class Target < PreludeSDK::BaseModel
+        attr_accessor type: PreludeSDK::Models::WatchPredictParams::Target::type_
+
+        attr_accessor value: String
+
+        def initialize:
+          (
+            type: PreludeSDK::Models::WatchPredictParams::Target::type_,
+            value: String
+          ) -> void
+          | (
+            ?PreludeSDK::Models::WatchPredictParams::target
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::WatchPredictParams::target
+
+        type type_ = :phone_number
+
+        class Type < PreludeSDK::Enum
+          PHONE_NUMBER: :phone_number
+
+          def self.values: -> Array[PreludeSDK::Models::WatchPredictParams::Target::type_]
+        end
+      end
+
+      type signals =
+        {
+          device_id: String,
+          device_model: String,
+          device_type: String,
+          ip: String
+        }
+
+      class Signals < PreludeSDK::BaseModel
+        attr_reader device_id: String?
+
+        def device_id=: (String) -> void
+
+        attr_reader device_model: String?
+
+        def device_model=: (String) -> void
+
+        attr_reader device_type: String?
+
+        def device_type=: (String) -> void
+
+        attr_reader ip: String?
+
+        def ip=: (String) -> void
+
+        def initialize:
+          (
+            device_id: String,
+            device_model: String,
+            device_type: String,
+            ip: String
+          ) -> void
+          | (
+            ?PreludeSDK::Models::WatchPredictParams::signals
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::WatchPredictParams::signals
+      end
+    end
+  end
+end

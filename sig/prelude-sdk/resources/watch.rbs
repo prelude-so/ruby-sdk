@@ -1,0 +1,29 @@
+module PreludeSDK
+  module Resources
+    class Watch
+      def feed_back:
+        (
+          PreludeSDK::Models::WatchFeedBackParams | Hash[Symbol, top] params
+        ) -> PreludeSDK::Models::WatchFeedBackResponse
+        | (
+          PreludeSDK::Models::WatchFeedBackParams | Hash[Symbol, top] params,
+          feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
+          target: PreludeSDK::Models::WatchFeedBackParams::Target,
+          request_options: PreludeSDK::request_opts
+        ) -> PreludeSDK::Models::WatchFeedBackResponse
+
+      def predict:
+        (
+          PreludeSDK::Models::WatchPredictParams | Hash[Symbol, top] params
+        ) -> PreludeSDK::Models::WatchPredictResponse
+        | (
+          PreludeSDK::Models::WatchPredictParams | Hash[Symbol, top] params,
+          target: PreludeSDK::Models::WatchPredictParams::Target,
+          signals: PreludeSDK::Models::WatchPredictParams::Signals,
+          request_options: PreludeSDK::request_opts
+        ) -> PreludeSDK::Models::WatchPredictResponse
+
+      def initialize: (client: PreludeSDK::Client) -> void
+    end
+  end
+end
