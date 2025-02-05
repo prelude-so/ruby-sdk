@@ -96,6 +96,8 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+        # @abstract
+        #
         # The type of the target. Currently this can only be "phone_number".
         #
         # @example
@@ -109,6 +111,11 @@ module PreludeSDK
           PHONE_NUMBER = :phone_number
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
@@ -271,6 +278,8 @@ module PreludeSDK
 
           # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+          # @abstract
+          #
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
           #
@@ -285,6 +294,11 @@ module PreludeSDK
             ANDROID = :android
 
             finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   #
+            #   def self.values; end
           end
         end
       end
@@ -400,6 +414,8 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+        # @abstract
+        #
         # The type of the user's device.
         #
         # @example
@@ -425,6 +441,11 @@ module PreludeSDK
           WEB = :web
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

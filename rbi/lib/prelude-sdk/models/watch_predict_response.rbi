@@ -34,7 +34,7 @@ module PreludeSDK
         ALLOW = :allow
         BLOCK = :block
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 
@@ -67,7 +67,7 @@ module PreludeSDK
           REPEAT_NUMBER = :repeat_number
           INVALID_LINE = :invalid_line
 
-          sig { returns(T::Array[Symbol]) }
+          sig { override.returns(T::Array[Symbol]) }
           def self.values; end
         end
       end

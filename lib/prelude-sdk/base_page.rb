@@ -3,6 +3,8 @@
 module PreludeSDK
   # @private
   #
+  # @abstract
+  #
   module BasePage
     # rubocop:disable Lint/UnusedMethodArgument
 
