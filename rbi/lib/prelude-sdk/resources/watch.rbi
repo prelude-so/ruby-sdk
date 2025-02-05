@@ -1,0 +1,30 @@
+# typed: strong
+
+module PreludeSDK
+  module Resources
+    class Watch
+      sig do
+        params(
+          params: T.any(PreludeSDK::Models::WatchFeedBackParams, T::Hash[Symbol, T.anything]),
+          feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
+          target: PreludeSDK::Models::WatchFeedBackParams::Target,
+          request_options: PreludeSDK::RequestOpts
+        ).returns(PreludeSDK::Models::WatchFeedBackResponse)
+      end
+      def feed_back(params, feedback:, target:, request_options: {}); end
+
+      sig do
+        params(
+          params: T.any(PreludeSDK::Models::WatchPredictParams, T::Hash[Symbol, T.anything]),
+          target: PreludeSDK::Models::WatchPredictParams::Target,
+          signals: PreludeSDK::Models::WatchPredictParams::Signals,
+          request_options: PreludeSDK::RequestOpts
+        ).returns(PreludeSDK::Models::WatchPredictResponse)
+      end
+      def predict(params, target:, signals:, request_options: {}); end
+
+      sig { params(client: PreludeSDK::Client).void }
+      def initialize(client:); end
+    end
+  end
+end

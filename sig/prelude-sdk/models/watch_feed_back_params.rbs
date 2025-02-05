@@ -1,0 +1,90 @@
+module PreludeSDK
+  module Models
+    type watch_feed_back_params =
+      {
+        feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
+        target: PreludeSDK::Models::WatchFeedBackParams::Target
+      }
+      & PreludeSDK::request_parameters
+
+    class WatchFeedBackParams < PreludeSDK::BaseModel
+      extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
+      attr_accessor feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback
+
+      attr_accessor target: PreludeSDK::Models::WatchFeedBackParams::Target
+
+      def initialize:
+        (
+          feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
+          target: PreludeSDK::Models::WatchFeedBackParams::Target,
+          request_options: PreludeSDK::request_opts
+        ) -> void
+        | (
+          ?PreludeSDK::Models::watch_feed_back_params
+          | PreludeSDK::BaseModel data
+        ) -> void
+
+      def to_h: -> PreludeSDK::Models::watch_feed_back_params
+
+      type feedback =
+        { type: PreludeSDK::Models::WatchFeedBackParams::Feedback::type_ }
+
+      class Feedback < PreludeSDK::BaseModel
+        attr_accessor type: PreludeSDK::Models::WatchFeedBackParams::Feedback::type_
+
+        def initialize:
+          (
+            type: PreludeSDK::Models::WatchFeedBackParams::Feedback::type_
+          ) -> void
+          | (
+            ?PreludeSDK::Models::WatchFeedBackParams::feedback
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::WatchFeedBackParams::feedback
+
+        type type_ = :CONFIRM_TARGET
+
+        class Type < PreludeSDK::Enum
+          CONFIRM_TARGET: :CONFIRM_TARGET
+
+          def self.values: -> Array[PreludeSDK::Models::WatchFeedBackParams::Feedback::type_]
+        end
+      end
+
+      type target =
+        {
+          type: PreludeSDK::Models::WatchFeedBackParams::Target::type_,
+          value: String
+        }
+
+      class Target < PreludeSDK::BaseModel
+        attr_accessor type: PreludeSDK::Models::WatchFeedBackParams::Target::type_
+
+        attr_accessor value: String
+
+        def initialize:
+          (
+            type: PreludeSDK::Models::WatchFeedBackParams::Target::type_,
+            value: String
+          ) -> void
+          | (
+            ?PreludeSDK::Models::WatchFeedBackParams::target
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::WatchFeedBackParams::target
+
+        type type_ = :phone_number
+
+        class Type < PreludeSDK::Enum
+          PHONE_NUMBER: :phone_number
+
+          def self.values: -> Array[PreludeSDK::Models::WatchFeedBackParams::Target::type_]
+        end
+      end
+    end
+  end
+end

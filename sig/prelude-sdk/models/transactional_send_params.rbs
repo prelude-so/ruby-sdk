@@ -1,0 +1,68 @@
+module PreludeSDK
+  module Models
+    type transactional_send_params =
+      {
+        template_id: String,
+        to: String,
+        callback_url: String,
+        correlation_id: String,
+        expires_at: String,
+        from: String,
+        locale: String,
+        variables: Hash[Symbol, String]
+      }
+      & PreludeSDK::request_parameters
+
+    class TransactionalSendParams < PreludeSDK::BaseModel
+      extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
+      attr_accessor template_id: String
+
+      attr_accessor to: String
+
+      attr_reader callback_url: String?
+
+      def callback_url=: (String) -> void
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> void
+
+      attr_reader expires_at: String?
+
+      def expires_at=: (String) -> void
+
+      attr_reader from: String?
+
+      def from=: (String) -> void
+
+      attr_reader locale: String?
+
+      def locale=: (String) -> void
+
+      attr_reader variables: Hash[Symbol, String]?
+
+      def variables=: (Hash[Symbol, String]) -> void
+
+      def initialize:
+        (
+          template_id: String,
+          to: String,
+          callback_url: String,
+          correlation_id: String,
+          expires_at: String,
+          from: String,
+          locale: String,
+          variables: Hash[Symbol, String],
+          request_options: PreludeSDK::request_opts
+        ) -> void
+        | (
+          ?PreludeSDK::Models::transactional_send_params
+          | PreludeSDK::BaseModel data
+        ) -> void
+
+      def to_h: -> PreludeSDK::Models::transactional_send_params
+    end
+  end
+end

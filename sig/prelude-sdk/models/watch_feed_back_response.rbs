@@ -1,0 +1,18 @@
+module PreludeSDK
+  module Models
+    type watch_feed_back_response = { id: String }
+
+    class WatchFeedBackResponse < PreludeSDK::BaseModel
+      attr_accessor id: String
+
+      def initialize:
+        (id: String) -> void
+        | (
+          ?PreludeSDK::Models::watch_feed_back_response
+          | PreludeSDK::BaseModel data
+        ) -> void
+
+      def to_h: -> PreludeSDK::Models::watch_feed_back_response
+    end
+  end
+end

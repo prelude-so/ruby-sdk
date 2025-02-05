@@ -1,0 +1,265 @@
+module PreludeSDK
+  module Models
+    type verification_create_params =
+      {
+        target: PreludeSDK::Models::VerificationCreateParams::Target,
+        dispatch_id: String,
+        metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+        options: PreludeSDK::Models::VerificationCreateParams::Options,
+        signals: PreludeSDK::Models::VerificationCreateParams::Signals
+      }
+      & PreludeSDK::request_parameters
+
+    class VerificationCreateParams < PreludeSDK::BaseModel
+      extend PreludeSDK::RequestParameters::Converter
+      include PreludeSDK::RequestParameters
+
+      attr_accessor target: PreludeSDK::Models::VerificationCreateParams::Target
+
+      attr_reader dispatch_id: String?
+
+      def dispatch_id=: (String) -> void
+
+      attr_reader metadata: PreludeSDK::Models::VerificationCreateParams::Metadata?
+
+      def metadata=: (
+        PreludeSDK::Models::VerificationCreateParams::Metadata
+      ) -> void
+
+      attr_reader options: PreludeSDK::Models::VerificationCreateParams::Options?
+
+      def options=: (
+        PreludeSDK::Models::VerificationCreateParams::Options
+      ) -> void
+
+      attr_reader signals: PreludeSDK::Models::VerificationCreateParams::Signals?
+
+      def signals=: (
+        PreludeSDK::Models::VerificationCreateParams::Signals
+      ) -> void
+
+      def initialize:
+        (
+          target: PreludeSDK::Models::VerificationCreateParams::Target,
+          dispatch_id: String,
+          metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+          options: PreludeSDK::Models::VerificationCreateParams::Options,
+          signals: PreludeSDK::Models::VerificationCreateParams::Signals,
+          request_options: PreludeSDK::request_opts
+        ) -> void
+        | (
+          ?PreludeSDK::Models::verification_create_params
+          | PreludeSDK::BaseModel data
+        ) -> void
+
+      def to_h: -> PreludeSDK::Models::verification_create_params
+
+      type target =
+        {
+          type: PreludeSDK::Models::VerificationCreateParams::Target::type_,
+          value: String
+        }
+
+      class Target < PreludeSDK::BaseModel
+        attr_accessor type: PreludeSDK::Models::VerificationCreateParams::Target::type_
+
+        attr_accessor value: String
+
+        def initialize:
+          (
+            type: PreludeSDK::Models::VerificationCreateParams::Target::type_,
+            value: String
+          ) -> void
+          | (
+            ?PreludeSDK::Models::VerificationCreateParams::target
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::VerificationCreateParams::target
+
+        type type_ = :phone_number
+
+        class Type < PreludeSDK::Enum
+          PHONE_NUMBER: :phone_number
+
+          def self.values: -> Array[PreludeSDK::Models::VerificationCreateParams::Target::type_]
+        end
+      end
+
+      type metadata = { correlation_id: String }
+
+      class Metadata < PreludeSDK::BaseModel
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> void
+
+        def initialize:
+          (correlation_id: String) -> void
+          | (
+            ?PreludeSDK::Models::VerificationCreateParams::metadata
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::VerificationCreateParams::metadata
+      end
+
+      type options =
+        {
+          app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+          code_size: Integer,
+          custom_code: String,
+          locale: String,
+          sender_id: String,
+          template_id: String
+        }
+
+      class Options < PreludeSDK::BaseModel
+        attr_reader app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm?
+
+        def app_realm=: (
+          PreludeSDK::Models::VerificationCreateParams::Options::AppRealm
+        ) -> void
+
+        attr_reader code_size: Integer?
+
+        def code_size=: (Integer) -> void
+
+        attr_reader custom_code: String?
+
+        def custom_code=: (String) -> void
+
+        attr_reader locale: String?
+
+        def locale=: (String) -> void
+
+        attr_reader sender_id: String?
+
+        def sender_id=: (String) -> void
+
+        attr_reader template_id: String?
+
+        def template_id=: (String) -> void
+
+        def initialize:
+          (
+            app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+            code_size: Integer,
+            custom_code: String,
+            locale: String,
+            sender_id: String,
+            template_id: String
+          ) -> void
+          | (
+            ?PreludeSDK::Models::VerificationCreateParams::options
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::VerificationCreateParams::options
+
+        type app_realm =
+          {
+            platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform,
+            value: String
+          }
+
+        class AppRealm < PreludeSDK::BaseModel
+          attr_accessor platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform
+
+          attr_accessor value: String
+
+          def initialize:
+            (
+              platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform,
+              value: String
+            ) -> void
+            | (
+              ?PreludeSDK::Models::VerificationCreateParams::Options::app_realm
+              | PreludeSDK::BaseModel data
+            ) -> void
+
+          def to_h: -> PreludeSDK::Models::VerificationCreateParams::Options::app_realm
+
+          type platform = :android
+
+          class Platform < PreludeSDK::Enum
+            ANDROID: :android
+
+            def self.values: -> Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform]
+          end
+        end
+      end
+
+      type signals =
+        {
+          app_version: String,
+          device_id: String,
+          device_model: String,
+          device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
+          ip: String,
+          is_trusted_user: bool,
+          os_version: String
+        }
+
+      class Signals < PreludeSDK::BaseModel
+        attr_reader app_version: String?
+
+        def app_version=: (String) -> void
+
+        attr_reader device_id: String?
+
+        def device_id=: (String) -> void
+
+        attr_reader device_model: String?
+
+        def device_model=: (String) -> void
+
+        attr_reader device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform?
+
+        def device_platform=: (
+          PreludeSDK::Models::VerificationCreateParams::Signals::device_platform
+        ) -> void
+
+        attr_reader ip: String?
+
+        def ip=: (String) -> void
+
+        attr_reader is_trusted_user: bool?
+
+        def is_trusted_user=: (bool) -> void
+
+        attr_reader os_version: String?
+
+        def os_version=: (String) -> void
+
+        def initialize:
+          (
+            app_version: String,
+            device_id: String,
+            device_model: String,
+            device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
+            ip: String,
+            is_trusted_user: bool,
+            os_version: String
+          ) -> void
+          | (
+            ?PreludeSDK::Models::VerificationCreateParams::signals
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::VerificationCreateParams::signals
+
+        type device_platform = :android | :ios | :ipados | :tvos | :web
+
+        class DevicePlatform < PreludeSDK::Enum
+          ANDROID: :android
+          IOS: :ios
+          IPADOS: :ipados
+          TVOS: :tvos
+          WEB: :web
+
+          def self.values: -> Array[PreludeSDK::Models::VerificationCreateParams::Signals::device_platform]
+        end
+      end
+    end
+  end
+end

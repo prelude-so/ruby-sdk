@@ -1,0 +1,80 @@
+module PreludeSDK
+  module Models
+    type verification_create_response =
+      {
+        id: String,
+        method_: PreludeSDK::Models::VerificationCreateResponse::method_,
+        status: PreludeSDK::Models::VerificationCreateResponse::status,
+        metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
+        request_id: String
+      }
+
+    class VerificationCreateResponse < PreludeSDK::BaseModel
+      attr_accessor id: String
+
+      attr_accessor method_: PreludeSDK::Models::VerificationCreateResponse::method_
+
+      attr_accessor status: PreludeSDK::Models::VerificationCreateResponse::status
+
+      attr_reader metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata?
+
+      def metadata=: (
+        PreludeSDK::Models::VerificationCreateResponse::Metadata
+      ) -> void
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> void
+
+      def initialize:
+        (
+          id: String,
+          method_: PreludeSDK::Models::VerificationCreateResponse::method_,
+          status: PreludeSDK::Models::VerificationCreateResponse::status,
+          metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
+          request_id: String
+        ) -> void
+        | (
+          ?PreludeSDK::Models::verification_create_response
+          | PreludeSDK::BaseModel data
+        ) -> void
+
+      def to_h: -> PreludeSDK::Models::verification_create_response
+
+      type method_ = :message
+
+      class Method < PreludeSDK::Enum
+        MESSAGE: :message
+
+        def self.values: -> Array[PreludeSDK::Models::VerificationCreateResponse::method_]
+      end
+
+      type status = :success | :retry | :blocked
+
+      class Status < PreludeSDK::Enum
+        SUCCESS: :success
+        RETRY: :retry
+        BLOCKED: :blocked
+
+        def self.values: -> Array[PreludeSDK::Models::VerificationCreateResponse::status]
+      end
+
+      type metadata = { correlation_id: String }
+
+      class Metadata < PreludeSDK::BaseModel
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> void
+
+        def initialize:
+          (correlation_id: String) -> void
+          | (
+            ?PreludeSDK::Models::VerificationCreateResponse::metadata
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_h: -> PreludeSDK::Models::VerificationCreateResponse::metadata
+      end
+    end
+  end
+end
