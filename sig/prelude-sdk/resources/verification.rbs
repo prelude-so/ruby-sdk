@@ -7,8 +7,6 @@ module PreludeSDK
           | Hash[Symbol, top] params
         ) -> PreludeSDK::Models::VerificationCreateResponse
         | (
-          PreludeSDK::Models::VerificationCreateParams
-          | Hash[Symbol, top] params,
           target: PreludeSDK::Models::VerificationCreateParams::Target,
           dispatch_id: String,
           metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
@@ -22,8 +20,6 @@ module PreludeSDK
           PreludeSDK::Models::VerificationCheckParams | Hash[Symbol, top] params
         ) -> PreludeSDK::Models::VerificationCheckResponse
         | (
-          PreludeSDK::Models::VerificationCheckParams
-          | Hash[Symbol, top] params,
           code: String,
           target: PreludeSDK::Models::VerificationCheckParams::Target,
           request_options: PreludeSDK::request_opts
