@@ -37,6 +37,8 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+      # @abstract
+      #
       # A label indicating the trustworthiness of the phone number.
       #
       # @example
@@ -53,6 +55,11 @@ module PreludeSDK
         BLOCK = :block
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example
@@ -92,6 +99,8 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+        # @abstract
+        #
         # A label explaining why the phone number was classified as not trustworthy
         #
         # @example
@@ -114,6 +123,11 @@ module PreludeSDK
           INVALID_LINE = :invalid_line
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
     end

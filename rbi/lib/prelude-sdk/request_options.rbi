@@ -6,6 +6,8 @@ module PreludeSDK
   end
 
   module RequestParameters
+    abstract!
+
     Shape = T.type_alias { {request_options: PreludeSDK::RequestOpts} }
 
     sig { returns(PreludeSDK::RequestOpts) }

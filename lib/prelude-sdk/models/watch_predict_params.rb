@@ -63,6 +63,8 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+        # @abstract
+        #
         # The type of the target. Currently this can only be "phone_number".
         #
         # @example
@@ -76,6 +78,11 @@ module PreludeSDK
           PHONE_NUMBER = :phone_number
 
           finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   #
+          #   def self.values; end
         end
       end
 
