@@ -65,6 +65,8 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+      # @abstract
+      #
       # The method used for verifying this phone number.
       #
       # @example
@@ -78,8 +80,15 @@ module PreludeSDK
         MESSAGE = :message
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
+      # @abstract
+      #
       # The status of the verification.
       #
       # @example
@@ -99,6 +108,11 @@ module PreludeSDK
         BLOCKED = :blocked
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example

@@ -57,6 +57,8 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+      # @abstract
+      #
       # The status of the check.
       #
       # @example
@@ -76,6 +78,11 @@ module PreludeSDK
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found
 
         finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
 
       # @example

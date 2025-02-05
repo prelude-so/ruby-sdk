@@ -3,6 +3,8 @@
 module PreludeSDK
   # @private
   #
+  # @abstract
+  #
   module Extern
     # @private
     #

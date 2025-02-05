@@ -53,7 +53,7 @@ module PreludeSDK
         FAILURE = :failure
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found
 
-        sig { returns(T::Array[Symbol]) }
+        sig { override.returns(T::Array[Symbol]) }
         def self.values; end
       end
 
