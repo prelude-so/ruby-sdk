@@ -5,7 +5,6 @@ module PreludeSDK
     class Transactional
       sig do
         params(
-          params: T.any(PreludeSDK::Models::TransactionalSendParams, T::Hash[Symbol, T.anything]),
           template_id: String,
           to: String,
           callback_url: String,
@@ -18,7 +17,6 @@ module PreludeSDK
         ).returns(PreludeSDK::Models::TransactionalSendResponse)
       end
       def send_(
-        params,
         template_id:,
         to:,
         callback_url:,
