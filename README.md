@@ -36,6 +36,7 @@ bundle update prelude-sdk
 ## Usage
 
 ```ruby
+require "bundler/setup"
 require "prelude-sdk"
 
 prelude = PreludeSDK::Client.new(

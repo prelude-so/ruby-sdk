@@ -6,7 +6,6 @@ module PreludeSDK
           PreludeSDK::Models::WatchFeedBackParams | Hash[Symbol, top] params
         ) -> PreludeSDK::Models::WatchFeedBackResponse
         | (
-          PreludeSDK::Models::WatchFeedBackParams | Hash[Symbol, top] params,
           feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
           target: PreludeSDK::Models::WatchFeedBackParams::Target,
           request_options: PreludeSDK::request_opts
@@ -17,7 +16,6 @@ module PreludeSDK
           PreludeSDK::Models::WatchPredictParams | Hash[Symbol, top] params
         ) -> PreludeSDK::Models::WatchPredictResponse
         | (
-          PreludeSDK::Models::WatchPredictParams | Hash[Symbol, top] params,
           target: PreludeSDK::Models::WatchPredictParams::Target,
           signals: PreludeSDK::Models::WatchPredictParams::Signals,
           request_options: PreludeSDK::request_opts

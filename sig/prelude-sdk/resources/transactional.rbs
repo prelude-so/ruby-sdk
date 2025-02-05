@@ -6,8 +6,6 @@ module PreludeSDK
           PreludeSDK::Models::TransactionalSendParams | Hash[Symbol, top] params
         ) -> PreludeSDK::Models::TransactionalSendResponse
         | (
-          PreludeSDK::Models::TransactionalSendParams
-          | Hash[Symbol, top] params,
           template_id: String,
           to: String,
           callback_url: String,
