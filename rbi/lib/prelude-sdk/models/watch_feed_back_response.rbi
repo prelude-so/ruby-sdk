@@ -7,10 +7,12 @@ module PreludeSDK
       attr_accessor :id
 
       sig { params(id: String).void }
-      def initialize(id:); end
+      def initialize(id:)
+      end
 
       sig { override.returns({id: String}) }
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end

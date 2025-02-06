@@ -19,7 +19,8 @@ module PreludeSDK
           reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
         ).void
       end
-      def initialize(id:, prediction:, reasoning:); end
+      def initialize(id:, prediction:, reasoning:)
+      end
 
       sig do
         override.returns(
@@ -30,7 +31,8 @@ module PreludeSDK
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Prediction < PreludeSDK::Enum
         abstract!
@@ -39,7 +41,8 @@ module PreludeSDK
         BLOCK = :block
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Reasoning < PreludeSDK::BaseModel
@@ -56,10 +59,12 @@ module PreludeSDK
         attr_writer :score
 
         sig { params(cause: Symbol, score: Float).void }
-        def initialize(cause: nil, score: nil); end
+        def initialize(cause: nil, score: nil)
+        end
 
         sig { override.returns({cause: Symbol, score: Float}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Cause < PreludeSDK::Enum
           abstract!
@@ -70,7 +75,8 @@ module PreludeSDK
           INVALID_LINE = :invalid_line
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

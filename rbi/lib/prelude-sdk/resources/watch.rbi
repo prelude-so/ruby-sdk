@@ -10,7 +10,8 @@ module PreludeSDK
           request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(PreludeSDK::Models::WatchFeedBackResponse)
       end
-      def feed_back(feedback:, target:, request_options: {}); end
+      def feed_back(feedback:, target:, request_options: {})
+      end
 
       sig do
         params(
@@ -19,10 +20,12 @@ module PreludeSDK
           request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(PreludeSDK::Models::WatchPredictResponse)
       end
-      def predict(target:, signals: nil, request_options: {}); end
+      def predict(target:, signals: nil, request_options: {})
+      end
 
       sig { params(client: PreludeSDK::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end
