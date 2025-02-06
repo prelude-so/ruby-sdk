@@ -33,7 +33,8 @@ module PreludeSDK
           request_id: String
         ).void
       end
-      def initialize(id:, method_:, status:, metadata: nil, request_id: nil); end
+      def initialize(id:, method_:, status:, metadata: nil, request_id: nil)
+      end
 
       sig do
         override.returns(
@@ -46,7 +47,8 @@ module PreludeSDK
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Method < PreludeSDK::Enum
         abstract!
@@ -54,7 +56,8 @@ module PreludeSDK
         MESSAGE = :message
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Status < PreludeSDK::Enum
@@ -65,7 +68,8 @@ module PreludeSDK
         BLOCKED = :blocked
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Metadata < PreludeSDK::BaseModel
@@ -76,10 +80,12 @@ module PreludeSDK
         attr_writer :correlation_id
 
         sig { params(correlation_id: String).void }
-        def initialize(correlation_id: nil); end
+        def initialize(correlation_id: nil)
+        end
 
         sig { override.returns({correlation_id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

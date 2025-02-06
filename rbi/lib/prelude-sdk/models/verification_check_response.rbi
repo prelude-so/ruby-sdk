@@ -32,7 +32,8 @@ module PreludeSDK
           request_id: String
         ).void
       end
-      def initialize(status:, id: nil, metadata: nil, request_id: nil); end
+      def initialize(status:, id: nil, metadata: nil, request_id: nil)
+      end
 
       sig do
         override.returns(
@@ -44,7 +45,8 @@ module PreludeSDK
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Status < PreludeSDK::Enum
         abstract!
@@ -54,7 +56,8 @@ module PreludeSDK
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found
 
         sig { override.returns(T::Array[Symbol]) }
-        def self.values; end
+        def self.values
+        end
       end
 
       class Metadata < PreludeSDK::BaseModel
@@ -65,10 +68,12 @@ module PreludeSDK
         attr_writer :correlation_id
 
         sig { params(correlation_id: String).void }
-        def initialize(correlation_id: nil); end
+        def initialize(correlation_id: nil)
+        end
 
         sig { override.returns({correlation_id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
     end
   end

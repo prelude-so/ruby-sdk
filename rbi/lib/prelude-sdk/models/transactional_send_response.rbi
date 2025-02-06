@@ -62,7 +62,8 @@ module PreludeSDK
         callback_url: nil,
         correlation_id: nil,
         from: nil
-      ); end
+      )
+      end
 
       sig do
         override.returns(
@@ -79,7 +80,8 @@ module PreludeSDK
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
     end
   end
 end
