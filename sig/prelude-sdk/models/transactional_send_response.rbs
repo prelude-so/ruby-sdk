@@ -55,7 +55,7 @@ module PreludeSDK
           | PreludeSDK::BaseModel data
         ) -> void
 
-      def to_h: -> PreludeSDK::Models::transactional_send_response
+      def to_hash: -> PreludeSDK::Models::transactional_send_response
     end
   end
 end

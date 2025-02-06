@@ -62,7 +62,7 @@ module PreludeSDK
           | PreludeSDK::BaseModel data
         ) -> void
 
-      def to_h: -> PreludeSDK::Models::transactional_send_params
+      def to_hash: -> PreludeSDK::Models::transactional_send_params
     end
   end
 end

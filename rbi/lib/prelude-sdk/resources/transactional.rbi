@@ -13,7 +13,7 @@ module PreludeSDK
           from: String,
           locale: String,
           variables: T::Hash[Symbol, String],
-          request_options: PreludeSDK::RequestOpts
+          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(PreludeSDK::Models::TransactionalSendResponse)
       end
       def send_(

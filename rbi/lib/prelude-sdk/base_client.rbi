@@ -14,13 +14,7 @@ module PreludeSDK
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[PreludeSDK::BaseModel]),
         model: T.nilable(PreludeSDK::Converter::Input),
-        options: T.nilable(
-          T.any(
-            PreludeSDK::RequestOptions,
-            PreludeSDK::RequestOptions::Shape,
-            T::Hash[Symbol, T.anything]
-          )
-        )
+        options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
       }
     end
 
@@ -75,7 +69,7 @@ module PreludeSDK
     sig do
       params(
         req: PreludeSDK::BaseClient::RequestShape,
-        opts: PreludeSDK::RequestOptions::Shape
+        opts: T::Hash[Symbol, T.anything]
       ).returns(PreludeSDK::BaseClient::NormalizedRequestShape)
     end
     private def build_request(req, opts); end
@@ -118,13 +112,7 @@ module PreludeSDK
         unwrap: T.nilable(Symbol),
         page: T.nilable(T::Class[PreludeSDK::BaseModel]),
         model: T.nilable(PreludeSDK::Converter::Input),
-        options: T.nilable(
-          T.any(
-            PreludeSDK::RequestOptions,
-            PreludeSDK::RequestOptions::Shape,
-            T::Hash[Symbol, T.anything]
-          )
-        )
+        options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
       ).returns(T.anything)
     end
     def request(

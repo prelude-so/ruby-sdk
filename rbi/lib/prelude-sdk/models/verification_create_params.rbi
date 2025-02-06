@@ -6,19 +6,6 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            target: PreludeSDK::Models::VerificationCreateParams::Target,
-            dispatch_id: String,
-            metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
-            options: PreludeSDK::Models::VerificationCreateParams::Options,
-            signals: PreludeSDK::Models::VerificationCreateParams::Signals
-          },
-          PreludeSDK::RequestParameters::Shape
-        )
-      end
-
       sig { returns(PreludeSDK::Models::VerificationCreateParams::Target) }
       attr_accessor :target
 
@@ -53,7 +40,7 @@ module PreludeSDK
           metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
           options: PreludeSDK::Models::VerificationCreateParams::Options,
           signals: PreludeSDK::Models::VerificationCreateParams::Signals,
-          request_options: PreludeSDK::RequestOpts
+          request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -66,12 +53,21 @@ module PreludeSDK
       )
       end
 
-      sig { returns(PreludeSDK::Models::VerificationCreateParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            target: PreludeSDK::Models::VerificationCreateParams::Target,
+            dispatch_id: String,
+            metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+            options: PreludeSDK::Models::VerificationCreateParams::Options,
+            signals: PreludeSDK::Models::VerificationCreateParams::Signals,
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Target < PreludeSDK::BaseModel
-        Shape = T.type_alias { {type: Symbol, value: String} }
-
         sig { returns(Symbol) }
         attr_accessor :type
 
@@ -81,8 +77,8 @@ module PreludeSDK
         sig { params(type: Symbol, value: String).void }
         def initialize(type:, value:); end
 
-        sig { returns(PreludeSDK::Models::VerificationCreateParams::Target::Shape) }
-        def to_h; end
+        sig { override.returns({type: Symbol, value: String}) }
+        def to_hash; end
 
         class Type < PreludeSDK::Enum
           abstract!
@@ -95,8 +91,6 @@ module PreludeSDK
       end
 
       class Metadata < PreludeSDK::BaseModel
-        Shape = T.type_alias { {correlation_id: String} }
-
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
@@ -106,22 +100,11 @@ module PreludeSDK
         sig { params(correlation_id: String).void }
         def initialize(correlation_id: nil); end
 
-        sig { returns(PreludeSDK::Models::VerificationCreateParams::Metadata::Shape) }
-        def to_h; end
+        sig { override.returns({correlation_id: String}) }
+        def to_hash; end
       end
 
       class Options < PreludeSDK::BaseModel
-        Shape = T.type_alias do
-          {
-            app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
-            code_size: Integer,
-            custom_code: String,
-            locale: String,
-            sender_id: String,
-            template_id: String
-          }
-        end
-
         sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)) }
         attr_reader :app_realm
 
@@ -178,12 +161,21 @@ module PreludeSDK
         )
         end
 
-        sig { returns(PreludeSDK::Models::VerificationCreateParams::Options::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+              code_size: Integer,
+              custom_code: String,
+              locale: String,
+              sender_id: String,
+              template_id: String
+            }
+          )
+        end
+        def to_hash; end
 
         class AppRealm < PreludeSDK::BaseModel
-          Shape = T.type_alias { {platform: Symbol, value: String} }
-
           sig { returns(Symbol) }
           attr_accessor :platform
 
@@ -193,8 +185,8 @@ module PreludeSDK
           sig { params(platform: Symbol, value: String).void }
           def initialize(platform:, value:); end
 
-          sig { returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Shape) }
-          def to_h; end
+          sig { override.returns({platform: Symbol, value: String}) }
+          def to_hash; end
 
           class Platform < PreludeSDK::Enum
             abstract!
@@ -208,18 +200,6 @@ module PreludeSDK
       end
 
       class Signals < PreludeSDK::BaseModel
-        Shape = T.type_alias do
-          {
-            app_version: String,
-            device_id: String,
-            device_model: String,
-            device_platform: Symbol,
-            ip: String,
-            is_trusted_user: T::Boolean,
-            os_version: String
-          }
-        end
-
         sig { returns(T.nilable(String)) }
         attr_reader :app_version
 
@@ -283,8 +263,20 @@ module PreludeSDK
           os_version: nil
         ); end
 
-        sig { returns(PreludeSDK::Models::VerificationCreateParams::Signals::Shape) }
-        def to_h; end
+        sig do
+          override.returns(
+            {
+              app_version: String,
+              device_id: String,
+              device_model: String,
+              device_platform: Symbol,
+              ip: String,
+              is_trusted_user: T::Boolean,
+              os_version: String
+            }
+          )
+        end
+        def to_hash; end
 
         class DevicePlatform < PreludeSDK::Enum
           abstract!

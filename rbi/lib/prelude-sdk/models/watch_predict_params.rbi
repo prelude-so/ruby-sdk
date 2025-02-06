@@ -6,16 +6,6 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            target: PreludeSDK::Models::WatchPredictParams::Target,
-            signals: PreludeSDK::Models::WatchPredictParams::Signals
-          },
-          PreludeSDK::RequestParameters::Shape
-        )
-      end
-
       sig { returns(PreludeSDK::Models::WatchPredictParams::Target) }
       attr_accessor :target
 
@@ -29,17 +19,23 @@ module PreludeSDK
         params(
           target: PreludeSDK::Models::WatchPredictParams::Target,
           signals: PreludeSDK::Models::WatchPredictParams::Signals,
-          request_options: PreludeSDK::RequestOpts
+          request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(target:, signals: nil, request_options: {}); end
 
-      sig { returns(PreludeSDK::Models::WatchPredictParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            target: PreludeSDK::Models::WatchPredictParams::Target,
+            signals: PreludeSDK::Models::WatchPredictParams::Signals,
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Target < PreludeSDK::BaseModel
-        Shape = T.type_alias { {type: Symbol, value: String} }
-
         sig { returns(Symbol) }
         attr_accessor :type
 
@@ -49,8 +45,8 @@ module PreludeSDK
         sig { params(type: Symbol, value: String).void }
         def initialize(type:, value:); end
 
-        sig { returns(PreludeSDK::Models::WatchPredictParams::Target::Shape) }
-        def to_h; end
+        sig { override.returns({type: Symbol, value: String}) }
+        def to_hash; end
 
         class Type < PreludeSDK::Enum
           abstract!
@@ -63,8 +59,6 @@ module PreludeSDK
       end
 
       class Signals < PreludeSDK::BaseModel
-        Shape = T.type_alias { {device_id: String, device_model: String, device_type: String, ip: String} }
-
         sig { returns(T.nilable(String)) }
         attr_reader :device_id
 
@@ -92,8 +86,8 @@ module PreludeSDK
         sig { params(device_id: String, device_model: String, device_type: String, ip: String).void }
         def initialize(device_id: nil, device_model: nil, device_type: nil, ip: nil); end
 
-        sig { returns(PreludeSDK::Models::WatchPredictParams::Signals::Shape) }
-        def to_h; end
+        sig { override.returns({device_id: String, device_model: String, device_type: String, ip: String}) }
+        def to_hash; end
       end
     end
   end

@@ -3,16 +3,6 @@
 module PreludeSDK
   module Models
     class VerificationCreateResponse < PreludeSDK::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          method_: Symbol,
-          status: Symbol,
-          metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-          request_id: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -45,8 +35,18 @@ module PreludeSDK
       end
       def initialize(id:, method_:, status:, metadata: nil, request_id: nil); end
 
-      sig { returns(PreludeSDK::Models::VerificationCreateResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            method_: Symbol,
+            status: Symbol,
+            metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
+            request_id: String
+          }
+        )
+      end
+      def to_hash; end
 
       class Method < PreludeSDK::Enum
         abstract!
@@ -69,8 +69,6 @@ module PreludeSDK
       end
 
       class Metadata < PreludeSDK::BaseModel
-        Shape = T.type_alias { {correlation_id: String} }
-
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
@@ -80,8 +78,8 @@ module PreludeSDK
         sig { params(correlation_id: String).void }
         def initialize(correlation_id: nil); end
 
-        sig { returns(PreludeSDK::Models::VerificationCreateResponse::Metadata::Shape) }
-        def to_h; end
+        sig { override.returns({correlation_id: String}) }
+        def to_hash; end
       end
     end
   end

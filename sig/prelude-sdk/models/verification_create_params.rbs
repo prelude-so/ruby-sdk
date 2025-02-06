@@ -52,7 +52,7 @@ module PreludeSDK
           | PreludeSDK::BaseModel data
         ) -> void
 
-      def to_h: -> PreludeSDK::Models::verification_create_params
+      def to_hash: -> PreludeSDK::Models::verification_create_params
 
       type target =
         {
@@ -75,7 +75,7 @@ module PreludeSDK
             | PreludeSDK::BaseModel data
           ) -> void
 
-        def to_h: -> PreludeSDK::Models::VerificationCreateParams::target
+        def to_hash: -> PreludeSDK::Models::VerificationCreateParams::target
 
         type type_ = :phone_number
 
@@ -100,7 +100,7 @@ module PreludeSDK
             | PreludeSDK::BaseModel data
           ) -> void
 
-        def to_h: -> PreludeSDK::Models::VerificationCreateParams::metadata
+        def to_hash: -> PreludeSDK::Models::VerificationCreateParams::metadata
       end
 
       type options =
@@ -154,7 +154,7 @@ module PreludeSDK
             | PreludeSDK::BaseModel data
           ) -> void
 
-        def to_h: -> PreludeSDK::Models::VerificationCreateParams::options
+        def to_hash: -> PreludeSDK::Models::VerificationCreateParams::options
 
         type app_realm =
           {
@@ -177,7 +177,7 @@ module PreludeSDK
               | PreludeSDK::BaseModel data
             ) -> void
 
-          def to_h: -> PreludeSDK::Models::VerificationCreateParams::Options::app_realm
+          def to_hash: -> PreludeSDK::Models::VerificationCreateParams::Options::app_realm
 
           type platform = :android
 
@@ -246,7 +246,7 @@ module PreludeSDK
             | PreludeSDK::BaseModel data
           ) -> void
 
-        def to_h: -> PreludeSDK::Models::VerificationCreateParams::signals
+        def to_hash: -> PreludeSDK::Models::VerificationCreateParams::signals
 
         type device_platform = :android | :ios | :ipados | :tvos | :web
 

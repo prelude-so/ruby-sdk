@@ -26,7 +26,7 @@ module PreludeSDK
       #
       #   @option params [Hash{Symbol=>String}] :variables The variables to be replaced in the template.
       #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::TransactionalSendResponse]
       #
