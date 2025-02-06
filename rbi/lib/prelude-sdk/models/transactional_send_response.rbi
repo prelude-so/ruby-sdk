@@ -3,20 +3,6 @@
 module PreludeSDK
   module Models
     class TransactionalSendResponse < PreludeSDK::BaseModel
-      Shape = T.type_alias do
-        {
-          id: String,
-          created_at: Time,
-          expires_at: Time,
-          template_id: String,
-          to: String,
-          variables: T::Hash[Symbol, String],
-          callback_url: String,
-          correlation_id: String,
-          from: String
-        }
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -78,8 +64,22 @@ module PreludeSDK
         from: nil
       ); end
 
-      sig { returns(PreludeSDK::Models::TransactionalSendResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            created_at: Time,
+            expires_at: Time,
+            template_id: String,
+            to: String,
+            variables: T::Hash[Symbol, String],
+            callback_url: String,
+            correlation_id: String,
+            from: String
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

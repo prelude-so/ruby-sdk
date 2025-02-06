@@ -25,7 +25,7 @@ module PreludeSDK
           | PreludeSDK::BaseModel data
         ) -> void
 
-      def to_h: -> PreludeSDK::Models::watch_predict_response
+      def to_hash: -> PreludeSDK::Models::watch_predict_response
 
       type prediction = :allow | :block
 
@@ -63,7 +63,7 @@ module PreludeSDK
             | PreludeSDK::BaseModel data
           ) -> void
 
-        def to_h: -> PreludeSDK::Models::WatchPredictResponse::reasoning
+        def to_hash: -> PreludeSDK::Models::WatchPredictResponse::reasoning
 
         type cause = :none | :smart_antifraud | :repeat_number | :invalid_line
 

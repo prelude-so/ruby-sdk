@@ -13,7 +13,7 @@ module PreludeSDK
       #
       #   @option params [PreludeSDK::Models::WatchFeedBackParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::WatchFeedBackResponse]
       #
@@ -39,7 +39,7 @@ module PreludeSDK
       #   @option params [PreludeSDK::Models::WatchPredictParams::Signals] :signals It is highly recommended that you provide the signals to increase prediction
       #     performance.
       #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::WatchPredictResponse]
       #

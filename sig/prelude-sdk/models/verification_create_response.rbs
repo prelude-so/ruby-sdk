@@ -39,7 +39,7 @@ module PreludeSDK
           | PreludeSDK::BaseModel data
         ) -> void
 
-      def to_h: -> PreludeSDK::Models::verification_create_response
+      def to_hash: -> PreludeSDK::Models::verification_create_response
 
       type method_ = :message
 
@@ -73,7 +73,7 @@ module PreludeSDK
             | PreludeSDK::BaseModel data
           ) -> void
 
-        def to_h: -> PreludeSDK::Models::VerificationCreateResponse::metadata
+        def to_hash: -> PreludeSDK::Models::VerificationCreateResponse::metadata
       end
     end
   end

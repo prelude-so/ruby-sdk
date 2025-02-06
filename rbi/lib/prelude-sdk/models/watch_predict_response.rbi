@@ -3,10 +3,6 @@
 module PreludeSDK
   module Models
     class WatchPredictResponse < PreludeSDK::BaseModel
-      Shape = T.type_alias do
-        {id: String, prediction: Symbol, reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning}
-      end
-
       sig { returns(String) }
       attr_accessor :id
 
@@ -25,8 +21,16 @@ module PreludeSDK
       end
       def initialize(id:, prediction:, reasoning:); end
 
-      sig { returns(PreludeSDK::Models::WatchPredictResponse::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            id: String,
+            prediction: Symbol,
+            reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+          }
+        )
+      end
+      def to_hash; end
 
       class Prediction < PreludeSDK::Enum
         abstract!
@@ -39,8 +43,6 @@ module PreludeSDK
       end
 
       class Reasoning < PreludeSDK::BaseModel
-        Shape = T.type_alias { {cause: Symbol, score: Float} }
-
         sig { returns(T.nilable(Symbol)) }
         attr_reader :cause
 
@@ -56,8 +58,8 @@ module PreludeSDK
         sig { params(cause: Symbol, score: Float).void }
         def initialize(cause: nil, score: nil); end
 
-        sig { returns(PreludeSDK::Models::WatchPredictResponse::Reasoning::Shape) }
-        def to_h; end
+        sig { override.returns({cause: Symbol, score: Float}) }
+        def to_hash; end
 
         class Cause < PreludeSDK::Enum
           abstract!

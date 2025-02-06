@@ -20,7 +20,7 @@ module PreludeSDK
       #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Signals] :signals The signals used for anti-fraud.
       #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::VerificationCreateResponse]
       #
@@ -43,7 +43,7 @@ module PreludeSDK
       #
       #   @option params [PreludeSDK::Models::VerificationCheckParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
       #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}] :request_options
+      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::VerificationCheckResponse]
       #

@@ -37,7 +37,7 @@ module PreludeSDK
           | PreludeSDK::BaseModel data
         ) -> void
 
-      def to_h: -> PreludeSDK::Models::verification_check_response
+      def to_hash: -> PreludeSDK::Models::verification_check_response
 
       type status = :success | :failure | :expired_or_not_found
 
@@ -63,7 +63,7 @@ module PreludeSDK
             | PreludeSDK::BaseModel data
           ) -> void
 
-        def to_h: -> PreludeSDK::Models::VerificationCheckResponse::metadata
+        def to_hash: -> PreludeSDK::Models::VerificationCheckResponse::metadata
       end
     end
   end
