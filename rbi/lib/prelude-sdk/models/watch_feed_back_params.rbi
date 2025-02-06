@@ -19,7 +19,8 @@ module PreludeSDK
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
-      def initialize(feedback:, target:, request_options: {}); end
+      def initialize(feedback:, target:, request_options: {})
+      end
 
       sig do
         override.returns(
@@ -30,17 +31,20 @@ module PreludeSDK
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Feedback < PreludeSDK::BaseModel
         sig { returns(Symbol) }
         attr_accessor :type
 
         sig { params(type: Symbol).void }
-        def initialize(type:); end
+        def initialize(type:)
+        end
 
         sig { override.returns({type: Symbol}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Type < PreludeSDK::Enum
           abstract!
@@ -48,7 +52,8 @@ module PreludeSDK
           CONFIRM_TARGET = :CONFIRM_TARGET
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -60,10 +65,12 @@ module PreludeSDK
         attr_accessor :value
 
         sig { params(type: Symbol, value: String).void }
-        def initialize(type:, value:); end
+        def initialize(type:, value:)
+        end
 
         sig { override.returns({type: Symbol, value: String}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Type < PreludeSDK::Enum
           abstract!
@@ -71,7 +78,8 @@ module PreludeSDK
           PHONE_NUMBER = :phone_number
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

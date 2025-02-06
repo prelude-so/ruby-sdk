@@ -26,10 +26,12 @@ module PreludeSDK
         locale: nil,
         variables: nil,
         request_options: {}
-      ); end
+      )
+      end
 
       sig { params(client: PreludeSDK::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

@@ -23,10 +23,12 @@ module PreludeSDK
           request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
         ).returns(PreludeSDK::Models::VerificationCheckResponse)
       end
-      def check(code:, target:, request_options: {}); end
+      def check(code:, target:, request_options: {})
+      end
 
       sig { params(client: PreludeSDK::Client).void }
-      def initialize(client:); end
+      def initialize(client:)
+      end
     end
   end
 end

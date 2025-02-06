@@ -65,7 +65,8 @@ module PreludeSDK
           }
         )
       end
-      def to_hash; end
+      def to_hash
+      end
 
       class Target < PreludeSDK::BaseModel
         sig { returns(Symbol) }
@@ -75,10 +76,12 @@ module PreludeSDK
         attr_accessor :value
 
         sig { params(type: Symbol, value: String).void }
-        def initialize(type:, value:); end
+        def initialize(type:, value:)
+        end
 
         sig { override.returns({type: Symbol, value: String}) }
-        def to_hash; end
+        def to_hash
+        end
 
         class Type < PreludeSDK::Enum
           abstract!
@@ -86,7 +89,8 @@ module PreludeSDK
           PHONE_NUMBER = :phone_number
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
 
@@ -98,10 +102,12 @@ module PreludeSDK
         attr_writer :correlation_id
 
         sig { params(correlation_id: String).void }
-        def initialize(correlation_id: nil); end
+        def initialize(correlation_id: nil)
+        end
 
         sig { override.returns({correlation_id: String}) }
-        def to_hash; end
+        def to_hash
+        end
       end
 
       class Options < PreludeSDK::BaseModel
@@ -173,7 +179,8 @@ module PreludeSDK
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class AppRealm < PreludeSDK::BaseModel
           sig { returns(Symbol) }
@@ -183,10 +190,12 @@ module PreludeSDK
           attr_accessor :value
 
           sig { params(platform: Symbol, value: String).void }
-          def initialize(platform:, value:); end
+          def initialize(platform:, value:)
+          end
 
           sig { override.returns({platform: Symbol, value: String}) }
-          def to_hash; end
+          def to_hash
+          end
 
           class Platform < PreludeSDK::Enum
             abstract!
@@ -194,7 +203,8 @@ module PreludeSDK
             ANDROID = :android
 
             sig { override.returns(T::Array[Symbol]) }
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
@@ -261,7 +271,8 @@ module PreludeSDK
           ip: nil,
           is_trusted_user: nil,
           os_version: nil
-        ); end
+        )
+        end
 
         sig do
           override.returns(
@@ -276,7 +287,8 @@ module PreludeSDK
             }
           )
         end
-        def to_hash; end
+        def to_hash
+        end
 
         class DevicePlatform < PreludeSDK::Enum
           abstract!
@@ -288,7 +300,8 @@ module PreludeSDK
           WEB = :web
 
           sig { override.returns(T::Array[Symbol]) }
-          def self.values; end
+          def self.values
+          end
         end
       end
     end
