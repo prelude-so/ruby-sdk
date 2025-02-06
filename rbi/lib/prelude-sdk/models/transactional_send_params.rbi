@@ -6,22 +6,6 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {
-            template_id: String,
-            to: String,
-            callback_url: String,
-            correlation_id: String,
-            expires_at: String,
-            from: String,
-            locale: String,
-            variables: T::Hash[Symbol, String]
-          },
-          PreludeSDK::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :template_id
 
@@ -74,7 +58,7 @@ module PreludeSDK
           from: String,
           locale: String,
           variables: T::Hash[Symbol, String],
-          request_options: PreludeSDK::RequestOpts
+          request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(
@@ -89,8 +73,22 @@ module PreludeSDK
         request_options: {}
       ); end
 
-      sig { returns(PreludeSDK::Models::TransactionalSendParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            template_id: String,
+            to: String,
+            callback_url: String,
+            correlation_id: String,
+            expires_at: String,
+            from: String,
+            locale: String,
+            variables: T::Hash[Symbol, String],
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
     end
   end
 end

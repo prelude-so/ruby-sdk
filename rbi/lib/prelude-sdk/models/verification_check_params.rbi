@@ -6,13 +6,6 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
-      Shape = T.type_alias do
-        T.all(
-          {code: String, target: PreludeSDK::Models::VerificationCheckParams::Target},
-          PreludeSDK::RequestParameters::Shape
-        )
-      end
-
       sig { returns(String) }
       attr_accessor :code
 
@@ -23,17 +16,23 @@ module PreludeSDK
         params(
           code: String,
           target: PreludeSDK::Models::VerificationCheckParams::Target,
-          request_options: PreludeSDK::RequestOpts
+          request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         ).void
       end
       def initialize(code:, target:, request_options: {}); end
 
-      sig { returns(PreludeSDK::Models::VerificationCheckParams::Shape) }
-      def to_h; end
+      sig do
+        override.returns(
+          {
+            code: String,
+            target: PreludeSDK::Models::VerificationCheckParams::Target,
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
+      def to_hash; end
 
       class Target < PreludeSDK::BaseModel
-        Shape = T.type_alias { {type: Symbol, value: String} }
-
         sig { returns(Symbol) }
         attr_accessor :type
 
@@ -43,8 +42,8 @@ module PreludeSDK
         sig { params(type: Symbol, value: String).void }
         def initialize(type:, value:); end
 
-        sig { returns(PreludeSDK::Models::VerificationCheckParams::Target::Shape) }
-        def to_h; end
+        sig { override.returns({type: Symbol, value: String}) }
+        def to_hash; end
 
         class Type < PreludeSDK::Enum
           abstract!
