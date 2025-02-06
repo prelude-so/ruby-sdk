@@ -13,7 +13,8 @@ module PreludeSDK
           request_options: PreludeSDK::RequestOpts
         ).returns(PreludeSDK::Models::VerificationCreateResponse)
       end
-      def create(target:, dispatch_id:, metadata:, options:, signals:, request_options: {}); end
+      def create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
+      end
 
       sig do
         params(

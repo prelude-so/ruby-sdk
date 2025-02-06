@@ -19,12 +19,12 @@ module PreludeSDK
       def send_(
         template_id:,
         to:,
-        callback_url:,
-        correlation_id:,
-        expires_at:,
-        from:,
-        locale:,
-        variables:,
+        callback_url: nil,
+        correlation_id: nil,
+        expires_at: nil,
+        from: nil,
+        locale: nil,
+        variables: nil,
         request_options: {}
       ); end
 
