@@ -19,7 +19,7 @@ module PreludeSDK
           request_options: PreludeSDK::RequestOpts
         ).returns(PreludeSDK::Models::WatchPredictResponse)
       end
-      def predict(target:, signals:, request_options: {}); end
+      def predict(target:, signals: nil, request_options: {}); end
 
       sig { params(client: PreludeSDK::Client).void }
       def initialize(client:); end
