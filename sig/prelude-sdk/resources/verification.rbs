@@ -4,7 +4,7 @@ module PreludeSDK
       def create:
         (
           PreludeSDK::Models::VerificationCreateParams
-          | Hash[Symbol, top] params
+          | ::Hash[Symbol, top] params
         ) -> PreludeSDK::Models::VerificationCreateResponse
         | (
           target: PreludeSDK::Models::VerificationCreateParams::Target,
@@ -17,7 +17,8 @@ module PreludeSDK
 
       def check:
         (
-          PreludeSDK::Models::VerificationCheckParams | Hash[Symbol, top] params
+          PreludeSDK::Models::VerificationCheckParams
+          | ::Hash[Symbol, top] params
         ) -> PreludeSDK::Models::VerificationCheckResponse
         | (
           code: String,

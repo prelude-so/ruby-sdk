@@ -16,7 +16,7 @@ module PreludeSDK
 
     attr_reader watch: PreludeSDK::Resources::Watch
 
-    private def auth_headers: -> Hash[String, String]
+    private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (
       base_url: String?,

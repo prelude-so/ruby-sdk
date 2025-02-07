@@ -82,7 +82,7 @@ module PreludeSDK
         class Type < PreludeSDK::Enum
           PHONE_NUMBER: :phone_number
 
-          def self.values: -> Array[PreludeSDK::Models::VerificationCreateParams::Target::type_]
+          def self.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Target::type_]
         end
       end
 
@@ -184,7 +184,7 @@ module PreludeSDK
           class Platform < PreludeSDK::Enum
             ANDROID: :android
 
-            def self.values: -> Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform]
+            def self.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform]
           end
         end
       end
@@ -257,7 +257,7 @@ module PreludeSDK
           TVOS: :tvos
           WEB: :web
 
-          def self.values: -> Array[PreludeSDK::Models::VerificationCreateParams::Signals::device_platform]
+          def self.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Signals::device_platform]
         end
       end
     end
