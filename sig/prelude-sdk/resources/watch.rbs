@@ -3,7 +3,7 @@ module PreludeSDK
     class Watch
       def feed_back:
         (
-          PreludeSDK::Models::WatchFeedBackParams | Hash[Symbol, top] params
+          PreludeSDK::Models::WatchFeedBackParams | ::Hash[Symbol, top] params
         ) -> PreludeSDK::Models::WatchFeedBackResponse
         | (
           feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
@@ -13,7 +13,7 @@ module PreludeSDK
 
       def predict:
         (
-          PreludeSDK::Models::WatchPredictParams | Hash[Symbol, top] params
+          PreludeSDK::Models::WatchPredictParams | ::Hash[Symbol, top] params
         ) -> PreludeSDK::Models::WatchPredictResponse
         | (
           target: PreludeSDK::Models::WatchPredictParams::Target,

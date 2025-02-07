@@ -7,7 +7,7 @@ module PreludeSDK
         expires_at: Time,
         template_id: String,
         to: String,
-        variables: Hash[Symbol, String],
+        variables: ::Hash[Symbol, String],
         callback_url: String,
         correlation_id: String,
         from: String
@@ -24,7 +24,7 @@ module PreludeSDK
 
       attr_accessor to: String
 
-      attr_accessor variables: Hash[Symbol, String]
+      attr_accessor variables: ::Hash[Symbol, String]
 
       attr_reader callback_url: String?
 
@@ -45,7 +45,7 @@ module PreludeSDK
           expires_at: Time,
           template_id: String,
           to: String,
-          variables: Hash[Symbol, String],
+          variables: ::Hash[Symbol, String],
           callback_url: String,
           correlation_id: String,
           from: String
