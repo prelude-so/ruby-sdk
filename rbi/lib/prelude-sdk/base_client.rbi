@@ -24,6 +24,7 @@ module PreludeSDK
         url: URI::Generic,
         headers: T::Hash[String, String],
         body: T.anything,
+        streaming: T::Boolean,
         max_retries: Integer,
         timeout: Float
       }
@@ -33,6 +34,23 @@ module PreludeSDK
 
     sig { params(req: PreludeSDK::BaseClient::RequestComponentsShape).void }
     def self.validate!(req)
+    end
+
+    sig do
+      params(status: Integer, headers: T.any(T::Hash[String, String], Net::HTTPHeader)).returns(T::Boolean)
+    end
+    def self.should_retry?(status, headers:)
+    end
+
+    sig do
+      params(
+        request: PreludeSDK::BaseClient::RequestInputShape,
+        status: Integer,
+        response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
+      )
+        .returns(PreludeSDK::BaseClient::RequestInputShape)
+    end
+    def self.follow_redirect(request, status:, response_headers:)
     end
 
     sig { returns(T.anything) }
@@ -81,19 +99,8 @@ module PreludeSDK
     private def build_request(req, opts)
     end
 
-    sig { params(status: Integer, headers: T::Hash[String, String]).returns(T::Boolean) }
-    private def should_retry?(status, headers:)
-    end
-
     sig { params(headers: T::Hash[String, String], retry_count: Integer).returns(Float) }
     private def retry_delay(headers, retry_count:)
-    end
-
-    sig do
-      params(request: PreludeSDK::BaseClient::RequestInputShape, status: Integer, location_header: String)
-        .returns(PreludeSDK::BaseClient::RequestInputShape)
-    end
-    private def follow_redirect(request, status:, location_header:)
     end
 
     sig do
@@ -103,15 +110,20 @@ module PreludeSDK
         retry_count: Integer,
         send_retry_header: T::Boolean
       )
-        .returns(Net::HTTPResponse)
+        .returns([Net::HTTPResponse, T::Enumerable[String]])
     end
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
     end
 
     sig do
-      params(req: PreludeSDK::BaseClient::RequestComponentsShape, response: NilClass).returns(T.anything)
+      params(
+        req: PreludeSDK::BaseClient::RequestComponentsShape,
+        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
+        stream: T::Enumerable[String]
+      )
+        .returns(T.anything)
     end
-    private def parse_response(req, response)
+    private def parse_response(req, headers:, stream:)
     end
 
     sig do

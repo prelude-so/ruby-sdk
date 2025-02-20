@@ -19,6 +19,7 @@ module PreludeSDK
         url: URI::Generic,
         headers: ::Hash[String, String],
         body: top,
+        streaming: bool,
         max_retries: Integer,
         timeout: Float
       }
@@ -26,6 +27,17 @@ module PreludeSDK
     MAX_REDIRECTS: 20
 
     def self.validate!: (PreludeSDK::BaseClient::request_components req) -> void
+
+    def self.should_retry?: (
+      Integer status,
+      headers: ::Hash[String, String]
+    ) -> bool
+
+    def self.follow_redirect: (
+      PreludeSDK::BaseClient::request_input request,
+      status: Integer,
+      response_headers: ::Hash[String, String]
+    ) -> PreludeSDK::BaseClient::request_input
 
     # @private
     attr_accessor requester: top
@@ -49,32 +61,22 @@ module PreludeSDK
       PreludeSDK::request_options opts
     ) -> PreludeSDK::BaseClient::request_input
 
-    private def should_retry?: (
-      Integer status,
-      headers: ::Hash[String, String]
-    ) -> bool
-
     private def retry_delay: (
       ::Hash[String, String] headers,
       retry_count: Integer
     ) -> Float
-
-    private def follow_redirect: (
-      PreludeSDK::BaseClient::request_input request,
-      status: Integer,
-      location_header: String
-    ) -> PreludeSDK::BaseClient::request_input
 
     private def send_request: (
       PreludeSDK::BaseClient::request_input request,
       redirect_count: Integer,
       retry_count: Integer,
       send_retry_header: bool
-    ) -> top
+    ) -> [top, Enumerable[String]]
 
     private def parse_response: (
       PreludeSDK::BaseClient::request_components req,
-      nil response
+      headers: ::Hash[String, String],
+      stream: Enumerable[String]
     ) -> top
 
     def request:
