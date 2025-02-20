@@ -2,16 +2,6 @@
 
 module PreludeSDK
   module Models
-    # @example
-    # ```ruby
-    # verification_create_response => {
-    #   id: String,
-    #   method_: PreludeSDK::Models::VerificationCreateResponse::Method,
-    #   status: PreludeSDK::Models::VerificationCreateResponse::Status,
-    #   metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-    #   request_id: String
-    # }
-    # ```
     class VerificationCreateResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   The verification identifier.
@@ -111,12 +101,6 @@ module PreludeSDK
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # metadata => {
-      #   correlation_id: String
-      # }
-      # ```
       class Metadata < PreludeSDK::BaseModel
         # @!attribute [r] correlation_id
         #

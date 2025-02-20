@@ -23,5 +23,19 @@ class PreludeSDK::Test::Resources::TransactionalTest < Minitest::Test
     assert_pattern do
       response => PreludeSDK::Models::TransactionalSendResponse
     end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        expires_at: Time,
+        template_id: String,
+        to: String,
+        variables: ^(PreludeSDK::HashOf[String]),
+        callback_url: String | nil,
+        correlation_id: String | nil,
+        from: String | nil
+      }
+    end
   end
 end
