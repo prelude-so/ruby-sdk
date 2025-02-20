@@ -23,11 +23,7 @@ module PreludeSDK
       #   The method used for verifying this phone number.
       #
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
-      required :method_,
-               enum: -> {
-                 PreludeSDK::Models::VerificationCreateResponse::Method
-               },
-               api_name: :method
+      required :method_, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Method }, api_name: :method
 
       # @!attribute status
       #   The status of the verification.

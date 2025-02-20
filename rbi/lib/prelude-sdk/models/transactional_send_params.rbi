@@ -81,7 +81,8 @@ module PreludeSDK
           locale: String,
           variables: T::Hash[Symbol, String],
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         template_id:,
@@ -97,19 +98,20 @@ module PreludeSDK
       end
 
       sig do
-        override.returns(
-          {
-            template_id: String,
-            to: String,
-            callback_url: String,
-            correlation_id: String,
-            expires_at: String,
-            from: String,
-            locale: String,
-            variables: T::Hash[Symbol, String],
-            request_options: PreludeSDK::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              template_id: String,
+              to: String,
+              callback_url: String,
+              correlation_id: String,
+              expires_at: String,
+              from: String,
+              locale: String,
+              variables: T::Hash[Symbol, String],
+              request_options: PreludeSDK::RequestOptions
+            }
+          )
       end
       def to_hash
       end

@@ -256,10 +256,7 @@ module PreludeSDK
           #     "android".
           #
           #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
-          required :platform,
-                   enum: -> {
-                     PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform
-                   }
+          required :platform, enum: -> { PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform }
 
           # @!attribute value
           #   The Android SMS Retriever API hash code that identifies your app.

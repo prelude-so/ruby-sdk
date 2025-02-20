@@ -11,7 +11,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchFeedBackParams::Feedback).returns(PreludeSDK::Models::WatchFeedBackParams::Feedback)
+        params(_: PreludeSDK::Models::WatchFeedBackParams::Feedback)
+          .returns(PreludeSDK::Models::WatchFeedBackParams::Feedback)
       end
       def feedback=(_)
       end
@@ -21,7 +22,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchFeedBackParams::Target).returns(PreludeSDK::Models::WatchFeedBackParams::Target)
+        params(_: PreludeSDK::Models::WatchFeedBackParams::Target)
+          .returns(PreludeSDK::Models::WatchFeedBackParams::Target)
       end
       def target=(_)
       end
@@ -31,19 +33,21 @@ module PreludeSDK
           feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
           target: PreludeSDK::Models::WatchFeedBackParams::Target,
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(feedback:, target:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
-            target: PreludeSDK::Models::WatchFeedBackParams::Target,
-            request_options: PreludeSDK::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
+              target: PreludeSDK::Models::WatchFeedBackParams::Target,
+              request_options: PreludeSDK::RequestOptions
+            }
+          )
       end
       def to_hash
       end

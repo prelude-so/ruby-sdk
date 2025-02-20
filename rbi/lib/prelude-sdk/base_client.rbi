@@ -52,7 +52,8 @@ module PreludeSDK
         max_retry_delay: Float,
         headers: T::Hash[String, T.nilable(String)],
         idempotency_header: T.nilable(String)
-      ).void
+      )
+        .void
     end
     def initialize(
       base_url:,
@@ -74,10 +75,8 @@ module PreludeSDK
     end
 
     sig do
-      params(
-        req: PreludeSDK::BaseClient::RequestShape,
-        opts: T::Hash[Symbol, T.anything]
-      ).returns(PreludeSDK::BaseClient::NormalizedRequestShape)
+      params(req: PreludeSDK::BaseClient::RequestShape, opts: T::Hash[Symbol, T.anything])
+        .returns(PreludeSDK::BaseClient::NormalizedRequestShape)
     end
     private def build_request(req, opts)
     end
@@ -95,7 +94,8 @@ module PreludeSDK
         request: PreludeSDK::BaseClient::NormalizedRequestShape,
         status: Integer,
         location_header: String
-      ).returns(PreludeSDK::BaseClient::NormalizedRequestShape)
+      )
+        .returns(PreludeSDK::BaseClient::NormalizedRequestShape)
     end
     private def follow_redirect(request, status:, location_header:)
     end
@@ -106,7 +106,8 @@ module PreludeSDK
         redirect_count: Integer,
         retry_count: Integer,
         send_retry_header: T::Boolean
-      ).returns(Net::HTTPResponse)
+      )
+        .returns(Net::HTTPResponse)
     end
     private def send_request(request, redirect_count:, retry_count:, send_retry_header:)
     end
@@ -126,7 +127,8 @@ module PreludeSDK
         page: T.nilable(T::Class[PreludeSDK::BaseModel]),
         model: T.nilable(PreludeSDK::Converter::Input),
         options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
-      ).returns(T.anything)
+      )
+        .returns(T.anything)
     end
     def request(
       method,

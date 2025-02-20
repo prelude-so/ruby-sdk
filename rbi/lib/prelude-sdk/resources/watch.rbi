@@ -8,7 +8,8 @@ module PreludeSDK
           feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
           target: PreludeSDK::Models::WatchFeedBackParams::Target,
           request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(PreludeSDK::Models::WatchFeedBackResponse)
+        )
+          .returns(PreludeSDK::Models::WatchFeedBackResponse)
       end
       def feed_back(feedback:, target:, request_options: {})
       end
@@ -18,7 +19,8 @@ module PreludeSDK
           target: PreludeSDK::Models::WatchPredictParams::Target,
           signals: PreludeSDK::Models::WatchPredictParams::Signals,
           request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
-        ).returns(PreludeSDK::Models::WatchPredictResponse)
+        )
+          .returns(PreludeSDK::Models::WatchPredictResponse)
       end
       def predict(target:, signals: nil, request_options: {})
       end

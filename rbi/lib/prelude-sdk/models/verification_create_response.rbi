@@ -32,7 +32,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateResponse::Metadata).returns(PreludeSDK::Models::VerificationCreateResponse::Metadata)
+        params(_: PreludeSDK::Models::VerificationCreateResponse::Metadata)
+          .returns(PreludeSDK::Models::VerificationCreateResponse::Metadata)
       end
       def metadata=(_)
       end
@@ -52,21 +53,23 @@ module PreludeSDK
           status: Symbol,
           metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
           request_id: String
-        ).void
+        )
+          .void
       end
       def initialize(id:, method_:, status:, metadata: nil, request_id: nil)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            method_: Symbol,
-            status: Symbol,
-            metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-            request_id: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              method_: Symbol,
+              status: Symbol,
+              metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
+              request_id: String
+            }
+          )
       end
       def to_hash
       end
