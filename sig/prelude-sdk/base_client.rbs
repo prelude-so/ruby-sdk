@@ -1,6 +1,6 @@
 module PreludeSDK
   class BaseClient
-    type request =
+    type request_components =
       {
         method: Symbol,
         path: String | ::Array[String],
@@ -10,12 +10,10 @@ module PreludeSDK
         unwrap: Symbol?,
         page: Class?,
         model: PreludeSDK::Converter::input?,
-        options: (PreludeSDK::RequestOptions
-        | PreludeSDK::request_options
-        | ::Hash[Symbol, top])?
+        options: PreludeSDK::request_opts?
       }
 
-    type normalized_request =
+    type request_input =
       {
         method: Symbol,
         url: URI::Generic,
@@ -27,7 +25,7 @@ module PreludeSDK
 
     MAX_REDIRECTS: 20
 
-    def self.validate!: (PreludeSDK::BaseClient::request req) -> void
+    def self.validate!: (PreludeSDK::BaseClient::request_components req) -> void
 
     # @private
     attr_accessor requester: top
@@ -47,9 +45,9 @@ module PreludeSDK
     private def generate_idempotency_key: -> String
 
     private def build_request: (
-      PreludeSDK::BaseClient::request req,
+      PreludeSDK::BaseClient::request_components req,
       PreludeSDK::request_options opts
-    ) -> PreludeSDK::BaseClient::normalized_request
+    ) -> PreludeSDK::BaseClient::request_input
 
     private def should_retry?: (
       Integer status,
@@ -62,20 +60,20 @@ module PreludeSDK
     ) -> Float
 
     private def follow_redirect: (
-      PreludeSDK::BaseClient::normalized_request request,
+      PreludeSDK::BaseClient::request_input request,
       status: Integer,
       location_header: String
-    ) -> PreludeSDK::BaseClient::normalized_request
+    ) -> PreludeSDK::BaseClient::request_input
 
     private def send_request: (
-      PreludeSDK::BaseClient::normalized_request request,
+      PreludeSDK::BaseClient::request_input request,
       redirect_count: Integer,
       retry_count: Integer,
       send_retry_header: bool
     ) -> top
 
     private def parse_response: (
-      PreludeSDK::BaseClient::request req,
+      PreludeSDK::BaseClient::request_components req,
       nil response
     ) -> top
 
@@ -89,11 +87,9 @@ module PreludeSDK
         unwrap: Symbol?,
         page: Class?,
         model: PreludeSDK::Converter::input?,
-        options: (PreludeSDK::RequestOptions
-        | PreludeSDK::request_options
-        | ::Hash[Symbol, top])?
+        options: PreludeSDK::request_opts?
       ) -> top
-      | (PreludeSDK::BaseClient::request req) -> top
+      | (PreludeSDK::BaseClient::request_components req) -> top
 
     def inspect: -> String
   end

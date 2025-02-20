@@ -27,7 +27,7 @@ module PreludeSDK
     sig do
       params(
         client: PreludeSDK::BaseClient,
-        req: PreludeSDK::BaseClient::RequestShape,
+        req: PreludeSDK::BaseClient::RequestComponentsShape,
         headers: T::Hash[String, String],
         unwrapped: T.anything
       )
