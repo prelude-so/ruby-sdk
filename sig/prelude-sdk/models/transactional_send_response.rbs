@@ -28,15 +28,15 @@ module PreludeSDK
 
       attr_reader callback_url: String?
 
-      def callback_url=: (String) -> void
+      def callback_url=: (String) -> String
 
       attr_reader correlation_id: String?
 
-      def correlation_id=: (String) -> void
+      def correlation_id=: (String) -> String
 
       attr_reader from: String?
 
-      def from=: (String) -> void
+      def from=: (String) -> String
 
       def initialize:
         (

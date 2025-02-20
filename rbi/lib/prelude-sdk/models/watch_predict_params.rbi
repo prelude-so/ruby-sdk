@@ -7,13 +7,24 @@ module PreludeSDK
       include PreludeSDK::RequestParameters
 
       sig { returns(PreludeSDK::Models::WatchPredictParams::Target) }
-      attr_accessor :target
+      def target
+      end
+
+      sig do
+        params(_: PreludeSDK::Models::WatchPredictParams::Target).returns(PreludeSDK::Models::WatchPredictParams::Target)
+      end
+      def target=(_)
+      end
 
       sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals)) }
-      attr_reader :signals
+      def signals
+      end
 
-      sig { params(signals: PreludeSDK::Models::WatchPredictParams::Signals).void }
-      attr_writer :signals
+      sig do
+        params(_: PreludeSDK::Models::WatchPredictParams::Signals).returns(PreludeSDK::Models::WatchPredictParams::Signals)
+      end
+      def signals=(_)
+      end
 
       sig do
         params(
@@ -39,10 +50,20 @@ module PreludeSDK
 
       class Target < PreludeSDK::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(type: Symbol, value: String).void }
         def initialize(type:, value:)
@@ -65,28 +86,36 @@ module PreludeSDK
 
       class Signals < PreludeSDK::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :device_id
+        def device_id
+        end
 
-        sig { params(device_id: String).void }
-        attr_writer :device_id
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :device_model
-
-        sig { params(device_model: String).void }
-        attr_writer :device_model
+        sig { params(_: String).returns(String) }
+        def device_id=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :device_type
+        def device_model
+        end
 
-        sig { params(device_type: String).void }
-        attr_writer :device_type
+        sig { params(_: String).returns(String) }
+        def device_model=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :ip
+        def device_type
+        end
 
-        sig { params(ip: String).void }
-        attr_writer :ip
+        sig { params(_: String).returns(String) }
+        def device_type=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def ip
+        end
+
+        sig { params(_: String).returns(String) }
+        def ip=(_)
+        end
 
         sig { params(device_id: String, device_model: String, device_type: String, ip: String).void }
         def initialize(device_id: nil, device_model: nil, device_type: nil, ip: nil)

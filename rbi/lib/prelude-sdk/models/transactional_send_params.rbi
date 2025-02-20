@@ -7,46 +7,68 @@ module PreludeSDK
       include PreludeSDK::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :template_id
+      def template_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def template_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :to
+      def to
+      end
+
+      sig { params(_: String).returns(String) }
+      def to=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :callback_url
+      def callback_url
+      end
 
-      sig { params(callback_url: String).void }
-      attr_writer :callback_url
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :correlation_id
-
-      sig { params(correlation_id: String).void }
-      attr_writer :correlation_id
+      sig { params(_: String).returns(String) }
+      def callback_url=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :expires_at
+      def correlation_id
+      end
 
-      sig { params(expires_at: String).void }
-      attr_writer :expires_at
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :from
-
-      sig { params(from: String).void }
-      attr_writer :from
+      sig { params(_: String).returns(String) }
+      def correlation_id=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :locale
+      def expires_at
+      end
 
-      sig { params(locale: String).void }
-      attr_writer :locale
+      sig { params(_: String).returns(String) }
+      def expires_at=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def from
+      end
+
+      sig { params(_: String).returns(String) }
+      def from=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def locale
+      end
+
+      sig { params(_: String).returns(String) }
+      def locale=(_)
+      end
 
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      attr_reader :variables
+      def variables
+      end
 
-      sig { params(variables: T::Hash[Symbol, String]).void }
-      attr_writer :variables
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def variables=(_)
+      end
 
       sig do
         params(

@@ -7,10 +7,22 @@ module PreludeSDK
       include PreludeSDK::RequestParameters
 
       sig { returns(String) }
-      attr_accessor :code
+      def code
+      end
+
+      sig { params(_: String).returns(String) }
+      def code=(_)
+      end
 
       sig { returns(PreludeSDK::Models::VerificationCheckParams::Target) }
-      attr_accessor :target
+      def target
+      end
+
+      sig do
+        params(_: PreludeSDK::Models::VerificationCheckParams::Target).returns(PreludeSDK::Models::VerificationCheckParams::Target)
+      end
+      def target=(_)
+      end
 
       sig do
         params(
@@ -36,10 +48,20 @@ module PreludeSDK
 
       class Target < PreludeSDK::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(type: Symbol, value: String).void }
         def initialize(type:, value:)

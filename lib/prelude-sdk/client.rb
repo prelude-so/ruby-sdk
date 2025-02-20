@@ -33,6 +33,8 @@ module PreludeSDK
     # @return [Hash{String=>String}]
     #
     private def auth_headers
+      return {} if @api_token.nil?
+
       {"Authorization" => "Bearer #{@api_token}"}
     end
 

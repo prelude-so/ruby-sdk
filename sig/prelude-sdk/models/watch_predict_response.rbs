@@ -47,11 +47,11 @@ module PreludeSDK
 
         def cause=: (
           PreludeSDK::Models::WatchPredictResponse::Reasoning::cause
-        ) -> void
+        ) -> PreludeSDK::Models::WatchPredictResponse::Reasoning::cause
 
         attr_reader score: Float?
 
-        def score=: (Float) -> void
+        def score=: (Float) -> Float
 
         def initialize:
           (
