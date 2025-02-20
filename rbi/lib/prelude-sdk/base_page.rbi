@@ -28,7 +28,7 @@ module PreludeSDK
       params(
         client: PreludeSDK::BaseClient,
         req: PreludeSDK::BaseClient::RequestComponentsShape,
-        headers: T::Hash[String, String],
+        headers: T.any(T::Hash[String, String], Net::HTTPHeader),
         unwrapped: T.anything
       )
         .void
