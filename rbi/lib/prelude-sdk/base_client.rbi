@@ -93,7 +93,8 @@ module PreludeSDK
     end
 
     sig do
-      params(req: PreludeSDK::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+      overridable
+        .params(req: PreludeSDK::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
         .returns(PreludeSDK::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
