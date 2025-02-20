@@ -12,7 +12,7 @@ module PreludeSDK
 
     def initialize: (
       client: PreludeSDK::BaseClient,
-      req: PreludeSDK::BaseClient::request,
+      req: PreludeSDK::BaseClient::request_components,
       headers: ::Hash[String, String],
       unwrapped: top
     ) -> void
