@@ -4,7 +4,12 @@ module PreludeSDK
   module Models
     class WatchFeedBackResponse < PreludeSDK::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { params(id: String).void }
       def initialize(id:)

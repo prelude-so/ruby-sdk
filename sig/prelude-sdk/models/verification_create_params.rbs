@@ -18,25 +18,25 @@ module PreludeSDK
 
       attr_reader dispatch_id: String?
 
-      def dispatch_id=: (String) -> void
+      def dispatch_id=: (String) -> String
 
       attr_reader metadata: PreludeSDK::Models::VerificationCreateParams::Metadata?
 
       def metadata=: (
         PreludeSDK::Models::VerificationCreateParams::Metadata
-      ) -> void
+      ) -> PreludeSDK::Models::VerificationCreateParams::Metadata
 
       attr_reader options: PreludeSDK::Models::VerificationCreateParams::Options?
 
       def options=: (
         PreludeSDK::Models::VerificationCreateParams::Options
-      ) -> void
+      ) -> PreludeSDK::Models::VerificationCreateParams::Options
 
       attr_reader signals: PreludeSDK::Models::VerificationCreateParams::Signals?
 
       def signals=: (
         PreludeSDK::Models::VerificationCreateParams::Signals
-      ) -> void
+      ) -> PreludeSDK::Models::VerificationCreateParams::Signals
 
       def initialize:
         (
@@ -91,7 +91,7 @@ module PreludeSDK
       class Metadata < PreludeSDK::BaseModel
         attr_reader correlation_id: String?
 
-        def correlation_id=: (String) -> void
+        def correlation_id=: (String) -> String
 
         def initialize:
           (correlation_id: String) -> void
@@ -118,27 +118,27 @@ module PreludeSDK
 
         def app_realm=: (
           PreludeSDK::Models::VerificationCreateParams::Options::AppRealm
-        ) -> void
+        ) -> PreludeSDK::Models::VerificationCreateParams::Options::AppRealm
 
         attr_reader code_size: Integer?
 
-        def code_size=: (Integer) -> void
+        def code_size=: (Integer) -> Integer
 
         attr_reader custom_code: String?
 
-        def custom_code=: (String) -> void
+        def custom_code=: (String) -> String
 
         attr_reader locale: String?
 
-        def locale=: (String) -> void
+        def locale=: (String) -> String
 
         attr_reader sender_id: String?
 
-        def sender_id=: (String) -> void
+        def sender_id=: (String) -> String
 
         attr_reader template_id: String?
 
-        def template_id=: (String) -> void
+        def template_id=: (String) -> String
 
         def initialize:
           (
@@ -203,33 +203,33 @@ module PreludeSDK
       class Signals < PreludeSDK::BaseModel
         attr_reader app_version: String?
 
-        def app_version=: (String) -> void
+        def app_version=: (String) -> String
 
         attr_reader device_id: String?
 
-        def device_id=: (String) -> void
+        def device_id=: (String) -> String
 
         attr_reader device_model: String?
 
-        def device_model=: (String) -> void
+        def device_model=: (String) -> String
 
         attr_reader device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform?
 
         def device_platform=: (
           PreludeSDK::Models::VerificationCreateParams::Signals::device_platform
-        ) -> void
+        ) -> PreludeSDK::Models::VerificationCreateParams::Signals::device_platform
 
         attr_reader ip: String?
 
-        def ip=: (String) -> void
+        def ip=: (String) -> String
 
         attr_reader is_trusted_user: bool?
 
-        def is_trusted_user=: (bool) -> void
+        def is_trusted_user=: (bool) -> bool
 
         attr_reader os_version: String?
 
-        def os_version=: (String) -> void
+        def os_version=: (String) -> String
 
         def initialize:
           (

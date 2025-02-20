@@ -20,11 +20,11 @@ module PreludeSDK
 
       def metadata=: (
         PreludeSDK::Models::VerificationCreateResponse::Metadata
-      ) -> void
+      ) -> PreludeSDK::Models::VerificationCreateResponse::Metadata
 
       attr_reader request_id: String?
 
-      def request_id=: (String) -> void
+      def request_id=: (String) -> String
 
       def initialize:
         (
@@ -64,7 +64,7 @@ module PreludeSDK
       class Metadata < PreludeSDK::BaseModel
         attr_reader correlation_id: String?
 
-        def correlation_id=: (String) -> void
+        def correlation_id=: (String) -> String
 
         def initialize:
           (correlation_id: String) -> void

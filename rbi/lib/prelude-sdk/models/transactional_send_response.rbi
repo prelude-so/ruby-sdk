@@ -4,40 +4,76 @@ module PreludeSDK
   module Models
     class TransactionalSendResponse < PreludeSDK::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :created_at
+      def created_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def created_at=(_)
+      end
 
       sig { returns(Time) }
-      attr_accessor :expires_at
+      def expires_at
+      end
+
+      sig { params(_: Time).returns(Time) }
+      def expires_at=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :template_id
+      def template_id
+      end
+
+      sig { params(_: String).returns(String) }
+      def template_id=(_)
+      end
 
       sig { returns(String) }
-      attr_accessor :to
+      def to
+      end
+
+      sig { params(_: String).returns(String) }
+      def to=(_)
+      end
 
       sig { returns(T::Hash[Symbol, String]) }
-      attr_accessor :variables
+      def variables
+      end
+
+      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+      def variables=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :callback_url
+      def callback_url
+      end
 
-      sig { params(callback_url: String).void }
-      attr_writer :callback_url
-
-      sig { returns(T.nilable(String)) }
-      attr_reader :correlation_id
-
-      sig { params(correlation_id: String).void }
-      attr_writer :correlation_id
+      sig { params(_: String).returns(String) }
+      def callback_url=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :from
+      def correlation_id
+      end
 
-      sig { params(from: String).void }
-      attr_writer :from
+      sig { params(_: String).returns(String) }
+      def correlation_id=(_)
+      end
+
+      sig { returns(T.nilable(String)) }
+      def from
+      end
+
+      sig { params(_: String).returns(String) }
+      def from=(_)
+      end
 
       sig do
         params(

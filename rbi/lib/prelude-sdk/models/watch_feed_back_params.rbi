@@ -7,10 +7,24 @@ module PreludeSDK
       include PreludeSDK::RequestParameters
 
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback) }
-      attr_accessor :feedback
+      def feedback
+      end
+
+      sig do
+        params(_: PreludeSDK::Models::WatchFeedBackParams::Feedback).returns(PreludeSDK::Models::WatchFeedBackParams::Feedback)
+      end
+      def feedback=(_)
+      end
 
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Target) }
-      attr_accessor :target
+      def target
+      end
+
+      sig do
+        params(_: PreludeSDK::Models::WatchFeedBackParams::Target).returns(PreludeSDK::Models::WatchFeedBackParams::Target)
+      end
+      def target=(_)
+      end
 
       sig do
         params(
@@ -36,7 +50,12 @@ module PreludeSDK
 
       class Feedback < PreludeSDK::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { params(type: Symbol).void }
         def initialize(type:)
@@ -59,10 +78,20 @@ module PreludeSDK
 
       class Target < PreludeSDK::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(type: Symbol, value: String).void }
         def initialize(type:, value:)

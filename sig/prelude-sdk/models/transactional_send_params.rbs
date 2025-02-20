@@ -23,27 +23,27 @@ module PreludeSDK
 
       attr_reader callback_url: String?
 
-      def callback_url=: (String) -> void
+      def callback_url=: (String) -> String
 
       attr_reader correlation_id: String?
 
-      def correlation_id=: (String) -> void
+      def correlation_id=: (String) -> String
 
       attr_reader expires_at: String?
 
-      def expires_at=: (String) -> void
+      def expires_at=: (String) -> String
 
       attr_reader from: String?
 
-      def from=: (String) -> void
+      def from=: (String) -> String
 
       attr_reader locale: String?
 
-      def locale=: (String) -> void
+      def locale=: (String) -> String
 
       attr_reader variables: ::Hash[Symbol, String]?
 
-      def variables=: (::Hash[Symbol, String]) -> void
+      def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
       def initialize:
         (
