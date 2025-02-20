@@ -24,29 +24,21 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchPredictResponse::Reasoning).returns(PreludeSDK::Models::WatchPredictResponse::Reasoning)
+        params(_: PreludeSDK::Models::WatchPredictResponse::Reasoning)
+          .returns(PreludeSDK::Models::WatchPredictResponse::Reasoning)
       end
       def reasoning=(_)
       end
 
       sig do
-        params(
-          id: String,
-          prediction: Symbol,
-          reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
-        ).void
+        params(id: String, prediction: Symbol, reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning).void
       end
       def initialize(id:, prediction:, reasoning:)
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            prediction: Symbol,
-            reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
-          }
-        )
+        override
+          .returns({id: String, prediction: Symbol, reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning})
       end
       def to_hash
       end

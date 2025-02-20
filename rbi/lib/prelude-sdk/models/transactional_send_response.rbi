@@ -86,7 +86,8 @@ module PreludeSDK
           callback_url: String,
           correlation_id: String,
           from: String
-        ).void
+        )
+          .void
       end
       def initialize(
         id:,
@@ -102,19 +103,20 @@ module PreludeSDK
       end
 
       sig do
-        override.returns(
-          {
-            id: String,
-            created_at: Time,
-            expires_at: Time,
-            template_id: String,
-            to: String,
-            variables: T::Hash[Symbol, String],
-            callback_url: String,
-            correlation_id: String,
-            from: String
-          }
-        )
+        override
+          .returns(
+            {
+              id: String,
+              created_at: Time,
+              expires_at: Time,
+              template_id: String,
+              to: String,
+              variables: T::Hash[Symbol, String],
+              callback_url: String,
+              correlation_id: String,
+              from: String
+            }
+          )
       end
       def to_hash
       end

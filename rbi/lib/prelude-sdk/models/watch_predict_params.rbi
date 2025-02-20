@@ -11,7 +11,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchPredictParams::Target).returns(PreludeSDK::Models::WatchPredictParams::Target)
+        params(_: PreludeSDK::Models::WatchPredictParams::Target)
+          .returns(PreludeSDK::Models::WatchPredictParams::Target)
       end
       def target=(_)
       end
@@ -21,7 +22,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchPredictParams::Signals).returns(PreludeSDK::Models::WatchPredictParams::Signals)
+        params(_: PreludeSDK::Models::WatchPredictParams::Signals)
+          .returns(PreludeSDK::Models::WatchPredictParams::Signals)
       end
       def signals=(_)
       end
@@ -31,19 +33,21 @@ module PreludeSDK
           target: PreludeSDK::Models::WatchPredictParams::Target,
           signals: PreludeSDK::Models::WatchPredictParams::Signals,
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(target:, signals: nil, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            target: PreludeSDK::Models::WatchPredictParams::Target,
-            signals: PreludeSDK::Models::WatchPredictParams::Signals,
-            request_options: PreludeSDK::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              target: PreludeSDK::Models::WatchPredictParams::Target,
+              signals: PreludeSDK::Models::WatchPredictParams::Signals,
+              request_options: PreludeSDK::RequestOptions
+            }
+          )
       end
       def to_hash
       end

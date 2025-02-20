@@ -19,7 +19,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCheckParams::Target).returns(PreludeSDK::Models::VerificationCheckParams::Target)
+        params(_: PreludeSDK::Models::VerificationCheckParams::Target)
+          .returns(PreludeSDK::Models::VerificationCheckParams::Target)
       end
       def target=(_)
       end
@@ -29,19 +30,21 @@ module PreludeSDK
           code: String,
           target: PreludeSDK::Models::VerificationCheckParams::Target,
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(code:, target:, request_options: {})
       end
 
       sig do
-        override.returns(
-          {
-            code: String,
-            target: PreludeSDK::Models::VerificationCheckParams::Target,
-            request_options: PreludeSDK::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              code: String,
+              target: PreludeSDK::Models::VerificationCheckParams::Target,
+              request_options: PreludeSDK::RequestOptions
+            }
+          )
       end
       def to_hash
       end
