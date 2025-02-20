@@ -2,12 +2,6 @@
 
 module PreludeSDK
   module Models
-    # @example
-    # ```ruby
-    # watch_feed_back_response => {
-    #   id: String
-    # }
-    # ```
     class WatchFeedBackResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   A unique identifier for your feedback request.
