@@ -4,25 +4,46 @@ module PreludeSDK
   module Models
     class VerificationCreateResponse < PreludeSDK::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :method_
+      def method_
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def method_=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :status
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
 
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateResponse::Metadata)) }
-      attr_reader :metadata
+      def metadata
+      end
 
-      sig { params(metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata).void }
-      attr_writer :metadata
+      sig do
+        params(_: PreludeSDK::Models::VerificationCreateResponse::Metadata).returns(PreludeSDK::Models::VerificationCreateResponse::Metadata)
+      end
+      def metadata=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :request_id
+      def request_id
+      end
 
-      sig { params(request_id: String).void }
-      attr_writer :request_id
+      sig { params(_: String).returns(String) }
+      def request_id=(_)
+      end
 
       sig do
         params(
@@ -74,10 +95,12 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :correlation_id
+        def correlation_id
+        end
 
-        sig { params(correlation_id: String).void }
-        attr_writer :correlation_id
+        sig { params(_: String).returns(String) }
+        def correlation_id=(_)
+        end
 
         sig { params(correlation_id: String).void }
         def initialize(correlation_id: nil)

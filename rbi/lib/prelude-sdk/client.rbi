@@ -11,18 +11,22 @@ module PreludeSDK
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
     sig { returns(String) }
-    attr_reader :api_token
+    def api_token
+    end
 
     sig { returns(PreludeSDK::Resources::Transactional) }
-    attr_reader :transactional
+    def transactional
+    end
 
     sig { returns(PreludeSDK::Resources::Verification) }
-    attr_reader :verification
+    def verification
+    end
 
     sig { returns(PreludeSDK::Resources::Watch) }
-    attr_reader :watch
+    def watch
+    end
 
-    sig { returns(T::Hash[String, String]) }
+    sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
     end
 

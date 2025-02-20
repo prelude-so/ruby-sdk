@@ -4,13 +4,30 @@ module PreludeSDK
   module Models
     class WatchPredictResponse < PreludeSDK::BaseModel
       sig { returns(String) }
-      attr_accessor :id
+      def id
+      end
+
+      sig { params(_: String).returns(String) }
+      def id=(_)
+      end
 
       sig { returns(Symbol) }
-      attr_accessor :prediction
+      def prediction
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def prediction=(_)
+      end
 
       sig { returns(PreludeSDK::Models::WatchPredictResponse::Reasoning) }
-      attr_accessor :reasoning
+      def reasoning
+      end
+
+      sig do
+        params(_: PreludeSDK::Models::WatchPredictResponse::Reasoning).returns(PreludeSDK::Models::WatchPredictResponse::Reasoning)
+      end
+      def reasoning=(_)
+      end
 
       sig do
         params(
@@ -47,16 +64,20 @@ module PreludeSDK
 
       class Reasoning < PreludeSDK::BaseModel
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :cause
+        def cause
+        end
 
-        sig { params(cause: Symbol).void }
-        attr_writer :cause
+        sig { params(_: Symbol).returns(Symbol) }
+        def cause=(_)
+        end
 
         sig { returns(T.nilable(Float)) }
-        attr_reader :score
+        def score
+        end
 
-        sig { params(score: Float).void }
-        attr_writer :score
+        sig { params(_: Float).returns(Float) }
+        def score=(_)
+        end
 
         sig { params(cause: Symbol, score: Float).void }
         def initialize(cause: nil, score: nil)

@@ -15,7 +15,9 @@ module PreludeSDK
 
       attr_reader signals: PreludeSDK::Models::WatchPredictParams::Signals?
 
-      def signals=: (PreludeSDK::Models::WatchPredictParams::Signals) -> void
+      def signals=: (
+        PreludeSDK::Models::WatchPredictParams::Signals
+      ) -> PreludeSDK::Models::WatchPredictParams::Signals
 
       def initialize:
         (
@@ -72,19 +74,19 @@ module PreludeSDK
       class Signals < PreludeSDK::BaseModel
         attr_reader device_id: String?
 
-        def device_id=: (String) -> void
+        def device_id=: (String) -> String
 
         attr_reader device_model: String?
 
-        def device_model=: (String) -> void
+        def device_model=: (String) -> String
 
         attr_reader device_type: String?
 
-        def device_type=: (String) -> void
+        def device_type=: (String) -> String
 
         attr_reader ip: String?
 
-        def ip=: (String) -> void
+        def ip=: (String) -> String
 
         def initialize:
           (

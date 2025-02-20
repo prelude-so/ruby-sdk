@@ -7,31 +7,52 @@ module PreludeSDK
       include PreludeSDK::RequestParameters
 
       sig { returns(PreludeSDK::Models::VerificationCreateParams::Target) }
-      attr_accessor :target
+      def target
+      end
+
+      sig do
+        params(_: PreludeSDK::Models::VerificationCreateParams::Target).returns(PreludeSDK::Models::VerificationCreateParams::Target)
+      end
+      def target=(_)
+      end
 
       sig { returns(T.nilable(String)) }
-      attr_reader :dispatch_id
+      def dispatch_id
+      end
 
-      sig { params(dispatch_id: String).void }
-      attr_writer :dispatch_id
+      sig { params(_: String).returns(String) }
+      def dispatch_id=(_)
+      end
 
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Metadata)) }
-      attr_reader :metadata
+      def metadata
+      end
 
-      sig { params(metadata: PreludeSDK::Models::VerificationCreateParams::Metadata).void }
-      attr_writer :metadata
+      sig do
+        params(_: PreludeSDK::Models::VerificationCreateParams::Metadata).returns(PreludeSDK::Models::VerificationCreateParams::Metadata)
+      end
+      def metadata=(_)
+      end
 
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options)) }
-      attr_reader :options
+      def options
+      end
 
-      sig { params(options: PreludeSDK::Models::VerificationCreateParams::Options).void }
-      attr_writer :options
+      sig do
+        params(_: PreludeSDK::Models::VerificationCreateParams::Options).returns(PreludeSDK::Models::VerificationCreateParams::Options)
+      end
+      def options=(_)
+      end
 
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Signals)) }
-      attr_reader :signals
+      def signals
+      end
 
-      sig { params(signals: PreludeSDK::Models::VerificationCreateParams::Signals).void }
-      attr_writer :signals
+      sig do
+        params(_: PreludeSDK::Models::VerificationCreateParams::Signals).returns(PreludeSDK::Models::VerificationCreateParams::Signals)
+      end
+      def signals=(_)
+      end
 
       sig do
         params(
@@ -70,10 +91,20 @@ module PreludeSDK
 
       class Target < PreludeSDK::BaseModel
         sig { returns(Symbol) }
-        attr_accessor :type
+        def type
+        end
+
+        sig { params(_: Symbol).returns(Symbol) }
+        def type=(_)
+        end
 
         sig { returns(String) }
-        attr_accessor :value
+        def value
+        end
+
+        sig { params(_: String).returns(String) }
+        def value=(_)
+        end
 
         sig { params(type: Symbol, value: String).void }
         def initialize(type:, value:)
@@ -96,10 +127,12 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :correlation_id
+        def correlation_id
+        end
 
-        sig { params(correlation_id: String).void }
-        attr_writer :correlation_id
+        sig { params(_: String).returns(String) }
+        def correlation_id=(_)
+        end
 
         sig { params(correlation_id: String).void }
         def initialize(correlation_id: nil)
@@ -112,40 +145,54 @@ module PreludeSDK
 
       class Options < PreludeSDK::BaseModel
         sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)) }
-        attr_reader :app_realm
+        def app_realm
+        end
 
-        sig { params(app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm).void }
-        attr_writer :app_realm
+        sig do
+          params(_: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm).returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
+        end
+        def app_realm=(_)
+        end
 
         sig { returns(T.nilable(Integer)) }
-        attr_reader :code_size
+        def code_size
+        end
 
-        sig { params(code_size: Integer).void }
-        attr_writer :code_size
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :custom_code
-
-        sig { params(custom_code: String).void }
-        attr_writer :custom_code
+        sig { params(_: Integer).returns(Integer) }
+        def code_size=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :locale
+        def custom_code
+        end
 
-        sig { params(locale: String).void }
-        attr_writer :locale
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :sender_id
-
-        sig { params(sender_id: String).void }
-        attr_writer :sender_id
+        sig { params(_: String).returns(String) }
+        def custom_code=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :template_id
+        def locale
+        end
 
-        sig { params(template_id: String).void }
-        attr_writer :template_id
+        sig { params(_: String).returns(String) }
+        def locale=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def sender_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def sender_id=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def template_id
+        end
+
+        sig { params(_: String).returns(String) }
+        def template_id=(_)
+        end
 
         sig do
           params(
@@ -184,10 +231,20 @@ module PreludeSDK
 
         class AppRealm < PreludeSDK::BaseModel
           sig { returns(Symbol) }
-          attr_accessor :platform
+          def platform
+          end
+
+          sig { params(_: Symbol).returns(Symbol) }
+          def platform=(_)
+          end
 
           sig { returns(String) }
-          attr_accessor :value
+          def value
+          end
+
+          sig { params(_: String).returns(String) }
+          def value=(_)
+          end
 
           sig { params(platform: Symbol, value: String).void }
           def initialize(platform:, value:)
@@ -211,46 +268,60 @@ module PreludeSDK
 
       class Signals < PreludeSDK::BaseModel
         sig { returns(T.nilable(String)) }
-        attr_reader :app_version
+        def app_version
+        end
 
-        sig { params(app_version: String).void }
-        attr_writer :app_version
-
-        sig { returns(T.nilable(String)) }
-        attr_reader :device_id
-
-        sig { params(device_id: String).void }
-        attr_writer :device_id
+        sig { params(_: String).returns(String) }
+        def app_version=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :device_model
+        def device_id
+        end
 
-        sig { params(device_model: String).void }
-        attr_writer :device_model
+        sig { params(_: String).returns(String) }
+        def device_id=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def device_model
+        end
+
+        sig { params(_: String).returns(String) }
+        def device_model=(_)
+        end
 
         sig { returns(T.nilable(Symbol)) }
-        attr_reader :device_platform
+        def device_platform
+        end
 
-        sig { params(device_platform: Symbol).void }
-        attr_writer :device_platform
+        sig { params(_: Symbol).returns(Symbol) }
+        def device_platform=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :ip
+        def ip
+        end
 
-        sig { params(ip: String).void }
-        attr_writer :ip
+        sig { params(_: String).returns(String) }
+        def ip=(_)
+        end
 
         sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :is_trusted_user
+        def is_trusted_user
+        end
 
-        sig { params(is_trusted_user: T::Boolean).void }
-        attr_writer :is_trusted_user
+        sig { params(_: T::Boolean).returns(T::Boolean) }
+        def is_trusted_user=(_)
+        end
 
         sig { returns(T.nilable(String)) }
-        attr_reader :os_version
+        def os_version
+        end
 
-        sig { params(os_version: String).void }
-        attr_writer :os_version
+        sig { params(_: String).returns(String) }
+        def os_version=(_)
+        end
 
         sig do
           params(
