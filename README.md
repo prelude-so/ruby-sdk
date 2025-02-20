@@ -1,6 +1,6 @@
 # Prelude Ruby API library
 
-The Prelude Ruby library provides convenient access to the Prelude REST API from any Ruby 3.0+
+The Prelude Ruby library provides convenient access to the Prelude REST API from any Ruby 3.0.0+
 application.
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
