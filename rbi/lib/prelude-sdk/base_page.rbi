@@ -30,7 +30,8 @@ module PreludeSDK
         req: PreludeSDK::BaseClient::RequestShape,
         headers: T::Hash[String, String],
         unwrapped: T.anything
-      ).void
+      )
+        .void
     end
     def initialize(client:, req:, headers:, unwrapped:)
     end

@@ -11,7 +11,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateParams::Target).returns(PreludeSDK::Models::VerificationCreateParams::Target)
+        params(_: PreludeSDK::Models::VerificationCreateParams::Target)
+          .returns(PreludeSDK::Models::VerificationCreateParams::Target)
       end
       def target=(_)
       end
@@ -29,7 +30,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateParams::Metadata).returns(PreludeSDK::Models::VerificationCreateParams::Metadata)
+        params(_: PreludeSDK::Models::VerificationCreateParams::Metadata)
+          .returns(PreludeSDK::Models::VerificationCreateParams::Metadata)
       end
       def metadata=(_)
       end
@@ -39,7 +41,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateParams::Options).returns(PreludeSDK::Models::VerificationCreateParams::Options)
+        params(_: PreludeSDK::Models::VerificationCreateParams::Options)
+          .returns(PreludeSDK::Models::VerificationCreateParams::Options)
       end
       def options=(_)
       end
@@ -49,7 +52,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateParams::Signals).returns(PreludeSDK::Models::VerificationCreateParams::Signals)
+        params(_: PreludeSDK::Models::VerificationCreateParams::Signals)
+          .returns(PreludeSDK::Models::VerificationCreateParams::Signals)
       end
       def signals=(_)
       end
@@ -62,7 +66,8 @@ module PreludeSDK
           options: PreludeSDK::Models::VerificationCreateParams::Options,
           signals: PreludeSDK::Models::VerificationCreateParams::Signals,
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
-        ).void
+        )
+          .void
       end
       def initialize(
         target:,
@@ -75,16 +80,17 @@ module PreludeSDK
       end
 
       sig do
-        override.returns(
-          {
-            target: PreludeSDK::Models::VerificationCreateParams::Target,
-            dispatch_id: String,
-            metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
-            options: PreludeSDK::Models::VerificationCreateParams::Options,
-            signals: PreludeSDK::Models::VerificationCreateParams::Signals,
-            request_options: PreludeSDK::RequestOptions
-          }
-        )
+        override
+          .returns(
+            {
+              target: PreludeSDK::Models::VerificationCreateParams::Target,
+              dispatch_id: String,
+              metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+              options: PreludeSDK::Models::VerificationCreateParams::Options,
+              signals: PreludeSDK::Models::VerificationCreateParams::Signals,
+              request_options: PreludeSDK::RequestOptions
+            }
+          )
       end
       def to_hash
       end
@@ -149,7 +155,8 @@ module PreludeSDK
         end
 
         sig do
-          params(_: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm).returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
+          params(_: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
+            .returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
         end
         def app_realm=(_)
         end
@@ -202,7 +209,8 @@ module PreludeSDK
             locale: String,
             sender_id: String,
             template_id: String
-          ).void
+          )
+            .void
         end
         def initialize(
           app_realm: nil,
@@ -215,16 +223,17 @@ module PreludeSDK
         end
 
         sig do
-          override.returns(
-            {
-              app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
-              code_size: Integer,
-              custom_code: String,
-              locale: String,
-              sender_id: String,
-              template_id: String
-            }
-          )
+          override
+            .returns(
+              {
+                app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+                code_size: Integer,
+                custom_code: String,
+                locale: String,
+                sender_id: String,
+                template_id: String
+              }
+            )
         end
         def to_hash
         end
@@ -332,7 +341,8 @@ module PreludeSDK
             ip: String,
             is_trusted_user: T::Boolean,
             os_version: String
-          ).void
+          )
+            .void
         end
         def initialize(
           app_version: nil,
@@ -346,17 +356,18 @@ module PreludeSDK
         end
 
         sig do
-          override.returns(
-            {
-              app_version: String,
-              device_id: String,
-              device_model: String,
-              device_platform: Symbol,
-              ip: String,
-              is_trusted_user: T::Boolean,
-              os_version: String
-            }
-          )
+          override
+            .returns(
+              {
+                app_version: String,
+                device_id: String,
+                device_model: String,
+                device_platform: Symbol,
+                ip: String,
+                is_trusted_user: T::Boolean,
+                os_version: String
+              }
+            )
         end
         def to_hash
         end
