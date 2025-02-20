@@ -2,14 +2,6 @@
 
 module PreludeSDK
   module Models
-    # @example
-    # ```ruby
-    # watch_predict_response => {
-    #   id: String,
-    #   prediction: PreludeSDK::Models::WatchPredictResponse::Prediction,
-    #   reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
-    # }
-    # ```
     class WatchPredictResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   A unique identifier for your prediction request.
@@ -62,13 +54,6 @@ module PreludeSDK
         #   def self.values; end
       end
 
-      # @example
-      # ```ruby
-      # reasoning => {
-      #   cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause,
-      #   score: Float
-      # }
-      # ```
       class Reasoning < PreludeSDK::BaseModel
         # @!attribute [r] cause
         #   A label explaining why the phone number was classified as not trustworthy

@@ -29,12 +29,6 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # feedback => {
-      #   type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type
-      # }
-      # ```
       class Feedback < PreludeSDK::BaseModel
         # @!attribute type
         #   `CONFIRM_TARGET` should be sent when you are sure that the user with this target
@@ -77,13 +71,6 @@ module PreludeSDK
         end
       end
 
-      # @example
-      # ```ruby
-      # target => {
-      #   type: PreludeSDK::Models::WatchFeedBackParams::Target::Type,
-      #   value: String
-      # }
-      # ```
       class Target < PreludeSDK::BaseModel
         # @!attribute type
         #   The type of the target. Currently this can only be "phone_number".

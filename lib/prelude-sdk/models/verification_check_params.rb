@@ -28,13 +28,6 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-      # @example
-      # ```ruby
-      # target => {
-      #   type: PreludeSDK::Models::VerificationCheckParams::Target::Type,
-      #   value: String
-      # }
-      # ```
       class Target < PreludeSDK::BaseModel
         # @!attribute type
         #   The type of the target. Currently this can only be "phone_number".

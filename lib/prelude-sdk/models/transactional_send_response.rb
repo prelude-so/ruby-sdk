@@ -2,17 +2,6 @@
 
 module PreludeSDK
   module Models
-    # @example
-    # ```ruby
-    # transactional_send_response => {
-    #   id: String,
-    #   created_at: Time,
-    #   expires_at: Time,
-    #   template_id: String,
-    #   to: String,
-    #   **_
-    # }
-    # ```
     class TransactionalSendResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   The message identifier.

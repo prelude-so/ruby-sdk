@@ -19,6 +19,12 @@ class PreludeSDK::Test::Resources::WatchTest < Minitest::Test
     assert_pattern do
       response => PreludeSDK::Models::WatchFeedBackResponse
     end
+
+    assert_pattern do
+      response => {
+        id: String
+      }
+    end
   end
 
   def test_predict_required_params
@@ -26,6 +32,14 @@ class PreludeSDK::Test::Resources::WatchTest < Minitest::Test
 
     assert_pattern do
       response => PreludeSDK::Models::WatchPredictResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        prediction: PreludeSDK::Models::WatchPredictResponse::Prediction,
+        reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+      }
     end
   end
 end
