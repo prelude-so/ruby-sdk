@@ -153,7 +153,6 @@ module PreludeSDK
   class Union
     abstract!
 
-    extend PreludeSDK::Extern
     extend PreludeSDK::Converter
 
     sig { returns(T::Array[[T.nilable(Symbol), Proc]]) }
@@ -331,7 +330,6 @@ module PreludeSDK
   class BaseModel
     abstract!
 
-    extend PreludeSDK::Extern
     extend PreludeSDK::Converter
 
     KnownFieldShape = T.type_alias { {mode: T.nilable(Symbol), required: T::Boolean} }
