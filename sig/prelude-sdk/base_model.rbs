@@ -83,7 +83,6 @@ module PreludeSDK
   end
 
   class Union
-    extend PreludeSDK::Extern
     extend PreludeSDK::Converter
 
     private def self.known_variants: -> ::Array[[Symbol?, Proc]]
@@ -170,7 +169,6 @@ module PreludeSDK
   end
 
   class BaseModel
-    extend PreludeSDK::Extern
     extend PreludeSDK::Converter
 
     type known_field = { mode: (:coerce | :dump)?, required: bool }

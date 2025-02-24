@@ -369,7 +369,6 @@ module PreludeSDK
   # @abstract
   #
   class Union
-    extend PreludeSDK::Extern
     extend PreludeSDK::Converter
 
     # @private
@@ -842,7 +841,6 @@ module PreludeSDK
   # @abstract
   #
   class BaseModel
-    extend PreludeSDK::Extern
     extend PreludeSDK::Converter
 
     # @private
