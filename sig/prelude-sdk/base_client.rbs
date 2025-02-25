@@ -26,6 +26,8 @@ module PreludeSDK
 
     MAX_REDIRECTS: 20
 
+    PLATFORM_HEADERS: ::Hash[String, String]
+
     def self.validate!: (PreludeSDK::BaseClient::request_components req) -> void
 
     def self.should_retry?: (
