@@ -15,7 +15,7 @@ module PreludeSDK
     # Default max retry delay in seconds.
     DEFAULT_MAX_RETRY_DELAY = 8.0
 
-    # Client option
+    # Bearer token for authorizing API requests.
     # @return [String]
     attr_reader :api_token
 
