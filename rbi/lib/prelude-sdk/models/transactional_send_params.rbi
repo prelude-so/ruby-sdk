@@ -54,14 +54,6 @@ module PreludeSDK
       def from=(_)
       end
 
-      sig { returns(T.nilable(String)) }
-      def locale
-      end
-
-      sig { params(_: String).returns(String) }
-      def locale=(_)
-      end
-
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       def variables
       end
@@ -78,7 +70,6 @@ module PreludeSDK
           correlation_id: String,
           expires_at: String,
           from: String,
-          locale: String,
           variables: T::Hash[Symbol, String],
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         )
@@ -91,7 +82,6 @@ module PreludeSDK
         correlation_id: nil,
         expires_at: nil,
         from: nil,
-        locale: nil,
         variables: nil,
         request_options: {}
       )
@@ -107,7 +97,6 @@ module PreludeSDK
               correlation_id: String,
               expires_at: String,
               from: String,
-              locale: String,
               variables: T::Hash[Symbol, String],
               request_options: PreludeSDK::RequestOptions
             }

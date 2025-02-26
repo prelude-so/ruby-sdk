@@ -59,19 +59,6 @@ module PreludeSDK
       #   # @return [String]
       #   attr_writer :from
 
-      # @!attribute [r] locale
-      #   A BCP-47 formatted locale string with the language the text message will be sent
-      #     to. If there's no locale set, the language will be determined by the country
-      #     code of the phone number. If the language specified doesn't exist, the default
-      #     set on the template will be used.
-      #
-      #   @return [String, nil]
-      optional :locale, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :locale
-
       # @!attribute [r] variables
       #   The variables to be replaced in the template.
       #
@@ -89,7 +76,6 @@ module PreludeSDK
       #   # @param correlation_id [String]
       #   # @param expires_at [String]
       #   # @param from [String]
-      #   # @param locale [String]
       #   # @param variables [Hash{Symbol=>String}]
       #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
@@ -100,7 +86,6 @@ module PreludeSDK
       #     correlation_id: nil,
       #     expires_at: nil,
       #     from: nil,
-      #     locale: nil,
       #     variables: nil,
       #     request_options: {},
       #     **
