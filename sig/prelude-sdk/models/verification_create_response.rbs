@@ -3,18 +3,16 @@ module PreludeSDK
     type verification_create_response =
       {
         id: String,
-        method_: PreludeSDK::Models::VerificationCreateResponse::method_,
-        status: PreludeSDK::Models::VerificationCreateResponse::status,
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-        request_id: String
+        method_: PreludeSDK::Models::VerificationCreateResponse::method_,
+        request_id: String,
+        status: PreludeSDK::Models::VerificationCreateResponse::status
       }
 
     class VerificationCreateResponse < PreludeSDK::BaseModel
-      attr_accessor id: String
+      attr_reader id: String?
 
-      attr_accessor method_: PreludeSDK::Models::VerificationCreateResponse::method_
-
-      attr_accessor status: PreludeSDK::Models::VerificationCreateResponse::status
+      def id=: (String) -> String
 
       attr_reader metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata?
 
@@ -22,17 +20,29 @@ module PreludeSDK
         PreludeSDK::Models::VerificationCreateResponse::Metadata
       ) -> PreludeSDK::Models::VerificationCreateResponse::Metadata
 
+      attr_reader method_: PreludeSDK::Models::VerificationCreateResponse::method_?
+
+      def method_=: (
+        PreludeSDK::Models::VerificationCreateResponse::method_
+      ) -> PreludeSDK::Models::VerificationCreateResponse::method_
+
       attr_reader request_id: String?
 
       def request_id=: (String) -> String
 
+      attr_reader status: PreludeSDK::Models::VerificationCreateResponse::status?
+
+      def status=: (
+        PreludeSDK::Models::VerificationCreateResponse::status
+      ) -> PreludeSDK::Models::VerificationCreateResponse::status
+
       def initialize:
         (
           id: String,
-          method_: PreludeSDK::Models::VerificationCreateResponse::method_,
-          status: PreludeSDK::Models::VerificationCreateResponse::status,
           metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-          request_id: String
+          method_: PreludeSDK::Models::VerificationCreateResponse::method_,
+          request_id: String,
+          status: PreludeSDK::Models::VerificationCreateResponse::status
         ) -> void
         | (
           ?PreludeSDK::Models::verification_create_response
@@ -40,6 +50,23 @@ module PreludeSDK
         ) -> void
 
       def to_hash: -> PreludeSDK::Models::verification_create_response
+
+      type metadata = { correlation_id: String }
+
+      class Metadata < PreludeSDK::BaseModel
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        def initialize:
+          (correlation_id: String) -> void
+          | (
+            ?PreludeSDK::Models::VerificationCreateResponse::metadata
+            | PreludeSDK::BaseModel data
+          ) -> void
+
+        def to_hash: -> PreludeSDK::Models::VerificationCreateResponse::metadata
+      end
 
       type method_ = :message
 
@@ -57,23 +84,6 @@ module PreludeSDK
         BLOCKED: :blocked
 
         def self.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::status]
-      end
-
-      type metadata = { correlation_id: String }
-
-      class Metadata < PreludeSDK::BaseModel
-        attr_reader correlation_id: String?
-
-        def correlation_id=: (String) -> String
-
-        def initialize:
-          (correlation_id: String) -> void
-          | (
-            ?PreludeSDK::Models::VerificationCreateResponse::metadata
-            | PreludeSDK::BaseModel data
-          ) -> void
-
-        def to_hash: -> PreludeSDK::Models::VerificationCreateResponse::metadata
       end
     end
   end

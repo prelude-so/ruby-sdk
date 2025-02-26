@@ -3,12 +3,6 @@
 module PreludeSDK
   module Models
     class VerificationCheckResponse < PreludeSDK::BaseModel
-      # @!attribute status
-      #   The status of the check.
-      #
-      #   @return [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
-      required :status, enum: -> { PreludeSDK::Models::VerificationCheckResponse::Status }
-
       # @!attribute [r] id
       #   The verification identifier.
       #
@@ -38,43 +32,25 @@ module PreludeSDK
       #   # @return [String]
       #   attr_writer :request_id
 
+      # @!attribute [r] status
+      #   The status of the check.
+      #
+      #   @return [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status, nil]
+      optional :status, enum: -> { PreludeSDK::Models::VerificationCheckResponse::Status }
+
       # @!parse
-      #   # @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
+      #   # @return [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
+      #   attr_writer :status
+
+      # @!parse
       #   # @param id [String]
       #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata]
       #   # @param request_id [String]
+      #   # @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
       #   #
-      #   def initialize(status:, id: nil, metadata: nil, request_id: nil, **) = super
+      #   def initialize(id: nil, metadata: nil, request_id: nil, status: nil, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
-
-      # @abstract
-      #
-      # The status of the check.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :success
-      #   # ...
-      # in :failure
-      #   # ...
-      # in :expired_or_not_found
-      #   # ...
-      # end
-      # ```
-      class Status < PreludeSDK::Enum
-        SUCCESS = :success
-        FAILURE = :failure
-        EXPIRED_OR_NOT_FOUND = :expired_or_not_found
-
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
-      end
 
       class Metadata < PreludeSDK::BaseModel
         # @!attribute [r] correlation_id
@@ -94,6 +70,34 @@ module PreludeSDK
         #   def initialize(correlation_id: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      end
+
+      # @abstract
+      #
+      # The status of the check.
+      #
+      # @example
+      # ```ruby
+      # case status
+      # in :success
+      #   # ...
+      # in :failure
+      #   # ...
+      # in :expired
+      #   # ...
+      # end
+      # ```
+      class Status < PreludeSDK::Enum
+        SUCCESS = :success
+        FAILURE = :failure
+        EXPIRED = :expired
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   #
+        #   def self.values; end
       end
     end
   end

@@ -3,23 +3,15 @@
 module PreludeSDK
   module Models
     class VerificationCreateResponse < PreludeSDK::BaseModel
-      # @!attribute id
+      # @!attribute [r] id
       #   The verification identifier.
       #
-      #   @return [String]
-      required :id, String
+      #   @return [String, nil]
+      optional :id, String
 
-      # @!attribute method_
-      #   The method used for verifying this phone number.
-      #
-      #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
-      required :method_, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Method }, api_name: :method
-
-      # @!attribute status
-      #   The status of the verification.
-      #
-      #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
-      required :status, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Status }
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :id
 
       # @!attribute [r] metadata
       #   The metadata for this verification.
@@ -31,6 +23,16 @@ module PreludeSDK
       #   # @return [PreludeSDK::Models::VerificationCreateResponse::Metadata]
       #   attr_writer :metadata
 
+      # @!attribute [r] method_
+      #   The method used for verifying this phone number.
+      #
+      #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method, nil]
+      optional :method_, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Method }, api_name: :method
+
+      # @!parse
+      #   # @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
+      #   attr_writer :method_
+
       # @!attribute [r] request_id
       #
       #   @return [String, nil]
@@ -40,16 +42,46 @@ module PreludeSDK
       #   # @return [String]
       #   attr_writer :request_id
 
+      # @!attribute [r] status
+      #   The status of the verification.
+      #
+      #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status, nil]
+      optional :status, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Status }
+
+      # @!parse
+      #   # @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
+      #   attr_writer :status
+
       # @!parse
       #   # @param id [String]
-      #   # @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
-      #   # @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
       #   # @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata]
+      #   # @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
       #   # @param request_id [String]
+      #   # @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
       #   #
-      #   def initialize(id:, method_:, status:, metadata: nil, request_id: nil, **) = super
+      #   def initialize(id: nil, metadata: nil, method_: nil, request_id: nil, status: nil, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+
+      class Metadata < PreludeSDK::BaseModel
+        # @!attribute [r] correlation_id
+        #
+        #   @return [String, nil]
+        optional :correlation_id, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :correlation_id
+
+        # @!parse
+        #   # The metadata for this verification.
+        #   #
+        #   # @param correlation_id [String]
+        #   #
+        #   def initialize(correlation_id: nil, **) = super
+
+        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      end
 
       # @abstract
       #
@@ -99,26 +131,6 @@ module PreludeSDK
         #   # @return [Array<Symbol>]
         #   #
         #   def self.values; end
-      end
-
-      class Metadata < PreludeSDK::BaseModel
-        # @!attribute [r] correlation_id
-        #
-        #   @return [String, nil]
-        optional :correlation_id, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :correlation_id
-
-        # @!parse
-        #   # The metadata for this verification.
-        #   #
-        #   # @param correlation_id [String]
-        #   #
-        #   def initialize(correlation_id: nil, **) = super
-
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
       end
     end
   end

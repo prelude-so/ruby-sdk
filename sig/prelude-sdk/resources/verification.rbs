@@ -8,7 +8,6 @@ module PreludeSDK
         ) -> PreludeSDK::Models::VerificationCreateResponse
         | (
           target: PreludeSDK::Models::VerificationCreateParams::Target,
-          dispatch_id: String,
           metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
           options: PreludeSDK::Models::VerificationCreateParams::Options,
           signals: PreludeSDK::Models::VerificationCreateParams::Signals,

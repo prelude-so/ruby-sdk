@@ -17,14 +17,6 @@ module PreludeSDK
       def target=(_)
       end
 
-      sig { returns(T.nilable(String)) }
-      def dispatch_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def dispatch_id=(_)
-      end
-
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Metadata)) }
       def metadata
       end
@@ -61,7 +53,6 @@ module PreludeSDK
       sig do
         params(
           target: PreludeSDK::Models::VerificationCreateParams::Target,
-          dispatch_id: String,
           metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
           options: PreludeSDK::Models::VerificationCreateParams::Options,
           signals: PreludeSDK::Models::VerificationCreateParams::Signals,
@@ -69,14 +60,7 @@ module PreludeSDK
         )
           .void
       end
-      def initialize(
-        target:,
-        dispatch_id: nil,
-        metadata: nil,
-        options: nil,
-        signals: nil,
-        request_options: {}
-      )
+      def initialize(target:, metadata: nil, options: nil, signals: nil, request_options: {})
       end
 
       sig do
@@ -84,7 +68,6 @@ module PreludeSDK
           .returns(
             {
               target: PreludeSDK::Models::VerificationCreateParams::Target,
-              dispatch_id: String,
               metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
               options: PreludeSDK::Models::VerificationCreateParams::Options,
               signals: PreludeSDK::Models::VerificationCreateParams::Signals,
@@ -150,31 +133,12 @@ module PreludeSDK
       end
 
       class Options < PreludeSDK::BaseModel
-        sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)) }
+        sig { returns(T.nilable(String)) }
         def app_realm
         end
 
-        sig do
-          params(_: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
-            .returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
-        end
-        def app_realm=(_)
-        end
-
-        sig { returns(T.nilable(Integer)) }
-        def code_size
-        end
-
-        sig { params(_: Integer).returns(Integer) }
-        def code_size=(_)
-        end
-
-        sig { returns(T.nilable(String)) }
-        def custom_code
-        end
-
         sig { params(_: String).returns(String) }
-        def custom_code=(_)
+        def app_realm=(_)
         end
 
         sig { returns(T.nilable(String)) }
@@ -201,77 +165,12 @@ module PreludeSDK
         def template_id=(_)
         end
 
-        sig do
-          params(
-            app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
-            code_size: Integer,
-            custom_code: String,
-            locale: String,
-            sender_id: String,
-            template_id: String
-          )
-            .void
-        end
-        def initialize(
-          app_realm: nil,
-          code_size: nil,
-          custom_code: nil,
-          locale: nil,
-          sender_id: nil,
-          template_id: nil
-        )
+        sig { params(app_realm: String, locale: String, sender_id: String, template_id: String).void }
+        def initialize(app_realm: nil, locale: nil, sender_id: nil, template_id: nil)
         end
 
-        sig do
-          override
-            .returns(
-              {
-                app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
-                code_size: Integer,
-                custom_code: String,
-                locale: String,
-                sender_id: String,
-                template_id: String
-              }
-            )
-        end
+        sig { override.returns({app_realm: String, locale: String, sender_id: String, template_id: String}) }
         def to_hash
-        end
-
-        class AppRealm < PreludeSDK::BaseModel
-          sig { returns(Symbol) }
-          def platform
-          end
-
-          sig { params(_: Symbol).returns(Symbol) }
-          def platform=(_)
-          end
-
-          sig { returns(String) }
-          def value
-          end
-
-          sig { params(_: String).returns(String) }
-          def value=(_)
-          end
-
-          sig { params(platform: Symbol, value: String).void }
-          def initialize(platform:, value:)
-          end
-
-          sig { override.returns({platform: Symbol, value: String}) }
-          def to_hash
-          end
-
-          class Platform < PreludeSDK::Enum
-            abstract!
-
-            ANDROID = :android
-
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
-            end
-          end
         end
       end
 
@@ -316,11 +215,11 @@ module PreludeSDK
         def ip=(_)
         end
 
-        sig { returns(T.nilable(T::Boolean)) }
+        sig { returns(T.nilable(String)) }
         def is_trusted_user
         end
 
-        sig { params(_: T::Boolean).returns(T::Boolean) }
+        sig { params(_: String).returns(String) }
         def is_trusted_user=(_)
         end
 
@@ -339,7 +238,7 @@ module PreludeSDK
             device_model: String,
             device_platform: Symbol,
             ip: String,
-            is_trusted_user: T::Boolean,
+            is_trusted_user: String,
             os_version: String
           )
             .void
@@ -364,7 +263,7 @@ module PreludeSDK
                 device_model: String,
                 device_platform: Symbol,
                 ip: String,
-                is_trusted_user: T::Boolean,
+                is_trusted_user: String,
                 os_version: String
               }
             )
@@ -377,8 +276,6 @@ module PreludeSDK
 
           ANDROID = :android
           IOS = :ios
-          IPADOS = :ipados
-          TVOS = :tvos
           WEB = :web
 
           sig { override.returns(T::Array[Symbol]) }
