@@ -13,16 +13,6 @@ module PreludeSDK
       #   @return [PreludeSDK::Models::VerificationCreateParams::Target]
       required :target, -> { PreludeSDK::Models::VerificationCreateParams::Target }
 
-      # @!attribute [r] dispatch_id
-      #   The identifier of the dispatch that came from the front-end SDK.
-      #
-      #   @return [String, nil]
-      optional :dispatch_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :dispatch_id
-
       # @!attribute [r] metadata
       #   The metadata for this verification. This object will be returned with every
       #     response or webhook sent that refers to this verification.
@@ -56,13 +46,12 @@ module PreludeSDK
 
       # @!parse
       #   # @param target [PreludeSDK::Models::VerificationCreateParams::Target]
-      #   # @param dispatch_id [String]
       #   # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata]
       #   # @param options [PreludeSDK::Models::VerificationCreateParams::Options]
       #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals]
       #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {}, **) = super
+      #   def initialize(target:, metadata: nil, options: nil, signals: nil, request_options: {}, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -136,39 +125,15 @@ module PreludeSDK
 
       class Options < PreludeSDK::BaseModel
         # @!attribute [r] app_realm
-        #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
-        #     Currently only Android devices are supported.
-        #
-        #   @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, nil]
-        optional :app_realm, -> { PreludeSDK::Models::VerificationCreateParams::Options::AppRealm }
-
-        # @!parse
-        #   # @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
-        #   attr_writer :app_realm
-
-        # @!attribute [r] code_size
-        #   The size of the code generated. It should be between 4 and 8. Defaults to the
-        #     code size specified from the Dashboard.
-        #
-        #   @return [Integer, nil]
-        optional :code_size, Integer
-
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :code_size
-
-        # @!attribute [r] custom_code
-        #   The custom code to use for OTP verification. This feature is only available for
-        #     compatibility purposes and subject to Prelude’s approval. Contact us to discuss
-        #     your use case. For more details, refer to
-        #     [Multi Routing](/concepts/multi-routing).
+        #   The Android SMS Retriever API hash code that identifies your app. This allows
+        #     you to automatically retrieve and fill the OTP code on Android devices.
         #
         #   @return [String, nil]
-        optional :custom_code, String
+        optional :app_realm, String
 
         # @!parse
         #   # @return [String]
-        #   attr_writer :custom_code
+        #   attr_writer :app_realm
 
         # @!attribute [r] locale
         #   A BCP-47 formatted locale string with the language the text message will be sent
@@ -209,65 +174,14 @@ module PreludeSDK
         # @!parse
         #   # Verification options
         #   #
-        #   # @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
-        #   # @param code_size [Integer]
-        #   # @param custom_code [String]
+        #   # @param app_realm [String]
         #   # @param locale [String]
         #   # @param sender_id [String]
         #   # @param template_id [String]
         #   #
-        #   def initialize(app_realm: nil, code_size: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil, **) = super
+        #   def initialize(app_realm: nil, locale: nil, sender_id: nil, template_id: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
-
-        class AppRealm < PreludeSDK::BaseModel
-          # @!attribute platform
-          #   The platform the SMS will be sent to. We are currently only supporting
-          #     "android".
-          #
-          #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
-          required :platform, enum: -> { PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform }
-
-          # @!attribute value
-          #   The Android SMS Retriever API hash code that identifies your app.
-          #
-          #   @return [String]
-          required :value, String
-
-          # @!parse
-          #   # This allows you to automatically retrieve and fill the OTP code on mobile apps.
-          #   #   Currently only Android devices are supported.
-          #   #
-          #   # @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
-          #   # @param value [String]
-          #   #
-          #   def initialize(platform:, value:, **) = super
-
-          # def initialize: (Hash | PreludeSDK::BaseModel) -> void
-
-          # @abstract
-          #
-          # The platform the SMS will be sent to. We are currently only supporting
-          #   "android".
-          #
-          # @example
-          # ```ruby
-          # case platform
-          # in :android
-          #   # ...
-          # end
-          # ```
-          class Platform < PreludeSDK::Enum
-            ANDROID = :android
-
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
-          end
-        end
       end
 
       class Signals < PreludeSDK::BaseModel
@@ -327,11 +241,11 @@ module PreludeSDK
         #   This signal should provide a higher level of trust, indicating that the user is
         #     genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
         #
-        #   @return [Boolean, nil]
-        optional :is_trusted_user, PreludeSDK::BooleanModel
+        #   @return [String, nil]
+        optional :is_trusted_user, String
 
         # @!parse
-        #   # @return [Boolean]
+        #   # @return [String]
         #   attr_writer :is_trusted_user
 
         # @!attribute [r] os_version
@@ -352,7 +266,7 @@ module PreludeSDK
         #   # @param device_model [String]
         #   # @param device_platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform]
         #   # @param ip [String]
-        #   # @param is_trusted_user [Boolean]
+        #   # @param is_trusted_user [String]
         #   # @param os_version [String]
         #   #
         #   def initialize(
@@ -381,10 +295,6 @@ module PreludeSDK
         #   # ...
         # in :ios
         #   # ...
-        # in :ipados
-        #   # ...
-        # in :tvos
-        #   # ...
         # in :web
         #   # ...
         # end
@@ -392,8 +302,6 @@ module PreludeSDK
         class DevicePlatform < PreludeSDK::Enum
           ANDROID = :android
           IOS = :ios
-          IPADOS = :ipados
-          TVOS = :tvos
           WEB = :web
 
           finalize!

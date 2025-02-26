@@ -3,7 +3,9 @@ module PreludeSDK
     type watch_feed_back_response = { id: String }
 
     class WatchFeedBackResponse < PreludeSDK::BaseModel
-      attr_accessor id: String
+      attr_reader id: String?
+
+      def id=: (String) -> String
 
       def initialize:
         (id: String) -> void

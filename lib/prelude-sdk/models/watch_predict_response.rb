@@ -3,29 +3,41 @@
 module PreludeSDK
   module Models
     class WatchPredictResponse < PreludeSDK::BaseModel
-      # @!attribute id
+      # @!attribute [r] id
       #   A unique identifier for your prediction request.
       #
-      #   @return [String]
-      required :id, String
+      #   @return [String, nil]
+      optional :id, String
 
-      # @!attribute prediction
+      # @!parse
+      #   # @return [String]
+      #   attr_writer :id
+
+      # @!attribute [r] prediction
       #   A label indicating the trustworthiness of the phone number.
       #
-      #   @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
-      required :prediction, enum: -> { PreludeSDK::Models::WatchPredictResponse::Prediction }
+      #   @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction, nil]
+      optional :prediction, enum: -> { PreludeSDK::Models::WatchPredictResponse::Prediction }
 
-      # @!attribute reasoning
+      # @!parse
+      #   # @return [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
+      #   attr_writer :prediction
+
+      # @!attribute [r] reasoning
       #
-      #   @return [PreludeSDK::Models::WatchPredictResponse::Reasoning]
-      required :reasoning, -> { PreludeSDK::Models::WatchPredictResponse::Reasoning }
+      #   @return [PreludeSDK::Models::WatchPredictResponse::Reasoning, nil]
+      optional :reasoning, -> { PreludeSDK::Models::WatchPredictResponse::Reasoning }
+
+      # @!parse
+      #   # @return [PreludeSDK::Models::WatchPredictResponse::Reasoning]
+      #   attr_writer :reasoning
 
       # @!parse
       #   # @param id [String]
       #   # @param prediction [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
       #   # @param reasoning [PreludeSDK::Models::WatchPredictResponse::Reasoning]
       #   #
-      #   def initialize(id:, prediction:, reasoning:, **) = super
+      #   def initialize(id: nil, prediction: nil, reasoning: nil, **) = super
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
