@@ -8,21 +8,11 @@ module PreludeSDK
       }
 
     class WatchPredictResponse < PreludeSDK::BaseModel
-      attr_reader id: String?
+      attr_accessor id: String
 
-      def id=: (String) -> String
+      attr_accessor prediction: PreludeSDK::Models::WatchPredictResponse::prediction
 
-      attr_reader prediction: PreludeSDK::Models::WatchPredictResponse::prediction?
-
-      def prediction=: (
-        PreludeSDK::Models::WatchPredictResponse::prediction
-      ) -> PreludeSDK::Models::WatchPredictResponse::prediction
-
-      attr_reader reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning?
-
-      def reasoning=: (
-        PreludeSDK::Models::WatchPredictResponse::Reasoning
-      ) -> PreludeSDK::Models::WatchPredictResponse::Reasoning
+      attr_accessor reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
 
       def initialize:
         (

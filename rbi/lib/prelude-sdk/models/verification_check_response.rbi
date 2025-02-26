@@ -3,6 +3,14 @@
 module PreludeSDK
   module Models
     class VerificationCheckResponse < PreludeSDK::BaseModel
+      sig { returns(Symbol) }
+      def status
+      end
+
+      sig { params(_: Symbol).returns(Symbol) }
+      def status=(_)
+      end
+
       sig { returns(T.nilable(String)) }
       def id
       end
@@ -30,38 +38,42 @@ module PreludeSDK
       def request_id=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
-      def status
-      end
-
-      sig { params(_: Symbol).returns(Symbol) }
-      def status=(_)
-      end
-
       sig do
         params(
+          status: Symbol,
           id: String,
           metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
-          request_id: String,
-          status: Symbol
+          request_id: String
         )
           .void
       end
-      def initialize(id: nil, metadata: nil, request_id: nil, status: nil)
+      def initialize(status:, id: nil, metadata: nil, request_id: nil)
       end
 
       sig do
         override
           .returns(
             {
+              status: Symbol,
               id: String,
               metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
-              request_id: String,
-              status: Symbol
+              request_id: String
             }
           )
       end
       def to_hash
+      end
+
+      class Status < PreludeSDK::Enum
+        abstract!
+
+        SUCCESS = :success
+        FAILURE = :failure
+        EXPIRED_OR_NOT_FOUND = :expired_or_not_found
+
+        sig { override.returns(T::Array[Symbol]) }
+        def self.values
+        end
       end
 
       class Metadata < PreludeSDK::BaseModel
@@ -79,18 +91,6 @@ module PreludeSDK
 
         sig { override.returns({correlation_id: String}) }
         def to_hash
-        end
-      end
-
-      class Status < PreludeSDK::Enum
-        abstract!
-
-        SUCCESS = :success
-        FAILURE = :failure
-        EXPIRED = :expired
-
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
         end
       end
     end
