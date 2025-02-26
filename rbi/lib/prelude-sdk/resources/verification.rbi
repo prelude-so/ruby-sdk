@@ -6,6 +6,7 @@ module PreludeSDK
       sig do
         params(
           target: PreludeSDK::Models::VerificationCreateParams::Target,
+          dispatch_id: String,
           metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
           options: PreludeSDK::Models::VerificationCreateParams::Options,
           signals: PreludeSDK::Models::VerificationCreateParams::Signals,
@@ -13,7 +14,7 @@ module PreludeSDK
         )
           .returns(PreludeSDK::Models::VerificationCreateResponse)
       end
-      def create(target:, metadata: nil, options: nil, signals: nil, request_options: {})
+      def create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
       end
 
       sig do

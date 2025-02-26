@@ -19,6 +19,11 @@ module PreludeSDK
       #
       #   @option params [String] :from The Sender ID.
       #
+      #   @option params [String] :locale A BCP-47 formatted locale string with the language the text message will be sent
+      #     to. If there's no locale set, the language will be determined by the country
+      #     code of the phone number. If the language specified doesn't exist, the default
+      #     set on the template will be used.
+      #
       #   @option params [Hash{Symbol=>String}] :variables The variables to be replaced in the template.
       #
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options

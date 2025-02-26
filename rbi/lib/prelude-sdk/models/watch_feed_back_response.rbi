@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     class WatchFeedBackResponse < PreludeSDK::BaseModel
-      sig { returns(T.nilable(String)) }
+      sig { returns(String) }
       def id
       end
 
@@ -12,7 +12,7 @@ module PreludeSDK
       end
 
       sig { params(id: String).void }
-      def initialize(id: nil)
+      def initialize(id:)
       end
 
       sig { override.returns({id: String}) }

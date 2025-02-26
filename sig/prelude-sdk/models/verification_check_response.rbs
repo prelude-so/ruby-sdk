@@ -2,13 +2,15 @@ module PreludeSDK
   module Models
     type verification_check_response =
       {
+        status: PreludeSDK::Models::VerificationCheckResponse::status,
         id: String,
         metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
-        request_id: String,
-        status: PreludeSDK::Models::VerificationCheckResponse::status
+        request_id: String
       }
 
     class VerificationCheckResponse < PreludeSDK::BaseModel
+      attr_accessor status: PreludeSDK::Models::VerificationCheckResponse::status
+
       attr_reader id: String?
 
       def id=: (String) -> String
@@ -23,18 +25,12 @@ module PreludeSDK
 
       def request_id=: (String) -> String
 
-      attr_reader status: PreludeSDK::Models::VerificationCheckResponse::status?
-
-      def status=: (
-        PreludeSDK::Models::VerificationCheckResponse::status
-      ) -> PreludeSDK::Models::VerificationCheckResponse::status
-
       def initialize:
         (
+          status: PreludeSDK::Models::VerificationCheckResponse::status,
           id: String,
           metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
-          request_id: String,
-          status: PreludeSDK::Models::VerificationCheckResponse::status
+          request_id: String
         ) -> void
         | (
           ?PreludeSDK::Models::verification_check_response
@@ -42,6 +38,16 @@ module PreludeSDK
         ) -> void
 
       def to_hash: -> PreludeSDK::Models::verification_check_response
+
+      type status = :success | :failure | :expired_or_not_found
+
+      class Status < PreludeSDK::Enum
+        SUCCESS: :success
+        FAILURE: :failure
+        EXPIRED_OR_NOT_FOUND: :expired_or_not_found
+
+        def self.values: -> ::Array[PreludeSDK::Models::VerificationCheckResponse::status]
+      end
 
       type metadata = { correlation_id: String }
 
@@ -58,16 +64,6 @@ module PreludeSDK
           ) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCheckResponse::metadata
-      end
-
-      type status = :success | :failure | :expired
-
-      class Status < PreludeSDK::Enum
-        SUCCESS: :success
-        FAILURE: :failure
-        EXPIRED: :expired
-
-        def self.values: -> ::Array[PreludeSDK::Models::VerificationCheckResponse::status]
       end
     end
   end
