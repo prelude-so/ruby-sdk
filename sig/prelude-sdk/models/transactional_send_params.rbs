@@ -8,6 +8,7 @@ module PreludeSDK
         correlation_id: String,
         expires_at: String,
         from: String,
+        locale: String,
         variables: ::Hash[Symbol, String]
       }
       & PreludeSDK::request_parameters
@@ -36,6 +37,10 @@ module PreludeSDK
 
       def from=: (String) -> String
 
+      attr_reader locale: String?
+
+      def locale=: (String) -> String
+
       attr_reader variables: ::Hash[Symbol, String]?
 
       def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
@@ -48,6 +53,7 @@ module PreludeSDK
           correlation_id: String,
           expires_at: String,
           from: String,
+          locale: String,
           variables: ::Hash[Symbol, String],
           request_options: PreludeSDK::request_opts
         ) -> void

@@ -19,11 +19,11 @@ class PreludeSDK::Test::Resources::VerificationTest < Minitest::Test
 
     assert_pattern do
       response => {
-        id: String | nil,
+        id: String,
+        method_: PreludeSDK::Models::VerificationCreateResponse::Method,
+        status: PreludeSDK::Models::VerificationCreateResponse::Status,
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata | nil,
-        method_: PreludeSDK::Models::VerificationCreateResponse::Method | nil,
-        request_id: String | nil,
-        status: PreludeSDK::Models::VerificationCreateResponse::Status | nil
+        request_id: String | nil
       }
     end
   end
@@ -42,10 +42,10 @@ class PreludeSDK::Test::Resources::VerificationTest < Minitest::Test
 
     assert_pattern do
       response => {
+        status: PreludeSDK::Models::VerificationCheckResponse::Status,
         id: String | nil,
         metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata | nil,
-        request_id: String | nil,
-        status: PreludeSDK::Models::VerificationCheckResponse::Status | nil
+        request_id: String | nil
       }
     end
   end

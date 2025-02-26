@@ -22,7 +22,7 @@ class PreludeSDK::Test::Resources::WatchTest < Minitest::Test
 
     assert_pattern do
       response => {
-        id: String | nil
+        id: String
       }
     end
   end
@@ -36,9 +36,9 @@ class PreludeSDK::Test::Resources::WatchTest < Minitest::Test
 
     assert_pattern do
       response => {
-        id: String | nil,
-        prediction: PreludeSDK::Models::WatchPredictResponse::Prediction | nil,
-        reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning | nil
+        id: String,
+        prediction: PreludeSDK::Models::WatchPredictResponse::Prediction,
+        reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
       }
     end
   end

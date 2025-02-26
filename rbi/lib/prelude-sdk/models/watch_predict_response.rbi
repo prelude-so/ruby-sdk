@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     class WatchPredictResponse < PreludeSDK::BaseModel
-      sig { returns(T.nilable(String)) }
+      sig { returns(String) }
       def id
       end
 
@@ -11,7 +11,7 @@ module PreludeSDK
       def id=(_)
       end
 
-      sig { returns(T.nilable(Symbol)) }
+      sig { returns(Symbol) }
       def prediction
       end
 
@@ -19,7 +19,7 @@ module PreludeSDK
       def prediction=(_)
       end
 
-      sig { returns(T.nilable(PreludeSDK::Models::WatchPredictResponse::Reasoning)) }
+      sig { returns(PreludeSDK::Models::WatchPredictResponse::Reasoning) }
       def reasoning
       end
 
@@ -33,7 +33,7 @@ module PreludeSDK
       sig do
         params(id: String, prediction: Symbol, reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning).void
       end
-      def initialize(id: nil, prediction: nil, reasoning: nil)
+      def initialize(id:, prediction:, reasoning:)
       end
 
       sig do
