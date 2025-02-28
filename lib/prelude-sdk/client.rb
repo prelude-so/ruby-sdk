@@ -35,7 +35,7 @@ module PreludeSDK
     private def auth_headers
       return {} if @api_token.nil?
 
-      {"Authorization" => "Bearer #{@api_token}"}
+      {"authorization" => "Bearer #{@api_token}"}
     end
 
     # Creates and returns a new client for interacting with the API.
