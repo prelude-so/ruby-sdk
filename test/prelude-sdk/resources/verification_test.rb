@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class PreludeSDK::Test::Resources::VerificationTest < Minitest::Test
-  def before_all
-    @prelude = PreludeSDK::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_token: "My API Token"
-    )
-  end
-
+class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::ResourceTest
   def test_create_required_params
     response = @prelude.verification.create(target: {type: :phone_number, value: "+30123456789"})
 

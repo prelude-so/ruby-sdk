@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class PreludeSDK::Test::Resources::WatchTest < Minitest::Test
-  def before_all
-    @prelude = PreludeSDK::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_token: "My API Token"
-    )
-  end
-
+class PreludeSDK::Test::Resources::WatchTest < PreludeSDK::Test::ResourceTest
   def test_feed_back_required_params
     response = @prelude.watch.feed_back(
       feedback: {type: :CONFIRM_TARGET},

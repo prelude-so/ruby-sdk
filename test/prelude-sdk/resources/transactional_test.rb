@@ -2,14 +2,7 @@
 
 require_relative "../test_helper"
 
-class PreludeSDK::Test::Resources::TransactionalTest < Minitest::Test
-  def before_all
-    @prelude = PreludeSDK::Client.new(
-      base_url: ENV.fetch("TEST_API_BASE_URL", "http://localhost:4010"),
-      api_token: "My API Token"
-    )
-  end
-
+class PreludeSDK::Test::Resources::TransactionalTest < PreludeSDK::Test::ResourceTest
   def test_send__required_params
     skip(
       "skipped: currently no good way to test endpoints defining callbacks, Prism mock server will fail trying to reach the provided callback url"
