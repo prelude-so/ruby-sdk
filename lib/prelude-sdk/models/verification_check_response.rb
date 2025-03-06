@@ -51,18 +51,6 @@ module PreludeSDK
       # @abstract
       #
       # The status of the check.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :success
-      #   # ...
-      # in :failure
-      #   # ...
-      # in :expired_or_not_found
-      #   # ...
-      # end
-      # ```
       class Status < PreludeSDK::Enum
         SUCCESS = :success
         FAILURE = :failure

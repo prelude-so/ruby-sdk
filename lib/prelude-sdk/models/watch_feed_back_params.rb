@@ -51,14 +51,6 @@ module PreludeSDK
         #
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :CONFIRM_TARGET
-        #   # ...
-        # end
-        # ```
         class Type < PreludeSDK::Enum
           CONFIRM_TARGET = :CONFIRM_TARGET
 
@@ -97,14 +89,6 @@ module PreludeSDK
         # @abstract
         #
         # The type of the target. Currently this can only be "phone_number".
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :phone_number
-        #   # ...
-        # end
-        # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
 

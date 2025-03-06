@@ -54,14 +54,6 @@ module PreludeSDK
         # @abstract
         #
         # The type of the target. Currently this can only be "phone_number".
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :phone_number
-        #   # ...
-        # end
-        # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
 
