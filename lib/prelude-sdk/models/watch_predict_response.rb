@@ -32,16 +32,6 @@ module PreludeSDK
       # @abstract
       #
       # A label indicating the trustworthiness of the phone number.
-      #
-      # @example
-      # ```ruby
-      # case prediction
-      # in :allow
-      #   # ...
-      # in :block
-      #   # ...
-      # end
-      # ```
       class Prediction < PreludeSDK::Enum
         ALLOW = :allow
         BLOCK = :block
@@ -87,20 +77,6 @@ module PreludeSDK
         # @abstract
         #
         # A label explaining why the phone number was classified as not trustworthy
-        #
-        # @example
-        # ```ruby
-        # case cause
-        # in :none
-        #   # ...
-        # in :smart_antifraud
-        #   # ...
-        # in :repeat_number
-        #   # ...
-        # in :invalid_line
-        #   # ...
-        # end
-        # ```
         class Cause < PreludeSDK::Enum
           NONE = :none
           SMART_ANTIFRAUD = :smart_antifraud

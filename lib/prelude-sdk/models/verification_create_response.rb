@@ -54,14 +54,6 @@ module PreludeSDK
       # @abstract
       #
       # The method used for verifying this phone number.
-      #
-      # @example
-      # ```ruby
-      # case method
-      # in :message
-      #   # ...
-      # end
-      # ```
       class Method < PreludeSDK::Enum
         MESSAGE = :message
 
@@ -76,18 +68,6 @@ module PreludeSDK
       # @abstract
       #
       # The status of the verification.
-      #
-      # @example
-      # ```ruby
-      # case status
-      # in :success
-      #   # ...
-      # in :retry
-      #   # ...
-      # in :blocked
-      #   # ...
-      # end
-      # ```
       class Status < PreludeSDK::Enum
         SUCCESS = :success
         RETRY = :retry
