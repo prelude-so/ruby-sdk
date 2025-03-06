@@ -92,14 +92,6 @@ module PreludeSDK
         # @abstract
         #
         # The type of the target. Currently this can only be "phone_number".
-        #
-        # @example
-        # ```ruby
-        # case type
-        # in :phone_number
-        #   # ...
-        # end
-        # ```
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
 
@@ -249,14 +241,6 @@ module PreludeSDK
           #
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
-          #
-          # @example
-          # ```ruby
-          # case platform
-          # in :android
-          #   # ...
-          # end
-          # ```
           class Platform < PreludeSDK::Enum
             ANDROID = :android
 
@@ -373,22 +357,6 @@ module PreludeSDK
         # @abstract
         #
         # The type of the user's device.
-        #
-        # @example
-        # ```ruby
-        # case device_platform
-        # in :android
-        #   # ...
-        # in :ios
-        #   # ...
-        # in :ipados
-        #   # ...
-        # in :tvos
-        #   # ...
-        # in :web
-        #   # ...
-        # end
-        # ```
         class DevicePlatform < PreludeSDK::Enum
           ANDROID = :android
           IOS = :ios
