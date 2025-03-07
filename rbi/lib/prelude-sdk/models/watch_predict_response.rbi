@@ -31,9 +31,10 @@ module PreludeSDK
       end
 
       sig do
-        params(id: String, prediction: Symbol, reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning).void
+        params(id: String, prediction: Symbol, reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning)
+          .returns(T.attached_class)
       end
-      def initialize(id:, prediction:, reasoning:)
+      def self.new(id:, prediction:, reasoning:)
       end
 
       sig do
@@ -73,8 +74,8 @@ module PreludeSDK
         def score=(_)
         end
 
-        sig { params(cause: Symbol, score: Float).void }
-        def initialize(cause: nil, score: nil)
+        sig { params(cause: Symbol, score: Float).returns(T.attached_class) }
+        def self.new(cause: nil, score: nil)
         end
 
         sig { override.returns({cause: Symbol, score: Float}) }

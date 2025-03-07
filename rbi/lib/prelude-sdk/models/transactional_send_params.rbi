@@ -82,9 +82,9 @@ module PreludeSDK
           variables: T::Hash[Symbol, String],
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         template_id:,
         to:,
         callback_url: nil,

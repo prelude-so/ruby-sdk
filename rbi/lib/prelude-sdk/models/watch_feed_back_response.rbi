@@ -11,8 +11,8 @@ module PreludeSDK
       def id=(_)
       end
 
-      sig { params(id: String).void }
-      def initialize(id:)
+      sig { params(id: String).returns(T.attached_class) }
+      def self.new(id:)
       end
 
       sig { override.returns({id: String}) }

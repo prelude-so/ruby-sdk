@@ -34,9 +34,9 @@ module PreludeSDK
           signals: PreludeSDK::Models::WatchPredictParams::Signals,
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(target:, signals: nil, request_options: {})
+      def self.new(target:, signals: nil, request_options: {})
       end
 
       sig do
@@ -69,8 +69,8 @@ module PreludeSDK
         def value=(_)
         end
 
-        sig { params(type: Symbol, value: String).void }
-        def initialize(type:, value:)
+        sig { params(type: Symbol, value: String).returns(T.attached_class) }
+        def self.new(type:, value:)
         end
 
         sig { override.returns({type: Symbol, value: String}) }
@@ -123,8 +123,15 @@ module PreludeSDK
         def ip=(_)
         end
 
-        sig { params(device_id: String, device_model: String, device_type: String, ip: String).void }
-        def initialize(device_id: nil, device_model: nil, device_type: nil, ip: nil)
+        sig do
+          params(
+            device_id: String,
+            device_model: String,
+            device_type: String,
+            ip: String
+          ).returns(T.attached_class)
+        end
+        def self.new(device_id: nil, device_model: nil, device_type: nil, ip: nil)
         end
 
         sig { override.returns({device_id: String, device_model: String, device_type: String, ip: String}) }
