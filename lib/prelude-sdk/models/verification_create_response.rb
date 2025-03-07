@@ -58,11 +58,6 @@ module PreludeSDK
         MESSAGE = :message
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       # @abstract
@@ -74,11 +69,6 @@ module PreludeSDK
         BLOCKED = :blocked
 
         finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   #
-        #   def self.values; end
       end
 
       class Metadata < PreludeSDK::BaseModel

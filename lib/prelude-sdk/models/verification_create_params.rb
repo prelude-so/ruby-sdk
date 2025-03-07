@@ -96,11 +96,6 @@ module PreludeSDK
           PHONE_NUMBER = :phone_number
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
 
@@ -245,11 +240,6 @@ module PreludeSDK
             ANDROID = :android
 
             finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   #
-            #   def self.values; end
           end
         end
       end
@@ -365,11 +355,6 @@ module PreludeSDK
           WEB = :web
 
           finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   #
-          #   def self.values; end
         end
       end
     end
