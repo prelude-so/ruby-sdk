@@ -67,16 +67,9 @@ module PreludeSDK
           signals: PreludeSDK::Models::VerificationCreateParams::Signals,
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
-        target:,
-        dispatch_id: nil,
-        metadata: nil,
-        options: nil,
-        signals: nil,
-        request_options: {}
-      )
+      def self.new(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
       end
 
       sig do
@@ -112,8 +105,8 @@ module PreludeSDK
         def value=(_)
         end
 
-        sig { params(type: Symbol, value: String).void }
-        def initialize(type:, value:)
+        sig { params(type: Symbol, value: String).returns(T.attached_class) }
+        def self.new(type:, value:)
         end
 
         sig { override.returns({type: Symbol, value: String}) }
@@ -142,8 +135,8 @@ module PreludeSDK
         def correlation_id=(_)
         end
 
-        sig { params(correlation_id: String).void }
-        def initialize(correlation_id: nil)
+        sig { params(correlation_id: String).returns(T.attached_class) }
+        def self.new(correlation_id: nil)
         end
 
         sig { override.returns({correlation_id: String}) }
@@ -212,16 +205,9 @@ module PreludeSDK
             sender_id: String,
             template_id: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
-          app_realm: nil,
-          code_size: nil,
-          custom_code: nil,
-          locale: nil,
-          sender_id: nil,
-          template_id: nil
-        )
+        def self.new(app_realm: nil, code_size: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil)
         end
 
         sig do
@@ -257,8 +243,8 @@ module PreludeSDK
           def value=(_)
           end
 
-          sig { params(platform: Symbol, value: String).void }
-          def initialize(platform:, value:)
+          sig { params(platform: Symbol, value: String).returns(T.attached_class) }
+          def self.new(platform:, value:)
           end
 
           sig { override.returns({platform: Symbol, value: String}) }
@@ -346,9 +332,9 @@ module PreludeSDK
             is_trusted_user: T::Boolean,
             os_version: String
           )
-            .void
+            .returns(T.attached_class)
         end
-        def initialize(
+        def self.new(
           app_version: nil,
           device_id: nil,
           device_model: nil,

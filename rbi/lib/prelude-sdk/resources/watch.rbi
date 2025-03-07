@@ -25,8 +25,8 @@ module PreludeSDK
       def predict(target:, signals: nil, request_options: {})
       end
 
-      sig { params(client: PreludeSDK::Client).void }
-      def initialize(client:)
+      sig { params(client: PreludeSDK::Client).returns(T.attached_class) }
+      def self.new(client:)
       end
     end
   end

@@ -38,5 +38,9 @@ module PreludeSDK
     attr_accessor max_retries: Integer?
 
     attr_accessor timeout: Float?
+
+    def initialize: (
+      ?PreludeSDK::request_options | ::Hash[Symbol, top] values
+    ) -> void
   end
 end

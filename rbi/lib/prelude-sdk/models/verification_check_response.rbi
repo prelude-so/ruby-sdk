@@ -45,9 +45,9 @@ module PreludeSDK
           metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
           request_id: String
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(status:, id: nil, metadata: nil, request_id: nil)
+      def self.new(status:, id: nil, metadata: nil, request_id: nil)
       end
 
       sig do
@@ -87,8 +87,8 @@ module PreludeSDK
         def correlation_id=(_)
         end
 
-        sig { params(correlation_id: String).void }
-        def initialize(correlation_id: nil)
+        sig { params(correlation_id: String).returns(T.attached_class) }
+        def self.new(correlation_id: nil)
         end
 
         sig { override.returns({correlation_id: String}) }
