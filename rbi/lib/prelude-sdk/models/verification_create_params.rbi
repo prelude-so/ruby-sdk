@@ -125,8 +125,10 @@ module PreludeSDK
 
           PHONE_NUMBER = :phone_number
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -268,8 +270,10 @@ module PreludeSDK
 
             ANDROID = :android
 
-            sig { override.returns(T::Array[Symbol]) }
-            def self.values
+            class << self
+              sig { override.returns(T::Array[Symbol]) }
+              def values
+              end
             end
           end
         end
@@ -381,8 +385,10 @@ module PreludeSDK
           TVOS = :tvos
           WEB = :web
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end

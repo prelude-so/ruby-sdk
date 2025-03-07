@@ -79,8 +79,10 @@ module PreludeSDK
 
         MESSAGE = :message
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 
@@ -91,8 +93,10 @@ module PreludeSDK
         RETRY = :retry
         BLOCKED = :blocked
 
-        sig { override.returns(T::Array[Symbol]) }
-        def self.values
+        class << self
+          sig { override.returns(T::Array[Symbol]) }
+          def values
+          end
         end
       end
 

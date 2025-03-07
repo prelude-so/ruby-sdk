@@ -74,8 +74,10 @@ module PreludeSDK
 
           CONFIRM_TARGET = :CONFIRM_TARGET
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
@@ -110,8 +112,10 @@ module PreludeSDK
 
           PHONE_NUMBER = :phone_number
 
-          sig { override.returns(T::Array[Symbol]) }
-          def self.values
+          class << self
+            sig { override.returns(T::Array[Symbol]) }
+            def values
+            end
           end
         end
       end
