@@ -87,9 +87,9 @@ module PreludeSDK
           correlation_id: String,
           from: String
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(
+      def self.new(
         id:,
         created_at:,
         expires_at:,

@@ -31,9 +31,9 @@ module PreludeSDK
           target: PreludeSDK::Models::VerificationCheckParams::Target,
           request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
         )
-          .void
+          .returns(T.attached_class)
       end
-      def initialize(code:, target:, request_options: {})
+      def self.new(code:, target:, request_options: {})
       end
 
       sig do
@@ -66,8 +66,8 @@ module PreludeSDK
         def value=(_)
         end
 
-        sig { params(type: Symbol, value: String).void }
-        def initialize(type:, value:)
+        sig { params(type: Symbol, value: String).returns(T.attached_class) }
+        def self.new(type:, value:)
         end
 
         sig { override.returns({type: Symbol, value: String}) }
