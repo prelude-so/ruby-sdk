@@ -78,6 +78,7 @@ module PreludeSDK
           abstract!
 
           PHONE_NUMBER = :phone_number
+          EMAIL_ADDRESS = :email_address
 
           class << self
             sig { override.returns(T::Array[Symbol]) }

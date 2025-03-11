@@ -117,6 +117,7 @@ module PreludeSDK
           abstract!
 
           PHONE_NUMBER = :phone_number
+          EMAIL_ADDRESS = :email_address
 
           class << self
             sig { override.returns(T::Array[Symbol]) }
@@ -154,6 +155,14 @@ module PreludeSDK
             .returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
         end
         def app_realm=(_)
+        end
+
+        sig { returns(T.nilable(String)) }
+        def callback_url
+        end
+
+        sig { params(_: String).returns(String) }
+        def callback_url=(_)
         end
 
         sig { returns(T.nilable(Integer)) }
@@ -196,18 +205,37 @@ module PreludeSDK
         def template_id=(_)
         end
 
+        sig { returns(T.nilable(T::Hash[Symbol, String])) }
+        def variables
+        end
+
+        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
+        def variables=(_)
+        end
+
         sig do
           params(
             app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+            callback_url: String,
             code_size: Integer,
             custom_code: String,
             locale: String,
             sender_id: String,
-            template_id: String
+            template_id: String,
+            variables: T::Hash[Symbol, String]
           )
             .returns(T.attached_class)
         end
-        def self.new(app_realm: nil, code_size: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil)
+        def self.new(
+          app_realm: nil,
+          callback_url: nil,
+          code_size: nil,
+          custom_code: nil,
+          locale: nil,
+          sender_id: nil,
+          template_id: nil,
+          variables: nil
+        )
         end
 
         sig do
@@ -215,11 +243,13 @@ module PreludeSDK
             .returns(
               {
                 app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+                callback_url: String,
                 code_size: Integer,
                 custom_code: String,
                 locale: String,
                 sender_id: String,
-                template_id: String
+                template_id: String,
+                variables: T::Hash[Symbol, String]
               }
             )
         end
@@ -322,6 +352,14 @@ module PreludeSDK
         def os_version=(_)
         end
 
+        sig { returns(T.nilable(String)) }
+        def user_agent
+        end
+
+        sig { params(_: String).returns(String) }
+        def user_agent=(_)
+        end
+
         sig do
           params(
             app_version: String,
@@ -330,7 +368,8 @@ module PreludeSDK
             device_platform: Symbol,
             ip: String,
             is_trusted_user: T::Boolean,
-            os_version: String
+            os_version: String,
+            user_agent: String
           )
             .returns(T.attached_class)
         end
@@ -341,7 +380,8 @@ module PreludeSDK
           device_platform: nil,
           ip: nil,
           is_trusted_user: nil,
-          os_version: nil
+          os_version: nil,
+          user_agent: nil
         )
         end
 
@@ -355,7 +395,8 @@ module PreludeSDK
                 device_platform: Symbol,
                 ip: String,
                 is_trusted_user: T::Boolean,
-                os_version: String
+                os_version: String,
+                user_agent: String
               }
             )
         end

@@ -9,7 +9,8 @@ module PreludeSDK
       #
       # @param params [PreludeSDK::Models::VerificationCreateParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [PreludeSDK::Models::VerificationCreateParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
+      #   @option params [PreludeSDK::Models::VerificationCreateParams::Target] :target The verification target. Either a phone number or an email address. To use the
+      #     email verification feature contact us to discuss your use case.
       #
       #   @option params [String] :dispatch_id The identifier of the dispatch that came from the front-end SDK.
       #
@@ -18,7 +19,8 @@ module PreludeSDK
       #
       #   @option params [PreludeSDK::Models::VerificationCreateParams::Options] :options Verification options
       #
-      #   @option params [PreludeSDK::Models::VerificationCreateParams::Signals] :signals The signals used for anti-fraud.
+      #   @option params [PreludeSDK::Models::VerificationCreateParams::Signals] :signals The signals used for anti-fraud. For more details, refer to
+      #     [Signals](/guides/prevent-fraud#signals).
       #
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
@@ -41,7 +43,8 @@ module PreludeSDK
       #
       #   @option params [String] :code The OTP code to validate.
       #
-      #   @option params [PreludeSDK::Models::VerificationCheckParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
+      #   @option params [PreludeSDK::Models::VerificationCheckParams::Target] :target The verification target. Either a phone number or an email address. To use the
+      #     email verification feature contact us to discuss your use case.
       #
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
