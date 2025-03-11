@@ -8,7 +8,8 @@ module PreludeSDK
       include PreludeSDK::RequestParameters
 
       # @!attribute target
-      #   The target. Currently this can only be an E.164 formatted phone number.
+      #   The verification target. Either a phone number or an email address. To use the
+      #     email verification feature contact us to discuss your use case.
       #
       #   @return [PreludeSDK::Models::WatchPredictParams::Target]
       required :target, -> { PreludeSDK::Models::WatchPredictParams::Target }
@@ -35,19 +36,20 @@ module PreludeSDK
 
       class Target < PreludeSDK::BaseModel
         # @!attribute type
-        #   The type of the target. Currently this can only be "phone_number".
+        #   The type of the target. Either "phone_number" or "email_address".
         #
         #   @return [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type]
         required :type, enum: -> { PreludeSDK::Models::WatchPredictParams::Target::Type }
 
         # @!attribute value
-        #   An E.164 formatted phone number to verify.
+        #   An E.164 formatted phone number or an email address.
         #
         #   @return [String]
         required :value, String
 
         # @!parse
-        #   # The target. Currently this can only be an E.164 formatted phone number.
+        #   # The verification target. Either a phone number or an email address. To use the
+        #   #   email verification feature contact us to discuss your use case.
         #   #
         #   # @param type [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type]
         #   # @param value [String]
@@ -58,9 +60,10 @@ module PreludeSDK
 
         # @abstract
         #
-        # The type of the target. Currently this can only be "phone_number".
+        # The type of the target. Either "phone_number" or "email_address".
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
+          EMAIL_ADDRESS = :email_address
 
           finalize!
         end
