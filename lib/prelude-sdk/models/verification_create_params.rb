@@ -8,7 +8,8 @@ module PreludeSDK
       include PreludeSDK::RequestParameters
 
       # @!attribute target
-      #   The target. Currently this can only be an E.164 formatted phone number.
+      #   The verification target. Either a phone number or an email address. To use the
+      #     email verification feature contact us to discuss your use case.
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Target]
       required :target, -> { PreludeSDK::Models::VerificationCreateParams::Target }
@@ -45,7 +46,8 @@ module PreludeSDK
       #   attr_writer :options
 
       # @!attribute [r] signals
-      #   The signals used for anti-fraud.
+      #   The signals used for anti-fraud. For more details, refer to
+      #     [Signals](/guides/prevent-fraud#signals).
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Signals, nil]
       optional :signals, -> { PreludeSDK::Models::VerificationCreateParams::Signals }
@@ -68,19 +70,20 @@ module PreludeSDK
 
       class Target < PreludeSDK::BaseModel
         # @!attribute type
-        #   The type of the target. Currently this can only be "phone_number".
+        #   The type of the target. Either "phone_number" or "email_address".
         #
         #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type]
         required :type, enum: -> { PreludeSDK::Models::VerificationCreateParams::Target::Type }
 
         # @!attribute value
-        #   An E.164 formatted phone number to verify.
+        #   An E.164 formatted phone number or an email address.
         #
         #   @return [String]
         required :value, String
 
         # @!parse
-        #   # The target. Currently this can only be an E.164 formatted phone number.
+        #   # The verification target. Either a phone number or an email address. To use the
+        #   #   email verification feature contact us to discuss your use case.
         #   #
         #   # @param type [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type]
         #   # @param value [String]
@@ -91,9 +94,10 @@ module PreludeSDK
 
         # @abstract
         #
-        # The type of the target. Currently this can only be "phone_number".
+        # The type of the target. Either "phone_number" or "email_address".
         class Type < PreludeSDK::Enum
           PHONE_NUMBER = :phone_number
+          EMAIL_ADDRESS = :email_address
 
           finalize!
         end
@@ -132,6 +136,18 @@ module PreludeSDK
         # @!parse
         #   # @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
         #   attr_writer :app_realm
+
+        # @!attribute [r] callback_url
+        #   The URL where webhooks will be sent when verification events occur, including
+        #     verification creation, attempt creation, and delivery status changes. For more
+        #     details, refer to [Webhook](/api-reference/v2/verify/webhook).
+        #
+        #   @return [String, nil]
+        optional :callback_url, String
+
+        # @!parse
+        #   # @return [String]
+        #   attr_writer :callback_url
 
         # @!attribute [r] code_size
         #   The size of the code generated. It should be between 4 and 8. Defaults to the
@@ -182,9 +198,8 @@ module PreludeSDK
         #   attr_writer :sender_id
 
         # @!attribute [r] template_id
-        #   The identifier of a verification settings template. It is used to be able to
-        #     switch behavior for specific use cases. Contact us if you need to use this
-        #     functionality.
+        #   The identifier of a verification template. It applies use case-specific
+        #     settings, such as the message content or certain verification parameters.
         #
         #   @return [String, nil]
         optional :template_id, String
@@ -193,17 +208,41 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :template_id
 
+        # @!attribute [r] variables
+        #   The variables to be replaced in the template.
+        #
+        #   @return [Hash{Symbol=>String}, nil]
+        optional :variables, PreludeSDK::HashOf[String]
+
+        # @!parse
+        #   # @return [Hash{Symbol=>String}]
+        #   attr_writer :variables
+
         # @!parse
         #   # Verification options
         #   #
         #   # @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
+        #   # @param callback_url [String]
         #   # @param code_size [Integer]
         #   # @param custom_code [String]
         #   # @param locale [String]
         #   # @param sender_id [String]
         #   # @param template_id [String]
+        #   # @param variables [Hash{Symbol=>String}]
         #   #
-        #   def initialize(app_realm: nil, code_size: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil, **) = super
+        #   def initialize(
+        #     app_realm: nil,
+        #     callback_url: nil,
+        #     code_size: nil,
+        #     custom_code: nil,
+        #     locale: nil,
+        #     sender_id: nil,
+        #     template_id: nil,
+        #     variables: nil,
+        #     **
+        #   )
+        #     super
+        #   end
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
@@ -318,8 +357,21 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :os_version
 
+        # @!attribute [r] user_agent
+        #   The user agent of the user's device. If the individual fields (os_version,
+        #     device_platform, device_model) are provided, we will prioritize those values
+        #     instead of parsing them from the user agent string.
+        #
+        #   @return [String, nil]
+        optional :user_agent, String
+
         # @!parse
-        #   # The signals used for anti-fraud.
+        #   # @return [String]
+        #   attr_writer :user_agent
+
+        # @!parse
+        #   # The signals used for anti-fraud. For more details, refer to
+        #   #   [Signals](/guides/prevent-fraud#signals).
         #   #
         #   # @param app_version [String]
         #   # @param device_id [String]
@@ -328,6 +380,7 @@ module PreludeSDK
         #   # @param ip [String]
         #   # @param is_trusted_user [Boolean]
         #   # @param os_version [String]
+        #   # @param user_agent [String]
         #   #
         #   def initialize(
         #     app_version: nil,
@@ -337,6 +390,7 @@ module PreludeSDK
         #     ip: nil,
         #     is_trusted_user: nil,
         #     os_version: nil,
+        #     user_agent: nil,
         #     **
         #   )
         #     super

@@ -11,7 +11,8 @@ module PreludeSDK
       #   @option params [PreludeSDK::Models::WatchFeedBackParams::Feedback] :feedback You should send a feedback event back to Watch API when your user demonstrates
       #     authentic behavior.
       #
-      #   @option params [PreludeSDK::Models::WatchFeedBackParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
+      #   @option params [PreludeSDK::Models::WatchFeedBackParams::Target] :target The verification target. Either a phone number or an email address. To use the
+      #     email verification feature contact us to discuss your use case.
       #
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
@@ -34,7 +35,8 @@ module PreludeSDK
       #
       # @param params [PreludeSDK::Models::WatchPredictParams, Hash{Symbol=>Object}] .
       #
-      #   @option params [PreludeSDK::Models::WatchPredictParams::Target] :target The target. Currently this can only be an E.164 formatted phone number.
+      #   @option params [PreludeSDK::Models::WatchPredictParams::Target] :target The verification target. Either a phone number or an email address. To use the
+      #     email verification feature contact us to discuss your use case.
       #
       #   @option params [PreludeSDK::Models::WatchPredictParams::Signals] :signals It is highly recommended that you provide the signals to increase prediction
       #     performance.

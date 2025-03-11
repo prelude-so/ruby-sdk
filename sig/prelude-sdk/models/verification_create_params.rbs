@@ -77,10 +77,11 @@ module PreludeSDK
 
         def to_hash: -> PreludeSDK::Models::VerificationCreateParams::target
 
-        type type_ = :phone_number
+        type type_ = :phone_number | :email_address
 
         class Type < PreludeSDK::Enum
           PHONE_NUMBER: :phone_number
+          EMAIL_ADDRESS: :email_address
 
           def self.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Target::type_]
         end
@@ -106,11 +107,13 @@ module PreludeSDK
       type options =
         {
           app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+          callback_url: String,
           code_size: Integer,
           custom_code: String,
           locale: String,
           sender_id: String,
-          template_id: String
+          template_id: String,
+          variables: ::Hash[Symbol, String]
         }
 
       class Options < PreludeSDK::BaseModel
@@ -119,6 +122,10 @@ module PreludeSDK
         def app_realm=: (
           PreludeSDK::Models::VerificationCreateParams::Options::AppRealm
         ) -> PreludeSDK::Models::VerificationCreateParams::Options::AppRealm
+
+        attr_reader callback_url: String?
+
+        def callback_url=: (String) -> String
 
         attr_reader code_size: Integer?
 
@@ -140,14 +147,20 @@ module PreludeSDK
 
         def template_id=: (String) -> String
 
+        attr_reader variables: ::Hash[Symbol, String]?
+
+        def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
         def initialize:
           (
             app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+            callback_url: String,
             code_size: Integer,
             custom_code: String,
             locale: String,
             sender_id: String,
-            template_id: String
+            template_id: String,
+            variables: ::Hash[Symbol, String]
           ) -> void
           | (
             ?PreludeSDK::Models::VerificationCreateParams::options
@@ -197,7 +210,8 @@ module PreludeSDK
           device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
           ip: String,
           is_trusted_user: bool,
-          os_version: String
+          os_version: String,
+          user_agent: String
         }
 
       class Signals < PreludeSDK::BaseModel
@@ -231,6 +245,10 @@ module PreludeSDK
 
         def os_version=: (String) -> String
 
+        attr_reader user_agent: String?
+
+        def user_agent=: (String) -> String
+
         def initialize:
           (
             app_version: String,
@@ -239,7 +257,8 @@ module PreludeSDK
             device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
             ip: String,
             is_trusted_user: bool,
-            os_version: String
+            os_version: String,
+            user_agent: String
           ) -> void
           | (
             ?PreludeSDK::Models::VerificationCreateParams::signals
