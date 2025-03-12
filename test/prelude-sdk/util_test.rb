@@ -161,7 +161,8 @@ class PreludeSDK::Test::UtilFormDataEncodingTest < Minitest::Test
   class FakeCGI < CGI
     def initialize(headers, io)
       @ctype = headers["content-type"]
-      @io = io
+      @io = PreludeSDK::Util::ReadIOAdapter.new(io) {}
+      @c_len = io.to_a.join.bytesize.to_s
       super()
     end
 
@@ -171,7 +172,7 @@ class PreludeSDK::Test::UtilFormDataEncodingTest < Minitest::Test
       {
         "REQUEST_METHOD" => "POST",
         "CONTENT_TYPE" => @ctype,
-        "CONTENT_LENGTH" => stdinput.string.length
+        "CONTENT_LENGTH" => @c_len
       }
     end
   end
@@ -204,6 +205,34 @@ class PreludeSDK::Test::UtilFormDataEncodingTest < Minitest::Test
       testcase.each do |key, val|
         assert_equal(val, cgi[key])
       end
+    end
+  end
+end
+
+class PreludeSDK::Test::UtilIOAdapterTest < Minitest::Test
+  def test_copy_read
+    cases = {
+      StringIO.new("abc") => "abc",
+      Enumerator.new { _1 << "abc" } => "abc"
+    }
+    cases.each do |input, expected|
+      io = StringIO.new
+      adapter = PreludeSDK::Util::ReadIOAdapter.new(input) {}
+      IO.copy_stream(adapter, io)
+      assert_equal(expected, io.string)
+    end
+  end
+
+  def test_copy_write
+    cases = {
+      StringIO.new => "",
+      StringIO.new("abc") => "abc"
+    }
+    cases.each do |input, expected|
+      enum = PreludeSDK::Util.string_io do |y|
+        IO.copy_stream(input, y)
+      end
+      assert_equal(expected, enum.to_a.join)
     end
   end
 end
