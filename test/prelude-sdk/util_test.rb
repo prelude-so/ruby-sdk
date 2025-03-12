@@ -244,7 +244,7 @@ class PreludeSDK::Test::UtilFusedEnumTest < Minitest::Test
   def test_external_iteration
     it = [1, 2, 3].to_enum
     first = it.next
-    fused = PreludeSDK::Util.fused_enum(it)
+    fused = PreludeSDK::Util.fused_enum(it, external: true)
 
     assert_equal(1, first)
     assert_equal([2, 3], fused.to_a)
