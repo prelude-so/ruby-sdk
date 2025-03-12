@@ -5,6 +5,26 @@ module PreludeSDK
   #
   # @abstract
   #
+  # @example
+  # ```ruby
+  # if page.has_next?
+  #   page = page.next_page
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # page.auto_paging_each do |transactional|
+  #   puts(transactional)
+  # end
+  # ```
+  #
+  # @example
+  # ```ruby
+  # transactionals = page.to_enum.take(2)
+  #
+  # transactionals => Array
+  # ```
   module BasePage
     # @return [Boolean]
     #
