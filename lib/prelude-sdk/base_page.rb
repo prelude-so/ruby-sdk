@@ -47,14 +47,17 @@ module PreludeSDK
 
     alias_method :enum_for, :to_enum
 
-    # @!parse
-    #   # @private
-    #   #
-    #   # @param client [PreludeSDK::BaseClient]
-    #   # @param req [Hash{Symbol=>Object}]
-    #   # @param headers [Hash{String=>String}, Net::HTTPHeader]
-    #   # @param page_data [Object]
-    #   #
-    #   def initialize(client:, req:, headers:, page_data:); end
+    # @private
+    #
+    # @param client [PreludeSDK::BaseClient]
+    # @param req [Hash{Symbol=>Object}]
+    # @param headers [Hash{String=>String}, Net::HTTPHeader]
+    # @param page_data [Object]
+    #
+    def initialize(client:, req:, headers:, page_data:)
+      @client = client
+      @req = req
+      super()
+    end
   end
 end
