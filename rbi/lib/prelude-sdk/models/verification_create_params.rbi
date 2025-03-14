@@ -6,6 +6,8 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
+      # The verification target. Either a phone number or an email address. To use the
+      #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::VerificationCreateParams::Target) }
       def target
       end
@@ -17,6 +19,7 @@ module PreludeSDK
       def target=(_)
       end
 
+      # The identifier of the dispatch that came from the front-end SDK.
       sig { returns(T.nilable(String)) }
       def dispatch_id
       end
@@ -25,6 +28,8 @@ module PreludeSDK
       def dispatch_id=(_)
       end
 
+      # The metadata for this verification. This object will be returned with every
+      #   response or webhook sent that refers to this verification.
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Metadata)) }
       def metadata
       end
@@ -36,6 +41,7 @@ module PreludeSDK
       def metadata=(_)
       end
 
+      # Verification options
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options)) }
       def options
       end
@@ -47,6 +53,8 @@ module PreludeSDK
       def options=(_)
       end
 
+      # The signals used for anti-fraud. For more details, refer to
+      #   [Signals](/guides/prevent-fraud#signals).
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Signals)) }
       def signals
       end
@@ -89,6 +97,7 @@ module PreludeSDK
       end
 
       class Target < PreludeSDK::BaseModel
+        # The type of the target. Either "phone_number" or "email_address".
         sig { returns(Symbol) }
         def type
         end
@@ -97,6 +106,7 @@ module PreludeSDK
         def type=(_)
         end
 
+        # An E.164 formatted phone number or an email address.
         sig { returns(String) }
         def value
         end
@@ -105,6 +115,8 @@ module PreludeSDK
         def value=(_)
         end
 
+        # The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
         sig { params(type: Symbol, value: String).returns(T.attached_class) }
         def self.new(type:, value:)
         end
@@ -113,6 +125,7 @@ module PreludeSDK
         def to_hash
         end
 
+        # The type of the target. Either "phone_number" or "email_address".
         class Type < PreludeSDK::Enum
           abstract!
 
@@ -128,6 +141,7 @@ module PreludeSDK
       end
 
       class Metadata < PreludeSDK::BaseModel
+        # A user-defined identifier to correlate this verification with.
         sig { returns(T.nilable(String)) }
         def correlation_id
         end
@@ -136,6 +150,8 @@ module PreludeSDK
         def correlation_id=(_)
         end
 
+        # The metadata for this verification. This object will be returned with every
+        #   response or webhook sent that refers to this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
         def self.new(correlation_id: nil)
         end
@@ -146,6 +162,8 @@ module PreludeSDK
       end
 
       class Options < PreludeSDK::BaseModel
+        # This allows you to automatically retrieve and fill the OTP code on mobile apps.
+        #   Currently only Android devices are supported.
         sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)) }
         def app_realm
         end
@@ -157,6 +175,9 @@ module PreludeSDK
         def app_realm=(_)
         end
 
+        # The URL where webhooks will be sent when verification events occur, including
+        #   verification creation, attempt creation, and delivery status changes. For more
+        #   details, refer to [Webhook](/api-reference/v2/verify/webhook).
         sig { returns(T.nilable(String)) }
         def callback_url
         end
@@ -165,6 +186,8 @@ module PreludeSDK
         def callback_url=(_)
         end
 
+        # The size of the code generated. It should be between 4 and 8. Defaults to the
+        #   code size specified from the Dashboard.
         sig { returns(T.nilable(Integer)) }
         def code_size
         end
@@ -173,6 +196,10 @@ module PreludeSDK
         def code_size=(_)
         end
 
+        # The custom code to use for OTP verification. This feature is only available for
+        #   compatibility purposes and subject to Prelude’s approval. Contact us to discuss
+        #   your use case. For more details, refer to
+        #   [Multi Routing](/concepts/multi-routing).
         sig { returns(T.nilable(String)) }
         def custom_code
         end
@@ -181,6 +208,10 @@ module PreludeSDK
         def custom_code=(_)
         end
 
+        # A BCP-47 formatted locale string with the language the text message will be sent
+        #   to. If there's no locale set, the language will be determined by the country
+        #   code of the phone number. If the language specified doesn't exist, it defaults
+        #   to US English.
         sig { returns(T.nilable(String)) }
         def locale
         end
@@ -189,6 +220,8 @@ module PreludeSDK
         def locale=(_)
         end
 
+        # The Sender ID to use for this message. The Sender ID needs to be enabled by
+        #   Prelude.
         sig { returns(T.nilable(String)) }
         def sender_id
         end
@@ -197,6 +230,8 @@ module PreludeSDK
         def sender_id=(_)
         end
 
+        # The identifier of a verification template. It applies use case-specific
+        #   settings, such as the message content or certain verification parameters.
         sig { returns(T.nilable(String)) }
         def template_id
         end
@@ -205,6 +240,7 @@ module PreludeSDK
         def template_id=(_)
         end
 
+        # The variables to be replaced in the template.
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
         def variables
         end
@@ -213,6 +249,7 @@ module PreludeSDK
         def variables=(_)
         end
 
+        # Verification options
         sig do
           params(
             app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
@@ -257,6 +294,8 @@ module PreludeSDK
         end
 
         class AppRealm < PreludeSDK::BaseModel
+          # The platform the SMS will be sent to. We are currently only supporting
+          #   "android".
           sig { returns(Symbol) }
           def platform
           end
@@ -265,6 +304,7 @@ module PreludeSDK
           def platform=(_)
           end
 
+          # The Android SMS Retriever API hash code that identifies your app.
           sig { returns(String) }
           def value
           end
@@ -273,6 +313,8 @@ module PreludeSDK
           def value=(_)
           end
 
+          # This allows you to automatically retrieve and fill the OTP code on mobile apps.
+          #   Currently only Android devices are supported.
           sig { params(platform: Symbol, value: String).returns(T.attached_class) }
           def self.new(platform:, value:)
           end
@@ -281,6 +323,8 @@ module PreludeSDK
           def to_hash
           end
 
+          # The platform the SMS will be sent to. We are currently only supporting
+          #   "android".
           class Platform < PreludeSDK::Enum
             abstract!
 
@@ -296,6 +340,7 @@ module PreludeSDK
       end
 
       class Signals < PreludeSDK::BaseModel
+        # The version of your application.
         sig { returns(T.nilable(String)) }
         def app_version
         end
@@ -304,6 +349,8 @@ module PreludeSDK
         def app_version=(_)
         end
 
+        # The unique identifier for the user's device. For Android, this corresponds to
+        #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         sig { returns(T.nilable(String)) }
         def device_id
         end
@@ -312,6 +359,7 @@ module PreludeSDK
         def device_id=(_)
         end
 
+        # The model of the user's device.
         sig { returns(T.nilable(String)) }
         def device_model
         end
@@ -320,6 +368,7 @@ module PreludeSDK
         def device_model=(_)
         end
 
+        # The type of the user's device.
         sig { returns(T.nilable(Symbol)) }
         def device_platform
         end
@@ -328,6 +377,7 @@ module PreludeSDK
         def device_platform=(_)
         end
 
+        # The IP address of the user's device.
         sig { returns(T.nilable(String)) }
         def ip
         end
@@ -336,6 +386,8 @@ module PreludeSDK
         def ip=(_)
         end
 
+        # This signal should provide a higher level of trust, indicating that the user is
+        #   genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
         sig { returns(T.nilable(T::Boolean)) }
         def is_trusted_user
         end
@@ -344,6 +396,7 @@ module PreludeSDK
         def is_trusted_user=(_)
         end
 
+        # The version of the user's device operating system.
         sig { returns(T.nilable(String)) }
         def os_version
         end
@@ -352,6 +405,9 @@ module PreludeSDK
         def os_version=(_)
         end
 
+        # The user agent of the user's device. If the individual fields (os_version,
+        #   device_platform, device_model) are provided, we will prioritize those values
+        #   instead of parsing them from the user agent string.
         sig { returns(T.nilable(String)) }
         def user_agent
         end
@@ -360,6 +416,8 @@ module PreludeSDK
         def user_agent=(_)
         end
 
+        # The signals used for anti-fraud. For more details, refer to
+        #   [Signals](/guides/prevent-fraud#signals).
         sig do
           params(
             app_version: String,
@@ -403,6 +461,7 @@ module PreludeSDK
         def to_hash
         end
 
+        # The type of the user's device.
         class DevicePlatform < PreludeSDK::Enum
           abstract!
 

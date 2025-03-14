@@ -6,6 +6,7 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
+      # The template identifier.
       sig { returns(String) }
       def template_id
       end
@@ -14,6 +15,7 @@ module PreludeSDK
       def template_id=(_)
       end
 
+      # The recipient's phone number.
       sig { returns(String) }
       def to
       end
@@ -22,6 +24,7 @@ module PreludeSDK
       def to=(_)
       end
 
+      # The callback URL.
       sig { returns(T.nilable(String)) }
       def callback_url
       end
@@ -30,6 +33,7 @@ module PreludeSDK
       def callback_url=(_)
       end
 
+      # A unique, user-defined identifier that will be included in webhook events.
       sig { returns(T.nilable(String)) }
       def correlation_id
       end
@@ -38,6 +42,7 @@ module PreludeSDK
       def correlation_id=(_)
       end
 
+      # The message expiration date.
       sig { returns(T.nilable(String)) }
       def expires_at
       end
@@ -46,6 +51,7 @@ module PreludeSDK
       def expires_at=(_)
       end
 
+      # The Sender ID.
       sig { returns(T.nilable(String)) }
       def from
       end
@@ -54,6 +60,10 @@ module PreludeSDK
       def from=(_)
       end
 
+      # A BCP-47 formatted locale string with the language the text message will be sent
+      #   to. If there's no locale set, the language will be determined by the country
+      #   code of the phone number. If the language specified doesn't exist, the default
+      #   set on the template will be used.
       sig { returns(T.nilable(String)) }
       def locale
       end
@@ -62,6 +72,7 @@ module PreludeSDK
       def locale=(_)
       end
 
+      # The variables to be replaced in the template.
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       def variables
       end

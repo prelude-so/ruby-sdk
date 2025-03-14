@@ -29,7 +29,6 @@ module PreludeSDK
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::TransactionalSendResponse]
-      #
       def send_(params)
         parsed, options = PreludeSDK::Models::TransactionalSendParams.dump_request(params)
         @client.request(
@@ -42,7 +41,6 @@ module PreludeSDK
       end
 
       # @param client [PreludeSDK::Client]
-      #
       def initialize(client:)
         @client = client
       end

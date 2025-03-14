@@ -43,7 +43,7 @@ module PreludeSDK
       response_headers: ::Hash[String, String]
     ) -> PreludeSDK::BaseClient::request_input
 
-    # @private
+    # @api private
     attr_accessor requester: top
 
     def initialize: (

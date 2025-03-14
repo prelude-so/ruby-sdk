@@ -3,6 +3,7 @@
 module PreludeSDK
   module Models
     class WatchFeedBackResponse < PreludeSDK::BaseModel
+      # A unique identifier for your feedback request.
       sig { returns(String) }
       def id
       end

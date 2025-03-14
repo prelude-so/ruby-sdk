@@ -6,6 +6,8 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
+      # The verification target. Either a phone number or an email address. To use the
+      #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::WatchPredictParams::Target) }
       def target
       end
@@ -17,6 +19,8 @@ module PreludeSDK
       def target=(_)
       end
 
+      # It is highly recommended that you provide the signals to increase prediction
+      #   performance.
       sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals)) }
       def signals
       end
@@ -53,6 +57,7 @@ module PreludeSDK
       end
 
       class Target < PreludeSDK::BaseModel
+        # The type of the target. Either "phone_number" or "email_address".
         sig { returns(Symbol) }
         def type
         end
@@ -61,6 +66,7 @@ module PreludeSDK
         def type=(_)
         end
 
+        # An E.164 formatted phone number or an email address.
         sig { returns(String) }
         def value
         end
@@ -69,6 +75,8 @@ module PreludeSDK
         def value=(_)
         end
 
+        # The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
         sig { params(type: Symbol, value: String).returns(T.attached_class) }
         def self.new(type:, value:)
         end
@@ -77,6 +85,7 @@ module PreludeSDK
         def to_hash
         end
 
+        # The type of the target. Either "phone_number" or "email_address".
         class Type < PreludeSDK::Enum
           abstract!
 
@@ -92,6 +101,8 @@ module PreludeSDK
       end
 
       class Signals < PreludeSDK::BaseModel
+        # The unique identifier for the user's device. For Android, this corresponds to
+        #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         sig { returns(T.nilable(String)) }
         def device_id
         end
@@ -100,6 +111,7 @@ module PreludeSDK
         def device_id=(_)
         end
 
+        # The model of the user's device.
         sig { returns(T.nilable(String)) }
         def device_model
         end
@@ -108,6 +120,7 @@ module PreludeSDK
         def device_model=(_)
         end
 
+        # The type of the user's device.
         sig { returns(T.nilable(String)) }
         def device_type
         end
@@ -116,6 +129,7 @@ module PreludeSDK
         def device_type=(_)
         end
 
+        # The IPv4 address of the user's device
         sig { returns(T.nilable(String)) }
         def ip
         end
@@ -124,6 +138,8 @@ module PreludeSDK
         def ip=(_)
         end
 
+        # It is highly recommended that you provide the signals to increase prediction
+        #   performance.
         sig do
           params(
             device_id: String,

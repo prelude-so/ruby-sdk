@@ -3,6 +3,7 @@
 module PreludeSDK
   module Models
     class VerificationCreateResponse < PreludeSDK::BaseModel
+      # The verification identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module PreludeSDK
       def id=(_)
       end
 
+      # The method used for verifying this phone number.
       sig { returns(Symbol) }
       def method_
       end
@@ -19,6 +21,7 @@ module PreludeSDK
       def method_=(_)
       end
 
+      # The status of the verification.
       sig { returns(Symbol) }
       def status
       end
@@ -27,6 +30,7 @@ module PreludeSDK
       def status=(_)
       end
 
+      # The metadata for this verification.
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateResponse::Metadata)) }
       def metadata
       end
@@ -74,6 +78,7 @@ module PreludeSDK
       def to_hash
       end
 
+      # The method used for verifying this phone number.
       class Method < PreludeSDK::Enum
         abstract!
 
@@ -86,6 +91,7 @@ module PreludeSDK
         end
       end
 
+      # The status of the verification.
       class Status < PreludeSDK::Enum
         abstract!
 
@@ -109,6 +115,7 @@ module PreludeSDK
         def correlation_id=(_)
         end
 
+        # The metadata for this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
         def self.new(correlation_id: nil)
         end

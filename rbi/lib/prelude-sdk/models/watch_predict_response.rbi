@@ -3,6 +3,7 @@
 module PreludeSDK
   module Models
     class WatchPredictResponse < PreludeSDK::BaseModel
+      # A unique identifier for your prediction request.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module PreludeSDK
       def id=(_)
       end
 
+      # A label indicating the trustworthiness of the phone number.
       sig { returns(Symbol) }
       def prediction
       end
@@ -44,6 +46,7 @@ module PreludeSDK
       def to_hash
       end
 
+      # A label indicating the trustworthiness of the phone number.
       class Prediction < PreludeSDK::Enum
         abstract!
 
@@ -58,6 +61,7 @@ module PreludeSDK
       end
 
       class Reasoning < PreludeSDK::BaseModel
+        # A label explaining why the phone number was classified as not trustworthy
         sig { returns(T.nilable(Symbol)) }
         def cause
         end
@@ -66,6 +70,8 @@ module PreludeSDK
         def cause=(_)
         end
 
+        # Indicates the risk of the phone number being genuine or involved in fraudulent
+        #   patterns. The higher the riskier.
         sig { returns(T.nilable(Float)) }
         def score
         end
@@ -82,6 +88,7 @@ module PreludeSDK
         def to_hash
         end
 
+        # A label explaining why the phone number was classified as not trustworthy
         class Cause < PreludeSDK::Enum
           abstract!
 

@@ -3,6 +3,7 @@
 module PreludeSDK
   module Resources
     class Transactional
+      # Send a transactional message to your user.
       sig do
         params(
           template_id: String,
