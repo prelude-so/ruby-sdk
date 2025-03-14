@@ -1,7 +1,6 @@
 # typed: strong
 
 module PreludeSDK
-  # @api private
   module BasePage
     abstract!
 
