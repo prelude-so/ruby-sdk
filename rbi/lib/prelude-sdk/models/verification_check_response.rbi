@@ -3,6 +3,7 @@
 module PreludeSDK
   module Models
     class VerificationCheckResponse < PreludeSDK::BaseModel
+      # The status of the check.
       sig { returns(Symbol) }
       def status
       end
@@ -11,6 +12,7 @@ module PreludeSDK
       def status=(_)
       end
 
+      # The verification identifier.
       sig { returns(T.nilable(String)) }
       def id
       end
@@ -19,6 +21,7 @@ module PreludeSDK
       def id=(_)
       end
 
+      # The metadata for this verification.
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCheckResponse::Metadata)) }
       def metadata
       end
@@ -64,6 +67,7 @@ module PreludeSDK
       def to_hash
       end
 
+      # The status of the check.
       class Status < PreludeSDK::Enum
         abstract!
 
@@ -87,6 +91,7 @@ module PreludeSDK
         def correlation_id=(_)
         end
 
+        # The metadata for this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
         def self.new(correlation_id: nil)
         end

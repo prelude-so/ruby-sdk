@@ -3,6 +3,8 @@
 module PreludeSDK
   module Resources
     class Watch
+      # Once the user with a trustworthy phone number demonstrates authentic behavior,
+      #   call this endpoint to report their authenticity to our systems.
       sig do
         params(
           feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
@@ -14,6 +16,9 @@ module PreludeSDK
       def feed_back(feedback:, target:, request_options: {})
       end
 
+      # Identify trustworthy phone numbers to mitigate fake traffic or traffic involved
+      #   in fraud and international revenue share fraud (IRSF) patterns. This endpoint
+      #   must be implemented in conjunction with the `watch/feedback` endpoint.
       sig do
         params(
           target: PreludeSDK::Models::WatchPredictParams::Target,

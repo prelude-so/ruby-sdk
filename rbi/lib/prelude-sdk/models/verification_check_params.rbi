@@ -6,6 +6,7 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
+      # The OTP code to validate.
       sig { returns(String) }
       def code
       end
@@ -14,6 +15,8 @@ module PreludeSDK
       def code=(_)
       end
 
+      # The verification target. Either a phone number or an email address. To use the
+      #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::VerificationCheckParams::Target) }
       def target
       end
@@ -50,6 +53,7 @@ module PreludeSDK
       end
 
       class Target < PreludeSDK::BaseModel
+        # The type of the target. Either "phone_number" or "email_address".
         sig { returns(Symbol) }
         def type
         end
@@ -58,6 +62,7 @@ module PreludeSDK
         def type=(_)
         end
 
+        # An E.164 formatted phone number or an email address.
         sig { returns(String) }
         def value
         end
@@ -66,6 +71,8 @@ module PreludeSDK
         def value=(_)
         end
 
+        # The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
         sig { params(type: Symbol, value: String).returns(T.attached_class) }
         def self.new(type:, value:)
         end
@@ -74,6 +81,7 @@ module PreludeSDK
         def to_hash
         end
 
+        # The type of the target. Either "phone_number" or "email_address".
         class Type < PreludeSDK::Enum
           abstract!
 
