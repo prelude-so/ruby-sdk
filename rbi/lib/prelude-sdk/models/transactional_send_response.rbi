@@ -3,6 +3,7 @@
 module PreludeSDK
   module Models
     class TransactionalSendResponse < PreludeSDK::BaseModel
+      # The message identifier.
       sig { returns(String) }
       def id
       end
@@ -11,6 +12,7 @@ module PreludeSDK
       def id=(_)
       end
 
+      # The message creation date.
       sig { returns(Time) }
       def created_at
       end
@@ -19,6 +21,7 @@ module PreludeSDK
       def created_at=(_)
       end
 
+      # The message expiration date.
       sig { returns(Time) }
       def expires_at
       end
@@ -27,6 +30,7 @@ module PreludeSDK
       def expires_at=(_)
       end
 
+      # The template identifier.
       sig { returns(String) }
       def template_id
       end
@@ -35,6 +39,7 @@ module PreludeSDK
       def template_id=(_)
       end
 
+      # The recipient's phone number.
       sig { returns(String) }
       def to
       end
@@ -43,6 +48,7 @@ module PreludeSDK
       def to=(_)
       end
 
+      # The variables to be replaced in the template.
       sig { returns(T::Hash[Symbol, String]) }
       def variables
       end
@@ -51,6 +57,7 @@ module PreludeSDK
       def variables=(_)
       end
 
+      # The callback URL.
       sig { returns(T.nilable(String)) }
       def callback_url
       end
@@ -59,6 +66,7 @@ module PreludeSDK
       def callback_url=(_)
       end
 
+      # A unique, user-defined identifier that will be included in webhook events.
       sig { returns(T.nilable(String)) }
       def correlation_id
       end
@@ -67,6 +75,7 @@ module PreludeSDK
       def correlation_id=(_)
       end
 
+      # The Sender ID.
       sig { returns(T.nilable(String)) }
       def from
       end

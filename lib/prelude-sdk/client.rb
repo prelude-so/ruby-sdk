@@ -28,10 +28,9 @@ module PreludeSDK
     # @return [PreludeSDK::Resources::Watch]
     attr_reader :watch
 
-    # @private
+    # @api private
     #
     # @return [Hash{String=>String}]
-    #
     private def auth_headers
       return {} if @api_token.nil?
 
@@ -51,7 +50,6 @@ module PreludeSDK
     # @param initial_retry_delay [Float]
     #
     # @param max_retry_delay [Float]
-    #
     def initialize(
       base_url: nil,
       api_token: ENV["API_TOKEN"],

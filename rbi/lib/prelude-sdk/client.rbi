@@ -10,6 +10,7 @@ module PreludeSDK
 
     DEFAULT_MAX_RETRY_DELAY = T.let(8.0, Float)
 
+    # Bearer token for authorizing API requests.
     sig { returns(String) }
     def api_token
     end
@@ -26,10 +27,12 @@ module PreludeSDK
     def watch
     end
 
+    # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers
     end
 
+    # Creates and returns a new client for interacting with the API.
     sig do
       params(
         base_url: T.nilable(String),

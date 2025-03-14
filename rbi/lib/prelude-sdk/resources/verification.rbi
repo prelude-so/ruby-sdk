@@ -3,6 +3,9 @@
 module PreludeSDK
   module Resources
     class Verification
+      # Create a new verification for a specific phone number. If another non-expired
+      #   verification exists (the request is performed within the verification window),
+      #   this endpoint will perform a retry instead.
       sig do
         params(
           target: PreludeSDK::Models::VerificationCreateParams::Target,
@@ -17,6 +20,7 @@ module PreludeSDK
       def create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
       end
 
+      # Check the validity of a verification code.
       sig do
         params(
           code: String,

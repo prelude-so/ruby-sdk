@@ -6,6 +6,8 @@ module PreludeSDK
       extend PreludeSDK::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
+      # You should send a feedback event back to Watch API when your user demonstrates
+      #   authentic behavior.
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback) }
       def feedback
       end
@@ -17,6 +19,8 @@ module PreludeSDK
       def feedback=(_)
       end
 
+      # The verification target. Either a phone number or an email address. To use the
+      #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Target) }
       def target
       end
@@ -53,6 +57,8 @@ module PreludeSDK
       end
 
       class Feedback < PreludeSDK::BaseModel
+        # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
+        #   (e.g. phone number) is trustworthy.
         sig { returns(Symbol) }
         def type
         end
@@ -61,6 +67,8 @@ module PreludeSDK
         def type=(_)
         end
 
+        # You should send a feedback event back to Watch API when your user demonstrates
+        #   authentic behavior.
         sig { params(type: Symbol).returns(T.attached_class) }
         def self.new(type:)
         end
@@ -69,6 +77,8 @@ module PreludeSDK
         def to_hash
         end
 
+        # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
+        #   (e.g. phone number) is trustworthy.
         class Type < PreludeSDK::Enum
           abstract!
 
@@ -83,6 +93,7 @@ module PreludeSDK
       end
 
       class Target < PreludeSDK::BaseModel
+        # The type of the target. Either "phone_number" or "email_address".
         sig { returns(Symbol) }
         def type
         end
@@ -91,6 +102,7 @@ module PreludeSDK
         def type=(_)
         end
 
+        # An E.164 formatted phone number or an email address.
         sig { returns(String) }
         def value
         end
@@ -99,6 +111,8 @@ module PreludeSDK
         def value=(_)
         end
 
+        # The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
         sig { params(type: Symbol, value: String).returns(T.attached_class) }
         def self.new(type:, value:)
         end
@@ -107,6 +121,7 @@ module PreludeSDK
         def to_hash
         end
 
+        # The type of the target. Either "phone_number" or "email_address".
         class Type < PreludeSDK::Enum
           abstract!
 
