@@ -45,8 +45,11 @@ module PreludeSDK
         .returns(T.attached_class)
     end
     def self.new(
+      # Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
       base_url: nil,
+      # Bearer token for authorizing API requests. Defaults to `ENV["API_TOKEN"]`
       api_token: ENV["API_TOKEN"],
+      # Max number of retries to attempt after a failed retryable request.
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,

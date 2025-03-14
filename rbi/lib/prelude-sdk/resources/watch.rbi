@@ -13,7 +13,15 @@ module PreludeSDK
         )
           .returns(PreludeSDK::Models::WatchFeedBackResponse)
       end
-      def feed_back(feedback:, target:, request_options: {})
+      def feed_back(
+        # You should send a feedback event back to Watch API when your user demonstrates
+        #   authentic behavior.
+        feedback:,
+        # The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
+        target:,
+        request_options: {}
+      )
       end
 
       # Identify trustworthy phone numbers to mitigate fake traffic or traffic involved
@@ -27,7 +35,15 @@ module PreludeSDK
         )
           .returns(PreludeSDK::Models::WatchPredictResponse)
       end
-      def predict(target:, signals: nil, request_options: {})
+      def predict(
+        # The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
+        target:,
+        # It is highly recommended that you provide the signals to increase prediction
+        #   performance.
+        signals: nil,
+        request_options: {}
+      )
       end
 
       sig { params(client: PreludeSDK::Client).returns(T.attached_class) }

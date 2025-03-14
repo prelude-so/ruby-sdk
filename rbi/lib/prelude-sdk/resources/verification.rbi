@@ -17,7 +17,22 @@ module PreludeSDK
         )
           .returns(PreludeSDK::Models::VerificationCreateResponse)
       end
-      def create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
+      def create(
+        # The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
+        target:,
+        # The identifier of the dispatch that came from the front-end SDK.
+        dispatch_id: nil,
+        # The metadata for this verification. This object will be returned with every
+        #   response or webhook sent that refers to this verification.
+        metadata: nil,
+        # Verification options
+        options: nil,
+        # The signals used for anti-fraud. For more details, refer to
+        #   [Signals](/guides/prevent-fraud#signals).
+        signals: nil,
+        request_options: {}
+      )
       end
 
       # Check the validity of a verification code.
@@ -29,7 +44,14 @@ module PreludeSDK
         )
           .returns(PreludeSDK::Models::VerificationCheckResponse)
       end
-      def check(code:, target:, request_options: {})
+      def check(
+        # The OTP code to validate.
+        code:,
+        # The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
+        target:,
+        request_options: {}
+      )
       end
 
       sig { params(client: PreludeSDK::Client).returns(T.attached_class) }
