@@ -2,8 +2,6 @@
 
 module PreludeSDK
   # @api private
-  #
-  # @abstract
   module Extern
   end
 end
