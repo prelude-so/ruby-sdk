@@ -1,6 +1,7 @@
 # typed: strong
 
 module PreludeSDK
+  # @api private
   class BaseClient
     abstract!
 
