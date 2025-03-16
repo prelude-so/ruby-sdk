@@ -82,28 +82,20 @@ module PreludeSDK
       class Method < PreludeSDK::Enum
         abstract!
 
-        MESSAGE = :message
+        Value = type_template(:out) { {fixed: Symbol} }
 
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
+        MESSAGE = :message
       end
 
       # The status of the verification.
       class Status < PreludeSDK::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         SUCCESS = :success
         RETRY = :retry
         BLOCKED = :blocked
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class Metadata < PreludeSDK::BaseModel
