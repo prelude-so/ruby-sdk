@@ -82,13 +82,9 @@ module PreludeSDK
         class Type < PreludeSDK::Enum
           abstract!
 
-          CONFIRM_TARGET = :CONFIRM_TARGET
+          Value = type_template(:out) { {fixed: Symbol} }
 
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
+          CONFIRM_TARGET = :CONFIRM_TARGET
         end
       end
 
@@ -125,14 +121,10 @@ module PreludeSDK
         class Type < PreludeSDK::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end

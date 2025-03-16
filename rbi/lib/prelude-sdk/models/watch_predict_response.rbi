@@ -50,14 +50,10 @@ module PreludeSDK
       class Prediction < PreludeSDK::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         ALLOW = :allow
         BLOCK = :block
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class Reasoning < PreludeSDK::BaseModel
@@ -92,16 +88,12 @@ module PreludeSDK
         class Cause < PreludeSDK::Enum
           abstract!
 
+          Value = type_template(:out) { {fixed: Symbol} }
+
           NONE = :none
           SMART_ANTIFRAUD = :smart_antifraud
           REPEAT_NUMBER = :repeat_number
           INVALID_LINE = :invalid_line
-
-          class << self
-            sig { override.returns(T::Array[Symbol]) }
-            def values
-            end
-          end
         end
       end
     end
