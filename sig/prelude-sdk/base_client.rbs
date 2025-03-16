@@ -43,6 +43,11 @@ module PreludeSDK
       response_headers: ::Hash[String, String]
     ) -> PreludeSDK::BaseClient::request_input
 
+    def self.reap_connection!: (
+      Integer | PreludeSDK::APIConnectionError status,
+      stream: Enumerable[String]?
+    ) -> void
+
     # @api private
     attr_accessor requester: top
 
