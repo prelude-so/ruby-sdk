@@ -85,7 +85,7 @@ module PreludeSDK
   class Union
     extend PreludeSDK::Converter
 
-    private def self.known_variants: -> ::Array[[Symbol?, Proc]]
+    private def self.known_variants: -> ::Array[[Symbol?, (^-> PreludeSDK::Converter::input)]]
 
     def self.derefed_variants: -> ::Array[[Symbol?, top]]
 
