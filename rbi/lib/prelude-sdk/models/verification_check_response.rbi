@@ -71,15 +71,11 @@ module PreludeSDK
       class Status < PreludeSDK::Enum
         abstract!
 
+        Value = type_template(:out) { {fixed: Symbol} }
+
         SUCCESS = :success
         FAILURE = :failure
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found
-
-        class << self
-          sig { override.returns(T::Array[Symbol]) }
-          def values
-          end
-        end
       end
 
       class Metadata < PreludeSDK::BaseModel
