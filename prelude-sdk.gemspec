@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README.md"]
   s.required_ruby_version = ">= 3.0.0"
   s.add_dependency "connection_pool"
-  s.homepage = "https://gemdocs.org/gems/prelude-sdk/latest"
+  s.homepage = "https://gemdocs.org/gems/prelude-sdk"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/prelude-so/ruby-sdk"
   s.metadata["rubygems_mfa_required"] = "false"
