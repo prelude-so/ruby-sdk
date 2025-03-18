@@ -15,5 +15,5 @@ Gem::Specification.new do |s|
   s.homepage = "https://gemdocs.org/gems/prelude-sdk"
   s.metadata["homepage_uri"] = s.homepage
   s.metadata["source_code_uri"] = "https://github.com/prelude-so/ruby-sdk"
-  s.metadata["rubygems_mfa_required"] = "false"
+  s.metadata["rubygems_mfa_required"] = false.to_s
 end
