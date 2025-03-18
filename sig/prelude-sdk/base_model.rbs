@@ -178,6 +178,8 @@ module PreludeSDK
     def self.known_fields: -> ::Hash[Symbol, (PreludeSDK::BaseModel::known_field
     & { type_fn: (^-> PreludeSDK::Converter::input) })]
 
+    def self.reverse_map: -> ::Hash[Symbol, Symbol]
+
     def self.fields: -> ::Hash[Symbol, (PreludeSDK::BaseModel::known_field
     & { type: PreludeSDK::Converter::input })]
 
