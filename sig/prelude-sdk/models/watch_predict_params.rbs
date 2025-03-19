@@ -19,15 +19,11 @@ module PreludeSDK
         PreludeSDK::Models::WatchPredictParams::Signals
       ) -> PreludeSDK::Models::WatchPredictParams::Signals
 
-      def initialize:
-        (
-          target: PreludeSDK::Models::WatchPredictParams::Target,
-          ?signals: PreludeSDK::Models::WatchPredictParams::Signals,
-          ?request_options: PreludeSDK::request_opts
-        ) -> void
-        | (
-          ?PreludeSDK::Models::watch_predict_params | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (
+        target: PreludeSDK::Models::WatchPredictParams::Target,
+        ?signals: PreludeSDK::Models::WatchPredictParams::Signals,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::watch_predict_params
 
@@ -42,15 +38,10 @@ module PreludeSDK
 
         attr_accessor value: String
 
-        def initialize:
-          (
-            type: PreludeSDK::Models::WatchPredictParams::Target::type_,
-            value: String
-          ) -> void
-          | (
-            ?PreludeSDK::Models::WatchPredictParams::target
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          type: PreludeSDK::Models::WatchPredictParams::Target::type_,
+          value: String
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::WatchPredictParams::target
 
@@ -89,17 +80,12 @@ module PreludeSDK
 
         def ip=: (String) -> String
 
-        def initialize:
-          (
-            ?device_id: String,
-            ?device_model: String,
-            ?device_type: String,
-            ?ip: String
-          ) -> void
-          | (
-            ?PreludeSDK::Models::WatchPredictParams::signals
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          ?device_id: String,
+          ?device_model: String,
+          ?device_type: String,
+          ?ip: String
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::WatchPredictParams::signals
       end

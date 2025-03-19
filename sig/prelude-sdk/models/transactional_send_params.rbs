@@ -45,22 +45,17 @@ module PreludeSDK
 
       def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
-      def initialize:
-        (
-          template_id: String,
-          to: String,
-          ?callback_url: String,
-          ?correlation_id: String,
-          ?expires_at: String,
-          ?from: String,
-          ?locale: String,
-          ?variables: ::Hash[Symbol, String],
-          ?request_options: PreludeSDK::request_opts
-        ) -> void
-        | (
-          ?PreludeSDK::Models::transactional_send_params
-          | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (
+        template_id: String,
+        to: String,
+        ?callback_url: String,
+        ?correlation_id: String,
+        ?expires_at: String,
+        ?from: String,
+        ?locale: String,
+        ?variables: ::Hash[Symbol, String],
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::transactional_send_params
     end
