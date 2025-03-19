@@ -55,8 +55,8 @@ module PreludeSDK
 
         def initialize:
           (
-            cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause,
-            score: Float
+            ?cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause,
+            ?score: Float
           ) -> void
           | (
             ?PreludeSDK::Models::WatchPredictResponse::reasoning

@@ -46,9 +46,9 @@ module PreludeSDK
           template_id: String,
           to: String,
           variables: ::Hash[Symbol, String],
-          callback_url: String,
-          correlation_id: String,
-          from: String
+          ?callback_url: String,
+          ?correlation_id: String,
+          ?from: String
         ) -> void
         | (
           ?PreludeSDK::Models::transactional_send_response
