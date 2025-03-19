@@ -5,12 +5,7 @@ module PreludeSDK
     class WatchFeedBackResponse < PreludeSDK::BaseModel
       attr_accessor id: String
 
-      def initialize:
-        (id: String) -> void
-        | (
-          ?PreludeSDK::Models::watch_feed_back_response
-          | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (id: String) -> void
 
       def to_hash: -> PreludeSDK::Models::watch_feed_back_response
     end

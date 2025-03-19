@@ -15,16 +15,11 @@ module PreludeSDK
 
       attr_accessor target: PreludeSDK::Models::VerificationCheckParams::Target
 
-      def initialize:
-        (
-          code: String,
-          target: PreludeSDK::Models::VerificationCheckParams::Target,
-          ?request_options: PreludeSDK::request_opts
-        ) -> void
-        | (
-          ?PreludeSDK::Models::verification_check_params
-          | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (
+        code: String,
+        target: PreludeSDK::Models::VerificationCheckParams::Target,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::verification_check_params
 
@@ -39,15 +34,10 @@ module PreludeSDK
 
         attr_accessor value: String
 
-        def initialize:
-          (
-            type: PreludeSDK::Models::VerificationCheckParams::Target::type_,
-            value: String
-          ) -> void
-          | (
-            ?PreludeSDK::Models::VerificationCheckParams::target
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          type: PreludeSDK::Models::VerificationCheckParams::Target::type_,
+          value: String
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCheckParams::target
 

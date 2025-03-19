@@ -38,19 +38,14 @@ module PreludeSDK
         PreludeSDK::Models::VerificationCreateParams::Signals
       ) -> PreludeSDK::Models::VerificationCreateParams::Signals
 
-      def initialize:
-        (
-          target: PreludeSDK::Models::VerificationCreateParams::Target,
-          ?dispatch_id: String,
-          ?metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
-          ?options: PreludeSDK::Models::VerificationCreateParams::Options,
-          ?signals: PreludeSDK::Models::VerificationCreateParams::Signals,
-          ?request_options: PreludeSDK::request_opts
-        ) -> void
-        | (
-          ?PreludeSDK::Models::verification_create_params
-          | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (
+        target: PreludeSDK::Models::VerificationCreateParams::Target,
+        ?dispatch_id: String,
+        ?metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+        ?options: PreludeSDK::Models::VerificationCreateParams::Options,
+        ?signals: PreludeSDK::Models::VerificationCreateParams::Signals,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::verification_create_params
 
@@ -65,15 +60,10 @@ module PreludeSDK
 
         attr_accessor value: String
 
-        def initialize:
-          (
-            type: PreludeSDK::Models::VerificationCreateParams::Target::type_,
-            value: String
-          ) -> void
-          | (
-            ?PreludeSDK::Models::VerificationCreateParams::target
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          type: PreludeSDK::Models::VerificationCreateParams::Target::type_,
+          value: String
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCreateParams::target
 
@@ -94,12 +84,7 @@ module PreludeSDK
 
         def correlation_id=: (String) -> String
 
-        def initialize:
-          (?correlation_id: String) -> void
-          | (
-            ?PreludeSDK::Models::VerificationCreateParams::metadata
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (?correlation_id: String) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCreateParams::metadata
       end
@@ -151,21 +136,16 @@ module PreludeSDK
 
         def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
-        def initialize:
-          (
-            ?app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
-            ?callback_url: String,
-            ?code_size: Integer,
-            ?custom_code: String,
-            ?locale: String,
-            ?sender_id: String,
-            ?template_id: String,
-            ?variables: ::Hash[Symbol, String]
-          ) -> void
-          | (
-            ?PreludeSDK::Models::VerificationCreateParams::options
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          ?app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+          ?callback_url: String,
+          ?code_size: Integer,
+          ?custom_code: String,
+          ?locale: String,
+          ?sender_id: String,
+          ?template_id: String,
+          ?variables: ::Hash[Symbol, String]
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCreateParams::options
 
@@ -180,15 +160,10 @@ module PreludeSDK
 
           attr_accessor value: String
 
-          def initialize:
-            (
-              platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform,
-              value: String
-            ) -> void
-            | (
-              ?PreludeSDK::Models::VerificationCreateParams::Options::app_realm
-              | PreludeSDK::BaseModel data
-            ) -> void
+          def initialize: (
+            platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform,
+            value: String
+          ) -> void
 
           def to_hash: -> PreludeSDK::Models::VerificationCreateParams::Options::app_realm
 
@@ -249,21 +224,16 @@ module PreludeSDK
 
         def user_agent=: (String) -> String
 
-        def initialize:
-          (
-            ?app_version: String,
-            ?device_id: String,
-            ?device_model: String,
-            ?device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
-            ?ip: String,
-            ?is_trusted_user: bool,
-            ?os_version: String,
-            ?user_agent: String
-          ) -> void
-          | (
-            ?PreludeSDK::Models::VerificationCreateParams::signals
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          ?app_version: String,
+          ?device_id: String,
+          ?device_model: String,
+          ?device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
+          ?ip: String,
+          ?is_trusted_user: bool,
+          ?os_version: String,
+          ?user_agent: String
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCreateParams::signals
 

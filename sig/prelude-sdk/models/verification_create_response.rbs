@@ -26,18 +26,13 @@ module PreludeSDK
 
       def request_id=: (String) -> String
 
-      def initialize:
-        (
-          id: String,
-          method_: PreludeSDK::Models::VerificationCreateResponse::method_,
-          status: PreludeSDK::Models::VerificationCreateResponse::status,
-          ?metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-          ?request_id: String
-        ) -> void
-        | (
-          ?PreludeSDK::Models::verification_create_response
-          | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        method_: PreludeSDK::Models::VerificationCreateResponse::method_,
+        status: PreludeSDK::Models::VerificationCreateResponse::status,
+        ?metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
+        ?request_id: String
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::verification_create_response
 
@@ -66,12 +61,7 @@ module PreludeSDK
 
         def correlation_id=: (String) -> String
 
-        def initialize:
-          (?correlation_id: String) -> void
-          | (
-            ?PreludeSDK::Models::VerificationCreateResponse::metadata
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (?correlation_id: String) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCreateResponse::metadata
       end

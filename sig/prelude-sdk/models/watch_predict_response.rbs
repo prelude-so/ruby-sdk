@@ -14,16 +14,11 @@ module PreludeSDK
 
       attr_accessor reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
 
-      def initialize:
-        (
-          id: String,
-          prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
-          reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
-        ) -> void
-        | (
-          ?PreludeSDK::Models::watch_predict_response
-          | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (
+        id: String,
+        prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
+        reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::watch_predict_response
 
@@ -53,15 +48,10 @@ module PreludeSDK
 
         def score=: (Float) -> Float
 
-        def initialize:
-          (
-            ?cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause,
-            ?score: Float
-          ) -> void
-          | (
-            ?PreludeSDK::Models::WatchPredictResponse::reasoning
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          ?cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause,
+          ?score: Float
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::WatchPredictResponse::reasoning
 
