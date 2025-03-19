@@ -9,13 +9,13 @@ module PreludeSDK
         | (
           template_id: String,
           to: String,
-          callback_url: String,
-          correlation_id: String,
-          expires_at: String,
-          from: String,
-          locale: String,
-          variables: ::Hash[Symbol, String],
-          request_options: PreludeSDK::request_opts
+          ?callback_url: String,
+          ?correlation_id: String,
+          ?expires_at: String,
+          ?from: String,
+          ?locale: String,
+          ?variables: ::Hash[Symbol, String],
+          ?request_options: PreludeSDK::request_opts
         ) -> PreludeSDK::Models::TransactionalSendResponse
 
       def initialize: (client: PreludeSDK::Client) -> void

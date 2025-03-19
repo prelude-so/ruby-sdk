@@ -19,7 +19,7 @@ module PreludeSDK
         (
           code: String,
           target: PreludeSDK::Models::VerificationCheckParams::Target,
-          request_options: PreludeSDK::request_opts
+          ?request_options: PreludeSDK::request_opts
         ) -> void
         | (
           ?PreludeSDK::Models::verification_check_params
