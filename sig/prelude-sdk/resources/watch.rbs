@@ -8,7 +8,7 @@ module PreludeSDK
         | (
           feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
           target: PreludeSDK::Models::WatchFeedBackParams::Target,
-          request_options: PreludeSDK::request_opts
+          ?request_options: PreludeSDK::request_opts
         ) -> PreludeSDK::Models::WatchFeedBackResponse
 
       def predict:
@@ -17,8 +17,8 @@ module PreludeSDK
         ) -> PreludeSDK::Models::WatchPredictResponse
         | (
           target: PreludeSDK::Models::WatchPredictParams::Target,
-          signals: PreludeSDK::Models::WatchPredictParams::Signals,
-          request_options: PreludeSDK::request_opts
+          ?signals: PreludeSDK::Models::WatchPredictParams::Signals,
+          ?request_options: PreludeSDK::request_opts
         ) -> PreludeSDK::Models::WatchPredictResponse
 
       def initialize: (client: PreludeSDK::Client) -> void
