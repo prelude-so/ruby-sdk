@@ -15,16 +15,11 @@ module PreludeSDK
 
       attr_accessor target: PreludeSDK::Models::WatchFeedBackParams::Target
 
-      def initialize:
-        (
-          feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
-          target: PreludeSDK::Models::WatchFeedBackParams::Target,
-          ?request_options: PreludeSDK::request_opts
-        ) -> void
-        | (
-          ?PreludeSDK::Models::watch_feed_back_params
-          | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (
+        feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
+        target: PreludeSDK::Models::WatchFeedBackParams::Target,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::watch_feed_back_params
 
@@ -34,14 +29,9 @@ module PreludeSDK
       class Feedback < PreludeSDK::BaseModel
         attr_accessor type: PreludeSDK::Models::WatchFeedBackParams::Feedback::type_
 
-        def initialize:
-          (
-            type: PreludeSDK::Models::WatchFeedBackParams::Feedback::type_
-          ) -> void
-          | (
-            ?PreludeSDK::Models::WatchFeedBackParams::feedback
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          type: PreludeSDK::Models::WatchFeedBackParams::Feedback::type_
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::WatchFeedBackParams::feedback
 
@@ -65,15 +55,10 @@ module PreludeSDK
 
         attr_accessor value: String
 
-        def initialize:
-          (
-            type: PreludeSDK::Models::WatchFeedBackParams::Target::type_,
-            value: String
-          ) -> void
-          | (
-            ?PreludeSDK::Models::WatchFeedBackParams::target
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (
+          type: PreludeSDK::Models::WatchFeedBackParams::Target::type_,
+          value: String
+        ) -> void
 
         def to_hash: -> PreludeSDK::Models::WatchFeedBackParams::target
 

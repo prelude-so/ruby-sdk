@@ -25,17 +25,12 @@ module PreludeSDK
 
       def request_id=: (String) -> String
 
-      def initialize:
-        (
-          status: PreludeSDK::Models::VerificationCheckResponse::status,
-          ?id: String,
-          ?metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
-          ?request_id: String
-        ) -> void
-        | (
-          ?PreludeSDK::Models::verification_check_response
-          | PreludeSDK::BaseModel data
-        ) -> void
+      def initialize: (
+        status: PreludeSDK::Models::VerificationCheckResponse::status,
+        ?id: String,
+        ?metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
+        ?request_id: String
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::verification_check_response
 
@@ -56,12 +51,7 @@ module PreludeSDK
 
         def correlation_id=: (String) -> String
 
-        def initialize:
-          (?correlation_id: String) -> void
-          | (
-            ?PreludeSDK::Models::VerificationCheckResponse::metadata
-            | PreludeSDK::BaseModel data
-          ) -> void
+        def initialize: (?correlation_id: String) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCheckResponse::metadata
       end
