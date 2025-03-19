@@ -22,12 +22,8 @@ class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::Resource
   end
 
   def test_check_required_params
-    response = @prelude.verification.check(
-      code: "12345",
-      target: {
-        type: :phone_number, value: "+30123456789"
-      }
-    )
+    response =
+      @prelude.verification.check(code: "12345", target: {type: :phone_number, value: "+30123456789"})
 
     assert_pattern do
       response => PreludeSDK::Models::VerificationCheckResponse

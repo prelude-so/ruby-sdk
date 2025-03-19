@@ -17,7 +17,8 @@ module PreludeSDK
   #
   # @example
   # ```ruby
-  # transactionals = page
+  # transactionals =
+  #   page
   #   .to_enum
   #   .lazy
   #   .select { _1.object_id.even? }

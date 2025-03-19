@@ -63,11 +63,8 @@ class PreludeSDKTest < Minitest::Test
   end
 
   def test_client_given_request_default_retry_attempts
-    prelude = PreludeSDK::Client.new(
-      base_url: "http://localhost:4010",
-      api_token: "My API Token",
-      max_retries: 3
-    )
+    prelude =
+      PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token", max_retries: 3)
     requester = MockRequester.new(500, {}, {})
     prelude.requester = requester
 
@@ -94,11 +91,8 @@ class PreludeSDKTest < Minitest::Test
   end
 
   def test_client_given_request_given_retry_attempts
-    prelude = PreludeSDK::Client.new(
-      base_url: "http://localhost:4010",
-      api_token: "My API Token",
-      max_retries: 3
-    )
+    prelude =
+      PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token", max_retries: 3)
     requester = MockRequester.new(500, {}, {})
     prelude.requester = requester
 
@@ -113,11 +107,8 @@ class PreludeSDKTest < Minitest::Test
   end
 
   def test_client_retry_after_seconds
-    prelude = PreludeSDK::Client.new(
-      base_url: "http://localhost:4010",
-      api_token: "My API Token",
-      max_retries: 1
-    )
+    prelude =
+      PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after" => "1.3"}, {})
     prelude.requester = requester
 
@@ -130,11 +121,8 @@ class PreludeSDKTest < Minitest::Test
   end
 
   def test_client_retry_after_date
-    prelude = PreludeSDK::Client.new(
-      base_url: "http://localhost:4010",
-      api_token: "My API Token",
-      max_retries: 1
-    )
+    prelude =
+      PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after" => (Time.now + 10).httpdate}, {})
     prelude.requester = requester
 
@@ -149,11 +137,8 @@ class PreludeSDKTest < Minitest::Test
   end
 
   def test_client_retry_after_ms
-    prelude = PreludeSDK::Client.new(
-      base_url: "http://localhost:4010",
-      api_token: "My API Token",
-      max_retries: 1
-    )
+    prelude =
+      PreludeSDK::Client.new(base_url: "http://localhost:4010", api_token: "My API Token", max_retries: 1)
     requester = MockRequester.new(500, {"retry-after-ms" => "1300"}, {})
     prelude.requester = requester
 
