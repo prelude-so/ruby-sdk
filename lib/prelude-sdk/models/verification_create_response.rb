@@ -58,6 +58,12 @@ module PreludeSDK
         MESSAGE = :message
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       # The status of the verification.
@@ -69,6 +75,12 @@ module PreludeSDK
         BLOCKED = :blocked
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Metadata < PreludeSDK::BaseModel

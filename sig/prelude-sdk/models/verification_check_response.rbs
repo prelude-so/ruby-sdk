@@ -43,7 +43,7 @@ module PreludeSDK
         FAILURE: :failure
         EXPIRED_OR_NOT_FOUND: :expired_or_not_found
 
-        def self.values: -> ::Array[PreludeSDK::Models::VerificationCheckResponse::status]
+        def self?.values: -> ::Array[PreludeSDK::Models::VerificationCheckResponse::status]
       end
 
       type metadata = { correlation_id: String }

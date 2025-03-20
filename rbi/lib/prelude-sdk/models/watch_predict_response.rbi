@@ -69,6 +69,12 @@ module PreludeSDK
 
         ALLOW = T.let(:allow, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
         BLOCK = T.let(:block, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
+
+        class << self
+          sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol]) }
+          def values
+          end
+        end
       end
 
       class Reasoning < PreludeSDK::BaseModel
@@ -123,6 +129,12 @@ module PreludeSDK
             T.let(:repeat_number, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
           INVALID_LINE =
             T.let(:invalid_line, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
     end

@@ -37,6 +37,12 @@ module PreludeSDK
         BLOCK = :block
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Reasoning < PreludeSDK::BaseModel
@@ -79,6 +85,12 @@ module PreludeSDK
           INVALID_LINE = :invalid_line
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end
