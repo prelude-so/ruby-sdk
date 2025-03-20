@@ -22,8 +22,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCheckParams::Target)
-          .returns(PreludeSDK::Models::VerificationCheckParams::Target)
+        params(_: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Util::AnyHash))
       end
       def target=(_)
       end
