@@ -820,14 +820,12 @@ module PreludeSDK
   # @abstract
   #
   # @example
-  # ```ruby
-  # # `transactional_send_response` is a `PreludeSDK::Models::TransactionalSendResponse`
-  # transactional_send_response => {
-  #   id: id,
-  #   created_at: created_at,
-  #   expires_at: expires_at
-  # }
-  # ```
+  #   # `transactional_send_response` is a `PreludeSDK::Models::TransactionalSendResponse`
+  #   transactional_send_response => {
+  #     id: id,
+  #     created_at: created_at,
+  #     expires_at: expires_at
+  #   }
   class BaseModel
     extend PreludeSDK::Converter
 
