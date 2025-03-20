@@ -69,7 +69,9 @@ module PreludeSDK
 
         type type_ = :phone_number | :email_address
 
-        class Type < PreludeSDK::Enum
+        module Type
+          extend PreludeSDK::Enum
+
           PHONE_NUMBER: :phone_number
           EMAIL_ADDRESS: :email_address
 
@@ -169,7 +171,9 @@ module PreludeSDK
 
           type platform = :android
 
-          class Platform < PreludeSDK::Enum
+          module Platform
+            extend PreludeSDK::Enum
+
             ANDROID: :android
 
             def self.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform]
@@ -239,7 +243,9 @@ module PreludeSDK
 
         type device_platform = :android | :ios | :ipados | :tvos | :web
 
-        class DevicePlatform < PreludeSDK::Enum
+        module DevicePlatform
+          extend PreludeSDK::Enum
+
           ANDROID: :android
           IOS: :ios
           IPADOS: :ipados

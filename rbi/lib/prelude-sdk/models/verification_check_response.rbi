@@ -4,11 +4,14 @@ module PreludeSDK
   module Models
     class VerificationCheckResponse < PreludeSDK::BaseModel
       # The status of the check.
-      sig { returns(Symbol) }
+      sig { returns(PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
+          .returns(PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -43,7 +46,7 @@ module PreludeSDK
 
       sig do
         params(
-          status: Symbol,
+          status: PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol,
           id: String,
           metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
           request_id: String
@@ -57,7 +60,7 @@ module PreludeSDK
         override
           .returns(
             {
-              status: Symbol,
+              status: PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol,
               id: String,
               metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
               request_id: String
@@ -68,14 +71,17 @@ module PreludeSDK
       end
 
       # The status of the check.
-      class Status < PreludeSDK::Enum
-        abstract!
+      module Status
+        extend PreludeSDK::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCheckResponse::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol) }
 
-        SUCCESS = :success
-        FAILURE = :failure
-        EXPIRED_OR_NOT_FOUND = :expired_or_not_found
+        SUCCESS = T.let(:success, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
+        FAILURE = T.let(:failure, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
+        EXPIRED_OR_NOT_FOUND =
+          T.let(:expired_or_not_found, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
       end
 
       class Metadata < PreludeSDK::BaseModel

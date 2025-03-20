@@ -38,7 +38,9 @@ module PreludeSDK
 
       type method_ = :message
 
-      class Method < PreludeSDK::Enum
+      module Method
+        extend PreludeSDK::Enum
+
         MESSAGE: :message
 
         def self.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::method_]
@@ -46,7 +48,9 @@ module PreludeSDK
 
       type status = :success | :retry | :blocked
 
-      class Status < PreludeSDK::Enum
+      module Status
+        extend PreludeSDK::Enum
+
         SUCCESS: :success
         RETRY: :retry
         BLOCKED: :blocked

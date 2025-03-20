@@ -24,7 +24,9 @@ module PreludeSDK
 
       type prediction = :allow | :block
 
-      class Prediction < PreludeSDK::Enum
+      module Prediction
+        extend PreludeSDK::Enum
+
         ALLOW: :allow
         BLOCK: :block
 
@@ -57,7 +59,9 @@ module PreludeSDK
 
         type cause = :none | :smart_antifraud | :repeat_number | :invalid_line
 
-        class Cause < PreludeSDK::Enum
+        module Cause
+          extend PreludeSDK::Enum
+
           NONE: :none
           SMART_ANTIFRAUD: :smart_antifraud
           REPEAT_NUMBER: :repeat_number

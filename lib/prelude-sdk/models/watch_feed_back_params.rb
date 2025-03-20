@@ -48,11 +48,11 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-        # @abstract
-        #
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
-        class Type < PreludeSDK::Enum
+        module Type
+          extend PreludeSDK::Enum
+
           CONFIRM_TARGET = :CONFIRM_TARGET
 
           finalize!
@@ -83,10 +83,10 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-        # @abstract
-        #
         # The type of the target. Either "phone_number" or "email_address".
-        class Type < PreludeSDK::Enum
+        module Type
+          extend PreludeSDK::Enum
+
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address
 
