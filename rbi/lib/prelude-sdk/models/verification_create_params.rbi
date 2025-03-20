@@ -13,8 +13,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateParams::Target)
-          .returns(PreludeSDK::Models::VerificationCreateParams::Target)
+        params(_: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash))
       end
       def target=(_)
       end
@@ -35,8 +35,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateParams::Metadata)
-          .returns(PreludeSDK::Models::VerificationCreateParams::Metadata)
+        params(_: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash))
       end
       def metadata=(_)
       end
@@ -47,8 +47,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateParams::Options)
-          .returns(PreludeSDK::Models::VerificationCreateParams::Options)
+        params(_: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash))
       end
       def options=(_)
       end
@@ -60,8 +60,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateParams::Signals)
-          .returns(PreludeSDK::Models::VerificationCreateParams::Signals)
+        params(_: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash))
       end
       def signals=(_)
       end
@@ -177,8 +177,10 @@ module PreludeSDK
         end
 
         sig do
-          params(_: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
-            .returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)
+          params(
+            _: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Util::AnyHash)
+          )
+            .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Util::AnyHash))
         end
         def app_realm=(_)
         end
