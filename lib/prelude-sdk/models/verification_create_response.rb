@@ -51,19 +51,19 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-      # @abstract
-      #
       # The method used for verifying this phone number.
-      class Method < PreludeSDK::Enum
+      module Method
+        extend PreludeSDK::Enum
+
         MESSAGE = :message
 
         finalize!
       end
 
-      # @abstract
-      #
       # The status of the verification.
-      class Status < PreludeSDK::Enum
+      module Status
+        extend PreludeSDK::Enum
+
         SUCCESS = :success
         RETRY = :retry
         BLOCKED = :blocked

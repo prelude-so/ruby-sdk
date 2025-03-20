@@ -43,7 +43,9 @@ module PreludeSDK
 
         type type_ = :phone_number | :email_address
 
-        class Type < PreludeSDK::Enum
+        module Type
+          extend PreludeSDK::Enum
+
           PHONE_NUMBER: :phone_number
           EMAIL_ADDRESS: :email_address
 

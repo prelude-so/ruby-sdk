@@ -36,7 +36,9 @@ module PreludeSDK
 
       type status = :success | :failure | :expired_or_not_found
 
-      class Status < PreludeSDK::Enum
+      module Status
+        extend PreludeSDK::Enum
+
         SUCCESS: :success
         FAILURE: :failure
         EXPIRED_OR_NOT_FOUND: :expired_or_not_found

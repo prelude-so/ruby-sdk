@@ -98,11 +98,14 @@ module PreludeSDK
 
       class Target < PreludeSDK::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
-        sig { returns(Symbol) }
+        sig { returns(PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol)
+            .returns(PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol)
+        end
         def type=(_)
         end
 
@@ -117,22 +120,31 @@ module PreludeSDK
 
         # The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
-        sig { params(type: Symbol, value: String).returns(T.attached_class) }
+        sig do
+          params(type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String)
+            .returns(T.attached_class)
+        end
         def self.new(type:, value:)
         end
 
-        sig { override.returns({type: Symbol, value: String}) }
+        sig do
+          override
+            .returns({type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String})
+        end
         def to_hash
         end
 
         # The type of the target. Either "phone_number" or "email_address".
-        class Type < PreludeSDK::Enum
-          abstract!
+        module Type
+          extend PreludeSDK::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol) }
 
-          PHONE_NUMBER = :phone_number
-          EMAIL_ADDRESS = :email_address
+          PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol)
+          EMAIL_ADDRESS =
+            T.let(:email_address, PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol)
         end
       end
 
@@ -292,11 +304,14 @@ module PreludeSDK
         class AppRealm < PreludeSDK::BaseModel
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
-          sig { returns(Symbol) }
+          sig { returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol) }
           def platform
           end
 
-          sig { params(_: Symbol).returns(Symbol) }
+          sig do
+            params(_: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol)
+              .returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol)
+          end
           def platform=(_)
           end
 
@@ -311,22 +326,37 @@ module PreludeSDK
 
           # This allows you to automatically retrieve and fill the OTP code on mobile apps.
           #   Currently only Android devices are supported.
-          sig { params(platform: Symbol, value: String).returns(T.attached_class) }
+          sig do
+            params(
+              platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol,
+              value: String
+            )
+              .returns(T.attached_class)
+          end
           def self.new(platform:, value:)
           end
 
-          sig { override.returns({platform: Symbol, value: String}) }
+          sig do
+            override
+              .returns(
+                {platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol, value: String}
+              )
+          end
           def to_hash
           end
 
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
-          class Platform < PreludeSDK::Enum
-            abstract!
+          module Platform
+            extend PreludeSDK::Enum
 
-            Value = type_template(:out) { {fixed: Symbol} }
+            TaggedSymbol =
+              T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform) }
+            OrSymbol =
+              T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol) }
 
-            ANDROID = :android
+            ANDROID =
+              T.let(:android, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol)
           end
         end
       end
@@ -361,11 +391,14 @@ module PreludeSDK
         end
 
         # The type of the user's device.
-        sig { returns(T.nilable(Symbol)) }
+        sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)) }
         def device_platform
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+            .returns(PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+        end
         def device_platform=(_)
         end
 
@@ -415,7 +448,7 @@ module PreludeSDK
             app_version: String,
             device_id: String,
             device_model: String,
-            device_platform: Symbol,
+            device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
             ip: String,
             is_trusted_user: T::Boolean,
             os_version: String,
@@ -442,7 +475,7 @@ module PreludeSDK
                 app_version: String,
                 device_id: String,
                 device_model: String,
-                device_platform: Symbol,
+                device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
                 ip: String,
                 is_trusted_user: T::Boolean,
                 os_version: String,
@@ -454,16 +487,20 @@ module PreludeSDK
         end
 
         # The type of the user's device.
-        class DevicePlatform < PreludeSDK::Enum
-          abstract!
+        module DevicePlatform
+          extend PreludeSDK::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol) }
 
-          ANDROID = :android
-          IOS = :ios
-          IPADOS = :ipados
-          TVOS = :tvos
-          WEB = :web
+          ANDROID =
+            T.let(:android, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+          IOS = T.let(:ios, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+          IPADOS = T.let(:ipados, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+          TVOS = T.let(:tvos, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+          WEB = T.let(:web, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
         end
       end
     end

@@ -13,20 +13,26 @@ module PreludeSDK
       end
 
       # The method used for verifying this phone number.
-      sig { returns(Symbol) }
+      sig { returns(PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol) }
       def method_
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol)
+          .returns(PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol)
+      end
       def method_=(_)
       end
 
       # The status of the verification.
-      sig { returns(Symbol) }
+      sig { returns(PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol) }
       def status
       end
 
-      sig { params(_: Symbol).returns(Symbol) }
+      sig do
+        params(_: PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
+          .returns(PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
+      end
       def status=(_)
       end
 
@@ -53,8 +59,8 @@ module PreludeSDK
       sig do
         params(
           id: String,
-          method_: Symbol,
-          status: Symbol,
+          method_: PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol,
+          status: PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol,
           metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
           request_id: String
         )
@@ -68,8 +74,8 @@ module PreludeSDK
           .returns(
             {
               id: String,
-              method_: Symbol,
-              status: Symbol,
+              method_: PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol,
+              status: PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol,
               metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
               request_id: String
             }
@@ -79,23 +85,27 @@ module PreludeSDK
       end
 
       # The method used for verifying this phone number.
-      class Method < PreludeSDK::Enum
-        abstract!
+      module Method
+        extend PreludeSDK::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateResponse::Method) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol) }
 
-        MESSAGE = :message
+        MESSAGE = T.let(:message, PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol)
       end
 
       # The status of the verification.
-      class Status < PreludeSDK::Enum
-        abstract!
+      module Status
+        extend PreludeSDK::Enum
 
-        Value = type_template(:out) { {fixed: Symbol} }
+        TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateResponse::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol) }
 
-        SUCCESS = :success
-        RETRY = :retry
-        BLOCKED = :blocked
+        SUCCESS = T.let(:success, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
+        RETRY = T.let(:retry, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
+        BLOCKED = T.let(:blocked, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
       end
 
       class Metadata < PreludeSDK::BaseModel

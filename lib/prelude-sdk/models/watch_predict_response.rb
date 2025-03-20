@@ -29,10 +29,10 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-      # @abstract
-      #
       # A label indicating the trustworthiness of the phone number.
-      class Prediction < PreludeSDK::Enum
+      module Prediction
+        extend PreludeSDK::Enum
+
         ALLOW = :allow
         BLOCK = :block
 
@@ -69,10 +69,10 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-        # @abstract
-        #
         # A label explaining why the phone number was classified as not trustworthy
-        class Cause < PreludeSDK::Enum
+        module Cause
+          extend PreludeSDK::Enum
+
           NONE = :none
           SMART_ANTIFRAUD = :smart_antifraud
           REPEAT_NUMBER = :repeat_number

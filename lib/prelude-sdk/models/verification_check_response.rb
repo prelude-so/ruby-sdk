@@ -48,10 +48,10 @@ module PreludeSDK
 
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-      # @abstract
-      #
       # The status of the check.
-      class Status < PreludeSDK::Enum
+      module Status
+        extend PreludeSDK::Enum
+
         SUCCESS = :success
         FAILURE = :failure
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found

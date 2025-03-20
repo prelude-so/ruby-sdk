@@ -58,11 +58,14 @@ module PreludeSDK
 
       class Target < PreludeSDK::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
-        sig { returns(Symbol) }
+        sig { returns(PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol)
+            .returns(PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol)
+        end
         def type=(_)
         end
 
@@ -77,22 +80,27 @@ module PreludeSDK
 
         # The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
-        sig { params(type: Symbol, value: String).returns(T.attached_class) }
+        sig do
+          params(type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String)
+            .returns(T.attached_class)
+        end
         def self.new(type:, value:)
         end
 
-        sig { override.returns({type: Symbol, value: String}) }
+        sig { override.returns({type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String}) }
         def to_hash
         end
 
         # The type of the target. Either "phone_number" or "email_address".
-        class Type < PreludeSDK::Enum
-          abstract!
+        module Type
+          extend PreludeSDK::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol) }
 
-          PHONE_NUMBER = :phone_number
-          EMAIL_ADDRESS = :email_address
+          PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol)
+          EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol)
         end
       end
 
