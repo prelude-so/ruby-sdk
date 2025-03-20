@@ -42,8 +42,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::VerificationCreateResponse::Metadata)
-          .returns(PreludeSDK::Models::VerificationCreateResponse::Metadata)
+        params(_: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Util::AnyHash))
       end
       def metadata=(_)
       end

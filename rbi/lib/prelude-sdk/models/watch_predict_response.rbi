@@ -29,8 +29,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchPredictResponse::Reasoning)
-          .returns(PreludeSDK::Models::WatchPredictResponse::Reasoning)
+        params(_: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash))
       end
       def reasoning=(_)
       end

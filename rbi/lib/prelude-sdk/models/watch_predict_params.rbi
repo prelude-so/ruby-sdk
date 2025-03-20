@@ -13,8 +13,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchPredictParams::Target)
-          .returns(PreludeSDK::Models::WatchPredictParams::Target)
+        params(_: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Util::AnyHash))
       end
       def target=(_)
       end
@@ -26,8 +26,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchPredictParams::Signals)
-          .returns(PreludeSDK::Models::WatchPredictParams::Signals)
+        params(_: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Util::AnyHash))
       end
       def signals=(_)
       end

@@ -13,8 +13,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchFeedBackParams::Feedback)
-          .returns(PreludeSDK::Models::WatchFeedBackParams::Feedback)
+        params(_: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Util::AnyHash))
       end
       def feedback=(_)
       end
@@ -26,8 +26,8 @@ module PreludeSDK
       end
 
       sig do
-        params(_: PreludeSDK::Models::WatchFeedBackParams::Target)
-          .returns(PreludeSDK::Models::WatchFeedBackParams::Target)
+        params(_: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Util::AnyHash))
+          .returns(T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Util::AnyHash))
       end
       def target=(_)
       end
