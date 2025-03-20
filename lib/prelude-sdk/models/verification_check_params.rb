@@ -61,6 +61,12 @@ module PreludeSDK
           EMAIL_ADDRESS = :email_address
 
           finalize!
+
+          class << self
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def values; end
+          end
         end
       end
     end

@@ -142,9 +142,16 @@ module PreludeSDK
           OrSymbol =
             T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol) }
 
-          PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol)
+          PHONE_NUMBER =
+            T.let(:phone_number, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol)
           EMAIL_ADDRESS =
-            T.let(:email_address, PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol)
+            T.let(:email_address, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 
@@ -358,7 +365,16 @@ module PreludeSDK
               T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol) }
 
             ANDROID =
-              T.let(:android, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol)
+              T.let(:android, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol)
+
+            class << self
+              sig do
+                override
+                  .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol])
+              end
+              def values
+              end
+            end
           end
         end
       end
@@ -498,11 +514,21 @@ module PreludeSDK
             T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol) }
 
           ANDROID =
-            T.let(:android, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
-          IOS = T.let(:ios, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
-          IPADOS = T.let(:ipados, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
-          TVOS = T.let(:tvos, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
-          WEB = T.let(:web, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+            T.let(:android, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
+          IOS = T.let(:ios, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
+          IPADOS =
+            T.let(:ipados, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
+          TVOS = T.let(:tvos, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
+          WEB = T.let(:web, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
+
+          class << self
+            sig do
+              override
+                .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol])
+            end
+            def values
+            end
+          end
         end
       end
     end

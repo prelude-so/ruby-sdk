@@ -99,8 +99,14 @@ module PreludeSDK
           OrSymbol =
             T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol) }
 
-          PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol)
-          EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol)
+          PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
+          EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
+
+          class << self
+            sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol]) }
+            def values
+            end
+          end
         end
       end
 

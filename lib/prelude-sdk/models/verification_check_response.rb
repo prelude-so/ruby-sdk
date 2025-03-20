@@ -57,6 +57,12 @@ module PreludeSDK
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found
 
         finalize!
+
+        class << self
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def values; end
+        end
       end
 
       class Metadata < PreludeSDK::BaseModel
