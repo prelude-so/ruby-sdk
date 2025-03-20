@@ -92,10 +92,10 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-        # @abstract
-        #
         # The type of the target. Either "phone_number" or "email_address".
-        class Type < PreludeSDK::Enum
+        module Type
+          extend PreludeSDK::Enum
+
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address
 
@@ -271,11 +271,11 @@ module PreludeSDK
 
           # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-          # @abstract
-          #
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
-          class Platform < PreludeSDK::Enum
+          module Platform
+            extend PreludeSDK::Enum
+
             ANDROID = :android
 
             finalize!
@@ -398,10 +398,10 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
-        # @abstract
-        #
         # The type of the user's device.
-        class DevicePlatform < PreludeSDK::Enum
+        module DevicePlatform
+          extend PreludeSDK::Enum
+
           ANDROID = :android
           IOS = :ios
           IPADOS = :ipados

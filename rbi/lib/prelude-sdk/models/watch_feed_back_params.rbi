@@ -59,42 +59,51 @@ module PreludeSDK
       class Feedback < PreludeSDK::BaseModel
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
-        sig { returns(Symbol) }
+        sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol)
+            .returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol)
+        end
         def type=(_)
         end
 
         # You should send a feedback event back to Watch API when your user demonstrates
         #   authentic behavior.
-        sig { params(type: Symbol).returns(T.attached_class) }
+        sig { params(type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol).returns(T.attached_class) }
         def self.new(type:)
         end
 
-        sig { override.returns({type: Symbol}) }
+        sig { override.returns({type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol}) }
         def to_hash
         end
 
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
-        class Type < PreludeSDK::Enum
-          abstract!
+        module Type
+          extend PreludeSDK::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol) }
 
-          CONFIRM_TARGET = :CONFIRM_TARGET
+          CONFIRM_TARGET =
+            T.let(:CONFIRM_TARGET, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol)
         end
       end
 
       class Target < PreludeSDK::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
-        sig { returns(Symbol) }
+        sig { returns(PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol) }
         def type
         end
 
-        sig { params(_: Symbol).returns(Symbol) }
+        sig do
+          params(_: PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol)
+            .returns(PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol)
+        end
         def type=(_)
         end
 
@@ -109,22 +118,27 @@ module PreludeSDK
 
         # The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
-        sig { params(type: Symbol, value: String).returns(T.attached_class) }
+        sig do
+          params(type: PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol, value: String)
+            .returns(T.attached_class)
+        end
         def self.new(type:, value:)
         end
 
-        sig { override.returns({type: Symbol, value: String}) }
+        sig { override.returns({type: PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol, value: String}) }
         def to_hash
         end
 
         # The type of the target. Either "phone_number" or "email_address".
-        class Type < PreludeSDK::Enum
-          abstract!
+        module Type
+          extend PreludeSDK::Enum
 
-          Value = type_template(:out) { {fixed: Symbol} }
+          TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Target::Type) }
+          OrSymbol =
+            T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol) }
 
-          PHONE_NUMBER = :phone_number
-          EMAIL_ADDRESS = :email_address
+          PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol)
+          EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol)
         end
       end
     end
