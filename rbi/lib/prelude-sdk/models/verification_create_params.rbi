@@ -9,62 +9,49 @@ module PreludeSDK
       # The verification target. Either a phone number or an email address. To use the
       #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::VerificationCreateParams::Target) }
-      def target
-      end
+      attr_reader :target
 
-      sig do
-        params(_: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash))
-      end
-      def target=(_)
-      end
+      sig { params(target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash)).void }
+      attr_writer :target
 
       # The identifier of the dispatch that came from the front-end SDK.
       sig { returns(T.nilable(String)) }
-      def dispatch_id
-      end
+      attr_reader :dispatch_id
 
-      sig { params(_: String).returns(String) }
-      def dispatch_id=(_)
-      end
+      sig { params(dispatch_id: String).void }
+      attr_writer :dispatch_id
 
       # The metadata for this verification. This object will be returned with every
       #   response or webhook sent that refers to this verification.
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Metadata)) }
-      def metadata
-      end
+      attr_reader :metadata
 
       sig do
-        params(_: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash))
+        params(metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash))
+          .void
       end
-      def metadata=(_)
-      end
+      attr_writer :metadata
 
       # Verification options
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options)) }
-      def options
-      end
+      attr_reader :options
 
       sig do
-        params(_: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash))
+        params(options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash))
+          .void
       end
-      def options=(_)
-      end
+      attr_writer :options
 
       # The signals used for anti-fraud. For more details, refer to
       #   [Signals](/guides/prevent-fraud#signals).
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Signals)) }
-      def signals
-      end
+      attr_reader :signals
 
       sig do
-        params(_: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash))
+        params(signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash))
+          .void
       end
-      def signals=(_)
-      end
+      attr_writer :signals
 
       sig do
         params(
@@ -99,24 +86,11 @@ module PreludeSDK
       class Target < PreludeSDK::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol)
-            .returns(PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # An E.164 formatted phone number or an email address.
         sig { returns(String) }
-        def value
-        end
-
-        sig { params(_: String).returns(String) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
@@ -158,12 +132,10 @@ module PreludeSDK
       class Metadata < PreludeSDK::BaseModel
         # A user-defined identifier to correlate this verification with.
         sig { returns(T.nilable(String)) }
-        def correlation_id
-        end
+        attr_reader :correlation_id
 
-        sig { params(_: String).returns(String) }
-        def correlation_id=(_)
-        end
+        sig { params(correlation_id: String).void }
+        attr_writer :correlation_id
 
         # The metadata for this verification. This object will be returned with every
         #   response or webhook sent that refers to this verification.
@@ -180,91 +152,75 @@ module PreludeSDK
         # This allows you to automatically retrieve and fill the OTP code on mobile apps.
         #   Currently only Android devices are supported.
         sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)) }
-        def app_realm
-        end
+        attr_reader :app_realm
 
         sig do
           params(
-            _: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Util::AnyHash)
+            app_realm: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Util::AnyHash)
           )
-            .returns(T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Util::AnyHash))
+            .void
         end
-        def app_realm=(_)
-        end
+        attr_writer :app_realm
 
         # The URL where webhooks will be sent when verification events occur, including
         #   verification creation, attempt creation, and delivery status changes. For more
         #   details, refer to [Webhook](/api-reference/v2/verify/webhook).
         sig { returns(T.nilable(String)) }
-        def callback_url
-        end
+        attr_reader :callback_url
 
-        sig { params(_: String).returns(String) }
-        def callback_url=(_)
-        end
+        sig { params(callback_url: String).void }
+        attr_writer :callback_url
 
         # The size of the code generated. It should be between 4 and 8. Defaults to the
         #   code size specified from the Dashboard.
         sig { returns(T.nilable(Integer)) }
-        def code_size
-        end
+        attr_reader :code_size
 
-        sig { params(_: Integer).returns(Integer) }
-        def code_size=(_)
-        end
+        sig { params(code_size: Integer).void }
+        attr_writer :code_size
 
         # The custom code to use for OTP verification. This feature is only available for
         #   compatibility purposes and subject to Prelude’s approval. Contact us to discuss
         #   your use case. For more details, refer to
         #   [Multi Routing](/concepts/multi-routing).
         sig { returns(T.nilable(String)) }
-        def custom_code
-        end
+        attr_reader :custom_code
 
-        sig { params(_: String).returns(String) }
-        def custom_code=(_)
-        end
+        sig { params(custom_code: String).void }
+        attr_writer :custom_code
 
         # A BCP-47 formatted locale string with the language the text message will be sent
         #   to. If there's no locale set, the language will be determined by the country
         #   code of the phone number. If the language specified doesn't exist, it defaults
         #   to US English.
         sig { returns(T.nilable(String)) }
-        def locale
-        end
+        attr_reader :locale
 
-        sig { params(_: String).returns(String) }
-        def locale=(_)
-        end
+        sig { params(locale: String).void }
+        attr_writer :locale
 
         # The Sender ID to use for this message. The Sender ID needs to be enabled by
         #   Prelude.
         sig { returns(T.nilable(String)) }
-        def sender_id
-        end
+        attr_reader :sender_id
 
-        sig { params(_: String).returns(String) }
-        def sender_id=(_)
-        end
+        sig { params(sender_id: String).void }
+        attr_writer :sender_id
 
         # The identifier of a verification template. It applies use case-specific
         #   settings, such as the message content or certain verification parameters.
         sig { returns(T.nilable(String)) }
-        def template_id
-        end
+        attr_reader :template_id
 
-        sig { params(_: String).returns(String) }
-        def template_id=(_)
-        end
+        sig { params(template_id: String).void }
+        attr_writer :template_id
 
         # The variables to be replaced in the template.
         sig { returns(T.nilable(T::Hash[Symbol, String])) }
-        def variables
-        end
+        attr_reader :variables
 
-        sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
-        def variables=(_)
-        end
+        sig { params(variables: T::Hash[Symbol, String]).void }
+        attr_writer :variables
 
         # Verification options
         sig do
@@ -314,24 +270,11 @@ module PreludeSDK
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
           sig { returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol) }
-          def platform
-          end
-
-          sig do
-            params(_: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol)
-              .returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol)
-          end
-          def platform=(_)
-          end
+          attr_accessor :platform
 
           # The Android SMS Retriever API hash code that identifies your app.
           sig { returns(String) }
-          def value
-          end
-
-          sig { params(_: String).returns(String) }
-          def value=(_)
-          end
+          attr_accessor :value
 
           # This allows you to automatically retrieve and fill the OTP code on mobile apps.
           #   Currently only Android devices are supported.
@@ -382,82 +325,66 @@ module PreludeSDK
       class Signals < PreludeSDK::BaseModel
         # The version of your application.
         sig { returns(T.nilable(String)) }
-        def app_version
-        end
+        attr_reader :app_version
 
-        sig { params(_: String).returns(String) }
-        def app_version=(_)
-        end
+        sig { params(app_version: String).void }
+        attr_writer :app_version
 
         # The unique identifier for the user's device. For Android, this corresponds to
         #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         sig { returns(T.nilable(String)) }
-        def device_id
-        end
+        attr_reader :device_id
 
-        sig { params(_: String).returns(String) }
-        def device_id=(_)
-        end
+        sig { params(device_id: String).void }
+        attr_writer :device_id
 
         # The model of the user's device.
         sig { returns(T.nilable(String)) }
-        def device_model
-        end
+        attr_reader :device_model
 
-        sig { params(_: String).returns(String) }
-        def device_model=(_)
-        end
+        sig { params(device_model: String).void }
+        attr_writer :device_model
 
         # The type of the user's device.
         sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)) }
-        def device_platform
-        end
+        attr_reader :device_platform
 
         sig do
-          params(_: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
-            .returns(PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+          params(device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
+            .void
         end
-        def device_platform=(_)
-        end
+        attr_writer :device_platform
 
         # The IP address of the user's device.
         sig { returns(T.nilable(String)) }
-        def ip
-        end
+        attr_reader :ip
 
-        sig { params(_: String).returns(String) }
-        def ip=(_)
-        end
+        sig { params(ip: String).void }
+        attr_writer :ip
 
         # This signal should provide a higher level of trust, indicating that the user is
         #   genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
         sig { returns(T.nilable(T::Boolean)) }
-        def is_trusted_user
-        end
+        attr_reader :is_trusted_user
 
-        sig { params(_: T::Boolean).returns(T::Boolean) }
-        def is_trusted_user=(_)
-        end
+        sig { params(is_trusted_user: T::Boolean).void }
+        attr_writer :is_trusted_user
 
         # The version of the user's device operating system.
         sig { returns(T.nilable(String)) }
-        def os_version
-        end
+        attr_reader :os_version
 
-        sig { params(_: String).returns(String) }
-        def os_version=(_)
-        end
+        sig { params(os_version: String).void }
+        attr_writer :os_version
 
         # The user agent of the user's device. If the individual fields (os_version,
         #   device_platform, device_model) are provided, we will prioritize those values
         #   instead of parsing them from the user agent string.
         sig { returns(T.nilable(String)) }
-        def user_agent
-        end
+        attr_reader :user_agent
 
-        sig { params(_: String).returns(String) }
-        def user_agent=(_)
-        end
+        sig { params(user_agent: String).void }
+        attr_writer :user_agent
 
         # The signals used for anti-fraud. For more details, refer to
         #   [Signals](/guides/prevent-fraud#signals).

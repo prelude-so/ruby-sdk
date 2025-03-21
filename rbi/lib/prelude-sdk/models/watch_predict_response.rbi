@@ -5,35 +5,20 @@ module PreludeSDK
     class WatchPredictResponse < PreludeSDK::BaseModel
       # A unique identifier for your prediction request.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # A label indicating the trustworthiness of the phone number.
       sig { returns(PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol) }
-      def prediction
-      end
-
-      sig do
-        params(_: PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
-          .returns(PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
-      end
-      def prediction=(_)
-      end
+      attr_accessor :prediction
 
       sig { returns(PreludeSDK::Models::WatchPredictResponse::Reasoning) }
-      def reasoning
-      end
+      attr_reader :reasoning
 
       sig do
-        params(_: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash))
+        params(reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash))
+          .void
       end
-      def reasoning=(_)
-      end
+      attr_writer :reasoning
 
       sig do
         params(
@@ -80,25 +65,18 @@ module PreludeSDK
       class Reasoning < PreludeSDK::BaseModel
         # A label explaining why the phone number was classified as not trustworthy
         sig { returns(T.nilable(PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)) }
-        def cause
-        end
+        attr_reader :cause
 
-        sig do
-          params(_: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol)
-            .returns(PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol)
-        end
-        def cause=(_)
-        end
+        sig { params(cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol).void }
+        attr_writer :cause
 
         # Indicates the risk of the phone number being genuine or involved in fraudulent
         #   patterns. The higher the riskier.
         sig { returns(T.nilable(Float)) }
-        def score
-        end
+        attr_reader :score
 
-        sig { params(_: Float).returns(Float) }
-        def score=(_)
-        end
+        sig { params(score: Float).void }
+        attr_writer :score
 
         sig do
           params(cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol, score: Float)
