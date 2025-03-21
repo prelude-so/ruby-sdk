@@ -5,56 +5,33 @@ module PreludeSDK
     class VerificationCreateResponse < PreludeSDK::BaseModel
       # The verification identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The method used for verifying this phone number.
       sig { returns(PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol) }
-      def method_
-      end
-
-      sig do
-        params(_: PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol)
-          .returns(PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol)
-      end
-      def method_=(_)
-      end
+      attr_accessor :method_
 
       # The status of the verification.
       sig { returns(PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
-          .returns(PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # The metadata for this verification.
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateResponse::Metadata)) }
-      def metadata
-      end
+      attr_reader :metadata
 
       sig do
-        params(_: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Util::AnyHash))
+        params(
+          metadata: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Util::AnyHash)
+        )
+          .void
       end
-      def metadata=(_)
-      end
+      attr_writer :metadata
 
       sig { returns(T.nilable(String)) }
-      def request_id
-      end
+      attr_reader :request_id
 
-      sig { params(_: String).returns(String) }
-      def request_id=(_)
-      end
+      sig { params(request_id: String).void }
+      attr_writer :request_id
 
       sig do
         params(
@@ -122,12 +99,10 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::BaseModel
         sig { returns(T.nilable(String)) }
-        def correlation_id
-        end
+        attr_reader :correlation_id
 
-        sig { params(_: String).returns(String) }
-        def correlation_id=(_)
-        end
+        sig { params(correlation_id: String).void }
+        attr_writer :correlation_id
 
         # The metadata for this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }

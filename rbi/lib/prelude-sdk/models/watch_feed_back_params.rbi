@@ -9,28 +9,18 @@ module PreludeSDK
       # You should send a feedback event back to Watch API when your user demonstrates
       #   authentic behavior.
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback) }
-      def feedback
-      end
+      attr_reader :feedback
 
-      sig do
-        params(_: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Util::AnyHash))
-      end
-      def feedback=(_)
-      end
+      sig { params(feedback: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Util::AnyHash)).void }
+      attr_writer :feedback
 
       # The verification target. Either a phone number or an email address. To use the
       #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Target) }
-      def target
-      end
+      attr_reader :target
 
-      sig do
-        params(_: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Util::AnyHash))
-      end
-      def target=(_)
-      end
+      sig { params(target: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Util::AnyHash)).void }
+      attr_writer :target
 
       sig do
         params(
@@ -60,15 +50,7 @@ module PreludeSDK
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
         sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol)
-            .returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # You should send a feedback event back to Watch API when your user demonstrates
         #   authentic behavior.
@@ -103,24 +85,11 @@ module PreludeSDK
       class Target < PreludeSDK::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol)
-            .returns(PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # An E.164 formatted phone number or an email address.
         sig { returns(String) }
-        def value
-        end
-
-        sig { params(_: String).returns(String) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.

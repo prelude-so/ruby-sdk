@@ -5,84 +5,48 @@ module PreludeSDK
     class TransactionalSendResponse < PreludeSDK::BaseModel
       # The message identifier.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       # The message creation date.
       sig { returns(Time) }
-      def created_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def created_at=(_)
-      end
+      attr_accessor :created_at
 
       # The message expiration date.
       sig { returns(Time) }
-      def expires_at
-      end
-
-      sig { params(_: Time).returns(Time) }
-      def expires_at=(_)
-      end
+      attr_accessor :expires_at
 
       # The template identifier.
       sig { returns(String) }
-      def template_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def template_id=(_)
-      end
+      attr_accessor :template_id
 
       # The recipient's phone number.
       sig { returns(String) }
-      def to
-      end
-
-      sig { params(_: String).returns(String) }
-      def to=(_)
-      end
+      attr_accessor :to
 
       # The variables to be replaced in the template.
       sig { returns(T::Hash[Symbol, String]) }
-      def variables
-      end
-
-      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
-      def variables=(_)
-      end
+      attr_accessor :variables
 
       # The callback URL.
       sig { returns(T.nilable(String)) }
-      def callback_url
-      end
+      attr_reader :callback_url
 
-      sig { params(_: String).returns(String) }
-      def callback_url=(_)
-      end
+      sig { params(callback_url: String).void }
+      attr_writer :callback_url
 
       # A unique, user-defined identifier that will be included in webhook events.
       sig { returns(T.nilable(String)) }
-      def correlation_id
-      end
+      attr_reader :correlation_id
 
-      sig { params(_: String).returns(String) }
-      def correlation_id=(_)
-      end
+      sig { params(correlation_id: String).void }
+      attr_writer :correlation_id
 
       # The Sender ID.
       sig { returns(T.nilable(String)) }
-      def from
-      end
+      attr_reader :from
 
-      sig { params(_: String).returns(String) }
-      def from=(_)
-      end
+      sig { params(from: String).void }
+      attr_writer :from
 
       sig do
         params(

@@ -8,78 +8,56 @@ module PreludeSDK
 
       # The template identifier.
       sig { returns(String) }
-      def template_id
-      end
-
-      sig { params(_: String).returns(String) }
-      def template_id=(_)
-      end
+      attr_accessor :template_id
 
       # The recipient's phone number.
       sig { returns(String) }
-      def to
-      end
-
-      sig { params(_: String).returns(String) }
-      def to=(_)
-      end
+      attr_accessor :to
 
       # The callback URL.
       sig { returns(T.nilable(String)) }
-      def callback_url
-      end
+      attr_reader :callback_url
 
-      sig { params(_: String).returns(String) }
-      def callback_url=(_)
-      end
+      sig { params(callback_url: String).void }
+      attr_writer :callback_url
 
       # A unique, user-defined identifier that will be included in webhook events.
       sig { returns(T.nilable(String)) }
-      def correlation_id
-      end
+      attr_reader :correlation_id
 
-      sig { params(_: String).returns(String) }
-      def correlation_id=(_)
-      end
+      sig { params(correlation_id: String).void }
+      attr_writer :correlation_id
 
       # The message expiration date.
       sig { returns(T.nilable(String)) }
-      def expires_at
-      end
+      attr_reader :expires_at
 
-      sig { params(_: String).returns(String) }
-      def expires_at=(_)
-      end
+      sig { params(expires_at: String).void }
+      attr_writer :expires_at
 
       # The Sender ID.
       sig { returns(T.nilable(String)) }
-      def from
-      end
+      attr_reader :from
 
-      sig { params(_: String).returns(String) }
-      def from=(_)
-      end
+      sig { params(from: String).void }
+      attr_writer :from
 
       # A BCP-47 formatted locale string with the language the text message will be sent
       #   to. If there's no locale set, the language will be determined by the country
       #   code of the phone number. If the language specified doesn't exist, the default
       #   set on the template will be used.
       sig { returns(T.nilable(String)) }
-      def locale
-      end
+      attr_reader :locale
 
-      sig { params(_: String).returns(String) }
-      def locale=(_)
-      end
+      sig { params(locale: String).void }
+      attr_writer :locale
 
       # The variables to be replaced in the template.
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
-      def variables
-      end
+      attr_reader :variables
 
-      sig { params(_: T::Hash[Symbol, String]).returns(T::Hash[Symbol, String]) }
-      def variables=(_)
-      end
+      sig { params(variables: T::Hash[Symbol, String]).void }
+      attr_writer :variables
 
       sig do
         params(

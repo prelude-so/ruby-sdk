@@ -9,28 +9,18 @@ module PreludeSDK
       # The verification target. Either a phone number or an email address. To use the
       #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::WatchPredictParams::Target) }
-      def target
-      end
+      attr_reader :target
 
-      sig do
-        params(_: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Util::AnyHash))
-      end
-      def target=(_)
-      end
+      sig { params(target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Util::AnyHash)).void }
+      attr_writer :target
 
       # It is highly recommended that you provide the signals to increase prediction
       #   performance.
       sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals)) }
-      def signals
-      end
+      attr_reader :signals
 
-      sig do
-        params(_: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Util::AnyHash))
-      end
-      def signals=(_)
-      end
+      sig { params(signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Util::AnyHash)).void }
+      attr_writer :signals
 
       sig do
         params(
@@ -59,24 +49,11 @@ module PreludeSDK
       class Target < PreludeSDK::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol)
-            .returns(PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # An E.164 formatted phone number or an email address.
         sig { returns(String) }
-        def value
-        end
-
-        sig { params(_: String).returns(String) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
@@ -114,39 +91,31 @@ module PreludeSDK
         # The unique identifier for the user's device. For Android, this corresponds to
         #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         sig { returns(T.nilable(String)) }
-        def device_id
-        end
+        attr_reader :device_id
 
-        sig { params(_: String).returns(String) }
-        def device_id=(_)
-        end
+        sig { params(device_id: String).void }
+        attr_writer :device_id
 
         # The model of the user's device.
         sig { returns(T.nilable(String)) }
-        def device_model
-        end
+        attr_reader :device_model
 
-        sig { params(_: String).returns(String) }
-        def device_model=(_)
-        end
+        sig { params(device_model: String).void }
+        attr_writer :device_model
 
         # The type of the user's device.
         sig { returns(T.nilable(String)) }
-        def device_type
-        end
+        attr_reader :device_type
 
-        sig { params(_: String).returns(String) }
-        def device_type=(_)
-        end
+        sig { params(device_type: String).void }
+        attr_writer :device_type
 
         # The IPv4 address of the user's device
         sig { returns(T.nilable(String)) }
-        def ip
-        end
+        attr_reader :ip
 
-        sig { params(_: String).returns(String) }
-        def ip=(_)
-        end
+        sig { params(ip: String).void }
+        attr_writer :ip
 
         # It is highly recommended that you provide the signals to increase prediction
         #   performance.

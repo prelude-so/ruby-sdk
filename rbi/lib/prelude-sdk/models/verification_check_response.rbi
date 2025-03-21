@@ -5,44 +5,32 @@ module PreludeSDK
     class VerificationCheckResponse < PreludeSDK::BaseModel
       # The status of the check.
       sig { returns(PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol) }
-      def status
-      end
-
-      sig do
-        params(_: PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
-          .returns(PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
-      end
-      def status=(_)
-      end
+      attr_accessor :status
 
       # The verification identifier.
       sig { returns(T.nilable(String)) }
-      def id
-      end
+      attr_reader :id
 
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      sig { params(id: String).void }
+      attr_writer :id
 
       # The metadata for this verification.
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCheckResponse::Metadata)) }
-      def metadata
-      end
+      attr_reader :metadata
 
       sig do
-        params(_: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Util::AnyHash))
+        params(
+          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Util::AnyHash)
+        )
+          .void
       end
-      def metadata=(_)
-      end
+      attr_writer :metadata
 
       sig { returns(T.nilable(String)) }
-      def request_id
-      end
+      attr_reader :request_id
 
-      sig { params(_: String).returns(String) }
-      def request_id=(_)
-      end
+      sig { params(request_id: String).void }
+      attr_writer :request_id
 
       sig do
         params(
@@ -92,12 +80,10 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::BaseModel
         sig { returns(T.nilable(String)) }
-        def correlation_id
-        end
+        attr_reader :correlation_id
 
-        sig { params(_: String).returns(String) }
-        def correlation_id=(_)
-        end
+        sig { params(correlation_id: String).void }
+        attr_writer :correlation_id
 
         # The metadata for this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }

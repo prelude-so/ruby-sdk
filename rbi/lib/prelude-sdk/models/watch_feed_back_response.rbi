@@ -5,12 +5,7 @@ module PreludeSDK
     class WatchFeedBackResponse < PreludeSDK::BaseModel
       # A unique identifier for your feedback request.
       sig { returns(String) }
-      def id
-      end
-
-      sig { params(_: String).returns(String) }
-      def id=(_)
-      end
+      attr_accessor :id
 
       sig { params(id: String).returns(T.attached_class) }
       def self.new(id:)
