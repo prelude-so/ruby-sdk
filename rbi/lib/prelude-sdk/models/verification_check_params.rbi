@@ -8,25 +8,15 @@ module PreludeSDK
 
       # The OTP code to validate.
       sig { returns(String) }
-      def code
-      end
-
-      sig { params(_: String).returns(String) }
-      def code=(_)
-      end
+      attr_accessor :code
 
       # The verification target. Either a phone number or an email address. To use the
       #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::VerificationCheckParams::Target) }
-      def target
-      end
+      attr_reader :target
 
-      sig do
-        params(_: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Util::AnyHash))
-          .returns(T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Util::AnyHash))
-      end
-      def target=(_)
-      end
+      sig { params(target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Util::AnyHash)).void }
+      attr_writer :target
 
       sig do
         params(
@@ -55,24 +45,11 @@ module PreludeSDK
       class Target < PreludeSDK::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol) }
-        def type
-        end
-
-        sig do
-          params(_: PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol)
-            .returns(PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol)
-        end
-        def type=(_)
-        end
+        attr_accessor :type
 
         # An E.164 formatted phone number or an email address.
         sig { returns(String) }
-        def value
-        end
-
-        sig { params(_: String).returns(String) }
-        def value=(_)
-        end
+        attr_accessor :value
 
         # The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.

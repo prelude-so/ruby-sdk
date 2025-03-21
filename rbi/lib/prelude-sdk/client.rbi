@@ -12,20 +12,16 @@ module PreludeSDK
 
     # Bearer token for authorizing API requests.
     sig { returns(String) }
-    def api_token
-    end
+    attr_reader :api_token
 
     sig { returns(PreludeSDK::Resources::Transactional) }
-    def transactional
-    end
+    attr_reader :transactional
 
     sig { returns(PreludeSDK::Resources::Verification) }
-    def verification
-    end
+    attr_reader :verification
 
     sig { returns(PreludeSDK::Resources::Watch) }
-    def watch
-    end
+    attr_reader :watch
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
