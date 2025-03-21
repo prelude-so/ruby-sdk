@@ -71,10 +71,8 @@ module PreludeSDK
         EXPIRED_OR_NOT_FOUND =
           T.let(:expired_or_not_found, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 

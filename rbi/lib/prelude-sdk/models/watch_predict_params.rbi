@@ -79,10 +79,8 @@ module PreludeSDK
           PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
           EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
