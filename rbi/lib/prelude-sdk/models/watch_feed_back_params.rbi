@@ -74,10 +74,8 @@ module PreludeSDK
           CONFIRM_TARGET =
             T.let(:CONFIRM_TARGET, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -116,10 +114,8 @@ module PreludeSDK
           EMAIL_ADDRESS =
             T.let(:email_address, PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
