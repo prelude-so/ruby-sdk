@@ -34,9 +34,9 @@ module PreludeSDK
 
       sig do
         params(
-          target: PreludeSDK::Models::WatchPredictParams::Target,
-          signals: PreludeSDK::Models::WatchPredictParams::Signals,
-          request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
+          target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Util::AnyHash),
+          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Util::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

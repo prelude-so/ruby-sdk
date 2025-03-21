@@ -61,7 +61,7 @@ module PreludeSDK
           id: String,
           method_: PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol,
           status: PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol,
-          metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
+          metadata: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Util::AnyHash),
           request_id: String
         )
           .returns(T.attached_class)
