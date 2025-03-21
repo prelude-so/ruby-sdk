@@ -59,8 +59,8 @@ module PreludeSDK
       sig do
         params(
           id: String,
-          method_: PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol,
-          status: PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol,
+          method_: PreludeSDK::Models::VerificationCreateResponse::Method::OrSymbol,
+          status: PreludeSDK::Models::VerificationCreateResponse::Status::OrSymbol,
           metadata: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Util::AnyHash),
           request_id: String
         )

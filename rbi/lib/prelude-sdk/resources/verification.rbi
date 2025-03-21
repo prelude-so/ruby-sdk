@@ -8,11 +8,11 @@ module PreludeSDK
       #   this endpoint will perform a retry instead.
       sig do
         params(
-          target: PreludeSDK::Models::VerificationCreateParams::Target,
+          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash),
           dispatch_id: String,
-          metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
-          options: PreludeSDK::Models::VerificationCreateParams::Options,
-          signals: PreludeSDK::Models::VerificationCreateParams::Signals,
+          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash),
+          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash),
+          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash),
           request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash))
         )
           .returns(PreludeSDK::Models::VerificationCreateResponse)
@@ -39,7 +39,7 @@ module PreludeSDK
       sig do
         params(
           code: String,
-          target: PreludeSDK::Models::VerificationCheckParams::Target,
+          target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Util::AnyHash),
           request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash))
         )
           .returns(PreludeSDK::Models::VerificationCheckResponse)
