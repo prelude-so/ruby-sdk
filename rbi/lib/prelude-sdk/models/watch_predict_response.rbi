@@ -38,7 +38,7 @@ module PreludeSDK
       sig do
         params(
           id: String,
-          prediction: PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol,
+          prediction: PreludeSDK::Models::WatchPredictResponse::Prediction::OrSymbol,
           reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash)
         )
           .returns(T.attached_class)
@@ -84,8 +84,8 @@ module PreludeSDK
         end
 
         sig do
-          params(_: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
-            .returns(PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
+          params(_: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol)
+            .returns(PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol)
         end
         def cause=(_)
         end
@@ -101,7 +101,7 @@ module PreludeSDK
         end
 
         sig do
-          params(cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol, score: Float)
+          params(cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol, score: Float)
             .returns(T.attached_class)
         end
         def self.new(cause: nil, score: nil)
