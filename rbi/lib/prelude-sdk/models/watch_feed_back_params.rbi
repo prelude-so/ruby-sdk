@@ -34,9 +34,9 @@ module PreludeSDK
 
       sig do
         params(
-          feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
-          target: PreludeSDK::Models::WatchFeedBackParams::Target,
-          request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
+          feedback: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Util::AnyHash),
+          target: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Util::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

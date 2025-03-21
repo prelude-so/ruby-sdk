@@ -26,7 +26,7 @@ module PreludeSDK
           page: T.nilable(T::Class[PreludeSDK::BasePage[PreludeSDK::BaseModel]]),
           stream: T.nilable(T::Class[T.anything]),
           model: T.nilable(PreludeSDK::Converter::Input),
-          options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
+          options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash))
         }
       end
 
@@ -130,7 +130,7 @@ module PreludeSDK
     # @api private
     sig do
       overridable
-        .params(req: PreludeSDK::BaseClient::RequestComponentsShape, opts: T::Hash[Symbol, T.anything])
+        .params(req: PreludeSDK::BaseClient::RequestComponentsShape, opts: PreludeSDK::Util::AnyHash)
         .returns(PreludeSDK::BaseClient::RequestInputShape)
     end
     private def build_request(req, opts)
@@ -176,7 +176,7 @@ module PreludeSDK
         page: T.nilable(T::Class[PreludeSDK::BasePage[PreludeSDK::BaseModel]]),
         stream: T.nilable(T::Class[T.anything]),
         model: T.nilable(PreludeSDK::Converter::Input),
-        options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
+        options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash))
       )
         .returns(T.anything)
     end

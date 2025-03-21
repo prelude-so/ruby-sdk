@@ -13,7 +13,7 @@ module PreludeSDK
           metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
           options: PreludeSDK::Models::VerificationCreateParams::Options,
           signals: PreludeSDK::Models::VerificationCreateParams::Signals,
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash))
         )
           .returns(PreludeSDK::Models::VerificationCreateResponse)
       end
@@ -40,7 +40,7 @@ module PreludeSDK
         params(
           code: String,
           target: PreludeSDK::Models::VerificationCheckParams::Target,
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash))
         )
           .returns(PreludeSDK::Models::VerificationCheckResponse)
       end

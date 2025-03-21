@@ -91,7 +91,7 @@ module PreludeSDK
           from: String,
           locale: String,
           variables: T::Hash[Symbol, String],
-          request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

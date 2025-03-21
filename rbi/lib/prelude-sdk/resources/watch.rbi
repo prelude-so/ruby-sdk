@@ -9,7 +9,7 @@ module PreludeSDK
         params(
           feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback,
           target: PreludeSDK::Models::WatchFeedBackParams::Target,
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash))
         )
           .returns(PreludeSDK::Models::WatchFeedBackResponse)
       end
@@ -31,7 +31,7 @@ module PreludeSDK
         params(
           target: PreludeSDK::Models::WatchPredictParams::Target,
           signals: PreludeSDK::Models::WatchPredictParams::Signals,
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything]))
+          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash))
         )
           .returns(PreludeSDK::Models::WatchPredictResponse)
       end
