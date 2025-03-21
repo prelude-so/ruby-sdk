@@ -68,12 +68,12 @@ module PreludeSDK
 
       sig do
         params(
-          target: PreludeSDK::Models::VerificationCreateParams::Target,
+          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash),
           dispatch_id: String,
-          metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
-          options: PreludeSDK::Models::VerificationCreateParams::Options,
-          signals: PreludeSDK::Models::VerificationCreateParams::Signals,
-          request_options: T.any(PreludeSDK::RequestOptions, T::Hash[Symbol, T.anything])
+          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash),
+          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash),
+          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -269,7 +269,7 @@ module PreludeSDK
         # Verification options
         sig do
           params(
-            app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+            app_realm: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Util::AnyHash),
             callback_url: String,
             code_size: Integer,
             custom_code: String,

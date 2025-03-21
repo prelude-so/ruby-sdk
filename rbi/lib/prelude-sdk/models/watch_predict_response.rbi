@@ -39,7 +39,7 @@ module PreludeSDK
         params(
           id: String,
           prediction: PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol,
-          reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

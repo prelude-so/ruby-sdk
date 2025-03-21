@@ -48,7 +48,7 @@ module PreludeSDK
         params(
           status: PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol,
           id: String,
-          metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
+          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Util::AnyHash),
           request_id: String
         )
           .returns(T.attached_class)
