@@ -121,10 +121,8 @@ module PreludeSDK
           EMAIL_ADDRESS =
             T.let(:email_address, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
@@ -310,13 +308,11 @@ module PreludeSDK
             ANDROID =
               T.let(:android, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol)
 
-            class << self
-              sig do
-                override
-                  .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol])
-              end
-              def values
-              end
+            sig do
+              override
+                .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol])
+            end
+            def self.values
             end
           end
         end
@@ -448,13 +444,11 @@ module PreludeSDK
           TVOS = T.let(:tvos, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
           WEB = T.let(:web, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
 
-          class << self
-            sig do
-              override
-                .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol])
-            end
-            def values
-            end
+          sig do
+            override
+              .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol])
+          end
+          def self.values
           end
         end
       end

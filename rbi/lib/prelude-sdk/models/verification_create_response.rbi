@@ -71,10 +71,8 @@ module PreludeSDK
 
         MESSAGE = T.let(:message, PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol]) }
+        def self.values
         end
       end
 
@@ -90,10 +88,8 @@ module PreludeSDK
         RETRY = T.let(:retry, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
         BLOCKED = T.let(:blocked, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
 
-        class << self
-          sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol]) }
-          def values
-          end
+        sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol]) }
+        def self.values
         end
       end
 

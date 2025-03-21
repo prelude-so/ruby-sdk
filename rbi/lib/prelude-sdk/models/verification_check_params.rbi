@@ -80,10 +80,8 @@ module PreludeSDK
           EMAIL_ADDRESS =
             T.let(:email_address, PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol)
 
-          class << self
-            sig { override.returns(T::Array[PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol]) }
-            def values
-            end
+          sig { override.returns(T::Array[PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol]) }
+          def self.values
           end
         end
       end
