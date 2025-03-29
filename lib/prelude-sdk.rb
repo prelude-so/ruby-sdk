@@ -36,7 +36,6 @@ require "connection_pool"
 # Package files.
 require_relative "prelude-sdk/version"
 require_relative "prelude-sdk/util"
-require_relative "prelude-sdk/extern"
 require_relative "prelude-sdk/base_model"
 require_relative "prelude-sdk/base_page"
 require_relative "prelude-sdk/request_options"
