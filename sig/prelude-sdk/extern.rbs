@@ -1,4 +1,0 @@
-module PreludeSDK
-  module Extern
-  end
-end

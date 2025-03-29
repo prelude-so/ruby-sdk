@@ -85,7 +85,7 @@ module PreludeSDK
     end
 
     # @api private
-    sig { returns(T.anything) }
+    sig { returns(PreludeSDK::PooledNetRequester) }
     attr_accessor :requester
 
     # @api private
