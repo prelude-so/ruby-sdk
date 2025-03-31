@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     class TransactionalSendParams < PreludeSDK::BaseModel
-      extend PreludeSDK::RequestParameters::Converter
+      extend PreludeSDK::Type::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
       # The template identifier.

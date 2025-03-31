@@ -1,0 +1,39 @@
+module PreludeSDK
+  module Type
+    module Converter
+      type input = PreludeSDK::Type::Converter | Class
+
+      type state =
+        {
+          strictness: bool | :strong,
+          exactness: { yes: Integer, no: Integer, maybe: Integer },
+          branched: Integer
+        }
+
+      def coerce: (top value, state: PreludeSDK::Type::Converter::state) -> top
+
+      def dump: (top value) -> top
+
+      def self.type_info: (
+        {
+          const: (nil | bool | Integer | Float | Symbol)?,
+          enum: ^-> PreludeSDK::Type::Converter::input?,
+          union: ^-> PreludeSDK::Type::Converter::input?
+        }
+        | ^-> PreludeSDK::Type::Converter::input
+        | PreludeSDK::Type::Converter::input spec
+      ) -> (^-> top)
+
+      def self.coerce: (
+        PreludeSDK::Type::Converter::input target,
+        top value,
+        ?state: PreludeSDK::Type::Converter::state
+      ) -> top
+
+      def self.dump: (
+        PreludeSDK::Type::Converter::input target,
+        top value
+      ) -> top
+    end
+  end
+end
