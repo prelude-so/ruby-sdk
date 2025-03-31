@@ -4,7 +4,7 @@ module PreludeSDK
   module Models
     class WatchPredictParams < PreludeSDK::BaseModel
       # @!parse
-      #   extend PreludeSDK::RequestParameters::Converter
+      #   extend PreludeSDK::Type::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
       # @!attribute target

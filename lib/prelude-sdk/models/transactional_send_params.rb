@@ -4,7 +4,7 @@ module PreludeSDK
   module Models
     class TransactionalSendParams < PreludeSDK::BaseModel
       # @!parse
-      #   extend PreludeSDK::RequestParameters::Converter
+      #   extend PreludeSDK::Type::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
       # @!attribute template_id
