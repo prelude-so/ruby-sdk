@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     class VerificationCheckParams < PreludeSDK::BaseModel
-      extend PreludeSDK::RequestParameters::Converter
+      extend PreludeSDK::Type::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
       # The OTP code to validate.

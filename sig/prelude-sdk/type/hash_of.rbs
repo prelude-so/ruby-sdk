@@ -1,0 +1,36 @@
+module PreludeSDK
+  module Type
+    class HashOf
+      include PreludeSDK::Type::Converter
+
+      def self.[]: (
+        ::Hash[Symbol, top]
+        | ^-> PreludeSDK::Type::Converter::input
+        | PreludeSDK::Type::Converter::input type_info,
+        ?::Hash[Symbol, top] spec
+      ) -> instance
+
+      def ===: (top other) -> bool
+
+      def ==: (top other) -> bool
+
+      def coerce: (
+        ::Hash[top, top] | top value,
+        state: PreludeSDK::Type::Converter::state
+      ) -> (::Hash[Symbol, top] | top)
+
+      def dump: (::Hash[top, top] | top value) -> (::Hash[Symbol, top] | top)
+
+      def item_type: -> top
+
+      def nilable?: -> bool
+
+      def initialize: (
+        ::Hash[Symbol, top]
+        | ^-> PreludeSDK::Type::Converter::input
+        | PreludeSDK::Type::Converter::input type_info,
+        ?::Hash[Symbol, top] spec
+      ) -> void
+    end
+  end
+end

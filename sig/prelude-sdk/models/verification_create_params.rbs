@@ -11,7 +11,7 @@ module PreludeSDK
       & PreludeSDK::request_parameters
 
     class VerificationCreateParams < PreludeSDK::BaseModel
-      extend PreludeSDK::RequestParameters::Converter
+      extend PreludeSDK::Type::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
       attr_accessor target: PreludeSDK::Models::VerificationCreateParams::Target

@@ -1,0 +1,22 @@
+module PreludeSDK
+  class Unknown = PreludeSDK::Type::Unknown
+
+  class BooleanModel = PreludeSDK::Type::BooleanModel
+
+  module Enum = PreludeSDK::Type::Enum
+
+  module Union = PreludeSDK::Type::Union
+
+  class ArrayOf = PreludeSDK::Type::ArrayOf
+
+  class HashOf = PreludeSDK::Type::HashOf
+
+  class BaseModel = PreludeSDK::Type::BaseModel
+
+  type request_parameters = PreludeSDK::Type::request_parameters
+
+  module RequestParameters = PreludeSDK::Type::RequestParameters
+
+  module Type
+  end
+end

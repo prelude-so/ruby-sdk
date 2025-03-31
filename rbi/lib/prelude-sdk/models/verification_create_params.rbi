@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     class VerificationCreateParams < PreludeSDK::BaseModel
-      extend PreludeSDK::RequestParameters::Converter
+      extend PreludeSDK::Type::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
       # The verification target. Either a phone number or an email address. To use the

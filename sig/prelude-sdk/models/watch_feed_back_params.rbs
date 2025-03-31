@@ -8,7 +8,7 @@ module PreludeSDK
       & PreludeSDK::request_parameters
 
     class WatchFeedBackParams < PreludeSDK::BaseModel
-      extend PreludeSDK::RequestParameters::Converter
+      extend PreludeSDK::Type::RequestParameters::Converter
       include PreludeSDK::RequestParameters
 
       attr_accessor feedback: PreludeSDK::Models::WatchFeedBackParams::Feedback
