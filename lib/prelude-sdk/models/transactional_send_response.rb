@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Transactional#send_
     class TransactionalSendResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   The message identifier.

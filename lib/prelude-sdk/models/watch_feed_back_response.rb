@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Watch#feed_back
     class WatchFeedBackResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   A unique identifier for your feedback request.
