@@ -87,9 +87,9 @@ multitask(typecheck: [:steep, :sorbet])
 multitask(lint: [:rubocop, :typecheck])
 
 multitask(:build) do
-  sh(*%w[gem build -- prelude-sdk.gemspec])
+  sh(*%w[gem build -- prelude_sdk.gemspec])
 end
 
 multitask(release: [:build]) do
-  sh(*%w[gem push], *FileList["prelude-sdk-*.gem"])
+  sh(*%w[gem push], *FileList["prelude_sdk-*.gem"])
 end

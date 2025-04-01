@@ -16,7 +16,7 @@ require "minitest/hooks/test"
 require "minitest/proveit"
 require "minitest/rg"
 
-require_relative "../../lib/prelude-sdk"
+require_relative "../../lib/prelude_sdk"
 require_relative "resource_namespaces"
 
 module Kernel

@@ -60,5 +60,5 @@
     }
   ],
   "release-type": "ruby",
-  "version-file": "lib/prelude-sdk/version.rb"
+  "version-file": "lib/prelude_sdk/version.rb"
 }
