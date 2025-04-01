@@ -6,15 +6,11 @@ module PreludeSDK
       # Once the user with a trustworthy phone number demonstrates authentic behavior,
       #   call this endpoint to report their authenticity to our systems.
       #
-      # @param params [PreludeSDK::Models::WatchFeedBackParams, Hash{Symbol=>Object}] .
+      # @overload feed_back(feedback:, target:, request_options: {})
       #
-      #   @option params [PreludeSDK::Models::WatchFeedBackParams::Feedback] :feedback You should send a feedback event back to Watch API when your user demonstrates
-      #     authentic behavior.
-      #
-      #   @option params [PreludeSDK::Models::WatchFeedBackParams::Target] :target The verification target. Either a phone number or an email address. To use the
-      #     email verification feature contact us to discuss your use case.
-      #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param feedback [PreludeSDK::Models::WatchFeedBackParams::Feedback]
+      # @param target [PreludeSDK::Models::WatchFeedBackParams::Target]
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::WatchFeedBackResponse]
       #
@@ -34,15 +30,11 @@ module PreludeSDK
       #   in fraud and international revenue share fraud (IRSF) patterns. This endpoint
       #   must be implemented in conjunction with the `watch/feedback` endpoint.
       #
-      # @param params [PreludeSDK::Models::WatchPredictParams, Hash{Symbol=>Object}] .
+      # @overload predict(target:, signals: nil, request_options: {})
       #
-      #   @option params [PreludeSDK::Models::WatchPredictParams::Target] :target The verification target. Either a phone number or an email address. To use the
-      #     email verification feature contact us to discuss your use case.
-      #
-      #   @option params [PreludeSDK::Models::WatchPredictParams::Signals] :signals It is highly recommended that you provide the signals to increase prediction
-      #     performance.
-      #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param target [PreludeSDK::Models::WatchPredictParams::Target]
+      # @param signals [PreludeSDK::Models::WatchPredictParams::Signals]
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::WatchPredictResponse]
       #

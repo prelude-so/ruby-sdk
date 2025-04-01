@@ -5,28 +5,17 @@ module PreludeSDK
     class Transactional
       # Send a transactional message to your user.
       #
-      # @param params [PreludeSDK::Models::TransactionalSendParams, Hash{Symbol=>Object}] .
+      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, variables: nil, request_options: {})
       #
-      #   @option params [String] :template_id The template identifier.
-      #
-      #   @option params [String] :to The recipient's phone number.
-      #
-      #   @option params [String] :callback_url The callback URL.
-      #
-      #   @option params [String] :correlation_id A unique, user-defined identifier that will be included in webhook events.
-      #
-      #   @option params [String] :expires_at The message expiration date.
-      #
-      #   @option params [String] :from The Sender ID.
-      #
-      #   @option params [String] :locale A BCP-47 formatted locale string with the language the text message will be sent
-      #     to. If there's no locale set, the language will be determined by the country
-      #     code of the phone number. If the language specified doesn't exist, the default
-      #     set on the template will be used.
-      #
-      #   @option params [Hash{Symbol=>String}] :variables The variables to be replaced in the template.
-      #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param template_id [String]
+      # @param to [String]
+      # @param callback_url [String]
+      # @param correlation_id [String]
+      # @param expires_at [String]
+      # @param from [String]
+      # @param locale [String]
+      # @param variables [Hash{Symbol=>String}]
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::TransactionalSendResponse]
       #
