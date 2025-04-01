@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Watch#predict
     class WatchPredictResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   A unique identifier for your prediction request.

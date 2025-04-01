@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Verification#check
     class VerificationCheckResponse < PreludeSDK::BaseModel
       # @!attribute status
       #   The status of the check.
