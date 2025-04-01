@@ -50,7 +50,7 @@ module PreludeSDK
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol) }
 
         ALLOW = T.let(:allow, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
         BLOCK = T.let(:block, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
@@ -96,7 +96,7 @@ module PreludeSDK
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol) }
 
           NONE = T.let(:none, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
           SMART_ANTIFRAUD =

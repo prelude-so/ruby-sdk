@@ -73,7 +73,7 @@ module PreludeSDK
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol) }
 
           PHONE_NUMBER =
             T.let(:phone_number, PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol)

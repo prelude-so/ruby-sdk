@@ -114,7 +114,7 @@ module PreludeSDK
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol) }
 
           PHONE_NUMBER =
             T.let(:phone_number, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol)
@@ -303,7 +303,13 @@ module PreludeSDK
             TaggedSymbol =
               T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol) }
+              T.type_alias do
+                T.any(
+                  Symbol,
+                  String,
+                  PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol
+                )
+              end
 
             ANDROID =
               T.let(:android, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol)
@@ -434,7 +440,7 @@ module PreludeSDK
           TaggedSymbol =
             T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol) }
 
           ANDROID =
             T.let(:android, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)

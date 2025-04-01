@@ -74,7 +74,7 @@ module PreludeSDK
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol) }
 
           PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
           EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
