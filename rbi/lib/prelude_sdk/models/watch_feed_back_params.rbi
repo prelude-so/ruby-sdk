@@ -69,7 +69,7 @@ module PreludeSDK
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol) }
 
           CONFIRM_TARGET =
             T.let(:CONFIRM_TARGET, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol)
@@ -108,7 +108,7 @@ module PreludeSDK
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Target::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol) }
 
           PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol)
           EMAIL_ADDRESS =

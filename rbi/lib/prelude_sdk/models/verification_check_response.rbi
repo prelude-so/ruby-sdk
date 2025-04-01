@@ -64,7 +64,7 @@ module PreludeSDK
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCheckResponse::Status) }
         OrSymbol =
-          T.type_alias { T.any(Symbol, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol) }
+          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol) }
 
         SUCCESS = T.let(:success, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
         FAILURE = T.let(:failure, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
