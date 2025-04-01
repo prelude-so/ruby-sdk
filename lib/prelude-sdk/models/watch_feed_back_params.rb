@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Watch#feed_back
     class WatchFeedBackParams < PreludeSDK::BaseModel
       # @!parse
       #   extend PreludeSDK::Type::RequestParameters::Converter
@@ -50,6 +51,8 @@ module PreludeSDK
 
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
+        #
+        # @see PreludeSDK::Models::WatchFeedBackParams::Feedback#type
         module Type
           extend PreludeSDK::Enum
 
@@ -88,6 +91,8 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the target. Either "phone_number" or "email_address".
+        #
+        # @see PreludeSDK::Models::WatchFeedBackParams::Target#type
         module Type
           extend PreludeSDK::Enum
 

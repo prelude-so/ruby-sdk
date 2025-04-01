@@ -17,6 +17,8 @@ module PreludeSDK
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::WatchFeedBackResponse]
+      #
+      # @see PreludeSDK::Models::WatchFeedBackParams
       def feed_back(params)
         parsed, options = PreludeSDK::Models::WatchFeedBackParams.dump_request(params)
         @client.request(
@@ -43,6 +45,8 @@ module PreludeSDK
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::WatchPredictResponse]
+      #
+      # @see PreludeSDK::Models::WatchPredictParams
       def predict(params)
         parsed, options = PreludeSDK::Models::WatchPredictParams.dump_request(params)
         @client.request(
@@ -54,6 +58,8 @@ module PreludeSDK
         )
       end
 
+      # @api private
+      #
       # @param client [PreludeSDK::Client]
       def initialize(client:)
         @client = client

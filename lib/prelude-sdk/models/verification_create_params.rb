@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Verification#create
     class VerificationCreateParams < PreludeSDK::BaseModel
       # @!parse
       #   extend PreludeSDK::Type::RequestParameters::Converter
@@ -93,6 +94,8 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the target. Either "phone_number" or "email_address".
+        #
+        # @see PreludeSDK::Models::VerificationCreateParams::Target#type
         module Type
           extend PreludeSDK::Enum
 
@@ -250,6 +253,7 @@ module PreludeSDK
 
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
+        # @see PreludeSDK::Models::VerificationCreateParams::Options#app_realm
         class AppRealm < PreludeSDK::BaseModel
           # @!attribute platform
           #   The platform the SMS will be sent to. We are currently only supporting
@@ -277,6 +281,8 @@ module PreludeSDK
 
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
+          #
+          # @see PreludeSDK::Models::VerificationCreateParams::Options::AppRealm#platform
           module Platform
             extend PreludeSDK::Enum
 
@@ -407,6 +413,8 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the user's device.
+        #
+        # @see PreludeSDK::Models::VerificationCreateParams::Signals#device_platform
         module DevicePlatform
           extend PreludeSDK::Enum
 

@@ -49,6 +49,8 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # The status of the check.
+      #
+      # @see PreludeSDK::Models::VerificationCheckResponse#status
       module Status
         extend PreludeSDK::Enum
 
@@ -63,6 +65,7 @@ module PreludeSDK
         #   def self.values; end
       end
 
+      # @see PreludeSDK::Models::VerificationCheckResponse#metadata
       class Metadata < PreludeSDK::BaseModel
         # @!attribute [r] correlation_id
         #
