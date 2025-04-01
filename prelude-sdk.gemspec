@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "lib/prelude-sdk/version"
+require_relative "lib/prelude_sdk/version"
 
 Gem::Specification.new do |s|
   s.name = "prelude-sdk"
