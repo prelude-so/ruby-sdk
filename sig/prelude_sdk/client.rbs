@@ -19,8 +19,8 @@ module PreludeSDK
     private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (
-      ?base_url: String?,
       ?api_token: String?,
+      ?base_url: String?,
       ?max_retries: Integer,
       ?timeout: Float,
       ?initial_retry_delay: Float,
