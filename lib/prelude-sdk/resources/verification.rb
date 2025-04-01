@@ -7,22 +7,14 @@ module PreludeSDK
       #   verification exists (the request is performed within the verification window),
       #   this endpoint will perform a retry instead.
       #
-      # @param params [PreludeSDK::Models::VerificationCreateParams, Hash{Symbol=>Object}] .
+      # @overload create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
       #
-      #   @option params [PreludeSDK::Models::VerificationCreateParams::Target] :target The verification target. Either a phone number or an email address. To use the
-      #     email verification feature contact us to discuss your use case.
-      #
-      #   @option params [String] :dispatch_id The identifier of the dispatch that came from the front-end SDK.
-      #
-      #   @option params [PreludeSDK::Models::VerificationCreateParams::Metadata] :metadata The metadata for this verification. This object will be returned with every
-      #     response or webhook sent that refers to this verification.
-      #
-      #   @option params [PreludeSDK::Models::VerificationCreateParams::Options] :options Verification options
-      #
-      #   @option params [PreludeSDK::Models::VerificationCreateParams::Signals] :signals The signals used for anti-fraud. For more details, refer to
-      #     [Signals](/guides/prevent-fraud#signals).
-      #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param target [PreludeSDK::Models::VerificationCreateParams::Target]
+      # @param dispatch_id [String]
+      # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata]
+      # @param options [PreludeSDK::Models::VerificationCreateParams::Options]
+      # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals]
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::VerificationCreateResponse]
       #
@@ -40,14 +32,11 @@ module PreludeSDK
 
       # Check the validity of a verification code.
       #
-      # @param params [PreludeSDK::Models::VerificationCheckParams, Hash{Symbol=>Object}] .
+      # @overload check(code:, target:, request_options: {})
       #
-      #   @option params [String] :code The OTP code to validate.
-      #
-      #   @option params [PreludeSDK::Models::VerificationCheckParams::Target] :target The verification target. Either a phone number or an email address. To use the
-      #     email verification feature contact us to discuss your use case.
-      #
-      #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
+      # @param code [String]
+      # @param target [PreludeSDK::Models::VerificationCheckParams::Target]
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::VerificationCheckResponse]
       #
