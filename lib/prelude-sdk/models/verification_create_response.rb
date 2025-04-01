@@ -52,6 +52,8 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # The method used for verifying this phone number.
+      #
+      # @see PreludeSDK::Models::VerificationCreateResponse#method_
       module Method
         extend PreludeSDK::Enum
 
@@ -65,6 +67,8 @@ module PreludeSDK
       end
 
       # The status of the verification.
+      #
+      # @see PreludeSDK::Models::VerificationCreateResponse#status
       module Status
         extend PreludeSDK::Enum
 
@@ -79,6 +83,7 @@ module PreludeSDK
         #   def self.values; end
       end
 
+      # @see PreludeSDK::Models::VerificationCreateResponse#metadata
       class Metadata < PreludeSDK::BaseModel
         # @!attribute [r] correlation_id
         #

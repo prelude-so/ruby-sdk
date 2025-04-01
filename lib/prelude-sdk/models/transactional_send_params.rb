@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Transactional#send_
     class TransactionalSendParams < PreludeSDK::BaseModel
       # @!parse
       #   extend PreludeSDK::Type::RequestParameters::Converter

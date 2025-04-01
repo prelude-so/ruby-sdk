@@ -25,6 +25,8 @@ module PreludeSDK
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::VerificationCreateResponse]
+      #
+      # @see PreludeSDK::Models::VerificationCreateParams
       def create(params)
         parsed, options = PreludeSDK::Models::VerificationCreateParams.dump_request(params)
         @client.request(
@@ -48,6 +50,8 @@ module PreludeSDK
       #   @option params [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil] :request_options
       #
       # @return [PreludeSDK::Models::VerificationCheckResponse]
+      #
+      # @see PreludeSDK::Models::VerificationCheckParams
       def check(params)
         parsed, options = PreludeSDK::Models::VerificationCheckParams.dump_request(params)
         @client.request(
@@ -59,6 +63,8 @@ module PreludeSDK
         )
       end
 
+      # @api private
+      #
       # @param client [PreludeSDK::Client]
       def initialize(client:)
         @client = client
