@@ -30,6 +30,8 @@ module PreludeSDK
       # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
       # A label indicating the trustworthiness of the phone number.
+      #
+      # @see PreludeSDK::Models::WatchPredictResponse#prediction
       module Prediction
         extend PreludeSDK::Enum
 
@@ -43,6 +45,7 @@ module PreludeSDK
         #   def self.values; end
       end
 
+      # @see PreludeSDK::Models::WatchPredictResponse#reasoning
       class Reasoning < PreludeSDK::BaseModel
         # @!attribute [r] cause
         #   A label explaining why the phone number was classified as not trustworthy
@@ -74,6 +77,8 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # A label explaining why the phone number was classified as not trustworthy
+        #
+        # @see PreludeSDK::Models::WatchPredictResponse::Reasoning#cause
         module Cause
           extend PreludeSDK::Enum
 

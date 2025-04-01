@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Watch#predict
     class WatchPredictParams < PreludeSDK::BaseModel
       # @!parse
       #   extend PreludeSDK::Type::RequestParameters::Converter
@@ -59,6 +60,8 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::BaseModel) -> void
 
         # The type of the target. Either "phone_number" or "email_address".
+        #
+        # @see PreludeSDK::Models::WatchPredictParams::Target#type
         module Type
           extend PreludeSDK::Enum
 

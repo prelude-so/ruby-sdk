@@ -54,6 +54,7 @@ module PreludeSDK
       )
       end
 
+      # @api private
       sig { params(client: PreludeSDK::Client).returns(T.attached_class) }
       def self.new(client:)
       end
