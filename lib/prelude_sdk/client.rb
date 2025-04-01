@@ -39,9 +39,9 @@ module PreludeSDK
 
     # Creates and returns a new client for interacting with the API.
     #
-    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
-    #
     # @param api_token [String, nil] Bearer token for authorizing API requests. Defaults to `ENV["API_TOKEN"]`
+    #
+    # @param base_url [String, nil] Override the default base URL for the API, e.g., `"https://api.example.com/v2/"`
     #
     # @param max_retries [Integer] Max number of retries to attempt after a failed retryable request.
     #
@@ -51,8 +51,8 @@ module PreludeSDK
     #
     # @param max_retry_delay [Float]
     def initialize(
-      base_url: nil,
       api_token: ENV["API_TOKEN"],
+      base_url: nil,
       max_retries: DEFAULT_MAX_RETRIES,
       timeout: DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
@@ -61,7 +61,7 @@ module PreludeSDK
       base_url ||= "https://api.prelude.dev"
 
       if api_token.nil?
-        raise ArgumentError.new("api_token is required")
+        raise ArgumentError.new("api_token is required, and can be set via environ: \"API_TOKEN\"")
       end
 
       @api_token = api_token.to_s
