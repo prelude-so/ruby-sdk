@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Models
+    # @see PreludeSDK::Resources::Verification#create
     class VerificationCreateResponse < PreludeSDK::BaseModel
       # @!attribute id
       #   The verification identifier.
