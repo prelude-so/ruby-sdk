@@ -82,7 +82,7 @@ module PreludeSDK
         # @api private
         sig do
           params(
-            status: T.any(Integer, PreludeSDK::APIConnectionError),
+            status: T.any(Integer, PreludeSDK::Errors::APIConnectionError),
             stream: T.nilable(T::Enumerable[String])
           )
             .void
