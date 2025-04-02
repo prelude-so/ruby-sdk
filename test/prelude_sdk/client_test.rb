@@ -200,7 +200,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     prelude.requester = requester
 
-    assert_raises(PreludeSDK::APIConnectionError) do
+    assert_raises(PreludeSDK::Errors::APIConnectionError) do
       prelude.verification.create(
         target: {type: :phone_number, value: "+30123456789"},
         request_options: {extra_headers: {}}
@@ -221,7 +221,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(303, {"location" => "/redirected"}, {})
     prelude.requester = requester
 
-    assert_raises(PreludeSDK::APIConnectionError) do
+    assert_raises(PreludeSDK::Errors::APIConnectionError) do
       prelude.verification.create(
         target: {type: :phone_number, value: "+30123456789"},
         request_options: {extra_headers: {}}
@@ -239,7 +239,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "/redirected"}, {})
     prelude.requester = requester
 
-    assert_raises(PreludeSDK::APIConnectionError) do
+    assert_raises(PreludeSDK::Errors::APIConnectionError) do
       prelude.verification.create(
         target: {type: :phone_number, value: "+30123456789"},
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}
@@ -257,7 +257,7 @@ class PreludeSDKTest < Minitest::Test
     requester = MockRequester.new(307, {"location" => "https://example.com/redirected"}, {})
     prelude.requester = requester
 
-    assert_raises(PreludeSDK::APIConnectionError) do
+    assert_raises(PreludeSDK::Errors::APIConnectionError) do
       prelude.verification.create(
         target: {type: :phone_number, value: "+30123456789"},
         request_options: {extra_headers: {"Authorization" => "Bearer xyz"}}

@@ -1,99 +1,129 @@
 module PreludeSDK
-  class Error < StandardError
-    attr_accessor cause: StandardError?
+  module Errors
+    class Error < StandardError
+      attr_accessor cause: StandardError?
+    end
+
+    class ConversionError < PreludeSDK::Errors::Error
+    end
+
+    class APIError < PreludeSDK::Errors::Error
+      attr_accessor url: URI::Generic
+
+      attr_accessor status: Integer?
+
+      attr_accessor body: top?
+
+      def initialize: (
+        url: URI::Generic,
+        ?status: Integer?,
+        ?body: Object?,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIConnectionError < PreludeSDK::Errors::APIError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APITimeoutError < PreludeSDK::Errors::APIConnectionError
+      def initialize: (
+        url: URI::Generic,
+        ?status: nil,
+        ?body: nil,
+        ?request: nil,
+        ?response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class APIStatusError < PreludeSDK::Errors::APIError
+      def self.for: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> instance
+
+      def initialize: (
+        url: URI::Generic,
+        status: Integer,
+        body: Object?,
+        request: nil,
+        response: nil,
+        ?message: String?
+      ) -> void
+    end
+
+    class BadRequestError < PreludeSDK::Errors::APIStatusError
+      HTTP_STATUS: 400
+    end
+
+    class AuthenticationError < PreludeSDK::Errors::APIStatusError
+      HTTP_STATUS: 401
+    end
+
+    class PermissionDeniedError < PreludeSDK::Errors::APIStatusError
+      HTTP_STATUS: 403
+    end
+
+    class NotFoundError < PreludeSDK::Errors::APIStatusError
+      HTTP_STATUS: 404
+    end
+
+    class ConflictError < PreludeSDK::Errors::APIStatusError
+      HTTP_STATUS: 409
+    end
+
+    class UnprocessableEntityError < PreludeSDK::Errors::APIStatusError
+      HTTP_STATUS: 422
+    end
+
+    class RateLimitError < PreludeSDK::Errors::APIStatusError
+      HTTP_STATUS: 429
+    end
+
+    class InternalServerError < PreludeSDK::Errors::APIStatusError
+      HTTP_STATUS: Range[Integer]
+    end
   end
 
-  class ConversionError < PreludeSDK::Error
-  end
+  class Error = PreludeSDK::Errors::Error
 
-  class APIError < PreludeSDK::Error
-    attr_accessor url: URI::Generic
+  class ConversionError = PreludeSDK::Errors::ConversionError
 
-    attr_accessor status: Integer?
+  class APIError = PreludeSDK::Errors::APIError
 
-    attr_accessor body: top?
+  class APIStatusError = PreludeSDK::Errors::APIStatusError
 
-    def initialize: (
-      url: URI::Generic,
-      ?status: Integer?,
-      ?body: Object?,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APIConnectionError = PreludeSDK::Errors::APIConnectionError
 
-  class APIConnectionError < PreludeSDK::APIError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class APITimeoutError = PreludeSDK::Errors::APITimeoutError
 
-  class APITimeoutError < PreludeSDK::APIConnectionError
-    def initialize: (
-      url: URI::Generic,
-      ?status: nil,
-      ?body: nil,
-      ?request: nil,
-      ?response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class BadRequestError = PreludeSDK::Errors::BadRequestError
 
-  class APIStatusError < PreludeSDK::APIError
-    def self.for: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> instance
+  class AuthenticationError = PreludeSDK::Errors::AuthenticationError
 
-    def initialize: (
-      url: URI::Generic,
-      status: Integer,
-      body: Object?,
-      request: nil,
-      response: nil,
-      ?message: String?
-    ) -> void
-  end
+  class PermissionDeniedError = PreludeSDK::Errors::PermissionDeniedError
 
-  class BadRequestError < PreludeSDK::APIStatusError
-    HTTP_STATUS: 400
-  end
+  class NotFoundError = PreludeSDK::Errors::NotFoundError
 
-  class AuthenticationError < PreludeSDK::APIStatusError
-    HTTP_STATUS: 401
-  end
+  class ConflictError = PreludeSDK::Errors::ConflictError
 
-  class PermissionDeniedError < PreludeSDK::APIStatusError
-    HTTP_STATUS: 403
-  end
+  class UnprocessableEntityError = PreludeSDK::Errors::UnprocessableEntityError
 
-  class NotFoundError < PreludeSDK::APIStatusError
-    HTTP_STATUS: 404
-  end
+  class RateLimitError = PreludeSDK::Errors::RateLimitError
 
-  class ConflictError < PreludeSDK::APIStatusError
-    HTTP_STATUS: 409
-  end
-
-  class UnprocessableEntityError < PreludeSDK::APIStatusError
-    HTTP_STATUS: 422
-  end
-
-  class RateLimitError < PreludeSDK::APIStatusError
-    HTTP_STATUS: 429
-  end
-
-  class InternalServerError < PreludeSDK::APIStatusError
-    HTTP_STATUS: Range[Integer]
-  end
+  class InternalServerError = PreludeSDK::Errors::InternalServerError
 end

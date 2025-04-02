@@ -153,7 +153,7 @@ module PreludeSDK
             end
           end
         rescue Timeout::Error
-          raise PreludeSDK::APITimeoutError
+          raise PreludeSDK::Errors::APITimeoutError
         end
 
         conn, _, response = enum.next

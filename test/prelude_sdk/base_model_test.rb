@@ -390,7 +390,7 @@ class PreludeSDK::Test::BaseModelTest < Minitest::Test
           tap do
             target.public_send(accessor)
             flunk
-          rescue PreludeSDK::ConversionError => e
+          rescue PreludeSDK::Errors::ConversionError => e
             assert_kind_of(expect, e.cause)
           end
         else
