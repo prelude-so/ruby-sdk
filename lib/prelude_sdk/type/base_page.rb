@@ -29,7 +29,7 @@ module PreludeSDK
       # @return [Boolean]
       def next_page? = (raise NotImplementedError)
 
-      # @raise [PreludeSDK::APIError]
+      # @raise [PreludeSDK::Errors::APIError]
       # @return [PreludeSDK::Type::BasePage]
       def next_page = (raise NotImplementedError)
 
