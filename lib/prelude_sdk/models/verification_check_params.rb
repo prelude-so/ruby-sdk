@@ -5,8 +5,8 @@ module PreludeSDK
     # @see PreludeSDK::Resources::Verification#check
     class VerificationCheckParams < PreludeSDK::BaseModel
       # @!parse
-      #   extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute code
       #   The OTP code to validate.

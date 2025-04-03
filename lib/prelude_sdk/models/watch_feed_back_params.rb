@@ -5,8 +5,8 @@ module PreludeSDK
     # @see PreludeSDK::Resources::Watch#feed_back
     class WatchFeedBackParams < PreludeSDK::BaseModel
       # @!parse
-      #   extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute feedback
       #   You should send a feedback event back to Watch API when your user demonstrates

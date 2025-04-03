@@ -5,11 +5,11 @@ module PreludeSDK
         target: PreludeSDK::Models::WatchPredictParams::Target,
         signals: PreludeSDK::Models::WatchPredictParams::Signals
       }
-      & PreludeSDK::request_parameters
+      & PreludeSDK::Internal::Type::request_parameters
 
     class WatchPredictParams < PreludeSDK::BaseModel
-      extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       attr_accessor target: PreludeSDK::Models::WatchPredictParams::Target
 

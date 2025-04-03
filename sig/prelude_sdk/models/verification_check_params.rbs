@@ -5,11 +5,11 @@ module PreludeSDK
         code: String,
         target: PreludeSDK::Models::VerificationCheckParams::Target
       }
-      & PreludeSDK::request_parameters
+      & PreludeSDK::Internal::Type::request_parameters
 
     class VerificationCheckParams < PreludeSDK::BaseModel
-      extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       attr_accessor code: String
 

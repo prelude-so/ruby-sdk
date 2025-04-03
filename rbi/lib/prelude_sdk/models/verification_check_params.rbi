@@ -3,8 +3,8 @@
 module PreludeSDK
   module Models
     class VerificationCheckParams < PreludeSDK::BaseModel
-      extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       # The OTP code to validate.
       sig { returns(String) }
@@ -15,14 +15,19 @@ module PreludeSDK
       sig { returns(PreludeSDK::Models::VerificationCheckParams::Target) }
       attr_reader :target
 
-      sig { params(target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Util::AnyHash)).void }
+      sig do
+        params(
+          target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :target
 
       sig do
         params(
           code: String,
-          target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Util::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash)
+          target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Internal::Util::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

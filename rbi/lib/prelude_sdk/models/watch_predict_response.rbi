@@ -15,7 +15,9 @@ module PreludeSDK
       attr_reader :reasoning
 
       sig do
-        params(reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash))
+        params(
+          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :reasoning
@@ -24,7 +26,7 @@ module PreludeSDK
         params(
           id: String,
           prediction: PreludeSDK::Models::WatchPredictResponse::Prediction::OrSymbol,
-          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Util::AnyHash)
+          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
