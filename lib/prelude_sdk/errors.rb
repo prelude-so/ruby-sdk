@@ -189,32 +189,4 @@ module PreludeSDK
       HTTP_STATUS = (500..)
     end
   end
-
-  Error = PreludeSDK::Errors::Error
-
-  ConversionError = PreludeSDK::Errors::ConversionError
-
-  APIError = PreludeSDK::Errors::APIError
-
-  APIStatusError = PreludeSDK::Errors::APIStatusError
-
-  APIConnectionError = PreludeSDK::Errors::APIConnectionError
-
-  APITimeoutError = PreludeSDK::Errors::APITimeoutError
-
-  BadRequestError = PreludeSDK::Errors::BadRequestError
-
-  AuthenticationError = PreludeSDK::Errors::AuthenticationError
-
-  PermissionDeniedError = PreludeSDK::Errors::PermissionDeniedError
-
-  NotFoundError = PreludeSDK::Errors::NotFoundError
-
-  ConflictError = PreludeSDK::Errors::ConflictError
-
-  UnprocessableEntityError = PreludeSDK::Errors::UnprocessableEntityError
-
-  RateLimitError = PreludeSDK::Errors::RateLimitError
-
-  InternalServerError = PreludeSDK::Errors::InternalServerError
 end

@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class WatchFeedBackParams < PreludeSDK::BaseModel
+    class WatchFeedBackParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
@@ -12,9 +12,7 @@ module PreludeSDK
       attr_reader :feedback
 
       sig do
-        params(
-          feedback: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Internal::Util::AnyHash)
-        )
+        params(feedback: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Internal::AnyHash))
           .void
       end
       attr_writer :feedback
@@ -24,19 +22,14 @@ module PreludeSDK
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Target) }
       attr_reader :target
 
-      sig do
-        params(
-          target: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(target: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Internal::AnyHash)).void }
       attr_writer :target
 
       sig do
         params(
-          feedback: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Internal::Util::AnyHash),
-          target: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Internal::Util::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
+          feedback: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Internal::AnyHash),
+          target: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Internal::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -56,7 +49,7 @@ module PreludeSDK
       def to_hash
       end
 
-      class Feedback < PreludeSDK::BaseModel
+      class Feedback < PreludeSDK::Internal::Type::BaseModel
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
         sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol) }
@@ -75,7 +68,7 @@ module PreludeSDK
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type) }
           OrSymbol =
@@ -90,7 +83,7 @@ module PreludeSDK
         end
       end
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol) }
         attr_accessor :type
@@ -114,7 +107,7 @@ module PreludeSDK
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Target::Type) }
           OrSymbol =

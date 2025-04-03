@@ -13,7 +13,7 @@ module PreludeSDK
       }
       & PreludeSDK::Internal::Type::request_parameters
 
-    class TransactionalSendParams < PreludeSDK::BaseModel
+    class TransactionalSendParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 

@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Transactional#send_
-    class TransactionalSendParams < PreludeSDK::BaseModel
+    class TransactionalSendParams < PreludeSDK::Internal::Type::BaseModel
       # @!parse
       #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
@@ -77,7 +77,7 @@ module PreludeSDK
       #   The variables to be replaced in the template.
       #
       #   @return [Hash{Symbol=>String}, nil]
-      optional :variables, PreludeSDK::HashOf[String]
+      optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
       # @!parse
       #   # @return [Hash{Symbol=>String}]
@@ -109,7 +109,7 @@ module PreludeSDK
       #     super
       #   end
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
     end
   end
 end

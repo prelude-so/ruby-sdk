@@ -98,32 +98,4 @@ module PreludeSDK
       HTTP_STATUS: Range[Integer]
     end
   end
-
-  class Error = PreludeSDK::Errors::Error
-
-  class ConversionError = PreludeSDK::Errors::ConversionError
-
-  class APIError = PreludeSDK::Errors::APIError
-
-  class APIStatusError = PreludeSDK::Errors::APIStatusError
-
-  class APIConnectionError = PreludeSDK::Errors::APIConnectionError
-
-  class APITimeoutError = PreludeSDK::Errors::APITimeoutError
-
-  class BadRequestError = PreludeSDK::Errors::BadRequestError
-
-  class AuthenticationError = PreludeSDK::Errors::AuthenticationError
-
-  class PermissionDeniedError = PreludeSDK::Errors::PermissionDeniedError
-
-  class NotFoundError = PreludeSDK::Errors::NotFoundError
-
-  class ConflictError = PreludeSDK::Errors::ConflictError
-
-  class UnprocessableEntityError = PreludeSDK::Errors::UnprocessableEntityError
-
-  class RateLimitError = PreludeSDK::Errors::RateLimitError
-
-  class InternalServerError = PreludeSDK::Errors::InternalServerError
 end

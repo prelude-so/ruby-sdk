@@ -7,10 +7,10 @@ module PreludeSDK
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
 
-        def self.known_fields: -> ::Hash[Symbol, (PreludeSDK::BaseModel::known_field
+        def self.known_fields: -> ::Hash[Symbol, (PreludeSDK::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> PreludeSDK::Internal::Type::Converter::input) })]
 
-        def self.fields: -> ::Hash[Symbol, (PreludeSDK::BaseModel::known_field
+        def self.fields: -> ::Hash[Symbol, (PreludeSDK::Internal::Type::BaseModel::known_field
         & { type: PreludeSDK::Internal::Type::Converter::input })]
 
         private def self.add_field: (
@@ -52,7 +52,7 @@ module PreludeSDK
         def ==: (top other) -> bool
 
         def self.coerce: (
-          PreludeSDK::BaseModel | ::Hash[top, top] | top value,
+          PreludeSDK::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: PreludeSDK::Internal::Type::Converter::state
         ) -> (instance | top)
 

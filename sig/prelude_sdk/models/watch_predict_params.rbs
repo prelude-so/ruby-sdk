@@ -7,7 +7,7 @@ module PreludeSDK
       }
       & PreludeSDK::Internal::Type::request_parameters
 
-    class WatchPredictParams < PreludeSDK::BaseModel
+    class WatchPredictParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
@@ -33,7 +33,7 @@ module PreludeSDK
           value: String
         }
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         attr_accessor type: PreludeSDK::Models::WatchPredictParams::Target::type_
 
         attr_accessor value: String
@@ -48,7 +48,7 @@ module PreludeSDK
         type type_ = :phone_number | :email_address
 
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           PHONE_NUMBER: :phone_number
           EMAIL_ADDRESS: :email_address
@@ -65,7 +65,7 @@ module PreludeSDK
           ip: String
         }
 
-      class Signals < PreludeSDK::BaseModel
+      class Signals < PreludeSDK::Internal::Type::BaseModel
         attr_reader device_id: String?
 
         def device_id=: (String) -> String

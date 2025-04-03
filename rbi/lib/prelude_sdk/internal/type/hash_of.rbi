@@ -17,11 +17,11 @@ module PreludeSDK
         sig(:final) do
           params(
             type_info: T.any(
-              PreludeSDK::Internal::Util::AnyHash,
+              PreludeSDK::Internal::AnyHash,
               T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
               PreludeSDK::Internal::Type::Converter::Input
             ),
-            spec: PreludeSDK::Internal::Util::AnyHash
+            spec: PreludeSDK::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -43,7 +43,7 @@ module PreludeSDK
               value: T.any(T::Hash[T.anything, T.anything], T.anything),
               state: PreludeSDK::Internal::Type::Converter::State
             )
-            .returns(T.any(PreludeSDK::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(PreludeSDK::Internal::AnyHash, T.anything))
         end
         def coerce(value, state:)
         end
@@ -52,7 +52,7 @@ module PreludeSDK
         sig(:final) do
           override
             .params(value: T.any(T::Hash[T.anything, T.anything], T.anything))
-            .returns(T.any(PreludeSDK::Internal::Util::AnyHash, T.anything))
+            .returns(T.any(PreludeSDK::Internal::AnyHash, T.anything))
         end
         def dump(value)
         end
@@ -71,11 +71,11 @@ module PreludeSDK
         sig(:final) do
           params(
             type_info: T.any(
-              PreludeSDK::Internal::Util::AnyHash,
+              PreludeSDK::Internal::AnyHash,
               T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
               PreludeSDK::Internal::Type::Converter::Input
             ),
-            spec: PreludeSDK::Internal::Util::AnyHash
+            spec: PreludeSDK::Internal::AnyHash
           )
             .void
         end

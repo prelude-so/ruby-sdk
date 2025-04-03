@@ -13,7 +13,7 @@ module PreludeSDK
         from: String
       }
 
-    class TransactionalSendResponse < PreludeSDK::BaseModel
+    class TransactionalSendResponse < PreludeSDK::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor created_at: Time
