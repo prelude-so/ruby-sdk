@@ -7,6 +7,8 @@ module PreludeSDK
       #
       # @abstract
       #
+      # @generic Elem
+      #
       # Hash of items of a given type.
       class HashOf
         include PreludeSDK::Internal::Type::Converter
@@ -111,7 +113,7 @@ module PreludeSDK
 
         # @api private
         #
-        # @return [PreludeSDK::Internal::Type::Converter, Class]
+        # @return [generic<Elem>]
         protected def item_type = @item_type_fn.call
 
         # @api private
