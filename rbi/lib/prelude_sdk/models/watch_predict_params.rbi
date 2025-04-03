@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class WatchPredictParams < PreludeSDK::BaseModel
+    class WatchPredictParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
@@ -11,10 +11,7 @@ module PreludeSDK
       sig { returns(PreludeSDK::Models::WatchPredictParams::Target) }
       attr_reader :target
 
-      sig do
-        params(target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::Util::AnyHash))
-          .void
-      end
+      sig { params(target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::AnyHash)).void }
       attr_writer :target
 
       # It is highly recommended that you provide the signals to increase prediction
@@ -22,19 +19,14 @@ module PreludeSDK
       sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals)) }
       attr_reader :signals
 
-      sig do
-        params(
-          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::Util::AnyHash)
-        )
-          .void
-      end
+      sig { params(signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::AnyHash)).void }
       attr_writer :signals
 
       sig do
         params(
-          target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::Util::AnyHash),
-          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::Util::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
+          target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::AnyHash),
+          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -54,7 +46,7 @@ module PreludeSDK
       def to_hash
       end
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol) }
         attr_accessor :type
@@ -78,7 +70,7 @@ module PreludeSDK
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type) }
           OrSymbol =
@@ -93,7 +85,7 @@ module PreludeSDK
         end
       end
 
-      class Signals < PreludeSDK::BaseModel
+      class Signals < PreludeSDK::Internal::Type::BaseModel
         # The unique identifier for the user's device. For Android, this corresponds to
         #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         sig { returns(T.nilable(String)) }

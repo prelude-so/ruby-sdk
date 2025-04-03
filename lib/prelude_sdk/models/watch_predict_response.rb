@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Watch#predict
-    class WatchPredictResponse < PreludeSDK::BaseModel
+    class WatchPredictResponse < PreludeSDK::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for your prediction request.
       #
@@ -28,13 +28,13 @@ module PreludeSDK
       #   #
       #   def initialize(id:, prediction:, reasoning:, **) = super
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
       # A label indicating the trustworthiness of the phone number.
       #
       # @see PreludeSDK::Models::WatchPredictResponse#prediction
       module Prediction
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         ALLOW = :allow
         BLOCK = :block
@@ -47,7 +47,7 @@ module PreludeSDK
       end
 
       # @see PreludeSDK::Models::WatchPredictResponse#reasoning
-      class Reasoning < PreludeSDK::BaseModel
+      class Reasoning < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] cause
         #   A label explaining why the phone number was classified as not trustworthy
         #
@@ -75,13 +75,13 @@ module PreludeSDK
         #   #
         #   def initialize(cause: nil, score: nil, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # A label explaining why the phone number was classified as not trustworthy
         #
         # @see PreludeSDK::Models::WatchPredictResponse::Reasoning#cause
         module Cause
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           NONE = :none
           SMART_ANTIFRAUD = :smart_antifraud

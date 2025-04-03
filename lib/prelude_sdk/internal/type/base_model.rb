@@ -23,7 +23,7 @@ module PreludeSDK
           #
           # @return [Hash{Symbol=>Hash{Symbol=>Object}}]
           def known_fields
-            @known_fields ||= (self < PreludeSDK::BaseModel ? superclass.known_fields.dup : {})
+            @known_fields ||= (self < PreludeSDK::Internal::Type::BaseModel ? superclass.known_fields.dup : {})
           end
 
           # @api private
@@ -67,10 +67,10 @@ module PreludeSDK
             const = if required && !nilable
               info.fetch(
                 :const,
-                PreludeSDK::Internal::Util::OMIT
+                PreludeSDK::Internal::OMIT
               )
             else
-              PreludeSDK::Internal::Util::OMIT
+              PreludeSDK::Internal::OMIT
             end
 
             [name_sym, setter].each { undef_method(_1) } if known_fields.key?(name_sym)
@@ -89,7 +89,7 @@ module PreludeSDK
 
             define_method(name_sym) do
               target = type_fn.call
-              value = @data.fetch(name_sym) { const == PreludeSDK::Internal::Util::OMIT ? nil : const }
+              value = @data.fetch(name_sym) { const == PreludeSDK::Internal::OMIT ? nil : const }
               state = {strictness: :strong, exactness: {yes: 0, no: 0, maybe: 0}, branched: 0}
               if (nilable || !required) && value.nil?
                 nil
@@ -103,7 +103,7 @@ module PreludeSDK
               # rubocop:disable Layout/LineLength
               message = "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}. To get the unparsed API response, use #{cls}[:#{__method__}]."
               # rubocop:enable Layout/LineLength
-              raise PreludeSDK::ConversionError.new(message)
+              raise PreludeSDK::Errors::ConversionError.new(message)
             end
           end
 
@@ -173,7 +173,7 @@ module PreludeSDK
           # @param other [Object]
           #
           # @return [Boolean]
-          def ==(other) = other.is_a?(Class) && other <= PreludeSDK::BaseModel && other.fields == fields
+          def ==(other) = other.is_a?(Class) && other <= PreludeSDK::Internal::Type::BaseModel && other.fields == fields
         end
 
         # @param other [Object]
@@ -184,7 +184,7 @@ module PreludeSDK
         class << self
           # @api private
           #
-          # @param value [PreludeSDK::BaseModel, Hash{Object=>Object}, Object]
+          # @param value [PreludeSDK::Internal::Type::BaseModel, Hash{Object=>Object}, Object]
           #
           # @param state [Hash{Symbol=>Object}] .
           #
@@ -194,7 +194,7 @@ module PreludeSDK
           #
           #   @option state [Integer] :branched
           #
-          # @return [PreludeSDK::BaseModel, Object]
+          # @return [PreludeSDK::Internal::Type::BaseModel, Object]
           def coerce(value, state:)
             exactness = state.fetch(:exactness)
 
@@ -219,7 +219,7 @@ module PreludeSDK
               api_name, nilable, const = field.fetch_values(:api_name, :nilable, :const)
 
               unless val.key?(api_name)
-                if required && mode != :dump && const == PreludeSDK::Internal::Util::OMIT
+                if required && mode != :dump && const == PreludeSDK::Internal::OMIT
                   exactness[nilable ? :maybe : :no] += 1
                 else
                   exactness[:yes] += 1
@@ -253,7 +253,7 @@ module PreludeSDK
 
           # @api private
           #
-          # @param value [PreludeSDK::BaseModel, Object]
+          # @param value [PreludeSDK::Internal::Type::BaseModel, Object]
           #
           # @return [Hash{Object=>Object}, Object]
           def dump(value)
@@ -282,7 +282,7 @@ module PreludeSDK
 
             known_fields.each_value do |field|
               mode, api_name, const = field.fetch_values(:mode, :api_name, :const)
-              next if mode == :coerce || acc.key?(api_name) || const == PreludeSDK::Internal::Util::OMIT
+              next if mode == :coerce || acc.key?(api_name) || const == PreludeSDK::Internal::OMIT
               acc.store(api_name, const)
             end
 
@@ -349,13 +349,13 @@ module PreludeSDK
 
         # Create a new instance of a model.
         #
-        # @param data [Hash{Symbol=>Object}, PreludeSDK::BaseModel]
+        # @param data [Hash{Symbol=>Object}, PreludeSDK::Internal::Type::BaseModel]
         def initialize(data = {})
           case PreludeSDK::Internal::Util.coerce_hash(data)
           in Hash => coerced
             @data = coerced
           else
-            raise ArgumentError.new("Expected a #{Hash} or #{PreludeSDK::BaseModel}, got #{data.inspect}")
+            raise ArgumentError.new("Expected a #{Hash} or #{PreludeSDK::Internal::Type::BaseModel}, got #{data.inspect}")
           end
         end
 

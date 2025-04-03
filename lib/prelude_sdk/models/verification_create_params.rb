@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Verification#create
-    class VerificationCreateParams < PreludeSDK::BaseModel
+    class VerificationCreateParams < PreludeSDK::Internal::Type::BaseModel
       # @!parse
       #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
@@ -67,9 +67,9 @@ module PreludeSDK
       #   #
       #   def initialize(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         # @!attribute type
         #   The type of the target. Either "phone_number" or "email_address".
         #
@@ -91,13 +91,13 @@ module PreludeSDK
         #   #
         #   def initialize(type:, value:, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # The type of the target. Either "phone_number" or "email_address".
         #
         # @see PreludeSDK::Models::VerificationCreateParams::Target#type
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address
@@ -110,7 +110,7 @@ module PreludeSDK
         end
       end
 
-      class Metadata < PreludeSDK::BaseModel
+      class Metadata < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] correlation_id
         #   A user-defined identifier to correlate this verification with.
         #
@@ -129,10 +129,10 @@ module PreludeSDK
         #   #
         #   def initialize(correlation_id: nil, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
       end
 
-      class Options < PreludeSDK::BaseModel
+      class Options < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] app_realm
         #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
         #     Currently only Android devices are supported.
@@ -219,7 +219,7 @@ module PreludeSDK
         #   The variables to be replaced in the template.
         #
         #   @return [Hash{Symbol=>String}, nil]
-        optional :variables, PreludeSDK::HashOf[String]
+        optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
         # @!parse
         #   # @return [Hash{Symbol=>String}]
@@ -251,10 +251,10 @@ module PreludeSDK
         #     super
         #   end
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # @see PreludeSDK::Models::VerificationCreateParams::Options#app_realm
-        class AppRealm < PreludeSDK::BaseModel
+        class AppRealm < PreludeSDK::Internal::Type::BaseModel
           # @!attribute platform
           #   The platform the SMS will be sent to. We are currently only supporting
           #     "android".
@@ -277,14 +277,14 @@ module PreludeSDK
           #   #
           #   def initialize(platform:, value:, **) = super
 
-          # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+          # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
           #
           # @see PreludeSDK::Models::VerificationCreateParams::Options::AppRealm#platform
           module Platform
-            extend PreludeSDK::Enum
+            extend PreludeSDK::Internal::Type::Enum
 
             ANDROID = :android
 
@@ -297,7 +297,7 @@ module PreludeSDK
         end
       end
 
-      class Signals < PreludeSDK::BaseModel
+      class Signals < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] app_version
         #   The version of your application.
         #
@@ -355,7 +355,7 @@ module PreludeSDK
         #     genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
         #
         #   @return [Boolean, nil]
-        optional :is_trusted_user, PreludeSDK::BooleanModel
+        optional :is_trusted_user, PreludeSDK::Internal::Type::BooleanModel
 
         # @!parse
         #   # @return [Boolean]
@@ -410,13 +410,13 @@ module PreludeSDK
         #     super
         #   end
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # The type of the user's device.
         #
         # @see PreludeSDK::Models::VerificationCreateParams::Signals#device_platform
         module DevicePlatform
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           ANDROID = :android
           IOS = :ios

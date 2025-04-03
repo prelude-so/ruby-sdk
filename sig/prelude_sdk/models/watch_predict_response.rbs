@@ -7,7 +7,7 @@ module PreludeSDK
         reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
       }
 
-    class WatchPredictResponse < PreludeSDK::BaseModel
+    class WatchPredictResponse < PreludeSDK::Internal::Type::BaseModel
       attr_accessor id: String
 
       attr_accessor prediction: PreludeSDK::Models::WatchPredictResponse::prediction
@@ -25,7 +25,7 @@ module PreludeSDK
       type prediction = :allow | :block
 
       module Prediction
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         ALLOW: :allow
         BLOCK: :block
@@ -39,7 +39,7 @@ module PreludeSDK
           score: Float
         }
 
-      class Reasoning < PreludeSDK::BaseModel
+      class Reasoning < PreludeSDK::Internal::Type::BaseModel
         attr_reader cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause?
 
         def cause=: (
@@ -60,7 +60,7 @@ module PreludeSDK
         type cause = :none | :smart_antifraud | :repeat_number | :invalid_line
 
         module Cause
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           NONE: :none
           SMART_ANTIFRAUD: :smart_antifraud

@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class VerificationCreateResponse < PreludeSDK::BaseModel
+    class VerificationCreateResponse < PreludeSDK::Internal::Type::BaseModel
       # The verification identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -21,7 +21,7 @@ module PreludeSDK
 
       sig do
         params(
-          metadata: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Internal::Util::AnyHash)
+          metadata: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Internal::AnyHash)
         )
           .void
       end
@@ -38,7 +38,7 @@ module PreludeSDK
           id: String,
           method_: PreludeSDK::Models::VerificationCreateResponse::Method::OrSymbol,
           status: PreludeSDK::Models::VerificationCreateResponse::Status::OrSymbol,
-          metadata: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Internal::Util::AnyHash),
+          metadata: T.any(PreludeSDK::Models::VerificationCreateResponse::Metadata, PreludeSDK::Internal::AnyHash),
           request_id: String
         )
           .returns(T.attached_class)
@@ -63,7 +63,7 @@ module PreludeSDK
 
       # The method used for verifying this phone number.
       module Method
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateResponse::Method) }
         OrSymbol =
@@ -78,7 +78,7 @@ module PreludeSDK
 
       # The status of the verification.
       module Status
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateResponse::Status) }
         OrSymbol =
@@ -93,7 +93,7 @@ module PreludeSDK
         end
       end
 
-      class Metadata < PreludeSDK::BaseModel
+      class Metadata < PreludeSDK::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 

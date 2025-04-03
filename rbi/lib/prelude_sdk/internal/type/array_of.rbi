@@ -17,11 +17,11 @@ module PreludeSDK
         sig(:final) do
           params(
             type_info: T.any(
-              PreludeSDK::Internal::Util::AnyHash,
+              PreludeSDK::Internal::AnyHash,
               T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
               PreludeSDK::Internal::Type::Converter::Input
             ),
-            spec: PreludeSDK::Internal::Util::AnyHash
+            spec: PreludeSDK::Internal::AnyHash
           )
             .returns(T.attached_class)
         end
@@ -72,11 +72,11 @@ module PreludeSDK
         sig(:final) do
           params(
             type_info: T.any(
-              PreludeSDK::Internal::Util::AnyHash,
+              PreludeSDK::Internal::AnyHash,
               T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
               PreludeSDK::Internal::Type::Converter::Input
             ),
-            spec: PreludeSDK::Internal::Util::AnyHash
+            spec: PreludeSDK::Internal::AnyHash
           )
             .void
         end

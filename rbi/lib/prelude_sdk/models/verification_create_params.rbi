@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class VerificationCreateParams < PreludeSDK::BaseModel
+    class VerificationCreateParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
@@ -12,9 +12,7 @@ module PreludeSDK
       attr_reader :target
 
       sig do
-        params(
-          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::Util::AnyHash)
-        )
+        params(target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::AnyHash))
           .void
       end
       attr_writer :target
@@ -33,7 +31,7 @@ module PreludeSDK
 
       sig do
         params(
-          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::Util::AnyHash)
+          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::AnyHash)
         )
           .void
       end
@@ -45,7 +43,7 @@ module PreludeSDK
 
       sig do
         params(
-          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::Util::AnyHash)
+          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::AnyHash)
         )
           .void
       end
@@ -58,7 +56,7 @@ module PreludeSDK
 
       sig do
         params(
-          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::Util::AnyHash)
+          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::AnyHash)
         )
           .void
       end
@@ -66,12 +64,12 @@ module PreludeSDK
 
       sig do
         params(
-          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::Util::AnyHash),
+          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::AnyHash),
           dispatch_id: String,
-          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::Util::AnyHash),
-          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::Util::AnyHash),
-          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::Util::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
+          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::AnyHash),
+          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::AnyHash),
+          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -94,7 +92,7 @@ module PreludeSDK
       def to_hash
       end
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol) }
         attr_accessor :type
@@ -121,7 +119,7 @@ module PreludeSDK
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type) }
           OrSymbol =
@@ -138,7 +136,7 @@ module PreludeSDK
         end
       end
 
-      class Metadata < PreludeSDK::BaseModel
+      class Metadata < PreludeSDK::Internal::Type::BaseModel
         # A user-defined identifier to correlate this verification with.
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
@@ -157,7 +155,7 @@ module PreludeSDK
         end
       end
 
-      class Options < PreludeSDK::BaseModel
+      class Options < PreludeSDK::Internal::Type::BaseModel
         # This allows you to automatically retrieve and fill the OTP code on mobile apps.
         #   Currently only Android devices are supported.
         sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)) }
@@ -165,10 +163,7 @@ module PreludeSDK
 
         sig do
           params(
-            app_realm: T.any(
-              PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
-              PreludeSDK::Internal::Util::AnyHash
-            )
+            app_realm: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Internal::AnyHash)
           )
             .void
         end
@@ -237,10 +232,7 @@ module PreludeSDK
         # Verification options
         sig do
           params(
-            app_realm: T.any(
-              PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
-              PreludeSDK::Internal::Util::AnyHash
-            ),
+            app_realm: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Internal::AnyHash),
             callback_url: String,
             code_size: Integer,
             custom_code: String,
@@ -281,7 +273,7 @@ module PreludeSDK
         def to_hash
         end
 
-        class AppRealm < PreludeSDK::BaseModel
+        class AppRealm < PreludeSDK::Internal::Type::BaseModel
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
           sig { returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol) }
@@ -315,7 +307,7 @@ module PreludeSDK
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
           module Platform
-            extend PreludeSDK::Enum
+            extend PreludeSDK::Internal::Type::Enum
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform) }
@@ -341,7 +333,7 @@ module PreludeSDK
         end
       end
 
-      class Signals < PreludeSDK::BaseModel
+      class Signals < PreludeSDK::Internal::Type::BaseModel
         # The version of your application.
         sig { returns(T.nilable(String)) }
         attr_reader :app_version
@@ -452,7 +444,7 @@ module PreludeSDK
 
         # The type of the user's device.
         module DevicePlatform
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform) }

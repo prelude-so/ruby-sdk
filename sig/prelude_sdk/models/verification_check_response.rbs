@@ -8,7 +8,7 @@ module PreludeSDK
         request_id: String
       }
 
-    class VerificationCheckResponse < PreludeSDK::BaseModel
+    class VerificationCheckResponse < PreludeSDK::Internal::Type::BaseModel
       attr_accessor status: PreludeSDK::Models::VerificationCheckResponse::status
 
       attr_reader id: String?
@@ -37,7 +37,7 @@ module PreludeSDK
       type status = :success | :failure | :expired_or_not_found
 
       module Status
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         SUCCESS: :success
         FAILURE: :failure
@@ -48,7 +48,7 @@ module PreludeSDK
 
       type metadata = { correlation_id: String }
 
-      class Metadata < PreludeSDK::BaseModel
+      class Metadata < PreludeSDK::Internal::Type::BaseModel
         attr_reader correlation_id: String?
 
         def correlation_id=: (String) -> String

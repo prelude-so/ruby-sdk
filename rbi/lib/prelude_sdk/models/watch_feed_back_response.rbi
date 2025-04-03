@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class WatchFeedBackResponse < PreludeSDK::BaseModel
+    class WatchFeedBackResponse < PreludeSDK::Internal::Type::BaseModel
       # A unique identifier for your feedback request.
       sig { returns(String) }
       attr_accessor :id

@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class VerificationCheckResponse < PreludeSDK::BaseModel
+    class VerificationCheckResponse < PreludeSDK::Internal::Type::BaseModel
       # The status of the check.
       sig { returns(PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol) }
       attr_accessor :status
@@ -20,7 +20,7 @@ module PreludeSDK
 
       sig do
         params(
-          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Internal::Util::AnyHash)
+          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Internal::AnyHash)
         )
           .void
       end
@@ -36,7 +36,7 @@ module PreludeSDK
         params(
           status: PreludeSDK::Models::VerificationCheckResponse::Status::OrSymbol,
           id: String,
-          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Internal::Util::AnyHash),
+          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Internal::AnyHash),
           request_id: String
         )
           .returns(T.attached_class)
@@ -60,7 +60,7 @@ module PreludeSDK
 
       # The status of the check.
       module Status
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCheckResponse::Status) }
         OrSymbol =
@@ -76,7 +76,7 @@ module PreludeSDK
         end
       end
 
-      class Metadata < PreludeSDK::BaseModel
+      class Metadata < PreludeSDK::Internal::Type::BaseModel
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 

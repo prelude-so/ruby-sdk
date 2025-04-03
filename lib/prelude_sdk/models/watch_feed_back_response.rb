@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Watch#feed_back
-    class WatchFeedBackResponse < PreludeSDK::BaseModel
+    class WatchFeedBackResponse < PreludeSDK::Internal::Type::BaseModel
       # @!attribute id
       #   A unique identifier for your feedback request.
       #
@@ -15,7 +15,7 @@ module PreludeSDK
       #   #
       #   def initialize(id:, **) = super
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
     end
   end
 end

@@ -25,10 +25,10 @@ module PreludeSDK
               ),
               body: T.nilable(T.anything),
               unwrap: T.nilable(Symbol),
-              page: T.nilable(T::Class[PreludeSDK::Internal::Type::BasePage[PreludeSDK::BaseModel]]),
+              page: T.nilable(T::Class[PreludeSDK::Internal::Type::BasePage[PreludeSDK::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(PreludeSDK::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash))
+              options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
             }
           end
 
@@ -136,7 +136,7 @@ module PreludeSDK
           overridable
             .params(
               req: PreludeSDK::Internal::Transport::BaseClient::RequestComponentsShape,
-              opts: PreludeSDK::Internal::Util::AnyHash
+              opts: PreludeSDK::Internal::AnyHash
             )
             .returns(PreludeSDK::Internal::Transport::BaseClient::RequestInputShape)
         end
@@ -180,10 +180,10 @@ module PreludeSDK
             ),
             body: T.nilable(T.anything),
             unwrap: T.nilable(Symbol),
-            page: T.nilable(T::Class[PreludeSDK::Internal::Type::BasePage[PreludeSDK::BaseModel]]),
+            page: T.nilable(T::Class[PreludeSDK::Internal::Type::BasePage[PreludeSDK::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(PreludeSDK::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash))
+            options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
           )
             .returns(T.anything)
         end
@@ -196,7 +196,7 @@ module PreludeSDK
           unwrap: nil,
           page: nil,
           stream: nil,
-          model: PreludeSDK::Unknown,
+          model: PreludeSDK::Internal::Type::Unknown,
           options: {}
         )
         end

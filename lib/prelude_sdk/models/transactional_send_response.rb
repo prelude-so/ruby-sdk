@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Transactional#send_
-    class TransactionalSendResponse < PreludeSDK::BaseModel
+    class TransactionalSendResponse < PreludeSDK::Internal::Type::BaseModel
       # @!attribute id
       #   The message identifier.
       #
@@ -38,7 +38,7 @@ module PreludeSDK
       #   The variables to be replaced in the template.
       #
       #   @return [Hash{Symbol=>String}]
-      required :variables, PreludeSDK::HashOf[String]
+      required :variables, PreludeSDK::Internal::Type::HashOf[String]
 
       # @!attribute [r] callback_url
       #   The callback URL.
@@ -96,7 +96,7 @@ module PreludeSDK
       #     super
       #   end
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
     end
   end
 end

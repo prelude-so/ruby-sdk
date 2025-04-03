@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Watch#predict
-    class WatchPredictParams < PreludeSDK::BaseModel
+    class WatchPredictParams < PreludeSDK::Internal::Type::BaseModel
       # @!parse
       #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
@@ -33,9 +33,9 @@ module PreludeSDK
       #   #
       #   def initialize(target:, signals: nil, request_options: {}, **) = super
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         # @!attribute type
         #   The type of the target. Either "phone_number" or "email_address".
         #
@@ -57,13 +57,13 @@ module PreludeSDK
         #   #
         #   def initialize(type:, value:, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # The type of the target. Either "phone_number" or "email_address".
         #
         # @see PreludeSDK::Models::WatchPredictParams::Target#type
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address
@@ -76,7 +76,7 @@ module PreludeSDK
         end
       end
 
-      class Signals < PreludeSDK::BaseModel
+      class Signals < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] device_id
         #   The unique identifier for the user's device. For Android, this corresponds to
         #     the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
@@ -129,7 +129,7 @@ module PreludeSDK
         #   #
         #   def initialize(device_id: nil, device_model: nil, device_type: nil, ip: nil, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
       end
     end
   end

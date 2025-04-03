@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class WatchPredictResponse < PreludeSDK::BaseModel
+    class WatchPredictResponse < PreludeSDK::Internal::Type::BaseModel
       # A unique identifier for your prediction request.
       sig { returns(String) }
       attr_accessor :id
@@ -16,7 +16,7 @@ module PreludeSDK
 
       sig do
         params(
-          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Internal::Util::AnyHash)
+          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Internal::AnyHash)
         )
           .void
       end
@@ -26,7 +26,7 @@ module PreludeSDK
         params(
           id: String,
           prediction: PreludeSDK::Models::WatchPredictResponse::Prediction::OrSymbol,
-          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Internal::Util::AnyHash)
+          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -48,7 +48,7 @@ module PreludeSDK
 
       # A label indicating the trustworthiness of the phone number.
       module Prediction
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction) }
         OrSymbol =
@@ -62,7 +62,7 @@ module PreludeSDK
         end
       end
 
-      class Reasoning < PreludeSDK::BaseModel
+      class Reasoning < PreludeSDK::Internal::Type::BaseModel
         # A label explaining why the phone number was classified as not trustworthy
         sig { returns(T.nilable(PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)) }
         attr_reader :cause
@@ -94,7 +94,7 @@ module PreludeSDK
 
         # A label explaining why the phone number was classified as not trustworthy
         module Cause
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause) }
           OrSymbol =

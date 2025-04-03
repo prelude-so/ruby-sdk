@@ -21,7 +21,7 @@ module PreludeSDK
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= PreludeSDK::Unknown
+        def self.==(other) = other.is_a?(Class) && other <= PreludeSDK::Internal::Type::Unknown
 
         class << self
           # @api private
