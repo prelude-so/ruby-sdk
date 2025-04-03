@@ -3,15 +3,20 @@
 module PreludeSDK
   module Models
     class VerificationCreateParams < PreludeSDK::BaseModel
-      extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       # The verification target. Either a phone number or an email address. To use the
       #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::VerificationCreateParams::Target) }
       attr_reader :target
 
-      sig { params(target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash)).void }
+      sig do
+        params(
+          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :target
 
       # The identifier of the dispatch that came from the front-end SDK.
@@ -27,7 +32,9 @@ module PreludeSDK
       attr_reader :metadata
 
       sig do
-        params(metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash))
+        params(
+          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :metadata
@@ -37,7 +44,9 @@ module PreludeSDK
       attr_reader :options
 
       sig do
-        params(options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash))
+        params(
+          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :options
@@ -48,19 +57,21 @@ module PreludeSDK
       attr_reader :signals
 
       sig do
-        params(signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash))
+        params(
+          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::Util::AnyHash)
+        )
           .void
       end
       attr_writer :signals
 
       sig do
         params(
-          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Util::AnyHash),
+          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::Util::AnyHash),
           dispatch_id: String,
-          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Util::AnyHash),
-          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Util::AnyHash),
-          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Util::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash)
+          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::Util::AnyHash),
+          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::Util::AnyHash),
+          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::Util::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -154,7 +165,10 @@ module PreludeSDK
 
         sig do
           params(
-            app_realm: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Util::AnyHash)
+            app_realm: T.any(
+              PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+              PreludeSDK::Internal::Util::AnyHash
+            )
           )
             .void
         end
@@ -223,7 +237,10 @@ module PreludeSDK
         # Verification options
         sig do
           params(
-            app_realm: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Util::AnyHash),
+            app_realm: T.any(
+              PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+              PreludeSDK::Internal::Util::AnyHash
+            ),
             callback_url: String,
             code_size: Integer,
             custom_code: String,

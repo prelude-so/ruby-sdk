@@ -41,7 +41,7 @@ module PreludeSDK
     attr_accessor :timeout
 
     # Returns a new instance of RequestOptions.
-    sig { params(values: PreludeSDK::Util::AnyHash).returns(T.attached_class) }
+    sig { params(values: PreludeSDK::Internal::Util::AnyHash).returns(T.attached_class) }
     def self.new(values = {})
     end
   end

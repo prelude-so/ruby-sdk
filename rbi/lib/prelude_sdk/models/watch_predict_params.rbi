@@ -3,15 +3,18 @@
 module PreludeSDK
   module Models
     class WatchPredictParams < PreludeSDK::BaseModel
-      extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       # The verification target. Either a phone number or an email address. To use the
       #   email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::WatchPredictParams::Target) }
       attr_reader :target
 
-      sig { params(target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Util::AnyHash)).void }
+      sig do
+        params(target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::Util::AnyHash))
+          .void
+      end
       attr_writer :target
 
       # It is highly recommended that you provide the signals to increase prediction
@@ -19,14 +22,19 @@ module PreludeSDK
       sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals)) }
       attr_reader :signals
 
-      sig { params(signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Util::AnyHash)).void }
+      sig do
+        params(
+          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::Util::AnyHash)
+        )
+          .void
+      end
       attr_writer :signals
 
       sig do
         params(
-          target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Util::AnyHash),
-          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Util::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash)
+          target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::Util::AnyHash),
+          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::Util::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

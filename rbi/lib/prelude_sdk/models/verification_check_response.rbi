@@ -20,7 +20,7 @@ module PreludeSDK
 
       sig do
         params(
-          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Util::AnyHash)
+          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Internal::Util::AnyHash)
         )
           .void
       end
@@ -36,7 +36,7 @@ module PreludeSDK
         params(
           status: PreludeSDK::Models::VerificationCheckResponse::Status::OrSymbol,
           id: String,
-          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Util::AnyHash),
+          metadata: T.any(PreludeSDK::Models::VerificationCheckResponse::Metadata, PreludeSDK::Internal::Util::AnyHash),
           request_id: String
         )
           .returns(T.attached_class)
