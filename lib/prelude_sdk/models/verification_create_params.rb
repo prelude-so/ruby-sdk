@@ -5,8 +5,8 @@ module PreludeSDK
     # @see PreludeSDK::Resources::Verification#create
     class VerificationCreateParams < PreludeSDK::BaseModel
       # @!parse
-      #   extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute target
       #   The verification target. Either a phone number or an email address. To use the

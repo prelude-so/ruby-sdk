@@ -1,7 +1,7 @@
 # typed: strong
 
 module PreludeSDK
-  class Client < PreludeSDK::Transport::BaseClient
+  class Client < PreludeSDK::Internal::Transport::BaseClient
     DEFAULT_MAX_RETRIES = 2
 
     DEFAULT_TIMEOUT_IN_SECONDS = T.let(60.0, Float)

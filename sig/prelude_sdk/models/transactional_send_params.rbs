@@ -11,11 +11,11 @@ module PreludeSDK
         locale: String,
         variables: ::Hash[Symbol, String]
       }
-      & PreludeSDK::request_parameters
+      & PreludeSDK::Internal::Type::request_parameters
 
     class TransactionalSendParams < PreludeSDK::BaseModel
-      extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       attr_accessor template_id: String
 

@@ -3,8 +3,8 @@
 module PreludeSDK
   module Models
     class TransactionalSendParams < PreludeSDK::BaseModel
-      extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       # The template identifier.
       sig { returns(String) }
@@ -69,7 +69,7 @@ module PreludeSDK
           from: String,
           locale: String,
           variables: T::Hash[Symbol, String],
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Util::AnyHash)
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
         )
           .returns(T.attached_class)
       end

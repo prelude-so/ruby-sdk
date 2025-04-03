@@ -8,11 +8,11 @@ module PreludeSDK
         options: PreludeSDK::Models::VerificationCreateParams::Options,
         signals: PreludeSDK::Models::VerificationCreateParams::Signals
       }
-      & PreludeSDK::request_parameters
+      & PreludeSDK::Internal::Type::request_parameters
 
     class VerificationCreateParams < PreludeSDK::BaseModel
-      extend PreludeSDK::Type::RequestParameters::Converter
-      include PreludeSDK::RequestParameters
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
 
       attr_accessor target: PreludeSDK::Models::VerificationCreateParams::Target
 
