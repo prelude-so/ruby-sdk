@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Watch#feed_back
-    class WatchFeedBackParams < PreludeSDK::BaseModel
+    class WatchFeedBackParams < PreludeSDK::Internal::Type::BaseModel
       # @!parse
       #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
@@ -29,9 +29,9 @@ module PreludeSDK
       #   #
       #   def initialize(feedback:, target:, request_options: {}, **) = super
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
-      class Feedback < PreludeSDK::BaseModel
+      class Feedback < PreludeSDK::Internal::Type::BaseModel
         # @!attribute type
         #   `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #     (e.g. phone number) is trustworthy.
@@ -47,14 +47,14 @@ module PreludeSDK
         #   #
         #   def initialize(type:, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
         #
         # @see PreludeSDK::Models::WatchFeedBackParams::Feedback#type
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           CONFIRM_TARGET = :CONFIRM_TARGET
 
@@ -66,7 +66,7 @@ module PreludeSDK
         end
       end
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         # @!attribute type
         #   The type of the target. Either "phone_number" or "email_address".
         #
@@ -88,13 +88,13 @@ module PreludeSDK
         #   #
         #   def initialize(type:, value:, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # The type of the target. Either "phone_number" or "email_address".
         #
         # @see PreludeSDK::Models::WatchFeedBackParams::Target#type
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address

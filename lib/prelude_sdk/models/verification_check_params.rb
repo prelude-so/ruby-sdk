@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Verification#check
-    class VerificationCheckParams < PreludeSDK::BaseModel
+    class VerificationCheckParams < PreludeSDK::Internal::Type::BaseModel
       # @!parse
       #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
@@ -28,9 +28,9 @@ module PreludeSDK
       #   #
       #   def initialize(code:, target:, request_options: {}, **) = super
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         # @!attribute type
         #   The type of the target. Either "phone_number" or "email_address".
         #
@@ -52,13 +52,13 @@ module PreludeSDK
         #   #
         #   def initialize(type:, value:, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # The type of the target. Either "phone_number" or "email_address".
         #
         # @see PreludeSDK::Models::VerificationCheckParams::Target#type
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address

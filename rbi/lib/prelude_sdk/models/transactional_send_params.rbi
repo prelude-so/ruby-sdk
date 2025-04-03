@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class TransactionalSendParams < PreludeSDK::BaseModel
+    class TransactionalSendParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
@@ -69,7 +69,7 @@ module PreludeSDK
           from: String,
           locale: String,
           variables: T::Hash[Symbol, String],
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end

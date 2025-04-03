@@ -14,7 +14,7 @@ module PreludeSDK
       timeout: Float?
     }
 
-  class RequestOptions < PreludeSDK::BaseModel
+  class RequestOptions < PreludeSDK::Internal::Type::BaseModel
     def self.validate!: (self | ::Hash[Symbol, top] opts) -> void
 
     attr_accessor idempotency_key: String?

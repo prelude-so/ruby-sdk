@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Verification#create
-    class VerificationCreateResponse < PreludeSDK::BaseModel
+    class VerificationCreateResponse < PreludeSDK::Internal::Type::BaseModel
       # @!attribute id
       #   The verification identifier.
       #
@@ -50,13 +50,13 @@ module PreludeSDK
       #   #
       #   def initialize(id:, method_:, status:, metadata: nil, request_id: nil, **) = super
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
       # The method used for verifying this phone number.
       #
       # @see PreludeSDK::Models::VerificationCreateResponse#method_
       module Method
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         MESSAGE = :message
 
@@ -71,7 +71,7 @@ module PreludeSDK
       #
       # @see PreludeSDK::Models::VerificationCreateResponse#status
       module Status
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         SUCCESS = :success
         RETRY = :retry
@@ -85,7 +85,7 @@ module PreludeSDK
       end
 
       # @see PreludeSDK::Models::VerificationCreateResponse#metadata
-      class Metadata < PreludeSDK::BaseModel
+      class Metadata < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] correlation_id
         #
         #   @return [String, nil]
@@ -102,7 +102,7 @@ module PreludeSDK
         #   #
         #   def initialize(correlation_id: nil, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
       end
     end
   end

@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class TransactionalSendResponse < PreludeSDK::BaseModel
+    class TransactionalSendResponse < PreludeSDK::Internal::Type::BaseModel
       # The message identifier.
       sig { returns(String) }
       attr_accessor :id

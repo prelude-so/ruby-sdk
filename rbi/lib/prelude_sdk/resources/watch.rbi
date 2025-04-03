@@ -7,9 +7,9 @@ module PreludeSDK
       #   call this endpoint to report their authenticity to our systems.
       sig do
         params(
-          feedback: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Internal::Util::AnyHash),
-          target: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Internal::Util::AnyHash),
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash))
+          feedback: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Internal::AnyHash),
+          target: T.any(PreludeSDK::Models::WatchFeedBackParams::Target, PreludeSDK::Internal::AnyHash),
+          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
         )
           .returns(PreludeSDK::Models::WatchFeedBackResponse)
       end
@@ -29,9 +29,9 @@ module PreludeSDK
       #   must be implemented in conjunction with the `watch/feedback` endpoint.
       sig do
         params(
-          target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::Util::AnyHash),
-          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::Util::AnyHash),
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash))
+          target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::AnyHash),
+          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::AnyHash),
+          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
         )
           .returns(PreludeSDK::Models::WatchPredictResponse)
       end

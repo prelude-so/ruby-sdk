@@ -31,10 +31,10 @@ module PreludeSDK
         def dump(value)
           case value
           in Array
-            value.map { PreludeSDK::Unknown.dump(_1) }
+            value.map { PreludeSDK::Internal::Type::Unknown.dump(_1) }
           in Hash
-            value.transform_values { PreludeSDK::Unknown.dump(_1) }
-          in PreludeSDK::BaseModel
+            value.transform_values { PreludeSDK::Internal::Type::Unknown.dump(_1) }
+          in PreludeSDK::Internal::Type::BaseModel
             value.class.dump(value)
           else
             value
@@ -64,7 +64,7 @@ module PreludeSDK
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { PreludeSDK::BooleanModel }
+              -> { PreludeSDK::Internal::Type::BooleanModel }
             in PreludeSDK::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float
@@ -209,7 +209,7 @@ module PreludeSDK
           #
           # @return [Object]
           def dump(target, value)
-            target.is_a?(PreludeSDK::Internal::Type::Converter) ? target.dump(value) : PreludeSDK::Unknown.dump(value)
+            target.is_a?(PreludeSDK::Internal::Type::Converter) ? target.dump(value) : PreludeSDK::Internal::Type::Unknown.dump(value)
           end
         end
       end

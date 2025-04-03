@@ -7,7 +7,7 @@ module PreludeSDK
       }
       & PreludeSDK::Internal::Type::request_parameters
 
-    class VerificationCheckParams < PreludeSDK::BaseModel
+    class VerificationCheckParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
@@ -29,7 +29,7 @@ module PreludeSDK
           value: String
         }
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         attr_accessor type: PreludeSDK::Models::VerificationCheckParams::Target::type_
 
         attr_accessor value: String
@@ -44,7 +44,7 @@ module PreludeSDK
         type type_ = :phone_number | :email_address
 
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           PHONE_NUMBER: :phone_number
           EMAIL_ADDRESS: :email_address

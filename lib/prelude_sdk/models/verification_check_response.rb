@@ -3,7 +3,7 @@
 module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Verification#check
-    class VerificationCheckResponse < PreludeSDK::BaseModel
+    class VerificationCheckResponse < PreludeSDK::Internal::Type::BaseModel
       # @!attribute status
       #   The status of the check.
       #
@@ -47,13 +47,13 @@ module PreludeSDK
       #   #
       #   def initialize(status:, id: nil, metadata: nil, request_id: nil, **) = super
 
-      # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
       # The status of the check.
       #
       # @see PreludeSDK::Models::VerificationCheckResponse#status
       module Status
-        extend PreludeSDK::Enum
+        extend PreludeSDK::Internal::Type::Enum
 
         SUCCESS = :success
         FAILURE = :failure
@@ -67,7 +67,7 @@ module PreludeSDK
       end
 
       # @see PreludeSDK::Models::VerificationCheckResponse#metadata
-      class Metadata < PreludeSDK::BaseModel
+      class Metadata < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] correlation_id
         #
         #   @return [String, nil]
@@ -84,7 +84,7 @@ module PreludeSDK
         #   #
         #   def initialize(correlation_id: nil, **) = super
 
-        # def initialize: (Hash | PreludeSDK::BaseModel) -> void
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
       end
     end
   end

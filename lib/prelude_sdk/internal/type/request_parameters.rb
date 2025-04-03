@@ -12,7 +12,7 @@ module PreludeSDK
 
         # @param mod [Module]
         def self.included(mod)
-          return unless mod <= PreludeSDK::BaseModel
+          return unless mod <= PreludeSDK::Internal::Type::BaseModel
 
           mod.extend(PreludeSDK::Internal::Type::RequestParameters::Converter)
           mod.optional(:request_options, PreludeSDK::RequestOptions)

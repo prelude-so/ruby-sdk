@@ -2,7 +2,7 @@
 
 module PreludeSDK
   module Models
-    class VerificationCheckParams < PreludeSDK::BaseModel
+    class VerificationCheckParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
@@ -16,9 +16,7 @@ module PreludeSDK
       attr_reader :target
 
       sig do
-        params(
-          target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Internal::Util::AnyHash)
-        )
+        params(target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Internal::AnyHash))
           .void
       end
       attr_writer :target
@@ -26,8 +24,8 @@ module PreludeSDK
       sig do
         params(
           code: String,
-          target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Internal::Util::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::Util::AnyHash)
+          target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Internal::AnyHash),
+          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
         )
           .returns(T.attached_class)
       end
@@ -47,7 +45,7 @@ module PreludeSDK
       def to_hash
       end
 
-      class Target < PreludeSDK::BaseModel
+      class Target < PreludeSDK::Internal::Type::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol) }
         attr_accessor :type
@@ -74,7 +72,7 @@ module PreludeSDK
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
-          extend PreludeSDK::Enum
+          extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type) }
           OrSymbol =

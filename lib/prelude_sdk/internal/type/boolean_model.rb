@@ -19,7 +19,7 @@ module PreludeSDK
         # @param other [Object]
         #
         # @return [Boolean]
-        def self.==(other) = other.is_a?(Class) && other <= PreludeSDK::BooleanModel
+        def self.==(other) = other.is_a?(Class) && other <= PreludeSDK::Internal::Type::BooleanModel
 
         class << self
           # @api private

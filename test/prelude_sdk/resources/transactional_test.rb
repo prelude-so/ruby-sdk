@@ -22,7 +22,7 @@ class PreludeSDK::Test::Resources::TransactionalTest < PreludeSDK::Test::Resourc
         expires_at: Time,
         template_id: String,
         to: String,
-        variables: ^(PreludeSDK::HashOf[String]),
+        variables: ^(PreludeSDK::Internal::Type::HashOf[String]),
         callback_url: String | nil,
         correlation_id: String | nil,
         from: String | nil
