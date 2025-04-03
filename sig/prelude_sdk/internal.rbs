@@ -1,4 +1,5 @@
 module PreludeSDK
   module Internal
+    OMIT: top
   end
 end
