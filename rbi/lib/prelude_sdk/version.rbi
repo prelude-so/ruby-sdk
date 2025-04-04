@@ -1,5 +1,5 @@
 # typed: strong
 
 module PreludeSDK
-  VERSION = "0.1.0.pre.alpha.1"
+  VERSION = T.let(T.unsafe(nil), String)
 end
