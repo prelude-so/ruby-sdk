@@ -33,8 +33,7 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(feedback:, target:, request_options: {})
-      end
+      def self.new(feedback:, target:, request_options: {}); end
 
       sig do
         override
@@ -46,8 +45,7 @@ module PreludeSDK
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Feedback < PreludeSDK::Internal::Type::BaseModel
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
@@ -58,12 +56,10 @@ module PreludeSDK
         # You should send a feedback event back to Watch API when your user demonstrates
         #   authentic behavior.
         sig { params(type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol).returns(T.attached_class) }
-        def self.new(type:)
-        end
+        def self.new(type:); end
 
         sig { override.returns({type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol}) }
-        def to_hash
-        end
+        def to_hash; end
 
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
         #   (e.g. phone number) is trustworthy.
@@ -78,8 +74,7 @@ module PreludeSDK
             T.let(:CONFIRM_TARGET, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -98,12 +93,10 @@ module PreludeSDK
           params(type: PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
         end
-        def self.new(type:, value:)
-        end
+        def self.new(type:, value:); end
 
         sig { override.returns({type: PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol, value: String}) }
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
@@ -118,8 +111,7 @@ module PreludeSDK
             T.let(:email_address, PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Target::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

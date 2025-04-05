@@ -32,9 +32,7 @@ module PreludeSDK
         #   [Signals](/guides/prevent-fraud#signals).
         signals: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # Check the validity of a verification code.
       sig do
         params(
@@ -51,13 +49,10 @@ module PreludeSDK
         #   email verification feature contact us to discuss your use case.
         target:,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: PreludeSDK::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end

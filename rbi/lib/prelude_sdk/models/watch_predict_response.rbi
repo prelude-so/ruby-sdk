@@ -30,8 +30,7 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, prediction:, reasoning:)
-      end
+      def self.new(id:, prediction:, reasoning:); end
 
       sig do
         override
@@ -43,8 +42,7 @@ module PreludeSDK
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # A label indicating the trustworthiness of the phone number.
       module Prediction
@@ -58,8 +56,7 @@ module PreludeSDK
         BLOCK = T.let(:block, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
 
         sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Reasoning < PreludeSDK::Internal::Type::BaseModel
@@ -82,15 +79,13 @@ module PreludeSDK
           params(cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol, score: Float)
             .returns(T.attached_class)
         end
-        def self.new(cause: nil, score: nil)
-        end
+        def self.new(cause: nil, score: nil); end
 
         sig do
           override
             .returns({cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol, score: Float})
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # A label explaining why the phone number was classified as not trustworthy
         module Cause
@@ -109,8 +104,7 @@ module PreludeSDK
             T.let(:invalid_line, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
 
           sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end
