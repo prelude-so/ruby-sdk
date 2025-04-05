@@ -83,9 +83,7 @@ module PreludeSDK
         locale: nil,
         variables: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -102,8 +100,7 @@ module PreludeSDK
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
     end
   end
 end

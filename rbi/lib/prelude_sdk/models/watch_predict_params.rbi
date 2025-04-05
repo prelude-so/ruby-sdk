@@ -19,7 +19,9 @@ module PreludeSDK
       sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals)) }
       attr_reader :signals
 
-      sig { params(signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::AnyHash)).void }
+      sig do
+        params(signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::AnyHash)).void
+      end
       attr_writer :signals
 
       sig do
@@ -30,8 +32,7 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(target:, signals: nil, request_options: {})
-      end
+      def self.new(target:, signals: nil, request_options: {}); end
 
       sig do
         override
@@ -43,8 +44,7 @@ module PreludeSDK
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Target < PreludeSDK::Internal::Type::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
@@ -61,12 +61,10 @@ module PreludeSDK
           params(type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
         end
-        def self.new(type:, value:)
-        end
+        def self.new(type:, value:); end
 
         sig { override.returns({type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String}) }
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
@@ -80,8 +78,7 @@ module PreludeSDK
           EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -125,12 +122,10 @@ module PreludeSDK
             ip: String
           ).returns(T.attached_class)
         end
-        def self.new(device_id: nil, device_model: nil, device_type: nil, ip: nil)
-        end
+        def self.new(device_id: nil, device_model: nil, device_type: nil, ip: nil); end
 
         sig { override.returns({device_id: String, device_model: String, device_type: String, ip: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

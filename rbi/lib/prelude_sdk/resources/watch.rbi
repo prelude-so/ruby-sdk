@@ -21,9 +21,7 @@ module PreludeSDK
         #   email verification feature contact us to discuss your use case.
         target:,
         request_options: {}
-      )
-      end
-
+      ); end
       # Identify trustworthy phone numbers to mitigate fake traffic or traffic involved
       #   in fraud and international revenue share fraud (IRSF) patterns. This endpoint
       #   must be implemented in conjunction with the `watch/feedback` endpoint.
@@ -43,13 +41,10 @@ module PreludeSDK
         #   performance.
         signals: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: PreludeSDK::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end
