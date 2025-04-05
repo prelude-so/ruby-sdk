@@ -7,7 +7,7 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       # You should send a feedback event back to Watch API when your user demonstrates
-      #   authentic behavior.
+      # authentic behavior.
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback) }
       attr_reader :feedback
 
@@ -18,7 +18,7 @@ module PreludeSDK
       attr_writer :feedback
 
       # The verification target. Either a phone number or an email address. To use the
-      #   email verification feature contact us to discuss your use case.
+      # email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::WatchFeedBackParams::Target) }
       attr_reader :target
 
@@ -49,12 +49,12 @@ module PreludeSDK
 
       class Feedback < PreludeSDK::Internal::Type::BaseModel
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
-        #   (e.g. phone number) is trustworthy.
+        # (e.g. phone number) is trustworthy.
         sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol) }
         attr_accessor :type
 
         # You should send a feedback event back to Watch API when your user demonstrates
-        #   authentic behavior.
+        # authentic behavior.
         sig { params(type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol).returns(T.attached_class) }
         def self.new(type:); end
 
@@ -62,7 +62,7 @@ module PreludeSDK
         def to_hash; end
 
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
-        #   (e.g. phone number) is trustworthy.
+        # (e.g. phone number) is trustworthy.
         module Type
           extend PreludeSDK::Internal::Type::Enum
 
@@ -88,7 +88,7 @@ module PreludeSDK
         attr_accessor :value
 
         # The verification target. Either a phone number or an email address. To use the
-        #   email verification feature contact us to discuss your use case.
+        # email verification feature contact us to discuss your use case.
         sig do
           params(type: PreludeSDK::Models::WatchFeedBackParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)

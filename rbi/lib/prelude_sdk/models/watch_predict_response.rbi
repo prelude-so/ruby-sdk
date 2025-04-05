@@ -68,7 +68,7 @@ module PreludeSDK
         attr_writer :cause
 
         # Indicates the risk of the phone number being genuine or involved in fraudulent
-        #   patterns. The higher the riskier.
+        # patterns. The higher the riskier.
         sig { returns(T.nilable(Float)) }
         attr_reader :score
 

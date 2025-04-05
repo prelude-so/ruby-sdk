@@ -7,7 +7,7 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       # The verification target. Either a phone number or an email address. To use the
-      #   email verification feature contact us to discuss your use case.
+      # email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::WatchPredictParams::Target) }
       attr_reader :target
 
@@ -15,7 +15,7 @@ module PreludeSDK
       attr_writer :target
 
       # It is highly recommended that you provide the signals to increase prediction
-      #   performance.
+      # performance.
       sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals)) }
       attr_reader :signals
 
@@ -56,7 +56,7 @@ module PreludeSDK
         attr_accessor :value
 
         # The verification target. Either a phone number or an email address. To use the
-        #   email verification feature contact us to discuss your use case.
+        # email verification feature contact us to discuss your use case.
         sig do
           params(type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
@@ -84,7 +84,7 @@ module PreludeSDK
 
       class Signals < PreludeSDK::Internal::Type::BaseModel
         # The unique identifier for the user's device. For Android, this corresponds to
-        #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+        # the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         sig { returns(T.nilable(String)) }
         attr_reader :device_id
 
@@ -113,7 +113,7 @@ module PreludeSDK
         attr_writer :ip
 
         # It is highly recommended that you provide the signals to increase prediction
-        #   performance.
+        # performance.
         sig do
           params(
             device_id: String,
