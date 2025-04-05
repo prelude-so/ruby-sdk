@@ -10,14 +10,14 @@ module PreludeSDK
 
       # @!attribute target
       #   The verification target. Either a phone number or an email address. To use the
-      #     email verification feature contact us to discuss your use case.
+      #   email verification feature contact us to discuss your use case.
       #
       #   @return [PreludeSDK::Models::WatchPredictParams::Target]
       required :target, -> { PreludeSDK::Models::WatchPredictParams::Target }
 
       # @!attribute [r] signals
       #   It is highly recommended that you provide the signals to increase prediction
-      #     performance.
+      #   performance.
       #
       #   @return [PreludeSDK::Models::WatchPredictParams::Signals, nil]
       optional :signals, -> { PreludeSDK::Models::WatchPredictParams::Signals }
@@ -50,7 +50,7 @@ module PreludeSDK
 
         # @!parse
         #   # The verification target. Either a phone number or an email address. To use the
-        #   #   email verification feature contact us to discuss your use case.
+        #   # email verification feature contact us to discuss your use case.
         #   #
         #   # @param type [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type]
         #   # @param value [String]
@@ -79,7 +79,7 @@ module PreludeSDK
       class Signals < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] device_id
         #   The unique identifier for the user's device. For Android, this corresponds to
-        #     the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+        #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         #
         #   @return [String, nil]
         optional :device_id, String
@@ -120,7 +120,7 @@ module PreludeSDK
 
         # @!parse
         #   # It is highly recommended that you provide the signals to increase prediction
-        #   #   performance.
+        #   # performance.
         #   #
         #   # @param device_id [String]
         #   # @param device_model [String]

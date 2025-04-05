@@ -11,7 +11,7 @@ module PreludeSDK
       attr_accessor :code
 
       # The verification target. Either a phone number or an email address. To use the
-      #   email verification feature contact us to discuss your use case.
+      # email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::VerificationCheckParams::Target) }
       attr_reader :target
 
@@ -53,7 +53,7 @@ module PreludeSDK
         attr_accessor :value
 
         # The verification target. Either a phone number or an email address. To use the
-        #   email verification feature contact us to discuss your use case.
+        # email verification feature contact us to discuss your use case.
         sig do
           params(type: PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)

@@ -16,7 +16,7 @@ module PreludeSDK
 
       # @!attribute target
       #   The verification target. Either a phone number or an email address. To use the
-      #     email verification feature contact us to discuss your use case.
+      #   email verification feature contact us to discuss your use case.
       #
       #   @return [PreludeSDK::Models::VerificationCheckParams::Target]
       required :target, -> { PreludeSDK::Models::VerificationCheckParams::Target }
@@ -45,7 +45,7 @@ module PreludeSDK
 
         # @!parse
         #   # The verification target. Either a phone number or an email address. To use the
-        #   #   email verification feature contact us to discuss your use case.
+        #   # email verification feature contact us to discuss your use case.
         #   #
         #   # @param type [Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type]
         #   # @param value [String]

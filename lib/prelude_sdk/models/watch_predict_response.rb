@@ -60,7 +60,7 @@ module PreludeSDK
 
         # @!attribute [r] score
         #   Indicates the risk of the phone number being genuine or involved in fraudulent
-        #     patterns. The higher the riskier.
+        #   patterns. The higher the riskier.
         #
         #   @return [Float, nil]
         optional :score, Float
