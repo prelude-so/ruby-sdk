@@ -64,7 +64,7 @@ module PreludeSDK
             in Hash
               type_info(spec.slice(:const, :enum, :union).first&.last)
             in true | false
-              -> { PreludeSDK::Internal::Type::BooleanModel }
+              -> { PreludeSDK::Internal::Type::Boolean }
             in PreludeSDK::Internal::Type::Converter | Class | Symbol
               -> { spec }
             in NilClass | Integer | Float

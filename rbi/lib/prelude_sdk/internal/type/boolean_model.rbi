@@ -6,7 +6,7 @@ module PreludeSDK
       # @api private
       #
       # Ruby has no Boolean class; this is something for models to refer to.
-      class BooleanModel
+      class Boolean
         extend PreludeSDK::Internal::Type::Converter
 
         abstract!
