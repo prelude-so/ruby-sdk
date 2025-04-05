@@ -355,7 +355,7 @@ module PreludeSDK
         #     genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
         #
         #   @return [Boolean, nil]
-        optional :is_trusted_user, PreludeSDK::Internal::Type::BooleanModel
+        optional :is_trusted_user, PreludeSDK::Internal::Type::Boolean
 
         # @!parse
         #   # @return [Boolean]
