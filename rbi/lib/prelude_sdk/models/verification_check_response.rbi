@@ -41,8 +41,7 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(status:, id: nil, metadata: nil, request_id: nil)
-      end
+      def self.new(status:, id: nil, metadata: nil, request_id: nil); end
 
       sig do
         override
@@ -55,8 +54,7 @@ module PreludeSDK
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The status of the check.
       module Status
@@ -72,8 +70,7 @@ module PreludeSDK
           T.let(:expired_or_not_found, PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
@@ -85,12 +82,10 @@ module PreludeSDK
 
         # The metadata for this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
-        def self.new(correlation_id: nil)
-        end
+        def self.new(correlation_id: nil); end
 
         sig { override.returns({correlation_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

@@ -43,8 +43,7 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, method_:, status:, metadata: nil, request_id: nil)
-      end
+      def self.new(id:, method_:, status:, metadata: nil, request_id: nil); end
 
       sig do
         override
@@ -58,8 +57,7 @@ module PreludeSDK
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       # The method used for verifying this phone number.
       module Method
@@ -72,8 +70,7 @@ module PreludeSDK
         MESSAGE = T.let(:message, PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol)
 
         sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       # The status of the verification.
@@ -89,8 +86,7 @@ module PreludeSDK
         BLOCKED = T.let(:blocked, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
 
         sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol]) }
-        def self.values
-        end
+        def self.values; end
       end
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
@@ -102,12 +98,10 @@ module PreludeSDK
 
         # The metadata for this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
-        def self.new(correlation_id: nil)
-        end
+        def self.new(correlation_id: nil); end
 
         sig { override.returns({correlation_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
     end
   end

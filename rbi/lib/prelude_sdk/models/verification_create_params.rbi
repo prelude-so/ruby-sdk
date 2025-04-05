@@ -89,8 +89,7 @@ module PreludeSDK
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Target < PreludeSDK::Internal::Type::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
@@ -107,15 +106,13 @@ module PreludeSDK
           params(type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
         end
-        def self.new(type:, value:)
-        end
+        def self.new(type:, value:); end
 
         sig do
           override
             .returns({type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String})
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
@@ -131,8 +128,7 @@ module PreludeSDK
             T.let(:email_address, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
 
@@ -147,12 +143,10 @@ module PreludeSDK
         # The metadata for this verification. This object will be returned with every
         #   response or webhook sent that refers to this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
-        def self.new(correlation_id: nil)
-        end
+        def self.new(correlation_id: nil); end
 
         sig { override.returns({correlation_id: String}) }
-        def to_hash
-        end
+        def to_hash; end
       end
 
       class Options < PreludeSDK::Internal::Type::BaseModel
@@ -252,9 +246,7 @@ module PreludeSDK
           sender_id: nil,
           template_id: nil,
           variables: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -270,8 +262,7 @@ module PreludeSDK
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
           # The platform the SMS will be sent to. We are currently only supporting
@@ -292,8 +283,7 @@ module PreludeSDK
             )
               .returns(T.attached_class)
           end
-          def self.new(platform:, value:)
-          end
+          def self.new(platform:, value:); end
 
           sig do
             override
@@ -301,8 +291,7 @@ module PreludeSDK
                 {platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol, value: String}
               )
           end
-          def to_hash
-          end
+          def to_hash; end
 
           # The platform the SMS will be sent to. We are currently only supporting
           #   "android".
@@ -327,8 +316,7 @@ module PreludeSDK
               override
                 .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol])
             end
-            def self.values
-            end
+            def self.values; end
           end
         end
       end
@@ -421,9 +409,7 @@ module PreludeSDK
           is_trusted_user: nil,
           os_version: nil,
           user_agent: nil
-        )
-        end
-
+        ); end
         sig do
           override
             .returns(
@@ -439,8 +425,7 @@ module PreludeSDK
               }
             )
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of the user's device.
         module DevicePlatform
@@ -463,8 +448,7 @@ module PreludeSDK
             override
               .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol])
           end
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

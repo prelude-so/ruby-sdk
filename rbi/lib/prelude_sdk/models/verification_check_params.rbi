@@ -29,8 +29,7 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(code:, target:, request_options: {})
-      end
+      def self.new(code:, target:, request_options: {}); end
 
       sig do
         override
@@ -42,8 +41,7 @@ module PreludeSDK
             }
           )
       end
-      def to_hash
-      end
+      def to_hash; end
 
       class Target < PreludeSDK::Internal::Type::BaseModel
         # The type of the target. Either "phone_number" or "email_address".
@@ -60,15 +58,13 @@ module PreludeSDK
           params(type: PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
         end
-        def self.new(type:, value:)
-        end
+        def self.new(type:, value:); end
 
         sig do
           override
             .returns({type: PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol, value: String})
         end
-        def to_hash
-        end
+        def to_hash; end
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
@@ -84,8 +80,7 @@ module PreludeSDK
             T.let(:email_address, PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol)
 
           sig { override.returns(T::Array[PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol]) }
-          def self.values
-          end
+          def self.values; end
         end
       end
     end

@@ -39,13 +39,10 @@ module PreludeSDK
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       # @api private
       sig { params(client: PreludeSDK::Client).returns(T.attached_class) }
-      def self.new(client:)
-      end
+      def self.new(client:); end
     end
   end
 end
