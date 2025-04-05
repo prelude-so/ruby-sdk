@@ -10,7 +10,7 @@ module PreludeSDK
 
       # @!attribute target
       #   The verification target. Either a phone number or an email address. To use the
-      #     email verification feature contact us to discuss your use case.
+      #   email verification feature contact us to discuss your use case.
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Target]
       required :target, -> { PreludeSDK::Models::VerificationCreateParams::Target }
@@ -27,7 +27,7 @@ module PreludeSDK
 
       # @!attribute [r] metadata
       #   The metadata for this verification. This object will be returned with every
-      #     response or webhook sent that refers to this verification.
+      #   response or webhook sent that refers to this verification.
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Metadata, nil]
       optional :metadata, -> { PreludeSDK::Models::VerificationCreateParams::Metadata }
@@ -48,7 +48,7 @@ module PreludeSDK
 
       # @!attribute [r] signals
       #   The signals used for anti-fraud. For more details, refer to
-      #     [Signals](/guides/prevent-fraud#signals).
+      #   [Signals](/guides/prevent-fraud#signals).
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Signals, nil]
       optional :signals, -> { PreludeSDK::Models::VerificationCreateParams::Signals }
@@ -84,7 +84,7 @@ module PreludeSDK
 
         # @!parse
         #   # The verification target. Either a phone number or an email address. To use the
-        #   #   email verification feature contact us to discuss your use case.
+        #   # email verification feature contact us to discuss your use case.
         #   #
         #   # @param type [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type]
         #   # @param value [String]
@@ -123,7 +123,7 @@ module PreludeSDK
 
         # @!parse
         #   # The metadata for this verification. This object will be returned with every
-        #   #   response or webhook sent that refers to this verification.
+        #   # response or webhook sent that refers to this verification.
         #   #
         #   # @param correlation_id [String]
         #   #
@@ -135,7 +135,7 @@ module PreludeSDK
       class Options < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] app_realm
         #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
-        #     Currently only Android devices are supported.
+        #   Currently only Android devices are supported.
         #
         #   @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, nil]
         optional :app_realm, -> { PreludeSDK::Models::VerificationCreateParams::Options::AppRealm }
@@ -146,8 +146,8 @@ module PreludeSDK
 
         # @!attribute [r] callback_url
         #   The URL where webhooks will be sent when verification events occur, including
-        #     verification creation, attempt creation, and delivery status changes. For more
-        #     details, refer to [Webhook](/api-reference/v2/verify/webhook).
+        #   verification creation, attempt creation, and delivery status changes. For more
+        #   details, refer to [Webhook](/api-reference/v2/verify/webhook).
         #
         #   @return [String, nil]
         optional :callback_url, String
@@ -158,7 +158,7 @@ module PreludeSDK
 
         # @!attribute [r] code_size
         #   The size of the code generated. It should be between 4 and 8. Defaults to the
-        #     code size specified from the Dashboard.
+        #   code size specified from the Dashboard.
         #
         #   @return [Integer, nil]
         optional :code_size, Integer
@@ -169,9 +169,9 @@ module PreludeSDK
 
         # @!attribute [r] custom_code
         #   The custom code to use for OTP verification. This feature is only available for
-        #     compatibility purposes and subject to Prelude’s approval. Contact us to discuss
-        #     your use case. For more details, refer to
-        #     [Multi Routing](/concepts/multi-routing).
+        #   compatibility purposes and subject to Prelude’s approval. Contact us to discuss
+        #   your use case. For more details, refer to
+        #   [Multi Routing](/concepts/multi-routing).
         #
         #   @return [String, nil]
         optional :custom_code, String
@@ -182,9 +182,9 @@ module PreludeSDK
 
         # @!attribute [r] locale
         #   A BCP-47 formatted locale string with the language the text message will be sent
-        #     to. If there's no locale set, the language will be determined by the country
-        #     code of the phone number. If the language specified doesn't exist, it defaults
-        #     to US English.
+        #   to. If there's no locale set, the language will be determined by the country
+        #   code of the phone number. If the language specified doesn't exist, it defaults
+        #   to US English.
         #
         #   @return [String, nil]
         optional :locale, String
@@ -195,7 +195,7 @@ module PreludeSDK
 
         # @!attribute [r] sender_id
         #   The Sender ID to use for this message. The Sender ID needs to be enabled by
-        #     Prelude.
+        #   Prelude.
         #
         #   @return [String, nil]
         optional :sender_id, String
@@ -206,7 +206,7 @@ module PreludeSDK
 
         # @!attribute [r] template_id
         #   The identifier of a verification template. It applies use case-specific
-        #     settings, such as the message content or certain verification parameters.
+        #   settings, such as the message content or certain verification parameters.
         #
         #   @return [String, nil]
         optional :template_id, String
@@ -257,7 +257,7 @@ module PreludeSDK
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
           # @!attribute platform
           #   The platform the SMS will be sent to. We are currently only supporting
-          #     "android".
+          #   "android".
           #
           #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
           required :platform, enum: -> { PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform }
@@ -270,7 +270,7 @@ module PreludeSDK
 
           # @!parse
           #   # This allows you to automatically retrieve and fill the OTP code on mobile apps.
-          #   #   Currently only Android devices are supported.
+          #   # Currently only Android devices are supported.
           #   #
           #   # @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
           #   # @param value [String]
@@ -280,7 +280,7 @@ module PreludeSDK
           # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
           # The platform the SMS will be sent to. We are currently only supporting
-          #   "android".
+          # "android".
           #
           # @see PreludeSDK::Models::VerificationCreateParams::Options::AppRealm#platform
           module Platform
@@ -310,7 +310,7 @@ module PreludeSDK
 
         # @!attribute [r] device_id
         #   The unique identifier for the user's device. For Android, this corresponds to
-        #     the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+        #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         #
         #   @return [String, nil]
         optional :device_id, String
@@ -352,7 +352,7 @@ module PreludeSDK
 
         # @!attribute [r] is_trusted_user
         #   This signal should provide a higher level of trust, indicating that the user is
-        #     genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
+        #   genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
         #
         #   @return [Boolean, nil]
         optional :is_trusted_user, PreludeSDK::Internal::Type::Boolean
@@ -373,8 +373,8 @@ module PreludeSDK
 
         # @!attribute [r] user_agent
         #   The user agent of the user's device. If the individual fields (os_version,
-        #     device_platform, device_model) are provided, we will prioritize those values
-        #     instead of parsing them from the user agent string.
+        #   device_platform, device_model) are provided, we will prioritize those values
+        #   instead of parsing them from the user agent string.
         #
         #   @return [String, nil]
         optional :user_agent, String
@@ -385,7 +385,7 @@ module PreludeSDK
 
         # @!parse
         #   # The signals used for anti-fraud. For more details, refer to
-        #   #   [Signals](/guides/prevent-fraud#signals).
+        #   # [Signals](/guides/prevent-fraud#signals).
         #   #
         #   # @param app_version [String]
         #   # @param device_id [String]

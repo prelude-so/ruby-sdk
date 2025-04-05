@@ -10,14 +10,14 @@ module PreludeSDK
 
       # @!attribute feedback
       #   You should send a feedback event back to Watch API when your user demonstrates
-      #     authentic behavior.
+      #   authentic behavior.
       #
       #   @return [PreludeSDK::Models::WatchFeedBackParams::Feedback]
       required :feedback, -> { PreludeSDK::Models::WatchFeedBackParams::Feedback }
 
       # @!attribute target
       #   The verification target. Either a phone number or an email address. To use the
-      #     email verification feature contact us to discuss your use case.
+      #   email verification feature contact us to discuss your use case.
       #
       #   @return [PreludeSDK::Models::WatchFeedBackParams::Target]
       required :target, -> { PreludeSDK::Models::WatchFeedBackParams::Target }
@@ -34,14 +34,14 @@ module PreludeSDK
       class Feedback < PreludeSDK::Internal::Type::BaseModel
         # @!attribute type
         #   `CONFIRM_TARGET` should be sent when you are sure that the user with this target
-        #     (e.g. phone number) is trustworthy.
+        #   (e.g. phone number) is trustworthy.
         #
         #   @return [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type]
         required :type, enum: -> { PreludeSDK::Models::WatchFeedBackParams::Feedback::Type }
 
         # @!parse
         #   # You should send a feedback event back to Watch API when your user demonstrates
-        #   #   authentic behavior.
+        #   # authentic behavior.
         #   #
         #   # @param type [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type]
         #   #
@@ -50,7 +50,7 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
         # `CONFIRM_TARGET` should be sent when you are sure that the user with this target
-        #   (e.g. phone number) is trustworthy.
+        # (e.g. phone number) is trustworthy.
         #
         # @see PreludeSDK::Models::WatchFeedBackParams::Feedback#type
         module Type
@@ -81,7 +81,7 @@ module PreludeSDK
 
         # @!parse
         #   # The verification target. Either a phone number or an email address. To use the
-        #   #   email verification feature contact us to discuss your use case.
+        #   # email verification feature contact us to discuss your use case.
         #   #
         #   # @param type [Symbol, PreludeSDK::Models::WatchFeedBackParams::Target::Type]
         #   # @param value [String]

@@ -7,7 +7,7 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       # The verification target. Either a phone number or an email address. To use the
-      #   email verification feature contact us to discuss your use case.
+      # email verification feature contact us to discuss your use case.
       sig { returns(PreludeSDK::Models::VerificationCreateParams::Target) }
       attr_reader :target
 
@@ -25,7 +25,7 @@ module PreludeSDK
       attr_writer :dispatch_id
 
       # The metadata for this verification. This object will be returned with every
-      #   response or webhook sent that refers to this verification.
+      # response or webhook sent that refers to this verification.
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Metadata)) }
       attr_reader :metadata
 
@@ -50,7 +50,7 @@ module PreludeSDK
       attr_writer :options
 
       # The signals used for anti-fraud. For more details, refer to
-      #   [Signals](/guides/prevent-fraud#signals).
+      # [Signals](/guides/prevent-fraud#signals).
       sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Signals)) }
       attr_reader :signals
 
@@ -101,7 +101,7 @@ module PreludeSDK
         attr_accessor :value
 
         # The verification target. Either a phone number or an email address. To use the
-        #   email verification feature contact us to discuss your use case.
+        # email verification feature contact us to discuss your use case.
         sig do
           params(type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
@@ -141,7 +141,7 @@ module PreludeSDK
         attr_writer :correlation_id
 
         # The metadata for this verification. This object will be returned with every
-        #   response or webhook sent that refers to this verification.
+        # response or webhook sent that refers to this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
         def self.new(correlation_id: nil); end
 
@@ -151,7 +151,7 @@ module PreludeSDK
 
       class Options < PreludeSDK::Internal::Type::BaseModel
         # This allows you to automatically retrieve and fill the OTP code on mobile apps.
-        #   Currently only Android devices are supported.
+        # Currently only Android devices are supported.
         sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)) }
         attr_reader :app_realm
 
@@ -164,8 +164,8 @@ module PreludeSDK
         attr_writer :app_realm
 
         # The URL where webhooks will be sent when verification events occur, including
-        #   verification creation, attempt creation, and delivery status changes. For more
-        #   details, refer to [Webhook](/api-reference/v2/verify/webhook).
+        # verification creation, attempt creation, and delivery status changes. For more
+        # details, refer to [Webhook](/api-reference/v2/verify/webhook).
         sig { returns(T.nilable(String)) }
         attr_reader :callback_url
 
@@ -173,7 +173,7 @@ module PreludeSDK
         attr_writer :callback_url
 
         # The size of the code generated. It should be between 4 and 8. Defaults to the
-        #   code size specified from the Dashboard.
+        # code size specified from the Dashboard.
         sig { returns(T.nilable(Integer)) }
         attr_reader :code_size
 
@@ -181,9 +181,9 @@ module PreludeSDK
         attr_writer :code_size
 
         # The custom code to use for OTP verification. This feature is only available for
-        #   compatibility purposes and subject to Prelude’s approval. Contact us to discuss
-        #   your use case. For more details, refer to
-        #   [Multi Routing](/concepts/multi-routing).
+        # compatibility purposes and subject to Prelude’s approval. Contact us to discuss
+        # your use case. For more details, refer to
+        # [Multi Routing](/concepts/multi-routing).
         sig { returns(T.nilable(String)) }
         attr_reader :custom_code
 
@@ -191,9 +191,9 @@ module PreludeSDK
         attr_writer :custom_code
 
         # A BCP-47 formatted locale string with the language the text message will be sent
-        #   to. If there's no locale set, the language will be determined by the country
-        #   code of the phone number. If the language specified doesn't exist, it defaults
-        #   to US English.
+        # to. If there's no locale set, the language will be determined by the country
+        # code of the phone number. If the language specified doesn't exist, it defaults
+        # to US English.
         sig { returns(T.nilable(String)) }
         attr_reader :locale
 
@@ -201,7 +201,7 @@ module PreludeSDK
         attr_writer :locale
 
         # The Sender ID to use for this message. The Sender ID needs to be enabled by
-        #   Prelude.
+        # Prelude.
         sig { returns(T.nilable(String)) }
         attr_reader :sender_id
 
@@ -209,7 +209,7 @@ module PreludeSDK
         attr_writer :sender_id
 
         # The identifier of a verification template. It applies use case-specific
-        #   settings, such as the message content or certain verification parameters.
+        # settings, such as the message content or certain verification parameters.
         sig { returns(T.nilable(String)) }
         attr_reader :template_id
 
@@ -266,7 +266,7 @@ module PreludeSDK
 
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
           # The platform the SMS will be sent to. We are currently only supporting
-          #   "android".
+          # "android".
           sig { returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol) }
           attr_accessor :platform
 
@@ -275,7 +275,7 @@ module PreludeSDK
           attr_accessor :value
 
           # This allows you to automatically retrieve and fill the OTP code on mobile apps.
-          #   Currently only Android devices are supported.
+          # Currently only Android devices are supported.
           sig do
             params(
               platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol,
@@ -294,7 +294,7 @@ module PreludeSDK
           def to_hash; end
 
           # The platform the SMS will be sent to. We are currently only supporting
-          #   "android".
+          # "android".
           module Platform
             extend PreludeSDK::Internal::Type::Enum
 
@@ -330,7 +330,7 @@ module PreludeSDK
         attr_writer :app_version
 
         # The unique identifier for the user's device. For Android, this corresponds to
-        #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+        # the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         sig { returns(T.nilable(String)) }
         attr_reader :device_id
 
@@ -362,7 +362,7 @@ module PreludeSDK
         attr_writer :ip
 
         # This signal should provide a higher level of trust, indicating that the user is
-        #   genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
+        # genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :is_trusted_user
 
@@ -377,8 +377,8 @@ module PreludeSDK
         attr_writer :os_version
 
         # The user agent of the user's device. If the individual fields (os_version,
-        #   device_platform, device_model) are provided, we will prioritize those values
-        #   instead of parsing them from the user agent string.
+        # device_platform, device_model) are provided, we will prioritize those values
+        # instead of parsing them from the user agent string.
         sig { returns(T.nilable(String)) }
         attr_reader :user_agent
 
@@ -386,7 +386,7 @@ module PreludeSDK
         attr_writer :user_agent
 
         # The signals used for anti-fraud. For more details, refer to
-        #   [Signals](/guides/prevent-fraud#signals).
+        # [Signals](/guides/prevent-fraud#signals).
         sig do
           params(
             app_version: String,

@@ -43,9 +43,9 @@ module PreludeSDK
       attr_writer :from
 
       # A BCP-47 formatted locale string with the language the text message will be sent
-      #   to. If there's no locale set, the language will be determined by the country
-      #   code of the phone number. If the language specified doesn't exist, the default
-      #   set on the template will be used.
+      # to. If there's no locale set, the language will be determined by the country
+      # code of the phone number. If the language specified doesn't exist, the default
+      # set on the template will be used.
       sig { returns(T.nilable(String)) }
       attr_reader :locale
 
