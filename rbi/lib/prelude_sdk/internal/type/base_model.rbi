@@ -126,7 +126,7 @@ module PreludeSDK
                   T::Hash[T.anything, T.anything],
                   T.anything
                 ),
-                state: PreludeSDK::Internal::Type::Converter::State
+                state: PreludeSDK::Internal::Type::Converter::CoerceState
               )
               .returns(T.any(T.attached_class, T.anything))
           end
@@ -135,10 +135,13 @@ module PreludeSDK
           # @api private
           sig do
             override
-              .params(value: T.any(T.attached_class, T.anything))
+              .params(
+                value: T.any(T.attached_class, T.anything),
+                state: PreludeSDK::Internal::Type::Converter::DumpState
+              )
               .returns(T.any(T::Hash[T.anything, T.anything], T.anything))
           end
-          def dump(value); end
+          def dump(value, state:); end
         end
 
         # Returns the raw value associated with the given key, if found. Otherwise, nil is
