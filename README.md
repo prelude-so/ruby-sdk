@@ -38,12 +38,13 @@ prelude = PreludeSDK::Client.new(
   api_token: "My API Token" # defaults to ENV["API_TOKEN"]
 )
 
-verification = prelude.verification.create(
-  target: {
-    type: "phone_number",
-    value: "+30123456789"
-  }
-)
+verification =
+  prelude.verification.create(
+    target: {
+      type: "phone_number",
+      value: "+30123456789"
+    }
+  )
 
 puts(verification.id)
 ```
@@ -54,12 +55,13 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  verification = prelude.verification.create(
-    target: {
-      type: "phone_number",
-      value: "+30123456789"
-    }
-  )
+  verification =
+    prelude.verification.create(
+      target: {
+        type: "phone_number",
+        value: "+30123456789"
+      }
+    )
 rescue PreludeSDK::Errors::APIError => e
   puts(e.status) # 400
 end
@@ -158,12 +160,13 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-params = PreludeSDK::Models::VerificationCreateParams.new(
-  target: {
-    type: "phone_number",
-    value: "+30123456789"
-  }
-)
+params =
+  PreludeSDK::Models::VerificationCreateParams.new(
+    target: {
+      type: "phone_number",
+      value: "+30123456789"
+    }
+  )
 
 prelude.verification.create(**params)
 ```
