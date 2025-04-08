@@ -7,7 +7,7 @@ module PreludeSDK
       module Converter
         Input = T.type_alias { T.any(PreludeSDK::Internal::Type::Converter, T::Class[T.anything]) }
 
-        State =
+        CoerceState =
           T.type_alias do
             {
               strictness: T.any(T::Boolean, Symbol),
@@ -16,17 +16,23 @@ module PreludeSDK
             }
           end
 
+        DumpState = T.type_alias { {can_retry: T::Boolean} }
+
         # @api private
         sig do
           overridable
-            .params(value: T.anything, state: PreludeSDK::Internal::Type::Converter::State)
+            .params(value: T.anything, state: PreludeSDK::Internal::Type::Converter::CoerceState)
             .returns(T.anything)
         end
         def coerce(value, state:); end
 
         # @api private
-        sig { overridable.params(value: T.anything).returns(T.anything) }
-        def dump(value); end
+        sig do
+          overridable
+            .params(value: T.anything, state: PreludeSDK::Internal::Type::Converter::DumpState)
+            .returns(T.anything)
+        end
+        def dump(value, state:); end
 
         class << self
           # @api private
@@ -61,7 +67,7 @@ module PreludeSDK
             params(
               target: PreludeSDK::Internal::Type::Converter::Input,
               value: T.anything,
-              state: PreludeSDK::Internal::Type::Converter::State
+              state: PreludeSDK::Internal::Type::Converter::CoerceState
             )
               .returns(T.anything)
           end
@@ -93,10 +99,12 @@ module PreludeSDK
           sig do
             params(
               target: PreludeSDK::Internal::Type::Converter::Input,
-              value: T.anything
-            ).returns(T.anything)
+              value: T.anything,
+              state: PreludeSDK::Internal::Type::Converter::DumpState
+            )
+              .returns(T.anything)
           end
-          def self.dump(target, value); end
+          def self.dump(target, value, state: {can_retry: true}); end
         end
       end
     end

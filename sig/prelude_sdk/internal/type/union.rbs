@@ -32,10 +32,13 @@ module PreludeSDK
 
         def coerce: (
           top value,
-          state: PreludeSDK::Internal::Type::Converter::state
+          state: PreludeSDK::Internal::Type::Converter::coerce_state
         ) -> top
 
-        def dump: (top value) -> top
+        def dump: (
+          top value,
+          state: PreludeSDK::Internal::Type::Converter::dump_state
+        ) -> top
       end
     end
   end

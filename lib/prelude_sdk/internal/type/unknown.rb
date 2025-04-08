@@ -47,8 +47,12 @@ module PreludeSDK
           #   #
           #   # @param value [Object]
           #   #
+          #   # @param state [Hash{Symbol=>Object}] .
+          #   #
+          #   #   @option state [Boolean] :can_retry
+          #   #
           #   # @return [Object]
-          #   def dump(value) = super
+          #   def dump(value, state:) = super
         end
 
         # rubocop:enable Lint/UnusedMethodArgument
