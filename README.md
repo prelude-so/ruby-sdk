@@ -22,46 +22,38 @@ gem "prelude-sdk", "~> 0.1.0.pre.alpha.1"
 
 <!-- x-release-please-end -->
 
-To fetch an initial copy of the gem:
-
-```sh
-bundle install
-```
-
 ## Usage
 
 ```ruby
 require "bundler/setup"
-require "prelude-sdk"
+require "prelude_sdk"
 
 prelude = PreludeSDK::Client.new(
   api_token: "My API Token" # defaults to ENV["API_TOKEN"]
 )
 
-verification =
-  prelude.verification.create(
-    target: {
-      type: "phone_number",
-      value: "+30123456789"
-    }
-  )
+verification = prelude.verification.create(
+  target: {
+    type: "phone_number",
+    value: "+30123456789"
+  }
+)
 
 puts(verification.id)
 ```
 
 ### Errors
 
-When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `PreludeSDK::Error` will be thrown:
+When the library is unable to connect to the API, or if the API returns a non-success status code (i.e., 4xx or 5xx response), a subclass of `PreludeSDK::Errors::APIError` will be thrown:
 
 ```ruby
 begin
-  verification =
-    prelude.verification.create(
-      target: {
-        type: "phone_number",
-        value: "+30123456789"
-      }
-    )
+  verification = prelude.verification.create(
+    target: {
+      type: "phone_number",
+      value: "+30123456789"
+    }
+  )
 rescue PreludeSDK::Errors::APIError => e
   puts(e.status) # 400
 end
@@ -167,13 +159,12 @@ Due to limitations with the Sorbet type system, where a method otherwise can tak
 Please follow Sorbet's [setup guides](https://sorbet.org/docs/adopting) for best experience.
 
 ```ruby
-params =
-  PreludeSDK::Models::VerificationCreateParams.new(
-    target: {
-      type: "phone_number",
-      value: "+30123456789"
-    }
-  )
+params = PreludeSDK::Models::VerificationCreateParams.new(
+  target: {
+    type: "phone_number",
+    value: "+30123456789"
+  }
+)
 
 prelude.verification.create(**params)
 ```
@@ -201,8 +192,7 @@ If you want to explicitly send an extra param, you can do so with the `extra_que
 To make requests to undocumented endpoints, you can make requests using `client.request`. Options on the client will be respected (such as retries) when making this request.
 
 ```ruby
-response =
-  client.request(
+response = client.request(
     method: :post,
     path: '/undocumented/endpoint',
     query: {"dog": "woof"},
