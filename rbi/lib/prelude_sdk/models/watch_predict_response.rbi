@@ -3,48 +3,38 @@
 module PreludeSDK
   module Models
     class WatchPredictResponse < PreludeSDK::Internal::Type::BaseModel
-      # A unique identifier for your prediction request.
+      # The prediction identifier.
       sig { returns(String) }
       attr_accessor :id
 
-      # A label indicating the trustworthiness of the phone number.
+      # The prediction outcome.
       sig { returns(PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol) }
       attr_accessor :prediction
 
-      sig { returns(PreludeSDK::Models::WatchPredictResponse::Reasoning) }
-      attr_reader :reasoning
-
-      sig do
-        params(
-          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Internal::AnyHash)
-        )
-          .void
-      end
-      attr_writer :reasoning
+      # A string that identifies this specific request. Report it back to us to help us
+      # diagnose your issues.
+      sig { returns(String) }
+      attr_accessor :request_id
 
       sig do
         params(
           id: String,
           prediction: PreludeSDK::Models::WatchPredictResponse::Prediction::OrSymbol,
-          reasoning: T.any(PreludeSDK::Models::WatchPredictResponse::Reasoning, PreludeSDK::Internal::AnyHash)
+          request_id: String
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, prediction:, reasoning:); end
+      def self.new(id:, prediction:, request_id:); end
 
       sig do
         override
           .returns(
-            {
-              id: String,
-              prediction: PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol,
-              reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
-            }
+            {id: String, prediction: PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol, request_id: String}
           )
       end
       def to_hash; end
 
-      # A label indicating the trustworthiness of the phone number.
+      # The prediction outcome.
       module Prediction
         extend PreludeSDK::Internal::Type::Enum
 
@@ -52,60 +42,11 @@ module PreludeSDK
         OrSymbol =
           T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol) }
 
-        ALLOW = T.let(:allow, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
-        BLOCK = T.let(:block, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
+        LEGITIMATE = T.let(:legitimate, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
+        SUSPICIOUS = T.let(:suspicious, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
 
         sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol]) }
         def self.values; end
-      end
-
-      class Reasoning < PreludeSDK::Internal::Type::BaseModel
-        # A label explaining why the phone number was classified as not trustworthy
-        sig { returns(T.nilable(PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)) }
-        attr_reader :cause
-
-        sig { params(cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol).void }
-        attr_writer :cause
-
-        # Indicates the risk of the phone number being genuine or involved in fraudulent
-        # patterns. The higher the riskier.
-        sig { returns(T.nilable(Float)) }
-        attr_reader :score
-
-        sig { params(score: Float).void }
-        attr_writer :score
-
-        sig do
-          params(cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::OrSymbol, score: Float)
-            .returns(T.attached_class)
-        end
-        def self.new(cause: nil, score: nil); end
-
-        sig do
-          override
-            .returns({cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol, score: Float})
-        end
-        def to_hash; end
-
-        # A label explaining why the phone number was classified as not trustworthy
-        module Cause
-          extend PreludeSDK::Internal::Type::Enum
-
-          TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol) }
-
-          NONE = T.let(:none, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
-          SMART_ANTIFRAUD =
-            T.let(:smart_antifraud, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
-          REPEAT_NUMBER =
-            T.let(:repeat_number, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
-          INVALID_LINE =
-            T.let(:invalid_line, PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol)
-
-          sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictResponse::Reasoning::Cause::TaggedSymbol]) }
-          def self.values; end
-        end
       end
     end
   end

@@ -3,15 +3,40 @@
 module PreludeSDK
   module Models
     class WatchFeedBackResponse < PreludeSDK::Internal::Type::BaseModel
-      # A unique identifier for your feedback request.
+      # A string that identifies this specific request. Report it back to us to help us
+      # diagnose your issues.
       sig { returns(String) }
-      attr_accessor :id
+      attr_accessor :request_id
 
-      sig { params(id: String).returns(T.attached_class) }
-      def self.new(id:); end
+      # The status of the feedbacks sending.
+      sig { returns(PreludeSDK::Models::WatchFeedBackResponse::Status::TaggedSymbol) }
+      attr_accessor :status
 
-      sig { override.returns({id: String}) }
+      sig do
+        params(request_id: String, status: PreludeSDK::Models::WatchFeedBackResponse::Status::OrSymbol)
+          .returns(T.attached_class)
+      end
+      def self.new(request_id:, status:); end
+
+      sig do
+        override
+          .returns({request_id: String, status: PreludeSDK::Models::WatchFeedBackResponse::Status::TaggedSymbol})
+      end
       def to_hash; end
+
+      # The status of the feedbacks sending.
+      module Status
+        extend PreludeSDK::Internal::Type::Enum
+
+        TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackResponse::Status) }
+        OrSymbol =
+          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchFeedBackResponse::Status::TaggedSymbol) }
+
+        SUCCESS = T.let(:success, PreludeSDK::Models::WatchFeedBackResponse::Status::TaggedSymbol)
+
+        sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackResponse::Status::TaggedSymbol]) }
+        def self.values; end
+      end
     end
   end
 end

@@ -5,6 +5,7 @@ module PreludeSDK
         target: PreludeSDK::Models::VerificationCreateParams::Target,
         dispatch_id: String,
         metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+        method_: PreludeSDK::Models::VerificationCreateParams::method_,
         options: PreludeSDK::Models::VerificationCreateParams::Options,
         signals: PreludeSDK::Models::VerificationCreateParams::Signals
       }
@@ -26,6 +27,12 @@ module PreludeSDK
         PreludeSDK::Models::VerificationCreateParams::Metadata
       ) -> PreludeSDK::Models::VerificationCreateParams::Metadata
 
+      attr_reader method_: PreludeSDK::Models::VerificationCreateParams::method_?
+
+      def method_=: (
+        PreludeSDK::Models::VerificationCreateParams::method_
+      ) -> PreludeSDK::Models::VerificationCreateParams::method_
+
       attr_reader options: PreludeSDK::Models::VerificationCreateParams::Options?
 
       def options=: (
@@ -42,6 +49,7 @@ module PreludeSDK
         target: PreludeSDK::Models::VerificationCreateParams::Target,
         ?dispatch_id: String,
         ?metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+        ?method_: PreludeSDK::Models::VerificationCreateParams::method_,
         ?options: PreludeSDK::Models::VerificationCreateParams::Options,
         ?signals: PreludeSDK::Models::VerificationCreateParams::Signals,
         ?request_options: PreludeSDK::request_opts
@@ -89,6 +97,17 @@ module PreludeSDK
         def initialize: (?correlation_id: String) -> void
 
         def to_hash: -> PreludeSDK::Models::VerificationCreateParams::metadata
+      end
+
+      type method_ = :auto | :voice
+
+      module Method
+        extend PreludeSDK::Internal::Type::Enum
+
+        AUTO: :auto
+        VOICE: :voice
+
+        def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::method_]
       end
 
       type options =

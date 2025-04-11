@@ -1,13 +1,32 @@
 module PreludeSDK
   module Models
-    type watch_feed_back_response = { id: String }
+    type watch_feed_back_response =
+      {
+        request_id: String,
+        status: PreludeSDK::Models::WatchFeedBackResponse::status
+      }
 
     class WatchFeedBackResponse < PreludeSDK::Internal::Type::BaseModel
-      attr_accessor id: String
+      attr_accessor request_id: String
 
-      def initialize: (id: String) -> void
+      attr_accessor status: PreludeSDK::Models::WatchFeedBackResponse::status
+
+      def initialize: (
+        request_id: String,
+        status: PreludeSDK::Models::WatchFeedBackResponse::status
+      ) -> void
 
       def to_hash: -> PreludeSDK::Models::watch_feed_back_response
+
+      type status = :success
+
+      module Status
+        extend PreludeSDK::Internal::Type::Enum
+
+        SUCCESS: :success
+
+        def self?.values: -> ::Array[PreludeSDK::Models::WatchFeedBackResponse::status]
+      end
     end
   end
 end

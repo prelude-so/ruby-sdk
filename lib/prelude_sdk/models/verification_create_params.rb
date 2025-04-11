@@ -36,6 +36,20 @@ module PreludeSDK
       #   # @return [PreludeSDK::Models::VerificationCreateParams::Metadata]
       #   attr_writer :metadata
 
+      # @!attribute [r] method_
+      #   The method used for verifying this phone number. The 'voice' option provides an
+      #   accessible alternative for visually impaired users by delivering the
+      #   verification code through a phone call rather than a text message. It also
+      #   allows verification of landline numbers that cannot receive SMS messages.
+      #   **Coming soon.**
+      #
+      #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Method, nil]
+      optional :method_, enum: -> { PreludeSDK::Models::VerificationCreateParams::Method }, api_name: :method
+
+      # @!parse
+      #   # @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Method]
+      #   attr_writer :method_
+
       # @!attribute [r] options
       #   Verification options
       #
@@ -48,7 +62,7 @@ module PreludeSDK
 
       # @!attribute [r] signals
       #   The signals used for anti-fraud. For more details, refer to
-      #   [Signals](/guides/prevent-fraud#signals).
+      #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Signals, nil]
       optional :signals, -> { PreludeSDK::Models::VerificationCreateParams::Signals }
@@ -61,11 +75,23 @@ module PreludeSDK
       #   # @param target [PreludeSDK::Models::VerificationCreateParams::Target]
       #   # @param dispatch_id [String]
       #   # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata]
+      #   # @param method_ [Symbol, PreludeSDK::Models::VerificationCreateParams::Method]
       #   # @param options [PreludeSDK::Models::VerificationCreateParams::Options]
       #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals]
       #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
-      #   def initialize(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {}, **) = super
+      #   def initialize(
+      #     target:,
+      #     dispatch_id: nil,
+      #     metadata: nil,
+      #     method_: nil,
+      #     options: nil,
+      #     signals: nil,
+      #     request_options: {},
+      #     **
+      #   )
+      #     super
+      #   end
 
       # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
@@ -132,6 +158,24 @@ module PreludeSDK
         # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
       end
 
+      # The method used for verifying this phone number. The 'voice' option provides an
+      # accessible alternative for visually impaired users by delivering the
+      # verification code through a phone call rather than a text message. It also
+      # allows verification of landline numbers that cannot receive SMS messages.
+      # **Coming soon.**
+      module Method
+        extend PreludeSDK::Internal::Type::Enum
+
+        AUTO = :auto
+        VOICE = :voice
+
+        finalize!
+
+        # @!parse
+        #   # @return [Array<Symbol>]
+        #   def self.values; end
+      end
+
       class Options < PreludeSDK::Internal::Type::BaseModel
         # @!attribute [r] app_realm
         #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
@@ -147,7 +191,7 @@ module PreludeSDK
         # @!attribute [r] callback_url
         #   The URL where webhooks will be sent when verification events occur, including
         #   verification creation, attempt creation, and delivery status changes. For more
-        #   details, refer to [Webhook](/api-reference/v2/verify/webhook).
+        #   details, refer to [Webhook](/verify/v2/documentation/webhook).
         #
         #   @return [String, nil]
         optional :callback_url, String
@@ -171,7 +215,7 @@ module PreludeSDK
         #   The custom code to use for OTP verification. This feature is only available for
         #   compatibility purposes and subject to Prelude’s approval. Contact us to discuss
         #   your use case. For more details, refer to
-        #   [Multi Routing](/concepts/multi-routing).
+        #   [Multi Routing](/introduction/concepts/multi-routing).
         #
         #   @return [String, nil]
         optional :custom_code, String
@@ -352,7 +396,8 @@ module PreludeSDK
 
         # @!attribute [r] is_trusted_user
         #   This signal should provide a higher level of trust, indicating that the user is
-        #   genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
+        #   genuine. For more details, refer to
+        #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
         #
         #   @return [Boolean, nil]
         optional :is_trusted_user, PreludeSDK::Internal::Type::Boolean
@@ -385,7 +430,7 @@ module PreludeSDK
 
         # @!parse
         #   # The signals used for anti-fraud. For more details, refer to
-        #   # [Signals](/guides/prevent-fraud#signals).
+        #   # [Signals](/verify/v2/documentation/prevent-fraud#signals).
         #   #
         #   # @param app_version [String]
         #   # @param device_id [String]

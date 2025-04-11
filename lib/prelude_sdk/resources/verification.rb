@@ -7,11 +7,12 @@ module PreludeSDK
       # verification exists (the request is performed within the verification window),
       # this endpoint will perform a retry instead.
       #
-      # @overload create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
+      # @overload create(target:, dispatch_id: nil, metadata: nil, method_: nil, options: nil, signals: nil, request_options: {})
       #
       # @param target [PreludeSDK::Models::VerificationCreateParams::Target]
       # @param dispatch_id [String]
       # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata]
+      # @param method_ [Symbol, PreludeSDK::Models::VerificationCreateParams::Method]
       # @param options [PreludeSDK::Models::VerificationCreateParams::Options]
       # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals]
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]

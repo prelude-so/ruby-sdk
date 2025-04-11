@@ -6,8 +6,7 @@ class PreludeSDK::Test::Resources::WatchTest < PreludeSDK::Test::ResourceTest
   def test_feed_back_required_params
     response =
       @prelude.watch.feed_back(
-        feedback: {type: :CONFIRM_TARGET},
-        target: {type: :phone_number, value: "+30123456789"}
+        feedbacks: [{target: {type: :phone_number, value: "+30123456789"}, type: :"verification.started"}]
       )
 
     assert_pattern do
@@ -16,7 +15,8 @@ class PreludeSDK::Test::Resources::WatchTest < PreludeSDK::Test::ResourceTest
 
     assert_pattern do
       response => {
-        id: String
+        request_id: String,
+        status: PreludeSDK::Models::WatchFeedBackResponse::Status
       }
     end
   end
@@ -32,7 +32,7 @@ class PreludeSDK::Test::Resources::WatchTest < PreludeSDK::Test::ResourceTest
       response => {
         id: String,
         prediction: PreludeSDK::Models::WatchPredictResponse::Prediction,
-        reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+        request_id: String
       }
     end
   end

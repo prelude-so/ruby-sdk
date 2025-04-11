@@ -11,6 +11,7 @@ module PreludeSDK
           target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::AnyHash),
           dispatch_id: String,
           metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::AnyHash),
+          method_: PreludeSDK::Models::VerificationCreateParams::Method::OrSymbol,
           options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::AnyHash),
           signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::AnyHash),
           request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
@@ -26,10 +27,16 @@ module PreludeSDK
         # The metadata for this verification. This object will be returned with every
         # response or webhook sent that refers to this verification.
         metadata: nil,
+        # The method used for verifying this phone number. The 'voice' option provides an
+        # accessible alternative for visually impaired users by delivering the
+        # verification code through a phone call rather than a text message. It also
+        # allows verification of landline numbers that cannot receive SMS messages.
+        # **Coming soon.**
+        method_: nil,
         # Verification options
         options: nil,
         # The signals used for anti-fraud. For more details, refer to
-        # [Signals](/guides/prevent-fraud#signals).
+        # [Signals](/verify/v2/documentation/prevent-fraud#signals).
         signals: nil,
         request_options: {}
       ); end
