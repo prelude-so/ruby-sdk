@@ -19,6 +19,9 @@ module PreludeSDK
     # @return [String]
     attr_reader :api_token
 
+    # @return [PreludeSDK::Resources::Lookup]
+    attr_reader :lookup
+
     # @return [PreludeSDK::Resources::Transactional]
     attr_reader :transactional
 
@@ -74,6 +77,7 @@ module PreludeSDK
         max_retry_delay: max_retry_delay
       )
 
+      @lookup = PreludeSDK::Resources::Lookup.new(client: self)
       @transactional = PreludeSDK::Resources::Transactional.new(client: self)
       @verification = PreludeSDK::Resources::Verification.new(client: self)
       @watch = PreludeSDK::Resources::Watch.new(client: self)

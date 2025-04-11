@@ -1,0 +1,116 @@
+# frozen_string_literal: true
+
+module PreludeSDK
+  module Models
+    # @see PreludeSDK::Resources::Watch#send_events
+    class WatchSendEventsParams < PreludeSDK::Internal::Type::BaseModel
+      # @!parse
+      #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      # @!attribute events
+      #   A list of events to dispatch.
+      #
+      #   @return [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
+      required :events,
+               -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::WatchSendEventsParams::Event] }
+
+      # @!parse
+      #   # @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
+      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
+      #   #
+      #   def initialize(events:, request_options: {}, **) = super
+
+      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+
+      class Event < PreludeSDK::Internal::Type::BaseModel
+        # @!attribute confidence
+        #   A confidence level you want to assign to the event.
+        #
+        #   @return [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence]
+        required :confidence, enum: -> { PreludeSDK::Models::WatchSendEventsParams::Event::Confidence }
+
+        # @!attribute label
+        #   A label to describe what the event refers to.
+        #
+        #   @return [String]
+        required :label, String
+
+        # @!attribute target
+        #   The event target. Only supports phone numbers for now.
+        #
+        #   @return [PreludeSDK::Models::WatchSendEventsParams::Event::Target]
+        required :target, -> { PreludeSDK::Models::WatchSendEventsParams::Event::Target }
+
+        # @!parse
+        #   # @param confidence [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence]
+        #   # @param label [String]
+        #   # @param target [PreludeSDK::Models::WatchSendEventsParams::Event::Target]
+        #   #
+        #   def initialize(confidence:, label:, target:, **) = super
+
+        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+
+        # A confidence level you want to assign to the event.
+        #
+        # @see PreludeSDK::Models::WatchSendEventsParams::Event#confidence
+        module Confidence
+          extend PreludeSDK::Internal::Type::Enum
+
+          MAXIMUM = :maximum
+          HIGH = :high
+          NEUTRAL = :neutral
+          LOW = :low
+          MINIMUM = :minimum
+
+          finalize!
+
+          # @!parse
+          #   # @return [Array<Symbol>]
+          #   def self.values; end
+        end
+
+        # @see PreludeSDK::Models::WatchSendEventsParams::Event#target
+        class Target < PreludeSDK::Internal::Type::BaseModel
+          # @!attribute type
+          #   The type of the target. Either "phone_number" or "email_address".
+          #
+          #   @return [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type]
+          required :type, enum: -> { PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type }
+
+          # @!attribute value
+          #   An E.164 formatted phone number or an email address.
+          #
+          #   @return [String]
+          required :value, String
+
+          # @!parse
+          #   # The event target. Only supports phone numbers for now.
+          #   #
+          #   # @param type [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type]
+          #   # @param value [String]
+          #   #
+          #   def initialize(type:, value:, **) = super
+
+          # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+
+          # The type of the target. Either "phone_number" or "email_address".
+          #
+          # @see PreludeSDK::Models::WatchSendEventsParams::Event::Target#type
+          module Type
+            extend PreludeSDK::Internal::Type::Enum
+
+            PHONE_NUMBER = :phone_number
+            EMAIL_ADDRESS = :email_address
+
+            finalize!
+
+            # @!parse
+            #   # @return [Array<Symbol>]
+            #   def self.values; end
+          end
+        end
+      end
+    end
+  end
+end

@@ -10,6 +10,8 @@ module PreludeSDK
 
     attr_reader api_token: String
 
+    attr_reader lookup: PreludeSDK::Resources::Lookup
+
     attr_reader transactional: PreludeSDK::Resources::Transactional
 
     attr_reader verification: PreludeSDK::Resources::Verification

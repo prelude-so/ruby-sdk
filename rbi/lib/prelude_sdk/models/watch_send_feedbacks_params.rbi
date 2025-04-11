@@ -2,17 +2,17 @@
 
 module PreludeSDK
   module Models
-    class WatchFeedBackParams < PreludeSDK::Internal::Type::BaseModel
+    class WatchSendFeedbacksParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
       # A list of feedbacks to send.
-      sig { returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Feedback]) }
+      sig { returns(T::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback]) }
       attr_accessor :feedbacks
 
       sig do
         params(
-          feedbacks: T::Array[T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback, PreludeSDK::Internal::AnyHash)],
+          feedbacks: T::Array[T.any(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback, PreludeSDK::Internal::AnyHash)],
           request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
         )
           .returns(T.attached_class)
@@ -23,7 +23,7 @@ module PreludeSDK
         override
           .returns(
             {
-              feedbacks: T::Array[PreludeSDK::Models::WatchFeedBackParams::Feedback],
+              feedbacks: T::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback],
               request_options: PreludeSDK::RequestOptions
             }
           )
@@ -32,19 +32,19 @@ module PreludeSDK
 
       class Feedback < PreludeSDK::Internal::Type::BaseModel
         # The feedback target. Only supports phone numbers for now.
-        sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Target) }
+        sig { returns(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target) }
         attr_reader :target
 
         sig do
           params(
-            target: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback::Target, PreludeSDK::Internal::AnyHash)
+            target: T.any(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target, PreludeSDK::Internal::AnyHash)
           )
             .void
         end
         attr_writer :target
 
         # The type of feedback.
-        sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol) }
+        sig { returns(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::OrSymbol) }
         attr_accessor :type
 
         # The identifier of the dispatch that came from the front-end SDK.
@@ -55,12 +55,12 @@ module PreludeSDK
         attr_writer :dispatch_id
 
         # The metadata for this feedback.
-        sig { returns(T.nilable(PreludeSDK::Models::WatchFeedBackParams::Feedback::Metadata)) }
+        sig { returns(T.nilable(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata)) }
         attr_reader :metadata
 
         sig do
           params(
-            metadata: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback::Metadata, PreludeSDK::Internal::AnyHash)
+            metadata: T.any(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata, PreludeSDK::Internal::AnyHash)
           )
             .void
         end
@@ -68,12 +68,12 @@ module PreludeSDK
 
         # The signals used for anti-fraud. For more details, refer to
         # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-        sig { returns(T.nilable(PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals)) }
+        sig { returns(T.nilable(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals)) }
         attr_reader :signals
 
         sig do
           params(
-            signals: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals, PreludeSDK::Internal::AnyHash)
+            signals: T.any(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals, PreludeSDK::Internal::AnyHash)
           )
             .void
         end
@@ -81,11 +81,11 @@ module PreludeSDK
 
         sig do
           params(
-            target: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback::Target, PreludeSDK::Internal::AnyHash),
-            type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol,
+            target: T.any(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target, PreludeSDK::Internal::AnyHash),
+            type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::OrSymbol,
             dispatch_id: String,
-            metadata: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback::Metadata, PreludeSDK::Internal::AnyHash),
-            signals: T.any(PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals, PreludeSDK::Internal::AnyHash)
+            metadata: T.any(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata, PreludeSDK::Internal::AnyHash),
+            signals: T.any(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals, PreludeSDK::Internal::AnyHash)
           )
             .returns(T.attached_class)
         end
@@ -95,11 +95,11 @@ module PreludeSDK
           override
             .returns(
               {
-                target: PreludeSDK::Models::WatchFeedBackParams::Feedback::Target,
-                type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::OrSymbol,
+                target: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target,
+                type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::OrSymbol,
                 dispatch_id: String,
-                metadata: PreludeSDK::Models::WatchFeedBackParams::Feedback::Metadata,
-                signals: PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals
+                metadata: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata,
+                signals: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals
               }
             )
         end
@@ -107,7 +107,7 @@ module PreludeSDK
 
         class Target < PreludeSDK::Internal::Type::BaseModel
           # The type of the target. Either "phone_number" or "email_address".
-          sig { returns(PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type::OrSymbol) }
+          sig { returns(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::OrSymbol) }
           attr_accessor :type
 
           # An E.164 formatted phone number or an email address.
@@ -116,14 +116,19 @@ module PreludeSDK
 
           # The feedback target. Only supports phone numbers for now.
           sig do
-            params(type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type::OrSymbol, value: String)
+            params(
+              type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::OrSymbol,
+              value: String
+            )
               .returns(T.attached_class)
           end
           def self.new(type:, value:); end
 
           sig do
             override
-              .returns({type: PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type::OrSymbol, value: String})
+              .returns(
+                {type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::OrSymbol, value: String}
+              )
           end
           def to_hash; end
 
@@ -132,16 +137,19 @@ module PreludeSDK
             extend PreludeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type) }
+              T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type) }
             OrSymbol =
-              T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type::TaggedSymbol) }
+              T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol) }
 
             PHONE_NUMBER =
-              T.let(:phone_number, PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type::TaggedSymbol)
+              T.let(:phone_number, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol)
             EMAIL_ADDRESS =
-              T.let(:email_address, PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type::TaggedSymbol)
+              T.let(:email_address, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol)
 
-            sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type::TaggedSymbol]) }
+            sig do
+              override
+                .returns(T::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol])
+            end
             def self.values; end
           end
         end
@@ -150,16 +158,20 @@ module PreludeSDK
         module Type
           extend PreludeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type) }
+          TaggedSymbol =
+            T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type) }
           OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol) }
+            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::TaggedSymbol) }
 
           VERIFICATION_STARTED =
-            T.let(:"verification.started", PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol)
+            T.let(:"verification.started", PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::TaggedSymbol)
           VERIFICATION_COMPLETED =
-            T.let(:"verification.completed", PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol)
+            T.let(
+              :"verification.completed",
+              PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[PreludeSDK::Models::WatchFeedBackParams::Feedback::Type::TaggedSymbol]) }
+          sig { override.returns(T::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::TaggedSymbol]) }
           def self.values; end
         end
 
@@ -203,12 +215,16 @@ module PreludeSDK
           attr_writer :device_model
 
           # The type of the user's device.
-          sig { returns(T.nilable(PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::OrSymbol)) }
+          sig do
+            returns(
+              T.nilable(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::OrSymbol)
+            )
+          end
           attr_reader :device_platform
 
           sig do
             params(
-              device_platform: PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::OrSymbol
+              device_platform: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::OrSymbol
             )
               .void
           end
@@ -253,7 +269,7 @@ module PreludeSDK
               app_version: String,
               device_id: String,
               device_model: String,
-              device_platform: PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::OrSymbol,
+              device_platform: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::OrSymbol,
               ip: String,
               is_trusted_user: T::Boolean,
               os_version: String,
@@ -278,7 +294,7 @@ module PreludeSDK
                   app_version: String,
                   device_id: String,
                   device_model: String,
-                  device_platform: PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::OrSymbol,
+                  device_platform: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::OrSymbol,
                   ip: String,
                   is_trusted_user: T::Boolean,
                   os_version: String,
@@ -293,31 +309,40 @@ module PreludeSDK
             extend PreludeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform) }
+              T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform) }
             OrSymbol =
               T.type_alias do
                 T.any(
                   Symbol,
                   String,
-                  PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::TaggedSymbol
+                  PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::TaggedSymbol
                 )
               end
 
             ANDROID =
-              T.let(:android, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::TaggedSymbol)
+              T.let(
+                :android,
+                PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::TaggedSymbol
+              )
             IOS =
-              T.let(:ios, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::TaggedSymbol)
+              T.let(:ios, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::TaggedSymbol)
             IPADOS =
-              T.let(:ipados, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::TaggedSymbol)
+              T.let(
+                :ipados,
+                PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::TaggedSymbol
+              )
             TVOS =
-              T.let(:tvos, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::TaggedSymbol)
+              T.let(
+                :tvos,
+                PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::TaggedSymbol
+              )
             WEB =
-              T.let(:web, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::TaggedSymbol)
+              T.let(:web, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::TaggedSymbol)
 
             sig do
               override
                 .returns(
-                  T::Array[PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform::TaggedSymbol]
+                  T::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::TaggedSymbol]
                 )
             end
             def self.values; end

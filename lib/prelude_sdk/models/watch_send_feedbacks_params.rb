@@ -2,8 +2,8 @@
 
 module PreludeSDK
   module Models
-    # @see PreludeSDK::Resources::Watch#feed_back
-    class WatchFeedBackParams < PreludeSDK::Internal::Type::BaseModel
+    # @see PreludeSDK::Resources::Watch#send_feedbacks
+    class WatchSendFeedbacksParams < PreludeSDK::Internal::Type::BaseModel
       # @!parse
       #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
@@ -11,12 +11,12 @@ module PreludeSDK
       # @!attribute feedbacks
       #   A list of feedbacks to send.
       #
-      #   @return [Array<PreludeSDK::Models::WatchFeedBackParams::Feedback>]
+      #   @return [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>]
       required :feedbacks,
-               -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::WatchFeedBackParams::Feedback] }
+               -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback] }
 
       # @!parse
-      #   # @param feedbacks [Array<PreludeSDK::Models::WatchFeedBackParams::Feedback>]
+      #   # @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>]
       #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
       #   #
       #   def initialize(feedbacks:, request_options: {}, **) = super
@@ -27,14 +27,14 @@ module PreludeSDK
         # @!attribute target
         #   The feedback target. Only supports phone numbers for now.
         #
-        #   @return [PreludeSDK::Models::WatchFeedBackParams::Feedback::Target]
-        required :target, -> { PreludeSDK::Models::WatchFeedBackParams::Feedback::Target }
+        #   @return [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target]
+        required :target, -> { PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target }
 
         # @!attribute type
         #   The type of feedback.
         #
-        #   @return [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type]
-        required :type, enum: -> { PreludeSDK::Models::WatchFeedBackParams::Feedback::Type }
+        #   @return [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type]
+        required :type, enum: -> { PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type }
 
         # @!attribute [r] dispatch_id
         #   The identifier of the dispatch that came from the front-end SDK.
@@ -49,42 +49,42 @@ module PreludeSDK
         # @!attribute [r] metadata
         #   The metadata for this feedback.
         #
-        #   @return [PreludeSDK::Models::WatchFeedBackParams::Feedback::Metadata, nil]
-        optional :metadata, -> { PreludeSDK::Models::WatchFeedBackParams::Feedback::Metadata }
+        #   @return [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata, nil]
+        optional :metadata, -> { PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata }
 
         # @!parse
-        #   # @return [PreludeSDK::Models::WatchFeedBackParams::Feedback::Metadata]
+        #   # @return [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata]
         #   attr_writer :metadata
 
         # @!attribute [r] signals
         #   The signals used for anti-fraud. For more details, refer to
         #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
         #
-        #   @return [PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals, nil]
-        optional :signals, -> { PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals }
+        #   @return [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals, nil]
+        optional :signals, -> { PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals }
 
         # @!parse
-        #   # @return [PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals]
+        #   # @return [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals]
         #   attr_writer :signals
 
         # @!parse
-        #   # @param target [PreludeSDK::Models::WatchFeedBackParams::Feedback::Target]
-        #   # @param type [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Type]
+        #   # @param target [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target]
+        #   # @param type [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type]
         #   # @param dispatch_id [String]
-        #   # @param metadata [PreludeSDK::Models::WatchFeedBackParams::Feedback::Metadata]
-        #   # @param signals [PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals]
+        #   # @param metadata [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata]
+        #   # @param signals [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals]
         #   #
         #   def initialize(target:, type:, dispatch_id: nil, metadata: nil, signals: nil, **) = super
 
         # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
 
-        # @see PreludeSDK::Models::WatchFeedBackParams::Feedback#target
+        # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#target
         class Target < PreludeSDK::Internal::Type::BaseModel
           # @!attribute type
           #   The type of the target. Either "phone_number" or "email_address".
           #
-          #   @return [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type]
-          required :type, enum: -> { PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type }
+          #   @return [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type]
+          required :type, enum: -> { PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type }
 
           # @!attribute value
           #   An E.164 formatted phone number or an email address.
@@ -95,7 +95,7 @@ module PreludeSDK
           # @!parse
           #   # The feedback target. Only supports phone numbers for now.
           #   #
-          #   # @param type [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Target::Type]
+          #   # @param type [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type]
           #   # @param value [String]
           #   #
           #   def initialize(type:, value:, **) = super
@@ -104,7 +104,7 @@ module PreludeSDK
 
           # The type of the target. Either "phone_number" or "email_address".
           #
-          # @see PreludeSDK::Models::WatchFeedBackParams::Feedback::Target#type
+          # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target#type
           module Type
             extend PreludeSDK::Internal::Type::Enum
 
@@ -121,7 +121,7 @@ module PreludeSDK
 
         # The type of feedback.
         #
-        # @see PreludeSDK::Models::WatchFeedBackParams::Feedback#type
+        # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#type
         module Type
           extend PreludeSDK::Internal::Type::Enum
 
@@ -135,7 +135,7 @@ module PreludeSDK
           #   def self.values; end
         end
 
-        # @see PreludeSDK::Models::WatchFeedBackParams::Feedback#metadata
+        # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#metadata
         class Metadata < PreludeSDK::Internal::Type::BaseModel
           # @!attribute [r] correlation_id
           #   A user-defined identifier to correlate this feedback with.
@@ -157,7 +157,7 @@ module PreludeSDK
           # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
         end
 
-        # @see PreludeSDK::Models::WatchFeedBackParams::Feedback#signals
+        # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#signals
         class Signals < PreludeSDK::Internal::Type::BaseModel
           # @!attribute [r] app_version
           #   The version of your application.
@@ -193,12 +193,12 @@ module PreludeSDK
           # @!attribute [r] device_platform
           #   The type of the user's device.
           #
-          #   @return [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform, nil]
+          #   @return [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform, nil]
           optional :device_platform,
-                   enum: -> { PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform }
+                   enum: -> { PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform }
 
           # @!parse
-          #   # @return [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform]
+          #   # @return [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform]
           #   attr_writer :device_platform
 
           # @!attribute [r] ip
@@ -252,7 +252,7 @@ module PreludeSDK
           #   # @param app_version [String]
           #   # @param device_id [String]
           #   # @param device_model [String]
-          #   # @param device_platform [Symbol, PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals::DevicePlatform]
+          #   # @param device_platform [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform]
           #   # @param ip [String]
           #   # @param is_trusted_user [Boolean]
           #   # @param os_version [String]
@@ -276,7 +276,7 @@ module PreludeSDK
 
           # The type of the user's device.
           #
-          # @see PreludeSDK::Models::WatchFeedBackParams::Feedback::Signals#device_platform
+          # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals#device_platform
           module DevicePlatform
             extend PreludeSDK::Internal::Type::Enum
 

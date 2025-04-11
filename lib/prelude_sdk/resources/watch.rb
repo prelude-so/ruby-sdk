@@ -3,28 +3,6 @@
 module PreludeSDK
   module Resources
     class Watch
-      # Send feedback regarding your end-users verification funnel. Events will be
-      # analyzed for proactive fraud prevention and risk scoring.
-      #
-      # @overload feed_back(feedbacks:, request_options: {})
-      #
-      # @param feedbacks [Array<PreludeSDK::Models::WatchFeedBackParams::Feedback>]
-      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
-      #
-      # @return [PreludeSDK::Models::WatchFeedBackResponse]
-      #
-      # @see PreludeSDK::Models::WatchFeedBackParams
-      def feed_back(params)
-        parsed, options = PreludeSDK::Models::WatchFeedBackParams.dump_request(params)
-        @client.request(
-          method: :post,
-          path: "v2/watch/feedback",
-          body: parsed,
-          model: PreludeSDK::Models::WatchFeedBackResponse,
-          options: options
-        )
-      end
-
       # Predict the outcome of a verification based on Prelude’s anti-fraud system.
       #
       # @overload predict(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {})
@@ -45,6 +23,50 @@ module PreludeSDK
           path: "v2/watch/predict",
           body: parsed,
           model: PreludeSDK::Models::WatchPredictResponse,
+          options: options
+        )
+      end
+
+      # Send real-time event data from end-user interactions within your application.
+      # Events will be analyzed for proactive fraud prevention and risk scoring.
+      #
+      # @overload send_events(events:, request_options: {})
+      #
+      # @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [PreludeSDK::Models::WatchSendEventsResponse]
+      #
+      # @see PreludeSDK::Models::WatchSendEventsParams
+      def send_events(params)
+        parsed, options = PreludeSDK::Models::WatchSendEventsParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v2/watch/event",
+          body: parsed,
+          model: PreludeSDK::Models::WatchSendEventsResponse,
+          options: options
+        )
+      end
+
+      # Send feedback regarding your end-users verification funnel. Events will be
+      # analyzed for proactive fraud prevention and risk scoring.
+      #
+      # @overload send_feedbacks(feedbacks:, request_options: {})
+      #
+      # @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>]
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [PreludeSDK::Models::WatchSendFeedbacksResponse]
+      #
+      # @see PreludeSDK::Models::WatchSendFeedbacksParams
+      def send_feedbacks(params)
+        parsed, options = PreludeSDK::Models::WatchSendFeedbacksParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v2/watch/feedback",
+          body: parsed,
+          model: PreludeSDK::Models::WatchSendFeedbacksResponse,
           options: options
         )
       end

@@ -14,6 +14,9 @@ module PreludeSDK
     sig { returns(String) }
     attr_reader :api_token
 
+    sig { returns(PreludeSDK::Resources::Lookup) }
+    attr_reader :lookup
+
     sig { returns(PreludeSDK::Resources::Transactional) }
     attr_reader :transactional
 
