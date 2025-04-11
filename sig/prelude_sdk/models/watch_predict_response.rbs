@@ -4,7 +4,7 @@ module PreludeSDK
       {
         id: String,
         prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
-        reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+        request_id: String
       }
 
     class WatchPredictResponse < PreludeSDK::Internal::Type::BaseModel
@@ -12,63 +12,25 @@ module PreludeSDK
 
       attr_accessor prediction: PreludeSDK::Models::WatchPredictResponse::prediction
 
-      attr_accessor reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+      attr_accessor request_id: String
 
       def initialize: (
         id: String,
         prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
-        reasoning: PreludeSDK::Models::WatchPredictResponse::Reasoning
+        request_id: String
       ) -> void
 
       def to_hash: -> PreludeSDK::Models::watch_predict_response
 
-      type prediction = :allow | :block
+      type prediction = :legitimate | :suspicious
 
       module Prediction
         extend PreludeSDK::Internal::Type::Enum
 
-        ALLOW: :allow
-        BLOCK: :block
+        LEGITIMATE: :legitimate
+        SUSPICIOUS: :suspicious
 
         def self?.values: -> ::Array[PreludeSDK::Models::WatchPredictResponse::prediction]
-      end
-
-      type reasoning =
-        {
-          cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause,
-          score: Float
-        }
-
-      class Reasoning < PreludeSDK::Internal::Type::BaseModel
-        attr_reader cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause?
-
-        def cause=: (
-          PreludeSDK::Models::WatchPredictResponse::Reasoning::cause
-        ) -> PreludeSDK::Models::WatchPredictResponse::Reasoning::cause
-
-        attr_reader score: Float?
-
-        def score=: (Float) -> Float
-
-        def initialize: (
-          ?cause: PreludeSDK::Models::WatchPredictResponse::Reasoning::cause,
-          ?score: Float
-        ) -> void
-
-        def to_hash: -> PreludeSDK::Models::WatchPredictResponse::reasoning
-
-        type cause = :none | :smart_antifraud | :repeat_number | :invalid_line
-
-        module Cause
-          extend PreludeSDK::Internal::Type::Enum
-
-          NONE: :none
-          SMART_ANTIFRAUD: :smart_antifraud
-          REPEAT_NUMBER: :repeat_number
-          INVALID_LINE: :invalid_line
-
-          def self?.values: -> ::Array[PreludeSDK::Models::WatchPredictResponse::Reasoning::cause]
-        end
       end
     end
   end

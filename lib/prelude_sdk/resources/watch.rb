@@ -3,13 +3,12 @@
 module PreludeSDK
   module Resources
     class Watch
-      # Once the user with a trustworthy phone number demonstrates authentic behavior,
-      # call this endpoint to report their authenticity to our systems.
+      # Send feedback regarding your end-users verification funnel. Events will be
+      # analyzed for proactive fraud prevention and risk scoring.
       #
-      # @overload feed_back(feedback:, target:, request_options: {})
+      # @overload feed_back(feedbacks:, request_options: {})
       #
-      # @param feedback [PreludeSDK::Models::WatchFeedBackParams::Feedback]
-      # @param target [PreludeSDK::Models::WatchFeedBackParams::Target]
+      # @param feedbacks [Array<PreludeSDK::Models::WatchFeedBackParams::Feedback>]
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::WatchFeedBackResponse]
@@ -26,13 +25,13 @@ module PreludeSDK
         )
       end
 
-      # Identify trustworthy phone numbers to mitigate fake traffic or traffic involved
-      # in fraud and international revenue share fraud (IRSF) patterns. This endpoint
-      # must be implemented in conjunction with the `watch/feedback` endpoint.
+      # Predict the outcome of a verification based on Prelude’s anti-fraud system.
       #
-      # @overload predict(target:, signals: nil, request_options: {})
+      # @overload predict(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {})
       #
       # @param target [PreludeSDK::Models::WatchPredictParams::Target]
+      # @param dispatch_id [String]
+      # @param metadata [PreludeSDK::Models::WatchPredictParams::Metadata]
       # @param signals [PreludeSDK::Models::WatchPredictParams::Signals]
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
