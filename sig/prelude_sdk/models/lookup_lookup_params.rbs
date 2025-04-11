@@ -1,0 +1,35 @@
+module PreludeSDK
+  module Models
+    type lookup_lookup_params =
+      { type: ::Array[PreludeSDK::Models::LookupLookupParams::type_] }
+      & PreludeSDK::Internal::Type::request_parameters
+
+    class LookupLookupParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_reader type: ::Array[PreludeSDK::Models::LookupLookupParams::type_]?
+
+      def type=: (
+        ::Array[PreludeSDK::Models::LookupLookupParams::type_]
+      ) -> ::Array[PreludeSDK::Models::LookupLookupParams::type_]
+
+      def initialize: (
+        ?type: ::Array[PreludeSDK::Models::LookupLookupParams::type_],
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> PreludeSDK::Models::lookup_lookup_params
+
+      type type_ = :cnam
+
+      module Type
+        extend PreludeSDK::Internal::Type::Enum
+
+        CNAM: :cnam
+
+        def self?.values: -> ::Array[PreludeSDK::Models::LookupLookupParams::type_]
+      end
+    end
+  end
+end

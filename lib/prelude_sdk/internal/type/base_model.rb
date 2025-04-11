@@ -6,11 +6,11 @@ module PreludeSDK
       # @abstract
       #
       # @example
-      #   # `transactional_send_response` is a `PreludeSDK::Models::TransactionalSendResponse`
-      #   transactional_send_response => {
-      #     id: id,
-      #     created_at: created_at,
-      #     expires_at: expires_at
+      #   # `lookup_lookup_response` is a `PreludeSDK::Models::LookupLookupResponse`
+      #   lookup_lookup_response => {
+      #     caller_name: caller_name,
+      #     country_code: country_code,
+      #     flags: flags
       #   }
       class BaseModel
         extend PreludeSDK::Internal::Type::Converter
