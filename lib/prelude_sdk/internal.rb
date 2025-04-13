@@ -3,6 +3,10 @@
 module PreludeSDK
   # @api private
   module Internal
-    OMIT = Object.new.freeze
+    OMIT =
+      Object.new.tap do
+        _1.define_singleton_method(:inspect) { "#<#{PreludeSDK::Internal}::OMIT>" }
+      end
+        .freeze
   end
 end
