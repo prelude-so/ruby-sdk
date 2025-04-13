@@ -39,6 +39,8 @@ module PreludeSDK
           top value,
           state: PreludeSDK::Internal::Type::Converter::dump_state
         ) -> top
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end

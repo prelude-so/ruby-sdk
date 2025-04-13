@@ -82,6 +82,19 @@ module PreludeSDK
         #   #
         #   # @return [Symbol, Object]
         #   def dump(value, state:) = super
+
+        # @api private
+        #
+        # @param depth [Integer]
+        #
+        # @return [String]
+        def inspect(depth: 0)
+          # rubocop:disable Layout/LineLength
+          return super() if depth.positive?
+
+          "#{name}[#{values.map { PreludeSDK::Internal::Type::Converter.inspect(_1, depth: depth.succ) }.join(' | ')}]"
+          # rubocop:enable Layout/LineLength
+        end
       end
     end
   end

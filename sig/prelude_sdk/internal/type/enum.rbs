@@ -21,6 +21,8 @@ module PreludeSDK
           Symbol | top value,
           state: PreludeSDK::Internal::Type::Converter::dump_state
         ) -> (Symbol | top)
+
+        def inspect: (?depth: Integer) -> String
       end
     end
   end
