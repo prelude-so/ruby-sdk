@@ -8,7 +8,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 Documentation for releases of this gem can be found [on RubyDoc](https://gemdocs.org/gems/prelude-sdk).
 
-The underlying REST API documentation can be found on [docs.prelude.so](https://docs.prelude.so).
+The REST API documentation can be found on [docs.prelude.so](https://docs.prelude.so).
 
 ## Installation
 
