@@ -193,8 +193,9 @@ module PreludeSDK
           return super() if depth.positive?
 
           members = variants.map { PreludeSDK::Internal::Type::Converter.inspect(_1, depth: depth.succ) }
+          prefix = is_a?(Module) ? name : self.class.name
 
-          "#{name}[#{members.join(' | ')}]"
+          "#{prefix}[#{members.join(' | ')}]"
         end
       end
     end
