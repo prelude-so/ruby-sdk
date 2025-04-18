@@ -4,8 +4,7 @@ module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Verification#check
     class VerificationCheckParams < PreludeSDK::Internal::Type::BaseModel
-      # @!parse
-      #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute code

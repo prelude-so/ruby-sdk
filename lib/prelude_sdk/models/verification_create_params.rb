@@ -4,8 +4,7 @@ module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Verification#create
     class VerificationCreateParams < PreludeSDK::Internal::Type::BaseModel
-      # @!parse
-      #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute target
@@ -15,28 +14,20 @@ module PreludeSDK
       #   @return [PreludeSDK::Models::VerificationCreateParams::Target]
       required :target, -> { PreludeSDK::Models::VerificationCreateParams::Target }
 
-      # @!attribute [r] dispatch_id
+      # @!attribute dispatch_id
       #   The identifier of the dispatch that came from the front-end SDK.
       #
       #   @return [String, nil]
       optional :dispatch_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :dispatch_id
-
-      # @!attribute [r] metadata
+      # @!attribute metadata
       #   The metadata for this verification. This object will be returned with every
       #   response or webhook sent that refers to this verification.
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Metadata, nil]
       optional :metadata, -> { PreludeSDK::Models::VerificationCreateParams::Metadata }
 
-      # @!parse
-      #   # @return [PreludeSDK::Models::VerificationCreateParams::Metadata]
-      #   attr_writer :metadata
-
-      # @!attribute [r] method_
+      # @!attribute method_
       #   The method used for verifying this phone number. The 'voice' option provides an
       #   accessible alternative for visually impaired users by delivering the
       #   verification code through a phone call rather than a text message. It also
@@ -46,30 +37,18 @@ module PreludeSDK
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Method, nil]
       optional :method_, enum: -> { PreludeSDK::Models::VerificationCreateParams::Method }, api_name: :method
 
-      # @!parse
-      #   # @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Method]
-      #   attr_writer :method_
-
-      # @!attribute [r] options
+      # @!attribute options
       #   Verification options
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Options, nil]
       optional :options, -> { PreludeSDK::Models::VerificationCreateParams::Options }
 
-      # @!parse
-      #   # @return [PreludeSDK::Models::VerificationCreateParams::Options]
-      #   attr_writer :options
-
-      # @!attribute [r] signals
+      # @!attribute signals
       #   The signals used for anti-fraud. For more details, refer to
       #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
       #
       #   @return [PreludeSDK::Models::VerificationCreateParams::Signals, nil]
       optional :signals, -> { PreludeSDK::Models::VerificationCreateParams::Signals }
-
-      # @!parse
-      #   # @return [PreludeSDK::Models::VerificationCreateParams::Signals]
-      #   attr_writer :signals
 
       # @!method initialize(target:, dispatch_id: nil, metadata: nil, method_: nil, options: nil, signals: nil, request_options: {})
       #   @param target [PreludeSDK::Models::VerificationCreateParams::Target]
@@ -115,15 +94,11 @@ module PreludeSDK
       end
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
-        # @!attribute [r] correlation_id
+        # @!attribute correlation_id
         #   A user-defined identifier to correlate this verification with.
         #
         #   @return [String, nil]
         optional :correlation_id, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :correlation_id
 
         # @!method initialize(correlation_id: nil)
         #   The metadata for this verification. This object will be returned with every
@@ -148,18 +123,14 @@ module PreludeSDK
       end
 
       class Options < PreludeSDK::Internal::Type::BaseModel
-        # @!attribute [r] app_realm
+        # @!attribute app_realm
         #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
         #   Currently only Android devices are supported.
         #
         #   @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, nil]
         optional :app_realm, -> { PreludeSDK::Models::VerificationCreateParams::Options::AppRealm }
 
-        # @!parse
-        #   # @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
-        #   attr_writer :app_realm
-
-        # @!attribute [r] callback_url
+        # @!attribute callback_url
         #   The URL where webhooks will be sent when verification events occur, including
         #   verification creation, attempt creation, and delivery status changes. For more
         #   details, refer to [Webhook](/verify/v2/documentation/webhook).
@@ -167,22 +138,14 @@ module PreludeSDK
         #   @return [String, nil]
         optional :callback_url, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :callback_url
-
-        # @!attribute [r] code_size
+        # @!attribute code_size
         #   The size of the code generated. It should be between 4 and 8. Defaults to the
         #   code size specified from the Dashboard.
         #
         #   @return [Integer, nil]
         optional :code_size, Integer
 
-        # @!parse
-        #   # @return [Integer]
-        #   attr_writer :code_size
-
-        # @!attribute [r] custom_code
+        # @!attribute custom_code
         #   The custom code to use for OTP verification. This feature is only available for
         #   compatibility purposes and subject to Prelude’s approval. Contact us to discuss
         #   your use case. For more details, refer to
@@ -191,11 +154,7 @@ module PreludeSDK
         #   @return [String, nil]
         optional :custom_code, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :custom_code
-
-        # @!attribute [r] locale
+        # @!attribute locale
         #   A BCP-47 formatted locale string with the language the text message will be sent
         #   to. If there's no locale set, the language will be determined by the country
         #   code of the phone number. If the language specified doesn't exist, it defaults
@@ -204,41 +163,25 @@ module PreludeSDK
         #   @return [String, nil]
         optional :locale, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :locale
-
-        # @!attribute [r] sender_id
+        # @!attribute sender_id
         #   The Sender ID to use for this message. The Sender ID needs to be enabled by
         #   Prelude.
         #
         #   @return [String, nil]
         optional :sender_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :sender_id
-
-        # @!attribute [r] template_id
+        # @!attribute template_id
         #   The identifier of a verification template. It applies use case-specific
         #   settings, such as the message content or certain verification parameters.
         #
         #   @return [String, nil]
         optional :template_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :template_id
-
-        # @!attribute [r] variables
+        # @!attribute variables
         #   The variables to be replaced in the template.
         #
         #   @return [Hash{Symbol=>String}, nil]
         optional :variables, PreludeSDK::Internal::Type::HashOf[String]
-
-        # @!parse
-        #   # @return [Hash{Symbol=>String}]
-        #   attr_writer :variables
 
         # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil, variables: nil)
         #   Verification options
@@ -290,59 +233,39 @@ module PreludeSDK
       end
 
       class Signals < PreludeSDK::Internal::Type::BaseModel
-        # @!attribute [r] app_version
+        # @!attribute app_version
         #   The version of your application.
         #
         #   @return [String, nil]
         optional :app_version, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :app_version
-
-        # @!attribute [r] device_id
+        # @!attribute device_id
         #   The unique identifier for the user's device. For Android, this corresponds to
         #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         #
         #   @return [String, nil]
         optional :device_id, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :device_id
-
-        # @!attribute [r] device_model
+        # @!attribute device_model
         #   The model of the user's device.
         #
         #   @return [String, nil]
         optional :device_model, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :device_model
-
-        # @!attribute [r] device_platform
+        # @!attribute device_platform
         #   The type of the user's device.
         #
         #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform, nil]
         optional :device_platform,
                  enum: -> { PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform }
 
-        # @!parse
-        #   # @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform]
-        #   attr_writer :device_platform
-
-        # @!attribute [r] ip
+        # @!attribute ip
         #   The IP address of the user's device.
         #
         #   @return [String, nil]
         optional :ip, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :ip
-
-        # @!attribute [r] is_trusted_user
+        # @!attribute is_trusted_user
         #   This signal should provide a higher level of trust, indicating that the user is
         #   genuine. For more details, refer to
         #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
@@ -350,31 +273,19 @@ module PreludeSDK
         #   @return [Boolean, nil]
         optional :is_trusted_user, PreludeSDK::Internal::Type::Boolean
 
-        # @!parse
-        #   # @return [Boolean]
-        #   attr_writer :is_trusted_user
-
-        # @!attribute [r] os_version
+        # @!attribute os_version
         #   The version of the user's device operating system.
         #
         #   @return [String, nil]
         optional :os_version, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :os_version
-
-        # @!attribute [r] user_agent
+        # @!attribute user_agent
         #   The user agent of the user's device. If the individual fields (os_version,
         #   device_platform, device_model) are provided, we will prioritize those values
         #   instead of parsing them from the user agent string.
         #
         #   @return [String, nil]
         optional :user_agent, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :user_agent
 
         # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
         #   The signals used for anti-fraud. For more details, refer to

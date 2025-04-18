@@ -4,8 +4,7 @@ module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Watch#send_events
     class WatchSendEventsParams < PreludeSDK::Internal::Type::BaseModel
-      # @!parse
-      #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute events

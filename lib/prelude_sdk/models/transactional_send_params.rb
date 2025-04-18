@@ -4,8 +4,7 @@ module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Transactional#send_
     class TransactionalSendParams < PreludeSDK::Internal::Type::BaseModel
-      # @!parse
-      #   extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute template_id
@@ -20,47 +19,31 @@ module PreludeSDK
       #   @return [String]
       required :to, String
 
-      # @!attribute [r] callback_url
+      # @!attribute callback_url
       #   The callback URL.
       #
       #   @return [String, nil]
       optional :callback_url, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :callback_url
-
-      # @!attribute [r] correlation_id
+      # @!attribute correlation_id
       #   A unique, user-defined identifier that will be included in webhook events.
       #
       #   @return [String, nil]
       optional :correlation_id, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :correlation_id
-
-      # @!attribute [r] expires_at
+      # @!attribute expires_at
       #   The message expiration date.
       #
       #   @return [String, nil]
       optional :expires_at, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :expires_at
-
-      # @!attribute [r] from
+      # @!attribute from
       #   The Sender ID.
       #
       #   @return [String, nil]
       optional :from, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :from
-
-      # @!attribute [r] locale
+      # @!attribute locale
       #   A BCP-47 formatted locale string with the language the text message will be sent
       #   to. If there's no locale set, the language will be determined by the country
       #   code of the phone number. If the language specified doesn't exist, the default
@@ -69,19 +52,11 @@ module PreludeSDK
       #   @return [String, nil]
       optional :locale, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :locale
-
-      # @!attribute [r] variables
+      # @!attribute variables
       #   The variables to be replaced in the template.
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :variables, PreludeSDK::Internal::Type::HashOf[String]
-
-      # @!parse
-      #   # @return [Hash{Symbol=>String}]
-      #   attr_writer :variables
 
       # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, variables: nil, request_options: {})
       #   @param template_id [String]
