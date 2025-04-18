@@ -15,13 +15,9 @@ module PreludeSDK
       required :feedbacks,
                -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback] }
 
-      # @!parse
-      #   # @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>]
-      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(feedbacks:, request_options: {}, **) = super
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(feedbacks:, request_options: {})
+      #   @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>]
+      #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       class Feedback < PreludeSDK::Internal::Type::BaseModel
         # @!attribute target
@@ -67,16 +63,12 @@ module PreludeSDK
         #   # @return [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals]
         #   attr_writer :signals
 
-        # @!parse
-        #   # @param target [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target]
-        #   # @param type [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type]
-        #   # @param dispatch_id [String]
-        #   # @param metadata [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata]
-        #   # @param signals [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals]
-        #   #
-        #   def initialize(target:, type:, dispatch_id: nil, metadata: nil, signals: nil, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(target:, type:, dispatch_id: nil, metadata: nil, signals: nil)
+        #   @param target [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target]
+        #   @param type [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type]
+        #   @param dispatch_id [String]
+        #   @param metadata [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata]
+        #   @param signals [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals]
 
         # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#target
         class Target < PreludeSDK::Internal::Type::BaseModel
@@ -92,15 +84,11 @@ module PreludeSDK
           #   @return [String]
           required :value, String
 
-          # @!parse
-          #   # The feedback target. Only supports phone numbers for now.
-          #   #
-          #   # @param type [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type]
-          #   # @param value [String]
-          #   #
-          #   def initialize(type:, value:, **) = super
-
-          # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+          # @!method initialize(type:, value:)
+          #   The feedback target. Only supports phone numbers for now.
+          #
+          #   @param type [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type]
+          #   @param value [String]
 
           # The type of the target. Either "phone_number" or "email_address".
           #
@@ -111,11 +99,8 @@ module PreludeSDK
             PHONE_NUMBER = :phone_number
             EMAIL_ADDRESS = :email_address
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
 
@@ -128,11 +113,8 @@ module PreludeSDK
           VERIFICATION_STARTED = :"verification.started"
           VERIFICATION_COMPLETED = :"verification.completed"
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#metadata
@@ -147,14 +129,10 @@ module PreludeSDK
           #   # @return [String]
           #   attr_writer :correlation_id
 
-          # @!parse
-          #   # The metadata for this feedback.
-          #   #
-          #   # @param correlation_id [String]
-          #   #
-          #   def initialize(correlation_id: nil, **) = super
-
-          # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+          # @!method initialize(correlation_id: nil)
+          #   The metadata for this feedback.
+          #
+          #   @param correlation_id [String]
         end
 
         # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#signals
@@ -245,34 +223,18 @@ module PreludeSDK
           #   # @return [String]
           #   attr_writer :user_agent
 
-          # @!parse
-          #   # The signals used for anti-fraud. For more details, refer to
-          #   # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-          #   #
-          #   # @param app_version [String]
-          #   # @param device_id [String]
-          #   # @param device_model [String]
-          #   # @param device_platform [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform]
-          #   # @param ip [String]
-          #   # @param is_trusted_user [Boolean]
-          #   # @param os_version [String]
-          #   # @param user_agent [String]
-          #   #
-          #   def initialize(
-          #     app_version: nil,
-          #     device_id: nil,
-          #     device_model: nil,
-          #     device_platform: nil,
-          #     ip: nil,
-          #     is_trusted_user: nil,
-          #     os_version: nil,
-          #     user_agent: nil,
-          #     **
-          #   )
-          #     super
-          #   end
-
-          # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+          # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
+          #   The signals used for anti-fraud. For more details, refer to
+          #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
+          #
+          #   @param app_version [String]
+          #   @param device_id [String]
+          #   @param device_model [String]
+          #   @param device_platform [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform]
+          #   @param ip [String]
+          #   @param is_trusted_user [Boolean]
+          #   @param os_version [String]
+          #   @param user_agent [String]
 
           # The type of the user's device.
           #
@@ -286,11 +248,8 @@ module PreludeSDK
             TVOS = :tvos
             WEB = :web
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

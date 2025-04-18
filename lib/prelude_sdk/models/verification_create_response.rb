@@ -41,16 +41,12 @@ module PreludeSDK
       #   # @return [String]
       #   attr_writer :request_id
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
-      #   # @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
-      #   # @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata]
-      #   # @param request_id [String]
-      #   #
-      #   def initialize(id:, method_:, status:, metadata: nil, request_id: nil, **) = super
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, method_:, status:, metadata: nil, request_id: nil)
+      #   @param id [String]
+      #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
+      #   @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
+      #   @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata]
+      #   @param request_id [String]
 
       # The method used for verifying this phone number.
       #
@@ -60,11 +56,8 @@ module PreludeSDK
 
         MESSAGE = :message
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The status of the verification.
@@ -77,11 +70,8 @@ module PreludeSDK
         RETRY = :retry
         BLOCKED = :blocked
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see PreludeSDK::Models::VerificationCreateResponse#metadata
@@ -95,14 +85,10 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :correlation_id
 
-        # @!parse
-        #   # The metadata for this verification.
-        #   #
-        #   # @param correlation_id [String]
-        #   #
-        #   def initialize(correlation_id: nil, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(correlation_id: nil)
+        #   The metadata for this verification.
+        #
+        #   @param correlation_id [String]
       end
     end
   end

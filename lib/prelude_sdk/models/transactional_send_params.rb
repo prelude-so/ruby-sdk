@@ -83,33 +83,16 @@ module PreludeSDK
       #   # @return [Hash{Symbol=>String}]
       #   attr_writer :variables
 
-      # @!parse
-      #   # @param template_id [String]
-      #   # @param to [String]
-      #   # @param callback_url [String]
-      #   # @param correlation_id [String]
-      #   # @param expires_at [String]
-      #   # @param from [String]
-      #   # @param locale [String]
-      #   # @param variables [Hash{Symbol=>String}]
-      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     template_id:,
-      #     to:,
-      #     callback_url: nil,
-      #     correlation_id: nil,
-      #     expires_at: nil,
-      #     from: nil,
-      #     locale: nil,
-      #     variables: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, variables: nil, request_options: {})
+      #   @param template_id [String]
+      #   @param to [String]
+      #   @param callback_url [String]
+      #   @param correlation_id [String]
+      #   @param expires_at [String]
+      #   @param from [String]
+      #   @param locale [String]
+      #   @param variables [Hash{Symbol=>String}]
+      #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
     end
   end
 end

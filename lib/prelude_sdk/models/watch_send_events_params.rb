@@ -15,13 +15,9 @@ module PreludeSDK
       required :events,
                -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::WatchSendEventsParams::Event] }
 
-      # @!parse
-      #   # @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
-      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(events:, request_options: {}, **) = super
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(events:, request_options: {})
+      #   @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
+      #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       class Event < PreludeSDK::Internal::Type::BaseModel
         # @!attribute confidence
@@ -42,14 +38,10 @@ module PreludeSDK
         #   @return [PreludeSDK::Models::WatchSendEventsParams::Event::Target]
         required :target, -> { PreludeSDK::Models::WatchSendEventsParams::Event::Target }
 
-        # @!parse
-        #   # @param confidence [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence]
-        #   # @param label [String]
-        #   # @param target [PreludeSDK::Models::WatchSendEventsParams::Event::Target]
-        #   #
-        #   def initialize(confidence:, label:, target:, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(confidence:, label:, target:)
+        #   @param confidence [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence]
+        #   @param label [String]
+        #   @param target [PreludeSDK::Models::WatchSendEventsParams::Event::Target]
 
         # A confidence level you want to assign to the event.
         #
@@ -63,11 +55,8 @@ module PreludeSDK
           LOW = :low
           MINIMUM = :minimum
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # @see PreludeSDK::Models::WatchSendEventsParams::Event#target
@@ -84,15 +73,11 @@ module PreludeSDK
           #   @return [String]
           required :value, String
 
-          # @!parse
-          #   # The event target. Only supports phone numbers for now.
-          #   #
-          #   # @param type [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type]
-          #   # @param value [String]
-          #   #
-          #   def initialize(type:, value:, **) = super
-
-          # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+          # @!method initialize(type:, value:)
+          #   The event target. Only supports phone numbers for now.
+          #
+          #   @param type [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type]
+          #   @param value [String]
 
           # The type of the target. Either "phone_number" or "email_address".
           #
@@ -103,11 +88,8 @@ module PreludeSDK
             PHONE_NUMBER = :phone_number
             EMAIL_ADDRESS = :email_address
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end

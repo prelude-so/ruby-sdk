@@ -179,6 +179,7 @@ module PreludeSDK
         def deconstruct_keys(keys); end
 
         class << self
+          # @api private
           sig { params(model: PreludeSDK::Internal::Type::BaseModel).returns(PreludeSDK::Internal::AnyHash) }
           def walk(model); end
         end

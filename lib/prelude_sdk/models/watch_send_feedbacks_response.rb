@@ -17,13 +17,9 @@ module PreludeSDK
       #   @return [Symbol, PreludeSDK::Models::WatchSendFeedbacksResponse::Status]
       required :status, enum: -> { PreludeSDK::Models::WatchSendFeedbacksResponse::Status }
 
-      # @!parse
-      #   # @param request_id [String]
-      #   # @param status [Symbol, PreludeSDK::Models::WatchSendFeedbacksResponse::Status]
-      #   #
-      #   def initialize(request_id:, status:, **) = super
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(request_id:, status:)
+      #   @param request_id [String]
+      #   @param status [Symbol, PreludeSDK::Models::WatchSendFeedbacksResponse::Status]
 
       # The status of the feedbacks sending.
       #
@@ -33,11 +29,8 @@ module PreludeSDK
 
         SUCCESS = :success
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

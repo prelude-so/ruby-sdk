@@ -70,33 +70,16 @@ module PreludeSDK
       #   # @return [String]
       #   attr_writer :from
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param created_at [Time]
-      #   # @param expires_at [Time]
-      #   # @param template_id [String]
-      #   # @param to [String]
-      #   # @param variables [Hash{Symbol=>String}]
-      #   # @param callback_url [String]
-      #   # @param correlation_id [String]
-      #   # @param from [String]
-      #   #
-      #   def initialize(
-      #     id:,
-      #     created_at:,
-      #     expires_at:,
-      #     template_id:,
-      #     to:,
-      #     variables:,
-      #     callback_url: nil,
-      #     correlation_id: nil,
-      #     from: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, created_at:, expires_at:, template_id:, to:, variables:, callback_url: nil, correlation_id: nil, from: nil)
+      #   @param id [String]
+      #   @param created_at [Time]
+      #   @param expires_at [Time]
+      #   @param template_id [String]
+      #   @param to [String]
+      #   @param variables [Hash{Symbol=>String}]
+      #   @param callback_url [String]
+      #   @param correlation_id [String]
+      #   @param from [String]
     end
   end
 end

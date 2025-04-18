@@ -23,14 +23,10 @@ module PreludeSDK
       #   @return [String]
       required :request_id, String
 
-      # @!parse
-      #   # @param id [String]
-      #   # @param prediction [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
-      #   # @param request_id [String]
-      #   #
-      #   def initialize(id:, prediction:, request_id:, **) = super
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(id:, prediction:, request_id:)
+      #   @param id [String]
+      #   @param prediction [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
+      #   @param request_id [String]
 
       # The prediction outcome.
       #
@@ -41,11 +37,8 @@ module PreludeSDK
         LEGITIMATE = :legitimate
         SUSPICIOUS = :suspicious
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

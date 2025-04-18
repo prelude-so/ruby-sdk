@@ -39,15 +39,11 @@ module PreludeSDK
       #   # @return [String]
       #   attr_writer :request_id
 
-      # @!parse
-      #   # @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
-      #   # @param id [String]
-      #   # @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata]
-      #   # @param request_id [String]
-      #   #
-      #   def initialize(status:, id: nil, metadata: nil, request_id: nil, **) = super
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(status:, id: nil, metadata: nil, request_id: nil)
+      #   @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
+      #   @param id [String]
+      #   @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata]
+      #   @param request_id [String]
 
       # The status of the check.
       #
@@ -59,11 +55,8 @@ module PreludeSDK
         FAILURE = :failure
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see PreludeSDK::Models::VerificationCheckResponse#metadata
@@ -77,14 +70,10 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :correlation_id
 
-        # @!parse
-        #   # The metadata for this verification.
-        #   #
-        #   # @param correlation_id [String]
-        #   #
-        #   def initialize(correlation_id: nil, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(correlation_id: nil)
+        #   The metadata for this verification.
+        #
+        #   @param correlation_id [String]
       end
     end
   end
