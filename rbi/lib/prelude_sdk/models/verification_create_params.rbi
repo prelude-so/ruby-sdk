@@ -140,8 +140,7 @@ module PreludeSDK
           extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PHONE_NUMBER =
             T.let(:phone_number, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol)
@@ -179,8 +178,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Method) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCreateParams::Method::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         AUTO = T.let(:auto, PreludeSDK::Models::VerificationCreateParams::Method::TaggedSymbol)
         VOICE = T.let(:voice, PreludeSDK::Models::VerificationCreateParams::Method::TaggedSymbol)
@@ -340,14 +338,7 @@ module PreludeSDK
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ANDROID =
               T.let(:android, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol)
@@ -474,8 +465,7 @@ module PreludeSDK
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ANDROID =
             T.let(:android, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)

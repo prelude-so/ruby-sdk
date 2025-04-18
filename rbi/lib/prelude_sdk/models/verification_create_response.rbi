@@ -64,8 +64,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateResponse::Method) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         MESSAGE = T.let(:message, PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol)
 
@@ -78,8 +77,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateResponse::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SUCCESS = T.let(:success, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
         RETRY = T.let(:retry, PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol)
