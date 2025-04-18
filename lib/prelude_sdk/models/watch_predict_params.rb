@@ -45,16 +45,12 @@ module PreludeSDK
       #   # @return [PreludeSDK::Models::WatchPredictParams::Signals]
       #   attr_writer :signals
 
-      # @!parse
-      #   # @param target [PreludeSDK::Models::WatchPredictParams::Target]
-      #   # @param dispatch_id [String]
-      #   # @param metadata [PreludeSDK::Models::WatchPredictParams::Metadata]
-      #   # @param signals [PreludeSDK::Models::WatchPredictParams::Signals]
-      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {})
+      #   @param target [PreludeSDK::Models::WatchPredictParams::Target]
+      #   @param dispatch_id [String]
+      #   @param metadata [PreludeSDK::Models::WatchPredictParams::Metadata]
+      #   @param signals [PreludeSDK::Models::WatchPredictParams::Signals]
+      #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       class Target < PreludeSDK::Internal::Type::BaseModel
         # @!attribute type
@@ -69,15 +65,11 @@ module PreludeSDK
         #   @return [String]
         required :value, String
 
-        # @!parse
-        #   # The prediction target. Only supports phone numbers for now.
-        #   #
-        #   # @param type [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type]
-        #   # @param value [String]
-        #   #
-        #   def initialize(type:, value:, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(type:, value:)
+        #   The prediction target. Only supports phone numbers for now.
+        #
+        #   @param type [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type]
+        #   @param value [String]
 
         # The type of the target. Either "phone_number" or "email_address".
         #
@@ -88,11 +80,8 @@ module PreludeSDK
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -107,14 +96,10 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :correlation_id
 
-        # @!parse
-        #   # The metadata for this prediction.
-        #   #
-        #   # @param correlation_id [String]
-        #   #
-        #   def initialize(correlation_id: nil, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(correlation_id: nil)
+        #   The metadata for this prediction.
+        #
+        #   @param correlation_id [String]
       end
 
       class Signals < PreludeSDK::Internal::Type::BaseModel
@@ -203,34 +188,18 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :user_agent
 
-        # @!parse
-        #   # The signals used for anti-fraud. For more details, refer to
-        #   # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-        #   #
-        #   # @param app_version [String]
-        #   # @param device_id [String]
-        #   # @param device_model [String]
-        #   # @param device_platform [Symbol, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform]
-        #   # @param ip [String]
-        #   # @param is_trusted_user [Boolean]
-        #   # @param os_version [String]
-        #   # @param user_agent [String]
-        #   #
-        #   def initialize(
-        #     app_version: nil,
-        #     device_id: nil,
-        #     device_model: nil,
-        #     device_platform: nil,
-        #     ip: nil,
-        #     is_trusted_user: nil,
-        #     os_version: nil,
-        #     user_agent: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
+        #   The signals used for anti-fraud. For more details, refer to
+        #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
+        #
+        #   @param app_version [String]
+        #   @param device_id [String]
+        #   @param device_model [String]
+        #   @param device_platform [Symbol, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform]
+        #   @param ip [String]
+        #   @param is_trusted_user [Boolean]
+        #   @param os_version [String]
+        #   @param user_agent [String]
 
         # The type of the user's device.
         #
@@ -244,11 +213,8 @@ module PreludeSDK
           TVOS = :tvos
           WEB = :web
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

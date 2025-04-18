@@ -156,6 +156,7 @@ end
 class PreludeSDK::Test::EnumModelTest < Minitest::Test
   class E0
     include PreludeSDK::Internal::Type::Enum
+    attr_reader :values
 
     def initialize(*values) = (@values = values)
   end
@@ -575,6 +576,7 @@ end
 class PreludeSDK::Test::BaseModelQoLTest < Minitest::Test
   class E0
     include PreludeSDK::Internal::Type::Enum
+    attr_reader :values
 
     def initialize(*values) = (@values = values)
   end

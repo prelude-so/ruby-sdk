@@ -71,29 +71,14 @@ module PreludeSDK
       #   # @return [PreludeSDK::Models::VerificationCreateParams::Signals]
       #   attr_writer :signals
 
-      # @!parse
-      #   # @param target [PreludeSDK::Models::VerificationCreateParams::Target]
-      #   # @param dispatch_id [String]
-      #   # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata]
-      #   # @param method_ [Symbol, PreludeSDK::Models::VerificationCreateParams::Method]
-      #   # @param options [PreludeSDK::Models::VerificationCreateParams::Options]
-      #   # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals]
-      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(
-      #     target:,
-      #     dispatch_id: nil,
-      #     metadata: nil,
-      #     method_: nil,
-      #     options: nil,
-      #     signals: nil,
-      #     request_options: {},
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(target:, dispatch_id: nil, metadata: nil, method_: nil, options: nil, signals: nil, request_options: {})
+      #   @param target [PreludeSDK::Models::VerificationCreateParams::Target]
+      #   @param dispatch_id [String]
+      #   @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata]
+      #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateParams::Method]
+      #   @param options [PreludeSDK::Models::VerificationCreateParams::Options]
+      #   @param signals [PreludeSDK::Models::VerificationCreateParams::Signals]
+      #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       class Target < PreludeSDK::Internal::Type::BaseModel
         # @!attribute type
@@ -108,16 +93,12 @@ module PreludeSDK
         #   @return [String]
         required :value, String
 
-        # @!parse
-        #   # The verification target. Either a phone number or an email address. To use the
-        #   # email verification feature contact us to discuss your use case.
-        #   #
-        #   # @param type [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type]
-        #   # @param value [String]
-        #   #
-        #   def initialize(type:, value:, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(type:, value:)
+        #   The verification target. Either a phone number or an email address. To use the
+        #   email verification feature contact us to discuss your use case.
+        #
+        #   @param type [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type]
+        #   @param value [String]
 
         # The type of the target. Either "phone_number" or "email_address".
         #
@@ -128,11 +109,8 @@ module PreludeSDK
           PHONE_NUMBER = :phone_number
           EMAIL_ADDRESS = :email_address
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
 
@@ -147,15 +125,11 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :correlation_id
 
-        # @!parse
-        #   # The metadata for this verification. This object will be returned with every
-        #   # response or webhook sent that refers to this verification.
-        #   #
-        #   # @param correlation_id [String]
-        #   #
-        #   def initialize(correlation_id: nil, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(correlation_id: nil)
+        #   The metadata for this verification. This object will be returned with every
+        #   response or webhook sent that refers to this verification.
+        #
+        #   @param correlation_id [String]
       end
 
       # The method used for verifying this phone number. The 'voice' option provides an
@@ -169,11 +143,8 @@ module PreludeSDK
         AUTO = :auto
         VOICE = :voice
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       class Options < PreludeSDK::Internal::Type::BaseModel
@@ -269,33 +240,17 @@ module PreludeSDK
         #   # @return [Hash{Symbol=>String}]
         #   attr_writer :variables
 
-        # @!parse
-        #   # Verification options
-        #   #
-        #   # @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
-        #   # @param callback_url [String]
-        #   # @param code_size [Integer]
-        #   # @param custom_code [String]
-        #   # @param locale [String]
-        #   # @param sender_id [String]
-        #   # @param template_id [String]
-        #   # @param variables [Hash{Symbol=>String}]
-        #   #
-        #   def initialize(
-        #     app_realm: nil,
-        #     callback_url: nil,
-        #     code_size: nil,
-        #     custom_code: nil,
-        #     locale: nil,
-        #     sender_id: nil,
-        #     template_id: nil,
-        #     variables: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil, variables: nil)
+        #   Verification options
+        #
+        #   @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
+        #   @param callback_url [String]
+        #   @param code_size [Integer]
+        #   @param custom_code [String]
+        #   @param locale [String]
+        #   @param sender_id [String]
+        #   @param template_id [String]
+        #   @param variables [Hash{Symbol=>String}]
 
         # @see PreludeSDK::Models::VerificationCreateParams::Options#app_realm
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
@@ -312,16 +267,12 @@ module PreludeSDK
           #   @return [String]
           required :value, String
 
-          # @!parse
-          #   # This allows you to automatically retrieve and fill the OTP code on mobile apps.
-          #   # Currently only Android devices are supported.
-          #   #
-          #   # @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
-          #   # @param value [String]
-          #   #
-          #   def initialize(platform:, value:, **) = super
-
-          # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+          # @!method initialize(platform:, value:)
+          #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
+          #   Currently only Android devices are supported.
+          #
+          #   @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
+          #   @param value [String]
 
           # The platform the SMS will be sent to. We are currently only supporting
           # "android".
@@ -332,11 +283,8 @@ module PreludeSDK
 
             ANDROID = :android
 
-            finalize!
-
-            # @!parse
-            #   # @return [Array<Symbol>]
-            #   def self.values; end
+            # @!method self.values
+            #   @return [Array<Symbol>]
           end
         end
       end
@@ -428,34 +376,18 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :user_agent
 
-        # @!parse
-        #   # The signals used for anti-fraud. For more details, refer to
-        #   # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-        #   #
-        #   # @param app_version [String]
-        #   # @param device_id [String]
-        #   # @param device_model [String]
-        #   # @param device_platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform]
-        #   # @param ip [String]
-        #   # @param is_trusted_user [Boolean]
-        #   # @param os_version [String]
-        #   # @param user_agent [String]
-        #   #
-        #   def initialize(
-        #     app_version: nil,
-        #     device_id: nil,
-        #     device_model: nil,
-        #     device_platform: nil,
-        #     ip: nil,
-        #     is_trusted_user: nil,
-        #     os_version: nil,
-        #     user_agent: nil,
-        #     **
-        #   )
-        #     super
-        #   end
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
+        #   The signals used for anti-fraud. For more details, refer to
+        #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
+        #
+        #   @param app_version [String]
+        #   @param device_id [String]
+        #   @param device_model [String]
+        #   @param device_platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform]
+        #   @param ip [String]
+        #   @param is_trusted_user [Boolean]
+        #   @param os_version [String]
+        #   @param user_agent [String]
 
         # The type of the user's device.
         #
@@ -469,11 +401,8 @@ module PreludeSDK
           TVOS = :tvos
           WEB = :web
 
-          finalize!
-
-          # @!parse
-          #   # @return [Array<Symbol>]
-          #   def self.values; end
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
       end
     end

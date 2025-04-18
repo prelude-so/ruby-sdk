@@ -22,24 +22,17 @@ module PreludeSDK
       #   # @return [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>]
       #   attr_writer :type
 
-      # @!parse
-      #   # @param type [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>]
-      #   # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
-      #   #
-      #   def initialize(type: nil, request_options: {}, **) = super
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(type: nil, request_options: {})
+      #   @param type [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>]
+      #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       module Type
         extend PreludeSDK::Internal::Type::Enum
 
         CNAM = :cnam
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
     end
   end

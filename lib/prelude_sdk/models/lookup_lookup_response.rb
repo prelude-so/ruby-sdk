@@ -112,29 +112,14 @@ module PreludeSDK
       #   # @return [String]
       #   attr_writer :phone_number
 
-      # @!parse
-      #   # @param caller_name [String]
-      #   # @param country_code [String]
-      #   # @param flags [Array<Symbol, PreludeSDK::Models::LookupLookupResponse::Flag>]
-      #   # @param line_type [Symbol, PreludeSDK::Models::LookupLookupResponse::LineType]
-      #   # @param network_info [PreludeSDK::Models::LookupLookupResponse::NetworkInfo]
-      #   # @param original_network_info [PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo]
-      #   # @param phone_number [String]
-      #   #
-      #   def initialize(
-      #     caller_name: nil,
-      #     country_code: nil,
-      #     flags: nil,
-      #     line_type: nil,
-      #     network_info: nil,
-      #     original_network_info: nil,
-      #     phone_number: nil,
-      #     **
-      #   )
-      #     super
-      #   end
-
-      # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+      # @!method initialize(caller_name: nil, country_code: nil, flags: nil, line_type: nil, network_info: nil, original_network_info: nil, phone_number: nil)
+      #   @param caller_name [String]
+      #   @param country_code [String]
+      #   @param flags [Array<Symbol, PreludeSDK::Models::LookupLookupResponse::Flag>]
+      #   @param line_type [Symbol, PreludeSDK::Models::LookupLookupResponse::LineType]
+      #   @param network_info [PreludeSDK::Models::LookupLookupResponse::NetworkInfo]
+      #   @param original_network_info [PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo]
+      #   @param phone_number [String]
 
       module Flag
         extend PreludeSDK::Internal::Type::Enum
@@ -142,11 +127,8 @@ module PreludeSDK
         PORTED = :ported
         TEMPORARY = :temporary
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # The type of phone line.
@@ -205,11 +187,8 @@ module PreludeSDK
         VOICE_MAIL = :voice_mail
         VOIP = :voip
 
-        finalize!
-
-        # @!parse
-        #   # @return [Array<Symbol>]
-        #   def self.values; end
+        # @!method self.values
+        #   @return [Array<Symbol>]
       end
 
       # @see PreludeSDK::Models::LookupLookupResponse#network_info
@@ -244,16 +223,12 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :mnc
 
-        # @!parse
-        #   # The current carrier information.
-        #   #
-        #   # @param carrier_name [String]
-        #   # @param mcc [String]
-        #   # @param mnc [String]
-        #   #
-        #   def initialize(carrier_name: nil, mcc: nil, mnc: nil, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(carrier_name: nil, mcc: nil, mnc: nil)
+        #   The current carrier information.
+        #
+        #   @param carrier_name [String]
+        #   @param mcc [String]
+        #   @param mnc [String]
       end
 
       # @see PreludeSDK::Models::LookupLookupResponse#original_network_info
@@ -288,16 +263,12 @@ module PreludeSDK
         #   # @return [String]
         #   attr_writer :mnc
 
-        # @!parse
-        #   # The original carrier information.
-        #   #
-        #   # @param carrier_name [String]
-        #   # @param mcc [String]
-        #   # @param mnc [String]
-        #   #
-        #   def initialize(carrier_name: nil, mcc: nil, mnc: nil, **) = super
-
-        # def initialize: (Hash | PreludeSDK::Internal::Type::BaseModel) -> void
+        # @!method initialize(carrier_name: nil, mcc: nil, mnc: nil)
+        #   The original carrier information.
+        #
+        #   @param carrier_name [String]
+        #   @param mcc [String]
+        #   @param mnc [String]
       end
     end
   end
