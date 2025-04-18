@@ -71,8 +71,7 @@ module PreludeSDK
           extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PHONE_NUMBER =
             T.let(:phone_number, PreludeSDK::Models::VerificationCheckParams::Target::Type::TaggedSymbol)

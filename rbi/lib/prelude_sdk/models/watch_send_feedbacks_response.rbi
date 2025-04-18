@@ -31,8 +31,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendFeedbacksResponse::Status) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchSendFeedbacksResponse::Status::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         SUCCESS = T.let(:success, PreludeSDK::Models::WatchSendFeedbacksResponse::Status::TaggedSymbol)
 

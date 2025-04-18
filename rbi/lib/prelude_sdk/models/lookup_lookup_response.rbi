@@ -140,8 +140,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::LookupLookupResponse::Flag) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         PORTED = T.let(:ported, PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol)
         TEMPORARY = T.let(:temporary, PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol)
@@ -185,8 +184,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::LookupLookupResponse::LineType) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         CALLING_CARDS = T.let(:calling_cards, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
         FIXED_LINE = T.let(:fixed_line, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)

@@ -90,8 +90,7 @@ module PreludeSDK
           extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
           EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
@@ -227,8 +226,7 @@ module PreludeSDK
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ANDROID = T.let(:android, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol)
           IOS = T.let(:ios, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol)

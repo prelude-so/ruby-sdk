@@ -39,8 +39,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction) }
-        OrSymbol =
-          T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol) }
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
         LEGITIMATE = T.let(:legitimate, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)
         SUSPICIOUS = T.let(:suspicious, PreludeSDK::Models::WatchPredictResponse::Prediction::TaggedSymbol)

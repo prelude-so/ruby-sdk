@@ -138,8 +138,7 @@ module PreludeSDK
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             PHONE_NUMBER =
               T.let(:phone_number, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol)
@@ -160,8 +159,7 @@ module PreludeSDK
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           VERIFICATION_STARTED =
             T.let(:"verification.started", PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type::TaggedSymbol)
@@ -310,14 +308,7 @@ module PreludeSDK
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform) }
-            OrSymbol =
-              T.type_alias do
-                T.any(
-                  Symbol,
-                  String,
-                  PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::DevicePlatform::TaggedSymbol
-                )
-              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ANDROID =
               T.let(

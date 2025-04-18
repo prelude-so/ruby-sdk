@@ -79,8 +79,7 @@ module PreludeSDK
 
           TaggedSymbol =
             T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence) }
-          OrSymbol =
-            T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol) }
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           MAXIMUM = T.let(:maximum, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol)
           HIGH = T.let(:high, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol)
@@ -120,8 +119,7 @@ module PreludeSDK
 
             TaggedSymbol =
               T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type) }
-            OrSymbol =
-              T.type_alias { T.any(Symbol, String, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::TaggedSymbol) }
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             PHONE_NUMBER =
               T.let(:phone_number, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::TaggedSymbol)
