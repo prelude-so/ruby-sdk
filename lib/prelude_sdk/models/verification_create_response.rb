@@ -22,24 +22,16 @@ module PreludeSDK
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
       required :status, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Status }
 
-      # @!attribute [r] metadata
+      # @!attribute metadata
       #   The metadata for this verification.
       #
       #   @return [PreludeSDK::Models::VerificationCreateResponse::Metadata, nil]
       optional :metadata, -> { PreludeSDK::Models::VerificationCreateResponse::Metadata }
 
-      # @!parse
-      #   # @return [PreludeSDK::Models::VerificationCreateResponse::Metadata]
-      #   attr_writer :metadata
-
-      # @!attribute [r] request_id
+      # @!attribute request_id
       #
       #   @return [String, nil]
       optional :request_id, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :request_id
 
       # @!method initialize(id:, method_:, status:, metadata: nil, request_id: nil)
       #   @param id [String]
@@ -76,14 +68,10 @@ module PreludeSDK
 
       # @see PreludeSDK::Models::VerificationCreateResponse#metadata
       class Metadata < PreludeSDK::Internal::Type::BaseModel
-        # @!attribute [r] correlation_id
+        # @!attribute correlation_id
         #
         #   @return [String, nil]
         optional :correlation_id, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :correlation_id
 
         # @!method initialize(correlation_id: nil)
         #   The metadata for this verification.

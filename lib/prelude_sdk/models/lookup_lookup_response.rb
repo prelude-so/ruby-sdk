@@ -4,7 +4,7 @@ module PreludeSDK
   module Models
     # @see PreludeSDK::Resources::Lookup#lookup
     class LookupLookupResponse < PreludeSDK::Internal::Type::BaseModel
-      # @!attribute [r] caller_name
+      # @!attribute caller_name
       #   The CNAM (Caller ID Name) associated with the phone number. Contact us if you
       #   need to use this functionality. Once enabled, put `cnam` option to `type` query
       #   parameter.
@@ -12,21 +12,13 @@ module PreludeSDK
       #   @return [String, nil]
       optional :caller_name, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :caller_name
-
-      # @!attribute [r] country_code
+      # @!attribute country_code
       #   The country code of the phone number.
       #
       #   @return [String, nil]
       optional :country_code, String
 
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :country_code
-
-      # @!attribute [r] flags
+      # @!attribute flags
       #   A list of flags associated with the phone number.
       #
       #   - `ported` - Indicates the phone number has been transferred from one carrier to
@@ -38,11 +30,7 @@ module PreludeSDK
       optional :flags,
                -> { PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::Models::LookupLookupResponse::Flag] }
 
-      # @!parse
-      #   # @return [Array<Symbol, PreludeSDK::Models::LookupLookupResponse::Flag>]
-      #   attr_writer :flags
-
-      # @!attribute [r] line_type
+      # @!attribute line_type
       #   The type of phone line.
       #
       #   - `calling_cards` - Numbers that are associated with providers of pre-paid
@@ -78,39 +66,23 @@ module PreludeSDK
       #   @return [Symbol, PreludeSDK::Models::LookupLookupResponse::LineType, nil]
       optional :line_type, enum: -> { PreludeSDK::Models::LookupLookupResponse::LineType }
 
-      # @!parse
-      #   # @return [Symbol, PreludeSDK::Models::LookupLookupResponse::LineType]
-      #   attr_writer :line_type
-
-      # @!attribute [r] network_info
+      # @!attribute network_info
       #   The current carrier information.
       #
       #   @return [PreludeSDK::Models::LookupLookupResponse::NetworkInfo, nil]
       optional :network_info, -> { PreludeSDK::Models::LookupLookupResponse::NetworkInfo }
 
-      # @!parse
-      #   # @return [PreludeSDK::Models::LookupLookupResponse::NetworkInfo]
-      #   attr_writer :network_info
-
-      # @!attribute [r] original_network_info
+      # @!attribute original_network_info
       #   The original carrier information.
       #
       #   @return [PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo, nil]
       optional :original_network_info, -> { PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo }
 
-      # @!parse
-      #   # @return [PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo]
-      #   attr_writer :original_network_info
-
-      # @!attribute [r] phone_number
+      # @!attribute phone_number
       #   The phone number.
       #
       #   @return [String, nil]
       optional :phone_number, String
-
-      # @!parse
-      #   # @return [String]
-      #   attr_writer :phone_number
 
       # @!method initialize(caller_name: nil, country_code: nil, flags: nil, line_type: nil, network_info: nil, original_network_info: nil, phone_number: nil)
       #   @param caller_name [String]
@@ -193,35 +165,23 @@ module PreludeSDK
 
       # @see PreludeSDK::Models::LookupLookupResponse#network_info
       class NetworkInfo < PreludeSDK::Internal::Type::BaseModel
-        # @!attribute [r] carrier_name
+        # @!attribute carrier_name
         #   The name of the carrier.
         #
         #   @return [String, nil]
         optional :carrier_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :carrier_name
-
-        # @!attribute [r] mcc
+        # @!attribute mcc
         #   Mobile Country Code.
         #
         #   @return [String, nil]
         optional :mcc, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :mcc
-
-        # @!attribute [r] mnc
+        # @!attribute mnc
         #   Mobile Network Code.
         #
         #   @return [String, nil]
         optional :mnc, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :mnc
 
         # @!method initialize(carrier_name: nil, mcc: nil, mnc: nil)
         #   The current carrier information.
@@ -233,35 +193,23 @@ module PreludeSDK
 
       # @see PreludeSDK::Models::LookupLookupResponse#original_network_info
       class OriginalNetworkInfo < PreludeSDK::Internal::Type::BaseModel
-        # @!attribute [r] carrier_name
+        # @!attribute carrier_name
         #   The name of the original carrier.
         #
         #   @return [String, nil]
         optional :carrier_name, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :carrier_name
-
-        # @!attribute [r] mcc
+        # @!attribute mcc
         #   Mobile Country Code.
         #
         #   @return [String, nil]
         optional :mcc, String
 
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :mcc
-
-        # @!attribute [r] mnc
+        # @!attribute mnc
         #   Mobile Network Code.
         #
         #   @return [String, nil]
         optional :mnc, String
-
-        # @!parse
-        #   # @return [String]
-        #   attr_writer :mnc
 
         # @!method initialize(carrier_name: nil, mcc: nil, mnc: nil)
         #   The original carrier information.
