@@ -30,6 +30,8 @@ module PreludeSDK
 
         def ==: (top other) -> bool
 
+        def hash: -> Integer
+
         def coerce: (
           top value,
           state: PreludeSDK::Internal::Type::Converter::coerce_state

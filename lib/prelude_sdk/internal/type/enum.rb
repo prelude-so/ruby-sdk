@@ -37,6 +37,9 @@ module PreludeSDK
           # rubocop:enable Style/CaseEquality
         end
 
+        # @return [Integer]
+        def hash = values.to_set.hash
+
         # @api private
         #
         # Unlike with primitives, `Enum` additionally validates that the value is a member
