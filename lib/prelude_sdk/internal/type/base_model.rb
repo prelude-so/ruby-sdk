@@ -4,14 +4,6 @@ module PreludeSDK
   module Internal
     module Type
       # @abstract
-      #
-      # @example
-      #   # `lookup_lookup_response` is a `PreludeSDK::Models::LookupLookupResponse`
-      #   lookup_lookup_response => {
-      #     caller_name: caller_name,
-      #     country_code: country_code,
-      #     flags: flags
-      #   }
       class BaseModel
         extend PreludeSDK::Internal::Type::Converter
 
@@ -98,11 +90,13 @@ module PreludeSDK
                   target, value, state: state
                 )
               end
-            rescue StandardError
+            rescue StandardError => e
               cls = self.class.name.split("::").last
-              # rubocop:disable Layout/LineLength
-              message = "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}. To get the unparsed API response, use #{cls}[:#{__method__}]."
-              # rubocop:enable Layout/LineLength
+              message = [
+                "Failed to parse #{cls}.#{__method__} from #{value.class} to #{target.inspect}.",
+                "To get the unparsed API response, use #{cls}[#{__method__.inspect}].",
+                "Cause: #{e.message}"
+              ].join(" ")
               raise PreludeSDK::Errors::ConversionError.new(message)
             end
           end
@@ -176,12 +170,18 @@ module PreludeSDK
           def ==(other)
             other.is_a?(Class) && other <= PreludeSDK::Internal::Type::BaseModel && other.fields == fields
           end
+
+          # @return [Integer]
+          def hash = fields.hash
         end
 
         # @param other [Object]
         #
         # @return [Boolean]
         def ==(other) = self.class == other.class && @data == other.to_h
+
+        # @return [Integer]
+        def hash = [self.class, @data].hash
 
         class << self
           # @api private
