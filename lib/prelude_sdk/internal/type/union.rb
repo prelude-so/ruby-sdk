@@ -87,6 +87,8 @@ module PreludeSDK
         # rubocop:disable Style/HashEachMethods
         # rubocop:disable Style/CaseEquality
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -96,6 +98,8 @@ module PreludeSDK
           end
         end
 
+        # @api public
+        #
         # @param other [Object]
         #
         # @return [Boolean]
@@ -103,6 +107,8 @@ module PreludeSDK
           PreludeSDK::Internal::Type::Union === other && other.derefed_variants == derefed_variants
         end
 
+        # @api public
+        #
         # @return [Integer]
         def hash = variants.hash
 

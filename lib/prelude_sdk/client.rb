@@ -57,10 +57,10 @@ module PreludeSDK
     def initialize(
       api_token: ENV["API_TOKEN"],
       base_url: ENV["PRELUDE_BASE_URL"],
-      max_retries: DEFAULT_MAX_RETRIES,
-      timeout: DEFAULT_TIMEOUT_IN_SECONDS,
-      initial_retry_delay: DEFAULT_INITIAL_RETRY_DELAY,
-      max_retry_delay: DEFAULT_MAX_RETRY_DELAY
+      max_retries: PreludeSDK::Client::DEFAULT_MAX_RETRIES,
+      timeout: PreludeSDK::Client::DEFAULT_TIMEOUT_IN_SECONDS,
+      initial_retry_delay: PreludeSDK::Client::DEFAULT_INITIAL_RETRY_DELAY,
+      max_retry_delay: PreludeSDK::Client::DEFAULT_MAX_RETRY_DELAY
     )
       base_url ||= "https://api.prelude.dev"
 
