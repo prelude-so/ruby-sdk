@@ -394,7 +394,7 @@ module PreludeSDK
 
         # Create a new instance of a model.
         #
-        # @param data [Hash{Symbol=>Object}, PreludeSDK::Internal::Type::BaseModel]
+        # @param data [Hash{Symbol=>Object}, self]
         def initialize(data = {})
           case PreludeSDK::Internal::Util.coerce_hash(data)
           in Hash => coerced
