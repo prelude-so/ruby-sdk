@@ -216,9 +216,9 @@ module PreludeSDK
         #
         #   @option req [Symbol, nil] :unwrap
         #
-        #   @option req [Class, nil] :page
+        #   @option req [Class<PreludeSDK::Internal::Type::BasePage>, nil] :page
         #
-        #   @option req [Class, nil] :stream
+        #   @option req [Class<PreludeSDK::Internal::Type::BaseStream>, nil] :stream
         #
         #   @option req [PreludeSDK::Internal::Type::Converter, Class, nil] :model
         #
@@ -417,9 +417,9 @@ module PreludeSDK
         #
         # @param unwrap [Symbol, nil]
         #
-        # @param page [Class, nil]
+        # @param page [Class<PreludeSDK::Internal::Type::BasePage>, nil]
         #
-        # @param stream [Class, nil]
+        # @param stream [Class<PreludeSDK::Internal::Type::BaseStream>, nil]
         #
         # @param model [PreludeSDK::Internal::Type::Converter, Class, nil]
         #

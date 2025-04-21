@@ -19,7 +19,7 @@ module PreludeSDK
         # @api public
         #
         # @raise [PreludeSDK::Errors::APIError]
-        # @return [PreludeSDK::Internal::Type::BasePage]
+        # @return [self]
         def next_page = (raise NotImplementedError)
 
         # @api public

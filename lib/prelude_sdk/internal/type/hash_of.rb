@@ -28,6 +28,8 @@ module PreludeSDK
         #   @option spec [Proc] :union
         #
         #   @option spec [Boolean] :"nil?"
+        #
+        # @return [PreludeSDK::Internal::Type::HashOf]
         def self.[](...) = new(...)
 
         # @api public
