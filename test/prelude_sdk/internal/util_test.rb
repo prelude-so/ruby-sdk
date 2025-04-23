@@ -157,6 +157,22 @@ class PreludeSDK::Test::UtilUriHandlingTest < Minitest::Test
   end
 end
 
+class PreludeSDK::Test::RegexMatchTest < Minitest::Test
+  def test_json_content
+    cases = {
+      "application/json" => true,
+      "application/jsonl" => false,
+      "application/vnd.github.v3+json" => true,
+      "application/vnd.api+json" => true
+    }
+    cases.each do |header, _verdict|
+      assert_pattern do
+        PreludeSDK::Internal::Util::JSON_CONTENT.match?(header) => verdict
+      end
+    end
+  end
+end
+
 class PreludeSDK::Test::UtilFormDataEncodingTest < Minitest::Test
   class FakeCGI < CGI
     def initialize(headers, io)
