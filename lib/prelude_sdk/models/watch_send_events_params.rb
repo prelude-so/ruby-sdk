@@ -15,7 +15,8 @@ module PreludeSDK
                -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::WatchSendEventsParams::Event] }
 
       # @!method initialize(events:, request_options: {})
-      #   @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
+      #   @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>] A list of events to dispatch.
+      #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       class Event < PreludeSDK::Internal::Type::BaseModel
@@ -38,9 +39,11 @@ module PreludeSDK
         required :target, -> { PreludeSDK::Models::WatchSendEventsParams::Event::Target }
 
         # @!method initialize(confidence:, label:, target:)
-        #   @param confidence [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence]
-        #   @param label [String]
-        #   @param target [PreludeSDK::Models::WatchSendEventsParams::Event::Target]
+        #   @param confidence [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence] A confidence level you want to assign to the event.
+        #
+        #   @param label [String] A label to describe what the event refers to.
+        #
+        #   @param target [PreludeSDK::Models::WatchSendEventsParams::Event::Target] The event target. Only supports phone numbers for now.
 
         # A confidence level you want to assign to the event.
         #
@@ -75,8 +78,9 @@ module PreludeSDK
           # @!method initialize(type:, value:)
           #   The event target. Only supports phone numbers for now.
           #
-          #   @param type [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type]
-          #   @param value [String]
+          #   @param type [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type] The type of the target. Either "phone_number" or "email_address".
+          #
+          #   @param value [String] An E.164 formatted phone number or an email address.
 
           # The type of the target. Either "phone_number" or "email_address".
           #

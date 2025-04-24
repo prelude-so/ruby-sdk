@@ -18,7 +18,11 @@ module PreludeSDK
                -> { PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::Models::LookupLookupParams::Type] }
 
       # @!method initialize(type: nil, request_options: {})
-      #   @param type [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>]
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::LookupLookupParams} for more details.
+      #
+      #   @param type [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>] Optional features. Possible values are: ...
+      #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       module Type

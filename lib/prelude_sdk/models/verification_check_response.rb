@@ -28,9 +28,12 @@ module PreludeSDK
       optional :request_id, String
 
       # @!method initialize(status:, id: nil, metadata: nil, request_id: nil)
-      #   @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
-      #   @param id [String]
-      #   @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata]
+      #   @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status] The status of the check.
+      #
+      #   @param id [String] The verification identifier.
+      #
+      #   @param metadata [PreludeSDK::Models::VerificationCheckResponse::Metadata] The metadata for this verification.
+      #
       #   @param request_id [String]
 
       # The status of the check.

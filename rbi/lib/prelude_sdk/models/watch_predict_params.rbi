@@ -50,8 +50,18 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {}); end
-
+      def self.new(
+        # The prediction target. Only supports phone numbers for now.
+        target:,
+        # The identifier of the dispatch that came from the front-end SDK.
+        dispatch_id: nil,
+        # The metadata for this prediction.
+        metadata: nil,
+        # The signals used for anti-fraud. For more details, refer to
+        # [Signals](/verify/v2/documentation/prevent-fraud#signals).
+        signals: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -80,8 +90,12 @@ module PreludeSDK
           params(type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
         end
-        def self.new(type:, value:); end
-
+        def self.new(
+          # The type of the target. Either "phone_number" or "email_address".
+          type:,
+          # An E.164 formatted phone number or an email address.
+          value:
+        ); end
         sig { override.returns({type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String}) }
         def to_hash; end
 
@@ -110,8 +124,10 @@ module PreludeSDK
 
         # The metadata for this prediction.
         sig { params(correlation_id: String).returns(T.attached_class) }
-        def self.new(correlation_id: nil); end
-
+        def self.new(
+          # A user-defined identifier to correlate this prediction with.
+          correlation_id: nil
+        ); end
         sig { override.returns({correlation_id: String}) }
         def to_hash; end
       end
@@ -194,13 +210,26 @@ module PreludeSDK
             .returns(T.attached_class)
         end
         def self.new(
+          # The version of your application.
           app_version: nil,
+          # The unique identifier for the user's device. For Android, this corresponds to
+          # the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
           device_id: nil,
+          # The model of the user's device.
           device_model: nil,
+          # The type of the user's device.
           device_platform: nil,
+          # The IP address of the user's device.
           ip: nil,
+          # This signal should provide a higher level of trust, indicating that the user is
+          # genuine. For more details, refer to
+          # [Signals](/verify/v2/documentation/prevent-fraud#signals).
           is_trusted_user: nil,
+          # The version of the user's device operating system.
           os_version: nil,
+          # The user agent of the user's device. If the individual fields (os_version,
+          # device_platform, device_model) are provided, we will prioritize those values
+          # instead of parsing them from the user agent string.
           user_agent: nil
         ); end
         sig do

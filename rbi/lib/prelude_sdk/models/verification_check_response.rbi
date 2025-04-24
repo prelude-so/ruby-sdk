@@ -41,8 +41,15 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(status:, id: nil, metadata: nil, request_id: nil); end
-
+      def self.new(
+        # The status of the check.
+        status:,
+        # The verification identifier.
+        id: nil,
+        # The metadata for this verification.
+        metadata: nil,
+        request_id: nil
+      ); end
       sig do
         override
           .returns(

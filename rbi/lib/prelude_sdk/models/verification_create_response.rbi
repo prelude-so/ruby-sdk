@@ -43,8 +43,17 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, method_:, status:, metadata: nil, request_id: nil); end
-
+      def self.new(
+        # The verification identifier.
+        id:,
+        # The method used for verifying this phone number.
+        method_:,
+        # The status of the verification.
+        status:,
+        # The metadata for this verification.
+        metadata: nil,
+        request_id: nil
+      ); end
       sig do
         override
           .returns(

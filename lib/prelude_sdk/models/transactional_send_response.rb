@@ -59,15 +59,23 @@ module PreludeSDK
       optional :from, String
 
       # @!method initialize(id:, created_at:, expires_at:, template_id:, to:, variables:, callback_url: nil, correlation_id: nil, from: nil)
-      #   @param id [String]
-      #   @param created_at [Time]
-      #   @param expires_at [Time]
-      #   @param template_id [String]
-      #   @param to [String]
-      #   @param variables [Hash{Symbol=>String}]
-      #   @param callback_url [String]
-      #   @param correlation_id [String]
-      #   @param from [String]
+      #   @param id [String] The message identifier.
+      #
+      #   @param created_at [Time] The message creation date.
+      #
+      #   @param expires_at [Time] The message expiration date.
+      #
+      #   @param template_id [String] The template identifier.
+      #
+      #   @param to [String] The recipient's phone number.
+      #
+      #   @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
+      #
+      #   @param callback_url [String] The callback URL.
+      #
+      #   @param correlation_id [String] A unique, user-defined identifier that will be included in webhook events.
+      #
+      #   @param from [String] The Sender ID.
     end
   end
 end

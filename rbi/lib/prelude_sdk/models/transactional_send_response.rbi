@@ -63,14 +63,23 @@ module PreludeSDK
           .returns(T.attached_class)
       end
       def self.new(
+        # The message identifier.
         id:,
+        # The message creation date.
         created_at:,
+        # The message expiration date.
         expires_at:,
+        # The template identifier.
         template_id:,
+        # The recipient's phone number.
         to:,
+        # The variables to be replaced in the template.
         variables:,
+        # The callback URL.
         callback_url: nil,
+        # A unique, user-defined identifier that will be included in webhook events.
         correlation_id: nil,
+        # The Sender ID.
         from: nil
       ); end
       sig do

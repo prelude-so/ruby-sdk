@@ -51,12 +51,25 @@ module PreludeSDK
       optional :signals, -> { PreludeSDK::Models::VerificationCreateParams::Signals }
 
       # @!method initialize(target:, dispatch_id: nil, metadata: nil, method_: nil, options: nil, signals: nil, request_options: {})
-      #   @param target [PreludeSDK::Models::VerificationCreateParams::Target]
-      #   @param dispatch_id [String]
-      #   @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata]
-      #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateParams::Method]
-      #   @param options [PreludeSDK::Models::VerificationCreateParams::Options]
-      #   @param signals [PreludeSDK::Models::VerificationCreateParams::Signals]
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::VerificationCreateParams} for more details.
+      #
+      #   @param target [PreludeSDK::Models::VerificationCreateParams::Target] The verification target. Either a phone number or an email address. To use the e
+      #   ...
+      #
+      #   @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
+      #
+      #   @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata] The metadata for this verification. This object will be returned with every resp
+      #   ...
+      #
+      #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateParams::Method] The method used for verifying this phone number. The 'voice' option provides an
+      #   ...
+      #
+      #   @param options [PreludeSDK::Models::VerificationCreateParams::Options] Verification options
+      #
+      #   @param signals [PreludeSDK::Models::VerificationCreateParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
+      #   ...
+      #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       class Target < PreludeSDK::Internal::Type::BaseModel
@@ -76,8 +89,9 @@ module PreludeSDK
         #   The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
         #
-        #   @param type [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type]
-        #   @param value [String]
+        #   @param type [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
+        #
+        #   @param value [String] An E.164 formatted phone number or an email address.
 
         # The type of the target. Either "phone_number" or "email_address".
         #
@@ -104,7 +118,7 @@ module PreludeSDK
         #   The metadata for this verification. This object will be returned with every
         #   response or webhook sent that refers to this verification.
         #
-        #   @param correlation_id [String]
+        #   @param correlation_id [String] A user-defined identifier to correlate this verification with.
       end
 
       # The method used for verifying this phone number. The 'voice' option provides an
@@ -184,16 +198,33 @@ module PreludeSDK
         optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
         # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, sender_id: nil, template_id: nil, variables: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::VerificationCreateParams::Options} for more details.
+        #
         #   Verification options
         #
-        #   @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm]
-        #   @param callback_url [String]
-        #   @param code_size [Integer]
-        #   @param custom_code [String]
-        #   @param locale [String]
-        #   @param sender_id [String]
-        #   @param template_id [String]
-        #   @param variables [Hash{Symbol=>String}]
+        #   @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm] This allows you to automatically retrieve and fill the OTP code on mobile apps.
+        #   ...
+        #
+        #   @param callback_url [String] The URL where webhooks will be sent when verification events occur, including ve
+        #   ...
+        #
+        #   @param code_size [Integer] The size of the code generated. It should be between 4 and 8. Defaults to the co
+        #   ...
+        #
+        #   @param custom_code [String] The custom code to use for OTP verification. This feature is only available for
+        #   ...
+        #
+        #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
+        #   ...
+        #
+        #   @param sender_id [String] The Sender ID to use for this message. The Sender ID needs to be enabled by Prel
+        #   ...
+        #
+        #   @param template_id [String] The identifier of a verification template. It applies use case-specific settings
+        #   ...
+        #
+        #   @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
 
         # @see PreludeSDK::Models::VerificationCreateParams::Options#app_realm
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
@@ -211,11 +242,17 @@ module PreludeSDK
           required :value, String
 
           # @!method initialize(platform:, value:)
+          #   Some parameter documentations has been truncated, see
+          #   {PreludeSDK::Models::VerificationCreateParams::Options::AppRealm} for more
+          #   details.
+          #
           #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
           #   Currently only Android devices are supported.
           #
-          #   @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
-          #   @param value [String]
+          #   @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform] The platform the SMS will be sent to. We are currently only supporting "android"
+          #   ...
+          #
+          #   @param value [String] The Android SMS Retriever API hash code that identifies your app.
 
           # The platform the SMS will be sent to. We are currently only supporting
           # "android".
@@ -288,17 +325,30 @@ module PreludeSDK
         optional :user_agent, String
 
         # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::VerificationCreateParams::Signals} for more details.
+        #
         #   The signals used for anti-fraud. For more details, refer to
         #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
         #
-        #   @param app_version [String]
-        #   @param device_id [String]
-        #   @param device_model [String]
-        #   @param device_platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform]
-        #   @param ip [String]
-        #   @param is_trusted_user [Boolean]
-        #   @param os_version [String]
-        #   @param user_agent [String]
+        #   @param app_version [String] The version of your application.
+        #
+        #   @param device_id [String] The unique identifier for the user's device. For Android, this corresponds to th
+        #   ...
+        #
+        #   @param device_model [String] The model of the user's device.
+        #
+        #   @param device_platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform] The type of the user's device.
+        #
+        #   @param ip [String] The IP address of the user's device.
+        #
+        #   @param is_trusted_user [Boolean] This signal should provide a higher level of trust, indicating that the user is
+        #   ...
+        #
+        #   @param os_version [String] The version of the user's device operating system.
+        #
+        #   @param user_agent [String] The user agent of the user's device. If the individual fields (os_version, devic
+        #   ...
 
         # The type of the user's device.
         #

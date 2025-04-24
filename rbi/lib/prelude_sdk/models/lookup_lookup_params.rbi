@@ -23,8 +23,14 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(type: nil, request_options: {}); end
-
+      def self.new(
+        # Optional features. Possible values are:
+        #
+        # - `cnam` - Retrieve CNAM (Caller ID Name) along with other information. Contact
+        #   us if you need to use this functionality.
+        type: nil,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(

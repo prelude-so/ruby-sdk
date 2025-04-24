@@ -85,13 +85,23 @@ module PreludeSDK
       optional :phone_number, String
 
       # @!method initialize(caller_name: nil, country_code: nil, flags: nil, line_type: nil, network_info: nil, original_network_info: nil, phone_number: nil)
-      #   @param caller_name [String]
-      #   @param country_code [String]
-      #   @param flags [Array<Symbol, PreludeSDK::Models::LookupLookupResponse::Flag>]
-      #   @param line_type [Symbol, PreludeSDK::Models::LookupLookupResponse::LineType]
-      #   @param network_info [PreludeSDK::Models::LookupLookupResponse::NetworkInfo]
-      #   @param original_network_info [PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo]
-      #   @param phone_number [String]
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::LookupLookupResponse} for more details.
+      #
+      #   @param caller_name [String] The CNAM (Caller ID Name) associated with the phone number. Contact us if you ne
+      #   ...
+      #
+      #   @param country_code [String] The country code of the phone number.
+      #
+      #   @param flags [Array<Symbol, PreludeSDK::Models::LookupLookupResponse::Flag>] A list of flags associated with the phone number. ...
+      #
+      #   @param line_type [Symbol, PreludeSDK::Models::LookupLookupResponse::LineType] The type of phone line. ...
+      #
+      #   @param network_info [PreludeSDK::Models::LookupLookupResponse::NetworkInfo] The current carrier information.
+      #
+      #   @param original_network_info [PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo] The original carrier information.
+      #
+      #   @param phone_number [String] The phone number.
 
       module Flag
         extend PreludeSDK::Internal::Type::Enum
@@ -186,9 +196,11 @@ module PreludeSDK
         # @!method initialize(carrier_name: nil, mcc: nil, mnc: nil)
         #   The current carrier information.
         #
-        #   @param carrier_name [String]
-        #   @param mcc [String]
-        #   @param mnc [String]
+        #   @param carrier_name [String] The name of the carrier.
+        #
+        #   @param mcc [String] Mobile Country Code.
+        #
+        #   @param mnc [String] Mobile Network Code.
       end
 
       # @see PreludeSDK::Models::LookupLookupResponse#original_network_info
@@ -214,9 +226,11 @@ module PreludeSDK
         # @!method initialize(carrier_name: nil, mcc: nil, mnc: nil)
         #   The original carrier information.
         #
-        #   @param carrier_name [String]
-        #   @param mcc [String]
-        #   @param mnc [String]
+        #   @param carrier_name [String] The name of the original carrier.
+        #
+        #   @param mcc [String] Mobile Country Code.
+        #
+        #   @param mnc [String] Mobile Network Code.
       end
     end
   end

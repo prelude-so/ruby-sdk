@@ -18,8 +18,13 @@ module PreludeSDK
       required :status, enum: -> { PreludeSDK::Models::WatchSendFeedbacksResponse::Status }
 
       # @!method initialize(request_id:, status:)
-      #   @param request_id [String]
-      #   @param status [Symbol, PreludeSDK::Models::WatchSendFeedbacksResponse::Status]
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::WatchSendFeedbacksResponse} for more details.
+      #
+      #   @param request_id [String] A string that identifies this specific request. Report it back to us to help us
+      #   ...
+      #
+      #   @param status [Symbol, PreludeSDK::Models::WatchSendFeedbacksResponse::Status] The status of the feedbacks sending.
 
       # The status of the feedbacks sending.
       #
