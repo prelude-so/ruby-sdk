@@ -32,7 +32,7 @@ prelude = PreludeSDK::Client.new(
   api_token: "My API Token" # defaults to ENV["API_TOKEN"]
 )
 
-verification = prelude.verification.create(target: {type: :phone_number, value: "+30123456789"})
+verification = prelude.verification.create(target: {type: "phone_number", value: "+30123456789"})
 
 puts(verification.id)
 ```
@@ -45,7 +45,7 @@ When using sorbet, it is recommended to use model classes as below. This provide
 
 ```ruby
 prelude.verification.create(
-  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: :phone_number, value: "+30123456789")
+  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
 )
 ```
 
@@ -55,7 +55,7 @@ When the library is unable to connect to the API, or if the API returns a non-su
 
 ```ruby
 begin
-  verification = prelude.verification.create(target: {type: :phone_number, value: "+30123456789"})
+  verification = prelude.verification.create(target: {type: "phone_number", value: "+30123456789"})
 rescue PreludeSDK::Errors::APIError => e
   puts(e.status) # 400
 end
@@ -93,7 +93,7 @@ prelude = PreludeSDK::Client.new(
 
 # Or, configure per-request:
 prelude.verification.create(
-  target: {type: :phone_number, value: "+30123456789"},
+  target: {type: "phone_number", value: "+30123456789"},
   request_options: {max_retries: 5}
 )
 ```
@@ -114,7 +114,7 @@ prelude = PreludeSDK::Client.new(
 
 # Or, configure per-request:
 prelude.verification.create(
-  target: {type: :phone_number, value: "+30123456789"},
+  target: {type: "phone_number", value: "+30123456789"},
   request_options: {timeout: 5}
 )
 ```
@@ -130,12 +130,12 @@ In all places where a `BaseModel` type is specified, vanilla Ruby `Hash` can als
 ```ruby
 # This has tooling readability, for auto-completion, static analysis, and goto definition with supported language services
 params = PreludeSDK::Models::VerificationCreateParams.new(
-  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: :phone_number, value: "+30123456789")
+  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
 )
 
 # This also works
 params = {
-  target: {type: :phone_number, value: "+30123456789"}
+  target: {type: "phone_number", value: "+30123456789"}
 }
 ```
 
@@ -183,7 +183,7 @@ It is possible to pass a compatible model / parameter class to a method that exp
 
 ```ruby
 params = PreludeSDK::Models::VerificationCreateParams.new(
-  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: :phone_number, value: "+30123456789")
+  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
 )
 prelude.verification.create(**params)
 ```
