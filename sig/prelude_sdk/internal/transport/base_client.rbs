@@ -53,7 +53,7 @@ module PreludeSDK
         ) -> void
 
         # @api private
-        attr_accessor requester: PreludeSDK::Internal::Transport::PooledNetRequester
+        attr_reader requester: PreludeSDK::Internal::Transport::PooledNetRequester
 
         def initialize: (
           base_url: String,
