@@ -200,8 +200,12 @@ class PreludeSDK::Test::UtilFormDataEncodingTest < Minitest::Test
     file = Pathname(__FILE__)
     headers = {"content-type" => "multipart/form-data"}
     cases = {
+      "abc" => "abc",
       StringIO.new("abc") => "abc",
-      file => /^class PreludeSDK/
+      PreludeSDK::FilePart.new("abc") => "abc",
+      PreludeSDK::FilePart.new(StringIO.new("abc")) => "abc",
+      file => /^class PreludeSDK/,
+      PreludeSDK::FilePart.new(file) => /^class PreludeSDK/
     }
     cases.each do |body, val|
       encoded = PreludeSDK::Internal::Util.encode_content(headers, body)
@@ -219,7 +223,13 @@ class PreludeSDK::Test::UtilFormDataEncodingTest < Minitest::Test
       {a: 2, b: nil} => {"a" => "2", "b" => "null"},
       {a: 2, b: [1, 2, 3]} => {"a" => "2", "b" => "1"},
       {strio: StringIO.new("a")} => {"strio" => "a"},
-      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class PreludeSDK/ }}
+      {strio: PreludeSDK::FilePart.new("a")} => {"strio" => "a"},
+      {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class PreludeSDK/ }},
+      {pathname: PreludeSDK::FilePart.new(Pathname(__FILE__))} => {
+        "pathname" => -> {
+          _1.read in /^class PreludeSDK/
+        }
+      }
     }
     cases.each do |body, testcase|
       encoded = PreludeSDK::Internal::Util.encode_content(headers, body)

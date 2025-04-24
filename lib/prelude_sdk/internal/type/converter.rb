@@ -43,7 +43,7 @@ module PreludeSDK
             value.string
           in Pathname | IO
             state[:can_retry] = false if value.is_a?(IO)
-            PreludeSDK::Internal::Util::SerializationAdapter.new(value)
+            PreludeSDK::FilePart.new(value)
           else
             value
           end

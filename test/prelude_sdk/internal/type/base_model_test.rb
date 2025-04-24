@@ -94,7 +94,7 @@ class PreludeSDK::Test::PrimitiveModelTest < Minitest::Test
       [:a, :b] => :b,
       [:a, "a"] => "a",
       [String, StringIO.new("one")] => "one",
-      [String, Pathname(__FILE__)] => PreludeSDK::Internal::Util::SerializationAdapter
+      [String, Pathname(__FILE__)] => PreludeSDK::FilePart
     }
 
     cases.each do
