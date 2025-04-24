@@ -90,7 +90,7 @@ module PreludeSDK
 
         # @api private
         sig { returns(PreludeSDK::Internal::Transport::PooledNetRequester) }
-        attr_accessor :requester
+        attr_reader :requester
 
         # @api private
         sig do
