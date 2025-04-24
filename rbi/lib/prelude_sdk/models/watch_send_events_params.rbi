@@ -17,8 +17,11 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(events:, request_options: {}); end
-
+      def self.new(
+        # A list of events to dispatch.
+        events:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -59,8 +62,14 @@ module PreludeSDK
           )
             .returns(T.attached_class)
         end
-        def self.new(confidence:, label:, target:); end
-
+        def self.new(
+          # A confidence level you want to assign to the event.
+          confidence:,
+          # A label to describe what the event refers to.
+          label:,
+          # The event target. Only supports phone numbers for now.
+          target:
+        ); end
         sig do
           override
             .returns(
@@ -105,8 +114,12 @@ module PreludeSDK
             params(type: PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::OrSymbol, value: String)
               .returns(T.attached_class)
           end
-          def self.new(type:, value:); end
-
+          def self.new(
+            # The type of the target. Either "phone_number" or "email_address".
+            type:,
+            # An E.164 formatted phone number or an email address.
+            value:
+          ); end
           sig do
             override
               .returns({type: PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::OrSymbol, value: String})

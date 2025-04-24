@@ -86,16 +86,27 @@ module PreludeSDK
           .returns(T.attached_class)
       end
       def self.new(
+        # The verification target. Either a phone number or an email address. To use the
+        # email verification feature contact us to discuss your use case.
         target:,
+        # The identifier of the dispatch that came from the front-end SDK.
         dispatch_id: nil,
+        # The metadata for this verification. This object will be returned with every
+        # response or webhook sent that refers to this verification.
         metadata: nil,
+        # The method used for verifying this phone number. The 'voice' option provides an
+        # accessible alternative for visually impaired users by delivering the
+        # verification code through a phone call rather than a text message. It also
+        # allows verification of landline numbers that cannot receive SMS messages.
+        # **Coming soon.**
         method_: nil,
+        # Verification options
         options: nil,
+        # The signals used for anti-fraud. For more details, refer to
+        # [Signals](/verify/v2/documentation/prevent-fraud#signals).
         signals: nil,
         request_options: {}
-      )
-      end
-
+      ); end
       sig do
         override
           .returns(
@@ -127,8 +138,12 @@ module PreludeSDK
           params(type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
         end
-        def self.new(type:, value:); end
-
+        def self.new(
+          # The type of the target. Either "phone_number" or "email_address".
+          type:,
+          # An E.164 formatted phone number or an email address.
+          value:
+        ); end
         sig do
           override
             .returns({type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String})
@@ -163,8 +178,10 @@ module PreludeSDK
         # The metadata for this verification. This object will be returned with every
         # response or webhook sent that refers to this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
-        def self.new(correlation_id: nil); end
-
+        def self.new(
+          # A user-defined identifier to correlate this verification with.
+          correlation_id: nil
+        ); end
         sig { override.returns({correlation_id: String}) }
         def to_hash; end
       end
@@ -276,13 +293,33 @@ module PreludeSDK
             .returns(T.attached_class)
         end
         def self.new(
+          # This allows you to automatically retrieve and fill the OTP code on mobile apps.
+          # Currently only Android devices are supported.
           app_realm: nil,
+          # The URL where webhooks will be sent when verification events occur, including
+          # verification creation, attempt creation, and delivery status changes. For more
+          # details, refer to [Webhook](/verify/v2/documentation/webhook).
           callback_url: nil,
+          # The size of the code generated. It should be between 4 and 8. Defaults to the
+          # code size specified from the Dashboard.
           code_size: nil,
+          # The custom code to use for OTP verification. This feature is only available for
+          # compatibility purposes and subject to Prelude’s approval. Contact us to discuss
+          # your use case. For more details, refer to
+          # [Multi Routing](/introduction/concepts/multi-routing).
           custom_code: nil,
+          # A BCP-47 formatted locale string with the language the text message will be sent
+          # to. If there's no locale set, the language will be determined by the country
+          # code of the phone number. If the language specified doesn't exist, it defaults
+          # to US English.
           locale: nil,
+          # The Sender ID to use for this message. The Sender ID needs to be enabled by
+          # Prelude.
           sender_id: nil,
+          # The identifier of a verification template. It applies use case-specific
+          # settings, such as the message content or certain verification parameters.
           template_id: nil,
+          # The variables to be replaced in the template.
           variables: nil
         ); end
         sig do
@@ -321,8 +358,13 @@ module PreludeSDK
             )
               .returns(T.attached_class)
           end
-          def self.new(platform:, value:); end
-
+          def self.new(
+            # The platform the SMS will be sent to. We are currently only supporting
+            # "android".
+            platform:,
+            # The Android SMS Retriever API hash code that identifies your app.
+            value:
+          ); end
           sig do
             override
               .returns(
@@ -433,13 +475,26 @@ module PreludeSDK
             .returns(T.attached_class)
         end
         def self.new(
+          # The version of your application.
           app_version: nil,
+          # The unique identifier for the user's device. For Android, this corresponds to
+          # the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
           device_id: nil,
+          # The model of the user's device.
           device_model: nil,
+          # The type of the user's device.
           device_platform: nil,
+          # The IP address of the user's device.
           ip: nil,
+          # This signal should provide a higher level of trust, indicating that the user is
+          # genuine. For more details, refer to
+          # [Signals](/verify/v2/documentation/prevent-fraud#signals).
           is_trusted_user: nil,
+          # The version of the user's device operating system.
           os_version: nil,
+          # The user agent of the user's device. If the individual fields (os_version,
+          # device_platform, device_model) are provided, we will prioritize those values
+          # instead of parsing them from the user agent string.
           user_agent: nil
         ); end
         sig do

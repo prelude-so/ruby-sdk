@@ -34,10 +34,14 @@ module PreludeSDK
       optional :request_id, String
 
       # @!method initialize(id:, method_:, status:, metadata: nil, request_id: nil)
-      #   @param id [String]
-      #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
-      #   @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
-      #   @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata]
+      #   @param id [String] The verification identifier.
+      #
+      #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method] The method used for verifying this phone number.
+      #
+      #   @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status] The status of the verification.
+      #
+      #   @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata] The metadata for this verification.
+      #
       #   @param request_id [String]
 
       # The method used for verifying this phone number.

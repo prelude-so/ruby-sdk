@@ -16,8 +16,13 @@ module PreludeSDK
         params(request_id: String, status: PreludeSDK::Models::WatchSendEventsResponse::Status::OrSymbol)
           .returns(T.attached_class)
       end
-      def self.new(request_id:, status:); end
-
+      def self.new(
+        # A string that identifies this specific request. Report it back to us to help us
+        # diagnose your issues.
+        request_id:,
+        # The status of the events dispatch.
+        status:
+      ); end
       sig do
         override
           .returns({request_id: String, status: PreludeSDK::Models::WatchSendEventsResponse::Status::TaggedSymbol})

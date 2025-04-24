@@ -24,9 +24,15 @@ module PreludeSDK
       required :request_id, String
 
       # @!method initialize(id:, prediction:, request_id:)
-      #   @param id [String]
-      #   @param prediction [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction]
-      #   @param request_id [String]
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::WatchPredictResponse} for more details.
+      #
+      #   @param id [String] The prediction identifier.
+      #
+      #   @param prediction [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction] The prediction outcome.
+      #
+      #   @param request_id [String] A string that identifies this specific request. Report it back to us to help us
+      #   ...
 
       # The prediction outcome.
       #

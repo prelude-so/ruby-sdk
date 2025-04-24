@@ -29,8 +29,14 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(code:, target:, request_options: {}); end
-
+      def self.new(
+        # The OTP code to validate.
+        code:,
+        # The verification target. Either a phone number or an email address. To use the
+        # email verification feature contact us to discuss your use case.
+        target:,
+        request_options: {}
+      ); end
       sig do
         override
           .returns(
@@ -58,8 +64,12 @@ module PreludeSDK
           params(type: PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol, value: String)
             .returns(T.attached_class)
         end
-        def self.new(type:, value:); end
-
+        def self.new(
+          # The type of the target. Either "phone_number" or "email_address".
+          type:,
+          # An E.164 formatted phone number or an email address.
+          value:
+        ); end
         sig do
           override
             .returns({type: PreludeSDK::Models::VerificationCheckParams::Target::Type::OrSymbol, value: String})

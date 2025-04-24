@@ -21,8 +21,14 @@ module PreludeSDK
       required :target, -> { PreludeSDK::Models::VerificationCheckParams::Target }
 
       # @!method initialize(code:, target:, request_options: {})
-      #   @param code [String]
-      #   @param target [PreludeSDK::Models::VerificationCheckParams::Target]
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::VerificationCheckParams} for more details.
+      #
+      #   @param code [String] The OTP code to validate.
+      #
+      #   @param target [PreludeSDK::Models::VerificationCheckParams::Target] The verification target. Either a phone number or an email address. To use the e
+      #   ...
+      #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       class Target < PreludeSDK::Internal::Type::BaseModel
@@ -42,8 +48,9 @@ module PreludeSDK
         #   The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
         #
-        #   @param type [Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type]
-        #   @param value [String]
+        #   @param type [Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
+        #
+        #   @param value [String] An E.164 formatted phone number or an email address.
 
         # The type of the target. Either "phone_number" or "email_address".
         #

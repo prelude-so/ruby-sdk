@@ -24,8 +24,15 @@ module PreludeSDK
         )
           .returns(T.attached_class)
       end
-      def self.new(id:, prediction:, request_id:); end
-
+      def self.new(
+        # The prediction identifier.
+        id:,
+        # The prediction outcome.
+        prediction:,
+        # A string that identifies this specific request. Report it back to us to help us
+        # diagnose your issues.
+        request_id:
+      ); end
       sig do
         override
           .returns(

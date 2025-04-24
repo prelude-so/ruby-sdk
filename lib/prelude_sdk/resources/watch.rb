@@ -3,14 +3,22 @@
 module PreludeSDK
   module Resources
     class Watch
+      # Some parameter documentations has been truncated, see
+      # {PreludeSDK::Models::WatchPredictParams} for more details.
+      #
       # Predict the outcome of a verification based on Prelude’s anti-fraud system.
       #
       # @overload predict(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {})
       #
-      # @param target [PreludeSDK::Models::WatchPredictParams::Target]
-      # @param dispatch_id [String]
-      # @param metadata [PreludeSDK::Models::WatchPredictParams::Metadata]
-      # @param signals [PreludeSDK::Models::WatchPredictParams::Signals]
+      # @param target [PreludeSDK::Models::WatchPredictParams::Target] The prediction target. Only supports phone numbers for now.
+      #
+      # @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
+      #
+      # @param metadata [PreludeSDK::Models::WatchPredictParams::Metadata] The metadata for this prediction.
+      #
+      # @param signals [PreludeSDK::Models::WatchPredictParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
+      # ...
+      #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::WatchPredictResponse]
@@ -32,7 +40,8 @@ module PreludeSDK
       #
       # @overload send_events(events:, request_options: {})
       #
-      # @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
+      # @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>] A list of events to dispatch.
+      #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::WatchSendEventsResponse]
@@ -54,7 +63,8 @@ module PreludeSDK
       #
       # @overload send_feedbacks(feedbacks:, request_options: {})
       #
-      # @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>]
+      # @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>] A list of feedbacks to send.
+      #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
       # @return [PreludeSDK::Models::WatchSendFeedbacksResponse]

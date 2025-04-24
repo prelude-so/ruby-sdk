@@ -59,14 +59,26 @@ module PreludeSDK
       optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
       # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, variables: nil, request_options: {})
-      #   @param template_id [String]
-      #   @param to [String]
-      #   @param callback_url [String]
-      #   @param correlation_id [String]
-      #   @param expires_at [String]
-      #   @param from [String]
-      #   @param locale [String]
-      #   @param variables [Hash{Symbol=>String}]
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::TransactionalSendParams} for more details.
+      #
+      #   @param template_id [String] The template identifier.
+      #
+      #   @param to [String] The recipient's phone number.
+      #
+      #   @param callback_url [String] The callback URL.
+      #
+      #   @param correlation_id [String] A unique, user-defined identifier that will be included in webhook events.
+      #
+      #   @param expires_at [String] The message expiration date.
+      #
+      #   @param from [String] The Sender ID.
+      #
+      #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
+      #   ...
+      #
+      #   @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
+      #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
     end
   end

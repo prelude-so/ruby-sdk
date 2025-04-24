@@ -74,13 +74,24 @@ module PreludeSDK
           .returns(T.attached_class)
       end
       def self.new(
+        # The template identifier.
         template_id:,
+        # The recipient's phone number.
         to:,
+        # The callback URL.
         callback_url: nil,
+        # A unique, user-defined identifier that will be included in webhook events.
         correlation_id: nil,
+        # The message expiration date.
         expires_at: nil,
+        # The Sender ID.
         from: nil,
+        # A BCP-47 formatted locale string with the language the text message will be sent
+        # to. If there's no locale set, the language will be determined by the country
+        # code of the phone number. If the language specified doesn't exist, the default
+        # set on the template will be used.
         locale: nil,
+        # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
       ); end
