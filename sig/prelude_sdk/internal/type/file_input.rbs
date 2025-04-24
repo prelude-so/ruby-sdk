@@ -1,7 +1,7 @@
 module PreludeSDK
   module Internal
     module Type
-      class IOLike
+      class FileInput
         extend PreludeSDK::Internal::Type::Converter
 
         def self.===: (top other) -> bool
