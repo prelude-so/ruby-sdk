@@ -10,7 +10,7 @@ module PreludeSDK
           dispatch_id: String,
           metadata: T.any(PreludeSDK::Models::WatchPredictParams::Metadata, PreludeSDK::Internal::AnyHash),
           signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::AnyHash),
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
+          request_options: PreludeSDK::RequestOpts
         )
           .returns(PreludeSDK::Models::WatchPredictResponse)
       end
@@ -31,7 +31,7 @@ module PreludeSDK
       sig do
         params(
           events: T::Array[T.any(PreludeSDK::Models::WatchSendEventsParams::Event, PreludeSDK::Internal::AnyHash)],
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
+          request_options: PreludeSDK::RequestOpts
         )
           .returns(PreludeSDK::Models::WatchSendEventsResponse)
       end
@@ -45,7 +45,7 @@ module PreludeSDK
       sig do
         params(
           feedbacks: T::Array[T.any(PreludeSDK::Models::WatchSendFeedbacksParams::Feedback, PreludeSDK::Internal::AnyHash)],
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
+          request_options: PreludeSDK::RequestOpts
         )
           .returns(PreludeSDK::Models::WatchSendFeedbacksResponse)
       end
