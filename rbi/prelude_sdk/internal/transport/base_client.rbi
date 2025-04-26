@@ -35,7 +35,7 @@ module PreludeSDK
               page: T.nilable(T::Class[PreludeSDK::Internal::Type::BasePage[PreludeSDK::Internal::Type::BaseModel]]),
               stream: T.nilable(T::Class[T.anything]),
               model: T.nilable(PreludeSDK::Internal::Type::Converter::Input),
-              options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
+              options: T.nilable(PreludeSDK::RequestOpts)
             }
           end
 
@@ -188,7 +188,7 @@ module PreludeSDK
             page: T.nilable(T::Class[PreludeSDK::Internal::Type::BasePage[PreludeSDK::Internal::Type::BaseModel]]),
             stream: T.nilable(T::Class[T.anything]),
             model: T.nilable(PreludeSDK::Internal::Type::Converter::Input),
-            options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
+            options: T.nilable(PreludeSDK::RequestOpts)
           )
             .returns(T.anything)
         end

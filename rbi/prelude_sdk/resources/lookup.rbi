@@ -9,7 +9,7 @@ module PreludeSDK
         params(
           phone_number: String,
           type: T::Array[PreludeSDK::Models::LookupLookupParams::Type::OrSymbol],
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
+          request_options: PreludeSDK::RequestOpts
         )
           .returns(PreludeSDK::Models::LookupLookupResponse)
       end

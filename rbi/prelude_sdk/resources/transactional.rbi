@@ -14,7 +14,7 @@ module PreludeSDK
           from: String,
           locale: String,
           variables: T::Hash[Symbol, String],
-          request_options: T.nilable(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash))
+          request_options: PreludeSDK::RequestOpts
         )
           .returns(PreludeSDK::Models::TransactionalSendResponse)
       end

@@ -6,7 +6,7 @@ module PreludeSDK
       # @api private
       module RequestParameters
         # Options to specify HTTP behaviour for this request.
-        sig { returns(T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)) }
+        sig { returns(PreludeSDK::RequestOpts) }
         attr_accessor :request_options
 
         # @api private
