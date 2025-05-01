@@ -137,7 +137,7 @@ module PreludeSDK
     end
 
     class InternalServerError < PreludeSDK::Errors::APIStatusError
-      HTTP_STATUS = T.let((500..), T::Range[Integer])
+      HTTP_STATUS = T.let(500.., T::Range[Integer])
     end
   end
 end
