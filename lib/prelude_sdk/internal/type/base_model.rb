@@ -395,15 +395,7 @@ module PreludeSDK
         # Create a new instance of a model.
         #
         # @param data [Hash{Symbol=>Object}, self]
-        def initialize(data = {})
-          case PreludeSDK::Internal::Util.coerce_hash(data)
-          in Hash => coerced
-            @data = coerced
-          else
-            message = "Expected a #{Hash} or #{PreludeSDK::Internal::Type::BaseModel}, got #{data.inspect}"
-            raise ArgumentError.new(message)
-          end
-        end
+        def initialize(data = {}) = (@data = PreludeSDK::Internal::Util.coerce_hash!(data).to_h)
 
         class << self
           # @api private
