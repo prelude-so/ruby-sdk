@@ -1,0 +1,15 @@
+module PreludeSDK
+  class LookupLookupParams = PreludeSDK::Models::LookupLookupParams
+
+  class TransactionalSendParams = PreludeSDK::Models::TransactionalSendParams
+
+  class VerificationCheckParams = PreludeSDK::Models::VerificationCheckParams
+
+  class VerificationCreateParams = PreludeSDK::Models::VerificationCreateParams
+
+  class WatchPredictParams = PreludeSDK::Models::WatchPredictParams
+
+  class WatchSendEventsParams = PreludeSDK::Models::WatchSendEventsParams
+
+  class WatchSendFeedbacksParams = PreludeSDK::Models::WatchSendFeedbacksParams
+end
