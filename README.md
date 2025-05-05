@@ -29,7 +29,7 @@ require "bundler/setup"
 require "prelude_sdk"
 
 prelude = PreludeSDK::Client.new(
-  api_token: "My API Token" # defaults to ENV["API_TOKEN"]
+  api_token: ENV["API_TOKEN"] # This is the default and can be omitted
 )
 
 verification = prelude.verification.create(target: {type: "phone_number", value: "+30123456789"})
