@@ -32,7 +32,6 @@ module PreludeSDK
       #   @param prediction [Symbol, PreludeSDK::Models::WatchPredictResponse::Prediction] The prediction outcome.
       #
       #   @param request_id [String] A string that identifies this specific request. Report it back to us to help us
-      #   ...
 
       # The prediction outcome.
       #

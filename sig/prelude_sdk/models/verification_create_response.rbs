@@ -34,8 +34,6 @@ module PreludeSDK
         ?request_id: String
       ) -> void
 
-      def to_hash: -> PreludeSDK::Models::verification_create_response
-
       type method_ = :message
 
       module Method
@@ -66,8 +64,6 @@ module PreludeSDK
         def correlation_id=: (String) -> String
 
         def initialize: (?correlation_id: String) -> void
-
-        def to_hash: -> PreludeSDK::Models::VerificationCreateResponse::metadata
       end
     end
   end

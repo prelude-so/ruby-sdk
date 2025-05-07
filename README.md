@@ -45,7 +45,7 @@ When using sorbet, it is recommended to use model classes as below. This provide
 
 ```ruby
 prelude.verification.create(
-  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
+  target: PreludeSDK::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
 )
 ```
 
@@ -130,7 +130,7 @@ In all places where a `BaseModel` type is specified, vanilla Ruby `Hash` can als
 ```ruby
 # This has tooling readability, for auto-completion, static analysis, and goto definition with supported language services
 params = PreludeSDK::Models::VerificationCreateParams.new(
-  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
+  target: PreludeSDK::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
 )
 
 # This also works
@@ -183,7 +183,7 @@ It is possible to pass a compatible model / parameter class to a method that exp
 
 ```ruby
 params = PreludeSDK::Models::VerificationCreateParams.new(
-  target: PreludeSDK::Models::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
+  target: PreludeSDK::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
 )
 prelude.verification.create(**params)
 ```

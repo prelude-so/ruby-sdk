@@ -89,13 +89,12 @@ module PreludeSDK
       #   {PreludeSDK::Models::LookupLookupResponse} for more details.
       #
       #   @param caller_name [String] The CNAM (Caller ID Name) associated with the phone number. Contact us if you ne
-      #   ...
       #
       #   @param country_code [String] The country code of the phone number.
       #
-      #   @param flags [Array<Symbol, PreludeSDK::Models::LookupLookupResponse::Flag>] A list of flags associated with the phone number. ...
+      #   @param flags [Array<Symbol, PreludeSDK::Models::LookupLookupResponse::Flag>] A list of flags associated with the phone number.
       #
-      #   @param line_type [Symbol, PreludeSDK::Models::LookupLookupResponse::LineType] The type of phone line. ...
+      #   @param line_type [Symbol, PreludeSDK::Models::LookupLookupResponse::LineType] The type of phone line.
       #
       #   @param network_info [PreludeSDK::Models::LookupLookupResponse::NetworkInfo] The current carrier information.
       #

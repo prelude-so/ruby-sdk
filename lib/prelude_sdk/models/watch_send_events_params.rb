@@ -10,12 +10,11 @@ module PreludeSDK
       # @!attribute events
       #   A list of events to dispatch.
       #
-      #   @return [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
-      required :events,
-               -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::WatchSendEventsParams::Event] }
+      #   @return [Array<PreludeSDK::WatchSendEventsParams::Event>]
+      required :events, -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::WatchSendEventsParams::Event] }
 
       # @!method initialize(events:, request_options: {})
-      #   @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>] A list of events to dispatch.
+      #   @param events [Array<PreludeSDK::WatchSendEventsParams::Event>] A list of events to dispatch.
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -23,8 +22,8 @@ module PreludeSDK
         # @!attribute confidence
         #   A confidence level you want to assign to the event.
         #
-        #   @return [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence]
-        required :confidence, enum: -> { PreludeSDK::Models::WatchSendEventsParams::Event::Confidence }
+        #   @return [Symbol, PreludeSDK::WatchSendEventsParams::Event::Confidence]
+        required :confidence, enum: -> { PreludeSDK::WatchSendEventsParams::Event::Confidence }
 
         # @!attribute label
         #   A label to describe what the event refers to.
@@ -35,19 +34,19 @@ module PreludeSDK
         # @!attribute target
         #   The event target. Only supports phone numbers for now.
         #
-        #   @return [PreludeSDK::Models::WatchSendEventsParams::Event::Target]
-        required :target, -> { PreludeSDK::Models::WatchSendEventsParams::Event::Target }
+        #   @return [PreludeSDK::WatchSendEventsParams::Event::Target]
+        required :target, -> { PreludeSDK::WatchSendEventsParams::Event::Target }
 
         # @!method initialize(confidence:, label:, target:)
-        #   @param confidence [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence] A confidence level you want to assign to the event.
+        #   @param confidence [Symbol, PreludeSDK::WatchSendEventsParams::Event::Confidence] A confidence level you want to assign to the event.
         #
         #   @param label [String] A label to describe what the event refers to.
         #
-        #   @param target [PreludeSDK::Models::WatchSendEventsParams::Event::Target] The event target. Only supports phone numbers for now.
+        #   @param target [PreludeSDK::WatchSendEventsParams::Event::Target] The event target. Only supports phone numbers for now.
 
         # A confidence level you want to assign to the event.
         #
-        # @see PreludeSDK::Models::WatchSendEventsParams::Event#confidence
+        # @see PreludeSDK::WatchSendEventsParams::Event#confidence
         module Confidence
           extend PreludeSDK::Internal::Type::Enum
 
@@ -61,13 +60,13 @@ module PreludeSDK
           #   @return [Array<Symbol>]
         end
 
-        # @see PreludeSDK::Models::WatchSendEventsParams::Event#target
+        # @see PreludeSDK::WatchSendEventsParams::Event#target
         class Target < PreludeSDK::Internal::Type::BaseModel
           # @!attribute type
           #   The type of the target. Either "phone_number" or "email_address".
           #
-          #   @return [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type]
-          required :type, enum: -> { PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type }
+          #   @return [Symbol, PreludeSDK::WatchSendEventsParams::Event::Target::Type]
+          required :type, enum: -> { PreludeSDK::WatchSendEventsParams::Event::Target::Type }
 
           # @!attribute value
           #   An E.164 formatted phone number or an email address.
@@ -78,13 +77,13 @@ module PreludeSDK
           # @!method initialize(type:, value:)
           #   The event target. Only supports phone numbers for now.
           #
-          #   @param type [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type] The type of the target. Either "phone_number" or "email_address".
+          #   @param type [Symbol, PreludeSDK::WatchSendEventsParams::Event::Target::Type] The type of the target. Either "phone_number" or "email_address".
           #
           #   @param value [String] An E.164 formatted phone number or an email address.
 
           # The type of the target. Either "phone_number" or "email_address".
           #
-          # @see PreludeSDK::Models::WatchSendEventsParams::Event::Target#type
+          # @see PreludeSDK::WatchSendEventsParams::Event::Target#type
           module Type
             extend PreludeSDK::Internal::Type::Enum
 

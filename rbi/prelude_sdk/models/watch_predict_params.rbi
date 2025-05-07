@@ -6,11 +6,16 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
       # The prediction target. Only supports phone numbers for now.
-      sig { returns(PreludeSDK::Models::WatchPredictParams::Target) }
+      sig { returns(PreludeSDK::WatchPredictParams::Target) }
       attr_reader :target
 
-      sig { params(target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::AnyHash)).void }
+      sig do
+        params(target: PreludeSDK::WatchPredictParams::Target::OrHash).void
+      end
       attr_writer :target
 
       # The identifier of the dispatch that came from the front-end SDK.
@@ -21,34 +26,32 @@ module PreludeSDK
       attr_writer :dispatch_id
 
       # The metadata for this prediction.
-      sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Metadata)) }
+      sig { returns(T.nilable(PreludeSDK::WatchPredictParams::Metadata)) }
       attr_reader :metadata
 
       sig do
-        params(metadata: T.any(PreludeSDK::Models::WatchPredictParams::Metadata, PreludeSDK::Internal::AnyHash))
-          .void
+        params(metadata: PreludeSDK::WatchPredictParams::Metadata::OrHash).void
       end
       attr_writer :metadata
 
       # The signals used for anti-fraud. For more details, refer to
       # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-      sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals)) }
+      sig { returns(T.nilable(PreludeSDK::WatchPredictParams::Signals)) }
       attr_reader :signals
 
       sig do
-        params(signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::AnyHash)).void
+        params(signals: PreludeSDK::WatchPredictParams::Signals::OrHash).void
       end
       attr_writer :signals
 
       sig do
         params(
-          target: T.any(PreludeSDK::Models::WatchPredictParams::Target, PreludeSDK::Internal::AnyHash),
+          target: PreludeSDK::WatchPredictParams::Target::OrHash,
           dispatch_id: String,
-          metadata: T.any(PreludeSDK::Models::WatchPredictParams::Metadata, PreludeSDK::Internal::AnyHash),
-          signals: T.any(PreludeSDK::Models::WatchPredictParams::Signals, PreludeSDK::Internal::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          metadata: PreludeSDK::WatchPredictParams::Metadata::OrHash,
+          signals: PreludeSDK::WatchPredictParams::Signals::OrHash,
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The prediction target. Only supports phone numbers for now.
@@ -61,24 +64,29 @@ module PreludeSDK
         # [Signals](/verify/v2/documentation/prevent-fraud#signals).
         signals: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              target: PreludeSDK::Models::WatchPredictParams::Target,
-              dispatch_id: String,
-              metadata: PreludeSDK::Models::WatchPredictParams::Metadata,
-              signals: PreludeSDK::Models::WatchPredictParams::Signals,
-              request_options: PreludeSDK::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            target: PreludeSDK::WatchPredictParams::Target,
+            dispatch_id: String,
+            metadata: PreludeSDK::WatchPredictParams::Metadata,
+            signals: PreludeSDK::WatchPredictParams::Signals,
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Target < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # The type of the target. Either "phone_number" or "email_address".
-        sig { returns(PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol) }
+        sig { returns(PreludeSDK::WatchPredictParams::Target::Type::OrSymbol) }
         attr_accessor :type
 
         # An E.164 formatted phone number or an email address.
@@ -87,34 +95,67 @@ module PreludeSDK
 
         # The prediction target. Only supports phone numbers for now.
         sig do
-          params(type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String)
-            .returns(T.attached_class)
+          params(
+            type: PreludeSDK::WatchPredictParams::Target::Type::OrSymbol,
+            value: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # The type of the target. Either "phone_number" or "email_address".
           type:,
           # An E.164 formatted phone number or an email address.
           value:
-        ); end
-        sig { override.returns({type: PreludeSDK::Models::WatchPredictParams::Target::Type::OrSymbol, value: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns(
+            {
+              type: PreludeSDK::WatchPredictParams::Target::Type::OrSymbol,
+              value: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
           extend PreludeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, PreludeSDK::WatchPredictParams::Target::Type)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          PHONE_NUMBER = T.let(:phone_number, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
-          EMAIL_ADDRESS = T.let(:email_address, PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol)
+          PHONE_NUMBER =
+            T.let(
+              :phone_number,
+              PreludeSDK::WatchPredictParams::Target::Type::TaggedSymbol
+            )
+          EMAIL_ADDRESS =
+            T.let(
+              :email_address,
+              PreludeSDK::WatchPredictParams::Target::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictParams::Target::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::WatchPredictParams::Target::Type::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # A user-defined identifier to correlate this prediction with.
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
@@ -127,12 +168,18 @@ module PreludeSDK
         def self.new(
           # A user-defined identifier to correlate this prediction with.
           correlation_id: nil
-        ); end
-        sig { override.returns({correlation_id: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ correlation_id: String }) }
+        def to_hash
+        end
       end
 
       class Signals < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # The version of your application.
         sig { returns(T.nilable(String)) }
         attr_reader :app_version
@@ -156,10 +203,21 @@ module PreludeSDK
         attr_writer :device_model
 
         # The type of the user's device.
-        sig { returns(T.nilable(PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              PreludeSDK::WatchPredictParams::Signals::DevicePlatform::OrSymbol
+            )
+          )
+        end
         attr_reader :device_platform
 
-        sig { params(device_platform: PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::OrSymbol).void }
+        sig do
+          params(
+            device_platform:
+              PreludeSDK::WatchPredictParams::Signals::DevicePlatform::OrSymbol
+          ).void
+        end
         attr_writer :device_platform
 
         # The IP address of the user's device.
@@ -201,13 +259,13 @@ module PreludeSDK
             app_version: String,
             device_id: String,
             device_model: String,
-            device_platform: PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::OrSymbol,
+            device_platform:
+              PreludeSDK::WatchPredictParams::Signals::DevicePlatform::OrSymbol,
             ip: String,
             is_trusted_user: T::Boolean,
             os_version: String,
             user_agent: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The version of your application.
@@ -231,40 +289,75 @@ module PreludeSDK
           # device_platform, device_model) are provided, we will prioritize those values
           # instead of parsing them from the user agent string.
           user_agent: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                app_version: String,
-                device_id: String,
-                device_model: String,
-                device_platform: PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::OrSymbol,
-                ip: String,
-                is_trusted_user: T::Boolean,
-                os_version: String,
-                user_agent: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              app_version: String,
+              device_id: String,
+              device_model: String,
+              device_platform:
+                PreludeSDK::WatchPredictParams::Signals::DevicePlatform::OrSymbol,
+              ip: String,
+              is_trusted_user: T::Boolean,
+              os_version: String,
+              user_agent: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The type of the user's device.
         module DevicePlatform
           extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                PreludeSDK::WatchPredictParams::Signals::DevicePlatform
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          ANDROID = T.let(:android, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol)
-          IOS = T.let(:ios, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol)
-          IPADOS = T.let(:ipados, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol)
-          TVOS = T.let(:tvos, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol)
-          WEB = T.let(:web, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol)
+          ANDROID =
+            T.let(
+              :android,
+              PreludeSDK::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol
+            )
+          IOS =
+            T.let(
+              :ios,
+              PreludeSDK::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol
+            )
+          IPADOS =
+            T.let(
+              :ipados,
+              PreludeSDK::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol
+            )
+          TVOS =
+            T.let(
+              :tvos,
+              PreludeSDK::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol
+            )
+          WEB =
+            T.let(
+              :web,
+              PreludeSDK::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::WatchPredictParams::Signals::DevicePlatform::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end

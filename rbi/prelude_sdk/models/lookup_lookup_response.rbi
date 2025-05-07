@@ -3,6 +3,9 @@
 module PreludeSDK
   module Models
     class LookupLookupResponse < PreludeSDK::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
       # The CNAM (Caller ID Name) associated with the phone number. Contact us if you
       # need to use this functionality. Once enabled, put `cnam` option to `type` query
       # parameter.
@@ -25,10 +28,23 @@ module PreludeSDK
       #   another.
       # - `temporary` - Indicates the phone number is likely a temporary or virtual
       #   number, often used for verification services or burner phones.
-      sig { returns(T.nilable(T::Array[PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[
+              PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol
+            ]
+          )
+        )
+      end
       attr_reader :flags
 
-      sig { params(flags: T::Array[PreludeSDK::Models::LookupLookupResponse::Flag::OrSymbol]).void }
+      sig do
+        params(
+          flags:
+            T::Array[PreludeSDK::Models::LookupLookupResponse::Flag::OrSymbol]
+        ).void
+      end
       attr_writer :flags
 
       # The type of phone line.
@@ -62,33 +78,54 @@ module PreludeSDK
       #   services.
       # - `voip` - Specific ranges for providers of VoIP services to allow incoming
       #   calls from the regular telephony network.
-      sig { returns(T.nilable(PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)) }
+      sig do
+        returns(
+          T.nilable(
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        )
+      end
       attr_reader :line_type
 
-      sig { params(line_type: PreludeSDK::Models::LookupLookupResponse::LineType::OrSymbol).void }
+      sig do
+        params(
+          line_type:
+            PreludeSDK::Models::LookupLookupResponse::LineType::OrSymbol
+        ).void
+      end
       attr_writer :line_type
 
       # The current carrier information.
-      sig { returns(T.nilable(PreludeSDK::Models::LookupLookupResponse::NetworkInfo)) }
+      sig do
+        returns(
+          T.nilable(PreludeSDK::Models::LookupLookupResponse::NetworkInfo)
+        )
+      end
       attr_reader :network_info
 
       sig do
         params(
-          network_info: T.any(PreludeSDK::Models::LookupLookupResponse::NetworkInfo, PreludeSDK::Internal::AnyHash)
-        )
-          .void
+          network_info:
+            PreludeSDK::Models::LookupLookupResponse::NetworkInfo::OrHash
+        ).void
       end
       attr_writer :network_info
 
       # The original carrier information.
-      sig { returns(T.nilable(PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo)) }
+      sig do
+        returns(
+          T.nilable(
+            PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo
+          )
+        )
+      end
       attr_reader :original_network_info
 
       sig do
         params(
-          original_network_info: T.any(PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo, PreludeSDK::Internal::AnyHash)
-        )
-          .void
+          original_network_info:
+            PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo::OrHash
+        ).void
       end
       attr_writer :original_network_info
 
@@ -103,13 +140,16 @@ module PreludeSDK
         params(
           caller_name: String,
           country_code: String,
-          flags: T::Array[PreludeSDK::Models::LookupLookupResponse::Flag::OrSymbol],
-          line_type: PreludeSDK::Models::LookupLookupResponse::LineType::OrSymbol,
-          network_info: T.any(PreludeSDK::Models::LookupLookupResponse::NetworkInfo, PreludeSDK::Internal::AnyHash),
-          original_network_info: T.any(PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo, PreludeSDK::Internal::AnyHash),
+          flags:
+            T::Array[PreludeSDK::Models::LookupLookupResponse::Flag::OrSymbol],
+          line_type:
+            PreludeSDK::Models::LookupLookupResponse::LineType::OrSymbol,
+          network_info:
+            PreludeSDK::Models::LookupLookupResponse::NetworkInfo::OrHash,
+          original_network_info:
+            PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo::OrHash,
           phone_number: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The CNAM (Caller ID Name) associated with the phone number. Contact us if you
@@ -163,34 +203,59 @@ module PreludeSDK
         original_network_info: nil,
         # The phone number.
         phone_number: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              caller_name: String,
-              country_code: String,
-              flags: T::Array[PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol],
-              line_type: PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol,
-              network_info: PreludeSDK::Models::LookupLookupResponse::NetworkInfo,
-              original_network_info: PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo,
-              phone_number: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            caller_name: String,
+            country_code: String,
+            flags:
+              T::Array[
+                PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol
+              ],
+            line_type:
+              PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol,
+            network_info: PreludeSDK::Models::LookupLookupResponse::NetworkInfo,
+            original_network_info:
+              PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo,
+            phone_number: String
+          }
+        )
+      end
+      def to_hash
+      end
 
       module Flag
         extend PreludeSDK::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::LookupLookupResponse::Flag) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, PreludeSDK::Models::LookupLookupResponse::Flag)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        PORTED = T.let(:ported, PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol)
-        TEMPORARY = T.let(:temporary, PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol)
+        PORTED =
+          T.let(
+            :ported,
+            PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol
+          )
+        TEMPORARY =
+          T.let(
+            :temporary,
+            PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              PreludeSDK::Models::LookupLookupResponse::Flag::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       # The type of phone line.
@@ -227,36 +292,123 @@ module PreludeSDK
       module LineType
         extend PreludeSDK::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::LookupLookupResponse::LineType) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, PreludeSDK::Models::LookupLookupResponse::LineType)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        CALLING_CARDS = T.let(:calling_cards, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        FIXED_LINE = T.let(:fixed_line, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        ISP = T.let(:isp, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        LOCAL_RATE = T.let(:local_rate, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        MOBILE = T.let(:mobile, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        OTHER = T.let(:other, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        PAGER = T.let(:pager, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        PAYPHONE = T.let(:payphone, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        PREMIUM_RATE = T.let(:premium_rate, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        SATELLITE = T.let(:satellite, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        SERVICE = T.let(:service, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        SHARED_COST = T.let(:shared_cost, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
+        CALLING_CARDS =
+          T.let(
+            :calling_cards,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        FIXED_LINE =
+          T.let(
+            :fixed_line,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        ISP =
+          T.let(
+            :isp,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        LOCAL_RATE =
+          T.let(
+            :local_rate,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        MOBILE =
+          T.let(
+            :mobile,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        OTHER =
+          T.let(
+            :other,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        PAGER =
+          T.let(
+            :pager,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        PAYPHONE =
+          T.let(
+            :payphone,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        PREMIUM_RATE =
+          T.let(
+            :premium_rate,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        SATELLITE =
+          T.let(
+            :satellite,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        SERVICE =
+          T.let(
+            :service,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        SHARED_COST =
+          T.let(
+            :shared_cost,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
         SHORT_CODES_COMMERCIAL =
-          T.let(:short_codes_commercial, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        TOLL_FREE = T.let(:toll_free, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
+          T.let(
+            :short_codes_commercial,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        TOLL_FREE =
+          T.let(
+            :toll_free,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
         UNIVERSAL_ACCESS =
-          T.let(:universal_access, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        UNKNOWN = T.let(:unknown, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        VPN = T.let(:vpn, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        VOICE_MAIL = T.let(:voice_mail, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
-        VOIP = T.let(:voip, PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol)
+          T.let(
+            :universal_access,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        UNKNOWN =
+          T.let(
+            :unknown,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        VPN =
+          T.let(
+            :vpn,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        VOICE_MAIL =
+          T.let(
+            :voice_mail,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
+        VOIP =
+          T.let(
+            :voip,
+            PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[
+              PreludeSDK::Models::LookupLookupResponse::LineType::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
 
       class NetworkInfo < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # The name of the carrier.
         sig { returns(T.nilable(String)) }
         attr_reader :carrier_name
@@ -279,7 +431,11 @@ module PreludeSDK
         attr_writer :mnc
 
         # The current carrier information.
-        sig { params(carrier_name: String, mcc: String, mnc: String).returns(T.attached_class) }
+        sig do
+          params(carrier_name: String, mcc: String, mnc: String).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The name of the carrier.
           carrier_name: nil,
@@ -287,12 +443,20 @@ module PreludeSDK
           mcc: nil,
           # Mobile Network Code.
           mnc: nil
-        ); end
-        sig { override.returns({carrier_name: String, mcc: String, mnc: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns({ carrier_name: String, mcc: String, mnc: String })
+        end
+        def to_hash
+        end
       end
 
       class OriginalNetworkInfo < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # The name of the original carrier.
         sig { returns(T.nilable(String)) }
         attr_reader :carrier_name
@@ -315,7 +479,11 @@ module PreludeSDK
         attr_writer :mnc
 
         # The original carrier information.
-        sig { params(carrier_name: String, mcc: String, mnc: String).returns(T.attached_class) }
+        sig do
+          params(carrier_name: String, mcc: String, mnc: String).returns(
+            T.attached_class
+          )
+        end
         def self.new(
           # The name of the original carrier.
           carrier_name: nil,
@@ -323,9 +491,14 @@ module PreludeSDK
           mcc: nil,
           # Mobile Network Code.
           mnc: nil
-        ); end
-        sig { override.returns({carrier_name: String, mcc: String, mnc: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig do
+          override.returns({ carrier_name: String, mcc: String, mnc: String })
+        end
+        def to_hash
+        end
       end
     end
   end

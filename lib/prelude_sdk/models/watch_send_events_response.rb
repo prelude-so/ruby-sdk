@@ -22,7 +22,6 @@ module PreludeSDK
       #   {PreludeSDK::Models::WatchSendEventsResponse} for more details.
       #
       #   @param request_id [String] A string that identifies this specific request. Report it back to us to help us
-      #   ...
       #
       #   @param status [Symbol, PreludeSDK::Models::WatchSendEventsResponse::Status] The status of the events dispatch.
 

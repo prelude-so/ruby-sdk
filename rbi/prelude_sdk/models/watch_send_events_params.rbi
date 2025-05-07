@@ -6,36 +6,47 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
       # A list of events to dispatch.
-      sig { returns(T::Array[PreludeSDK::Models::WatchSendEventsParams::Event]) }
+      sig { returns(T::Array[PreludeSDK::WatchSendEventsParams::Event]) }
       attr_accessor :events
 
       sig do
         params(
-          events: T::Array[T.any(PreludeSDK::Models::WatchSendEventsParams::Event, PreludeSDK::Internal::AnyHash)],
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          events: T::Array[PreludeSDK::WatchSendEventsParams::Event::OrHash],
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # A list of events to dispatch.
         events:,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              events: T::Array[PreludeSDK::Models::WatchSendEventsParams::Event],
-              request_options: PreludeSDK::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            events: T::Array[PreludeSDK::WatchSendEventsParams::Event],
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Event < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # A confidence level you want to assign to the event.
-        sig { returns(PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::OrSymbol) }
+        sig do
+          returns(
+            PreludeSDK::WatchSendEventsParams::Event::Confidence::OrSymbol
+          )
+        end
         attr_accessor :confidence
 
         # A label to describe what the event refers to.
@@ -43,24 +54,23 @@ module PreludeSDK
         attr_accessor :label
 
         # The event target. Only supports phone numbers for now.
-        sig { returns(PreludeSDK::Models::WatchSendEventsParams::Event::Target) }
+        sig { returns(PreludeSDK::WatchSendEventsParams::Event::Target) }
         attr_reader :target
 
         sig do
           params(
-            target: T.any(PreludeSDK::Models::WatchSendEventsParams::Event::Target, PreludeSDK::Internal::AnyHash)
-          )
-            .void
+            target: PreludeSDK::WatchSendEventsParams::Event::Target::OrHash
+          ).void
         end
         attr_writer :target
 
         sig do
           params(
-            confidence: PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::OrSymbol,
+            confidence:
+              PreludeSDK::WatchSendEventsParams::Event::Confidence::OrSymbol,
             label: String,
-            target: T.any(PreludeSDK::Models::WatchSendEventsParams::Event::Target, PreludeSDK::Internal::AnyHash)
-          )
-            .returns(T.attached_class)
+            target: PreludeSDK::WatchSendEventsParams::Event::Target::OrHash
+          ).returns(T.attached_class)
         end
         def self.new(
           # A confidence level you want to assign to the event.
@@ -69,40 +79,82 @@ module PreludeSDK
           label:,
           # The event target. Only supports phone numbers for now.
           target:
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                confidence: PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::OrSymbol,
-                label: String,
-                target: PreludeSDK::Models::WatchSendEventsParams::Event::Target
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              confidence:
+                PreludeSDK::WatchSendEventsParams::Event::Confidence::OrSymbol,
+              label: String,
+              target: PreludeSDK::WatchSendEventsParams::Event::Target
+            }
+          )
+        end
+        def to_hash
+        end
 
         # A confidence level you want to assign to the event.
         module Confidence
           extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                PreludeSDK::WatchSendEventsParams::Event::Confidence
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-          MAXIMUM = T.let(:maximum, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol)
-          HIGH = T.let(:high, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol)
-          NEUTRAL = T.let(:neutral, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol)
-          LOW = T.let(:low, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol)
-          MINIMUM = T.let(:minimum, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol)
+          MAXIMUM =
+            T.let(
+              :maximum,
+              PreludeSDK::WatchSendEventsParams::Event::Confidence::TaggedSymbol
+            )
+          HIGH =
+            T.let(
+              :high,
+              PreludeSDK::WatchSendEventsParams::Event::Confidence::TaggedSymbol
+            )
+          NEUTRAL =
+            T.let(
+              :neutral,
+              PreludeSDK::WatchSendEventsParams::Event::Confidence::TaggedSymbol
+            )
+          LOW =
+            T.let(
+              :low,
+              PreludeSDK::WatchSendEventsParams::Event::Confidence::TaggedSymbol
+            )
+          MINIMUM =
+            T.let(
+              :minimum,
+              PreludeSDK::WatchSendEventsParams::Event::Confidence::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[PreludeSDK::Models::WatchSendEventsParams::Event::Confidence::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::WatchSendEventsParams::Event::Confidence::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
 
         class Target < PreludeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
           # The type of the target. Either "phone_number" or "email_address".
-          sig { returns(PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::OrSymbol) }
+          sig do
+            returns(
+              PreludeSDK::WatchSendEventsParams::Event::Target::Type::OrSymbol
+            )
+          end
           attr_accessor :type
 
           # An E.164 formatted phone number or an email address.
@@ -111,36 +163,65 @@ module PreludeSDK
 
           # The event target. Only supports phone numbers for now.
           sig do
-            params(type: PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::OrSymbol, value: String)
-              .returns(T.attached_class)
+            params(
+              type:
+                PreludeSDK::WatchSendEventsParams::Event::Target::Type::OrSymbol,
+              value: String
+            ).returns(T.attached_class)
           end
           def self.new(
             # The type of the target. Either "phone_number" or "email_address".
             type:,
             # An E.164 formatted phone number or an email address.
             value:
-          ); end
-          sig do
-            override
-              .returns({type: PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::OrSymbol, value: String})
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                type:
+                  PreludeSDK::WatchSendEventsParams::Event::Target::Type::OrSymbol,
+                value: String
+              }
+            )
+          end
+          def to_hash
+          end
 
           # The type of the target. Either "phone_number" or "email_address".
           module Type
             extend PreludeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  PreludeSDK::WatchSendEventsParams::Event::Target::Type
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             PHONE_NUMBER =
-              T.let(:phone_number, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::TaggedSymbol)
+              T.let(
+                :phone_number,
+                PreludeSDK::WatchSendEventsParams::Event::Target::Type::TaggedSymbol
+              )
             EMAIL_ADDRESS =
-              T.let(:email_address, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::TaggedSymbol)
+              T.let(
+                :email_address,
+                PreludeSDK::WatchSendEventsParams::Event::Target::Type::TaggedSymbol
+              )
 
-            sig { override.returns(T::Array[PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type::TaggedSymbol]) }
-            def self.values; end
+            sig do
+              override.returns(
+                T::Array[
+                  PreludeSDK::WatchSendEventsParams::Event::Target::Type::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

@@ -2,18 +2,18 @@ module PreludeSDK
   module Resources
     class Verification
       def create: (
-        target: PreludeSDK::Models::VerificationCreateParams::Target,
+        target: PreludeSDK::VerificationCreateParams::Target,
         ?dispatch_id: String,
-        ?metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+        ?metadata: PreludeSDK::VerificationCreateParams::Metadata,
         ?method_: PreludeSDK::Models::VerificationCreateParams::method_,
-        ?options: PreludeSDK::Models::VerificationCreateParams::Options,
-        ?signals: PreludeSDK::Models::VerificationCreateParams::Signals,
+        ?options: PreludeSDK::VerificationCreateParams::Options,
+        ?signals: PreludeSDK::VerificationCreateParams::Signals,
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::VerificationCreateResponse
 
       def check: (
         code: String,
-        target: PreludeSDK::Models::VerificationCheckParams::Target,
+        target: PreludeSDK::VerificationCheckParams::Target,
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::VerificationCheckResponse
 

@@ -3,6 +3,9 @@
 module PreludeSDK
   module Models
     class TransactionalSendResponse < PreludeSDK::Internal::Type::BaseModel
+      OrHash =
+        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
       # The message identifier.
       sig { returns(String) }
       attr_accessor :id
@@ -59,8 +62,7 @@ module PreludeSDK
           callback_url: String,
           correlation_id: String,
           from: String
-        )
-          .returns(T.attached_class)
+        ).returns(T.attached_class)
       end
       def self.new(
         # The message identifier.
@@ -81,24 +83,26 @@ module PreludeSDK
         correlation_id: nil,
         # The Sender ID.
         from: nil
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              id: String,
-              created_at: Time,
-              expires_at: Time,
-              template_id: String,
-              to: String,
-              variables: T::Hash[Symbol, String],
-              callback_url: String,
-              correlation_id: String,
-              from: String
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            id: String,
+            created_at: Time,
+            expires_at: Time,
+            template_id: String,
+            to: String,
+            variables: T::Hash[Symbol, String],
+            callback_url: String,
+            correlation_id: String,
+            from: String
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end
