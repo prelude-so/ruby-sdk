@@ -17,8 +17,8 @@ module PreludeSDK
       #   The verification target. Either a phone number or an email address. To use the
       #   email verification feature contact us to discuss your use case.
       #
-      #   @return [PreludeSDK::Models::VerificationCheckParams::Target]
-      required :target, -> { PreludeSDK::Models::VerificationCheckParams::Target }
+      #   @return [PreludeSDK::VerificationCheckParams::Target]
+      required :target, -> { PreludeSDK::VerificationCheckParams::Target }
 
       # @!method initialize(code:, target:, request_options: {})
       #   Some parameter documentations has been truncated, see
@@ -26,8 +26,7 @@ module PreludeSDK
       #
       #   @param code [String] The OTP code to validate.
       #
-      #   @param target [PreludeSDK::Models::VerificationCheckParams::Target] The verification target. Either a phone number or an email address. To use the e
-      #   ...
+      #   @param target [PreludeSDK::VerificationCheckParams::Target] The verification target. Either a phone number or an email address. To use the e
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -35,8 +34,8 @@ module PreludeSDK
         # @!attribute type
         #   The type of the target. Either "phone_number" or "email_address".
         #
-        #   @return [Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type]
-        required :type, enum: -> { PreludeSDK::Models::VerificationCheckParams::Target::Type }
+        #   @return [Symbol, PreludeSDK::VerificationCheckParams::Target::Type]
+        required :type, enum: -> { PreludeSDK::VerificationCheckParams::Target::Type }
 
         # @!attribute value
         #   An E.164 formatted phone number or an email address.
@@ -48,13 +47,13 @@ module PreludeSDK
         #   The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
         #
-        #   @param type [Symbol, PreludeSDK::Models::VerificationCheckParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
+        #   @param type [Symbol, PreludeSDK::VerificationCheckParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
         #
         #   @param value [String] An E.164 formatted phone number or an email address.
 
         # The type of the target. Either "phone_number" or "email_address".
         #
-        # @see PreludeSDK::Models::VerificationCheckParams::Target#type
+        # @see PreludeSDK::VerificationCheckParams::Target#type
         module Type
           extend PreludeSDK::Internal::Type::Enum
 

@@ -16,8 +16,6 @@ module PreludeSDK
         status: PreludeSDK::Models::WatchSendEventsResponse::status
       ) -> void
 
-      def to_hash: -> PreludeSDK::Models::watch_send_events_response
-
       type status = :success
 
       module Status

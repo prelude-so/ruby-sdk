@@ -56,8 +56,6 @@ module PreludeSDK
         ?variables: ::Hash[Symbol, String],
         ?request_options: PreludeSDK::request_opts
       ) -> void
-
-      def to_hash: -> PreludeSDK::Models::transactional_send_params
     end
   end
 end

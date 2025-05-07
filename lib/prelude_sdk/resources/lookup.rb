@@ -13,7 +13,7 @@ module PreludeSDK
       #
       # @param phone_number [String] An E.164 formatted phone number to look up.
       #
-      # @param type [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>] Optional features. Possible values are: ...
+      # @param type [Array<Symbol, PreludeSDK::LookupLookupParams::Type>] Optional features. Possible values are:
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -21,7 +21,7 @@ module PreludeSDK
       #
       # @see PreludeSDK::Models::LookupLookupParams
       def lookup(phone_number, params = {})
-        parsed, options = PreludeSDK::Models::LookupLookupParams.dump_request(params)
+        parsed, options = PreludeSDK::LookupLookupParams.dump_request(params)
         @client.request(
           method: :get,
           path: ["v2/lookup/%1$s", phone_number],

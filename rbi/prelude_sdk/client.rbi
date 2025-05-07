@@ -28,7 +28,8 @@ module PreludeSDK
 
     # @api private
     sig { override.returns(T::Hash[String, String]) }
-    private def auth_headers; end
+    private def auth_headers
+    end
 
     # Creates and returns a new client for interacting with the API.
     sig do
@@ -39,8 +40,7 @@ module PreludeSDK
         timeout: Float,
         initial_retry_delay: Float,
         max_retry_delay: Float
-      )
-        .returns(T.attached_class)
+      ).returns(T.attached_class)
     end
     def self.new(
       # Bearer token for authorizing API requests. Defaults to `ENV["API_TOKEN"]`
@@ -53,6 +53,7 @@ module PreludeSDK
       timeout: PreludeSDK::Client::DEFAULT_TIMEOUT_IN_SECONDS,
       initial_retry_delay: PreludeSDK::Client::DEFAULT_INITIAL_RETRY_DELAY,
       max_retry_delay: PreludeSDK::Client::DEFAULT_MAX_RETRY_DELAY
-    ); end
+    )
+    end
   end
 end

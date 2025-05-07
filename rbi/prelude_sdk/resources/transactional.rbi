@@ -14,9 +14,8 @@ module PreludeSDK
           from: String,
           locale: String,
           variables: T::Hash[Symbol, String],
-          request_options: PreludeSDK::RequestOpts
-        )
-          .returns(PreludeSDK::Models::TransactionalSendResponse)
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(PreludeSDK::Models::TransactionalSendResponse)
       end
       def send_(
         # The template identifier.
@@ -39,10 +38,13 @@ module PreludeSDK
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: PreludeSDK::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

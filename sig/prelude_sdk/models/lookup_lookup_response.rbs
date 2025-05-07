@@ -58,8 +58,6 @@ module PreludeSDK
         ?phone_number: String
       ) -> void
 
-      def to_hash: -> PreludeSDK::Models::lookup_lookup_response
-
       type flag = :ported | :temporary
 
       module Flag
@@ -138,8 +136,6 @@ module PreludeSDK
           ?mcc: String,
           ?mnc: String
         ) -> void
-
-        def to_hash: -> PreludeSDK::Models::LookupLookupResponse::network_info
       end
 
       type original_network_info =
@@ -163,8 +159,6 @@ module PreludeSDK
           ?mcc: String,
           ?mnc: String
         ) -> void
-
-        def to_hash: -> PreludeSDK::Models::LookupLookupResponse::original_network_info
       end
     end
   end

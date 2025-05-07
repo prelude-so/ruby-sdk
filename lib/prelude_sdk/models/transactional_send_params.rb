@@ -75,7 +75,6 @@ module PreludeSDK
       #   @param from [String] The Sender ID.
       #
       #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
-      #   ...
       #
       #   @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
       #

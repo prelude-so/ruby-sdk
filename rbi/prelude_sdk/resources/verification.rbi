@@ -8,15 +8,14 @@ module PreludeSDK
       # this endpoint will perform a retry instead.
       sig do
         params(
-          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::AnyHash),
+          target: PreludeSDK::VerificationCreateParams::Target::OrHash,
           dispatch_id: String,
-          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::AnyHash),
-          method_: PreludeSDK::Models::VerificationCreateParams::Method::OrSymbol,
-          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::AnyHash),
-          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::AnyHash),
-          request_options: PreludeSDK::RequestOpts
-        )
-          .returns(PreludeSDK::Models::VerificationCreateResponse)
+          metadata: PreludeSDK::VerificationCreateParams::Metadata::OrHash,
+          method_: PreludeSDK::VerificationCreateParams::Method::OrSymbol,
+          options: PreludeSDK::VerificationCreateParams::Options::OrHash,
+          signals: PreludeSDK::VerificationCreateParams::Signals::OrHash,
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(PreludeSDK::Models::VerificationCreateResponse)
       end
       def create(
         # The verification target. Either a phone number or an email address. To use the
@@ -39,15 +38,16 @@ module PreludeSDK
         # [Signals](/verify/v2/documentation/prevent-fraud#signals).
         signals: nil,
         request_options: {}
-      ); end
+      )
+      end
+
       # Check the validity of a verification code.
       sig do
         params(
           code: String,
-          target: T.any(PreludeSDK::Models::VerificationCheckParams::Target, PreludeSDK::Internal::AnyHash),
-          request_options: PreludeSDK::RequestOpts
-        )
-          .returns(PreludeSDK::Models::VerificationCheckResponse)
+          target: PreludeSDK::VerificationCheckParams::Target::OrHash,
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(PreludeSDK::Models::VerificationCheckResponse)
       end
       def check(
         # The OTP code to validate.
@@ -56,10 +56,13 @@ module PreludeSDK
         # email verification feature contact us to discuss your use case.
         target:,
         request_options: {}
-      ); end
+      )
+      end
+
       # @api private
       sig { params(client: PreludeSDK::Client).returns(T.attached_class) }
-      def self.new(client:); end
+      def self.new(client:)
+      end
     end
   end
 end

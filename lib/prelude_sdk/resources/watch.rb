@@ -10,14 +10,13 @@ module PreludeSDK
       #
       # @overload predict(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {})
       #
-      # @param target [PreludeSDK::Models::WatchPredictParams::Target] The prediction target. Only supports phone numbers for now.
+      # @param target [PreludeSDK::WatchPredictParams::Target] The prediction target. Only supports phone numbers for now.
       #
       # @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
       #
-      # @param metadata [PreludeSDK::Models::WatchPredictParams::Metadata] The metadata for this prediction.
+      # @param metadata [PreludeSDK::WatchPredictParams::Metadata] The metadata for this prediction.
       #
-      # @param signals [PreludeSDK::Models::WatchPredictParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
-      # ...
+      # @param signals [PreludeSDK::WatchPredictParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -25,7 +24,7 @@ module PreludeSDK
       #
       # @see PreludeSDK::Models::WatchPredictParams
       def predict(params)
-        parsed, options = PreludeSDK::Models::WatchPredictParams.dump_request(params)
+        parsed, options = PreludeSDK::WatchPredictParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v2/watch/predict",
@@ -40,7 +39,7 @@ module PreludeSDK
       #
       # @overload send_events(events:, request_options: {})
       #
-      # @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>] A list of events to dispatch.
+      # @param events [Array<PreludeSDK::WatchSendEventsParams::Event>] A list of events to dispatch.
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -48,7 +47,7 @@ module PreludeSDK
       #
       # @see PreludeSDK::Models::WatchSendEventsParams
       def send_events(params)
-        parsed, options = PreludeSDK::Models::WatchSendEventsParams.dump_request(params)
+        parsed, options = PreludeSDK::WatchSendEventsParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v2/watch/event",
@@ -63,7 +62,7 @@ module PreludeSDK
       #
       # @overload send_feedbacks(feedbacks:, request_options: {})
       #
-      # @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>] A list of feedbacks to send.
+      # @param feedbacks [Array<PreludeSDK::WatchSendFeedbacksParams::Feedback>] A list of feedbacks to send.
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -71,7 +70,7 @@ module PreludeSDK
       #
       # @see PreludeSDK::Models::WatchSendFeedbacksParams
       def send_feedbacks(params)
-        parsed, options = PreludeSDK::Models::WatchSendFeedbacksParams.dump_request(params)
+        parsed, options = PreludeSDK::WatchSendFeedbacksParams.dump_request(params)
         @client.request(
           method: :post,
           path: "v2/watch/feedback",

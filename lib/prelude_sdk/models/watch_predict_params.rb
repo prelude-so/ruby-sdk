@@ -10,8 +10,8 @@ module PreludeSDK
       # @!attribute target
       #   The prediction target. Only supports phone numbers for now.
       #
-      #   @return [PreludeSDK::Models::WatchPredictParams::Target]
-      required :target, -> { PreludeSDK::Models::WatchPredictParams::Target }
+      #   @return [PreludeSDK::WatchPredictParams::Target]
+      required :target, -> { PreludeSDK::WatchPredictParams::Target }
 
       # @!attribute dispatch_id
       #   The identifier of the dispatch that came from the front-end SDK.
@@ -22,28 +22,27 @@ module PreludeSDK
       # @!attribute metadata
       #   The metadata for this prediction.
       #
-      #   @return [PreludeSDK::Models::WatchPredictParams::Metadata, nil]
-      optional :metadata, -> { PreludeSDK::Models::WatchPredictParams::Metadata }
+      #   @return [PreludeSDK::WatchPredictParams::Metadata, nil]
+      optional :metadata, -> { PreludeSDK::WatchPredictParams::Metadata }
 
       # @!attribute signals
       #   The signals used for anti-fraud. For more details, refer to
       #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
       #
-      #   @return [PreludeSDK::Models::WatchPredictParams::Signals, nil]
-      optional :signals, -> { PreludeSDK::Models::WatchPredictParams::Signals }
+      #   @return [PreludeSDK::WatchPredictParams::Signals, nil]
+      optional :signals, -> { PreludeSDK::WatchPredictParams::Signals }
 
       # @!method initialize(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::WatchPredictParams} for more details.
       #
-      #   @param target [PreludeSDK::Models::WatchPredictParams::Target] The prediction target. Only supports phone numbers for now.
+      #   @param target [PreludeSDK::WatchPredictParams::Target] The prediction target. Only supports phone numbers for now.
       #
       #   @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
       #
-      #   @param metadata [PreludeSDK::Models::WatchPredictParams::Metadata] The metadata for this prediction.
+      #   @param metadata [PreludeSDK::WatchPredictParams::Metadata] The metadata for this prediction.
       #
-      #   @param signals [PreludeSDK::Models::WatchPredictParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
-      #   ...
+      #   @param signals [PreludeSDK::WatchPredictParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -51,8 +50,8 @@ module PreludeSDK
         # @!attribute type
         #   The type of the target. Either "phone_number" or "email_address".
         #
-        #   @return [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type]
-        required :type, enum: -> { PreludeSDK::Models::WatchPredictParams::Target::Type }
+        #   @return [Symbol, PreludeSDK::WatchPredictParams::Target::Type]
+        required :type, enum: -> { PreludeSDK::WatchPredictParams::Target::Type }
 
         # @!attribute value
         #   An E.164 formatted phone number or an email address.
@@ -63,13 +62,13 @@ module PreludeSDK
         # @!method initialize(type:, value:)
         #   The prediction target. Only supports phone numbers for now.
         #
-        #   @param type [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
+        #   @param type [Symbol, PreludeSDK::WatchPredictParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
         #
         #   @param value [String] An E.164 formatted phone number or an email address.
 
         # The type of the target. Either "phone_number" or "email_address".
         #
-        # @see PreludeSDK::Models::WatchPredictParams::Target#type
+        # @see PreludeSDK::WatchPredictParams::Target#type
         module Type
           extend PreludeSDK::Internal::Type::Enum
 
@@ -117,8 +116,8 @@ module PreludeSDK
         # @!attribute device_platform
         #   The type of the user's device.
         #
-        #   @return [Symbol, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform, nil]
-        optional :device_platform, enum: -> { PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform }
+        #   @return [Symbol, PreludeSDK::WatchPredictParams::Signals::DevicePlatform, nil]
+        optional :device_platform, enum: -> { PreludeSDK::WatchPredictParams::Signals::DevicePlatform }
 
         # @!attribute ip
         #   The IP address of the user's device.
@@ -150,7 +149,7 @@ module PreludeSDK
 
         # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
         #   Some parameter documentations has been truncated, see
-        #   {PreludeSDK::Models::WatchPredictParams::Signals} for more details.
+        #   {PreludeSDK::WatchPredictParams::Signals} for more details.
         #
         #   The signals used for anti-fraud. For more details, refer to
         #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
@@ -158,25 +157,22 @@ module PreludeSDK
         #   @param app_version [String] The version of your application.
         #
         #   @param device_id [String] The unique identifier for the user's device. For Android, this corresponds to th
-        #   ...
         #
         #   @param device_model [String] The model of the user's device.
         #
-        #   @param device_platform [Symbol, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform] The type of the user's device.
+        #   @param device_platform [Symbol, PreludeSDK::WatchPredictParams::Signals::DevicePlatform] The type of the user's device.
         #
         #   @param ip [String] The IP address of the user's device.
         #
         #   @param is_trusted_user [Boolean] This signal should provide a higher level of trust, indicating that the user is
-        #   ...
         #
         #   @param os_version [String] The version of the user's device operating system.
         #
         #   @param user_agent [String] The user agent of the user's device. If the individual fields (os_version, devic
-        #   ...
 
         # The type of the user's device.
         #
-        # @see PreludeSDK::Models::WatchPredictParams::Signals#device_platform
+        # @see PreludeSDK::WatchPredictParams::Signals#device_platform
         module DevicePlatform
           extend PreludeSDK::Internal::Type::Enum
 

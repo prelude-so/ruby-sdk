@@ -6,6 +6,9 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
       # The template identifier.
       sig { returns(String) }
       attr_accessor :template_id
@@ -69,9 +72,8 @@ module PreludeSDK
           from: String,
           locale: String,
           variables: T::Hash[Symbol, String],
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The template identifier.
@@ -94,24 +96,26 @@ module PreludeSDK
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              template_id: String,
-              to: String,
-              callback_url: String,
-              correlation_id: String,
-              expires_at: String,
-              from: String,
-              locale: String,
-              variables: T::Hash[Symbol, String],
-              request_options: PreludeSDK::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            template_id: String,
+            to: String,
+            callback_url: String,
+            correlation_id: String,
+            expires_at: String,
+            from: String,
+            locale: String,
+            variables: T::Hash[Symbol, String],
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
     end
   end
 end

@@ -6,14 +6,18 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
+      OrHash =
+        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
       # The verification target. Either a phone number or an email address. To use the
       # email verification feature contact us to discuss your use case.
-      sig { returns(PreludeSDK::Models::VerificationCreateParams::Target) }
+      sig { returns(PreludeSDK::VerificationCreateParams::Target) }
       attr_reader :target
 
       sig do
-        params(target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::AnyHash))
-          .void
+        params(
+          target: PreludeSDK::VerificationCreateParams::Target::OrHash
+        ).void
       end
       attr_writer :target
 
@@ -26,14 +30,13 @@ module PreludeSDK
 
       # The metadata for this verification. This object will be returned with every
       # response or webhook sent that refers to this verification.
-      sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Metadata)) }
+      sig { returns(T.nilable(PreludeSDK::VerificationCreateParams::Metadata)) }
       attr_reader :metadata
 
       sig do
         params(
-          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::AnyHash)
-        )
-          .void
+          metadata: PreludeSDK::VerificationCreateParams::Metadata::OrHash
+        ).void
       end
       attr_writer :metadata
 
@@ -42,48 +45,53 @@ module PreludeSDK
       # verification code through a phone call rather than a text message. It also
       # allows verification of landline numbers that cannot receive SMS messages.
       # **Coming soon.**
-      sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Method::OrSymbol)) }
+      sig do
+        returns(
+          T.nilable(PreludeSDK::VerificationCreateParams::Method::OrSymbol)
+        )
+      end
       attr_reader :method_
 
-      sig { params(method_: PreludeSDK::Models::VerificationCreateParams::Method::OrSymbol).void }
+      sig do
+        params(
+          method_: PreludeSDK::VerificationCreateParams::Method::OrSymbol
+        ).void
+      end
       attr_writer :method_
 
       # Verification options
-      sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options)) }
+      sig { returns(T.nilable(PreludeSDK::VerificationCreateParams::Options)) }
       attr_reader :options
 
       sig do
         params(
-          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::AnyHash)
-        )
-          .void
+          options: PreludeSDK::VerificationCreateParams::Options::OrHash
+        ).void
       end
       attr_writer :options
 
       # The signals used for anti-fraud. For more details, refer to
       # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-      sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Signals)) }
+      sig { returns(T.nilable(PreludeSDK::VerificationCreateParams::Signals)) }
       attr_reader :signals
 
       sig do
         params(
-          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::AnyHash)
-        )
-          .void
+          signals: PreludeSDK::VerificationCreateParams::Signals::OrHash
+        ).void
       end
       attr_writer :signals
 
       sig do
         params(
-          target: T.any(PreludeSDK::Models::VerificationCreateParams::Target, PreludeSDK::Internal::AnyHash),
+          target: PreludeSDK::VerificationCreateParams::Target::OrHash,
           dispatch_id: String,
-          metadata: T.any(PreludeSDK::Models::VerificationCreateParams::Metadata, PreludeSDK::Internal::AnyHash),
-          method_: PreludeSDK::Models::VerificationCreateParams::Method::OrSymbol,
-          options: T.any(PreludeSDK::Models::VerificationCreateParams::Options, PreludeSDK::Internal::AnyHash),
-          signals: T.any(PreludeSDK::Models::VerificationCreateParams::Signals, PreludeSDK::Internal::AnyHash),
-          request_options: T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
-        )
-          .returns(T.attached_class)
+          metadata: PreludeSDK::VerificationCreateParams::Metadata::OrHash,
+          method_: PreludeSDK::VerificationCreateParams::Method::OrSymbol,
+          options: PreludeSDK::VerificationCreateParams::Options::OrHash,
+          signals: PreludeSDK::VerificationCreateParams::Signals::OrHash,
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
       def self.new(
         # The verification target. Either a phone number or an email address. To use the
@@ -106,26 +114,33 @@ module PreludeSDK
         # [Signals](/verify/v2/documentation/prevent-fraud#signals).
         signals: nil,
         request_options: {}
-      ); end
-      sig do
-        override
-          .returns(
-            {
-              target: PreludeSDK::Models::VerificationCreateParams::Target,
-              dispatch_id: String,
-              metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
-              method_: PreludeSDK::Models::VerificationCreateParams::Method::OrSymbol,
-              options: PreludeSDK::Models::VerificationCreateParams::Options,
-              signals: PreludeSDK::Models::VerificationCreateParams::Signals,
-              request_options: PreludeSDK::RequestOptions
-            }
-          )
+      )
       end
-      def to_hash; end
+
+      sig do
+        override.returns(
+          {
+            target: PreludeSDK::VerificationCreateParams::Target,
+            dispatch_id: String,
+            metadata: PreludeSDK::VerificationCreateParams::Metadata,
+            method_: PreludeSDK::VerificationCreateParams::Method::OrSymbol,
+            options: PreludeSDK::VerificationCreateParams::Options,
+            signals: PreludeSDK::VerificationCreateParams::Signals,
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
+      def to_hash
+      end
 
       class Target < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # The type of the target. Either "phone_number" or "email_address".
-        sig { returns(PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol) }
+        sig do
+          returns(PreludeSDK::VerificationCreateParams::Target::Type::OrSymbol)
+        end
         attr_accessor :type
 
         # An E.164 formatted phone number or an email address.
@@ -135,39 +150,68 @@ module PreludeSDK
         # The verification target. Either a phone number or an email address. To use the
         # email verification feature contact us to discuss your use case.
         sig do
-          params(type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String)
-            .returns(T.attached_class)
+          params(
+            type: PreludeSDK::VerificationCreateParams::Target::Type::OrSymbol,
+            value: String
+          ).returns(T.attached_class)
         end
         def self.new(
           # The type of the target. Either "phone_number" or "email_address".
           type:,
           # An E.164 formatted phone number or an email address.
           value:
-        ); end
-        sig do
-          override
-            .returns({type: PreludeSDK::Models::VerificationCreateParams::Target::Type::OrSymbol, value: String})
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              type:
+                PreludeSDK::VerificationCreateParams::Target::Type::OrSymbol,
+              value: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The type of the target. Either "phone_number" or "email_address".
         module Type
           extend PreludeSDK::Internal::Type::Enum
 
-          TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type) }
+          TaggedSymbol =
+            T.type_alias do
+              T.all(Symbol, PreludeSDK::VerificationCreateParams::Target::Type)
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           PHONE_NUMBER =
-            T.let(:phone_number, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol)
+            T.let(
+              :phone_number,
+              PreludeSDK::VerificationCreateParams::Target::Type::TaggedSymbol
+            )
           EMAIL_ADDRESS =
-            T.let(:email_address, PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol)
+            T.let(
+              :email_address,
+              PreludeSDK::VerificationCreateParams::Target::Type::TaggedSymbol
+            )
 
-          sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Target::Type::TaggedSymbol]) }
-          def self.values; end
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Target::Type::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # A user-defined identifier to correlate this verification with.
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
@@ -181,9 +225,12 @@ module PreludeSDK
         def self.new(
           # A user-defined identifier to correlate this verification with.
           correlation_id: nil
-        ); end
-        sig { override.returns({correlation_id: String}) }
-        def to_hash; end
+        )
+        end
+
+        sig { override.returns({ correlation_id: String }) }
+        def to_hash
+        end
       end
 
       # The method used for verifying this phone number. The 'voice' option provides an
@@ -194,27 +241,50 @@ module PreludeSDK
       module Method
         extend PreludeSDK::Internal::Type::Enum
 
-        TaggedSymbol = T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Method) }
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, PreludeSDK::VerificationCreateParams::Method)
+          end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        AUTO = T.let(:auto, PreludeSDK::Models::VerificationCreateParams::Method::TaggedSymbol)
-        VOICE = T.let(:voice, PreludeSDK::Models::VerificationCreateParams::Method::TaggedSymbol)
+        AUTO =
+          T.let(
+            :auto,
+            PreludeSDK::VerificationCreateParams::Method::TaggedSymbol
+          )
+        VOICE =
+          T.let(
+            :voice,
+            PreludeSDK::VerificationCreateParams::Method::TaggedSymbol
+          )
 
-        sig { override.returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Method::TaggedSymbol]) }
-        def self.values; end
+        sig do
+          override.returns(
+            T::Array[PreludeSDK::VerificationCreateParams::Method::TaggedSymbol]
+          )
+        end
+        def self.values
+        end
       end
 
       class Options < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # This allows you to automatically retrieve and fill the OTP code on mobile apps.
         # Currently only Android devices are supported.
-        sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm)) }
+        sig do
+          returns(
+            T.nilable(PreludeSDK::VerificationCreateParams::Options::AppRealm)
+          )
+        end
         attr_reader :app_realm
 
         sig do
           params(
-            app_realm: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Internal::AnyHash)
-          )
-            .void
+            app_realm:
+              PreludeSDK::VerificationCreateParams::Options::AppRealm::OrHash
+          ).void
         end
         attr_writer :app_realm
 
@@ -281,7 +351,8 @@ module PreludeSDK
         # Verification options
         sig do
           params(
-            app_realm: T.any(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, PreludeSDK::Internal::AnyHash),
+            app_realm:
+              PreludeSDK::VerificationCreateParams::Options::AppRealm::OrHash,
             callback_url: String,
             code_size: Integer,
             custom_code: String,
@@ -289,8 +360,7 @@ module PreludeSDK
             sender_id: String,
             template_id: String,
             variables: T::Hash[Symbol, String]
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # This allows you to automatically retrieve and fill the OTP code on mobile apps.
@@ -321,28 +391,38 @@ module PreludeSDK
           template_id: nil,
           # The variables to be replaced in the template.
           variables: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
-                callback_url: String,
-                code_size: Integer,
-                custom_code: String,
-                locale: String,
-                sender_id: String,
-                template_id: String,
-                variables: T::Hash[Symbol, String]
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              app_realm:
+                PreludeSDK::VerificationCreateParams::Options::AppRealm,
+              callback_url: String,
+              code_size: Integer,
+              custom_code: String,
+              locale: String,
+              sender_id: String,
+              template_id: String,
+              variables: T::Hash[Symbol, String]
+            }
+          )
+        end
+        def to_hash
+        end
 
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
+          OrHash =
+            T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
           # The platform the SMS will be sent to. We are currently only supporting
           # "android".
-          sig { returns(PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol) }
+          sig do
+            returns(
+              PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol
+            )
+          end
           attr_accessor :platform
 
           # The Android SMS Retriever API hash code that identifies your app.
@@ -353,10 +433,10 @@ module PreludeSDK
           # Currently only Android devices are supported.
           sig do
             params(
-              platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol,
+              platform:
+                PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol,
               value: String
-            )
-              .returns(T.attached_class)
+            ).returns(T.attached_class)
           end
           def self.new(
             # The platform the SMS will be sent to. We are currently only supporting
@@ -364,14 +444,20 @@ module PreludeSDK
             platform:,
             # The Android SMS Retriever API hash code that identifies your app.
             value:
-          ); end
-          sig do
-            override
-              .returns(
-                {platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol, value: String}
-              )
+          )
           end
-          def to_hash; end
+
+          sig do
+            override.returns(
+              {
+                platform:
+                  PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol,
+                value: String
+              }
+            )
+          end
+          def to_hash
+          end
 
           # The platform the SMS will be sent to. We are currently only supporting
           # "android".
@@ -379,22 +465,37 @@ module PreludeSDK
             extend PreludeSDK::Internal::Type::Enum
 
             TaggedSymbol =
-              T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform) }
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform
+                )
+              end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
             ANDROID =
-              T.let(:android, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol)
+              T.let(
+                :android,
+                PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol
+              )
 
             sig do
-              override
-                .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol])
+              override.returns(
+                T::Array[
+                  PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol
+                ]
+              )
             end
-            def self.values; end
+            def self.values
+            end
           end
         end
       end
 
       class Signals < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+
         # The version of your application.
         sig { returns(T.nilable(String)) }
         attr_reader :app_version
@@ -418,12 +519,20 @@ module PreludeSDK
         attr_writer :device_model
 
         # The type of the user's device.
-        sig { returns(T.nilable(PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)) }
+        sig do
+          returns(
+            T.nilable(
+              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol
+            )
+          )
+        end
         attr_reader :device_platform
 
         sig do
-          params(device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol)
-            .void
+          params(
+            device_platform:
+              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol
+          ).void
         end
         attr_writer :device_platform
 
@@ -466,13 +575,13 @@ module PreludeSDK
             app_version: String,
             device_id: String,
             device_model: String,
-            device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
+            device_platform:
+              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
             ip: String,
             is_trusted_user: T::Boolean,
             os_version: String,
             user_agent: String
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
         def self.new(
           # The version of your application.
@@ -496,45 +605,75 @@ module PreludeSDK
           # device_platform, device_model) are provided, we will prioritize those values
           # instead of parsing them from the user agent string.
           user_agent: nil
-        ); end
-        sig do
-          override
-            .returns(
-              {
-                app_version: String,
-                device_id: String,
-                device_model: String,
-                device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
-                ip: String,
-                is_trusted_user: T::Boolean,
-                os_version: String,
-                user_agent: String
-              }
-            )
+        )
         end
-        def to_hash; end
+
+        sig do
+          override.returns(
+            {
+              app_version: String,
+              device_id: String,
+              device_model: String,
+              device_platform:
+                PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
+              ip: String,
+              is_trusted_user: T::Boolean,
+              os_version: String,
+              user_agent: String
+            }
+          )
+        end
+        def to_hash
+        end
 
         # The type of the user's device.
         module DevicePlatform
           extend PreludeSDK::Internal::Type::Enum
 
           TaggedSymbol =
-            T.type_alias { T.all(Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform) }
+            T.type_alias do
+              T.all(
+                Symbol,
+                PreludeSDK::VerificationCreateParams::Signals::DevicePlatform
+              )
+            end
           OrSymbol = T.type_alias { T.any(Symbol, String) }
 
           ANDROID =
-            T.let(:android, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
-          IOS = T.let(:ios, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
+            T.let(
+              :android,
+              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
+            )
+          IOS =
+            T.let(
+              :ios,
+              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
+            )
           IPADOS =
-            T.let(:ipados, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
-          TVOS = T.let(:tvos, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
-          WEB = T.let(:web, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol)
+            T.let(
+              :ipados,
+              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
+            )
+          TVOS =
+            T.let(
+              :tvos,
+              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
+            )
+          WEB =
+            T.let(
+              :web,
+              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
+            )
 
           sig do
-            override
-              .returns(T::Array[PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol])
+            override.returns(
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
+              ]
+            )
           end
-          def self.values; end
+          def self.values
+          end
         end
       end
     end

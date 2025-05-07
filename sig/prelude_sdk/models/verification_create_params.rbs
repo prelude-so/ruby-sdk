@@ -2,12 +2,12 @@ module PreludeSDK
   module Models
     type verification_create_params =
       {
-        target: PreludeSDK::Models::VerificationCreateParams::Target,
+        target: PreludeSDK::VerificationCreateParams::Target,
         dispatch_id: String,
-        metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+        metadata: PreludeSDK::VerificationCreateParams::Metadata,
         method_: PreludeSDK::Models::VerificationCreateParams::method_,
-        options: PreludeSDK::Models::VerificationCreateParams::Options,
-        signals: PreludeSDK::Models::VerificationCreateParams::Signals
+        options: PreludeSDK::VerificationCreateParams::Options,
+        signals: PreludeSDK::VerificationCreateParams::Signals
       }
       & PreludeSDK::Internal::Type::request_parameters
 
@@ -15,17 +15,17 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
-      attr_accessor target: PreludeSDK::Models::VerificationCreateParams::Target
+      attr_accessor target: PreludeSDK::VerificationCreateParams::Target
 
       attr_reader dispatch_id: String?
 
       def dispatch_id=: (String) -> String
 
-      attr_reader metadata: PreludeSDK::Models::VerificationCreateParams::Metadata?
+      attr_reader metadata: PreludeSDK::VerificationCreateParams::Metadata?
 
       def metadata=: (
-        PreludeSDK::Models::VerificationCreateParams::Metadata
-      ) -> PreludeSDK::Models::VerificationCreateParams::Metadata
+        PreludeSDK::VerificationCreateParams::Metadata
+      ) -> PreludeSDK::VerificationCreateParams::Metadata
 
       attr_reader method_: PreludeSDK::Models::VerificationCreateParams::method_?
 
@@ -33,47 +33,43 @@ module PreludeSDK
         PreludeSDK::Models::VerificationCreateParams::method_
       ) -> PreludeSDK::Models::VerificationCreateParams::method_
 
-      attr_reader options: PreludeSDK::Models::VerificationCreateParams::Options?
+      attr_reader options: PreludeSDK::VerificationCreateParams::Options?
 
       def options=: (
-        PreludeSDK::Models::VerificationCreateParams::Options
-      ) -> PreludeSDK::Models::VerificationCreateParams::Options
+        PreludeSDK::VerificationCreateParams::Options
+      ) -> PreludeSDK::VerificationCreateParams::Options
 
-      attr_reader signals: PreludeSDK::Models::VerificationCreateParams::Signals?
+      attr_reader signals: PreludeSDK::VerificationCreateParams::Signals?
 
       def signals=: (
-        PreludeSDK::Models::VerificationCreateParams::Signals
-      ) -> PreludeSDK::Models::VerificationCreateParams::Signals
+        PreludeSDK::VerificationCreateParams::Signals
+      ) -> PreludeSDK::VerificationCreateParams::Signals
 
       def initialize: (
-        target: PreludeSDK::Models::VerificationCreateParams::Target,
+        target: PreludeSDK::VerificationCreateParams::Target,
         ?dispatch_id: String,
-        ?metadata: PreludeSDK::Models::VerificationCreateParams::Metadata,
+        ?metadata: PreludeSDK::VerificationCreateParams::Metadata,
         ?method_: PreludeSDK::Models::VerificationCreateParams::method_,
-        ?options: PreludeSDK::Models::VerificationCreateParams::Options,
-        ?signals: PreludeSDK::Models::VerificationCreateParams::Signals,
+        ?options: PreludeSDK::VerificationCreateParams::Options,
+        ?signals: PreludeSDK::VerificationCreateParams::Signals,
         ?request_options: PreludeSDK::request_opts
       ) -> void
 
-      def to_hash: -> PreludeSDK::Models::verification_create_params
-
       type target =
         {
-          type: PreludeSDK::Models::VerificationCreateParams::Target::type_,
+          type: PreludeSDK::VerificationCreateParams::Target::type_,
           value: String
         }
 
       class Target < PreludeSDK::Internal::Type::BaseModel
-        attr_accessor type: PreludeSDK::Models::VerificationCreateParams::Target::type_
+        attr_accessor type: PreludeSDK::VerificationCreateParams::Target::type_
 
         attr_accessor value: String
 
         def initialize: (
-          type: PreludeSDK::Models::VerificationCreateParams::Target::type_,
+          type: PreludeSDK::VerificationCreateParams::Target::type_,
           value: String
         ) -> void
-
-        def to_hash: -> PreludeSDK::Models::VerificationCreateParams::target
 
         type type_ = :phone_number | :email_address
 
@@ -83,7 +79,7 @@ module PreludeSDK
           PHONE_NUMBER: :phone_number
           EMAIL_ADDRESS: :email_address
 
-          def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Target::type_]
+          def self?.values: -> ::Array[PreludeSDK::VerificationCreateParams::Target::type_]
         end
       end
 
@@ -95,8 +91,6 @@ module PreludeSDK
         def correlation_id=: (String) -> String
 
         def initialize: (?correlation_id: String) -> void
-
-        def to_hash: -> PreludeSDK::Models::VerificationCreateParams::metadata
       end
 
       type method_ = :auto | :voice
@@ -112,7 +106,7 @@ module PreludeSDK
 
       type options =
         {
-          app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+          app_realm: PreludeSDK::VerificationCreateParams::Options::AppRealm,
           callback_url: String,
           code_size: Integer,
           custom_code: String,
@@ -123,11 +117,11 @@ module PreludeSDK
         }
 
       class Options < PreludeSDK::Internal::Type::BaseModel
-        attr_reader app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm?
+        attr_reader app_realm: PreludeSDK::VerificationCreateParams::Options::AppRealm?
 
         def app_realm=: (
-          PreludeSDK::Models::VerificationCreateParams::Options::AppRealm
-        ) -> PreludeSDK::Models::VerificationCreateParams::Options::AppRealm
+          PreludeSDK::VerificationCreateParams::Options::AppRealm
+        ) -> PreludeSDK::VerificationCreateParams::Options::AppRealm
 
         attr_reader callback_url: String?
 
@@ -158,7 +152,7 @@ module PreludeSDK
         def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
 
         def initialize: (
-          ?app_realm: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm,
+          ?app_realm: PreludeSDK::VerificationCreateParams::Options::AppRealm,
           ?callback_url: String,
           ?code_size: Integer,
           ?custom_code: String,
@@ -168,25 +162,21 @@ module PreludeSDK
           ?variables: ::Hash[Symbol, String]
         ) -> void
 
-        def to_hash: -> PreludeSDK::Models::VerificationCreateParams::options
-
         type app_realm =
           {
-            platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform,
+            platform: PreludeSDK::VerificationCreateParams::Options::AppRealm::platform,
             value: String
           }
 
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
-          attr_accessor platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform
+          attr_accessor platform: PreludeSDK::VerificationCreateParams::Options::AppRealm::platform
 
           attr_accessor value: String
 
           def initialize: (
-            platform: PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform,
+            platform: PreludeSDK::VerificationCreateParams::Options::AppRealm::platform,
             value: String
           ) -> void
-
-          def to_hash: -> PreludeSDK::Models::VerificationCreateParams::Options::app_realm
 
           type platform = :android
 
@@ -195,7 +185,7 @@ module PreludeSDK
 
             ANDROID: :android
 
-            def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform]
+            def self?.values: -> ::Array[PreludeSDK::VerificationCreateParams::Options::AppRealm::platform]
           end
         end
       end
@@ -205,7 +195,7 @@ module PreludeSDK
           app_version: String,
           device_id: String,
           device_model: String,
-          device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
+          device_platform: PreludeSDK::VerificationCreateParams::Signals::device_platform,
           ip: String,
           is_trusted_user: bool,
           os_version: String,
@@ -225,11 +215,11 @@ module PreludeSDK
 
         def device_model=: (String) -> String
 
-        attr_reader device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform?
+        attr_reader device_platform: PreludeSDK::VerificationCreateParams::Signals::device_platform?
 
         def device_platform=: (
-          PreludeSDK::Models::VerificationCreateParams::Signals::device_platform
-        ) -> PreludeSDK::Models::VerificationCreateParams::Signals::device_platform
+          PreludeSDK::VerificationCreateParams::Signals::device_platform
+        ) -> PreludeSDK::VerificationCreateParams::Signals::device_platform
 
         attr_reader ip: String?
 
@@ -251,14 +241,12 @@ module PreludeSDK
           ?app_version: String,
           ?device_id: String,
           ?device_model: String,
-          ?device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
+          ?device_platform: PreludeSDK::VerificationCreateParams::Signals::device_platform,
           ?ip: String,
           ?is_trusted_user: bool,
           ?os_version: String,
           ?user_agent: String
         ) -> void
-
-        def to_hash: -> PreludeSDK::Models::VerificationCreateParams::signals
 
         type device_platform = :android | :ios | :ipados | :tvos | :web
 
@@ -271,7 +259,7 @@ module PreludeSDK
           TVOS: :tvos
           WEB: :web
 
-          def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Signals::device_platform]
+          def self?.values: -> ::Array[PreludeSDK::VerificationCreateParams::Signals::device_platform]
         end
       end
     end

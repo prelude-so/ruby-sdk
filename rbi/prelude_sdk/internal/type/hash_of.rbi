@@ -15,25 +15,29 @@ module PreludeSDK
 
         sig do
           params(
-            type_info: T.any(
-              PreludeSDK::Internal::AnyHash,
-              T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
-              PreludeSDK::Internal::Type::Converter::Input
-            ),
+            type_info:
+              T.any(
+                PreludeSDK::Internal::AnyHash,
+                T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
+                PreludeSDK::Internal::Type::Converter::Input
+              ),
             spec: PreludeSDK::Internal::AnyHash
-          )
-            .returns(T.attached_class)
+          ).returns(T.attached_class)
         end
-        def self.[](type_info, spec = {}); end
+        def self.[](type_info, spec = {})
+        end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def ===(other); end
+        def ===(other)
+        end
 
         sig { params(other: T.anything).returns(T::Boolean) }
-        def ==(other); end
+        def ==(other)
+        end
 
         sig { returns(Integer) }
-        def hash; end
+        def hash
+        end
 
         # @api private
         sig do
@@ -44,7 +48,8 @@ module PreludeSDK
             )
             .returns(T.any(PreludeSDK::Internal::AnyHash, T.anything))
         end
-        def coerce(value, state:); end
+        def coerce(value, state:)
+        end
 
         # @api private
         sig do
@@ -55,33 +60,38 @@ module PreludeSDK
             )
             .returns(T.any(PreludeSDK::Internal::AnyHash, T.anything))
         end
-        def dump(value, state:); end
+        def dump(value, state:)
+        end
 
         # @api private
         sig { returns(Elem) }
-        protected def item_type; end
+        protected def item_type
+        end
 
         # @api private
         sig { returns(T::Boolean) }
-        protected def nilable?; end
+        protected def nilable?
+        end
 
         # @api private
         sig do
           params(
-            type_info: T.any(
-              PreludeSDK::Internal::AnyHash,
-              T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
-              PreludeSDK::Internal::Type::Converter::Input
-            ),
+            type_info:
+              T.any(
+                PreludeSDK::Internal::AnyHash,
+                T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
+                PreludeSDK::Internal::Type::Converter::Input
+              ),
             spec: PreludeSDK::Internal::AnyHash
-          )
-            .void
+          ).void
         end
-        def initialize(type_info, spec = {}); end
+        def initialize(type_info, spec = {})
+        end
 
         # @api private
         sig { params(depth: Integer).returns(String) }
-        def inspect(depth: 0); end
+        def inspect(depth: 0)
+        end
       end
     end
   end
