@@ -29,7 +29,7 @@ module PreludeSDK
         #
         #   @option spec [Boolean] :"nil?"
         #
-        # @return [PreludeSDK::Internal::Type::ArrayOf]
+        # @return [self]
         def self.[](...) = new(...)
 
         # @api public

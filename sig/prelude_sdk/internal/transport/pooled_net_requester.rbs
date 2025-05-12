@@ -2,6 +2,8 @@ module PreludeSDK
   module Internal
     module Transport
       class PooledNetRequester
+        extend PreludeSDK::Internal::Util::SorbetRuntimeSupport
+
         type request =
           {
             method: Symbol,

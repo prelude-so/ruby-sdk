@@ -9,7 +9,7 @@ module PreludeSDK
           | ^-> PreludeSDK::Internal::Type::Converter::input
           | PreludeSDK::Internal::Type::Converter::input type_info,
           ?::Hash[Symbol, top] spec
-        ) -> instance
+        ) -> self
 
         def ===: (top other) -> bool
 

@@ -4,7 +4,12 @@ module PreludeSDK
   module Models
     class VerificationCheckResponse < PreludeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            PreludeSDK::Models::VerificationCheckResponse,
+            PreludeSDK::Internal::AnyHash
+          )
+        end
 
       # The status of the check.
       sig do
@@ -117,7 +122,12 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::Models::VerificationCheckResponse::Metadata,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id

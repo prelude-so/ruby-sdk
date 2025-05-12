@@ -7,7 +7,12 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            PreludeSDK::VerificationCreateParams,
+            PreludeSDK::Internal::AnyHash
+          )
+        end
 
       # The verification target. Either a phone number or an email address. To use the
       # email verification feature contact us to discuss your use case.
@@ -135,7 +140,12 @@ module PreludeSDK
 
       class Target < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::VerificationCreateParams::Target,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # The type of the target. Either "phone_number" or "email_address".
         sig do
@@ -210,7 +220,12 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::VerificationCreateParams::Metadata,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # A user-defined identifier to correlate this verification with.
         sig { returns(T.nilable(String)) }
@@ -269,7 +284,12 @@ module PreludeSDK
 
       class Options < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::VerificationCreateParams::Options,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # This allows you to automatically retrieve and fill the OTP code on mobile apps.
         # Currently only Android devices are supported.
@@ -414,7 +434,12 @@ module PreludeSDK
 
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                PreludeSDK::VerificationCreateParams::Options::AppRealm,
+                PreludeSDK::Internal::AnyHash
+              )
+            end
 
           # The platform the SMS will be sent to. We are currently only supporting
           # "android".
@@ -494,7 +519,12 @@ module PreludeSDK
 
       class Signals < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::VerificationCreateParams::Signals,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # The version of your application.
         sig { returns(T.nilable(String)) }

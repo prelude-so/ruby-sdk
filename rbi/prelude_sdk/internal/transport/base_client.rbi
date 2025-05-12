@@ -5,9 +5,11 @@ module PreludeSDK
     module Transport
       # @api private
       class BaseClient
+        extend PreludeSDK::Internal::Util::SorbetRuntimeSupport
+
         abstract!
 
-        RequestComponentsShape =
+        RequestComponents =
           T.type_alias do
             {
               method: Symbol,
@@ -53,7 +55,7 @@ module PreludeSDK
             }
           end
 
-        RequestInputShape =
+        RequestInput =
           T.type_alias do
             {
               method: Symbol,
@@ -75,7 +77,7 @@ module PreludeSDK
           sig do
             params(
               req:
-                PreludeSDK::Internal::Transport::BaseClient::RequestComponentsShape
+                PreludeSDK::Internal::Transport::BaseClient::RequestComponents
             ).void
           end
           def validate!(req)
@@ -95,12 +97,10 @@ module PreludeSDK
           sig do
             params(
               request:
-                PreludeSDK::Internal::Transport::BaseClient::RequestInputShape,
+                PreludeSDK::Internal::Transport::BaseClient::RequestInput,
               status: Integer,
               response_headers: T.any(T::Hash[String, String], Net::HTTPHeader)
-            ).returns(
-              PreludeSDK::Internal::Transport::BaseClient::RequestInputShape
-            )
+            ).returns(PreludeSDK::Internal::Transport::BaseClient::RequestInput)
           end
           def follow_redirect(request, status:, response_headers:)
           end
@@ -168,12 +168,10 @@ module PreludeSDK
           overridable
             .params(
               req:
-                PreludeSDK::Internal::Transport::BaseClient::RequestComponentsShape,
+                PreludeSDK::Internal::Transport::BaseClient::RequestComponents,
               opts: PreludeSDK::Internal::AnyHash
             )
-            .returns(
-              PreludeSDK::Internal::Transport::BaseClient::RequestInputShape
-            )
+            .returns(PreludeSDK::Internal::Transport::BaseClient::RequestInput)
         end
         private def build_request(req, opts)
         end
@@ -191,8 +189,7 @@ module PreludeSDK
         # @api private
         sig do
           params(
-            request:
-              PreludeSDK::Internal::Transport::BaseClient::RequestInputShape,
+            request: PreludeSDK::Internal::Transport::BaseClient::RequestInput,
             redirect_count: Integer,
             retry_count: Integer,
             send_retry_header: T::Boolean

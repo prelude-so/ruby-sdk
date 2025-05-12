@@ -7,7 +7,10 @@ module PreludeSDK
   # When making a request, you can pass an actual {RequestOptions} instance, or
   # simply pass a Hash with symbol keys matching the attributes on this class.
   class RequestOptions < PreludeSDK::Internal::Type::BaseModel
-    OrHash = T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+    OrHash =
+      T.type_alias do
+        T.any(PreludeSDK::RequestOptions, PreludeSDK::Internal::AnyHash)
+      end
 
     # @api private
     sig { params(opts: PreludeSDK::RequestOptions::OrHash).void }

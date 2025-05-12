@@ -1,5 +1,7 @@
 module PreludeSDK
   module Internal
+    extend PreludeSDK::Internal::Util::SorbetRuntimeSupport
+
     OMIT: Object
   end
 end

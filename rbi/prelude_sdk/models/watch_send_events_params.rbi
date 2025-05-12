@@ -7,7 +7,12 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            PreludeSDK::WatchSendEventsParams,
+            PreludeSDK::Internal::AnyHash
+          )
+        end
 
       # A list of events to dispatch.
       sig { returns(T::Array[PreludeSDK::WatchSendEventsParams::Event]) }
@@ -39,7 +44,12 @@ module PreludeSDK
 
       class Event < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::WatchSendEventsParams::Event,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # A confidence level you want to assign to the event.
         sig do
@@ -147,7 +157,12 @@ module PreludeSDK
 
         class Target < PreludeSDK::Internal::Type::BaseModel
           OrHash =
-            T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+            T.type_alias do
+              T.any(
+                PreludeSDK::WatchSendEventsParams::Event::Target,
+                PreludeSDK::Internal::AnyHash
+              )
+            end
 
           # The type of the target. Either "phone_number" or "email_address".
           sig do

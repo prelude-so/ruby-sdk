@@ -7,7 +7,9 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(PreludeSDK::WatchPredictParams, PreludeSDK::Internal::AnyHash)
+        end
 
       # The prediction target. Only supports phone numbers for now.
       sig { returns(PreludeSDK::WatchPredictParams::Target) }
@@ -83,7 +85,12 @@ module PreludeSDK
 
       class Target < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::WatchPredictParams::Target,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # The type of the target. Either "phone_number" or "email_address".
         sig { returns(PreludeSDK::WatchPredictParams::Target::Type::OrSymbol) }
@@ -154,7 +161,12 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::WatchPredictParams::Metadata,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # A user-defined identifier to correlate this prediction with.
         sig { returns(T.nilable(String)) }
@@ -178,7 +190,12 @@ module PreludeSDK
 
       class Signals < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::WatchPredictParams::Signals,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # The version of your application.
         sig { returns(T.nilable(String)) }

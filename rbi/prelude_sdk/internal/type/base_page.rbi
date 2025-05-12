@@ -29,8 +29,7 @@ module PreludeSDK
         sig do
           params(
             client: PreludeSDK::Internal::Transport::BaseClient,
-            req:
-              PreludeSDK::Internal::Transport::BaseClient::RequestComponentsShape,
+            req: PreludeSDK::Internal::Transport::BaseClient::RequestComponents,
             headers: T.any(T::Hash[String, String], Net::HTTPHeader),
             page_data: T.anything
           ).void

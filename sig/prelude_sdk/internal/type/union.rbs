@@ -3,6 +3,7 @@ module PreludeSDK
     module Type
       module Union
         include PreludeSDK::Internal::Type::Converter
+        include PreludeSDK::Internal::Util::SorbetRuntimeSupport
 
         private def self.known_variants: -> ::Array[[Symbol?, (^-> PreludeSDK::Internal::Type::Converter::input)]]
 

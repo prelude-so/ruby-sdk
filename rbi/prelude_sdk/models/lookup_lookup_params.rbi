@@ -7,7 +7,9 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(PreludeSDK::LookupLookupParams, PreludeSDK::Internal::AnyHash)
+        end
 
       # Optional features. Possible values are:
       #

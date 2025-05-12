@@ -6,6 +6,7 @@ module PreludeSDK
       # @api private
       module Union
         include PreludeSDK::Internal::Type::Converter
+        include PreludeSDK::Internal::Util::SorbetRuntimeSupport
 
         # @api private
         #

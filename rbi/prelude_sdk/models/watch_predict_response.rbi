@@ -4,7 +4,12 @@ module PreludeSDK
   module Models
     class WatchPredictResponse < PreludeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            PreludeSDK::Models::WatchPredictResponse,
+            PreludeSDK::Internal::AnyHash
+          )
+        end
 
       # The prediction identifier.
       sig { returns(String) }

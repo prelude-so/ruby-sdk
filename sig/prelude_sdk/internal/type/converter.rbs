@@ -2,6 +2,8 @@ module PreludeSDK
   module Internal
     module Type
       module Converter
+        extend PreludeSDK::Internal::Util::SorbetRuntimeSupport
+
         type input = PreludeSDK::Internal::Type::Converter | Class
 
         type coerce_state =

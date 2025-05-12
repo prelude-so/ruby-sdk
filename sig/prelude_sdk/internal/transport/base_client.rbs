@@ -2,6 +2,8 @@ module PreludeSDK
   module Internal
     module Transport
       class BaseClient
+        extend PreludeSDK::Internal::Util::SorbetRuntimeSupport
+
         type request_components =
           {
             method: Symbol,
@@ -20,7 +22,6 @@ module PreludeSDK
             model: PreludeSDK::Internal::Type::Converter::input?,
             options: PreludeSDK::request_opts?
           }
-
         type request_input =
           {
             method: Symbol,
