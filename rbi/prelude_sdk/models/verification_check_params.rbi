@@ -7,7 +7,12 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            PreludeSDK::VerificationCheckParams,
+            PreludeSDK::Internal::AnyHash
+          )
+        end
 
       # The OTP code to validate.
       sig { returns(String) }
@@ -54,7 +59,12 @@ module PreludeSDK
 
       class Target < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::VerificationCheckParams::Target,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # The type of the target. Either "phone_number" or "email_address".
         sig do

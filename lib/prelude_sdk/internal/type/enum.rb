@@ -17,6 +17,7 @@ module PreludeSDK
       # values safely.
       module Enum
         include PreludeSDK::Internal::Type::Converter
+        include PreludeSDK::Internal::Util::SorbetRuntimeSupport
 
         # All of the valid Symbol values for this enum.
         #

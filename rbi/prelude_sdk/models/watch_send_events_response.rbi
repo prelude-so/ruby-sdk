@@ -4,7 +4,12 @@ module PreludeSDK
   module Models
     class WatchSendEventsResponse < PreludeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            PreludeSDK::Models::WatchSendEventsResponse,
+            PreludeSDK::Internal::AnyHash
+          )
+        end
 
       # A string that identifies this specific request. Report it back to us to help us
       # diagnose your issues.

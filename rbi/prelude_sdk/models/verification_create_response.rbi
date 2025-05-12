@@ -4,7 +4,12 @@ module PreludeSDK
   module Models
     class VerificationCreateResponse < PreludeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            PreludeSDK::Models::VerificationCreateResponse,
+            PreludeSDK::Internal::AnyHash
+          )
+        end
 
       # The verification identifier.
       sig { returns(String) }
@@ -161,7 +166,12 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::Models::VerificationCreateResponse::Metadata,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id

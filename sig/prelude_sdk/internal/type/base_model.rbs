@@ -3,9 +3,12 @@ module PreludeSDK
     module Type
       class BaseModel
         extend PreludeSDK::Internal::Type::Converter
+        extend PreludeSDK::Internal::Util::SorbetRuntimeSupport
 
         type known_field =
           { mode: (:coerce | :dump)?, required: bool, nilable: bool }
+
+        def self.inherited: (self child) -> void
 
         def self.known_fields: -> ::Hash[Symbol, (PreludeSDK::Internal::Type::BaseModel::known_field
         & { type_fn: (^-> PreludeSDK::Internal::Type::Converter::input) })]
@@ -58,10 +61,10 @@ module PreludeSDK
         def self.coerce: (
           PreludeSDK::Internal::Type::BaseModel | ::Hash[top, top] | top value,
           state: PreludeSDK::Internal::Type::Converter::coerce_state
-        ) -> (instance | top)
+        ) -> (self | top)
 
         def self.dump: (
-          instance | top value,
+          self | top value,
           state: PreludeSDK::Internal::Type::Converter::dump_state
         ) -> (::Hash[top, top] | top)
 

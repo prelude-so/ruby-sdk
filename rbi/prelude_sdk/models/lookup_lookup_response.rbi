@@ -4,7 +4,12 @@ module PreludeSDK
   module Models
     class LookupLookupResponse < PreludeSDK::Internal::Type::BaseModel
       OrHash =
-        T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+        T.type_alias do
+          T.any(
+            PreludeSDK::Models::LookupLookupResponse,
+            PreludeSDK::Internal::AnyHash
+          )
+        end
 
       # The CNAM (Caller ID Name) associated with the phone number. Contact us if you
       # need to use this functionality. Once enabled, put `cnam` option to `type` query
@@ -407,7 +412,12 @@ module PreludeSDK
 
       class NetworkInfo < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::Models::LookupLookupResponse::NetworkInfo,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # The name of the carrier.
         sig { returns(T.nilable(String)) }
@@ -455,7 +465,12 @@ module PreludeSDK
 
       class OriginalNetworkInfo < PreludeSDK::Internal::Type::BaseModel
         OrHash =
-          T.type_alias { T.any(T.self_type, PreludeSDK::Internal::AnyHash) }
+          T.type_alias do
+            T.any(
+              PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
 
         # The name of the original carrier.
         sig { returns(T.nilable(String)) }
