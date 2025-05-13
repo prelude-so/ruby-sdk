@@ -5,7 +5,6 @@ module PreludeSDK
         target: PreludeSDK::VerificationCreateParams::Target,
         dispatch_id: String,
         metadata: PreludeSDK::VerificationCreateParams::Metadata,
-        method_: PreludeSDK::Models::VerificationCreateParams::method_,
         options: PreludeSDK::VerificationCreateParams::Options,
         signals: PreludeSDK::VerificationCreateParams::Signals
       }
@@ -27,12 +26,6 @@ module PreludeSDK
         PreludeSDK::VerificationCreateParams::Metadata
       ) -> PreludeSDK::VerificationCreateParams::Metadata
 
-      attr_reader method_: PreludeSDK::Models::VerificationCreateParams::method_?
-
-      def method_=: (
-        PreludeSDK::Models::VerificationCreateParams::method_
-      ) -> PreludeSDK::Models::VerificationCreateParams::method_
-
       attr_reader options: PreludeSDK::VerificationCreateParams::Options?
 
       def options=: (
@@ -49,7 +42,6 @@ module PreludeSDK
         target: PreludeSDK::VerificationCreateParams::Target,
         ?dispatch_id: String,
         ?metadata: PreludeSDK::VerificationCreateParams::Metadata,
-        ?method_: PreludeSDK::Models::VerificationCreateParams::method_,
         ?options: PreludeSDK::VerificationCreateParams::Options,
         ?signals: PreludeSDK::VerificationCreateParams::Signals,
         ?request_options: PreludeSDK::request_opts
@@ -93,17 +85,6 @@ module PreludeSDK
         def initialize: (?correlation_id: String) -> void
       end
 
-      type method_ = :auto | :voice
-
-      module Method
-        extend PreludeSDK::Internal::Type::Enum
-
-        AUTO: :auto
-        VOICE: :voice
-
-        def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::method_]
-      end
-
       type options =
         {
           app_realm: PreludeSDK::VerificationCreateParams::Options::AppRealm,
@@ -111,6 +92,8 @@ module PreludeSDK
           code_size: Integer,
           custom_code: String,
           locale: String,
+          method_: PreludeSDK::VerificationCreateParams::Options::method_,
+          preferred_channel: PreludeSDK::VerificationCreateParams::Options::preferred_channel,
           sender_id: String,
           template_id: String,
           variables: ::Hash[Symbol, String]
@@ -139,6 +122,18 @@ module PreludeSDK
 
         def locale=: (String) -> String
 
+        attr_reader method_: PreludeSDK::VerificationCreateParams::Options::method_?
+
+        def method_=: (
+          PreludeSDK::VerificationCreateParams::Options::method_
+        ) -> PreludeSDK::VerificationCreateParams::Options::method_
+
+        attr_reader preferred_channel: PreludeSDK::VerificationCreateParams::Options::preferred_channel?
+
+        def preferred_channel=: (
+          PreludeSDK::VerificationCreateParams::Options::preferred_channel
+        ) -> PreludeSDK::VerificationCreateParams::Options::preferred_channel
+
         attr_reader sender_id: String?
 
         def sender_id=: (String) -> String
@@ -157,6 +152,8 @@ module PreludeSDK
           ?code_size: Integer,
           ?custom_code: String,
           ?locale: String,
+          ?method_: PreludeSDK::VerificationCreateParams::Options::method_,
+          ?preferred_channel: PreludeSDK::VerificationCreateParams::Options::preferred_channel,
           ?sender_id: String,
           ?template_id: String,
           ?variables: ::Hash[Symbol, String]
@@ -187,6 +184,31 @@ module PreludeSDK
 
             def self?.values: -> ::Array[PreludeSDK::VerificationCreateParams::Options::AppRealm::platform]
           end
+        end
+
+        type method_ = :auto | :voice
+
+        module Method
+          extend PreludeSDK::Internal::Type::Enum
+
+          AUTO: :auto
+          VOICE: :voice
+
+          def self?.values: -> ::Array[PreludeSDK::VerificationCreateParams::Options::method_]
+        end
+
+        type preferred_channel = :sms | :rcs | :whatsapp | :viber | :zalo
+
+        module PreferredChannel
+          extend PreludeSDK::Internal::Type::Enum
+
+          SMS: :sms
+          RCS: :rcs
+          WHATSAPP: :whatsapp
+          VIBER: :viber
+          ZALO: :zalo
+
+          def self?.values: -> ::Array[PreludeSDK::VerificationCreateParams::Options::preferred_channel]
         end
       end
 

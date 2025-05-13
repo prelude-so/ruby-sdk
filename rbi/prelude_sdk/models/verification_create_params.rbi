@@ -45,25 +45,6 @@ module PreludeSDK
       end
       attr_writer :metadata
 
-      # The method used for verifying this phone number. The 'voice' option provides an
-      # accessible alternative for visually impaired users by delivering the
-      # verification code through a phone call rather than a text message. It also
-      # allows verification of landline numbers that cannot receive SMS messages.
-      # **Coming soon.**
-      sig do
-        returns(
-          T.nilable(PreludeSDK::VerificationCreateParams::Method::OrSymbol)
-        )
-      end
-      attr_reader :method_
-
-      sig do
-        params(
-          method_: PreludeSDK::VerificationCreateParams::Method::OrSymbol
-        ).void
-      end
-      attr_writer :method_
-
       # Verification options
       sig { returns(T.nilable(PreludeSDK::VerificationCreateParams::Options)) }
       attr_reader :options
@@ -92,7 +73,6 @@ module PreludeSDK
           target: PreludeSDK::VerificationCreateParams::Target::OrHash,
           dispatch_id: String,
           metadata: PreludeSDK::VerificationCreateParams::Metadata::OrHash,
-          method_: PreludeSDK::VerificationCreateParams::Method::OrSymbol,
           options: PreludeSDK::VerificationCreateParams::Options::OrHash,
           signals: PreludeSDK::VerificationCreateParams::Signals::OrHash,
           request_options: PreludeSDK::RequestOptions::OrHash
@@ -107,12 +87,6 @@ module PreludeSDK
         # The metadata for this verification. This object will be returned with every
         # response or webhook sent that refers to this verification.
         metadata: nil,
-        # The method used for verifying this phone number. The 'voice' option provides an
-        # accessible alternative for visually impaired users by delivering the
-        # verification code through a phone call rather than a text message. It also
-        # allows verification of landline numbers that cannot receive SMS messages.
-        # **Coming soon.**
-        method_: nil,
         # Verification options
         options: nil,
         # The signals used for anti-fraud. For more details, refer to
@@ -128,7 +102,6 @@ module PreludeSDK
             target: PreludeSDK::VerificationCreateParams::Target,
             dispatch_id: String,
             metadata: PreludeSDK::VerificationCreateParams::Metadata,
-            method_: PreludeSDK::VerificationCreateParams::Method::OrSymbol,
             options: PreludeSDK::VerificationCreateParams::Options,
             signals: PreludeSDK::VerificationCreateParams::Signals,
             request_options: PreludeSDK::RequestOptions
@@ -248,40 +221,6 @@ module PreludeSDK
         end
       end
 
-      # The method used for verifying this phone number. The 'voice' option provides an
-      # accessible alternative for visually impaired users by delivering the
-      # verification code through a phone call rather than a text message. It also
-      # allows verification of landline numbers that cannot receive SMS messages.
-      # **Coming soon.**
-      module Method
-        extend PreludeSDK::Internal::Type::Enum
-
-        TaggedSymbol =
-          T.type_alias do
-            T.all(Symbol, PreludeSDK::VerificationCreateParams::Method)
-          end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-        AUTO =
-          T.let(
-            :auto,
-            PreludeSDK::VerificationCreateParams::Method::TaggedSymbol
-          )
-        VOICE =
-          T.let(
-            :voice,
-            PreludeSDK::VerificationCreateParams::Method::TaggedSymbol
-          )
-
-        sig do
-          override.returns(
-            T::Array[PreludeSDK::VerificationCreateParams::Method::TaggedSymbol]
-          )
-        end
-        def self.values
-        end
-      end
-
       class Options < PreludeSDK::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
@@ -325,10 +264,9 @@ module PreludeSDK
         sig { params(code_size: Integer).void }
         attr_writer :code_size
 
-        # The custom code to use for OTP verification. This feature is only available for
-        # compatibility purposes and subject to Prelude’s approval. Contact us to discuss
-        # your use case. For more details, refer to
-        # [Multi Routing](/introduction/concepts/multi-routing).
+        # The custom code to use for OTP verification. To use the custom code feature,
+        # contact us to enable it for your account. For more details, refer to
+        # [Custom Code](/verify/v2/documentation/custom-code).
         sig { returns(T.nilable(String)) }
         attr_reader :custom_code
 
@@ -344,6 +282,45 @@ module PreludeSDK
 
         sig { params(locale: String).void }
         attr_writer :locale
+
+        # The method used for verifying this phone number. The 'voice' option provides an
+        # accessible alternative for visually impaired users by delivering the
+        # verification code through a phone call rather than a text message. It also
+        # allows verification of landline numbers that cannot receive SMS messages.
+        sig do
+          returns(
+            T.nilable(
+              PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol
+            )
+          )
+        end
+        attr_reader :method_
+
+        sig do
+          params(
+            method_:
+              PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol
+          ).void
+        end
+        attr_writer :method_
+
+        # The preferred channel to be used in priority for verification.
+        sig do
+          returns(
+            T.nilable(
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::OrSymbol
+            )
+          )
+        end
+        attr_reader :preferred_channel
+
+        sig do
+          params(
+            preferred_channel:
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::OrSymbol
+          ).void
+        end
+        attr_writer :preferred_channel
 
         # The Sender ID to use for this message. The Sender ID needs to be enabled by
         # Prelude.
@@ -377,6 +354,10 @@ module PreludeSDK
             code_size: Integer,
             custom_code: String,
             locale: String,
+            method_:
+              PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
+            preferred_channel:
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::OrSymbol,
             sender_id: String,
             template_id: String,
             variables: T::Hash[Symbol, String]
@@ -393,16 +374,22 @@ module PreludeSDK
           # The size of the code generated. It should be between 4 and 8. Defaults to the
           # code size specified from the Dashboard.
           code_size: nil,
-          # The custom code to use for OTP verification. This feature is only available for
-          # compatibility purposes and subject to Prelude’s approval. Contact us to discuss
-          # your use case. For more details, refer to
-          # [Multi Routing](/introduction/concepts/multi-routing).
+          # The custom code to use for OTP verification. To use the custom code feature,
+          # contact us to enable it for your account. For more details, refer to
+          # [Custom Code](/verify/v2/documentation/custom-code).
           custom_code: nil,
           # A BCP-47 formatted locale string with the language the text message will be sent
           # to. If there's no locale set, the language will be determined by the country
           # code of the phone number. If the language specified doesn't exist, it defaults
           # to US English.
           locale: nil,
+          # The method used for verifying this phone number. The 'voice' option provides an
+          # accessible alternative for visually impaired users by delivering the
+          # verification code through a phone call rather than a text message. It also
+          # allows verification of landline numbers that cannot receive SMS messages.
+          method_: nil,
+          # The preferred channel to be used in priority for verification.
+          preferred_channel: nil,
           # The Sender ID to use for this message. The Sender ID needs to be enabled by
           # Prelude.
           sender_id: nil,
@@ -423,6 +410,10 @@ module PreludeSDK
               code_size: Integer,
               custom_code: String,
               locale: String,
+              method_:
+                PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
+              preferred_channel:
+                PreludeSDK::VerificationCreateParams::Options::PreferredChannel::OrSymbol,
               sender_id: String,
               template_id: String,
               variables: T::Hash[Symbol, String]
@@ -515,6 +506,94 @@ module PreludeSDK
             end
           end
         end
+
+        # The method used for verifying this phone number. The 'voice' option provides an
+        # accessible alternative for visually impaired users by delivering the
+        # verification code through a phone call rather than a text message. It also
+        # allows verification of landline numbers that cannot receive SMS messages.
+        module Method
+          extend PreludeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                PreludeSDK::VerificationCreateParams::Options::Method
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUTO =
+            T.let(
+              :auto,
+              PreludeSDK::VerificationCreateParams::Options::Method::TaggedSymbol
+            )
+          VOICE =
+            T.let(
+              :voice,
+              PreludeSDK::VerificationCreateParams::Options::Method::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Options::Method::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
+        # The preferred channel to be used in priority for verification.
+        module PreferredChannel
+          extend PreludeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                PreludeSDK::VerificationCreateParams::Options::PreferredChannel
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SMS =
+            T.let(
+              :sms,
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+            )
+          RCS =
+            T.let(
+              :rcs,
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+            )
+          WHATSAPP =
+            T.let(
+              :whatsapp,
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+            )
+          VIBER =
+            T.let(
+              :viber,
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+            )
+          ZALO =
+            T.let(
+              :zalo,
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
       end
 
       class Signals < PreludeSDK::Internal::Type::BaseModel
@@ -574,7 +653,7 @@ module PreludeSDK
         attr_writer :ip
 
         # This signal should provide a higher level of trust, indicating that the user is
-        # genuine. For more details, refer to
+        # genuine. Contact us to discuss your use case. For more details, refer to
         # [Signals](/verify/v2/documentation/prevent-fraud#signals).
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :is_trusted_user
@@ -626,7 +705,7 @@ module PreludeSDK
           # The IP address of the user's device.
           ip: nil,
           # This signal should provide a higher level of trust, indicating that the user is
-          # genuine. For more details, refer to
+          # genuine. Contact us to discuss your use case. For more details, refer to
           # [Signals](/verify/v2/documentation/prevent-fraud#signals).
           is_trusted_user: nil,
           # The version of the user's device operating system.

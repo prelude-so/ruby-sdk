@@ -31,6 +31,13 @@ module PreludeSDK
       end
       attr_accessor :status
 
+      # The ordered sequence of channels to be used for verification
+      sig { returns(T.nilable(T::Array[String])) }
+      attr_reader :channels
+
+      sig { params(channels: T::Array[String]).void }
+      attr_writer :channels
+
       # The metadata for this verification.
       sig do
         returns(
@@ -60,6 +67,7 @@ module PreludeSDK
             PreludeSDK::Models::VerificationCreateResponse::Method::OrSymbol,
           status:
             PreludeSDK::Models::VerificationCreateResponse::Status::OrSymbol,
+          channels: T::Array[String],
           metadata:
             PreludeSDK::Models::VerificationCreateResponse::Metadata::OrHash,
           request_id: String
@@ -72,6 +80,8 @@ module PreludeSDK
         method_:,
         # The status of the verification.
         status:,
+        # The ordered sequence of channels to be used for verification
+        channels: nil,
         # The metadata for this verification.
         metadata: nil,
         request_id: nil
@@ -86,6 +96,7 @@ module PreludeSDK
               PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol,
             status:
               PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol,
+            channels: T::Array[String],
             metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
             request_id: String
           }

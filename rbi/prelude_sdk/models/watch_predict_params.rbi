@@ -245,7 +245,7 @@ module PreludeSDK
         attr_writer :ip
 
         # This signal should provide a higher level of trust, indicating that the user is
-        # genuine. For more details, refer to
+        # genuine. Contact us to discuss your use case. For more details, refer to
         # [Signals](/verify/v2/documentation/prevent-fraud#signals).
         sig { returns(T.nilable(T::Boolean)) }
         attr_reader :is_trusted_user
@@ -297,7 +297,7 @@ module PreludeSDK
           # The IP address of the user's device.
           ip: nil,
           # This signal should provide a higher level of trust, indicating that the user is
-          # genuine. For more details, refer to
+          # genuine. Contact us to discuss your use case. For more details, refer to
           # [Signals](/verify/v2/documentation/prevent-fraud#signals).
           is_trusted_user: nil,
           # The version of the user's device operating system.

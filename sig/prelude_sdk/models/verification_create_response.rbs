@@ -5,6 +5,7 @@ module PreludeSDK
         id: String,
         method_: PreludeSDK::Models::VerificationCreateResponse::method_,
         status: PreludeSDK::Models::VerificationCreateResponse::status,
+        channels: ::Array[String],
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
         request_id: String
       }
@@ -15,6 +16,10 @@ module PreludeSDK
       attr_accessor method_: PreludeSDK::Models::VerificationCreateResponse::method_
 
       attr_accessor status: PreludeSDK::Models::VerificationCreateResponse::status
+
+      attr_reader channels: ::Array[String]?
+
+      def channels=: (::Array[String]) -> ::Array[String]
 
       attr_reader metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata?
 
@@ -30,6 +35,7 @@ module PreludeSDK
         id: String,
         method_: PreludeSDK::Models::VerificationCreateResponse::method_,
         status: PreludeSDK::Models::VerificationCreateResponse::status,
+        ?channels: ::Array[String],
         ?metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
         ?request_id: String
       ) -> void
