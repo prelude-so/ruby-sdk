@@ -22,6 +22,12 @@ module PreludeSDK
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
       required :status, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Status }
 
+      # @!attribute channels
+      #   The ordered sequence of channels to be used for verification
+      #
+      #   @return [Array<String>, nil]
+      optional :channels, PreludeSDK::Internal::Type::ArrayOf[String]
+
       # @!attribute metadata
       #   The metadata for this verification.
       #
@@ -33,12 +39,14 @@ module PreludeSDK
       #   @return [String, nil]
       optional :request_id, String
 
-      # @!method initialize(id:, method_:, status:, metadata: nil, request_id: nil)
+      # @!method initialize(id:, method_:, status:, channels: nil, metadata: nil, request_id: nil)
       #   @param id [String] The verification identifier.
       #
       #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method] The method used for verifying this phone number.
       #
       #   @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status] The status of the verification.
+      #
+      #   @param channels [Array<String>] The ordered sequence of channels to be used for verification
       #
       #   @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata] The metadata for this verification.
       #

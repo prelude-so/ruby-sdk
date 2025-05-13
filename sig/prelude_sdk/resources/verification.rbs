@@ -5,7 +5,6 @@ module PreludeSDK
         target: PreludeSDK::VerificationCreateParams::Target,
         ?dispatch_id: String,
         ?metadata: PreludeSDK::VerificationCreateParams::Metadata,
-        ?method_: PreludeSDK::Models::VerificationCreateParams::method_,
         ?options: PreludeSDK::VerificationCreateParams::Options,
         ?signals: PreludeSDK::VerificationCreateParams::Signals,
         ?request_options: PreludeSDK::request_opts

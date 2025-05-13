@@ -11,7 +11,6 @@ module PreludeSDK
           target: PreludeSDK::VerificationCreateParams::Target::OrHash,
           dispatch_id: String,
           metadata: PreludeSDK::VerificationCreateParams::Metadata::OrHash,
-          method_: PreludeSDK::VerificationCreateParams::Method::OrSymbol,
           options: PreludeSDK::VerificationCreateParams::Options::OrHash,
           signals: PreludeSDK::VerificationCreateParams::Signals::OrHash,
           request_options: PreludeSDK::RequestOptions::OrHash
@@ -26,12 +25,6 @@ module PreludeSDK
         # The metadata for this verification. This object will be returned with every
         # response or webhook sent that refers to this verification.
         metadata: nil,
-        # The method used for verifying this phone number. The 'voice' option provides an
-        # accessible alternative for visually impaired users by delivering the
-        # verification code through a phone call rather than a text message. It also
-        # allows verification of landline numbers that cannot receive SMS messages.
-        # **Coming soon.**
-        method_: nil,
         # Verification options
         options: nil,
         # The signals used for anti-fraud. For more details, refer to

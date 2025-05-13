@@ -4,6 +4,10 @@ require_relative "../test_helper"
 
 class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::ResourceTest
   def test_create_required_params
+    skip(
+      "skipped: currently no good way to test endpoints defining callbacks, Prism mock server will fail trying to reach the provided callback url"
+    )
+
     response = @prelude.verification.create(target: {type: :phone_number, value: "+30123456789"})
 
     assert_pattern do
@@ -15,6 +19,7 @@ class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::Resource
         id: String,
         method_: PreludeSDK::Models::VerificationCreateResponse::Method,
         status: PreludeSDK::Models::VerificationCreateResponse::Status,
+        channels: ^(PreludeSDK::Internal::Type::ArrayOf[String]) | nil,
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata | nil,
         request_id: String | nil
       }

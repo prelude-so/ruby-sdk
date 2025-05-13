@@ -10,15 +10,13 @@ module PreludeSDK
       # verification exists (the request is performed within the verification window),
       # this endpoint will perform a retry instead.
       #
-      # @overload create(target:, dispatch_id: nil, metadata: nil, method_: nil, options: nil, signals: nil, request_options: {})
+      # @overload create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
       #
       # @param target [PreludeSDK::VerificationCreateParams::Target] The verification target. Either a phone number or an email address. To use the e
       #
       # @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
       #
       # @param metadata [PreludeSDK::VerificationCreateParams::Metadata] The metadata for this verification. This object will be returned with every resp
-      #
-      # @param method_ [Symbol, PreludeSDK::VerificationCreateParams::Method] The method used for verifying this phone number. The 'voice' option provides an
       #
       # @param options [PreludeSDK::VerificationCreateParams::Options] Verification options
       #
