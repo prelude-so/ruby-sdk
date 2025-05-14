@@ -391,6 +391,14 @@ module PreludeSDK
         # @param keys [Array<Symbol>, nil]
         #
         # @return [Hash{Symbol=>Object}]
+        #
+        # @example
+        #   # `lookup_lookup_response` is a `PreludeSDK::Models::LookupLookupResponse`
+        #   lookup_lookup_response => {
+        #     caller_name: caller_name,
+        #     country_code: country_code,
+        #     flags: flags
+        #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)
             .filter_map do |k|
