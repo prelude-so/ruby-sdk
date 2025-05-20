@@ -25,6 +25,7 @@ class PreludeSDK::Test::SorbetRuntimeSupportTest < Minitest::Test
     err = PreludeSDK::Internal::Util::SorbetRuntimeSupport::MissingSorbetRuntimeError
 
     assert_raises(err) { PreludeSDK::Internal::AnyHash }
+    assert_raises(err) { PreludeSDK::Internal::FileInput }
     assert_raises(err) { PreludeSDK::Internal::Type::Converter::Input }
     assert_raises(err) { PreludeSDK::Internal::Type::Converter::CoerceState }
     assert_raises(err) { PreludeSDK::Internal::Type::Converter::DumpState }
