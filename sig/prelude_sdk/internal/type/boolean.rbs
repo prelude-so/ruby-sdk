@@ -3,6 +3,7 @@ module PreludeSDK
     module Type
       class Boolean
         extend PreludeSDK::Internal::Type::Converter
+        extend PreludeSDK::Internal::Util::SorbetRuntimeSupport
 
         def self.===: (top other) -> bool
 
@@ -17,6 +18,8 @@ module PreludeSDK
           bool | top value,
           state: PreludeSDK::Internal::Type::Converter::dump_state
         ) -> (bool | top)
+
+        def self.to_sorbet_type: -> top
       end
     end
   end

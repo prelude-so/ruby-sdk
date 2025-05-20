@@ -12,6 +12,7 @@ module PreludeSDK
       # Hash of items of a given type.
       class HashOf
         include PreludeSDK::Internal::Type::Converter
+        include PreludeSDK::Internal::Util::SorbetRuntimeSupport
 
         private_class_method :new
 
@@ -128,6 +129,13 @@ module PreludeSDK
           else
             super
           end
+        end
+
+        # @api private
+        #
+        # @return [Object]
+        def to_sorbet_type
+          T::Hash[PreludeSDK::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(item_type)]
         end
 
         # @api private
