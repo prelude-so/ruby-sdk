@@ -191,6 +191,18 @@ module PreludeSDK
           super
         end
 
+        # @api private
+        #
+        # @return [Object]
+        def to_sorbet_type
+          case (v = variants)
+          in []
+            T.noreturn
+          else
+            T.any(*v.map { PreludeSDK::Internal::Util::SorbetRuntimeSupport.to_sorbet_type(_1) })
+          end
+        end
+
         # rubocop:enable Style/CaseEquality
         # rubocop:enable Style/HashEachMethods
 
