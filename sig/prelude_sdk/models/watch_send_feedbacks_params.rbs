@@ -15,10 +15,15 @@ module PreludeSDK
         ?request_options: PreludeSDK::request_opts
       ) -> void
 
+      def to_hash: -> {
+        feedbacks: ::Array[PreludeSDK::WatchSendFeedbacksParams::Feedback],
+        request_options: PreludeSDK::RequestOptions
+      }
+
       type feedback =
         {
           target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target,
-          type: PreludeSDK::WatchSendFeedbacksParams::Feedback::type_,
+          type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_,
           dispatch_id: String,
           metadata: PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata,
           signals: PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals
@@ -27,7 +32,7 @@ module PreludeSDK
       class Feedback < PreludeSDK::Internal::Type::BaseModel
         attr_accessor target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target
 
-        attr_accessor type: PreludeSDK::WatchSendFeedbacksParams::Feedback::type_
+        attr_accessor type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_
 
         attr_reader dispatch_id: String?
 
@@ -47,27 +52,40 @@ module PreludeSDK
 
         def initialize: (
           target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target,
-          type: PreludeSDK::WatchSendFeedbacksParams::Feedback::type_,
+          type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_,
           ?dispatch_id: String,
           ?metadata: PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata,
           ?signals: PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals
         ) -> void
 
+        def to_hash: -> {
+          target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target,
+          type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_,
+          dispatch_id: String,
+          metadata: PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata,
+          signals: PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals
+        }
+
         type target =
           {
-            type: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::type_,
+            type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_,
             value: String
           }
 
         class Target < PreludeSDK::Internal::Type::BaseModel
-          attr_accessor type: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::type_
+          attr_accessor type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_
 
           attr_accessor value: String
 
           def initialize: (
-            type: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::type_,
+            type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_,
             value: String
           ) -> void
+
+          def to_hash: -> {
+            type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_,
+            value: String
+          }
 
           type type_ = :phone_number | :email_address
 
@@ -77,7 +95,7 @@ module PreludeSDK
             PHONE_NUMBER: :phone_number
             EMAIL_ADDRESS: :email_address
 
-            def self?.values: -> ::Array[PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::type_]
+            def self?.values: -> ::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_]
           end
         end
 
@@ -89,7 +107,7 @@ module PreludeSDK
           VERIFICATION_STARTED: :"verification.started"
           VERIFICATION_COMPLETED: :"verification.completed"
 
-          def self?.values: -> ::Array[PreludeSDK::WatchSendFeedbacksParams::Feedback::type_]
+          def self?.values: -> ::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_]
         end
 
         type metadata = { correlation_id: String }
@@ -100,6 +118,8 @@ module PreludeSDK
           def correlation_id=: (String) -> String
 
           def initialize: (?correlation_id: String) -> void
+
+          def to_hash: -> { correlation_id: String }
         end
 
         type signals =
@@ -107,7 +127,7 @@ module PreludeSDK
             app_version: String,
             device_id: String,
             device_model: String,
-            device_platform: PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals::device_platform,
+            device_platform: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::device_platform,
             ip: String,
             is_trusted_user: bool,
             os_version: String,
@@ -127,11 +147,11 @@ module PreludeSDK
 
           def device_model=: (String) -> String
 
-          attr_reader device_platform: PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals::device_platform?
+          attr_reader device_platform: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::device_platform?
 
           def device_platform=: (
-            PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals::device_platform
-          ) -> PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals::device_platform
+            PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::device_platform
+          ) -> PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::device_platform
 
           attr_reader ip: String?
 
@@ -153,12 +173,23 @@ module PreludeSDK
             ?app_version: String,
             ?device_id: String,
             ?device_model: String,
-            ?device_platform: PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals::device_platform,
+            ?device_platform: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::device_platform,
             ?ip: String,
             ?is_trusted_user: bool,
             ?os_version: String,
             ?user_agent: String
           ) -> void
+
+          def to_hash: -> {
+            app_version: String,
+            device_id: String,
+            device_model: String,
+            device_platform: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::device_platform,
+            ip: String,
+            is_trusted_user: bool,
+            os_version: String,
+            user_agent: String
+          }
 
           type device_platform = :android | :ios | :ipados | :tvos | :web
 
@@ -171,7 +202,7 @@ module PreludeSDK
             TVOS: :tvos
             WEB: :web
 
-            def self?.values: -> ::Array[PreludeSDK::WatchSendFeedbacksParams::Feedback::Signals::device_platform]
+            def self?.values: -> ::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Signals::device_platform]
           end
         end
       end

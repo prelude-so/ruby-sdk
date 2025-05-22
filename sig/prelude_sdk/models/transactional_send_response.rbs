@@ -49,6 +49,18 @@ module PreludeSDK
         ?correlation_id: String,
         ?from: String
       ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        expires_at: Time,
+        template_id: String,
+        to: String,
+        variables: ::Hash[Symbol, String],
+        callback_url: String,
+        correlation_id: String,
+        from: String
+      }
     end
   end
 end

@@ -11,7 +11,7 @@ module PreludeSDK
       #   The verification target. Either a phone number or an email address. To use the
       #   email verification feature contact us to discuss your use case.
       #
-      #   @return [PreludeSDK::VerificationCreateParams::Target]
+      #   @return [PreludeSDK::Models::VerificationCreateParams::Target]
       required :target, -> { PreludeSDK::VerificationCreateParams::Target }
 
       # @!attribute dispatch_id
@@ -24,35 +24,35 @@ module PreludeSDK
       #   The metadata for this verification. This object will be returned with every
       #   response or webhook sent that refers to this verification.
       #
-      #   @return [PreludeSDK::VerificationCreateParams::Metadata, nil]
+      #   @return [PreludeSDK::Models::VerificationCreateParams::Metadata, nil]
       optional :metadata, -> { PreludeSDK::VerificationCreateParams::Metadata }
 
       # @!attribute options
       #   Verification options
       #
-      #   @return [PreludeSDK::VerificationCreateParams::Options, nil]
+      #   @return [PreludeSDK::Models::VerificationCreateParams::Options, nil]
       optional :options, -> { PreludeSDK::VerificationCreateParams::Options }
 
       # @!attribute signals
       #   The signals used for anti-fraud. For more details, refer to
       #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
       #
-      #   @return [PreludeSDK::VerificationCreateParams::Signals, nil]
+      #   @return [PreludeSDK::Models::VerificationCreateParams::Signals, nil]
       optional :signals, -> { PreludeSDK::VerificationCreateParams::Signals }
 
       # @!method initialize(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::VerificationCreateParams} for more details.
       #
-      #   @param target [PreludeSDK::VerificationCreateParams::Target] The verification target. Either a phone number or an email address. To use the e
+      #   @param target [PreludeSDK::Models::VerificationCreateParams::Target] The verification target. Either a phone number or an email address. To use the e
       #
       #   @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
       #
-      #   @param metadata [PreludeSDK::VerificationCreateParams::Metadata] The metadata for this verification. This object will be returned with every resp
+      #   @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata] The metadata for this verification. This object will be returned with every resp
       #
-      #   @param options [PreludeSDK::VerificationCreateParams::Options] Verification options
+      #   @param options [PreludeSDK::Models::VerificationCreateParams::Options] Verification options
       #
-      #   @param signals [PreludeSDK::VerificationCreateParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
+      #   @param signals [PreludeSDK::Models::VerificationCreateParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
@@ -60,7 +60,7 @@ module PreludeSDK
         # @!attribute type
         #   The type of the target. Either "phone_number" or "email_address".
         #
-        #   @return [Symbol, PreludeSDK::VerificationCreateParams::Target::Type]
+        #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type]
         required :type, enum: -> { PreludeSDK::VerificationCreateParams::Target::Type }
 
         # @!attribute value
@@ -73,13 +73,13 @@ module PreludeSDK
         #   The verification target. Either a phone number or an email address. To use the
         #   email verification feature contact us to discuss your use case.
         #
-        #   @param type [Symbol, PreludeSDK::VerificationCreateParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
+        #   @param type [Symbol, PreludeSDK::Models::VerificationCreateParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
         #
         #   @param value [String] An E.164 formatted phone number or an email address.
 
         # The type of the target. Either "phone_number" or "email_address".
         #
-        # @see PreludeSDK::VerificationCreateParams::Target#type
+        # @see PreludeSDK::Models::VerificationCreateParams::Target#type
         module Type
           extend PreludeSDK::Internal::Type::Enum
 
@@ -110,7 +110,7 @@ module PreludeSDK
         #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
         #   Currently only Android devices are supported.
         #
-        #   @return [PreludeSDK::VerificationCreateParams::Options::AppRealm, nil]
+        #   @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, nil]
         optional :app_realm, -> { PreludeSDK::VerificationCreateParams::Options::AppRealm }
 
         # @!attribute callback_url
@@ -151,7 +151,7 @@ module PreludeSDK
         #   verification code through a phone call rather than a text message. It also
         #   allows verification of landline numbers that cannot receive SMS messages.
         #
-        #   @return [Symbol, PreludeSDK::VerificationCreateParams::Options::Method, nil]
+        #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method, nil]
         optional :method_,
                  enum: -> {
                    PreludeSDK::VerificationCreateParams::Options::Method
@@ -161,7 +161,7 @@ module PreludeSDK
         # @!attribute preferred_channel
         #   The preferred channel to be used in priority for verification.
         #
-        #   @return [Symbol, PreludeSDK::VerificationCreateParams::Options::PreferredChannel, nil]
+        #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::PreferredChannel, nil]
         optional :preferred_channel,
                  enum: -> {
                    PreludeSDK::VerificationCreateParams::Options::PreferredChannel
@@ -189,11 +189,11 @@ module PreludeSDK
 
         # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, method_: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
         #   Some parameter documentations has been truncated, see
-        #   {PreludeSDK::VerificationCreateParams::Options} for more details.
+        #   {PreludeSDK::Models::VerificationCreateParams::Options} for more details.
         #
         #   Verification options
         #
-        #   @param app_realm [PreludeSDK::VerificationCreateParams::Options::AppRealm] This allows you to automatically retrieve and fill the OTP code on mobile apps.
+        #   @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm] This allows you to automatically retrieve and fill the OTP code on mobile apps.
         #
         #   @param callback_url [String] The URL where webhooks will be sent when verification events occur, including ve
         #
@@ -203,9 +203,9 @@ module PreludeSDK
         #
         #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
         #
-        #   @param method_ [Symbol, PreludeSDK::VerificationCreateParams::Options::Method] The method used for verifying this phone number. The 'voice' option provides an
+        #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method] The method used for verifying this phone number. The 'voice' option provides an
         #
-        #   @param preferred_channel [Symbol, PreludeSDK::VerificationCreateParams::Options::PreferredChannel] The preferred channel to be used in priority for verification.
+        #   @param preferred_channel [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::PreferredChannel] The preferred channel to be used in priority for verification.
         #
         #   @param sender_id [String] The Sender ID to use for this message. The Sender ID needs to be enabled by Prel
         #
@@ -213,13 +213,13 @@ module PreludeSDK
         #
         #   @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
 
-        # @see PreludeSDK::VerificationCreateParams::Options#app_realm
+        # @see PreludeSDK::Models::VerificationCreateParams::Options#app_realm
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
           # @!attribute platform
           #   The platform the SMS will be sent to. We are currently only supporting
           #   "android".
           #
-          #   @return [Symbol, PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform]
+          #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
           required :platform, enum: -> { PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform }
 
           # @!attribute value
@@ -230,19 +230,20 @@ module PreludeSDK
 
           # @!method initialize(platform:, value:)
           #   Some parameter documentations has been truncated, see
-          #   {PreludeSDK::VerificationCreateParams::Options::AppRealm} for more details.
+          #   {PreludeSDK::Models::VerificationCreateParams::Options::AppRealm} for more
+          #   details.
           #
           #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
           #   Currently only Android devices are supported.
           #
-          #   @param platform [Symbol, PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform] The platform the SMS will be sent to. We are currently only supporting "android"
+          #   @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform] The platform the SMS will be sent to. We are currently only supporting "android"
           #
           #   @param value [String] The Android SMS Retriever API hash code that identifies your app.
 
           # The platform the SMS will be sent to. We are currently only supporting
           # "android".
           #
-          # @see PreludeSDK::VerificationCreateParams::Options::AppRealm#platform
+          # @see PreludeSDK::Models::VerificationCreateParams::Options::AppRealm#platform
           module Platform
             extend PreludeSDK::Internal::Type::Enum
 
@@ -258,7 +259,7 @@ module PreludeSDK
         # verification code through a phone call rather than a text message. It also
         # allows verification of landline numbers that cannot receive SMS messages.
         #
-        # @see PreludeSDK::VerificationCreateParams::Options#method_
+        # @see PreludeSDK::Models::VerificationCreateParams::Options#method_
         module Method
           extend PreludeSDK::Internal::Type::Enum
 
@@ -271,7 +272,7 @@ module PreludeSDK
 
         # The preferred channel to be used in priority for verification.
         #
-        # @see PreludeSDK::VerificationCreateParams::Options#preferred_channel
+        # @see PreludeSDK::Models::VerificationCreateParams::Options#preferred_channel
         module PreferredChannel
           extend PreludeSDK::Internal::Type::Enum
 
@@ -309,7 +310,7 @@ module PreludeSDK
         # @!attribute device_platform
         #   The type of the user's device.
         #
-        #   @return [Symbol, PreludeSDK::VerificationCreateParams::Signals::DevicePlatform, nil]
+        #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform, nil]
         optional :device_platform, enum: -> { PreludeSDK::VerificationCreateParams::Signals::DevicePlatform }
 
         # @!attribute ip
@@ -342,7 +343,7 @@ module PreludeSDK
 
         # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
         #   Some parameter documentations has been truncated, see
-        #   {PreludeSDK::VerificationCreateParams::Signals} for more details.
+        #   {PreludeSDK::Models::VerificationCreateParams::Signals} for more details.
         #
         #   The signals used for anti-fraud. For more details, refer to
         #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
@@ -353,7 +354,7 @@ module PreludeSDK
         #
         #   @param device_model [String] The model of the user's device.
         #
-        #   @param device_platform [Symbol, PreludeSDK::VerificationCreateParams::Signals::DevicePlatform] The type of the user's device.
+        #   @param device_platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform] The type of the user's device.
         #
         #   @param ip [String] The IP address of the user's device.
         #
@@ -365,7 +366,7 @@ module PreludeSDK
 
         # The type of the user's device.
         #
-        # @see PreludeSDK::VerificationCreateParams::Signals#device_platform
+        # @see PreludeSDK::Models::VerificationCreateParams::Signals#device_platform
         module DevicePlatform
           extend PreludeSDK::Internal::Type::Enum
 

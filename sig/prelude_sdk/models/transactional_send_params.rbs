@@ -56,6 +56,18 @@ module PreludeSDK
         ?variables: ::Hash[Symbol, String],
         ?request_options: PreludeSDK::request_opts
       ) -> void
+
+      def to_hash: -> {
+        template_id: String,
+        to: String,
+        callback_url: String,
+        correlation_id: String,
+        expires_at: String,
+        from: String,
+        locale: String,
+        variables: ::Hash[Symbol, String],
+        request_options: PreludeSDK::RequestOptions
+      }
     end
   end
 end
