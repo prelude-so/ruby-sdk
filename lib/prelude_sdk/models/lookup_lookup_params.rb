@@ -13,14 +13,14 @@ module PreludeSDK
       #   - `cnam` - Retrieve CNAM (Caller ID Name) along with other information. Contact
       #     us if you need to use this functionality.
       #
-      #   @return [Array<Symbol, PreludeSDK::LookupLookupParams::Type>, nil]
+      #   @return [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>, nil]
       optional :type, -> { PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::LookupLookupParams::Type] }
 
       # @!method initialize(type: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::LookupLookupParams} for more details.
       #
-      #   @param type [Array<Symbol, PreludeSDK::LookupLookupParams::Type>] Optional features. Possible values are:
+      #   @param type [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>] Optional features. Possible values are:
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 

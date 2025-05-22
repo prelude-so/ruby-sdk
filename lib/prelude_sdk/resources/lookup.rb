@@ -13,7 +13,7 @@ module PreludeSDK
       #
       # @param phone_number [String] An E.164 formatted phone number to look up.
       #
-      # @param type [Array<Symbol, PreludeSDK::LookupLookupParams::Type>] Optional features. Possible values are:
+      # @param type [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>] Optional features. Possible values are:
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #

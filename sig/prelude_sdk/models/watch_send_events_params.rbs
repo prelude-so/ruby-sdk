@@ -15,25 +15,36 @@ module PreludeSDK
         ?request_options: PreludeSDK::request_opts
       ) -> void
 
+      def to_hash: -> {
+        events: ::Array[PreludeSDK::WatchSendEventsParams::Event],
+        request_options: PreludeSDK::RequestOptions
+      }
+
       type event =
         {
-          confidence: PreludeSDK::WatchSendEventsParams::Event::confidence,
+          confidence: PreludeSDK::Models::WatchSendEventsParams::Event::confidence,
           label: String,
           target: PreludeSDK::WatchSendEventsParams::Event::Target
         }
 
       class Event < PreludeSDK::Internal::Type::BaseModel
-        attr_accessor confidence: PreludeSDK::WatchSendEventsParams::Event::confidence
+        attr_accessor confidence: PreludeSDK::Models::WatchSendEventsParams::Event::confidence
 
         attr_accessor label: String
 
         attr_accessor target: PreludeSDK::WatchSendEventsParams::Event::Target
 
         def initialize: (
-          confidence: PreludeSDK::WatchSendEventsParams::Event::confidence,
+          confidence: PreludeSDK::Models::WatchSendEventsParams::Event::confidence,
           label: String,
           target: PreludeSDK::WatchSendEventsParams::Event::Target
         ) -> void
+
+        def to_hash: -> {
+          confidence: PreludeSDK::Models::WatchSendEventsParams::Event::confidence,
+          label: String,
+          target: PreludeSDK::WatchSendEventsParams::Event::Target
+        }
 
         type confidence = :maximum | :high | :neutral | :low | :minimum
 
@@ -46,24 +57,29 @@ module PreludeSDK
           LOW: :low
           MINIMUM: :minimum
 
-          def self?.values: -> ::Array[PreludeSDK::WatchSendEventsParams::Event::confidence]
+          def self?.values: -> ::Array[PreludeSDK::Models::WatchSendEventsParams::Event::confidence]
         end
 
         type target =
           {
-            type: PreludeSDK::WatchSendEventsParams::Event::Target::type_,
+            type: PreludeSDK::Models::WatchSendEventsParams::Event::Target::type_,
             value: String
           }
 
         class Target < PreludeSDK::Internal::Type::BaseModel
-          attr_accessor type: PreludeSDK::WatchSendEventsParams::Event::Target::type_
+          attr_accessor type: PreludeSDK::Models::WatchSendEventsParams::Event::Target::type_
 
           attr_accessor value: String
 
           def initialize: (
-            type: PreludeSDK::WatchSendEventsParams::Event::Target::type_,
+            type: PreludeSDK::Models::WatchSendEventsParams::Event::Target::type_,
             value: String
           ) -> void
+
+          def to_hash: -> {
+            type: PreludeSDK::Models::WatchSendEventsParams::Event::Target::type_,
+            value: String
+          }
 
           type type_ = :phone_number | :email_address
 
@@ -73,7 +89,7 @@ module PreludeSDK
             PHONE_NUMBER: :phone_number
             EMAIL_ADDRESS: :email_address
 
-            def self?.values: -> ::Array[PreludeSDK::WatchSendEventsParams::Event::Target::type_]
+            def self?.values: -> ::Array[PreludeSDK::Models::WatchSendEventsParams::Event::Target::type_]
           end
         end
       end

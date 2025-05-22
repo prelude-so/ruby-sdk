@@ -16,6 +16,11 @@ module PreludeSDK
         status: PreludeSDK::Models::WatchSendFeedbacksResponse::status
       ) -> void
 
+      def to_hash: -> {
+        request_id: String,
+        status: PreludeSDK::Models::WatchSendFeedbacksResponse::status
+      }
+
       type status = :success
 
       module Status

@@ -58,6 +58,16 @@ module PreludeSDK
         ?phone_number: String
       ) -> void
 
+      def to_hash: -> {
+        caller_name: String,
+        country_code: String,
+        flags: ::Array[PreludeSDK::Models::LookupLookupResponse::flag],
+        line_type: PreludeSDK::Models::LookupLookupResponse::line_type,
+        network_info: PreludeSDK::Models::LookupLookupResponse::NetworkInfo,
+        original_network_info: PreludeSDK::Models::LookupLookupResponse::OriginalNetworkInfo,
+        phone_number: String
+      }
+
       type flag = :ported | :temporary
 
       module Flag
@@ -136,6 +146,8 @@ module PreludeSDK
           ?mcc: String,
           ?mnc: String
         ) -> void
+
+        def to_hash: -> { carrier_name: String, mcc: String, mnc: String }
       end
 
       type original_network_info =
@@ -159,6 +171,8 @@ module PreludeSDK
           ?mcc: String,
           ?mnc: String
         ) -> void
+
+        def to_hash: -> { carrier_name: String, mcc: String, mnc: String }
       end
     end
   end

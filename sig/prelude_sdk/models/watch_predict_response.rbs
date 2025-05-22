@@ -20,6 +20,12 @@ module PreludeSDK
         request_id: String
       ) -> void
 
+      def to_hash: -> {
+        id: String,
+        prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
+        request_id: String
+      }
+
       type prediction = :legitimate | :suspicious
 
       module Prediction

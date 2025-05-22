@@ -32,6 +32,13 @@ module PreludeSDK
         ?request_id: String
       ) -> void
 
+      def to_hash: -> {
+        status: PreludeSDK::Models::VerificationCheckResponse::status,
+        id: String,
+        metadata: PreludeSDK::Models::VerificationCheckResponse::Metadata,
+        request_id: String
+      }
+
       type status = :success | :failure | :expired_or_not_found
 
       module Status
@@ -52,6 +59,8 @@ module PreludeSDK
         def correlation_id=: (String) -> String
 
         def initialize: (?correlation_id: String) -> void
+
+        def to_hash: -> { correlation_id: String }
       end
     end
   end

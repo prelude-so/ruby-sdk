@@ -3,7 +3,7 @@ module PreludeSDK
     class Lookup
       def lookup: (
         String phone_number,
-        ?type: ::Array[PreludeSDK::LookupLookupParams::type_],
+        ?type: ::Array[PreludeSDK::Models::LookupLookupParams::type_],
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::LookupLookupResponse
 

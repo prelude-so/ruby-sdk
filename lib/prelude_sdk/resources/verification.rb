@@ -12,15 +12,15 @@ module PreludeSDK
       #
       # @overload create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
       #
-      # @param target [PreludeSDK::VerificationCreateParams::Target] The verification target. Either a phone number or an email address. To use the e
+      # @param target [PreludeSDK::Models::VerificationCreateParams::Target] The verification target. Either a phone number or an email address. To use the e
       #
       # @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
       #
-      # @param metadata [PreludeSDK::VerificationCreateParams::Metadata] The metadata for this verification. This object will be returned with every resp
+      # @param metadata [PreludeSDK::Models::VerificationCreateParams::Metadata] The metadata for this verification. This object will be returned with every resp
       #
-      # @param options [PreludeSDK::VerificationCreateParams::Options] Verification options
+      # @param options [PreludeSDK::Models::VerificationCreateParams::Options] Verification options
       #
-      # @param signals [PreludeSDK::VerificationCreateParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
+      # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -47,7 +47,7 @@ module PreludeSDK
       #
       # @param code [String] The OTP code to validate.
       #
-      # @param target [PreludeSDK::VerificationCheckParams::Target] The verification target. Either a phone number or an email address. To use the e
+      # @param target [PreludeSDK::Models::VerificationCheckParams::Target] The verification target. Either a phone number or an email address. To use the e
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
