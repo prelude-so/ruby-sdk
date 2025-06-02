@@ -7,7 +7,9 @@ module PreludeSDK
         status: PreludeSDK::Models::VerificationCreateResponse::status,
         channels: ::Array[String],
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-        request_id: String
+        reason: PreludeSDK::Models::VerificationCreateResponse::reason,
+        request_id: String,
+        silent: PreludeSDK::Models::VerificationCreateResponse::Silent
       }
 
     class VerificationCreateResponse < PreludeSDK::Internal::Type::BaseModel
@@ -27,9 +29,21 @@ module PreludeSDK
         PreludeSDK::Models::VerificationCreateResponse::Metadata
       ) -> PreludeSDK::Models::VerificationCreateResponse::Metadata
 
+      attr_reader reason: PreludeSDK::Models::VerificationCreateResponse::reason?
+
+      def reason=: (
+        PreludeSDK::Models::VerificationCreateResponse::reason
+      ) -> PreludeSDK::Models::VerificationCreateResponse::reason
+
       attr_reader request_id: String?
 
       def request_id=: (String) -> String
+
+      attr_reader silent: PreludeSDK::Models::VerificationCreateResponse::Silent?
+
+      def silent=: (
+        PreludeSDK::Models::VerificationCreateResponse::Silent
+      ) -> PreludeSDK::Models::VerificationCreateResponse::Silent
 
       def initialize: (
         id: String,
@@ -37,7 +51,9 @@ module PreludeSDK
         status: PreludeSDK::Models::VerificationCreateResponse::status,
         ?channels: ::Array[String],
         ?metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-        ?request_id: String
+        ?reason: PreludeSDK::Models::VerificationCreateResponse::reason,
+        ?request_id: String,
+        ?silent: PreludeSDK::Models::VerificationCreateResponse::Silent
       ) -> void
 
       def to_hash: -> {
@@ -46,15 +62,19 @@ module PreludeSDK
         status: PreludeSDK::Models::VerificationCreateResponse::status,
         channels: ::Array[String],
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-        request_id: String
+        reason: PreludeSDK::Models::VerificationCreateResponse::reason,
+        request_id: String,
+        silent: PreludeSDK::Models::VerificationCreateResponse::Silent
       }
 
-      type method_ = :message
+      type method_ = :message | :silent | :voice
 
       module Method
         extend PreludeSDK::Internal::Type::Enum
 
         MESSAGE: :message
+        SILENT: :silent
+        VOICE: :voice
 
         def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::method_]
       end
@@ -81,6 +101,35 @@ module PreludeSDK
         def initialize: (?correlation_id: String) -> void
 
         def to_hash: -> { correlation_id: String }
+      end
+
+      type reason =
+        :suspicious
+        | :repeated_attempts
+        | :invalid_phone_line
+        | :invalid_phone_number
+        | :in_block_list
+
+      module Reason
+        extend PreludeSDK::Internal::Type::Enum
+
+        SUSPICIOUS: :suspicious
+        REPEATED_ATTEMPTS: :repeated_attempts
+        INVALID_PHONE_LINE: :invalid_phone_line
+        INVALID_PHONE_NUMBER: :invalid_phone_number
+        IN_BLOCK_LIST: :in_block_list
+
+        def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::reason]
+      end
+
+      type silent = { request_url: String }
+
+      class Silent < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor request_url: String
+
+        def initialize: (request_url: String) -> void
+
+        def to_hash: -> { request_url: String }
       end
     end
   end

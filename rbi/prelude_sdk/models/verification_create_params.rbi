@@ -266,7 +266,7 @@ module PreludeSDK
 
         # The custom code to use for OTP verification. To use the custom code feature,
         # contact us to enable it for your account. For more details, refer to
-        # [Custom Code](/verify/v2/documentation/custom-code).
+        # [Custom Code](/verify/v2/documentation/custom-codes).
         sig { returns(T.nilable(String)) }
         attr_reader :custom_code
 
@@ -376,7 +376,7 @@ module PreludeSDK
           code_size: nil,
           # The custom code to use for OTP verification. To use the custom code feature,
           # contact us to enable it for your account. For more details, refer to
-          # [Custom Code](/verify/v2/documentation/custom-code).
+          # [Custom Code](/verify/v2/documentation/custom-codes).
           custom_code: nil,
           # A BCP-47 formatted locale string with the language the text message will be sent
           # to. If there's no locale set, the language will be determined by the country
@@ -581,6 +581,21 @@ module PreludeSDK
           ZALO =
             T.let(
               :zalo,
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+            )
+          TELEGRAM =
+            T.let(
+              :telegram,
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+            )
+          SILENT =
+            T.let(
+              :silent,
+              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
+            )
+          VOICE =
+            T.let(
+              :voice,
               PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
             )
 

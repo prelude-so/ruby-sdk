@@ -231,7 +231,15 @@ module PreludeSDK
           def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::method_]
         end
 
-        type preferred_channel = :sms | :rcs | :whatsapp | :viber | :zalo
+        type preferred_channel =
+          :sms
+          | :rcs
+          | :whatsapp
+          | :viber
+          | :zalo
+          | :telegram
+          | :silent
+          | :voice
 
         module PreferredChannel
           extend PreludeSDK::Internal::Type::Enum
@@ -241,6 +249,9 @@ module PreludeSDK
           WHATSAPP: :whatsapp
           VIBER: :viber
           ZALO: :zalo
+          TELEGRAM: :telegram
+          SILENT: :silent
+          VOICE: :voice
 
           def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::preferred_channel]
         end
