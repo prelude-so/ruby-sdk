@@ -131,7 +131,7 @@ module PreludeSDK
         # @!attribute custom_code
         #   The custom code to use for OTP verification. To use the custom code feature,
         #   contact us to enable it for your account. For more details, refer to
-        #   [Custom Code](/verify/v2/documentation/custom-code).
+        #   [Custom Code](/verify/v2/documentation/custom-codes).
         #
         #   @return [String, nil]
         optional :custom_code, String
@@ -281,6 +281,9 @@ module PreludeSDK
           WHATSAPP = :whatsapp
           VIBER = :viber
           ZALO = :zalo
+          TELEGRAM = :telegram
+          SILENT = :silent
+          VOICE = :voice
 
           # @!method self.values
           #   @return [Array<Symbol>]

@@ -21,7 +21,9 @@ class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::Resource
         status: PreludeSDK::Models::VerificationCreateResponse::Status,
         channels: ^(PreludeSDK::Internal::Type::ArrayOf[String]) | nil,
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata | nil,
-        request_id: String | nil
+        reason: PreludeSDK::Models::VerificationCreateResponse::Reason | nil,
+        request_id: String | nil,
+        silent: PreludeSDK::Models::VerificationCreateResponse::Silent | nil
       }
     end
   end

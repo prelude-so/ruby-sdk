@@ -54,11 +54,45 @@ module PreludeSDK
       end
       attr_writer :metadata
 
+      # The reason why the verification was blocked. Only present when status is
+      # "blocked".
+      sig do
+        returns(
+          T.nilable(
+            PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+          )
+        )
+      end
+      attr_reader :reason
+
+      sig do
+        params(
+          reason:
+            PreludeSDK::Models::VerificationCreateResponse::Reason::OrSymbol
+        ).void
+      end
+      attr_writer :reason
+
       sig { returns(T.nilable(String)) }
       attr_reader :request_id
 
       sig { params(request_id: String).void }
       attr_writer :request_id
+
+      # The silent verification specific properties.
+      sig do
+        returns(
+          T.nilable(PreludeSDK::Models::VerificationCreateResponse::Silent)
+        )
+      end
+      attr_reader :silent
+
+      sig do
+        params(
+          silent: PreludeSDK::Models::VerificationCreateResponse::Silent::OrHash
+        ).void
+      end
+      attr_writer :silent
 
       sig do
         params(
@@ -70,7 +104,10 @@ module PreludeSDK
           channels: T::Array[String],
           metadata:
             PreludeSDK::Models::VerificationCreateResponse::Metadata::OrHash,
-          request_id: String
+          reason:
+            PreludeSDK::Models::VerificationCreateResponse::Reason::OrSymbol,
+          request_id: String,
+          silent: PreludeSDK::Models::VerificationCreateResponse::Silent::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
@@ -84,7 +121,12 @@ module PreludeSDK
         channels: nil,
         # The metadata for this verification.
         metadata: nil,
-        request_id: nil
+        # The reason why the verification was blocked. Only present when status is
+        # "blocked".
+        reason: nil,
+        request_id: nil,
+        # The silent verification specific properties.
+        silent: nil
       )
       end
 
@@ -98,7 +140,10 @@ module PreludeSDK
               PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol,
             channels: T::Array[String],
             metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
-            request_id: String
+            reason:
+              PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol,
+            request_id: String,
+            silent: PreludeSDK::Models::VerificationCreateResponse::Silent
           }
         )
       end
@@ -121,6 +166,16 @@ module PreludeSDK
         MESSAGE =
           T.let(
             :message,
+            PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol
+          )
+        SILENT =
+          T.let(
+            :silent,
+            PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol
+          )
+        VOICE =
+          T.let(
+            :voice,
             PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol
           )
 
@@ -196,6 +251,83 @@ module PreludeSDK
         end
 
         sig { override.returns({ correlation_id: String }) }
+        def to_hash
+        end
+      end
+
+      # The reason why the verification was blocked. Only present when status is
+      # "blocked".
+      module Reason
+        extend PreludeSDK::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              PreludeSDK::Models::VerificationCreateResponse::Reason
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SUSPICIOUS =
+          T.let(
+            :suspicious,
+            PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+          )
+        REPEATED_ATTEMPTS =
+          T.let(
+            :repeated_attempts,
+            PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+          )
+        INVALID_PHONE_LINE =
+          T.let(
+            :invalid_phone_line,
+            PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+          )
+        INVALID_PHONE_NUMBER =
+          T.let(
+            :invalid_phone_number,
+            PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+          )
+        IN_BLOCK_LIST =
+          T.let(
+            :in_block_list,
+            PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
+      end
+
+      class Silent < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              PreludeSDK::Models::VerificationCreateResponse::Silent,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
+
+        # The URL to start the silent verification towards.
+        sig { returns(String) }
+        attr_accessor :request_url
+
+        # The silent verification specific properties.
+        sig { params(request_url: String).returns(T.attached_class) }
+        def self.new(
+          # The URL to start the silent verification towards.
+          request_url:
+        )
+        end
+
+        sig { override.returns({ request_url: String }) }
         def to_hash
         end
       end
