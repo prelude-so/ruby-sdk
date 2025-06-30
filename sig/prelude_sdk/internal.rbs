@@ -1,0 +1,9 @@
+module PreludeSDK
+  module Internal
+    extend PreludeSDK::Internal::Util::SorbetRuntimeSupport
+
+    type file_input = Pathname | StringIO | IO | String | PreludeSDK::FilePart
+
+    OMIT: Object
+  end
+end

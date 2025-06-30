@@ -1,0 +1,13 @@
+module PreludeSDK
+  module Resources
+    class Lookup
+      def lookup: (
+        String phone_number,
+        ?type: ::Array[PreludeSDK::Models::LookupLookupParams::type_],
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::LookupLookupResponse
+
+      def initialize: (client: PreludeSDK::Client) -> void
+    end
+  end
+end

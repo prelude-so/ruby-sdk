@@ -1,0 +1,25 @@
+module PreludeSDK
+  module Resources
+    class Watch
+      def predict: (
+        target: PreludeSDK::WatchPredictParams::Target,
+        ?dispatch_id: String,
+        ?metadata: PreludeSDK::WatchPredictParams::Metadata,
+        ?signals: PreludeSDK::WatchPredictParams::Signals,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::WatchPredictResponse
+
+      def send_events: (
+        events: ::Array[PreludeSDK::WatchSendEventsParams::Event],
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::WatchSendEventsResponse
+
+      def send_feedbacks: (
+        feedbacks: ::Array[PreludeSDK::WatchSendFeedbacksParams::Feedback],
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::WatchSendFeedbacksResponse
+
+      def initialize: (client: PreludeSDK::Client) -> void
+    end
+  end
+end

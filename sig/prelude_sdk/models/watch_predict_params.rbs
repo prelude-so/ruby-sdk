@@ -1,0 +1,180 @@
+module PreludeSDK
+  module Models
+    type watch_predict_params =
+      {
+        target: PreludeSDK::WatchPredictParams::Target,
+        dispatch_id: String,
+        metadata: PreludeSDK::WatchPredictParams::Metadata,
+        signals: PreludeSDK::WatchPredictParams::Signals
+      }
+      & PreludeSDK::Internal::Type::request_parameters
+
+    class WatchPredictParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor target: PreludeSDK::WatchPredictParams::Target
+
+      attr_reader dispatch_id: String?
+
+      def dispatch_id=: (String) -> String
+
+      attr_reader metadata: PreludeSDK::WatchPredictParams::Metadata?
+
+      def metadata=: (
+        PreludeSDK::WatchPredictParams::Metadata
+      ) -> PreludeSDK::WatchPredictParams::Metadata
+
+      attr_reader signals: PreludeSDK::WatchPredictParams::Signals?
+
+      def signals=: (
+        PreludeSDK::WatchPredictParams::Signals
+      ) -> PreludeSDK::WatchPredictParams::Signals
+
+      def initialize: (
+        target: PreludeSDK::WatchPredictParams::Target,
+        ?dispatch_id: String,
+        ?metadata: PreludeSDK::WatchPredictParams::Metadata,
+        ?signals: PreludeSDK::WatchPredictParams::Signals,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        target: PreludeSDK::WatchPredictParams::Target,
+        dispatch_id: String,
+        metadata: PreludeSDK::WatchPredictParams::Metadata,
+        signals: PreludeSDK::WatchPredictParams::Signals,
+        request_options: PreludeSDK::RequestOptions
+      }
+
+      type target =
+        {
+          type: PreludeSDK::Models::WatchPredictParams::Target::type_,
+          value: String
+        }
+
+      class Target < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor type: PreludeSDK::Models::WatchPredictParams::Target::type_
+
+        attr_accessor value: String
+
+        def initialize: (
+          type: PreludeSDK::Models::WatchPredictParams::Target::type_,
+          value: String
+        ) -> void
+
+        def to_hash: -> {
+          type: PreludeSDK::Models::WatchPredictParams::Target::type_,
+          value: String
+        }
+
+        type type_ = :phone_number | :email_address
+
+        module Type
+          extend PreludeSDK::Internal::Type::Enum
+
+          PHONE_NUMBER: :phone_number
+          EMAIL_ADDRESS: :email_address
+
+          def self?.values: -> ::Array[PreludeSDK::Models::WatchPredictParams::Target::type_]
+        end
+      end
+
+      type metadata = { correlation_id: String }
+
+      class Metadata < PreludeSDK::Internal::Type::BaseModel
+        attr_reader correlation_id: String?
+
+        def correlation_id=: (String) -> String
+
+        def initialize: (?correlation_id: String) -> void
+
+        def to_hash: -> { correlation_id: String }
+      end
+
+      type signals =
+        {
+          app_version: String,
+          device_id: String,
+          device_model: String,
+          device_platform: PreludeSDK::Models::WatchPredictParams::Signals::device_platform,
+          ip: String,
+          is_trusted_user: bool,
+          os_version: String,
+          user_agent: String
+        }
+
+      class Signals < PreludeSDK::Internal::Type::BaseModel
+        attr_reader app_version: String?
+
+        def app_version=: (String) -> String
+
+        attr_reader device_id: String?
+
+        def device_id=: (String) -> String
+
+        attr_reader device_model: String?
+
+        def device_model=: (String) -> String
+
+        attr_reader device_platform: PreludeSDK::Models::WatchPredictParams::Signals::device_platform?
+
+        def device_platform=: (
+          PreludeSDK::Models::WatchPredictParams::Signals::device_platform
+        ) -> PreludeSDK::Models::WatchPredictParams::Signals::device_platform
+
+        attr_reader ip: String?
+
+        def ip=: (String) -> String
+
+        attr_reader is_trusted_user: bool?
+
+        def is_trusted_user=: (bool) -> bool
+
+        attr_reader os_version: String?
+
+        def os_version=: (String) -> String
+
+        attr_reader user_agent: String?
+
+        def user_agent=: (String) -> String
+
+        def initialize: (
+          ?app_version: String,
+          ?device_id: String,
+          ?device_model: String,
+          ?device_platform: PreludeSDK::Models::WatchPredictParams::Signals::device_platform,
+          ?ip: String,
+          ?is_trusted_user: bool,
+          ?os_version: String,
+          ?user_agent: String
+        ) -> void
+
+        def to_hash: -> {
+          app_version: String,
+          device_id: String,
+          device_model: String,
+          device_platform: PreludeSDK::Models::WatchPredictParams::Signals::device_platform,
+          ip: String,
+          is_trusted_user: bool,
+          os_version: String,
+          user_agent: String
+        }
+
+        type device_platform = :android | :ios | :ipados | :tvos | :web
+
+        module DevicePlatform
+          extend PreludeSDK::Internal::Type::Enum
+
+          ANDROID: :android
+          IOS: :ios
+          IPADOS: :ipados
+          TVOS: :tvos
+          WEB: :web
+
+          def self?.values: -> ::Array[PreludeSDK::Models::WatchPredictParams::Signals::device_platform]
+        end
+      end
+    end
+  end
+end

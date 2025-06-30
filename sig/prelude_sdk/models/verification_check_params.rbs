@@ -1,0 +1,61 @@
+module PreludeSDK
+  module Models
+    type verification_check_params =
+      { code: String, target: PreludeSDK::VerificationCheckParams::Target }
+      & PreludeSDK::Internal::Type::request_parameters
+
+    class VerificationCheckParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor code: String
+
+      attr_accessor target: PreludeSDK::VerificationCheckParams::Target
+
+      def initialize: (
+        code: String,
+        target: PreludeSDK::VerificationCheckParams::Target,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        code: String,
+        target: PreludeSDK::VerificationCheckParams::Target,
+        request_options: PreludeSDK::RequestOptions
+      }
+
+      type target =
+        {
+          type: PreludeSDK::Models::VerificationCheckParams::Target::type_,
+          value: String
+        }
+
+      class Target < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor type: PreludeSDK::Models::VerificationCheckParams::Target::type_
+
+        attr_accessor value: String
+
+        def initialize: (
+          type: PreludeSDK::Models::VerificationCheckParams::Target::type_,
+          value: String
+        ) -> void
+
+        def to_hash: -> {
+          type: PreludeSDK::Models::VerificationCheckParams::Target::type_,
+          value: String
+        }
+
+        type type_ = :phone_number | :email_address
+
+        module Type
+          extend PreludeSDK::Internal::Type::Enum
+
+          PHONE_NUMBER: :phone_number
+          EMAIL_ADDRESS: :email_address
+
+          def self?.values: -> ::Array[PreludeSDK::Models::VerificationCheckParams::Target::type_]
+        end
+      end
+    end
+  end
+end

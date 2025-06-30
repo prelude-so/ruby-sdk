@@ -1,0 +1,41 @@
+module PreludeSDK
+  module Models
+    type watch_predict_response =
+      {
+        id: String,
+        prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
+        request_id: String
+      }
+
+    class WatchPredictResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor prediction: PreludeSDK::Models::WatchPredictResponse::prediction
+
+      attr_accessor request_id: String
+
+      def initialize: (
+        id: String,
+        prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
+        request_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
+        request_id: String
+      }
+
+      type prediction = :legitimate | :suspicious
+
+      module Prediction
+        extend PreludeSDK::Internal::Type::Enum
+
+        LEGITIMATE: :legitimate
+        SUSPICIOUS: :suspicious
+
+        def self?.values: -> ::Array[PreludeSDK::Models::WatchPredictResponse::prediction]
+      end
+    end
+  end
+end

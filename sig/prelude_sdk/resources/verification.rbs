@@ -1,0 +1,22 @@
+module PreludeSDK
+  module Resources
+    class Verification
+      def create: (
+        target: PreludeSDK::VerificationCreateParams::Target,
+        ?dispatch_id: String,
+        ?metadata: PreludeSDK::VerificationCreateParams::Metadata,
+        ?options: PreludeSDK::VerificationCreateParams::Options,
+        ?signals: PreludeSDK::VerificationCreateParams::Signals,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::VerificationCreateResponse
+
+      def check: (
+        code: String,
+        target: PreludeSDK::VerificationCheckParams::Target,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::VerificationCheckResponse
+
+      def initialize: (client: PreludeSDK::Client) -> void
+    end
+  end
+end

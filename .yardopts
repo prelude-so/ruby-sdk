@@ -1,2 +1,6 @@
+--type-name-tag generic:Generic
+--default-return void
 --markup markdown
---load .yardopts.rb
+--markup-provider redcarpet
+--exclude /rbi
+--exclude /sig
