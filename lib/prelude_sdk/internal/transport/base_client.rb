@@ -471,6 +471,7 @@ module PreludeSDK
           self.class.validate!(req)
           model = req.fetch(:model) { PreludeSDK::Internal::Type::Unknown }
           opts = req[:options].to_h
+          unwrap = req[:unwrap]
           PreludeSDK::RequestOptions.validate!(opts)
           request = build_request(req.except(:options), opts)
           url = request.fetch(:url)
@@ -487,11 +488,18 @@ module PreludeSDK
           decoded = PreludeSDK::Internal::Util.decode_content(response, stream: stream)
           case req
           in {stream: Class => st}
-            st.new(model: model, url: url, status: status, response: response, stream: decoded)
+            st.new(
+              model: model,
+              url: url,
+              status: status,
+              response: response,
+              unwrap: unwrap,
+              stream: decoded
+            )
           in {page: Class => page}
             page.new(client: self, req: req, headers: response, page_data: decoded)
           else
-            unwrapped = PreludeSDK::Internal::Util.dig(decoded, req[:unwrap])
+            unwrapped = PreludeSDK::Internal::Util.dig(decoded, unwrap)
             PreludeSDK::Internal::Type::Converter.coerce(model, unwrapped)
           end
         end
