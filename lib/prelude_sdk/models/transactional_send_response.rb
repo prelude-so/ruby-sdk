@@ -47,7 +47,9 @@ module PreludeSDK
       optional :callback_url, String
 
       # @!attribute correlation_id
-      #   A unique, user-defined identifier that will be included in webhook events.
+      #   A user-defined identifier to correlate this transactional message with. It is
+      #   returned in the response and any webhook events that refer to this transactional
+      #   message.
       #
       #   @return [String, nil]
       optional :correlation_id, String
@@ -59,6 +61,9 @@ module PreludeSDK
       optional :from, String
 
       # @!method initialize(id:, created_at:, expires_at:, template_id:, to:, variables:, callback_url: nil, correlation_id: nil, from: nil)
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::TransactionalSendResponse} for more details.
+      #
       #   @param id [String] The message identifier.
       #
       #   @param created_at [Time] The message creation date.
@@ -73,7 +78,7 @@ module PreludeSDK
       #
       #   @param callback_url [String] The callback URL.
       #
-      #   @param correlation_id [String] A unique, user-defined identifier that will be included in webhook events.
+      #   @param correlation_id [String] A user-defined identifier to correlate this transactional message with. It is re
       #
       #   @param from [String] The Sender ID.
     end

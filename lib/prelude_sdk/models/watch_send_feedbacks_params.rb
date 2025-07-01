@@ -116,15 +116,20 @@ module PreludeSDK
         # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#metadata
         class Metadata < PreludeSDK::Internal::Type::BaseModel
           # @!attribute correlation_id
-          #   A user-defined identifier to correlate this feedback with.
+          #   A user-defined identifier to correlate this feedback with. It is returned in the
+          #   response and any webhook events that refer to this feedback.
           #
           #   @return [String, nil]
           optional :correlation_id, String
 
           # @!method initialize(correlation_id: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata} for more
+          #   details.
+          #
           #   The metadata for this feedback.
           #
-          #   @param correlation_id [String] A user-defined identifier to correlate this feedback with.
+          #   @param correlation_id [String] A user-defined identifier to correlate this feedback with. It is returned in the
         end
 
         # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#signals

@@ -5,7 +5,7 @@ module PreludeSDK
         id: String,
         method_: PreludeSDK::Models::VerificationCreateResponse::method_,
         status: PreludeSDK::Models::VerificationCreateResponse::status,
-        channels: ::Array[String],
+        channels: ::Array[PreludeSDK::Models::VerificationCreateResponse::channel],
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
         reason: PreludeSDK::Models::VerificationCreateResponse::reason,
         request_id: String,
@@ -19,9 +19,11 @@ module PreludeSDK
 
       attr_accessor status: PreludeSDK::Models::VerificationCreateResponse::status
 
-      attr_reader channels: ::Array[String]?
+      attr_reader channels: ::Array[PreludeSDK::Models::VerificationCreateResponse::channel]?
 
-      def channels=: (::Array[String]) -> ::Array[String]
+      def channels=: (
+        ::Array[PreludeSDK::Models::VerificationCreateResponse::channel]
+      ) -> ::Array[PreludeSDK::Models::VerificationCreateResponse::channel]
 
       attr_reader metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata?
 
@@ -49,7 +51,7 @@ module PreludeSDK
         id: String,
         method_: PreludeSDK::Models::VerificationCreateResponse::method_,
         status: PreludeSDK::Models::VerificationCreateResponse::status,
-        ?channels: ::Array[String],
+        ?channels: ::Array[PreludeSDK::Models::VerificationCreateResponse::channel],
         ?metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
         ?reason: PreludeSDK::Models::VerificationCreateResponse::reason,
         ?request_id: String,
@@ -60,7 +62,7 @@ module PreludeSDK
         id: String,
         method_: PreludeSDK::Models::VerificationCreateResponse::method_,
         status: PreludeSDK::Models::VerificationCreateResponse::status,
-        channels: ::Array[String],
+        channels: ::Array[PreludeSDK::Models::VerificationCreateResponse::channel],
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
         reason: PreludeSDK::Models::VerificationCreateResponse::reason,
         request_id: String,
@@ -91,6 +93,24 @@ module PreludeSDK
         def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::status]
       end
 
+      type channel =
+        :sms | :rcs | :whatsapp | :viber | :zalo | :telegram | :silent | :voice
+
+      module Channel
+        extend PreludeSDK::Internal::Type::Enum
+
+        SMS: :sms
+        RCS: :rcs
+        WHATSAPP: :whatsapp
+        VIBER: :viber
+        ZALO: :zalo
+        TELEGRAM: :telegram
+        SILENT: :silent
+        VOICE: :voice
+
+        def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::channel]
+      end
+
       type metadata = { correlation_id: String }
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
@@ -104,20 +124,24 @@ module PreludeSDK
       end
 
       type reason =
-        :suspicious
-        | :repeated_attempts
+        :expired_signature
+        | :in_block_list
         | :invalid_phone_line
         | :invalid_phone_number
-        | :in_block_list
+        | :invalid_signature
+        | :repeated_attempts
+        | :suspicious
 
       module Reason
         extend PreludeSDK::Internal::Type::Enum
 
-        SUSPICIOUS: :suspicious
-        REPEATED_ATTEMPTS: :repeated_attempts
+        EXPIRED_SIGNATURE: :expired_signature
+        IN_BLOCK_LIST: :in_block_list
         INVALID_PHONE_LINE: :invalid_phone_line
         INVALID_PHONE_NUMBER: :invalid_phone_number
-        IN_BLOCK_LIST: :in_block_list
+        INVALID_SIGNATURE: :invalid_signature
+        REPEATED_ATTEMPTS: :repeated_attempts
+        SUSPICIOUS: :suspicious
 
         def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::reason]
       end

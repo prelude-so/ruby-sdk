@@ -16,7 +16,7 @@ module PreludeSDK
       #
       # @param callback_url [String] The callback URL.
       #
-      # @param correlation_id [String] A unique, user-defined identifier that will be included in webhook events.
+      # @param correlation_id [String] A user-defined identifier to correlate this transactional message with. It is re
       #
       # @param expires_at [String] The message expiration date.
       #

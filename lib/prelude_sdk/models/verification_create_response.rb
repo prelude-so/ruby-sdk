@@ -25,8 +25,9 @@ module PreludeSDK
       # @!attribute channels
       #   The ordered sequence of channels to be used for verification
       #
-      #   @return [Array<String>, nil]
-      optional :channels, PreludeSDK::Internal::Type::ArrayOf[String]
+      #   @return [Array<Symbol, PreludeSDK::Models::VerificationCreateResponse::Channel>, nil]
+      optional :channels,
+               -> { PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::Models::VerificationCreateResponse::Channel] }
 
       # @!attribute metadata
       #   The metadata for this verification.
@@ -62,7 +63,7 @@ module PreludeSDK
       #
       #   @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status] The status of the verification.
       #
-      #   @param channels [Array<String>] The ordered sequence of channels to be used for verification
+      #   @param channels [Array<Symbol, PreludeSDK::Models::VerificationCreateResponse::Channel>] The ordered sequence of channels to be used for verification
       #
       #   @param metadata [PreludeSDK::Models::VerificationCreateResponse::Metadata] The metadata for this verification.
       #
@@ -100,17 +101,38 @@ module PreludeSDK
         #   @return [Array<Symbol>]
       end
 
+      module Channel
+        extend PreludeSDK::Internal::Type::Enum
+
+        SMS = :sms
+        RCS = :rcs
+        WHATSAPP = :whatsapp
+        VIBER = :viber
+        ZALO = :zalo
+        TELEGRAM = :telegram
+        SILENT = :silent
+        VOICE = :voice
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
       # @see PreludeSDK::Models::VerificationCreateResponse#metadata
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         # @!attribute correlation_id
+        #   A user-defined identifier to correlate this verification with. It is returned in
+        #   the response and any webhook events that refer to this verification.
         #
         #   @return [String, nil]
         optional :correlation_id, String
 
         # @!method initialize(correlation_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::VerificationCreateResponse::Metadata} for more details.
+        #
         #   The metadata for this verification.
         #
-        #   @param correlation_id [String]
+        #   @param correlation_id [String] A user-defined identifier to correlate this verification with. It is returned in
       end
 
       # The reason why the verification was blocked. Only present when status is
@@ -120,11 +142,13 @@ module PreludeSDK
       module Reason
         extend PreludeSDK::Internal::Type::Enum
 
-        SUSPICIOUS = :suspicious
-        REPEATED_ATTEMPTS = :repeated_attempts
+        EXPIRED_SIGNATURE = :expired_signature
+        IN_BLOCK_LIST = :in_block_list
         INVALID_PHONE_LINE = :invalid_phone_line
         INVALID_PHONE_NUMBER = :invalid_phone_number
-        IN_BLOCK_LIST = :in_block_list
+        INVALID_SIGNATURE = :invalid_signature
+        REPEATED_ATTEMPTS = :repeated_attempts
+        SUSPICIOUS = :suspicious
 
         # @!method self.values
         #   @return [Array<Symbol>]

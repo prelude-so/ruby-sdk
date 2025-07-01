@@ -285,7 +285,8 @@ module PreludeSDK
               )
             end
 
-          # A user-defined identifier to correlate this feedback with.
+          # A user-defined identifier to correlate this feedback with. It is returned in the
+          # response and any webhook events that refer to this feedback.
           sig { returns(T.nilable(String)) }
           attr_reader :correlation_id
 
@@ -295,7 +296,8 @@ module PreludeSDK
           # The metadata for this feedback.
           sig { params(correlation_id: String).returns(T.attached_class) }
           def self.new(
-            # A user-defined identifier to correlate this feedback with.
+            # A user-defined identifier to correlate this feedback with. It is returned in the
+            # response and any webhook events that refer to this feedback.
             correlation_id: nil
           )
           end

@@ -32,10 +32,25 @@ module PreludeSDK
       attr_accessor :status
 
       # The ordered sequence of channels to be used for verification
-      sig { returns(T.nilable(T::Array[String])) }
+      sig do
+        returns(
+          T.nilable(
+            T::Array[
+              PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+            ]
+          )
+        )
+      end
       attr_reader :channels
 
-      sig { params(channels: T::Array[String]).void }
+      sig do
+        params(
+          channels:
+            T::Array[
+              PreludeSDK::Models::VerificationCreateResponse::Channel::OrSymbol
+            ]
+        ).void
+      end
       attr_writer :channels
 
       # The metadata for this verification.
@@ -101,7 +116,10 @@ module PreludeSDK
             PreludeSDK::Models::VerificationCreateResponse::Method::OrSymbol,
           status:
             PreludeSDK::Models::VerificationCreateResponse::Status::OrSymbol,
-          channels: T::Array[String],
+          channels:
+            T::Array[
+              PreludeSDK::Models::VerificationCreateResponse::Channel::OrSymbol
+            ],
           metadata:
             PreludeSDK::Models::VerificationCreateResponse::Metadata::OrHash,
           reason:
@@ -138,7 +156,10 @@ module PreludeSDK
               PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol,
             status:
               PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol,
-            channels: T::Array[String],
+            channels:
+              T::Array[
+                PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+              ],
             metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
             reason:
               PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol,
@@ -230,6 +251,70 @@ module PreludeSDK
         end
       end
 
+      module Channel
+        extend PreludeSDK::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(
+              Symbol,
+              PreludeSDK::Models::VerificationCreateResponse::Channel
+            )
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SMS =
+          T.let(
+            :sms,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        RCS =
+          T.let(
+            :rcs,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        WHATSAPP =
+          T.let(
+            :whatsapp,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        VIBER =
+          T.let(
+            :viber,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        ZALO =
+          T.let(
+            :zalo,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        TELEGRAM =
+          T.let(
+            :telegram,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        SILENT =
+          T.let(
+            :silent,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        VOICE =
+          T.let(
+            :voice,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
+      end
+
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         OrHash =
           T.type_alias do
@@ -239,6 +324,8 @@ module PreludeSDK
             )
           end
 
+        # A user-defined identifier to correlate this verification with. It is returned in
+        # the response and any webhook events that refer to this verification.
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
@@ -247,7 +334,11 @@ module PreludeSDK
 
         # The metadata for this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
-        def self.new(correlation_id: nil)
+        def self.new(
+          # A user-defined identifier to correlate this verification with. It is returned in
+          # the response and any webhook events that refer to this verification.
+          correlation_id: nil
+        )
         end
 
         sig { override.returns({ correlation_id: String }) }
@@ -269,14 +360,14 @@ module PreludeSDK
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        SUSPICIOUS =
+        EXPIRED_SIGNATURE =
           T.let(
-            :suspicious,
+            :expired_signature,
             PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
           )
-        REPEATED_ATTEMPTS =
+        IN_BLOCK_LIST =
           T.let(
-            :repeated_attempts,
+            :in_block_list,
             PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
           )
         INVALID_PHONE_LINE =
@@ -289,9 +380,19 @@ module PreludeSDK
             :invalid_phone_number,
             PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
           )
-        IN_BLOCK_LIST =
+        INVALID_SIGNATURE =
           T.let(
-            :in_block_list,
+            :invalid_signature,
+            PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+          )
+        REPEATED_ATTEMPTS =
+          T.let(
+            :repeated_attempts,
+            PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
+          )
+        SUSPICIOUS =
+          T.let(
+            :suspicious,
             PreludeSDK::Models::VerificationCreateResponse::Reason::TaggedSymbol
           )
 
