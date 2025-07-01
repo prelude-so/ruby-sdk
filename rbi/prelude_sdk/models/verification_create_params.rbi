@@ -200,7 +200,8 @@ module PreludeSDK
             )
           end
 
-        # A user-defined identifier to correlate this verification with.
+        # A user-defined identifier to correlate this verification with. It is returned in
+        # the response and any webhook events that refer to this verification.
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
@@ -211,7 +212,8 @@ module PreludeSDK
         # response or webhook sent that refers to this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
         def self.new(
-          # A user-defined identifier to correlate this verification with.
+          # A user-defined identifier to correlate this verification with. It is returned in
+          # the response and any webhook events that refer to this verification.
           correlation_id: nil
         )
         end
@@ -586,16 +588,6 @@ module PreludeSDK
           TELEGRAM =
             T.let(
               :telegram,
-              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
-            )
-          SILENT =
-            T.let(
-              :silent,
-              PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
-            )
-          VOICE =
-            T.let(
-              :voice,
               PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
             )
 

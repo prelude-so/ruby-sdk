@@ -26,7 +26,9 @@ module PreludeSDK
       optional :callback_url, String
 
       # @!attribute correlation_id
-      #   A unique, user-defined identifier that will be included in webhook events.
+      #   A user-defined identifier to correlate this transactional message with. It is
+      #   returned in the response and any webhook events that refer to this
+      #   transactionalmessage.
       #
       #   @return [String, nil]
       optional :correlation_id, String
@@ -68,7 +70,7 @@ module PreludeSDK
       #
       #   @param callback_url [String] The callback URL.
       #
-      #   @param correlation_id [String] A unique, user-defined identifier that will be included in webhook events.
+      #   @param correlation_id [String] A user-defined identifier to correlate this transactional message with. It is re
       #
       #   @param expires_at [String] The message expiration date.
       #

@@ -93,16 +93,20 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         # @!attribute correlation_id
-        #   A user-defined identifier to correlate this verification with.
+        #   A user-defined identifier to correlate this verification with. It is returned in
+        #   the response and any webhook events that refer to this verification.
         #
         #   @return [String, nil]
         optional :correlation_id, String
 
         # @!method initialize(correlation_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::VerificationCreateParams::Metadata} for more details.
+        #
         #   The metadata for this verification. This object will be returned with every
         #   response or webhook sent that refers to this verification.
         #
-        #   @param correlation_id [String] A user-defined identifier to correlate this verification with.
+        #   @param correlation_id [String] A user-defined identifier to correlate this verification with. It is returned in
       end
 
       class Options < PreludeSDK::Internal::Type::BaseModel
@@ -282,8 +286,6 @@ module PreludeSDK
           VIBER = :viber
           ZALO = :zalo
           TELEGRAM = :telegram
-          SILENT = :silent
-          VOICE = :voice
 
           # @!method self.values
           #   @return [Array<Symbol>]

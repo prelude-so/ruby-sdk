@@ -168,7 +168,8 @@ module PreludeSDK
             )
           end
 
-        # A user-defined identifier to correlate this prediction with.
+        # A user-defined identifier to correlate this prediction with. It is returned in
+        # the response and any webhook events that refer to this prediction.
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
@@ -178,7 +179,8 @@ module PreludeSDK
         # The metadata for this prediction.
         sig { params(correlation_id: String).returns(T.attached_class) }
         def self.new(
-          # A user-defined identifier to correlate this prediction with.
+          # A user-defined identifier to correlate this prediction with. It is returned in
+          # the response and any webhook events that refer to this prediction.
           correlation_id: nil
         )
         end
