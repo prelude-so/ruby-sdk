@@ -24,7 +24,9 @@ module PreludeSDK
         to:,
         # The callback URL.
         callback_url: nil,
-        # A unique, user-defined identifier that will be included in webhook events.
+        # A user-defined identifier to correlate this transactional message with. It is
+        # returned in the response and any webhook events that refer to this
+        # transactionalmessage.
         correlation_id: nil,
         # The message expiration date.
         expires_at: nil,

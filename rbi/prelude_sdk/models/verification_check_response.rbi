@@ -129,6 +129,8 @@ module PreludeSDK
             )
           end
 
+        # A user-defined identifier to correlate this verification with. It is returned in
+        # the response and any webhook events that refer to this verification.
         sig { returns(T.nilable(String)) }
         attr_reader :correlation_id
 
@@ -137,7 +139,11 @@ module PreludeSDK
 
         # The metadata for this verification.
         sig { params(correlation_id: String).returns(T.attached_class) }
-        def self.new(correlation_id: nil)
+        def self.new(
+          # A user-defined identifier to correlate this verification with. It is returned in
+          # the response and any webhook events that refer to this verification.
+          correlation_id: nil
+        )
         end
 
         sig { override.returns({ correlation_id: String }) }

@@ -82,15 +82,19 @@ module PreludeSDK
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         # @!attribute correlation_id
-        #   A user-defined identifier to correlate this prediction with.
+        #   A user-defined identifier to correlate this prediction with. It is returned in
+        #   the response and any webhook events that refer to this prediction.
         #
         #   @return [String, nil]
         optional :correlation_id, String
 
         # @!method initialize(correlation_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::WatchPredictParams::Metadata} for more details.
+        #
         #   The metadata for this prediction.
         #
-        #   @param correlation_id [String] A user-defined identifier to correlate this prediction with.
+        #   @param correlation_id [String] A user-defined identifier to correlate this prediction with. It is returned in t
       end
 
       class Signals < PreludeSDK::Internal::Type::BaseModel

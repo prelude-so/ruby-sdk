@@ -42,7 +42,9 @@ module PreludeSDK
       sig { params(callback_url: String).void }
       attr_writer :callback_url
 
-      # A unique, user-defined identifier that will be included in webhook events.
+      # A user-defined identifier to correlate this transactional message with. It is
+      # returned in the response and any webhook events that refer to this transactional
+      # message.
       sig { returns(T.nilable(String)) }
       attr_reader :correlation_id
 
@@ -84,7 +86,9 @@ module PreludeSDK
         variables:,
         # The callback URL.
         callback_url: nil,
-        # A unique, user-defined identifier that will be included in webhook events.
+        # A user-defined identifier to correlate this transactional message with. It is
+        # returned in the response and any webhook events that refer to this transactional
+        # message.
         correlation_id: nil,
         # The Sender ID.
         from: nil

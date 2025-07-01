@@ -53,14 +53,19 @@ module PreludeSDK
       # @see PreludeSDK::Models::VerificationCheckResponse#metadata
       class Metadata < PreludeSDK::Internal::Type::BaseModel
         # @!attribute correlation_id
+        #   A user-defined identifier to correlate this verification with. It is returned in
+        #   the response and any webhook events that refer to this verification.
         #
         #   @return [String, nil]
         optional :correlation_id, String
 
         # @!method initialize(correlation_id: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::VerificationCheckResponse::Metadata} for more details.
+        #
         #   The metadata for this verification.
         #
-        #   @param correlation_id [String]
+        #   @param correlation_id [String] A user-defined identifier to correlate this verification with. It is returned in
       end
     end
   end

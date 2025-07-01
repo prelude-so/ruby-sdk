@@ -19,7 +19,7 @@ class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::Resource
         id: String,
         method_: PreludeSDK::Models::VerificationCreateResponse::Method,
         status: PreludeSDK::Models::VerificationCreateResponse::Status,
-        channels: ^(PreludeSDK::Internal::Type::ArrayOf[String]) | nil,
+        channels: ^(PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::Models::VerificationCreateResponse::Channel]) | nil,
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata | nil,
         reason: PreludeSDK::Models::VerificationCreateResponse::Reason | nil,
         request_id: String | nil,
