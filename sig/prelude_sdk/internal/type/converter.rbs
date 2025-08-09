@@ -39,6 +39,23 @@ module PreludeSDK
           | PreludeSDK::Internal::Type::Converter::input spec
         ) -> (^-> top)
 
+        def self.meta_info: (
+          {
+            const: (nil | bool | Integer | Float | Symbol)?,
+            enum: ^-> PreludeSDK::Internal::Type::Converter::input?,
+            union: ^-> PreludeSDK::Internal::Type::Converter::input?
+          }
+          | ^-> PreludeSDK::Internal::Type::Converter::input
+          | PreludeSDK::Internal::Type::Converter::input type_info,
+          {
+            const: (nil | bool | Integer | Float | Symbol)?,
+            enum: ^-> PreludeSDK::Internal::Type::Converter::input?,
+            union: ^-> PreludeSDK::Internal::Type::Converter::input?
+          }
+          | ^-> PreludeSDK::Internal::Type::Converter::input
+          | PreludeSDK::Internal::Type::Converter::input spec
+        ) -> ::Hash[Symbol, top]
+
         def self.new_coerce_state: (
           ?translate_names: bool
         ) -> PreludeSDK::Internal::Type::Converter::coerce_state
