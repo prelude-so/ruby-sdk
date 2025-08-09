@@ -16,7 +16,8 @@ module PreludeSDK
             T::Array[
               [
                 T.nilable(Symbol),
-                T.proc.returns(PreludeSDK::Internal::Type::Converter::Input)
+                T.proc.returns(PreludeSDK::Internal::Type::Converter::Input),
+                PreludeSDK::Internal::AnyHash
               ]
             ]
           )
@@ -25,7 +26,13 @@ module PreludeSDK
         end
 
         # @api private
-        sig { returns(T::Array[[T.nilable(Symbol), T.anything]]) }
+        sig do
+          returns(
+            T::Array[
+              [T.nilable(Symbol), T.anything, PreludeSDK::Internal::AnyHash]
+            ]
+          )
+        end
         protected def derefed_variants
         end
 
