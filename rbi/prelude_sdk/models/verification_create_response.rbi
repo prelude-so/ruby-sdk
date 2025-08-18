@@ -184,6 +184,11 @@ module PreludeSDK
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        EMAIL =
+          T.let(
+            :email,
+            PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol
+          )
         MESSAGE =
           T.let(
             :message,
@@ -263,34 +268,9 @@ module PreludeSDK
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        SMS =
-          T.let(
-            :sms,
-            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
-          )
         RCS =
           T.let(
             :rcs,
-            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
-          )
-        WHATSAPP =
-          T.let(
-            :whatsapp,
-            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
-          )
-        VIBER =
-          T.let(
-            :viber,
-            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
-          )
-        ZALO =
-          T.let(
-            :zalo,
-            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
-          )
-        TELEGRAM =
-          T.let(
-            :telegram,
             PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
           )
         SILENT =
@@ -298,9 +278,34 @@ module PreludeSDK
             :silent,
             PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
           )
+        SMS =
+          T.let(
+            :sms,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        TELEGRAM =
+          T.let(
+            :telegram,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        VIBER =
+          T.let(
+            :viber,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
         VOICE =
           T.let(
             :voice,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        WHATSAPP =
+          T.let(
+            :whatsapp,
+            PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
+          )
+        ZALO =
+          T.let(
+            :zalo,
             PreludeSDK::Models::VerificationCreateResponse::Channel::TaggedSymbol
           )
 

@@ -79,6 +79,7 @@ module PreludeSDK
       module Method
         extend PreludeSDK::Internal::Type::Enum
 
+        EMAIL = :email
         MESSAGE = :message
         SILENT = :silent
         VOICE = :voice
@@ -104,14 +105,14 @@ module PreludeSDK
       module Channel
         extend PreludeSDK::Internal::Type::Enum
 
-        SMS = :sms
         RCS = :rcs
-        WHATSAPP = :whatsapp
-        VIBER = :viber
-        ZALO = :zalo
-        TELEGRAM = :telegram
         SILENT = :silent
+        SMS = :sms
+        TELEGRAM = :telegram
+        VIBER = :viber
         VOICE = :voice
+        WHATSAPP = :whatsapp
+        ZALO = :zalo
 
         # @!method self.values
         #   @return [Array<Symbol>]
