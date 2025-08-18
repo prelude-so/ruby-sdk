@@ -69,11 +69,12 @@ module PreludeSDK
         silent: PreludeSDK::Models::VerificationCreateResponse::Silent
       }
 
-      type method_ = :message | :silent | :voice
+      type method_ = :email | :message | :silent | :voice
 
       module Method
         extend PreludeSDK::Internal::Type::Enum
 
+        EMAIL: :email
         MESSAGE: :message
         SILENT: :silent
         VOICE: :voice
@@ -94,19 +95,19 @@ module PreludeSDK
       end
 
       type channel =
-        :sms | :rcs | :whatsapp | :viber | :zalo | :telegram | :silent | :voice
+        :rcs | :silent | :sms | :telegram | :viber | :voice | :whatsapp | :zalo
 
       module Channel
         extend PreludeSDK::Internal::Type::Enum
 
-        SMS: :sms
         RCS: :rcs
-        WHATSAPP: :whatsapp
-        VIBER: :viber
-        ZALO: :zalo
-        TELEGRAM: :telegram
         SILENT: :silent
+        SMS: :sms
+        TELEGRAM: :telegram
+        VIBER: :viber
         VOICE: :voice
+        WHATSAPP: :whatsapp
+        ZALO: :zalo
 
         def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::channel]
       end
