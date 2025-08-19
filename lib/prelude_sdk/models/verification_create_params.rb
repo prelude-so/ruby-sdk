@@ -166,10 +166,7 @@ module PreludeSDK
         #   The preferred channel to be used in priority for verification.
         #
         #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::PreferredChannel, nil]
-        optional :preferred_channel,
-                 enum: -> {
-                   PreludeSDK::VerificationCreateParams::Options::PreferredChannel
-                 }
+        optional :preferred_channel, enum: -> { PreludeSDK::VerificationCreateParams::Options::PreferredChannel }
 
         # @!attribute sender_id
         #   The Sender ID to use for this message. The Sender ID needs to be enabled by

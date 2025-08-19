@@ -242,11 +242,7 @@ class PreludeSDK::Test::UtilFormDataEncodingTest < Minitest::Test
       {strio: StringIO.new("a")} => {"strio" => "a"},
       {strio: PreludeSDK::FilePart.new("a")} => {"strio" => "a"},
       {pathname: Pathname(__FILE__)} => {"pathname" => -> { _1.read in /^class PreludeSDK/ }},
-      {pathname: PreludeSDK::FilePart.new(Pathname(__FILE__))} => {
-        "pathname" => -> {
-          _1.read in /^class PreludeSDK/
-        }
-      }
+      {pathname: PreludeSDK::FilePart.new(Pathname(__FILE__))} => {"pathname" => -> { _1.read in /^class PreludeSDK/ }}
     }
     cases.each do |body, testcase|
       encoded = PreludeSDK::Internal::Util.encode_content(headers, body)
@@ -324,9 +320,9 @@ class PreludeSDK::Test::UtilFusedEnumTest < Minitest::Test
   end
 
   def test_external_iteration
-    it = [1, 2, 3].to_enum
-    first = it.next
-    fused = PreludeSDK::Internal::Util.fused_enum(it, external: true)
+    iter = [1, 2, 3].to_enum
+    first = iter.next
+    fused = PreludeSDK::Internal::Util.fused_enum(iter, external: true)
 
     assert_equal(1, first)
     assert_equal([2, 3], fused.to_a)
