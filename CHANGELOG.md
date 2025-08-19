@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-08-19)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([036b7b2](https://github.com/prelude-so/ruby-sdk/commit/036b7b298dc4de946eeff885f8f2a0e9566e1de0))
+* **api:** update via SDK Studio ([791c53f](https://github.com/prelude-so/ruby-sdk/commit/791c53fdbb730ded753d2eb227f87ff6e86ee1bd))
+
+
+### Bug Fixes
+
+* bump sorbet version and fix new type errors from the breaking change ([18e0dd1](https://github.com/prelude-so/ruby-sdk/commit/18e0dd1e8f90e1e77c74b491490931309a9cdd4b))
+* **internal:** ensure sorbet test always runs serially ([73f6bb9](https://github.com/prelude-so/ruby-sdk/commit/73f6bb9d30db4eb38e746d74da4ff2eb81881080))
+
+
+### Chores
+
+* collect metadata from type DSL ([7bf4d61](https://github.com/prelude-so/ruby-sdk/commit/7bf4d61d21cbd50bb83986e147a5c29793400ca5))
+* **internal:** allow streams to also be unwrapped on a per-row basis ([8572174](https://github.com/prelude-so/ruby-sdk/commit/8572174e262d9c6b7cc66a0894fd6d09184569f1))
+* **internal:** increase visibility of internal helper method ([f04772f](https://github.com/prelude-so/ruby-sdk/commit/f04772fd6d66ba49a3d2f73d21f4538c7957bd28))
+* **internal:** update comment in script ([a5fe28e](https://github.com/prelude-so/ruby-sdk/commit/a5fe28eacf22acdad6f621a1e6ee4e4dfb077d16))
+* **internal:** update test skipping reason ([55f2205](https://github.com/prelude-so/ruby-sdk/commit/55f220596e6310b2d89fe3b460c02fdfe57b9e78))
+* **internal:** version bump ([eb3405c](https://github.com/prelude-so/ruby-sdk/commit/eb3405ca5ae74eb673b5e0cbafde6943e83314fa))
+* update @stainless-api/prism-cli to v5.15.0 ([58f1de5](https://github.com/prelude-so/ruby-sdk/commit/58f1de5007b309c40d197031aeea1e5574213bbe))
+* update contribute.md ([65b7754](https://github.com/prelude-so/ruby-sdk/commit/65b7754e9bfac05f99efcc9a48200fada3940535))
+
 ## 0.1.0-alpha.2 (2025-06-27)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
