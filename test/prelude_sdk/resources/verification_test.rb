@@ -15,7 +15,7 @@ class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::Resource
     assert_pattern do
       response => {
         id: String,
-        method_: PreludeSDK::Models::VerificationCreateResponse::Method,
+        verification_method: PreludeSDK::Models::VerificationCreateResponse::Method,
         status: PreludeSDK::Models::VerificationCreateResponse::Status,
         channels: ^(PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::Models::VerificationCreateResponse::Channel]) | nil,
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata | nil,
