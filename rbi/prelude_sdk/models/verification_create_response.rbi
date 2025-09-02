@@ -21,7 +21,7 @@ module PreludeSDK
           PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol
         )
       end
-      attr_accessor :method_
+      attr_accessor :verification_method
 
       # The status of the verification.
       sig do
@@ -112,7 +112,7 @@ module PreludeSDK
       sig do
         params(
           id: String,
-          method_:
+          verification_method:
             PreludeSDK::Models::VerificationCreateResponse::Method::OrSymbol,
           status:
             PreludeSDK::Models::VerificationCreateResponse::Status::OrSymbol,
@@ -132,7 +132,7 @@ module PreludeSDK
         # The verification identifier.
         id:,
         # The method used for verifying this phone number.
-        method_:,
+        verification_method:,
         # The status of the verification.
         status:,
         # The ordered sequence of channels to be used for verification
@@ -152,7 +152,7 @@ module PreludeSDK
         override.returns(
           {
             id: String,
-            method_:
+            verification_method:
               PreludeSDK::Models::VerificationCreateResponse::Method::TaggedSymbol,
             status:
               PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol,

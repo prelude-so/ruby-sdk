@@ -296,15 +296,15 @@ module PreludeSDK
             )
           )
         end
-        attr_reader :method_
+        attr_reader :verification_method
 
         sig do
           params(
-            method_:
+            verification_method:
               PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol
           ).void
         end
-        attr_writer :method_
+        attr_writer :verification_method
 
         # The preferred channel to be used in priority for verification.
         sig do
@@ -356,7 +356,7 @@ module PreludeSDK
             code_size: Integer,
             custom_code: String,
             locale: String,
-            method_:
+            verification_method:
               PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
             preferred_channel:
               PreludeSDK::VerificationCreateParams::Options::PreferredChannel::OrSymbol,
@@ -389,7 +389,7 @@ module PreludeSDK
           # accessible alternative for visually impaired users by delivering the
           # verification code through a phone call rather than a text message. It also
           # allows verification of landline numbers that cannot receive SMS messages.
-          method_: nil,
+          verification_method: nil,
           # The preferred channel to be used in priority for verification.
           preferred_channel: nil,
           # The Sender ID to use for this message. The Sender ID needs to be enabled by
@@ -412,7 +412,7 @@ module PreludeSDK
               code_size: Integer,
               custom_code: String,
               locale: String,
-              method_:
+              verification_method:
                 PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
               preferred_channel:
                 PreludeSDK::VerificationCreateParams::Options::PreferredChannel::OrSymbol,

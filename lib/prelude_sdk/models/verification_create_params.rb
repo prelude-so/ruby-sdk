@@ -149,17 +149,15 @@ module PreludeSDK
         #   @return [String, nil]
         optional :locale, String
 
-        # @!attribute method_
+        # @!attribute verification_method
         #   The method used for verifying this phone number. The 'voice' option provides an
         #   accessible alternative for visually impaired users by delivering the
         #   verification code through a phone call rather than a text message. It also
         #   allows verification of landline numbers that cannot receive SMS messages.
         #
         #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method, nil]
-        optional :method_,
-                 enum: -> {
-                   PreludeSDK::VerificationCreateParams::Options::Method
-                 },
+        optional :verification_method,
+                 enum: -> { PreludeSDK::VerificationCreateParams::Options::Method },
                  api_name: :method
 
         # @!attribute preferred_channel
@@ -188,7 +186,7 @@ module PreludeSDK
         #   @return [Hash{Symbol=>String}, nil]
         optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, method_: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
+        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::VerificationCreateParams::Options} for more details.
         #
@@ -204,7 +202,7 @@ module PreludeSDK
         #
         #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
         #
-        #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method] The method used for verifying this phone number. The 'voice' option provides an
+        #   @param verification_method [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method] The method used for verifying this phone number. The 'voice' option provides an
         #
         #   @param preferred_channel [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::PreferredChannel] The preferred channel to be used in priority for verification.
         #
@@ -260,7 +258,7 @@ module PreludeSDK
         # verification code through a phone call rather than a text message. It also
         # allows verification of landline numbers that cannot receive SMS messages.
         #
-        # @see PreludeSDK::Models::VerificationCreateParams::Options#method_
+        # @see PreludeSDK::Models::VerificationCreateParams::Options#verification_method
         module Method
           extend PreludeSDK::Internal::Type::Enum
 
