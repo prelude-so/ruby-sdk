@@ -3,7 +3,7 @@ module PreludeSDK
     type verification_create_response =
       {
         id: String,
-        method_: PreludeSDK::Models::VerificationCreateResponse::method_,
+        verification_method: PreludeSDK::Models::VerificationCreateResponse::method_,
         status: PreludeSDK::Models::VerificationCreateResponse::status,
         channels: ::Array[PreludeSDK::Models::VerificationCreateResponse::channel],
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
@@ -15,7 +15,7 @@ module PreludeSDK
     class VerificationCreateResponse < PreludeSDK::Internal::Type::BaseModel
       attr_accessor id: String
 
-      attr_accessor method_: PreludeSDK::Models::VerificationCreateResponse::method_
+      attr_accessor verification_method: PreludeSDK::Models::VerificationCreateResponse::method_
 
       attr_accessor status: PreludeSDK::Models::VerificationCreateResponse::status
 
@@ -49,7 +49,7 @@ module PreludeSDK
 
       def initialize: (
         id: String,
-        method_: PreludeSDK::Models::VerificationCreateResponse::method_,
+        verification_method: PreludeSDK::Models::VerificationCreateResponse::method_,
         status: PreludeSDK::Models::VerificationCreateResponse::status,
         ?channels: ::Array[PreludeSDK::Models::VerificationCreateResponse::channel],
         ?metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,
@@ -60,7 +60,7 @@ module PreludeSDK
 
       def to_hash: -> {
         id: String,
-        method_: PreludeSDK::Models::VerificationCreateResponse::method_,
+        verification_method: PreludeSDK::Models::VerificationCreateResponse::method_,
         status: PreludeSDK::Models::VerificationCreateResponse::status,
         channels: ::Array[PreludeSDK::Models::VerificationCreateResponse::channel],
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata,

@@ -10,11 +10,13 @@ module PreludeSDK
       #   @return [String]
       required :id, String
 
-      # @!attribute method_
+      # @!attribute verification_method
       #   The method used for verifying this phone number.
       #
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method]
-      required :method_, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Method }, api_name: :method
+      required :verification_method,
+               enum: -> { PreludeSDK::Models::VerificationCreateResponse::Method },
+               api_name: :method
 
       # @!attribute status
       #   The status of the verification.
@@ -53,13 +55,13 @@ module PreludeSDK
       #   @return [PreludeSDK::Models::VerificationCreateResponse::Silent, nil]
       optional :silent, -> { PreludeSDK::Models::VerificationCreateResponse::Silent }
 
-      # @!method initialize(id:, method_:, status:, channels: nil, metadata: nil, reason: nil, request_id: nil, silent: nil)
+      # @!method initialize(id:, verification_method:, status:, channels: nil, metadata: nil, reason: nil, request_id: nil, silent: nil)
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::VerificationCreateResponse} for more details.
       #
       #   @param id [String] The verification identifier.
       #
-      #   @param method_ [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method] The method used for verifying this phone number.
+      #   @param verification_method [Symbol, PreludeSDK::Models::VerificationCreateResponse::Method] The method used for verifying this phone number.
       #
       #   @param status [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status] The status of the verification.
       #
@@ -75,7 +77,7 @@ module PreludeSDK
 
       # The method used for verifying this phone number.
       #
-      # @see PreludeSDK::Models::VerificationCreateResponse#method_
+      # @see PreludeSDK::Models::VerificationCreateResponse#verification_method
       module Method
         extend PreludeSDK::Internal::Type::Enum
 
