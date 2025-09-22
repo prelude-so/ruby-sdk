@@ -140,6 +140,12 @@ module PreludeSDK
         #   @return [String, nil]
         optional :custom_code, String
 
+        # @!attribute integration
+        #   The integration that triggered the verification.
+        #
+        #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Integration, nil]
+        optional :integration, enum: -> { PreludeSDK::VerificationCreateParams::Options::Integration }
+
         # @!attribute locale
         #   A BCP-47 formatted locale string with the language the text message will be sent
         #   to. If there's no locale set, the language will be determined by the country
@@ -186,7 +192,7 @@ module PreludeSDK
         #   @return [Hash{Symbol=>String}, nil]
         optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
+        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, integration: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::VerificationCreateParams::Options} for more details.
         #
@@ -199,6 +205,8 @@ module PreludeSDK
         #   @param code_size [Integer] The size of the code generated. It should be between 4 and 8. Defaults to the co
         #
         #   @param custom_code [String] The custom code to use for OTP verification. To use the custom code feature, con
+        #
+        #   @param integration [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Integration] The integration that triggered the verification.
         #
         #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
         #
@@ -251,6 +259,19 @@ module PreludeSDK
             # @!method self.values
             #   @return [Array<Symbol>]
           end
+        end
+
+        # The integration that triggered the verification.
+        #
+        # @see PreludeSDK::Models::VerificationCreateParams::Options#integration
+        module Integration
+          extend PreludeSDK::Internal::Type::Enum
+
+          AUTH0 = :auth0
+          SUPABASE = :supabase
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
         end
 
         # The method used for verifying this phone number. The 'voice' option provides an
