@@ -100,6 +100,7 @@ module PreludeSDK
           device_platform: PreludeSDK::Models::WatchPredictParams::Signals::device_platform,
           ip: String,
           is_trusted_user: bool,
+          :ja4_fingerprint => String,
           os_version: String,
           user_agent: String
         }
@@ -131,6 +132,10 @@ module PreludeSDK
 
         def is_trusted_user=: (bool) -> bool
 
+        attr_reader ja4_fingerprint: String?
+
+        def ja4_fingerprint=: (String) -> String
+
         attr_reader os_version: String?
 
         def os_version=: (String) -> String
@@ -146,6 +151,7 @@ module PreludeSDK
           ?device_platform: PreludeSDK::Models::WatchPredictParams::Signals::device_platform,
           ?ip: String,
           ?is_trusted_user: bool,
+          ?ja4_fingerprint: String,
           ?os_version: String,
           ?user_agent: String
         ) -> void
@@ -157,6 +163,7 @@ module PreludeSDK
           device_platform: PreludeSDK::Models::WatchPredictParams::Signals::device_platform,
           ip: String,
           is_trusted_user: bool,
+          :ja4_fingerprint => String,
           os_version: String,
           user_agent: String
         }
