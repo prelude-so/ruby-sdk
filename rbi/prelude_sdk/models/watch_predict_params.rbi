@@ -255,6 +255,15 @@ module PreludeSDK
         sig { params(is_trusted_user: T::Boolean).void }
         attr_writer :is_trusted_user
 
+        # The JA4 fingerprint observed for the connection. Prelude will infer it
+        # automatically when requests go through our client SDK (which uses Prelude's
+        # edge), but you can also provide it explicitly if you terminate TLS yourself.
+        sig { returns(T.nilable(String)) }
+        attr_reader :ja4_fingerprint
+
+        sig { params(ja4_fingerprint: String).void }
+        attr_writer :ja4_fingerprint
+
         # The version of the user's device operating system.
         sig { returns(T.nilable(String)) }
         attr_reader :os_version
@@ -282,6 +291,7 @@ module PreludeSDK
               PreludeSDK::WatchPredictParams::Signals::DevicePlatform::OrSymbol,
             ip: String,
             is_trusted_user: T::Boolean,
+            ja4_fingerprint: String,
             os_version: String,
             user_agent: String
           ).returns(T.attached_class)
@@ -302,6 +312,10 @@ module PreludeSDK
           # genuine. Contact us to discuss your use case. For more details, refer to
           # [Signals](/verify/v2/documentation/prevent-fraud#signals).
           is_trusted_user: nil,
+          # The JA4 fingerprint observed for the connection. Prelude will infer it
+          # automatically when requests go through our client SDK (which uses Prelude's
+          # edge), but you can also provide it explicitly if you terminate TLS yourself.
+          ja4_fingerprint: nil,
           # The version of the user's device operating system.
           os_version: nil,
           # The user agent of the user's device. If the individual fields (os_version,
@@ -321,6 +335,7 @@ module PreludeSDK
                 PreludeSDK::WatchPredictParams::Signals::DevicePlatform::OrSymbol,
               ip: String,
               is_trusted_user: T::Boolean,
+              ja4_fingerprint: String,
               os_version: String,
               user_agent: String
             }

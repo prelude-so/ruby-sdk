@@ -137,6 +137,14 @@ module PreludeSDK
         #   @return [Boolean, nil]
         optional :is_trusted_user, PreludeSDK::Internal::Type::Boolean
 
+        # @!attribute ja4_fingerprint
+        #   The JA4 fingerprint observed for the connection. Prelude will infer it
+        #   automatically when requests go through our client SDK (which uses Prelude's
+        #   edge), but you can also provide it explicitly if you terminate TLS yourself.
+        #
+        #   @return [String, nil]
+        optional :ja4_fingerprint, String
+
         # @!attribute os_version
         #   The version of the user's device operating system.
         #
@@ -151,7 +159,7 @@ module PreludeSDK
         #   @return [String, nil]
         optional :user_agent, String
 
-        # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
+        # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, ja4_fingerprint: nil, os_version: nil, user_agent: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::WatchPredictParams::Signals} for more details.
         #
@@ -169,6 +177,8 @@ module PreludeSDK
         #   @param ip [String] The IP address of the user's device.
         #
         #   @param is_trusted_user [Boolean] This signal should provide a higher level of trust, indicating that the user is
+        #
+        #   @param ja4_fingerprint [String] The JA4 fingerprint observed for the connection. Prelude will infer it automatic
         #
         #   @param os_version [String] The version of the user's device operating system.
         #
