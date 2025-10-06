@@ -467,7 +467,9 @@ module PreludeSDK
           end
           attr_accessor :platform
 
-          # The Android SMS Retriever API hash code that identifies your app.
+          # The Android SMS Retriever API hash code that identifies your app. For more
+          # information, see
+          # [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
           sig { returns(String) }
           attr_accessor :value
 
@@ -484,7 +486,9 @@ module PreludeSDK
             # The platform the SMS will be sent to. We are currently only supporting
             # "android".
             platform:,
-            # The Android SMS Retriever API hash code that identifies your app.
+            # The Android SMS Retriever API hash code that identifies your app. For more
+            # information, see
+            # [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
             value:
           )
           end
