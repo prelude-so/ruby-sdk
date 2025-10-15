@@ -1,0 +1,15 @@
+module PreludeSDK
+  module Models
+    type verification_management_list_sender_ids_params =
+      {  } & PreludeSDK::Internal::Type::request_parameters
+
+    class VerificationManagementListSenderIDsParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: PreludeSDK::request_opts) -> void
+
+      def to_hash: -> { request_options: PreludeSDK::RequestOptions }
+    end
+  end
+end

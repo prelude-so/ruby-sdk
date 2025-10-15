@@ -1,0 +1,16 @@
+module PreludeSDK
+  module Resources
+    class VerificationManagement
+      def list_sender_ids: (
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::verification_management_list_sender_ids_response
+
+      def submit_sender_id: (
+        sender_id: String,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::VerificationManagementSubmitSenderIDResponse
+
+      def initialize: (client: PreludeSDK::Client) -> void
+    end
+  end
+end
