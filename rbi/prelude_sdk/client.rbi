@@ -23,6 +23,9 @@ module PreludeSDK
     sig { returns(PreludeSDK::Resources::Verification) }
     attr_reader :verification
 
+    sig { returns(PreludeSDK::Resources::VerificationManagement) }
+    attr_reader :verification_management
+
     sig { returns(PreludeSDK::Resources::Watch) }
     attr_reader :watch
 

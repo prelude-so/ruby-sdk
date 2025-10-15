@@ -1,0 +1,23 @@
+module PreludeSDK
+  module Models
+    type verification_management_submit_sender_id_params =
+      { sender_id: String } & PreludeSDK::Internal::Type::request_parameters
+
+    class VerificationManagementSubmitSenderIDParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor sender_id: String
+
+      def initialize: (
+        sender_id: String,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        sender_id: String,
+        request_options: PreludeSDK::RequestOptions
+      }
+    end
+  end
+end

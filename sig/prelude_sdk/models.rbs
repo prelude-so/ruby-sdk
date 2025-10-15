@@ -7,6 +7,10 @@ module PreludeSDK
 
   class VerificationCreateParams = PreludeSDK::Models::VerificationCreateParams
 
+  class VerificationManagementListSenderIDsParams = PreludeSDK::Models::VerificationManagementListSenderIDsParams
+
+  class VerificationManagementSubmitSenderIDParams = PreludeSDK::Models::VerificationManagementSubmitSenderIDParams
+
   class WatchPredictParams = PreludeSDK::Models::WatchPredictParams
 
   class WatchSendEventsParams = PreludeSDK::Models::WatchSendEventsParams

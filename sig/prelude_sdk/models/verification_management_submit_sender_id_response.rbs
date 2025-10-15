@@ -1,0 +1,44 @@
+module PreludeSDK
+  module Models
+    type verification_management_submit_sender_id_response =
+      {
+        sender_id: String,
+        status: PreludeSDK::Models::VerificationManagementSubmitSenderIDResponse::status,
+        reason: String
+      }
+
+    class VerificationManagementSubmitSenderIDResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor sender_id: String
+
+      attr_accessor status: PreludeSDK::Models::VerificationManagementSubmitSenderIDResponse::status
+
+      attr_reader reason: String?
+
+      def reason=: (String) -> String
+
+      def initialize: (
+        sender_id: String,
+        status: PreludeSDK::Models::VerificationManagementSubmitSenderIDResponse::status,
+        ?reason: String
+      ) -> void
+
+      def to_hash: -> {
+        sender_id: String,
+        status: PreludeSDK::Models::VerificationManagementSubmitSenderIDResponse::status,
+        reason: String
+      }
+
+      type status = :approved | :pending | :rejected
+
+      module Status
+        extend PreludeSDK::Internal::Type::Enum
+
+        APPROVED: :approved
+        PENDING: :pending
+        REJECTED: :rejected
+
+        def self?.values: -> ::Array[PreludeSDK::Models::VerificationManagementSubmitSenderIDResponse::status]
+      end
+    end
+  end
+end

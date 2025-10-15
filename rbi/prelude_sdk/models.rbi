@@ -9,6 +9,12 @@ module PreludeSDK
 
   VerificationCreateParams = PreludeSDK::Models::VerificationCreateParams
 
+  VerificationManagementListSenderIDsParams =
+    PreludeSDK::Models::VerificationManagementListSenderIDsParams
+
+  VerificationManagementSubmitSenderIDParams =
+    PreludeSDK::Models::VerificationManagementSubmitSenderIDParams
+
   WatchPredictParams = PreludeSDK::Models::WatchPredictParams
 
   WatchSendEventsParams = PreludeSDK::Models::WatchSendEventsParams
