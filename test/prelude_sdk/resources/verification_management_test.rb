@@ -7,7 +7,13 @@ class PreludeSDK::Test::Resources::VerificationManagementTest < PreludeSDK::Test
     response = @prelude.verification_management.list_sender_ids
 
     assert_pattern do
-      response => ^(PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem])
+      response => PreludeSDK::Models::VerificationManagementListSenderIDsResponse
+    end
+
+    assert_pattern do
+      response => {
+        sender_ids: ^(PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID]) | nil
+      }
     end
   end
 

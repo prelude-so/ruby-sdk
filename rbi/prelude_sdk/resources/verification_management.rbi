@@ -8,15 +8,13 @@ module PreludeSDK
       # In order to get access to this endpoint, contact our support team.
       sig do
         params(request_options: PreludeSDK::RequestOptions::OrHash).returns(
-          T::Array[
-            PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem
-          ]
+          PreludeSDK::Models::VerificationManagementListSenderIDsResponse
         )
       end
       def list_sender_ids(request_options: {})
       end
 
-      # This endpoint allows you to add a new sender ID for verification purposes.
+      # This endpoint allows you to submit a new sender ID for verification purposes.
       #
       # In order to get access to this endpoint, contact our support team.
       sig do
