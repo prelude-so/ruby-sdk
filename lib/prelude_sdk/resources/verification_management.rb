@@ -11,19 +11,19 @@ module PreludeSDK
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
-      # @return [Array<PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem>]
+      # @return [PreludeSDK::Models::VerificationManagementListSenderIDsResponse]
       #
       # @see PreludeSDK::Models::VerificationManagementListSenderIDsParams
       def list_sender_ids(params = {})
         @client.request(
           method: :get,
           path: "v2/verification/management/sender-id",
-          model: PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem],
+          model: PreludeSDK::Models::VerificationManagementListSenderIDsResponse,
           options: params[:request_options]
         )
       end
 
-      # This endpoint allows you to add a new sender ID for verification purposes.
+      # This endpoint allows you to submit a new sender ID for verification purposes.
       #
       # In order to get access to this endpoint, contact our support team.
       #

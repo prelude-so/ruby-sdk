@@ -2,53 +2,64 @@
 
 module PreludeSDK
   module Models
-    class VerificationManagementListSenderIDsResponseItem < PreludeSDK::Internal::Type::BaseModel
-      # @!attribute status
-      #   It indicates the status of the sender ID. Possible values are:
+    # @see PreludeSDK::Resources::VerificationManagement#list_sender_ids
+    class VerificationManagementListSenderIDsResponse < PreludeSDK::Internal::Type::BaseModel
+      # @!attribute sender_ids
       #
-      #   - `approved` - The sender ID is approved.
-      #   - `pending` - The sender ID is pending.
-      #   - `rejected` - The sender ID is rejected.
-      #
-      #   @return [Symbol, PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status, nil]
-      optional :status, enum: -> { PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status }
+      #   @return [Array<PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID>, nil]
+      optional :sender_ids,
+               -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID] }
 
-      # @!attribute value
-      #   Value that will be presented as Sender ID
+      # @!method initialize(sender_ids: nil)
+      #   A list of Sender ID.
       #
-      #   @return [String, nil]
-      optional :value, String
+      #   @param sender_ids [Array<PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID>]
 
-      # @!method initialize(status: nil, value: nil)
-      #   Some parameter documentations has been truncated, see
-      #   {PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem} for more
-      #   details.
-      #
-      #   @param status [Symbol, PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status] It indicates the status of the sender ID. Possible values are:
-      #
-      #   @param value [String] Value that will be presented as Sender ID
+      class SenderID < PreludeSDK::Internal::Type::BaseModel
+        # @!attribute sender_id
+        #   Value that will be presented as Sender ID
+        #
+        #   @return [String, nil]
+        optional :sender_id, String
 
-      # It indicates the status of the sender ID. Possible values are:
-      #
-      # - `approved` - The sender ID is approved.
-      # - `pending` - The sender ID is pending.
-      # - `rejected` - The sender ID is rejected.
-      #
-      # @see PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem#status
-      module Status
-        extend PreludeSDK::Internal::Type::Enum
+        # @!attribute status
+        #   It indicates the status of the Sender ID. Possible values are:
+        #
+        #   - `approved` - The Sender ID is approved.
+        #   - `pending` - The Sender ID is pending.
+        #   - `rejected` - The Sender ID is rejected.
+        #
+        #   @return [Symbol, PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status, nil]
+        optional :status,
+                 enum: -> { PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status }
 
-        APPROVED = :approved
-        PENDING = :pending
-        REJECTED = :rejected
+        # @!method initialize(sender_id: nil, status: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID} for
+        #   more details.
+        #
+        #   @param sender_id [String] Value that will be presented as Sender ID
+        #
+        #   @param status [Symbol, PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status] It indicates the status of the Sender ID. Possible values are:
 
-        # @!method self.values
-        #   @return [Array<Symbol>]
+        # It indicates the status of the Sender ID. Possible values are:
+        #
+        # - `approved` - The Sender ID is approved.
+        # - `pending` - The Sender ID is pending.
+        # - `rejected` - The Sender ID is rejected.
+        #
+        # @see PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID#status
+        module Status
+          extend PreludeSDK::Internal::Type::Enum
+
+          APPROVED = :approved
+          PENDING = :pending
+          REJECTED = :rejected
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
       end
     end
-
-    # @type [PreludeSDK::Internal::Type::Converter]
-    VerificationManagementListSenderIDsResponse =
-      PreludeSDK::Internal::Type::ArrayOf[-> { PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem }]
   end
 end

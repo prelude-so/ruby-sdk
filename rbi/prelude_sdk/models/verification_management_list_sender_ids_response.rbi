@@ -2,126 +2,174 @@
 
 module PreludeSDK
   module Models
-    class VerificationManagementListSenderIDsResponseItem < PreludeSDK::Internal::Type::BaseModel
+    class VerificationManagementListSenderIDsResponse < PreludeSDK::Internal::Type::BaseModel
       OrHash =
         T.type_alias do
           T.any(
-            PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem,
+            PreludeSDK::Models::VerificationManagementListSenderIDsResponse,
             PreludeSDK::Internal::AnyHash
           )
         end
 
-      # It indicates the status of the sender ID. Possible values are:
-      #
-      # - `approved` - The sender ID is approved.
-      # - `pending` - The sender ID is pending.
-      # - `rejected` - The sender ID is rejected.
       sig do
         returns(
           T.nilable(
-            PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status::TaggedSymbol
+            T::Array[
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID
+            ]
           )
         )
       end
-      attr_reader :status
+      attr_reader :sender_ids
 
       sig do
         params(
-          status:
-            PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status::OrSymbol
+          sender_ids:
+            T::Array[
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::OrHash
+            ]
         ).void
       end
-      attr_writer :status
+      attr_writer :sender_ids
 
-      # Value that will be presented as Sender ID
-      sig { returns(T.nilable(String)) }
-      attr_reader :value
-
-      sig { params(value: String).void }
-      attr_writer :value
-
+      # A list of Sender ID.
       sig do
         params(
-          status:
-            PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status::OrSymbol,
-          value: String
+          sender_ids:
+            T::Array[
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::OrHash
+            ]
         ).returns(T.attached_class)
       end
-      def self.new(
-        # It indicates the status of the sender ID. Possible values are:
-        #
-        # - `approved` - The sender ID is approved.
-        # - `pending` - The sender ID is pending.
-        # - `rejected` - The sender ID is rejected.
-        status: nil,
-        # Value that will be presented as Sender ID
-        value: nil
-      )
+      def self.new(sender_ids: nil)
       end
 
       sig do
         override.returns(
           {
-            status:
-              PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status::TaggedSymbol,
-            value: String
+            sender_ids:
+              T::Array[
+                PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID
+              ]
           }
         )
       end
       def to_hash
       end
 
-      # It indicates the status of the sender ID. Possible values are:
-      #
-      # - `approved` - The sender ID is approved.
-      # - `pending` - The sender ID is pending.
-      # - `rejected` - The sender ID is rejected.
-      module Status
-        extend PreludeSDK::Internal::Type::Enum
-
-        TaggedSymbol =
+      class SenderID < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
           T.type_alias do
-            T.all(
-              Symbol,
-              PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status
+            T.any(
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID,
+              PreludeSDK::Internal::AnyHash
             )
           end
-        OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-        APPROVED =
-          T.let(
-            :approved,
-            PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status::TaggedSymbol
+        # Value that will be presented as Sender ID
+        sig { returns(T.nilable(String)) }
+        attr_reader :sender_id
+
+        sig { params(sender_id: String).void }
+        attr_writer :sender_id
+
+        # It indicates the status of the Sender ID. Possible values are:
+        #
+        # - `approved` - The Sender ID is approved.
+        # - `pending` - The Sender ID is pending.
+        # - `rejected` - The Sender ID is rejected.
+        sig do
+          returns(
+            T.nilable(
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status::TaggedSymbol
+            )
           )
-        PENDING =
-          T.let(
-            :pending,
-            PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status::TaggedSymbol
-          )
-        REJECTED =
-          T.let(
-            :rejected,
-            PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status::TaggedSymbol
-          )
+        end
+        attr_reader :status
+
+        sig do
+          params(
+            status:
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status::OrSymbol
+          ).void
+        end
+        attr_writer :status
+
+        sig do
+          params(
+            sender_id: String,
+            status:
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status::OrSymbol
+          ).returns(T.attached_class)
+        end
+        def self.new(
+          # Value that will be presented as Sender ID
+          sender_id: nil,
+          # It indicates the status of the Sender ID. Possible values are:
+          #
+          # - `approved` - The Sender ID is approved.
+          # - `pending` - The Sender ID is pending.
+          # - `rejected` - The Sender ID is rejected.
+          status: nil
+        )
+        end
 
         sig do
           override.returns(
-            T::Array[
-              PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem::Status::TaggedSymbol
-            ]
+            {
+              sender_id: String,
+              status:
+                PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status::TaggedSymbol
+            }
           )
         end
-        def self.values
+        def to_hash
+        end
+
+        # It indicates the status of the Sender ID. Possible values are:
+        #
+        # - `approved` - The Sender ID is approved.
+        # - `pending` - The Sender ID is pending.
+        # - `rejected` - The Sender ID is rejected.
+        module Status
+          extend PreludeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          APPROVED =
+            T.let(
+              :approved,
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status::TaggedSymbol
+            )
+          PENDING =
+            T.let(
+              :pending,
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status::TaggedSymbol
+            )
+          REJECTED =
+            T.let(
+              :rejected,
+              PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::Status::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
         end
       end
     end
-
-    VerificationManagementListSenderIDsResponse =
-      T.let(
-        PreludeSDK::Internal::Type::ArrayOf[
-          PreludeSDK::Models::VerificationManagementListSenderIDsResponseItem
-        ],
-        PreludeSDK::Internal::Type::Converter
-      )
   end
 end
