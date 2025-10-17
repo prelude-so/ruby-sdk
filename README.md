@@ -202,6 +202,34 @@ params = PreludeSDK::VerificationCreateParams.new(
 prelude.verification.create(**params)
 ```
 
+### Enums
+
+Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
+
+```ruby
+# :sms
+puts(PreludeSDK::TransactionalSendParams::PreferredChannel::SMS)
+
+# Revealed type: `T.all(PreludeSDK::TransactionalSendParams::PreferredChannel, Symbol)`
+T.reveal_type(PreludeSDK::TransactionalSendParams::PreferredChannel::SMS)
+```
+
+Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
+
+```ruby
+# Using the enum constants preserves the tagged type information:
+prelude.transactional.send_(
+  preferred_channel: PreludeSDK::TransactionalSendParams::PreferredChannel::SMS,
+  # …
+)
+
+# Literal values are also permissible:
+prelude.transactional.send_(
+  preferred_channel: :sms,
+  # …
+)
+```
+
 ## Versioning
 
 This package follows [SemVer](https://semver.org/spec/v2.0.0.html) conventions. As the library is in initial development and has a major version of `0`, APIs may change at any time.

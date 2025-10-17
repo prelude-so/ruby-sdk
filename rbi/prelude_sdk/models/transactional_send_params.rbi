@@ -62,6 +62,32 @@ module PreludeSDK
       sig { params(locale: String).void }
       attr_writer :locale
 
+      # The preferred delivery channel for the message. When specified, the system will
+      # prioritize sending via the requested channel if the template is configured for
+      # it.
+      #
+      # If not specified and the template is configured for WhatsApp, the message will
+      # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
+      # is unavailable.
+      #
+      # Supported channels: `sms`, `whatsapp`.
+      sig do
+        returns(
+          T.nilable(
+            PreludeSDK::TransactionalSendParams::PreferredChannel::OrSymbol
+          )
+        )
+      end
+      attr_reader :preferred_channel
+
+      sig do
+        params(
+          preferred_channel:
+            PreludeSDK::TransactionalSendParams::PreferredChannel::OrSymbol
+        ).void
+      end
+      attr_writer :preferred_channel
+
       # The variables to be replaced in the template.
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :variables
@@ -78,6 +104,8 @@ module PreludeSDK
           expires_at: String,
           from: String,
           locale: String,
+          preferred_channel:
+            PreludeSDK::TransactionalSendParams::PreferredChannel::OrSymbol,
           variables: T::Hash[Symbol, String],
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -102,6 +130,16 @@ module PreludeSDK
         # code of the phone number. If the language specified doesn't exist, the default
         # set on the template will be used.
         locale: nil,
+        # The preferred delivery channel for the message. When specified, the system will
+        # prioritize sending via the requested channel if the template is configured for
+        # it.
+        #
+        # If not specified and the template is configured for WhatsApp, the message will
+        # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
+        # is unavailable.
+        #
+        # Supported channels: `sms`, `whatsapp`.
+        preferred_channel: nil,
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
@@ -118,12 +156,54 @@ module PreludeSDK
             expires_at: String,
             from: String,
             locale: String,
+            preferred_channel:
+              PreludeSDK::TransactionalSendParams::PreferredChannel::OrSymbol,
             variables: T::Hash[Symbol, String],
             request_options: PreludeSDK::RequestOptions
           }
         )
       end
       def to_hash
+      end
+
+      # The preferred delivery channel for the message. When specified, the system will
+      # prioritize sending via the requested channel if the template is configured for
+      # it.
+      #
+      # If not specified and the template is configured for WhatsApp, the message will
+      # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
+      # is unavailable.
+      #
+      # Supported channels: `sms`, `whatsapp`.
+      module PreferredChannel
+        extend PreludeSDK::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, PreludeSDK::TransactionalSendParams::PreferredChannel)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        SMS =
+          T.let(
+            :sms,
+            PreludeSDK::TransactionalSendParams::PreferredChannel::TaggedSymbol
+          )
+        WHATSAPP =
+          T.let(
+            :whatsapp,
+            PreludeSDK::TransactionalSendParams::PreferredChannel::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              PreludeSDK::TransactionalSendParams::PreferredChannel::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end
