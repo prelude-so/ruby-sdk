@@ -9,6 +9,7 @@ module PreludeSDK
         ?expires_at: String,
         ?from: String,
         ?locale: String,
+        ?preferred_channel: PreludeSDK::Models::TransactionalSendParams::preferred_channel,
         ?variables: ::Hash[Symbol, String],
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::TransactionalSendResponse
