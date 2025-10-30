@@ -159,7 +159,10 @@ module PreludeSDK
         #   The method used for verifying this phone number. The 'voice' option provides an
         #   accessible alternative for visually impaired users by delivering the
         #   verification code through a phone call rather than a text message. It also
-        #   allows verification of landline numbers that cannot receive SMS messages.
+        #   allows verification of landline numbers that cannot receive SMS messages. The
+        #   'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+        #   skips silent verification, useful for scenarios requiring direct user
+        #   interaction.
         #
         #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method, nil]
         optional :verification_method,
@@ -279,7 +282,10 @@ module PreludeSDK
         # The method used for verifying this phone number. The 'voice' option provides an
         # accessible alternative for visually impaired users by delivering the
         # verification code through a phone call rather than a text message. It also
-        # allows verification of landline numbers that cannot receive SMS messages.
+        # allows verification of landline numbers that cannot receive SMS messages. The
+        # 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+        # skips silent verification, useful for scenarios requiring direct user
+        # interaction.
         #
         # @see PreludeSDK::Models::VerificationCreateParams::Options#verification_method
         module Method
@@ -287,6 +293,7 @@ module PreludeSDK
 
           AUTO = :auto
           VOICE = :voice
+          MESSAGE = :message
 
           # @!method self.values
           #   @return [Array<Symbol>]

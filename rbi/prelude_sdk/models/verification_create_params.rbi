@@ -306,7 +306,10 @@ module PreludeSDK
         # The method used for verifying this phone number. The 'voice' option provides an
         # accessible alternative for visually impaired users by delivering the
         # verification code through a phone call rather than a text message. It also
-        # allows verification of landline numbers that cannot receive SMS messages.
+        # allows verification of landline numbers that cannot receive SMS messages. The
+        # 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+        # skips silent verification, useful for scenarios requiring direct user
+        # interaction.
         sig do
           returns(
             T.nilable(
@@ -410,7 +413,10 @@ module PreludeSDK
           # The method used for verifying this phone number. The 'voice' option provides an
           # accessible alternative for visually impaired users by delivering the
           # verification code through a phone call rather than a text message. It also
-          # allows verification of landline numbers that cannot receive SMS messages.
+          # allows verification of landline numbers that cannot receive SMS messages. The
+          # 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+          # skips silent verification, useful for scenarios requiring direct user
+          # interaction.
           verification_method: nil,
           # The preferred channel to be used in priority for verification.
           preferred_channel: nil,
@@ -575,7 +581,10 @@ module PreludeSDK
         # The method used for verifying this phone number. The 'voice' option provides an
         # accessible alternative for visually impaired users by delivering the
         # verification code through a phone call rather than a text message. It also
-        # allows verification of landline numbers that cannot receive SMS messages.
+        # allows verification of landline numbers that cannot receive SMS messages. The
+        # 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+        # skips silent verification, useful for scenarios requiring direct user
+        # interaction.
         module Method
           extend PreludeSDK::Internal::Type::Enum
 
@@ -596,6 +605,11 @@ module PreludeSDK
           VOICE =
             T.let(
               :voice,
+              PreludeSDK::VerificationCreateParams::Options::Method::TaggedSymbol
+            )
+          MESSAGE =
+            T.let(
+              :message,
               PreludeSDK::VerificationCreateParams::Options::Method::TaggedSymbol
             )
 
