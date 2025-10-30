@@ -63,7 +63,7 @@ module PreludeSDK
       #   be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
       #   is unavailable.
       #
-      #   Supported channels: `sms`, `whatsapp`.
+      #   Supported channels: `sms`, `rcs`, `whatsapp`.
       #
       #   @return [Symbol, PreludeSDK::Models::TransactionalSendParams::PreferredChannel, nil]
       optional :preferred_channel, enum: -> { PreludeSDK::TransactionalSendParams::PreferredChannel }
@@ -106,11 +106,12 @@ module PreludeSDK
       # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
       # is unavailable.
       #
-      # Supported channels: `sms`, `whatsapp`.
+      # Supported channels: `sms`, `rcs`, `whatsapp`.
       module PreferredChannel
         extend PreludeSDK::Internal::Type::Enum
 
         SMS = :sms
+        RCS = :rcs
         WHATSAPP = :whatsapp
 
         # @!method self.values

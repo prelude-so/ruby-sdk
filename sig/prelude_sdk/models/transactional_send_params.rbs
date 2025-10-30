@@ -78,12 +78,13 @@ module PreludeSDK
         request_options: PreludeSDK::RequestOptions
       }
 
-      type preferred_channel = :sms | :whatsapp
+      type preferred_channel = :sms | :rcs | :whatsapp
 
       module PreferredChannel
         extend PreludeSDK::Internal::Type::Enum
 
         SMS: :sms
+        RCS: :rcs
         WHATSAPP: :whatsapp
 
         def self?.values: -> ::Array[PreludeSDK::Models::TransactionalSendParams::preferred_channel]

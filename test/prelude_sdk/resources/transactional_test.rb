@@ -7,7 +7,7 @@ class PreludeSDK::Test::Resources::TransactionalTest < PreludeSDK::Test::Resourc
     skip("Prism doesn't support callbacks yet")
 
     response =
-      @prelude.transactional.send_(template_id: "template_01jd1xq0cffycayqtdkdbv4d61", to: "+30123456789")
+      @prelude.transactional.send_(template_id: "template_01hynf45qvevj844m9az2x2f3c", to: "+30123456789")
 
     assert_pattern do
       response => PreludeSDK::Models::TransactionalSendResponse

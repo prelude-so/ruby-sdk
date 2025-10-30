@@ -47,7 +47,7 @@ module PreludeSDK
         # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
         # is unavailable.
         #
-        # Supported channels: `sms`, `whatsapp`.
+        # Supported channels: `sms`, `rcs`, `whatsapp`.
         preferred_channel: nil,
         # The variables to be replaced in the template.
         variables: nil,
