@@ -240,13 +240,14 @@ module PreludeSDK
           def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::integration]
         end
 
-        type method_ = :auto | :voice
+        type method_ = :auto | :voice | :message
 
         module Method
           extend PreludeSDK::Internal::Type::Enum
 
           AUTO: :auto
           VOICE: :voice
+          MESSAGE: :message
 
           def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::method_]
         end
