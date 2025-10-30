@@ -70,7 +70,7 @@ module PreludeSDK
       # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
       # is unavailable.
       #
-      # Supported channels: `sms`, `whatsapp`.
+      # Supported channels: `sms`, `rcs`, `whatsapp`.
       sig do
         returns(
           T.nilable(
@@ -138,7 +138,7 @@ module PreludeSDK
         # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
         # is unavailable.
         #
-        # Supported channels: `sms`, `whatsapp`.
+        # Supported channels: `sms`, `rcs`, `whatsapp`.
         preferred_channel: nil,
         # The variables to be replaced in the template.
         variables: nil,
@@ -174,7 +174,7 @@ module PreludeSDK
       # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
       # is unavailable.
       #
-      # Supported channels: `sms`, `whatsapp`.
+      # Supported channels: `sms`, `rcs`, `whatsapp`.
       module PreferredChannel
         extend PreludeSDK::Internal::Type::Enum
 
@@ -187,6 +187,11 @@ module PreludeSDK
         SMS =
           T.let(
             :sms,
+            PreludeSDK::TransactionalSendParams::PreferredChannel::TaggedSymbol
+          )
+        RCS =
+          T.let(
+            :rcs,
             PreludeSDK::TransactionalSendParams::PreferredChannel::TaggedSymbol
           )
         WHATSAPP =
