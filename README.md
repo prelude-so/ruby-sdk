@@ -207,25 +207,25 @@ prelude.verification.create(**params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :sms
-puts(PreludeSDK::TransactionalSendParams::PreferredChannel::SMS)
+# :allow
+puts(PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::ALLOW)
 
-# Revealed type: `T.all(PreludeSDK::TransactionalSendParams::PreferredChannel, Symbol)`
-T.reveal_type(PreludeSDK::TransactionalSendParams::PreferredChannel::SMS)
+# Revealed type: `T.all(PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action, Symbol)`
+T.reveal_type(PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::ALLOW)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-prelude.transactional.send_(
-  preferred_channel: PreludeSDK::TransactionalSendParams::PreferredChannel::SMS,
+prelude.verification_management.delete_phone_number(
+  action: PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::ALLOW,
   # …
 )
 
 # Literal values are also permissible:
-prelude.transactional.send_(
-  preferred_channel: :sms,
+prelude.verification_management.delete_phone_number(
+  action: :allow,
   # …
 )
 ```
