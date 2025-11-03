@@ -7,7 +7,13 @@ module PreludeSDK
 
   class VerificationCreateParams = PreludeSDK::Models::VerificationCreateParams
 
+  class VerificationManagementDeletePhoneNumberParams = PreludeSDK::Models::VerificationManagementDeletePhoneNumberParams
+
+  class VerificationManagementListPhoneNumbersParams = PreludeSDK::Models::VerificationManagementListPhoneNumbersParams
+
   class VerificationManagementListSenderIDsParams = PreludeSDK::Models::VerificationManagementListSenderIDsParams
+
+  class VerificationManagementSetPhoneNumberParams = PreludeSDK::Models::VerificationManagementSetPhoneNumberParams
 
   class VerificationManagementSubmitSenderIDParams = PreludeSDK::Models::VerificationManagementSubmitSenderIDParams
 

@@ -1,0 +1,34 @@
+module PreludeSDK
+  module Models
+    type verification_management_delete_phone_number_params =
+      { phone_number: String } & PreludeSDK::Internal::Type::request_parameters
+
+    class VerificationManagementDeletePhoneNumberParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor phone_number: String
+
+      def initialize: (
+        phone_number: String,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        phone_number: String,
+        request_options: PreludeSDK::RequestOptions
+      }
+
+      type action = :allow | :block
+
+      module Action
+        extend PreludeSDK::Internal::Type::Enum
+
+        ALLOW: :allow
+        BLOCK: :block
+
+        def self?.values: -> ::Array[PreludeSDK::Models::VerificationManagementDeletePhoneNumberParams::action]
+      end
+    end
+  end
+end
