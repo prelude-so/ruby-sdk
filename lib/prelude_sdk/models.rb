@@ -47,7 +47,16 @@ module PreludeSDK
 
   VerificationCreateParams = PreludeSDK::Models::VerificationCreateParams
 
+  VerificationManagementDeletePhoneNumberParams =
+    PreludeSDK::Models::VerificationManagementDeletePhoneNumberParams
+
+  VerificationManagementListPhoneNumbersParams =
+    PreludeSDK::Models::VerificationManagementListPhoneNumbersParams
+
   VerificationManagementListSenderIDsParams = PreludeSDK::Models::VerificationManagementListSenderIDsParams
+
+  VerificationManagementSetPhoneNumberParams =
+    PreludeSDK::Models::VerificationManagementSetPhoneNumberParams
 
   VerificationManagementSubmitSenderIDParams =
     PreludeSDK::Models::VerificationManagementSubmitSenderIDParams
