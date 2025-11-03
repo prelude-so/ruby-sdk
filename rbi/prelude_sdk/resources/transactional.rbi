@@ -3,7 +3,8 @@
 module PreludeSDK
   module Resources
     class Transactional
-      # Send a transactional message to your user.
+      # Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
+      # instead.
       sig do
         params(
           template_id: String,

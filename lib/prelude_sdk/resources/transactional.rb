@@ -3,10 +3,13 @@
 module PreludeSDK
   module Resources
     class Transactional
+      # @deprecated
+      #
       # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::TransactionalSendParams} for more details.
       #
-      # Send a transactional message to your user.
+      # Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
+      # instead.
       #
       # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, variables: nil, request_options: {})
       #
