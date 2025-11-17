@@ -346,8 +346,9 @@ module PreludeSDK
           base_path, base_query = lhs.fetch_values(:path, :query)
           slashed = base_path.end_with?("/") ? base_path : "#{base_path}/"
 
-          parsed_path, parsed_query = parse_uri(rhs.fetch(:path)).fetch_values(:path, :query)
-          override = URI::Generic.build(**rhs.slice(:scheme, :host, :port), path: parsed_path)
+          merged = {**parse_uri(rhs.fetch(:path)), **rhs.except(:path, :query)}
+          parsed_path, parsed_query = merged.fetch_values(:path, :query)
+          override = URI::Generic.build(**merged.slice(:scheme, :host, :port), path: parsed_path)
 
           joined = URI.join(URI::Generic.build(lhs.except(:path, :query)), slashed, override)
           query = deep_merge(
@@ -473,10 +474,9 @@ module PreludeSDK
         # @return [Enumerable<String>]
         def writable_enum(&blk)
           Enumerator.new do |y|
-            buf = String.new
             y.define_singleton_method(:write) do
-              self << buf.replace(_1)
-              buf.bytesize
+              self << _1.dup
+              _1.bytesize
             end
 
             blk.call(y)
@@ -566,7 +566,8 @@ module PreludeSDK
         #
         # @return [Array(String, Enumerable<String>)]
         private def encode_multipart_streaming(body)
-          boundary = SecureRandom.urlsafe_base64(60)
+          # RFC 1521 Section 7.2.1 says we should have 70 char maximum for boundary length
+          boundary = SecureRandom.urlsafe_base64(46)
 
           closing = []
           strio = writable_enum do |y|
@@ -647,7 +648,7 @@ module PreludeSDK
         #
         # Assumes each chunk in stream has `Encoding::BINARY`.
         #
-        # @param headers [Hash{String=>String}, Net::HTTPHeader]
+        # @param headers [Hash{String=>String}]
         # @param stream [Enumerable<String>]
         # @param suppress_error [Boolean]
         #

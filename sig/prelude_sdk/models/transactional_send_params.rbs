@@ -9,6 +9,7 @@ module PreludeSDK
         expires_at: String,
         from: String,
         locale: String,
+        preferred_channel: PreludeSDK::Models::TransactionalSendParams::preferred_channel,
         variables: ::Hash[Symbol, String]
       }
       & PreludeSDK::Internal::Type::request_parameters
@@ -41,6 +42,12 @@ module PreludeSDK
 
       def locale=: (String) -> String
 
+      attr_reader preferred_channel: PreludeSDK::Models::TransactionalSendParams::preferred_channel?
+
+      def preferred_channel=: (
+        PreludeSDK::Models::TransactionalSendParams::preferred_channel
+      ) -> PreludeSDK::Models::TransactionalSendParams::preferred_channel
+
       attr_reader variables: ::Hash[Symbol, String]?
 
       def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
@@ -53,6 +60,7 @@ module PreludeSDK
         ?expires_at: String,
         ?from: String,
         ?locale: String,
+        ?preferred_channel: PreludeSDK::Models::TransactionalSendParams::preferred_channel,
         ?variables: ::Hash[Symbol, String],
         ?request_options: PreludeSDK::request_opts
       ) -> void
@@ -65,9 +73,22 @@ module PreludeSDK
         expires_at: String,
         from: String,
         locale: String,
+        preferred_channel: PreludeSDK::Models::TransactionalSendParams::preferred_channel,
         variables: ::Hash[Symbol, String],
         request_options: PreludeSDK::RequestOptions
       }
+
+      type preferred_channel = :sms | :rcs | :whatsapp
+
+      module PreferredChannel
+        extend PreludeSDK::Internal::Type::Enum
+
+        SMS: :sms
+        RCS: :rcs
+        WHATSAPP: :whatsapp
+
+        def self?.values: -> ::Array[PreludeSDK::Models::TransactionalSendParams::preferred_channel]
+      end
     end
   end
 end

@@ -275,6 +275,24 @@ module PreludeSDK
         sig { params(custom_code: String).void }
         attr_writer :custom_code
 
+        # The integration that triggered the verification.
+        sig do
+          returns(
+            T.nilable(
+              PreludeSDK::VerificationCreateParams::Options::Integration::OrSymbol
+            )
+          )
+        end
+        attr_reader :integration
+
+        sig do
+          params(
+            integration:
+              PreludeSDK::VerificationCreateParams::Options::Integration::OrSymbol
+          ).void
+        end
+        attr_writer :integration
+
         # A BCP-47 formatted locale string with the language the text message will be sent
         # to. If there's no locale set, the language will be determined by the country
         # code of the phone number. If the language specified doesn't exist, it defaults
@@ -288,7 +306,10 @@ module PreludeSDK
         # The method used for verifying this phone number. The 'voice' option provides an
         # accessible alternative for visually impaired users by delivering the
         # verification code through a phone call rather than a text message. It also
-        # allows verification of landline numbers that cannot receive SMS messages.
+        # allows verification of landline numbers that cannot receive SMS messages. The
+        # 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+        # skips silent verification, useful for scenarios requiring direct user
+        # interaction.
         sig do
           returns(
             T.nilable(
@@ -355,6 +376,8 @@ module PreludeSDK
             callback_url: String,
             code_size: Integer,
             custom_code: String,
+            integration:
+              PreludeSDK::VerificationCreateParams::Options::Integration::OrSymbol,
             locale: String,
             verification_method:
               PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
@@ -380,6 +403,8 @@ module PreludeSDK
           # contact us to enable it for your account. For more details, refer to
           # [Custom Code](/verify/v2/documentation/custom-codes).
           custom_code: nil,
+          # The integration that triggered the verification.
+          integration: nil,
           # A BCP-47 formatted locale string with the language the text message will be sent
           # to. If there's no locale set, the language will be determined by the country
           # code of the phone number. If the language specified doesn't exist, it defaults
@@ -388,7 +413,10 @@ module PreludeSDK
           # The method used for verifying this phone number. The 'voice' option provides an
           # accessible alternative for visually impaired users by delivering the
           # verification code through a phone call rather than a text message. It also
-          # allows verification of landline numbers that cannot receive SMS messages.
+          # allows verification of landline numbers that cannot receive SMS messages. The
+          # 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+          # skips silent verification, useful for scenarios requiring direct user
+          # interaction.
           verification_method: nil,
           # The preferred channel to be used in priority for verification.
           preferred_channel: nil,
@@ -411,6 +439,8 @@ module PreludeSDK
               callback_url: String,
               code_size: Integer,
               custom_code: String,
+              integration:
+                PreludeSDK::VerificationCreateParams::Options::Integration::OrSymbol,
               locale: String,
               verification_method:
                 PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
@@ -443,7 +473,9 @@ module PreludeSDK
           end
           attr_accessor :platform
 
-          # The Android SMS Retriever API hash code that identifies your app.
+          # The Android SMS Retriever API hash code that identifies your app. For more
+          # information, see
+          # [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
           sig { returns(String) }
           attr_accessor :value
 
@@ -460,7 +492,9 @@ module PreludeSDK
             # The platform the SMS will be sent to. We are currently only supporting
             # "android".
             platform:,
-            # The Android SMS Retriever API hash code that identifies your app.
+            # The Android SMS Retriever API hash code that identifies your app. For more
+            # information, see
+            # [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
             value:
           )
           end
@@ -509,10 +543,48 @@ module PreludeSDK
           end
         end
 
+        # The integration that triggered the verification.
+        module Integration
+          extend PreludeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                PreludeSDK::VerificationCreateParams::Options::Integration
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          AUTH0 =
+            T.let(
+              :auth0,
+              PreludeSDK::VerificationCreateParams::Options::Integration::TaggedSymbol
+            )
+          SUPABASE =
+            T.let(
+              :supabase,
+              PreludeSDK::VerificationCreateParams::Options::Integration::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Options::Integration::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
         # The method used for verifying this phone number. The 'voice' option provides an
         # accessible alternative for visually impaired users by delivering the
         # verification code through a phone call rather than a text message. It also
-        # allows verification of landline numbers that cannot receive SMS messages.
+        # allows verification of landline numbers that cannot receive SMS messages. The
+        # 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+        # skips silent verification, useful for scenarios requiring direct user
+        # interaction.
         module Method
           extend PreludeSDK::Internal::Type::Enum
 
@@ -533,6 +605,11 @@ module PreludeSDK
           VOICE =
             T.let(
               :voice,
+              PreludeSDK::VerificationCreateParams::Options::Method::TaggedSymbol
+            )
+          MESSAGE =
+            T.let(
+              :message,
               PreludeSDK::VerificationCreateParams::Options::Method::TaggedSymbol
             )
 
@@ -668,6 +745,15 @@ module PreludeSDK
         sig { params(is_trusted_user: T::Boolean).void }
         attr_writer :is_trusted_user
 
+        # The JA4 fingerprint observed for the connection. Prelude will infer it
+        # automatically when requests go through our client SDK (which uses Prelude's
+        # edge), but you can also provide it explicitly if you terminate TLS yourself.
+        sig { returns(T.nilable(String)) }
+        attr_reader :ja4_fingerprint
+
+        sig { params(ja4_fingerprint: String).void }
+        attr_writer :ja4_fingerprint
+
         # The version of the user's device operating system.
         sig { returns(T.nilable(String)) }
         attr_reader :os_version
@@ -695,6 +781,7 @@ module PreludeSDK
               PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
             ip: String,
             is_trusted_user: T::Boolean,
+            ja4_fingerprint: String,
             os_version: String,
             user_agent: String
           ).returns(T.attached_class)
@@ -715,6 +802,10 @@ module PreludeSDK
           # genuine. Contact us to discuss your use case. For more details, refer to
           # [Signals](/verify/v2/documentation/prevent-fraud#signals).
           is_trusted_user: nil,
+          # The JA4 fingerprint observed for the connection. Prelude will infer it
+          # automatically when requests go through our client SDK (which uses Prelude's
+          # edge), but you can also provide it explicitly if you terminate TLS yourself.
+          ja4_fingerprint: nil,
           # The version of the user's device operating system.
           os_version: nil,
           # The user agent of the user's device. If the individual fields (os_version,
@@ -734,6 +825,7 @@ module PreludeSDK
                 PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
               ip: String,
               is_trusted_user: T::Boolean,
+              ja4_fingerprint: String,
               os_version: String,
               user_agent: String
             }

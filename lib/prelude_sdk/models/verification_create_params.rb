@@ -140,6 +140,12 @@ module PreludeSDK
         #   @return [String, nil]
         optional :custom_code, String
 
+        # @!attribute integration
+        #   The integration that triggered the verification.
+        #
+        #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Integration, nil]
+        optional :integration, enum: -> { PreludeSDK::VerificationCreateParams::Options::Integration }
+
         # @!attribute locale
         #   A BCP-47 formatted locale string with the language the text message will be sent
         #   to. If there's no locale set, the language will be determined by the country
@@ -153,7 +159,10 @@ module PreludeSDK
         #   The method used for verifying this phone number. The 'voice' option provides an
         #   accessible alternative for visually impaired users by delivering the
         #   verification code through a phone call rather than a text message. It also
-        #   allows verification of landline numbers that cannot receive SMS messages.
+        #   allows verification of landline numbers that cannot receive SMS messages. The
+        #   'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+        #   skips silent verification, useful for scenarios requiring direct user
+        #   interaction.
         #
         #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method, nil]
         optional :verification_method,
@@ -186,7 +195,7 @@ module PreludeSDK
         #   @return [Hash{Symbol=>String}, nil]
         optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
+        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, integration: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::VerificationCreateParams::Options} for more details.
         #
@@ -199,6 +208,8 @@ module PreludeSDK
         #   @param code_size [Integer] The size of the code generated. It should be between 4 and 8. Defaults to the co
         #
         #   @param custom_code [String] The custom code to use for OTP verification. To use the custom code feature, con
+        #
+        #   @param integration [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Integration] The integration that triggered the verification.
         #
         #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
         #
@@ -222,7 +233,9 @@ module PreludeSDK
           required :platform, enum: -> { PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform }
 
           # @!attribute value
-          #   The Android SMS Retriever API hash code that identifies your app.
+          #   The Android SMS Retriever API hash code that identifies your app. For more
+          #   information, see
+          #   [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
           #
           #   @return [String]
           required :value, String
@@ -253,10 +266,26 @@ module PreludeSDK
           end
         end
 
+        # The integration that triggered the verification.
+        #
+        # @see PreludeSDK::Models::VerificationCreateParams::Options#integration
+        module Integration
+          extend PreludeSDK::Internal::Type::Enum
+
+          AUTH0 = :auth0
+          SUPABASE = :supabase
+
+          # @!method self.values
+          #   @return [Array<Symbol>]
+        end
+
         # The method used for verifying this phone number. The 'voice' option provides an
         # accessible alternative for visually impaired users by delivering the
         # verification code through a phone call rather than a text message. It also
-        # allows verification of landline numbers that cannot receive SMS messages.
+        # allows verification of landline numbers that cannot receive SMS messages. The
+        # 'message' option explicitly requests message delivery (SMS, WhatsApp ...) and
+        # skips silent verification, useful for scenarios requiring direct user
+        # interaction.
         #
         # @see PreludeSDK::Models::VerificationCreateParams::Options#verification_method
         module Method
@@ -264,6 +293,7 @@ module PreludeSDK
 
           AUTO = :auto
           VOICE = :voice
+          MESSAGE = :message
 
           # @!method self.values
           #   @return [Array<Symbol>]
@@ -327,6 +357,14 @@ module PreludeSDK
         #   @return [Boolean, nil]
         optional :is_trusted_user, PreludeSDK::Internal::Type::Boolean
 
+        # @!attribute ja4_fingerprint
+        #   The JA4 fingerprint observed for the connection. Prelude will infer it
+        #   automatically when requests go through our client SDK (which uses Prelude's
+        #   edge), but you can also provide it explicitly if you terminate TLS yourself.
+        #
+        #   @return [String, nil]
+        optional :ja4_fingerprint, String
+
         # @!attribute os_version
         #   The version of the user's device operating system.
         #
@@ -341,7 +379,7 @@ module PreludeSDK
         #   @return [String, nil]
         optional :user_agent, String
 
-        # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, os_version: nil, user_agent: nil)
+        # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, ja4_fingerprint: nil, os_version: nil, user_agent: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::VerificationCreateParams::Signals} for more details.
         #
@@ -359,6 +397,8 @@ module PreludeSDK
         #   @param ip [String] The IP address of the user's device.
         #
         #   @param is_trusted_user [Boolean] This signal should provide a higher level of trust, indicating that the user is
+        #
+        #   @param ja4_fingerprint [String] The JA4 fingerprint observed for the connection. Prelude will infer it automatic
         #
         #   @param os_version [String] The version of the user's device operating system.
         #

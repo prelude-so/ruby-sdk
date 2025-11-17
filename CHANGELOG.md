@@ -1,5 +1,50 @@
 # Changelog
 
+## 0.1.0 (2025-11-17)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0-alpha.3...v0.1.0)
+
+### Features
+
+* **api:** api update ([c9e65c1](https://github.com/prelude-so/ruby-sdk/commit/c9e65c116529da3a8e5aa86a562b7fed5cf4a97a))
+* **api:** api update ([bf8dee6](https://github.com/prelude-so/ruby-sdk/commit/bf8dee60be19b83b817ece1f9004cfaec2e85e4f))
+* **api:** api update ([9d565ad](https://github.com/prelude-so/ruby-sdk/commit/9d565ad99b6b46c7d17934bd68273f3d82fe9d85))
+* **api:** api update ([4fd18f8](https://github.com/prelude-so/ruby-sdk/commit/4fd18f8a058510eb8d930d819d31cb6f6173f83a))
+* **api:** api update ([69a221a](https://github.com/prelude-so/ruby-sdk/commit/69a221a42fcaec93f98d63caf9d17766be47fbc6))
+* **api:** api update ([4af700e](https://github.com/prelude-so/ruby-sdk/commit/4af700e93bc5cf28d97ff79885834e81b57da1a4))
+* **api:** api update ([0c33db9](https://github.com/prelude-so/ruby-sdk/commit/0c33db9825b569f3a89e225b154340c4c310479f))
+* **api:** api update ([445cbad](https://github.com/prelude-so/ruby-sdk/commit/445cbadbafa387f8650e669062177e7224105de7))
+* **api:** api update ([595d9ef](https://github.com/prelude-so/ruby-sdk/commit/595d9ef60705cb032562fd76150bb9aacf9626d6))
+* **api:** expose phone numbers management methods ([f941fe5](https://github.com/prelude-so/ruby-sdk/commit/f941fe55ce85520986895f042146e59f192ed48d))
+* **api:** expose verification management methods ([b9b9495](https://github.com/prelude-so/ruby-sdk/commit/b9b94955da54d2d44b0a1592abe73337e4087ec3))
+* expose response headers for both streams and errors ([fc2ae79](https://github.com/prelude-so/ruby-sdk/commit/fc2ae79a34a537cda6aa82b63a0c26b83a393cd2))
+* handle thread interrupts in the core HTTP client ([866b344](https://github.com/prelude-so/ruby-sdk/commit/866b344df136a37851b378b07f228c815ca79636))
+
+
+### Bug Fixes
+
+* absolutely qualified uris should always override the default ([68aaf0e](https://github.com/prelude-so/ruby-sdk/commit/68aaf0eb2327e02d5b031ec0a89e7b732ad420f7))
+* always send `filename=...` for multipart requests where a file is expected ([da05b08](https://github.com/prelude-so/ruby-sdk/commit/da05b084037001a449e416128ccd45467e3c364b))
+* better thread safety via early initializing SSL store during HTTP client creation ([5e8ee30](https://github.com/prelude-so/ruby-sdk/commit/5e8ee30cb5783924438c63e8235ae2b4c58eafcc))
+* coroutine leaks from connection pool ([ed37e6b](https://github.com/prelude-so/ruby-sdk/commit/ed37e6b16456986d82b11232f097721ef8a40638))
+* **internal:** use null byte as file separator in the fast formatting script ([d665d3a](https://github.com/prelude-so/ruby-sdk/commit/d665d3a0675b0b96be78135d06e683f1ec170321))
+* shorten multipart boundary sep to less than RFC specificed max length ([bd7c735](https://github.com/prelude-so/ruby-sdk/commit/bd7c7352f57c8f18669454fe537e0e6a747333c4))
+* should not reuse buffers for `IO.copy_stream` interop ([a81068b](https://github.com/prelude-so/ruby-sdk/commit/a81068b77b064aec1a6dcffa475259b664f6beb9))
+
+
+### Performance Improvements
+
+* faster code formatting ([0b96741](https://github.com/prelude-so/ruby-sdk/commit/0b9674139c6ec176f9778f4fd6ef0c21b260fd10))
+
+
+### Chores
+
+* allow fast-format to use bsd sed as well ([5e8c0c0](https://github.com/prelude-so/ruby-sdk/commit/5e8c0c0a63e8e20622e79102d7e17a59591a9b87))
+* **client:** send user-agent header ([0da478a](https://github.com/prelude-so/ruby-sdk/commit/0da478a2be5493927b58d9f162626ca900d400d8))
+* do not install brew dependencies in ./scripts/bootstrap by default ([4604e34](https://github.com/prelude-so/ruby-sdk/commit/4604e34fa43c84c180974e36ce957ff5e4afe515))
+* ignore linter error for tests having large collections ([b76b678](https://github.com/prelude-so/ruby-sdk/commit/b76b678af0a7bf7de20974c5d6e87ab1cc5ca816))
+* **internal:** codegen related update ([b5d6135](https://github.com/prelude-so/ruby-sdk/commit/b5d61356ba2806cb9d24ee7aeb982dd20485da3a))
+
 ## 0.1.0-alpha.3 (2025-09-02)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)

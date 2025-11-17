@@ -1,0 +1,64 @@
+module PreludeSDK
+  module Models
+    type verification_management_list_sender_ids_response =
+      {
+        sender_ids: ::Array[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID]
+      }
+
+    class VerificationManagementListSenderIDsResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_reader sender_ids: ::Array[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID]?
+
+      def sender_ids=: (
+        ::Array[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID]
+      ) -> ::Array[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID]
+
+      def initialize: (
+        ?sender_ids: ::Array[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID]
+      ) -> void
+
+      def to_hash: -> {
+        sender_ids: ::Array[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID]
+      }
+
+      type sender_id =
+        {
+          sender_id: String,
+          status: PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::status
+        }
+
+      class SenderID < PreludeSDK::Internal::Type::BaseModel
+        attr_reader sender_id: String?
+
+        def sender_id=: (String) -> String
+
+        attr_reader status: PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::status?
+
+        def status=: (
+          PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::status
+        ) -> PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::status
+
+        def initialize: (
+          ?sender_id: String,
+          ?status: PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::status
+        ) -> void
+
+        def to_hash: -> {
+          sender_id: String,
+          status: PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::status
+        }
+
+        type status = :approved | :pending | :rejected
+
+        module Status
+          extend PreludeSDK::Internal::Type::Enum
+
+          APPROVED: :approved
+          PENDING: :pending
+          REJECTED: :rejected
+
+          def self?.values: -> ::Array[PreludeSDK::Models::VerificationManagementListSenderIDsResponse::SenderID::status]
+        end
+      end
+    end
+  end
+end

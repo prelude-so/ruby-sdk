@@ -41,6 +41,19 @@ module PreludeSDK
       #   The reason why the verification was blocked. Only present when status is
       #   "blocked".
       #
+      #   - `expired_signature` - The signature of the SDK signals is expired. They should
+      #     be sent within the hour following their collection.
+      #   - `in_block_list` - The phone number is part of the configured block list.
+      #   - `invalid_phone_line` - The phone number is not a valid line number (e.g.
+      #     landline).
+      #   - `invalid_phone_number` - The phone number is not a valid phone number (e.g.
+      #     unallocated range).
+      #   - `invalid_signature` - The signature of the SDK signals is invalid.
+      #   - `repeated_attempts` - The phone number has made too many verification
+      #     attempts.
+      #   - `suspicious` - The verification attempt was deemed suspicious by the
+      #     anti-fraud system.
+      #
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Reason, nil]
       optional :reason, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Reason }
 
@@ -140,6 +153,19 @@ module PreludeSDK
 
       # The reason why the verification was blocked. Only present when status is
       # "blocked".
+      #
+      # - `expired_signature` - The signature of the SDK signals is expired. They should
+      #   be sent within the hour following their collection.
+      # - `in_block_list` - The phone number is part of the configured block list.
+      # - `invalid_phone_line` - The phone number is not a valid line number (e.g.
+      #   landline).
+      # - `invalid_phone_number` - The phone number is not a valid phone number (e.g.
+      #   unallocated range).
+      # - `invalid_signature` - The signature of the SDK signals is invalid.
+      # - `repeated_attempts` - The phone number has made too many verification
+      #   attempts.
+      # - `suspicious` - The verification attempt was deemed suspicious by the
+      #   anti-fraud system.
       #
       # @see PreludeSDK::Models::VerificationCreateResponse#reason
       module Reason

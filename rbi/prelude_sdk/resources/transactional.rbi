@@ -3,7 +3,8 @@
 module PreludeSDK
   module Resources
     class Transactional
-      # Send a transactional message to your user.
+      # Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
+      # instead.
       sig do
         params(
           template_id: String,
@@ -13,6 +14,8 @@ module PreludeSDK
           expires_at: String,
           from: String,
           locale: String,
+          preferred_channel:
+            PreludeSDK::TransactionalSendParams::PreferredChannel::OrSymbol,
           variables: T::Hash[Symbol, String],
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(PreludeSDK::Models::TransactionalSendResponse)
@@ -37,6 +40,16 @@ module PreludeSDK
         # code of the phone number. If the language specified doesn't exist, the default
         # set on the template will be used.
         locale: nil,
+        # The preferred delivery channel for the message. When specified, the system will
+        # prioritize sending via the requested channel if the template is configured for
+        # it.
+        #
+        # If not specified and the template is configured for WhatsApp, the message will
+        # be sent via WhatsApp first, with automatic fallback to SMS if WhatsApp delivery
+        # is unavailable.
+        #
+        # Supported channels: `sms`, `rcs`, `whatsapp`.
+        preferred_channel: nil,
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}

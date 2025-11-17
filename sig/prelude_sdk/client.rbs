@@ -16,6 +16,8 @@ module PreludeSDK
 
     attr_reader verification: PreludeSDK::Resources::Verification
 
+    attr_reader verification_management: PreludeSDK::Resources::VerificationManagement
+
     attr_reader watch: PreludeSDK::Resources::Watch
 
     private def auth_headers: -> ::Hash[String, String]

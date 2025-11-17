@@ -107,6 +107,7 @@ module PreludeSDK
           callback_url: String,
           code_size: Integer,
           custom_code: String,
+          integration: PreludeSDK::Models::VerificationCreateParams::Options::integration,
           locale: String,
           verification_method: PreludeSDK::Models::VerificationCreateParams::Options::method_,
           preferred_channel: PreludeSDK::Models::VerificationCreateParams::Options::preferred_channel,
@@ -133,6 +134,12 @@ module PreludeSDK
         attr_reader custom_code: String?
 
         def custom_code=: (String) -> String
+
+        attr_reader integration: PreludeSDK::Models::VerificationCreateParams::Options::integration?
+
+        def integration=: (
+          PreludeSDK::Models::VerificationCreateParams::Options::integration
+        ) -> PreludeSDK::Models::VerificationCreateParams::Options::integration
 
         attr_reader locale: String?
 
@@ -167,6 +174,7 @@ module PreludeSDK
           ?callback_url: String,
           ?code_size: Integer,
           ?custom_code: String,
+          ?integration: PreludeSDK::Models::VerificationCreateParams::Options::integration,
           ?locale: String,
           ?verification_method: PreludeSDK::Models::VerificationCreateParams::Options::method_,
           ?preferred_channel: PreludeSDK::Models::VerificationCreateParams::Options::preferred_channel,
@@ -180,6 +188,7 @@ module PreludeSDK
           callback_url: String,
           code_size: Integer,
           custom_code: String,
+          integration: PreludeSDK::Models::VerificationCreateParams::Options::integration,
           locale: String,
           verification_method: PreludeSDK::Models::VerificationCreateParams::Options::method_,
           preferred_channel: PreludeSDK::Models::VerificationCreateParams::Options::preferred_channel,
@@ -220,13 +229,25 @@ module PreludeSDK
           end
         end
 
-        type method_ = :auto | :voice
+        type integration = :auth0 | :supabase
+
+        module Integration
+          extend PreludeSDK::Internal::Type::Enum
+
+          AUTH0: :auth0
+          SUPABASE: :supabase
+
+          def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::integration]
+        end
+
+        type method_ = :auto | :voice | :message
 
         module Method
           extend PreludeSDK::Internal::Type::Enum
 
           AUTO: :auto
           VOICE: :voice
+          MESSAGE: :message
 
           def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::method_]
         end
@@ -256,6 +277,7 @@ module PreludeSDK
           device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
           ip: String,
           is_trusted_user: bool,
+          :ja4_fingerprint => String,
           os_version: String,
           user_agent: String
         }
@@ -287,6 +309,10 @@ module PreludeSDK
 
         def is_trusted_user=: (bool) -> bool
 
+        attr_reader ja4_fingerprint: String?
+
+        def ja4_fingerprint=: (String) -> String
+
         attr_reader os_version: String?
 
         def os_version=: (String) -> String
@@ -302,6 +328,7 @@ module PreludeSDK
           ?device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
           ?ip: String,
           ?is_trusted_user: bool,
+          ?ja4_fingerprint: String,
           ?os_version: String,
           ?user_agent: String
         ) -> void
@@ -313,6 +340,7 @@ module PreludeSDK
           device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
           ip: String,
           is_trusted_user: bool,
+          :ja4_fingerprint => String,
           os_version: String,
           user_agent: String
         }

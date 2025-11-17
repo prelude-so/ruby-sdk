@@ -1,0 +1,14 @@
+module PreludeSDK
+  module Models
+    type verification_management_set_phone_number_response =
+      { phone_number: String }
+
+    class VerificationManagementSetPhoneNumberResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor phone_number: String
+
+      def initialize: (phone_number: String) -> void
+
+      def to_hash: -> { phone_number: String }
+    end
+  end
+end
