@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 (2025-11-20)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0...v0.1.1)
+
+### Chores
+
+* explicitly require "base64" gem ([ce6be23](https://github.com/prelude-so/ruby-sdk/commit/ce6be23941786dfe0ed1356b31eb65014da48407))
+
 ## 0.1.0 (2025-11-17)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0-alpha.3...v0.1.0)
