@@ -11,7 +11,7 @@ GIT
 PATH
   remote: .
   specs:
-    prelude-sdk (0.1.0)
+    prelude-sdk (0.2.0)
       connection_pool
 
 GEM
