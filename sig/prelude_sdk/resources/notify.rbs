@@ -1,0 +1,68 @@
+module PreludeSDK
+  module Resources
+    class Notify
+      def get_subscription_config: (
+        String config_id,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::NotifyGetSubscriptionConfigResponse
+
+      def get_subscription_phone_number: (
+        String phone_number,
+        config_id: String,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse
+
+      def list_subscription_configs: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::NotifyListSubscriptionConfigsResponse
+
+      def list_subscription_phone_number_events: (
+        String phone_number,
+        config_id: String,
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse
+
+      def list_subscription_phone_numbers: (
+        String config_id,
+        ?cursor: String,
+        ?limit: Integer,
+        ?state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersResponse
+
+      def send_: (
+        template_id: String,
+        to: String,
+        ?callback_url: String,
+        ?correlation_id: String,
+        ?expires_at: Time,
+        ?from: String,
+        ?locale: String,
+        ?preferred_channel: PreludeSDK::Models::NotifySendParams::preferred_channel,
+        ?schedule_at: Time,
+        ?variables: ::Hash[Symbol, String],
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::NotifySendResponse
+
+      def send_batch: (
+        template_id: String,
+        to: ::Array[String],
+        ?callback_url: String,
+        ?correlation_id: String,
+        ?expires_at: Time,
+        ?from: String,
+        ?locale: String,
+        ?preferred_channel: PreludeSDK::Models::NotifySendBatchParams::preferred_channel,
+        ?schedule_at: Time,
+        ?variables: ::Hash[Symbol, String],
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::NotifySendBatchResponse
+
+      def initialize: (client: PreludeSDK::Client) -> void
+    end
+  end
+end

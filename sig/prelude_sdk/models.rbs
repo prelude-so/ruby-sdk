@@ -1,6 +1,20 @@
 module PreludeSDK
   class LookupLookupParams = PreludeSDK::Models::LookupLookupParams
 
+  class NotifyGetSubscriptionConfigParams = PreludeSDK::Models::NotifyGetSubscriptionConfigParams
+
+  class NotifyGetSubscriptionPhoneNumberParams = PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberParams
+
+  class NotifyListSubscriptionConfigsParams = PreludeSDK::Models::NotifyListSubscriptionConfigsParams
+
+  class NotifyListSubscriptionPhoneNumberEventsParams = PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsParams
+
+  class NotifyListSubscriptionPhoneNumbersParams = PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams
+
+  class NotifySendBatchParams = PreludeSDK::Models::NotifySendBatchParams
+
+  class NotifySendParams = PreludeSDK::Models::NotifySendParams
+
   class TransactionalSendParams = PreludeSDK::Models::TransactionalSendParams
 
   class VerificationCheckParams = PreludeSDK::Models::VerificationCheckParams

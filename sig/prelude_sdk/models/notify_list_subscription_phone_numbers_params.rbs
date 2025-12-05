@@ -1,0 +1,55 @@
+module PreludeSDK
+  module Models
+    type notify_list_subscription_phone_numbers_params =
+      {
+        cursor: String,
+        limit: Integer,
+        state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state
+      }
+      & PreludeSDK::Internal::Type::request_parameters
+
+    class NotifyListSubscriptionPhoneNumbersParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      attr_reader state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state?
+
+      def state=: (
+        PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state
+      ) -> PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state
+
+      def initialize: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        cursor: String,
+        limit: Integer,
+        state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state,
+        request_options: PreludeSDK::RequestOptions
+      }
+
+      type state = :SUB | :UNSUB
+
+      module State
+        extend PreludeSDK::Internal::Type::Enum
+
+        SUB: :SUB
+        UNSUB: :UNSUB
+
+        def self?.values: -> ::Array[PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state]
+      end
+    end
+  end
+end

@@ -17,6 +17,9 @@ module PreludeSDK
     sig { returns(PreludeSDK::Resources::Lookup) }
     attr_reader :lookup
 
+    sig { returns(PreludeSDK::Resources::Notify) }
+    attr_reader :notify
+
     sig { returns(PreludeSDK::Resources::Transactional) }
     attr_reader :transactional
 

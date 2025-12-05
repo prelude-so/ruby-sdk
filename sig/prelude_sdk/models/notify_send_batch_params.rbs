@@ -1,0 +1,100 @@
+module PreludeSDK
+  module Models
+    type notify_send_batch_params =
+      {
+        template_id: String,
+        to: ::Array[String],
+        callback_url: String,
+        correlation_id: String,
+        expires_at: Time,
+        from: String,
+        locale: String,
+        preferred_channel: PreludeSDK::Models::NotifySendBatchParams::preferred_channel,
+        schedule_at: Time,
+        variables: ::Hash[Symbol, String]
+      }
+      & PreludeSDK::Internal::Type::request_parameters
+
+    class NotifySendBatchParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor template_id: String
+
+      attr_accessor to: ::Array[String]
+
+      attr_reader callback_url: String?
+
+      def callback_url=: (String) -> String
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader expires_at: Time?
+
+      def expires_at=: (Time) -> Time
+
+      attr_reader from: String?
+
+      def from=: (String) -> String
+
+      attr_reader locale: String?
+
+      def locale=: (String) -> String
+
+      attr_reader preferred_channel: PreludeSDK::Models::NotifySendBatchParams::preferred_channel?
+
+      def preferred_channel=: (
+        PreludeSDK::Models::NotifySendBatchParams::preferred_channel
+      ) -> PreludeSDK::Models::NotifySendBatchParams::preferred_channel
+
+      attr_reader schedule_at: Time?
+
+      def schedule_at=: (Time) -> Time
+
+      attr_reader variables: ::Hash[Symbol, String]?
+
+      def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      def initialize: (
+        template_id: String,
+        to: ::Array[String],
+        ?callback_url: String,
+        ?correlation_id: String,
+        ?expires_at: Time,
+        ?from: String,
+        ?locale: String,
+        ?preferred_channel: PreludeSDK::Models::NotifySendBatchParams::preferred_channel,
+        ?schedule_at: Time,
+        ?variables: ::Hash[Symbol, String],
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        template_id: String,
+        to: ::Array[String],
+        callback_url: String,
+        correlation_id: String,
+        expires_at: Time,
+        from: String,
+        locale: String,
+        preferred_channel: PreludeSDK::Models::NotifySendBatchParams::preferred_channel,
+        schedule_at: Time,
+        variables: ::Hash[Symbol, String],
+        request_options: PreludeSDK::RequestOptions
+      }
+
+      type preferred_channel = :sms | :whatsapp
+
+      module PreferredChannel
+        extend PreludeSDK::Internal::Type::Enum
+
+        SMS: :sms
+        WHATSAPP: :whatsapp
+
+        def self?.values: -> ::Array[PreludeSDK::Models::NotifySendBatchParams::preferred_channel]
+      end
+    end
+  end
+end

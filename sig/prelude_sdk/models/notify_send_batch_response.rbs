@@ -1,0 +1,187 @@
+module PreludeSDK
+  module Models
+    type notify_send_batch_response =
+      {
+        error_count: Integer,
+        results: ::Array[PreludeSDK::Models::NotifySendBatchResponse::Result],
+        success_count: Integer,
+        total_count: Integer,
+        callback_url: String,
+        request_id: String,
+        template_id: String,
+        variables: ::Hash[Symbol, String]
+      }
+
+    class NotifySendBatchResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor error_count: Integer
+
+      attr_accessor results: ::Array[PreludeSDK::Models::NotifySendBatchResponse::Result]
+
+      attr_accessor success_count: Integer
+
+      attr_accessor total_count: Integer
+
+      attr_reader callback_url: String?
+
+      def callback_url=: (String) -> String
+
+      attr_reader request_id: String?
+
+      def request_id=: (String) -> String
+
+      attr_reader template_id: String?
+
+      def template_id=: (String) -> String
+
+      attr_reader variables: ::Hash[Symbol, String]?
+
+      def variables=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      def initialize: (
+        error_count: Integer,
+        results: ::Array[PreludeSDK::Models::NotifySendBatchResponse::Result],
+        success_count: Integer,
+        total_count: Integer,
+        ?callback_url: String,
+        ?request_id: String,
+        ?template_id: String,
+        ?variables: ::Hash[Symbol, String]
+      ) -> void
+
+      def to_hash: -> {
+        error_count: Integer,
+        results: ::Array[PreludeSDK::Models::NotifySendBatchResponse::Result],
+        success_count: Integer,
+        total_count: Integer,
+        callback_url: String,
+        request_id: String,
+        template_id: String,
+        variables: ::Hash[Symbol, String]
+      }
+
+      type result =
+        {
+          phone_number: String,
+          success: bool,
+          error: PreludeSDK::Models::NotifySendBatchResponse::Result::Error,
+          message: PreludeSDK::Models::NotifySendBatchResponse::Result::Message
+        }
+
+      class Result < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor phone_number: String
+
+        attr_accessor success: bool
+
+        attr_reader error: PreludeSDK::Models::NotifySendBatchResponse::Result::Error?
+
+        def error=: (
+          PreludeSDK::Models::NotifySendBatchResponse::Result::Error
+        ) -> PreludeSDK::Models::NotifySendBatchResponse::Result::Error
+
+        attr_reader message: PreludeSDK::Models::NotifySendBatchResponse::Result::Message?
+
+        def message=: (
+          PreludeSDK::Models::NotifySendBatchResponse::Result::Message
+        ) -> PreludeSDK::Models::NotifySendBatchResponse::Result::Message
+
+        def initialize: (
+          phone_number: String,
+          success: bool,
+          ?error: PreludeSDK::Models::NotifySendBatchResponse::Result::Error,
+          ?message: PreludeSDK::Models::NotifySendBatchResponse::Result::Message
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String,
+          success: bool,
+          error: PreludeSDK::Models::NotifySendBatchResponse::Result::Error,
+          message: PreludeSDK::Models::NotifySendBatchResponse::Result::Message
+        }
+
+        type error = { code: String, message: String }
+
+        class Error < PreludeSDK::Internal::Type::BaseModel
+          attr_reader code: String?
+
+          def code=: (String) -> String
+
+          attr_reader message: String?
+
+          def message=: (String) -> String
+
+          def initialize: (?code: String, ?message: String) -> void
+
+          def to_hash: -> { code: String, message: String }
+        end
+
+        type message =
+          {
+            id: String,
+            correlation_id: String,
+            created_at: Time,
+            expires_at: Time,
+            from: String,
+            locale: String,
+            schedule_at: Time,
+            to: String
+          }
+
+        class Message < PreludeSDK::Internal::Type::BaseModel
+          attr_reader id: String?
+
+          def id=: (String) -> String
+
+          attr_reader correlation_id: String?
+
+          def correlation_id=: (String) -> String
+
+          attr_reader created_at: Time?
+
+          def created_at=: (Time) -> Time
+
+          attr_reader expires_at: Time?
+
+          def expires_at=: (Time) -> Time
+
+          attr_reader from: String?
+
+          def from=: (String) -> String
+
+          attr_reader locale: String?
+
+          def locale=: (String) -> String
+
+          attr_reader schedule_at: Time?
+
+          def schedule_at=: (Time) -> Time
+
+          attr_reader to: String?
+
+          def to=: (String) -> String
+
+          def initialize: (
+            ?id: String,
+            ?correlation_id: String,
+            ?created_at: Time,
+            ?expires_at: Time,
+            ?from: String,
+            ?locale: String,
+            ?schedule_at: Time,
+            ?to: String
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            correlation_id: String,
+            created_at: Time,
+            expires_at: Time,
+            from: String,
+            locale: String,
+            schedule_at: Time,
+            to: String
+          }
+        end
+      end
+    end
+  end
+end

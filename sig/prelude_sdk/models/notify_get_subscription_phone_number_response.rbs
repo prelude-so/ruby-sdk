@@ -1,0 +1,71 @@
+module PreludeSDK
+  module Models
+    type notify_get_subscription_phone_number_response =
+      {
+        config_id: String,
+        phone_number: String,
+        source: PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::source,
+        state: PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::state,
+        updated_at: Time,
+        reason: String
+      }
+
+    class NotifyGetSubscriptionPhoneNumberResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor config_id: String
+
+      attr_accessor phone_number: String
+
+      attr_accessor source: PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::source
+
+      attr_accessor state: PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::state
+
+      attr_accessor updated_at: Time
+
+      attr_reader reason: String?
+
+      def reason=: (String) -> String
+
+      def initialize: (
+        config_id: String,
+        phone_number: String,
+        source: PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::source,
+        state: PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::state,
+        updated_at: Time,
+        ?reason: String
+      ) -> void
+
+      def to_hash: -> {
+        config_id: String,
+        phone_number: String,
+        source: PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::source,
+        state: PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::state,
+        updated_at: Time,
+        reason: String
+      }
+
+      type source = :MO_KEYWORD | :API | :CSV_IMPORT | :CARRIER_DISCONNECT
+
+      module Source
+        extend PreludeSDK::Internal::Type::Enum
+
+        MO_KEYWORD: :MO_KEYWORD
+        API: :API
+        CSV_IMPORT: :CSV_IMPORT
+        CARRIER_DISCONNECT: :CARRIER_DISCONNECT
+
+        def self?.values: -> ::Array[PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::source]
+      end
+
+      type state = :SUB | :UNSUB
+
+      module State
+        extend PreludeSDK::Internal::Type::Enum
+
+        SUB: :SUB
+        UNSUB: :UNSUB
+
+        def self?.values: -> ::Array[PreludeSDK::Models::NotifyGetSubscriptionPhoneNumberResponse::state]
+      end
+    end
+  end
+end

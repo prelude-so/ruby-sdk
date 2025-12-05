@@ -1,0 +1,23 @@
+module PreludeSDK
+  module Models
+    type notify_get_subscription_phone_number_params =
+      { config_id: String } & PreludeSDK::Internal::Type::request_parameters
+
+    class NotifyGetSubscriptionPhoneNumberParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor config_id: String
+
+      def initialize: (
+        config_id: String,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        config_id: String,
+        request_options: PreludeSDK::RequestOptions
+      }
+    end
+  end
+end
