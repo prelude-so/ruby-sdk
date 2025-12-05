@@ -1,0 +1,32 @@
+module PreludeSDK
+  module Models
+    type notify_list_subscription_configs_params =
+      { cursor: String, limit: Integer }
+      & PreludeSDK::Internal::Type::request_parameters
+
+    class NotifyListSubscriptionConfigsParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      def initialize: (
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        cursor: String,
+        limit: Integer,
+        request_options: PreludeSDK::RequestOptions
+      }
+    end
+  end
+end

@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "prelude-sdk", "~> 0.1.0"
+gem "prelude-sdk", "~> 0.2.0"
 ```
 
 <!-- x-release-please-end -->
@@ -207,25 +207,25 @@ prelude.verification.create(**params)
 Since this library does not depend on `sorbet-runtime`, it cannot provide [`T::Enum`](https://sorbet.org/docs/tenum) instances. Instead, we provide "tagged symbols" instead, which is always a primitive at runtime:
 
 ```ruby
-# :allow
-puts(PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::ALLOW)
+# :SUB
+puts(PreludeSDK::NotifyListSubscriptionPhoneNumbersParams::State::SUB)
 
-# Revealed type: `T.all(PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action, Symbol)`
-T.reveal_type(PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::ALLOW)
+# Revealed type: `T.all(PreludeSDK::NotifyListSubscriptionPhoneNumbersParams::State, Symbol)`
+T.reveal_type(PreludeSDK::NotifyListSubscriptionPhoneNumbersParams::State::SUB)
 ```
 
 Enum parameters have a "relaxed" type, so you can either pass in enum constants or their literal value:
 
 ```ruby
 # Using the enum constants preserves the tagged type information:
-prelude.verification_management.delete_phone_number(
-  action: PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::ALLOW,
+prelude.notify.list_subscription_phone_numbers(
+  state: PreludeSDK::NotifyListSubscriptionPhoneNumbersParams::State::SUB,
   # …
 )
 
 # Literal values are also permissible:
-prelude.verification_management.delete_phone_number(
-  action: :allow,
+prelude.notify.list_subscription_phone_numbers(
+  state: :SUB,
   # …
 )
 ```

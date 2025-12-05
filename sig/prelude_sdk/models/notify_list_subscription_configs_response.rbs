@@ -1,0 +1,119 @@
+module PreludeSDK
+  module Models
+    type notify_list_subscription_configs_response =
+      {
+        configs: ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config],
+        next_cursor: String
+      }
+
+    class NotifyListSubscriptionConfigsResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor configs: ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config]
+
+      attr_reader next_cursor: String?
+
+      def next_cursor=: (String) -> String
+
+      def initialize: (
+        configs: ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config],
+        ?next_cursor: String
+      ) -> void
+
+      def to_hash: -> {
+        configs: ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config],
+        next_cursor: String
+      }
+
+      type config =
+        {
+          id: String,
+          callback_url: String,
+          created_at: Time,
+          messages: PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::Messages,
+          name: String,
+          updated_at: Time,
+          mo_phone_numbers: ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::MoPhoneNumber]
+        }
+
+      class Config < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor id: String
+
+        attr_accessor callback_url: String
+
+        attr_accessor created_at: Time
+
+        attr_accessor messages: PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::Messages
+
+        attr_accessor name: String
+
+        attr_accessor updated_at: Time
+
+        attr_reader mo_phone_numbers: ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::MoPhoneNumber]?
+
+        def mo_phone_numbers=: (
+          ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::MoPhoneNumber]
+        ) -> ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::MoPhoneNumber]
+
+        def initialize: (
+          id: String,
+          callback_url: String,
+          created_at: Time,
+          messages: PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::Messages,
+          name: String,
+          updated_at: Time,
+          ?mo_phone_numbers: ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::MoPhoneNumber]
+        ) -> void
+
+        def to_hash: -> {
+          id: String,
+          callback_url: String,
+          created_at: Time,
+          messages: PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::Messages,
+          name: String,
+          updated_at: Time,
+          mo_phone_numbers: ::Array[PreludeSDK::Models::NotifyListSubscriptionConfigsResponse::Config::MoPhoneNumber]
+        }
+
+        type messages =
+          { help_message: String, start_message: String, stop_message: String }
+
+        class Messages < PreludeSDK::Internal::Type::BaseModel
+          attr_reader help_message: String?
+
+          def help_message=: (String) -> String
+
+          attr_reader start_message: String?
+
+          def start_message=: (String) -> String
+
+          attr_reader stop_message: String?
+
+          def stop_message=: (String) -> String
+
+          def initialize: (
+            ?help_message: String,
+            ?start_message: String,
+            ?stop_message: String
+          ) -> void
+
+          def to_hash: -> {
+            help_message: String,
+            start_message: String,
+            stop_message: String
+          }
+        end
+
+        type mo_phone_number = { country_code: String, phone_number: String }
+
+        class MoPhoneNumber < PreludeSDK::Internal::Type::BaseModel
+          attr_accessor country_code: String
+
+          attr_accessor phone_number: String
+
+          def initialize: (country_code: String, phone_number: String) -> void
+
+          def to_hash: -> { country_code: String, phone_number: String }
+        end
+      end
+    end
+  end
+end

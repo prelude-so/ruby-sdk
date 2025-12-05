@@ -1,0 +1,95 @@
+module PreludeSDK
+  module Models
+    type notify_list_subscription_phone_number_events_response =
+      {
+        events: ::Array[PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event],
+        next_cursor: String
+      }
+
+    class NotifyListSubscriptionPhoneNumberEventsResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor events: ::Array[PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event]
+
+      attr_reader next_cursor: String?
+
+      def next_cursor=: (String) -> String
+
+      def initialize: (
+        events: ::Array[PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event],
+        ?next_cursor: String
+      ) -> void
+
+      def to_hash: -> {
+        events: ::Array[PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event],
+        next_cursor: String
+      }
+
+      type event =
+        {
+          config_id: String,
+          phone_number: String,
+          source: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::source,
+          state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::state,
+          timestamp: Time,
+          reason: String
+        }
+
+      class Event < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor config_id: String
+
+        attr_accessor phone_number: String
+
+        attr_accessor source: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::source
+
+        attr_accessor state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::state
+
+        attr_accessor timestamp: Time
+
+        attr_reader reason: String?
+
+        def reason=: (String) -> String
+
+        def initialize: (
+          config_id: String,
+          phone_number: String,
+          source: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::source,
+          state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::state,
+          timestamp: Time,
+          ?reason: String
+        ) -> void
+
+        def to_hash: -> {
+          config_id: String,
+          phone_number: String,
+          source: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::source,
+          state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::state,
+          timestamp: Time,
+          reason: String
+        }
+
+        type source = :MO_KEYWORD | :API | :CSV_IMPORT | :CARRIER_DISCONNECT
+
+        module Source
+          extend PreludeSDK::Internal::Type::Enum
+
+          MO_KEYWORD: :MO_KEYWORD
+          API: :API
+          CSV_IMPORT: :CSV_IMPORT
+          CARRIER_DISCONNECT: :CARRIER_DISCONNECT
+
+          def self?.values: -> ::Array[PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::source]
+        end
+
+        type state = :SUB | :UNSUB
+
+        module State
+          extend PreludeSDK::Internal::Type::Enum
+
+          SUB: :SUB
+          UNSUB: :UNSUB
+
+          def self?.values: -> ::Array[PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse::Event::state]
+        end
+      end
+    end
+  end
+end

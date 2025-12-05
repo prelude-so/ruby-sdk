@@ -1,0 +1,36 @@
+module PreludeSDK
+  module Models
+    type notify_list_subscription_phone_number_events_params =
+      { config_id: String, cursor: String, limit: Integer }
+      & PreludeSDK::Internal::Type::request_parameters
+
+    class NotifyListSubscriptionPhoneNumberEventsParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor config_id: String
+
+      attr_reader cursor: String?
+
+      def cursor=: (String) -> String
+
+      attr_reader limit: Integer?
+
+      def limit=: (Integer) -> Integer
+
+      def initialize: (
+        config_id: String,
+        ?cursor: String,
+        ?limit: Integer,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        config_id: String,
+        cursor: String,
+        limit: Integer,
+        request_options: PreludeSDK::RequestOptions
+      }
+    end
+  end
+end

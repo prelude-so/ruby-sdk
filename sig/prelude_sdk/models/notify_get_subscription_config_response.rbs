@@ -1,0 +1,95 @@
+module PreludeSDK
+  module Models
+    type notify_get_subscription_config_response =
+      {
+        id: String,
+        callback_url: String,
+        created_at: Time,
+        messages: PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::Messages,
+        name: String,
+        updated_at: Time,
+        mo_phone_numbers: ::Array[PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::MoPhoneNumber]
+      }
+
+    class NotifyGetSubscriptionConfigResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor callback_url: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor messages: PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::Messages
+
+      attr_accessor name: String
+
+      attr_accessor updated_at: Time
+
+      attr_reader mo_phone_numbers: ::Array[PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::MoPhoneNumber]?
+
+      def mo_phone_numbers=: (
+        ::Array[PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::MoPhoneNumber]
+      ) -> ::Array[PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::MoPhoneNumber]
+
+      def initialize: (
+        id: String,
+        callback_url: String,
+        created_at: Time,
+        messages: PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::Messages,
+        name: String,
+        updated_at: Time,
+        ?mo_phone_numbers: ::Array[PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::MoPhoneNumber]
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        callback_url: String,
+        created_at: Time,
+        messages: PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::Messages,
+        name: String,
+        updated_at: Time,
+        mo_phone_numbers: ::Array[PreludeSDK::Models::NotifyGetSubscriptionConfigResponse::MoPhoneNumber]
+      }
+
+      type messages =
+        { help_message: String, start_message: String, stop_message: String }
+
+      class Messages < PreludeSDK::Internal::Type::BaseModel
+        attr_reader help_message: String?
+
+        def help_message=: (String) -> String
+
+        attr_reader start_message: String?
+
+        def start_message=: (String) -> String
+
+        attr_reader stop_message: String?
+
+        def stop_message=: (String) -> String
+
+        def initialize: (
+          ?help_message: String,
+          ?start_message: String,
+          ?stop_message: String
+        ) -> void
+
+        def to_hash: -> {
+          help_message: String,
+          start_message: String,
+          stop_message: String
+        }
+      end
+
+      type mo_phone_number = { country_code: String, phone_number: String }
+
+      class MoPhoneNumber < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor country_code: String
+
+        attr_accessor phone_number: String
+
+        def initialize: (country_code: String, phone_number: String) -> void
+
+        def to_hash: -> { country_code: String, phone_number: String }
+      end
+    end
+  end
+end

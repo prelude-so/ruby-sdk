@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0 (2025-12-05)
+
+Full Changelog: [v0.1.0...v0.2.0](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0...v0.2.0)
+
+### Features
+
+* **api:** add Notify API methods ([8ce7793](https://github.com/prelude-so/ruby-sdk/commit/8ce7793912b2b074deaa66c32e4cc2b7d0873623))
+
+
+### Chores
+
+* explicitly require "base64" gem ([ce6be23](https://github.com/prelude-so/ruby-sdk/commit/ce6be23941786dfe0ed1356b31eb65014da48407))
+
 ## 0.1.0 (2025-11-17)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0-alpha.3...v0.1.0)
