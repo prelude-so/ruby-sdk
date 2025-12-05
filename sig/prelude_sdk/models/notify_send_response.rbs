@@ -1,0 +1,73 @@
+module PreludeSDK
+  module Models
+    type notify_send_response =
+      {
+        id: String,
+        created_at: Time,
+        expires_at: Time,
+        template_id: String,
+        to: String,
+        variables: ::Hash[Symbol, String],
+        callback_url: String,
+        correlation_id: String,
+        from: String,
+        schedule_at: Time
+      }
+
+    class NotifySendResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor expires_at: Time
+
+      attr_accessor template_id: String
+
+      attr_accessor to: String
+
+      attr_accessor variables: ::Hash[Symbol, String]
+
+      attr_reader callback_url: String?
+
+      def callback_url=: (String) -> String
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      attr_reader from: String?
+
+      def from=: (String) -> String
+
+      attr_reader schedule_at: Time?
+
+      def schedule_at=: (Time) -> Time
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        expires_at: Time,
+        template_id: String,
+        to: String,
+        variables: ::Hash[Symbol, String],
+        ?callback_url: String,
+        ?correlation_id: String,
+        ?from: String,
+        ?schedule_at: Time
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        expires_at: Time,
+        template_id: String,
+        to: String,
+        variables: ::Hash[Symbol, String],
+        callback_url: String,
+        correlation_id: String,
+        from: String,
+        schedule_at: Time
+      }
+    end
+  end
+end

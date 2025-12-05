@@ -12,6 +12,8 @@ module PreludeSDK
 
     attr_reader lookup: PreludeSDK::Resources::Lookup
 
+    attr_reader notify: PreludeSDK::Resources::Notify
+
     attr_reader transactional: PreludeSDK::Resources::Transactional
 
     attr_reader verification: PreludeSDK::Resources::Verification

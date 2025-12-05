@@ -1,0 +1,15 @@
+module PreludeSDK
+  module Models
+    type notify_get_subscription_config_params =
+      {  } & PreludeSDK::Internal::Type::request_parameters
+
+    class NotifyGetSubscriptionConfigParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      def initialize: (?request_options: PreludeSDK::request_opts) -> void
+
+      def to_hash: -> { request_options: PreludeSDK::RequestOptions }
+    end
+  end
+end

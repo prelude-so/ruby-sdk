@@ -22,6 +22,9 @@ module PreludeSDK
     # @return [PreludeSDK::Resources::Lookup]
     attr_reader :lookup
 
+    # @return [PreludeSDK::Resources::Notify]
+    attr_reader :notify
+
     # @return [PreludeSDK::Resources::Transactional]
     attr_reader :transactional
 
@@ -82,6 +85,7 @@ module PreludeSDK
       )
 
       @lookup = PreludeSDK::Resources::Lookup.new(client: self)
+      @notify = PreludeSDK::Resources::Notify.new(client: self)
       @transactional = PreludeSDK::Resources::Transactional.new(client: self)
       @verification = PreludeSDK::Resources::Verification.new(client: self)
       @verification_management = PreludeSDK::Resources::VerificationManagement.new(client: self)
