@@ -14,7 +14,8 @@ class PreludeSDK::Test::Resources::WatchTest < PreludeSDK::Test::ResourceTest
       response => {
         id: String,
         prediction: PreludeSDK::Models::WatchPredictResponse::Prediction,
-        request_id: String
+        request_id: String,
+        risk_factors: ^(PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::Models::WatchPredictResponse::RiskFactor]) | nil
       }
     end
   end
