@@ -218,12 +218,13 @@ module PreludeSDK
             value: String
           }
 
-          type platform = :android
+          type platform = :android | :web
 
           module Platform
             extend PreludeSDK::Internal::Type::Enum
 
             ANDROID: :android
+            WEB: :web
 
             def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform]
           end

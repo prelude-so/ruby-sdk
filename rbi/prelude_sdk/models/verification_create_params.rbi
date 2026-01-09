@@ -232,8 +232,8 @@ module PreludeSDK
             )
           end
 
-        # This allows you to automatically retrieve and fill the OTP code on mobile apps.
-        # Currently only Android devices are supported.
+        # This allows automatic OTP retrieval on mobile apps and web browsers. Supported
+        # platforms are Android (SMS Retriever API) and Web (WebOTP API).
         sig do
           returns(
             T.nilable(PreludeSDK::VerificationCreateParams::Options::AppRealm)
@@ -389,8 +389,8 @@ module PreludeSDK
           ).returns(T.attached_class)
         end
         def self.new(
-          # This allows you to automatically retrieve and fill the OTP code on mobile apps.
-          # Currently only Android devices are supported.
+          # This allows automatic OTP retrieval on mobile apps and web browsers. Supported
+          # platforms are Android (SMS Retriever API) and Web (WebOTP API).
           app_realm: nil,
           # The URL where webhooks will be sent when verification events occur, including
           # verification creation, attempt creation, and delivery status changes. For more
@@ -464,8 +464,8 @@ module PreludeSDK
               )
             end
 
-          # The platform the SMS will be sent to. We are currently only supporting
-          # "android".
+          # The platform for automatic OTP retrieval. Use "android" for the SMS Retriever
+          # API or "web" for the WebOTP API.
           sig do
             returns(
               PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform::OrSymbol
@@ -473,14 +473,17 @@ module PreludeSDK
           end
           attr_accessor :platform
 
-          # The Android SMS Retriever API hash code that identifies your app. For more
-          # information, see
-          # [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
+          # The value depends on the platform:
+          #
+          # - For Android: The SMS Retriever API hash code (11 characters). See
+          #   [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
+          # - For Web: The origin domain (e.g., "example.com" or "www.example.com"). See
+          #   [WebOTP API documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebOTP_API).
           sig { returns(String) }
           attr_accessor :value
 
-          # This allows you to automatically retrieve and fill the OTP code on mobile apps.
-          # Currently only Android devices are supported.
+          # This allows automatic OTP retrieval on mobile apps and web browsers. Supported
+          # platforms are Android (SMS Retriever API) and Web (WebOTP API).
           sig do
             params(
               platform:
@@ -489,12 +492,15 @@ module PreludeSDK
             ).returns(T.attached_class)
           end
           def self.new(
-            # The platform the SMS will be sent to. We are currently only supporting
-            # "android".
+            # The platform for automatic OTP retrieval. Use "android" for the SMS Retriever
+            # API or "web" for the WebOTP API.
             platform:,
-            # The Android SMS Retriever API hash code that identifies your app. For more
-            # information, see
-            # [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
+            # The value depends on the platform:
+            #
+            # - For Android: The SMS Retriever API hash code (11 characters). See
+            #   [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
+            # - For Web: The origin domain (e.g., "example.com" or "www.example.com"). See
+            #   [WebOTP API documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebOTP_API).
             value:
           )
           end
@@ -511,8 +517,8 @@ module PreludeSDK
           def to_hash
           end
 
-          # The platform the SMS will be sent to. We are currently only supporting
-          # "android".
+          # The platform for automatic OTP retrieval. Use "android" for the SMS Retriever
+          # API or "web" for the WebOTP API.
           module Platform
             extend PreludeSDK::Internal::Type::Enum
 
@@ -528,6 +534,11 @@ module PreludeSDK
             ANDROID =
               T.let(
                 :android,
+                PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol
+              )
+            WEB =
+              T.let(
+                :web,
                 PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform::TaggedSymbol
               )
 
