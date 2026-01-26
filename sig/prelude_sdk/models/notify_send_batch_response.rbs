@@ -119,6 +119,8 @@ module PreludeSDK
             id: String,
             correlation_id: String,
             created_at: Time,
+            encoding: PreludeSDK::Models::NotifySendBatchResponse::Result::Message::encoding,
+            estimated_segment_count: Integer,
             expires_at: Time,
             from: String,
             locale: String,
@@ -138,6 +140,16 @@ module PreludeSDK
           attr_reader created_at: Time?
 
           def created_at=: (Time) -> Time
+
+          attr_reader encoding: PreludeSDK::Models::NotifySendBatchResponse::Result::Message::encoding?
+
+          def encoding=: (
+            PreludeSDK::Models::NotifySendBatchResponse::Result::Message::encoding
+          ) -> PreludeSDK::Models::NotifySendBatchResponse::Result::Message::encoding
+
+          attr_reader estimated_segment_count: Integer?
+
+          def estimated_segment_count=: (Integer) -> Integer
 
           attr_reader expires_at: Time?
 
@@ -163,6 +175,8 @@ module PreludeSDK
             ?id: String,
             ?correlation_id: String,
             ?created_at: Time,
+            ?encoding: PreludeSDK::Models::NotifySendBatchResponse::Result::Message::encoding,
+            ?estimated_segment_count: Integer,
             ?expires_at: Time,
             ?from: String,
             ?locale: String,
@@ -174,12 +188,25 @@ module PreludeSDK
             id: String,
             correlation_id: String,
             created_at: Time,
+            encoding: PreludeSDK::Models::NotifySendBatchResponse::Result::Message::encoding,
+            estimated_segment_count: Integer,
             expires_at: Time,
             from: String,
             locale: String,
             schedule_at: Time,
             to: String
           }
+
+          type encoding = :"GSM-7" | :"UCS-2"
+
+          module Encoding
+            extend PreludeSDK::Internal::Type::Enum
+
+            GSM_7: :"GSM-7"
+            UCS_2: :"UCS-2"
+
+            def self?.values: -> ::Array[PreludeSDK::Models::NotifySendBatchResponse::Result::Message::encoding]
+          end
         end
       end
     end

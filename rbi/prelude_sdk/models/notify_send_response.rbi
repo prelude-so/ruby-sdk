@@ -49,6 +49,34 @@ module PreludeSDK
       sig { params(correlation_id: String).void }
       attr_writer :correlation_id
 
+      # The SMS encoding type based on message content. GSM-7 supports standard
+      # characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+      # emoji (up to 70 chars per segment). Only present for SMS messages.
+      sig do
+        returns(
+          T.nilable(
+            PreludeSDK::Models::NotifySendResponse::Encoding::TaggedSymbol
+          )
+        )
+      end
+      attr_reader :encoding
+
+      sig do
+        params(
+          encoding: PreludeSDK::Models::NotifySendResponse::Encoding::OrSymbol
+        ).void
+      end
+      attr_writer :encoding
+
+      # The estimated number of SMS segments for this message. This value is not
+      # contractual; the actual segment count will be determined after the SMS is sent
+      # by the provider. Only present for SMS messages.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :estimated_segment_count
+
+      sig { params(estimated_segment_count: Integer).void }
+      attr_writer :estimated_segment_count
+
       # The Sender ID used for this message.
       sig { returns(T.nilable(String)) }
       attr_reader :from
@@ -75,6 +103,8 @@ module PreludeSDK
           variables: T::Hash[Symbol, String],
           callback_url: String,
           correlation_id: String,
+          encoding: PreludeSDK::Models::NotifySendResponse::Encoding::OrSymbol,
+          estimated_segment_count: Integer,
           from: String,
           schedule_at: Time
         ).returns(T.attached_class)
@@ -96,6 +126,14 @@ module PreludeSDK
         callback_url: nil,
         # A user-defined identifier to correlate this message with your internal systems.
         correlation_id: nil,
+        # The SMS encoding type based on message content. GSM-7 supports standard
+        # characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+        # emoji (up to 70 chars per segment). Only present for SMS messages.
+        encoding: nil,
+        # The estimated number of SMS segments for this message. This value is not
+        # contractual; the actual segment count will be determined after the SMS is sent
+        # by the provider. Only present for SMS messages.
+        estimated_segment_count: nil,
         # The Sender ID used for this message.
         from: nil,
         # When the message will actually be sent in RFC3339 format with timezone offset.
@@ -116,12 +154,49 @@ module PreludeSDK
             variables: T::Hash[Symbol, String],
             callback_url: String,
             correlation_id: String,
+            encoding:
+              PreludeSDK::Models::NotifySendResponse::Encoding::TaggedSymbol,
+            estimated_segment_count: Integer,
             from: String,
             schedule_at: Time
           }
         )
       end
       def to_hash
+      end
+
+      # The SMS encoding type based on message content. GSM-7 supports standard
+      # characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+      # emoji (up to 70 chars per segment). Only present for SMS messages.
+      module Encoding
+        extend PreludeSDK::Internal::Type::Enum
+
+        TaggedSymbol =
+          T.type_alias do
+            T.all(Symbol, PreludeSDK::Models::NotifySendResponse::Encoding)
+          end
+        OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+        GSM_7 =
+          T.let(
+            :"GSM-7",
+            PreludeSDK::Models::NotifySendResponse::Encoding::TaggedSymbol
+          )
+        UCS_2 =
+          T.let(
+            :"UCS-2",
+            PreludeSDK::Models::NotifySendResponse::Encoding::TaggedSymbol
+          )
+
+        sig do
+          override.returns(
+            T::Array[
+              PreludeSDK::Models::NotifySendResponse::Encoding::TaggedSymbol
+            ]
+          )
+        end
+        def self.values
+        end
       end
     end
   end

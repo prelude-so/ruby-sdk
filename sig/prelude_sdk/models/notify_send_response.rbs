@@ -10,6 +10,8 @@ module PreludeSDK
         variables: ::Hash[Symbol, String],
         callback_url: String,
         correlation_id: String,
+        encoding: PreludeSDK::Models::NotifySendResponse::encoding,
+        estimated_segment_count: Integer,
         from: String,
         schedule_at: Time
       }
@@ -35,6 +37,16 @@ module PreludeSDK
 
       def correlation_id=: (String) -> String
 
+      attr_reader encoding: PreludeSDK::Models::NotifySendResponse::encoding?
+
+      def encoding=: (
+        PreludeSDK::Models::NotifySendResponse::encoding
+      ) -> PreludeSDK::Models::NotifySendResponse::encoding
+
+      attr_reader estimated_segment_count: Integer?
+
+      def estimated_segment_count=: (Integer) -> Integer
+
       attr_reader from: String?
 
       def from=: (String) -> String
@@ -52,6 +64,8 @@ module PreludeSDK
         variables: ::Hash[Symbol, String],
         ?callback_url: String,
         ?correlation_id: String,
+        ?encoding: PreludeSDK::Models::NotifySendResponse::encoding,
+        ?estimated_segment_count: Integer,
         ?from: String,
         ?schedule_at: Time
       ) -> void
@@ -65,9 +79,22 @@ module PreludeSDK
         variables: ::Hash[Symbol, String],
         callback_url: String,
         correlation_id: String,
+        encoding: PreludeSDK::Models::NotifySendResponse::encoding,
+        estimated_segment_count: Integer,
         from: String,
         schedule_at: Time
       }
+
+      type encoding = :"GSM-7" | :"UCS-2"
+
+      module Encoding
+        extend PreludeSDK::Internal::Type::Enum
+
+        GSM_7: :"GSM-7"
+        UCS_2: :"UCS-2"
+
+        def self?.values: -> ::Array[PreludeSDK::Models::NotifySendResponse::encoding]
+      end
     end
   end
 end
