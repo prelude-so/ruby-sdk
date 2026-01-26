@@ -269,6 +269,35 @@ module PreludeSDK
           sig { params(created_at: Time).void }
           attr_writer :created_at
 
+          # The SMS encoding type based on message content. GSM-7 supports standard
+          # characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+          # emoji (up to 70 chars per segment). Only present for SMS messages.
+          sig do
+            returns(
+              T.nilable(
+                PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding::TaggedSymbol
+              )
+            )
+          end
+          attr_reader :encoding
+
+          sig do
+            params(
+              encoding:
+                PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding::OrSymbol
+            ).void
+          end
+          attr_writer :encoding
+
+          # The estimated number of SMS segments for this message. This value is not
+          # contractual; the actual segment count will be determined after the SMS is sent
+          # by the provider. Only present for SMS messages.
+          sig { returns(T.nilable(Integer)) }
+          attr_reader :estimated_segment_count
+
+          sig { params(estimated_segment_count: Integer).void }
+          attr_writer :estimated_segment_count
+
           # The message expiration date in RFC3339 format.
           sig { returns(T.nilable(Time)) }
           attr_reader :expires_at
@@ -310,6 +339,9 @@ module PreludeSDK
               id: String,
               correlation_id: String,
               created_at: Time,
+              encoding:
+                PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding::OrSymbol,
+              estimated_segment_count: Integer,
               expires_at: Time,
               from: String,
               locale: String,
@@ -324,6 +356,14 @@ module PreludeSDK
             correlation_id: nil,
             # The message creation date in RFC3339 format.
             created_at: nil,
+            # The SMS encoding type based on message content. GSM-7 supports standard
+            # characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+            # emoji (up to 70 chars per segment). Only present for SMS messages.
+            encoding: nil,
+            # The estimated number of SMS segments for this message. This value is not
+            # contractual; the actual segment count will be determined after the SMS is sent
+            # by the provider. Only present for SMS messages.
+            estimated_segment_count: nil,
             # The message expiration date in RFC3339 format.
             expires_at: nil,
             # The Sender ID used for this message.
@@ -343,6 +383,9 @@ module PreludeSDK
                 id: String,
                 correlation_id: String,
                 created_at: Time,
+                encoding:
+                  PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding::TaggedSymbol,
+                estimated_segment_count: Integer,
                 expires_at: Time,
                 from: String,
                 locale: String,
@@ -352,6 +395,43 @@ module PreludeSDK
             )
           end
           def to_hash
+          end
+
+          # The SMS encoding type based on message content. GSM-7 supports standard
+          # characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+          # emoji (up to 70 chars per segment). Only present for SMS messages.
+          module Encoding
+            extend PreludeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            GSM_7 =
+              T.let(
+                :"GSM-7",
+                PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding::TaggedSymbol
+              )
+            UCS_2 =
+              T.let(
+                :"UCS-2",
+                PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
           end
         end
       end

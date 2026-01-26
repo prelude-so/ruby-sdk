@@ -106,6 +106,8 @@ class PreludeSDK::Test::Resources::NotifyTest < PreludeSDK::Test::ResourceTest
         variables: ^(PreludeSDK::Internal::Type::HashOf[String]),
         callback_url: String | nil,
         correlation_id: String | nil,
+        encoding: PreludeSDK::Models::NotifySendResponse::Encoding | nil,
+        estimated_segment_count: Integer | nil,
         from: String | nil,
         schedule_at: Time | nil
       }
