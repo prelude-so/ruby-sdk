@@ -275,24 +275,6 @@ module PreludeSDK
         sig { params(custom_code: String).void }
         attr_writer :custom_code
 
-        # The integration that triggered the verification.
-        sig do
-          returns(
-            T.nilable(
-              PreludeSDK::VerificationCreateParams::Options::Integration::OrSymbol
-            )
-          )
-        end
-        attr_reader :integration
-
-        sig do
-          params(
-            integration:
-              PreludeSDK::VerificationCreateParams::Options::Integration::OrSymbol
-          ).void
-        end
-        attr_writer :integration
-
         # A BCP-47 formatted locale string with the language the text message will be sent
         # to. If there's no locale set, the language will be determined by the country
         # code of the phone number. If the language specified doesn't exist, it defaults
@@ -376,8 +358,6 @@ module PreludeSDK
             callback_url: String,
             code_size: Integer,
             custom_code: String,
-            integration:
-              PreludeSDK::VerificationCreateParams::Options::Integration::OrSymbol,
             locale: String,
             verification_method:
               PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
@@ -403,8 +383,6 @@ module PreludeSDK
           # contact us to enable it for your account. For more details, refer to
           # [Custom Code](/verify/v2/documentation/custom-codes).
           custom_code: nil,
-          # The integration that triggered the verification.
-          integration: nil,
           # A BCP-47 formatted locale string with the language the text message will be sent
           # to. If there's no locale set, the language will be determined by the country
           # code of the phone number. If the language specified doesn't exist, it defaults
@@ -439,8 +417,6 @@ module PreludeSDK
               callback_url: String,
               code_size: Integer,
               custom_code: String,
-              integration:
-                PreludeSDK::VerificationCreateParams::Options::Integration::OrSymbol,
               locale: String,
               verification_method:
                 PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
@@ -551,41 +527,6 @@ module PreludeSDK
             end
             def self.values
             end
-          end
-        end
-
-        # The integration that triggered the verification.
-        module Integration
-          extend PreludeSDK::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                PreludeSDK::VerificationCreateParams::Options::Integration
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          AUTH0 =
-            T.let(
-              :auth0,
-              PreludeSDK::VerificationCreateParams::Options::Integration::TaggedSymbol
-            )
-          SUPABASE =
-            T.let(
-              :supabase,
-              PreludeSDK::VerificationCreateParams::Options::Integration::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                PreludeSDK::VerificationCreateParams::Options::Integration::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
           end
         end
 
