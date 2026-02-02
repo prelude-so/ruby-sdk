@@ -75,7 +75,7 @@ module PreludeSDK
 
             case body
             in nil
-              nil
+              req["content-length"] ||= 0 unless req["transfer-encoding"]
             in String
               req["content-length"] ||= body.bytesize.to_s unless req["transfer-encoding"]
               req.body_stream = PreludeSDK::Internal::Util::ReadIOAdapter.new(body, &blk)
