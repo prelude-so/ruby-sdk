@@ -6,6 +6,7 @@ module PreludeSDK
         to: String,
         ?callback_url: String,
         ?correlation_id: String,
+        ?document: PreludeSDK::TransactionalSendParams::Document,
         ?expires_at: String,
         ?from: String,
         ?locale: String,

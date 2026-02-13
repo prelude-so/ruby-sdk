@@ -11,6 +11,7 @@ module PreludeSDK
           to: String,
           callback_url: String,
           correlation_id: String,
+          document: PreludeSDK::TransactionalSendParams::Document::OrHash,
           expires_at: String,
           from: String,
           locale: String,
@@ -31,6 +32,9 @@ module PreludeSDK
         # returned in the response and any webhook events that refer to this
         # transactionalmessage.
         correlation_id: nil,
+        # A document to attach to the message. Only supported on WhatsApp templates that
+        # have a document header.
+        document: nil,
         # The message expiration date.
         expires_at: nil,
         # The Sender ID.
