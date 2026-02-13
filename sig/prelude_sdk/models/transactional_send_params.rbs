@@ -6,6 +6,7 @@ module PreludeSDK
         to: String,
         callback_url: String,
         correlation_id: String,
+        document: PreludeSDK::TransactionalSendParams::Document,
         expires_at: String,
         from: String,
         locale: String,
@@ -29,6 +30,12 @@ module PreludeSDK
       attr_reader correlation_id: String?
 
       def correlation_id=: (String) -> String
+
+      attr_reader document: PreludeSDK::TransactionalSendParams::Document?
+
+      def document=: (
+        PreludeSDK::TransactionalSendParams::Document
+      ) -> PreludeSDK::TransactionalSendParams::Document
 
       attr_reader expires_at: String?
 
@@ -57,6 +64,7 @@ module PreludeSDK
         to: String,
         ?callback_url: String,
         ?correlation_id: String,
+        ?document: PreludeSDK::TransactionalSendParams::Document,
         ?expires_at: String,
         ?from: String,
         ?locale: String,
@@ -70,6 +78,7 @@ module PreludeSDK
         to: String,
         callback_url: String,
         correlation_id: String,
+        document: PreludeSDK::TransactionalSendParams::Document,
         expires_at: String,
         from: String,
         locale: String,
@@ -77,6 +86,18 @@ module PreludeSDK
         variables: ::Hash[Symbol, String],
         request_options: PreludeSDK::RequestOptions
       }
+
+      type document = { filename: String, url: String }
+
+      class Document < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor filename: String
+
+        attr_accessor url: String
+
+        def initialize: (filename: String, url: String) -> void
+
+        def to_hash: -> { filename: String, url: String }
+      end
 
       type preferred_channel = :sms | :rcs | :whatsapp
 

@@ -155,7 +155,7 @@ module PreludeSDK
       # Send transactional and marketing messages to your users via SMS and WhatsApp
       # with automatic compliance enforcement.
       #
-      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier configured by your Customer Success team.
       #
@@ -164,6 +164,8 @@ module PreludeSDK
       # @param callback_url [String] The URL where webhooks will be sent for message delivery events.
       #
       # @param correlation_id [String] A user-defined identifier to correlate this message with your internal systems.
+      #
+      # @param document [PreludeSDK::Models::NotifySendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
       #
       # @param expires_at [Time] The message expiration date in RFC3339 format. The message will not be sent if t
       #
@@ -198,7 +200,7 @@ module PreludeSDK
       #
       # Send the same message to multiple recipients in a single request.
       #
-      # @overload send_batch(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @overload send_batch(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier configured by your Customer Success team.
       #
@@ -207,6 +209,8 @@ module PreludeSDK
       # @param callback_url [String] The URL where webhooks will be sent for delivery events.
       #
       # @param correlation_id [String] A user-defined identifier to correlate this request with your internal systems.
+      #
+      # @param document [PreludeSDK::Models::NotifySendBatchParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
       #
       # @param expires_at [Time] The message expiration date in RFC3339 format. Messages will not be sent after t
       #

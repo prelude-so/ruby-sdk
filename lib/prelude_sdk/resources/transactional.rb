@@ -11,7 +11,7 @@ module PreludeSDK
       # Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
       # instead.
       #
-      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, variables: nil, request_options: {})
+      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier.
       #
@@ -20,6 +20,8 @@ module PreludeSDK
       # @param callback_url [String] The callback URL.
       #
       # @param correlation_id [String] A user-defined identifier to correlate this transactional message with. It is re
+      #
+      # @param document [PreludeSDK::Models::TransactionalSendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
       #
       # @param expires_at [String] The message expiration date.
       #
