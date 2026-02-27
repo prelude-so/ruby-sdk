@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Evaluate email addresses and phone numbers for trustworthiness.
     class Watch
       # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::WatchPredictParams} for more details.

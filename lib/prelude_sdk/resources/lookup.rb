@@ -2,6 +2,8 @@
 
 module PreludeSDK
   module Resources
+    # Retrieve detailed information about a phone number including carrier data, line
+    # type, and portability status.
     class Lookup
       # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::LookupLookupParams} for more details.

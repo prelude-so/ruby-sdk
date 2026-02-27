@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Verify phone numbers.
     class Verification
       # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::VerificationCreateParams} for more details.
