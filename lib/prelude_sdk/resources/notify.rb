@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Send transactional and marketing messages with compliance enforcement.
     class Notify
       # Retrieve a specific subscription management configuration by its ID.
       #

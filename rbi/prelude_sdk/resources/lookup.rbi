@@ -2,6 +2,8 @@
 
 module PreludeSDK
   module Resources
+    # Retrieve detailed information about a phone number including carrier data, line
+    # type, and portability status.
     class Lookup
       # Retrieve detailed information about a phone number including carrier data, line
       # type, and portability status.

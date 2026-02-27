@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Send transactional messages (deprecated - use Notify API instead).
     class Transactional
       # Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
       # instead.

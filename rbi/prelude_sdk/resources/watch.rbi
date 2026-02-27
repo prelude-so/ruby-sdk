@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Evaluate email addresses and phone numbers for trustworthiness.
     class Watch
       # Predict the outcome of a verification based on Prelude’s anti-fraud system.
       sig do

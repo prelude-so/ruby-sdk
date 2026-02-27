@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Verify phone numbers.
     class VerificationManagement
       # Remove a phone number from the allow or block list.
       #
