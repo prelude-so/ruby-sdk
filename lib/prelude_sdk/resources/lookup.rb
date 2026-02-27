@@ -22,10 +22,11 @@ module PreludeSDK
       # @see PreludeSDK::Models::LookupLookupParams
       def lookup(phone_number, params = {})
         parsed, options = PreludeSDK::LookupLookupParams.dump_request(params)
+        query = PreludeSDK::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["v2/lookup/%1$s", phone_number],
-          query: parsed,
+          query: query,
           model: PreludeSDK::Models::LookupLookupResponse,
           options: options
         )
