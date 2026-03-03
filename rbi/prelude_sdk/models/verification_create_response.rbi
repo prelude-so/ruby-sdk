@@ -24,6 +24,13 @@ module PreludeSDK
       attr_accessor :verification_method
 
       # The status of the verification.
+      #
+      # - `success` - A new verification window was created.
+      # - `retry` - A new attempt was created for an existing verification window.
+      # - `challenged` - The verification is suspicious and is restricted to non-SMS and
+      #   non-voice channels only. This mode must be enabled for your customer account
+      #   by Prelude support.
+      # - `blocked` - The verification was blocked.
       sig do
         returns(
           PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol
@@ -147,6 +154,13 @@ module PreludeSDK
         # The method used for verifying this phone number.
         verification_method:,
         # The status of the verification.
+        #
+        # - `success` - A new verification window was created.
+        # - `retry` - A new attempt was created for an existing verification window.
+        # - `challenged` - The verification is suspicious and is restricted to non-SMS and
+        #   non-voice channels only. This mode must be enabled for your customer account
+        #   by Prelude support.
+        # - `blocked` - The verification was blocked.
         status:,
         # The ordered sequence of channels to be used for verification
         channels: nil,
@@ -243,6 +257,13 @@ module PreludeSDK
       end
 
       # The status of the verification.
+      #
+      # - `success` - A new verification window was created.
+      # - `retry` - A new attempt was created for an existing verification window.
+      # - `challenged` - The verification is suspicious and is restricted to non-SMS and
+      #   non-voice channels only. This mode must be enabled for your customer account
+      #   by Prelude support.
+      # - `blocked` - The verification was blocked.
       module Status
         extend PreludeSDK::Internal::Type::Enum
 
@@ -263,6 +284,11 @@ module PreludeSDK
         RETRY =
           T.let(
             :retry,
+            PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol
+          )
+        CHALLENGED =
+          T.let(
+            :challenged,
             PreludeSDK::Models::VerificationCreateResponse::Status::TaggedSymbol
           )
         BLOCKED =
