@@ -21,6 +21,13 @@ module PreludeSDK
       # @!attribute status
       #   The status of the verification.
       #
+      #   - `success` - A new verification window was created.
+      #   - `retry` - A new attempt was created for an existing verification window.
+      #   - `challenged` - The verification is suspicious and is restricted to non-SMS and
+      #     non-voice channels only. This mode must be enabled for your customer account
+      #     by Prelude support.
+      #   - `blocked` - The verification was blocked.
+      #
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
       required :status, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Status }
 
@@ -105,12 +112,20 @@ module PreludeSDK
 
       # The status of the verification.
       #
+      # - `success` - A new verification window was created.
+      # - `retry` - A new attempt was created for an existing verification window.
+      # - `challenged` - The verification is suspicious and is restricted to non-SMS and
+      #   non-voice channels only. This mode must be enabled for your customer account
+      #   by Prelude support.
+      # - `blocked` - The verification was blocked.
+      #
       # @see PreludeSDK::Models::VerificationCreateResponse#status
       module Status
         extend PreludeSDK::Internal::Type::Enum
 
         SUCCESS = :success
         RETRY = :retry
+        CHALLENGED = :challenged
         BLOCKED = :blocked
 
         # @!method self.values

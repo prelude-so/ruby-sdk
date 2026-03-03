@@ -82,13 +82,14 @@ module PreludeSDK
         def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::method_]
       end
 
-      type status = :success | :retry | :blocked
+      type status = :success | :retry | :challenged | :blocked
 
       module Status
         extend PreludeSDK::Internal::Type::Enum
 
         SUCCESS: :success
         RETRY: :retry
+        CHALLENGED: :challenged
         BLOCKED: :blocked
 
         def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateResponse::status]
