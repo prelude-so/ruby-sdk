@@ -2,6 +2,7 @@ module PreludeSDK
   module Models
     type notify_list_subscription_phone_numbers_params =
       {
+        config_id: String,
         cursor: String,
         limit: Integer,
         state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state
@@ -11,6 +12,8 @@ module PreludeSDK
     class NotifyListSubscriptionPhoneNumbersParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor config_id: String
 
       attr_reader cursor: String?
 
@@ -27,6 +30,7 @@ module PreludeSDK
       ) -> PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state
 
       def initialize: (
+        config_id: String,
         ?cursor: String,
         ?limit: Integer,
         ?state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state,
@@ -34,6 +38,7 @@ module PreludeSDK
       ) -> void
 
       def to_hash: -> {
+        config_id: String,
         cursor: String,
         limit: Integer,
         state: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::state,

@@ -15,14 +15,31 @@ module PreludeSDK
         end
 
       sig do
-        params(request_options: PreludeSDK::RequestOptions::OrHash).returns(
-          T.attached_class
+        returns(
+          PreludeSDK::VerificationManagementListPhoneNumbersParams::Action::OrSymbol
         )
       end
-      def self.new(request_options: {})
+      attr_accessor :action
+
+      sig do
+        params(
+          action:
+            PreludeSDK::VerificationManagementListPhoneNumbersParams::Action::OrSymbol,
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(T.attached_class)
+      end
+      def self.new(action:, request_options: {})
       end
 
-      sig { override.returns({ request_options: PreludeSDK::RequestOptions }) }
+      sig do
+        override.returns(
+          {
+            action:
+              PreludeSDK::VerificationManagementListPhoneNumbersParams::Action::OrSymbol,
+            request_options: PreludeSDK::RequestOptions
+          }
+        )
+      end
       def to_hash
       end
 

@@ -1,15 +1,26 @@
 module PreludeSDK
   module Models
     type verification_management_list_phone_numbers_params =
-      {  } & PreludeSDK::Internal::Type::request_parameters
+      {
+        action: PreludeSDK::Models::VerificationManagementListPhoneNumbersParams::action
+      }
+      & PreludeSDK::Internal::Type::request_parameters
 
     class VerificationManagementListPhoneNumbersParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
-      def initialize: (?request_options: PreludeSDK::request_opts) -> void
+      attr_accessor action: PreludeSDK::Models::VerificationManagementListPhoneNumbersParams::action
 
-      def to_hash: -> { request_options: PreludeSDK::RequestOptions }
+      def initialize: (
+        action: PreludeSDK::Models::VerificationManagementListPhoneNumbersParams::action,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        action: PreludeSDK::Models::VerificationManagementListPhoneNumbersParams::action,
+        request_options: PreludeSDK::RequestOptions
+      }
 
       type action = :allow | :block
 

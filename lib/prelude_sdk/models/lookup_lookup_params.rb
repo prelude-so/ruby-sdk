@@ -7,6 +7,12 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
+      # @!attribute phone_number
+      #   An E.164 formatted phone number to look up.
+      #
+      #   @return [String]
+      required :phone_number, String
+
       # @!attribute type
       #   Optional features. Possible values are:
       #
@@ -16,9 +22,11 @@ module PreludeSDK
       #   @return [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>, nil]
       optional :type, -> { PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::LookupLookupParams::Type] }
 
-      # @!method initialize(type: nil, request_options: {})
+      # @!method initialize(phone_number:, type: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::LookupLookupParams} for more details.
+      #
+      #   @param phone_number [String] An E.164 formatted phone number to look up.
       #
       #   @param type [Array<Symbol, PreludeSDK::Models::LookupLookupParams::Type>] Optional features. Possible values are:
       #

@@ -7,6 +7,11 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
+      # @!attribute config_id
+      #
+      #   @return [String]
+      required :config_id, String
+
       # @!attribute cursor
       #   Pagination cursor from the previous response
       #
@@ -25,7 +30,9 @@ module PreludeSDK
       #   @return [Symbol, PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams::State, nil]
       optional :state, enum: -> { PreludeSDK::NotifyListSubscriptionPhoneNumbersParams::State }
 
-      # @!method initialize(cursor: nil, limit: nil, state: nil, request_options: {})
+      # @!method initialize(config_id:, cursor: nil, limit: nil, state: nil, request_options: {})
+      #   @param config_id [String]
+      #
       #   @param cursor [String] Pagination cursor from the previous response
       #
       #   @param limit [Integer] Maximum number of phone numbers to return per page

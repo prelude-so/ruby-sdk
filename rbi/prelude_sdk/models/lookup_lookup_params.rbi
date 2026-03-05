@@ -11,6 +11,10 @@ module PreludeSDK
           T.any(PreludeSDK::LookupLookupParams, PreludeSDK::Internal::AnyHash)
         end
 
+      # An E.164 formatted phone number to look up.
+      sig { returns(String) }
+      attr_accessor :phone_number
+
       # Optional features. Possible values are:
       #
       # - `cnam` - Retrieve CNAM (Caller ID Name) along with other information. Contact
@@ -31,11 +35,14 @@ module PreludeSDK
 
       sig do
         params(
+          phone_number: String,
           type: T::Array[PreludeSDK::LookupLookupParams::Type::OrSymbol],
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        # An E.164 formatted phone number to look up.
+        phone_number:,
         # Optional features. Possible values are:
         #
         # - `cnam` - Retrieve CNAM (Caller ID Name) along with other information. Contact
@@ -48,6 +55,7 @@ module PreludeSDK
       sig do
         override.returns(
           {
+            phone_number: String,
             type: T::Array[PreludeSDK::LookupLookupParams::Type::OrSymbol],
             request_options: PreludeSDK::RequestOptions
           }

@@ -7,7 +7,13 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute config_id
+      #
+      #   @return [String]
+      required :config_id, String
+
+      # @!method initialize(config_id:, request_options: {})
+      #   @param config_id [String]
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
     end
   end
