@@ -1,20 +1,28 @@
 module PreludeSDK
   module Models
     type verification_management_set_phone_number_params =
-      { phone_number: String } & PreludeSDK::Internal::Type::request_parameters
+      {
+        action: PreludeSDK::Models::VerificationManagementSetPhoneNumberParams::action,
+        phone_number: String
+      }
+      & PreludeSDK::Internal::Type::request_parameters
 
     class VerificationManagementSetPhoneNumberParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
+      attr_accessor action: PreludeSDK::Models::VerificationManagementSetPhoneNumberParams::action
+
       attr_accessor phone_number: String
 
       def initialize: (
+        action: PreludeSDK::Models::VerificationManagementSetPhoneNumberParams::action,
         phone_number: String,
         ?request_options: PreludeSDK::request_opts
       ) -> void
 
       def to_hash: -> {
+        action: PreludeSDK::Models::VerificationManagementSetPhoneNumberParams::action,
         phone_number: String,
         request_options: PreludeSDK::RequestOptions
       }

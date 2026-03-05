@@ -14,15 +14,23 @@ module PreludeSDK
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :config_id
+
       sig do
-        params(request_options: PreludeSDK::RequestOptions::OrHash).returns(
-          T.attached_class
-        )
+        params(
+          config_id: String,
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(T.attached_class)
       end
-      def self.new(request_options: {})
+      def self.new(config_id:, request_options: {})
       end
 
-      sig { override.returns({ request_options: PreludeSDK::RequestOptions }) }
+      sig do
+        override.returns(
+          { config_id: String, request_options: PreludeSDK::RequestOptions }
+        )
+      end
       def to_hash
       end
     end

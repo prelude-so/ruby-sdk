@@ -14,17 +14,27 @@ module PreludeSDK
           )
         end
 
+      sig do
+        returns(
+          PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::OrSymbol
+        )
+      end
+      attr_accessor :action
+
       # An E.164 formatted phone number to remove from the list.
       sig { returns(String) }
       attr_accessor :phone_number
 
       sig do
         params(
+          action:
+            PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::OrSymbol,
           phone_number: String,
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
       def self.new(
+        action:,
         # An E.164 formatted phone number to remove from the list.
         phone_number:,
         request_options: {}
@@ -33,7 +43,12 @@ module PreludeSDK
 
       sig do
         override.returns(
-          { phone_number: String, request_options: PreludeSDK::RequestOptions }
+          {
+            action:
+              PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action::OrSymbol,
+            phone_number: String,
+            request_options: PreludeSDK::RequestOptions
+          }
         )
       end
       def to_hash

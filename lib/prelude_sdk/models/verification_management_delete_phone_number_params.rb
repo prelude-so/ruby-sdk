@@ -7,13 +7,20 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
+      # @!attribute action
+      #
+      #   @return [Symbol, PreludeSDK::Models::VerificationManagementDeletePhoneNumberParams::Action]
+      required :action, enum: -> { PreludeSDK::VerificationManagementDeletePhoneNumberParams::Action }
+
       # @!attribute phone_number
       #   An E.164 formatted phone number to remove from the list.
       #
       #   @return [String]
       required :phone_number, String
 
-      # @!method initialize(phone_number:, request_options: {})
+      # @!method initialize(action:, phone_number:, request_options: {})
+      #   @param action [Symbol, PreludeSDK::Models::VerificationManagementDeletePhoneNumberParams::Action]
+      #
       #   @param phone_number [String] An E.164 formatted phone number to remove from the list.
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
