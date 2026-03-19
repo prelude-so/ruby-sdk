@@ -88,8 +88,6 @@ class PreludeSDK::Test::Resources::NotifyTest < PreludeSDK::Test::ResourceTest
   end
 
   def test_send__required_params
-    skip("Mock server doesn't support callbacks yet")
-
     response = @prelude.notify.send_(template_id: "template_01k8ap1btqf5r9fq2c8ax5fhc9", to: "+33612345678")
 
     assert_pattern do
