@@ -1,5 +1,53 @@
 # Changelog
 
+## 0.3.0 (2026-03-23)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/prelude-so/ruby-sdk/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([24553b3](https://github.com/prelude-so/ruby-sdk/commit/24553b346bf3e424aa565b58dfc0a5ff339d0ffd))
+* **api:** api update ([c8e488b](https://github.com/prelude-so/ruby-sdk/commit/c8e488bc5106f22fd3c3e1e996aa865bf51ff3a1))
+* **api:** api update ([bc9d8d4](https://github.com/prelude-so/ruby-sdk/commit/bc9d8d41c941879192c531c1b5f07d619d4bfc7b))
+* **api:** api update ([1e8ea21](https://github.com/prelude-so/ruby-sdk/commit/1e8ea213c96c039d76722d6bc522e84e0ff0278f))
+* **api:** api update ([c339306](https://github.com/prelude-so/ruby-sdk/commit/c3393069dc67ed5ecaecb276b26c2308a00356d1))
+* **api:** api update ([ec6ca20](https://github.com/prelude-so/ruby-sdk/commit/ec6ca2085c7628b495b9486bd46c27656432e9eb))
+* **api:** api update ([64ca50e](https://github.com/prelude-so/ruby-sdk/commit/64ca50eae743d655d253c2ab6564eade851b60be))
+* **api:** api update ([240811f](https://github.com/prelude-so/ruby-sdk/commit/240811ffbc8caabaad46ce164bdb9ac3c6cbf9b0))
+
+
+### Bug Fixes
+
+* calling `break` out of streams should be instantaneous ([a880e79](https://github.com/prelude-so/ruby-sdk/commit/a880e79694d57969c34395666edbd365d5a65483))
+* **client:** add types for path params, and update structure of unions nested in params ([dff25fc](https://github.com/prelude-so/ruby-sdk/commit/dff25fc4134005a9e8a7f84d8fc6fbd5f9ac8098))
+* **client:** always add content-length to post body, even when empty ([73b8b98](https://github.com/prelude-so/ruby-sdk/commit/73b8b98d2f14602fb5b297a697d3894699659b84))
+* **client:** loosen json header parsing ([144e10b](https://github.com/prelude-so/ruby-sdk/commit/144e10bb50679a7748df724edf574a86fc8fbc9e))
+* **client:** serialize query parameters properly ([e59d46e](https://github.com/prelude-so/ruby-sdk/commit/e59d46eaa39b1033807c4c000cfb4220b1c8d0ff))
+* issue where json.parse errors when receiving HTTP 204 with nobody ([5960180](https://github.com/prelude-so/ruby-sdk/commit/59601805484363ad564d640ae2dec6a2eff08f26))
+* properly mock time in ruby ci tests ([19a7259](https://github.com/prelude-so/ruby-sdk/commit/19a7259d6c21e24e6773487981154c17215846f0))
+
+
+### Chores
+
+* **ci:** add build step ([9517e54](https://github.com/prelude-so/ruby-sdk/commit/9517e54b4ad0cf6bfeefdb9c227217f5f732cf27))
+* **ci:** skip uploading artifacts on stainless-internal branches ([b239f23](https://github.com/prelude-so/ruby-sdk/commit/b239f237e3b67cc6a01f992028fc5885336f6538))
+* **docs:** add missing descriptions ([874587d](https://github.com/prelude-so/ruby-sdk/commit/874587d45083a9a5e0fc188b378a9b8d58dd39a5))
+* **docs:** remove www prefix ([9c41466](https://github.com/prelude-so/ruby-sdk/commit/9c41466d86710318107d52692f8efb93515e9738))
+* **internal:** codegen related update ([4721c32](https://github.com/prelude-so/ruby-sdk/commit/4721c32fbc82220da55e561f4ad10ac22223108b))
+* **internal:** codegen related update ([d227583](https://github.com/prelude-so/ruby-sdk/commit/d227583e5a4a92a1cbc4bd75ed70b18df8a2f0ff))
+* **internal:** tweak CI branches ([1a3bb89](https://github.com/prelude-so/ruby-sdk/commit/1a3bb8905066138aec8da0bba42d3f699da7144f))
+* **internal:** update `actions/checkout` version ([dd49de2](https://github.com/prelude-so/ruby-sdk/commit/dd49de2c037b0f622d7cdead21ab464a1455363f))
+* **internal:** update gitignore ([603a4c6](https://github.com/prelude-so/ruby-sdk/commit/603a4c69350448463dae3f8d99d6aa09d0c48b1b))
+* **test:** do not count install time for mock server timeout ([77b5e70](https://github.com/prelude-so/ruby-sdk/commit/77b5e70ec2a773c70e55ca4cb3e527e8d2446459))
+* **tests:** bump steady to v0.19.4 ([001f050](https://github.com/prelude-so/ruby-sdk/commit/001f050d338b3015dba4527bc278795fadb04ac2))
+* **tests:** bump steady to v0.19.5 ([e824cb0](https://github.com/prelude-so/ruby-sdk/commit/e824cb0c8e2f3f601a4e07f7c36afeafcfff9b28))
+* update mock server docs ([6fa353c](https://github.com/prelude-so/ruby-sdk/commit/6fa353cd9d0112786119b6a50d96fc48c77253c3))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([4f1499f](https://github.com/prelude-so/ruby-sdk/commit/4f1499f85472caac00731960ba4a9623131c57f6))
+
 ## 0.2.0 (2025-12-05)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/prelude-so/ruby-sdk/compare/v0.1.0...v0.2.0)
