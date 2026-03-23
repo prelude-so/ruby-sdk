@@ -4,8 +4,6 @@ require_relative "../test_helper"
 
 class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::ResourceTest
   def test_create_required_params
-    skip("Prism doesn't support callbacks yet")
-
     response = @prelude.verification.create(target: {type: :phone_number, value: "+30123456789"})
 
     assert_pattern do

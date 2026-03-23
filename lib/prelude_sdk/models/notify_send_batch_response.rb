@@ -146,6 +146,22 @@ module PreludeSDK
           #   @return [Time, nil]
           optional :created_at, Time
 
+          # @!attribute encoding
+          #   The SMS encoding type based on message content. GSM-7 supports standard
+          #   characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+          #   emoji (up to 70 chars per segment). Only present for SMS messages.
+          #
+          #   @return [Symbol, PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding, nil]
+          optional :encoding, enum: -> { PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding }
+
+          # @!attribute estimated_segment_count
+          #   The estimated number of SMS segments for this message. This value is not
+          #   contractual; the actual segment count will be determined after the SMS is sent
+          #   by the provider. Only present for SMS messages.
+          #
+          #   @return [Integer, nil]
+          optional :estimated_segment_count, Integer
+
           # @!attribute expires_at
           #   The message expiration date in RFC3339 format.
           #
@@ -176,7 +192,10 @@ module PreludeSDK
           #   @return [String, nil]
           optional :to, String
 
-          # @!method initialize(id: nil, correlation_id: nil, created_at: nil, expires_at: nil, from: nil, locale: nil, schedule_at: nil, to: nil)
+          # @!method initialize(id: nil, correlation_id: nil, created_at: nil, encoding: nil, estimated_segment_count: nil, expires_at: nil, from: nil, locale: nil, schedule_at: nil, to: nil)
+          #   Some parameter documentations has been truncated, see
+          #   {PreludeSDK::Models::NotifySendBatchResponse::Result::Message} for more details.
+          #
           #   Present only if success is true.
           #
           #   @param id [String] The message identifier.
@@ -184,6 +203,10 @@ module PreludeSDK
           #   @param correlation_id [String] The correlation identifier for the message.
           #
           #   @param created_at [Time] The message creation date in RFC3339 format.
+          #
+          #   @param encoding [Symbol, PreludeSDK::Models::NotifySendBatchResponse::Result::Message::Encoding] The SMS encoding type based on message content. GSM-7 supports standard characte
+          #
+          #   @param estimated_segment_count [Integer] The estimated number of SMS segments for this message. This value is not contrac
           #
           #   @param expires_at [Time] The message expiration date in RFC3339 format.
           #
@@ -194,6 +217,21 @@ module PreludeSDK
           #   @param schedule_at [Time] When the message will actually be sent in RFC3339 format with timezone offset.
           #
           #   @param to [String] The recipient's phone number in E.164 format.
+
+          # The SMS encoding type based on message content. GSM-7 supports standard
+          # characters (up to 160 chars per segment), while UCS-2 supports Unicode including
+          # emoji (up to 70 chars per segment). Only present for SMS messages.
+          #
+          # @see PreludeSDK::Models::NotifySendBatchResponse::Result::Message#encoding
+          module Encoding
+            extend PreludeSDK::Internal::Type::Enum
+
+            GSM_7 = :"GSM-7"
+            UCS_2 = :"UCS-2"
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
         end
       end
     end

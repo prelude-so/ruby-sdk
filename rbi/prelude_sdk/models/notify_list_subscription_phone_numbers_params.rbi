@@ -14,6 +14,9 @@ module PreludeSDK
           )
         end
 
+      sig { returns(String) }
+      attr_accessor :config_id
+
       # Pagination cursor from the previous response
       sig { returns(T.nilable(String)) }
       attr_reader :cursor
@@ -48,6 +51,7 @@ module PreludeSDK
 
       sig do
         params(
+          config_id: String,
           cursor: String,
           limit: Integer,
           state:
@@ -56,6 +60,7 @@ module PreludeSDK
         ).returns(T.attached_class)
       end
       def self.new(
+        config_id:,
         # Pagination cursor from the previous response
         cursor: nil,
         # Maximum number of phone numbers to return per page
@@ -69,6 +74,7 @@ module PreludeSDK
       sig do
         override.returns(
           {
+            config_id: String,
             cursor: String,
             limit: Integer,
             state:

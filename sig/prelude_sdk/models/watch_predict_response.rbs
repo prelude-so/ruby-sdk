@@ -4,7 +4,8 @@ module PreludeSDK
       {
         id: String,
         prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
-        request_id: String
+        request_id: String,
+        risk_factors: ::Array[PreludeSDK::Models::WatchPredictResponse::risk_factor]
       }
 
     class WatchPredictResponse < PreludeSDK::Internal::Type::BaseModel
@@ -14,16 +15,24 @@ module PreludeSDK
 
       attr_accessor request_id: String
 
+      attr_reader risk_factors: ::Array[PreludeSDK::Models::WatchPredictResponse::risk_factor]?
+
+      def risk_factors=: (
+        ::Array[PreludeSDK::Models::WatchPredictResponse::risk_factor]
+      ) -> ::Array[PreludeSDK::Models::WatchPredictResponse::risk_factor]
+
       def initialize: (
         id: String,
         prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
-        request_id: String
+        request_id: String,
+        ?risk_factors: ::Array[PreludeSDK::Models::WatchPredictResponse::risk_factor]
       ) -> void
 
       def to_hash: -> {
         id: String,
         prediction: PreludeSDK::Models::WatchPredictResponse::prediction,
-        request_id: String
+        request_id: String,
+        risk_factors: ::Array[PreludeSDK::Models::WatchPredictResponse::risk_factor]
       }
 
       type prediction = :legitimate | :suspicious
@@ -35,6 +44,35 @@ module PreludeSDK
         SUSPICIOUS: :suspicious
 
         def self?.values: -> ::Array[PreludeSDK::Models::WatchPredictResponse::prediction]
+      end
+
+      type risk_factor =
+        :behavioral_pattern
+        | :device_attribute
+        | :fraud_database
+        | :location_discrepancy
+        | :network_fingerprint
+        | :poor_conversion_history
+        | :prefix_concentration
+        | :suspected_request_tampering
+        | :suspicious_ip_address
+        | :temporary_phone_number
+
+      module RiskFactor
+        extend PreludeSDK::Internal::Type::Enum
+
+        BEHAVIORAL_PATTERN: :behavioral_pattern
+        DEVICE_ATTRIBUTE: :device_attribute
+        FRAUD_DATABASE: :fraud_database
+        LOCATION_DISCREPANCY: :location_discrepancy
+        NETWORK_FINGERPRINT: :network_fingerprint
+        POOR_CONVERSION_HISTORY: :poor_conversion_history
+        PREFIX_CONCENTRATION: :prefix_concentration
+        SUSPECTED_REQUEST_TAMPERING: :suspected_request_tampering
+        SUSPICIOUS_IP_ADDRESS: :suspicious_ip_address
+        TEMPORARY_PHONE_NUMBER: :temporary_phone_number
+
+        def self?.values: -> ::Array[PreludeSDK::Models::WatchPredictResponse::risk_factor]
       end
     end
   end

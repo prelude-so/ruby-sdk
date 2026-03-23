@@ -12,8 +12,14 @@ module PreludeSDK
       #   @return [String]
       required :config_id, String
 
-      # @!method initialize(config_id:, request_options: {})
+      # @!attribute phone_number
+      #
+      #   @return [String]
+      required :phone_number, String
+
+      # @!method initialize(config_id:, phone_number:, request_options: {})
       #   @param config_id [String]
+      #   @param phone_number [String]
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
     end
   end

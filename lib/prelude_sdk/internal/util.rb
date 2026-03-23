@@ -485,11 +485,42 @@ module PreludeSDK
       end
 
       # @type [Regexp]
-      JSON_CONTENT = %r{^application/(?:vnd(?:\.[^.]+)*\+)?json(?!l)}
+      JSON_CONTENT = %r{^application/(?:[a-zA-Z0-9.-]+\+)?json(?!l)}
       # @type [Regexp]
       JSONL_CONTENT = %r{^application/(:?x-(?:n|l)djson)|(:?(?:x-)?jsonl)}
 
       class << self
+        # @api private
+        #
+        # @param query [Hash{Symbol=>Object}]
+        #
+        # @return [Hash{Symbol=>Object}]
+        def encode_query_params(query)
+          out = {}
+          query.each { write_query_param_element!(out, _1, _2) }
+          out
+        end
+
+        # @api private
+        #
+        # @param collection [Hash{Symbol=>Object}]
+        # @param key [String]
+        # @param element [Object]
+        #
+        # @return [nil]
+        private def write_query_param_element!(collection, key, element)
+          case element
+          in Hash
+            element.each do |name, value|
+              write_query_param_element!(collection, "#{key}[#{name}]", value)
+            end
+          in Array
+            collection[key] = element.map(&:to_s).join(",")
+          else
+            collection[key] = element.to_s
+          end
+        end
+
         # @api private
         #
         # @param y [Enumerator::Yielder]
@@ -657,7 +688,8 @@ module PreludeSDK
         def decode_content(headers, stream:, suppress_error: false)
           case (content_type = headers["content-type"])
           in PreludeSDK::Internal::Util::JSON_CONTENT
-            json = stream.to_a.join
+            return nil if (json = stream.to_a.join).empty?
+
             begin
               JSON.parse(json, symbolize_names: true)
             rescue JSON::ParserError => e
@@ -667,7 +699,11 @@ module PreludeSDK
           in PreludeSDK::Internal::Util::JSONL_CONTENT
             lines = decode_lines(stream)
             chain_fused(lines) do |y|
-              lines.each { y << JSON.parse(_1, symbolize_names: true) }
+              lines.each do
+                next if _1.empty?
+
+                y << JSON.parse(_1, symbolize_names: true)
+              end
             end
           in %r{^text/event-stream}
             lines = decode_lines(stream)

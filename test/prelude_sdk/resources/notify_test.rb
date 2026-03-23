@@ -88,8 +88,6 @@ class PreludeSDK::Test::Resources::NotifyTest < PreludeSDK::Test::ResourceTest
   end
 
   def test_send__required_params
-    skip("Prism doesn't support callbacks yet")
-
     response = @prelude.notify.send_(template_id: "template_01k8ap1btqf5r9fq2c8ax5fhc9", to: "+33612345678")
 
     assert_pattern do
@@ -106,6 +104,8 @@ class PreludeSDK::Test::Resources::NotifyTest < PreludeSDK::Test::ResourceTest
         variables: ^(PreludeSDK::Internal::Type::HashOf[String]),
         callback_url: String | nil,
         correlation_id: String | nil,
+        encoding: PreludeSDK::Models::NotifySendResponse::Encoding | nil,
+        estimated_segment_count: Integer | nil,
         from: String | nil,
         schedule_at: Time | nil
       }

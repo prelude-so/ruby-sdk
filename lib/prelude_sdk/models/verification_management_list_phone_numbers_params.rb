@@ -7,7 +7,13 @@ module PreludeSDK
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
 
-      # @!method initialize(request_options: {})
+      # @!attribute action
+      #
+      #   @return [Symbol, PreludeSDK::Models::VerificationManagementListPhoneNumbersParams::Action]
+      required :action, enum: -> { PreludeSDK::VerificationManagementListPhoneNumbersParams::Action }
+
+      # @!method initialize(action:, request_options: {})
+      #   @param action [Symbol, PreludeSDK::Models::VerificationManagementListPhoneNumbersParams::Action]
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
       module Action

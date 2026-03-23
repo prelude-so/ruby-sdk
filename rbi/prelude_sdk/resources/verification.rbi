@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Verify phone numbers.
     class Verification
       # Create a new verification for a specific phone number. If another non-expired
       # verification exists (the request is performed within the verification window),

@@ -33,6 +33,13 @@ module PreludeSDK
       #   @return [String, nil]
       optional :correlation_id, String
 
+      # @!attribute document
+      #   A document to attach to the message. Only supported on WhatsApp templates that
+      #   have a document header.
+      #
+      #   @return [PreludeSDK::Models::NotifySendParams::Document, nil]
+      optional :document, -> { PreludeSDK::NotifySendParams::Document }
+
       # @!attribute expires_at
       #   The message expiration date in RFC3339 format. The message will not be sent if
       #   this time is reached.
@@ -76,7 +83,7 @@ module PreludeSDK
       #   @return [Hash{Symbol=>String}, nil]
       optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-      # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::NotifySendParams} for more details.
       #
@@ -87,6 +94,8 @@ module PreludeSDK
       #   @param callback_url [String] The URL where webhooks will be sent for message delivery events.
       #
       #   @param correlation_id [String] A user-defined identifier to correlate this message with your internal systems.
+      #
+      #   @param document [PreludeSDK::Models::NotifySendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
       #
       #   @param expires_at [Time] The message expiration date in RFC3339 format. The message will not be sent if t
       #
@@ -101,6 +110,28 @@ module PreludeSDK
       #   @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
+
+      class Document < PreludeSDK::Internal::Type::BaseModel
+        # @!attribute filename
+        #   The filename to display for the document.
+        #
+        #   @return [String]
+        required :filename, String
+
+        # @!attribute url
+        #   The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+        #
+        #   @return [String]
+        required :url, String
+
+        # @!method initialize(filename:, url:)
+        #   A document to attach to the message. Only supported on WhatsApp templates that
+        #   have a document header.
+        #
+        #   @param filename [String] The filename to display for the document.
+        #
+        #   @param url [String] The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+      end
 
       # The preferred channel to be used in priority for message delivery. If the
       # channel is unavailable, the system will fallback to other available channels.

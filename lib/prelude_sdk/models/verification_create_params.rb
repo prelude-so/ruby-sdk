@@ -111,8 +111,8 @@ module PreludeSDK
 
       class Options < PreludeSDK::Internal::Type::BaseModel
         # @!attribute app_realm
-        #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
-        #   Currently only Android devices are supported.
+        #   This allows automatic OTP retrieval on mobile apps and web browsers. Supported
+        #   platforms are Android (SMS Retriever API) and Web (WebOTP API).
         #
         #   @return [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm, nil]
         optional :app_realm, -> { PreludeSDK::VerificationCreateParams::Options::AppRealm }
@@ -139,12 +139,6 @@ module PreludeSDK
         #
         #   @return [String, nil]
         optional :custom_code, String
-
-        # @!attribute integration
-        #   The integration that triggered the verification.
-        #
-        #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Integration, nil]
-        optional :integration, enum: -> { PreludeSDK::VerificationCreateParams::Options::Integration }
 
         # @!attribute locale
         #   A BCP-47 formatted locale string with the language the text message will be sent
@@ -195,21 +189,19 @@ module PreludeSDK
         #   @return [Hash{Symbol=>String}, nil]
         optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, integration: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
+        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::VerificationCreateParams::Options} for more details.
         #
         #   Verification options
         #
-        #   @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm] This allows you to automatically retrieve and fill the OTP code on mobile apps.
+        #   @param app_realm [PreludeSDK::Models::VerificationCreateParams::Options::AppRealm] This allows automatic OTP retrieval on mobile apps and web browsers. Supported p
         #
         #   @param callback_url [String] The URL where webhooks will be sent when verification events occur, including ve
         #
         #   @param code_size [Integer] The size of the code generated. It should be between 4 and 8. Defaults to the co
         #
         #   @param custom_code [String] The custom code to use for OTP verification. To use the custom code feature, con
-        #
-        #   @param integration [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Integration] The integration that triggered the verification.
         #
         #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
         #
@@ -226,16 +218,19 @@ module PreludeSDK
         # @see PreludeSDK::Models::VerificationCreateParams::Options#app_realm
         class AppRealm < PreludeSDK::Internal::Type::BaseModel
           # @!attribute platform
-          #   The platform the SMS will be sent to. We are currently only supporting
-          #   "android".
+          #   The platform for automatic OTP retrieval. Use "android" for the SMS Retriever
+          #   API or "web" for the WebOTP API.
           #
           #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform]
           required :platform, enum: -> { PreludeSDK::VerificationCreateParams::Options::AppRealm::Platform }
 
           # @!attribute value
-          #   The Android SMS Retriever API hash code that identifies your app. For more
-          #   information, see
-          #   [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
+          #   The value depends on the platform:
+          #
+          #   - For Android: The SMS Retriever API hash code (11 characters). See
+          #     [Google documentation](https://developers.google.com/identity/sms-retriever/verify#computing_your_apps_hash_string).
+          #   - For Web: The origin domain (e.g., "example.com" or "www.example.com"). See
+          #     [WebOTP API documentation](https://developer.mozilla.org/en-US/docs/Web/API/WebOTP_API).
           #
           #   @return [String]
           required :value, String
@@ -245,38 +240,26 @@ module PreludeSDK
           #   {PreludeSDK::Models::VerificationCreateParams::Options::AppRealm} for more
           #   details.
           #
-          #   This allows you to automatically retrieve and fill the OTP code on mobile apps.
-          #   Currently only Android devices are supported.
+          #   This allows automatic OTP retrieval on mobile apps and web browsers. Supported
+          #   platforms are Android (SMS Retriever API) and Web (WebOTP API).
           #
-          #   @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform] The platform the SMS will be sent to. We are currently only supporting "android"
+          #   @param platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::Platform] The platform for automatic OTP retrieval. Use "android" for the SMS Retriever AP
           #
-          #   @param value [String] The Android SMS Retriever API hash code that identifies your app.
+          #   @param value [String] The value depends on the platform:
 
-          # The platform the SMS will be sent to. We are currently only supporting
-          # "android".
+          # The platform for automatic OTP retrieval. Use "android" for the SMS Retriever
+          # API or "web" for the WebOTP API.
           #
           # @see PreludeSDK::Models::VerificationCreateParams::Options::AppRealm#platform
           module Platform
             extend PreludeSDK::Internal::Type::Enum
 
             ANDROID = :android
+            WEB = :web
 
             # @!method self.values
             #   @return [Array<Symbol>]
           end
-        end
-
-        # The integration that triggered the verification.
-        #
-        # @see PreludeSDK::Models::VerificationCreateParams::Options#integration
-        module Integration
-          extend PreludeSDK::Internal::Type::Enum
-
-          AUTH0 = :auth0
-          SUPABASE = :supabase
-
-          # @!method self.values
-          #   @return [Array<Symbol>]
         end
 
         # The method used for verifying this phone number. The 'voice' option provides an
@@ -325,8 +308,9 @@ module PreludeSDK
         optional :app_version, String
 
         # @!attribute device_id
-        #   The unique identifier for the user's device. For Android, this corresponds to
-        #   the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
+        #   A unique ID for the user's device. You should ensure that each user device has a
+        #   unique `device_id` value. Ideally, for Android, this corresponds to the
+        #   `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
         #
         #   @return [String, nil]
         optional :device_id, String
@@ -344,23 +328,26 @@ module PreludeSDK
         optional :device_platform, enum: -> { PreludeSDK::VerificationCreateParams::Signals::DevicePlatform }
 
         # @!attribute ip
-        #   The IP address of the user's device.
+        #   The public IP v4 or v6 address of the end-user's device. You should collect this
+        #   from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
+        #   `Forwarded`, `True-Client-IP`, `CF-Connecting-IP` or an equivalent header to get
+        #   the actual public IP of the end-user's device.
         #
         #   @return [String, nil]
         optional :ip, String
 
         # @!attribute is_trusted_user
-        #   This signal should provide a higher level of trust, indicating that the user is
-        #   genuine. Contact us to discuss your use case. For more details, refer to
+        #   This signal should indicate a higher level of trust, explicitly stating that the
+        #   user is genuine. Contact us to discuss your use case. For more details, refer to
         #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
         #
         #   @return [Boolean, nil]
         optional :is_trusted_user, PreludeSDK::Internal::Type::Boolean
 
         # @!attribute ja4_fingerprint
-        #   The JA4 fingerprint observed for the connection. Prelude will infer it
-        #   automatically when requests go through our client SDK (which uses Prelude's
-        #   edge), but you can also provide it explicitly if you terminate TLS yourself.
+        #   The JA4 fingerprint observed for the end-user's connection. Prelude will infer
+        #   it automatically when you use our Frontend SDKs (which use Prelude's edge
+        #   network), but you can also forward the value if you terminate TLS yourself.
         #
         #   @return [String, nil]
         optional :ja4_fingerprint, String
@@ -388,17 +375,17 @@ module PreludeSDK
         #
         #   @param app_version [String] The version of your application.
         #
-        #   @param device_id [String] The unique identifier for the user's device. For Android, this corresponds to th
+        #   @param device_id [String] A unique ID for the user's device. You should ensure that each user device has a
         #
         #   @param device_model [String] The model of the user's device.
         #
         #   @param device_platform [Symbol, PreludeSDK::Models::VerificationCreateParams::Signals::DevicePlatform] The type of the user's device.
         #
-        #   @param ip [String] The IP address of the user's device.
+        #   @param ip [String] The public IP v4 or v6 address of the end-user's device. You should collect this
         #
-        #   @param is_trusted_user [Boolean] This signal should provide a higher level of trust, indicating that the user is
+        #   @param is_trusted_user [Boolean] This signal should indicate a higher level of trust, explicitly stating that the
         #
-        #   @param ja4_fingerprint [String] The JA4 fingerprint observed for the connection. Prelude will infer it automatic
+        #   @param ja4_fingerprint [String] The JA4 fingerprint observed for the end-user's connection. Prelude will infer i
         #
         #   @param os_version [String] The version of the user's device operating system.
         #

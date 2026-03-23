@@ -12,6 +12,11 @@ module PreludeSDK
       #   @return [String]
       required :config_id, String
 
+      # @!attribute phone_number
+      #
+      #   @return [String]
+      required :phone_number, String
+
       # @!attribute cursor
       #   Pagination cursor from the previous response
       #
@@ -24,8 +29,10 @@ module PreludeSDK
       #   @return [Integer, nil]
       optional :limit, Integer
 
-      # @!method initialize(config_id:, cursor: nil, limit: nil, request_options: {})
+      # @!method initialize(config_id:, phone_number:, cursor: nil, limit: nil, request_options: {})
       #   @param config_id [String]
+      #
+      #   @param phone_number [String]
       #
       #   @param cursor [String] Pagination cursor from the previous response
       #

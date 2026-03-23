@@ -4,8 +4,6 @@ require_relative "../test_helper"
 
 class PreludeSDK::Test::Resources::TransactionalTest < PreludeSDK::Test::ResourceTest
   def test_send__required_params
-    skip("Prism doesn't support callbacks yet")
-
     response =
       @prelude.transactional.send_(template_id: "template_01hynf45qvevj844m9az2x2f3c", to: "+30123456789")
 

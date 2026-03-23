@@ -1,12 +1,17 @@
 module PreludeSDK
   module Models
     type lookup_lookup_params =
-      { type: ::Array[PreludeSDK::Models::LookupLookupParams::type_] }
+      {
+        phone_number: String,
+        type: ::Array[PreludeSDK::Models::LookupLookupParams::type_]
+      }
       & PreludeSDK::Internal::Type::request_parameters
 
     class LookupLookupParams < PreludeSDK::Internal::Type::BaseModel
       extend PreludeSDK::Internal::Type::RequestParameters::Converter
       include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor phone_number: String
 
       attr_reader type: ::Array[PreludeSDK::Models::LookupLookupParams::type_]?
 
@@ -15,11 +20,13 @@ module PreludeSDK
       ) -> ::Array[PreludeSDK::Models::LookupLookupParams::type_]
 
       def initialize: (
+        phone_number: String,
         ?type: ::Array[PreludeSDK::Models::LookupLookupParams::type_],
         ?request_options: PreludeSDK::request_opts
       ) -> void
 
       def to_hash: -> {
+        phone_number: String,
         type: ::Array[PreludeSDK::Models::LookupLookupParams::type_],
         request_options: PreludeSDK::RequestOptions
       }

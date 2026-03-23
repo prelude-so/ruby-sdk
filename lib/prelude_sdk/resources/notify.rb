@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Send transactional and marketing messages with compliance enforcement.
     class Notify
       # Retrieve a specific subscription management configuration by its ID.
       #
@@ -70,10 +71,11 @@ module PreludeSDK
       # @see PreludeSDK::Models::NotifyListSubscriptionConfigsParams
       def list_subscription_configs(params = {})
         parsed, options = PreludeSDK::NotifyListSubscriptionConfigsParams.dump_request(params)
+        query = PreludeSDK::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: "v2/notify/management/subscriptions",
-          query: parsed,
+          query: query,
           model: PreludeSDK::Models::NotifyListSubscriptionConfigsResponse,
           options: options
         )
@@ -101,6 +103,7 @@ module PreludeSDK
       # @see PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsParams
       def list_subscription_phone_number_events(phone_number, params)
         parsed, options = PreludeSDK::NotifyListSubscriptionPhoneNumberEventsParams.dump_request(params)
+        query = PreludeSDK::Internal::Util.encode_query_params(parsed)
         config_id =
           parsed.delete(:config_id) do
             raise ArgumentError.new("missing required path argument #{_1}")
@@ -112,7 +115,7 @@ module PreludeSDK
             config_id,
             phone_number
           ],
-          query: parsed,
+          query: query,
           model: PreludeSDK::Models::NotifyListSubscriptionPhoneNumberEventsResponse,
           options: options
         )
@@ -140,10 +143,11 @@ module PreludeSDK
       # @see PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams
       def list_subscription_phone_numbers(config_id, params = {})
         parsed, options = PreludeSDK::NotifyListSubscriptionPhoneNumbersParams.dump_request(params)
+        query = PreludeSDK::Internal::Util.encode_query_params(parsed)
         @client.request(
           method: :get,
           path: ["v2/notify/management/subscriptions/%1$s/phone_numbers", config_id],
-          query: parsed,
+          query: query,
           model: PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersResponse,
           options: options
         )
@@ -155,7 +159,7 @@ module PreludeSDK
       # Send transactional and marketing messages to your users via SMS and WhatsApp
       # with automatic compliance enforcement.
       #
-      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier configured by your Customer Success team.
       #
@@ -164,6 +168,8 @@ module PreludeSDK
       # @param callback_url [String] The URL where webhooks will be sent for message delivery events.
       #
       # @param correlation_id [String] A user-defined identifier to correlate this message with your internal systems.
+      #
+      # @param document [PreludeSDK::Models::NotifySendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
       #
       # @param expires_at [Time] The message expiration date in RFC3339 format. The message will not be sent if t
       #
@@ -198,7 +204,7 @@ module PreludeSDK
       #
       # Send the same message to multiple recipients in a single request.
       #
-      # @overload send_batch(template_id:, to:, callback_url: nil, correlation_id: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @overload send_batch(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier configured by your Customer Success team.
       #
@@ -207,6 +213,8 @@ module PreludeSDK
       # @param callback_url [String] The URL where webhooks will be sent for delivery events.
       #
       # @param correlation_id [String] A user-defined identifier to correlate this request with your internal systems.
+      #
+      # @param document [PreludeSDK::Models::NotifySendBatchParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
       #
       # @param expires_at [Time] The message expiration date in RFC3339 format. Messages will not be sent after t
       #

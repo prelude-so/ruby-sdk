@@ -2,6 +2,7 @@
 
 module PreludeSDK
   module Resources
+    # Send transactional and marketing messages with compliance enforcement.
     class Notify
       # Retrieve a specific subscription management configuration by its ID.
       sig do
@@ -121,6 +122,7 @@ module PreludeSDK
           to: String,
           callback_url: String,
           correlation_id: String,
+          document: PreludeSDK::NotifySendParams::Document::OrHash,
           expires_at: Time,
           from: String,
           locale: String,
@@ -142,6 +144,9 @@ module PreludeSDK
         # It is returned in the response and any webhook events that refer to this
         # message.
         correlation_id: nil,
+        # A document to attach to the message. Only supported on WhatsApp templates that
+        # have a document header.
+        document: nil,
         # The message expiration date in RFC3339 format. The message will not be sent if
         # this time is reached.
         expires_at: nil,
@@ -172,6 +177,7 @@ module PreludeSDK
           to: T::Array[String],
           callback_url: String,
           correlation_id: String,
+          document: PreludeSDK::NotifySendBatchParams::Document::OrHash,
           expires_at: Time,
           from: String,
           locale: String,
@@ -191,6 +197,9 @@ module PreludeSDK
         callback_url: nil,
         # A user-defined identifier to correlate this request with your internal systems.
         correlation_id: nil,
+        # A document to attach to the message. Only supported on WhatsApp templates that
+        # have a document header.
+        document: nil,
         # The message expiration date in RFC3339 format. Messages will not be sent after
         # this time.
         expires_at: nil,

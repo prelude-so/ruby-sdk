@@ -35,6 +35,16 @@ module PreludeSDK
       sig { params(correlation_id: String).void }
       attr_writer :correlation_id
 
+      # A document to attach to the message. Only supported on WhatsApp templates that
+      # have a document header.
+      sig { returns(T.nilable(PreludeSDK::NotifySendParams::Document)) }
+      attr_reader :document
+
+      sig do
+        params(document: PreludeSDK::NotifySendParams::Document::OrHash).void
+      end
+      attr_writer :document
+
       # The message expiration date in RFC3339 format. The message will not be sent if
       # this time is reached.
       sig { returns(T.nilable(Time)) }
@@ -99,6 +109,7 @@ module PreludeSDK
           to: String,
           callback_url: String,
           correlation_id: String,
+          document: PreludeSDK::NotifySendParams::Document::OrHash,
           expires_at: Time,
           from: String,
           locale: String,
@@ -120,6 +131,9 @@ module PreludeSDK
         # It is returned in the response and any webhook events that refer to this
         # message.
         correlation_id: nil,
+        # A document to attach to the message. Only supported on WhatsApp templates that
+        # have a document header.
+        document: nil,
         # The message expiration date in RFC3339 format. The message will not be sent if
         # this time is reached.
         expires_at: nil,
@@ -150,6 +164,7 @@ module PreludeSDK
             to: String,
             callback_url: String,
             correlation_id: String,
+            document: PreludeSDK::NotifySendParams::Document,
             expires_at: Time,
             from: String,
             locale: String,
@@ -162,6 +177,39 @@ module PreludeSDK
         )
       end
       def to_hash
+      end
+
+      class Document < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              PreludeSDK::NotifySendParams::Document,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
+
+        # The filename to display for the document.
+        sig { returns(String) }
+        attr_accessor :filename
+
+        # The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+        sig { returns(String) }
+        attr_accessor :url
+
+        # A document to attach to the message. Only supported on WhatsApp templates that
+        # have a document header.
+        sig { params(filename: String, url: String).returns(T.attached_class) }
+        def self.new(
+          # The filename to display for the document.
+          filename:,
+          # The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+          url:
+        )
+        end
+
+        sig { override.returns({ filename: String, url: String }) }
+        def to_hash
+        end
       end
 
       # The preferred channel to be used in priority for message delivery. If the

@@ -19,21 +19,28 @@ module PreludeSDK
     # @return [String]
     attr_reader :api_token
 
+    # Retrieve detailed information about a phone number including carrier data, line
+    # type, and portability status.
     # @return [PreludeSDK::Resources::Lookup]
     attr_reader :lookup
 
+    # Send transactional and marketing messages with compliance enforcement.
     # @return [PreludeSDK::Resources::Notify]
     attr_reader :notify
 
+    # Send transactional messages (deprecated - use Notify API instead).
     # @return [PreludeSDK::Resources::Transactional]
     attr_reader :transactional
 
+    # Verify phone numbers.
     # @return [PreludeSDK::Resources::Verification]
     attr_reader :verification
 
+    # Verify phone numbers.
     # @return [PreludeSDK::Resources::VerificationManagement]
     attr_reader :verification_management
 
+    # Evaluate email addresses and phone numbers for trustworthiness.
     # @return [PreludeSDK::Resources::Watch]
     attr_reader :watch
 
