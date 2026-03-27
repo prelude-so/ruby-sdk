@@ -228,6 +228,11 @@ module PreludeSDK
             :sms,
             PreludeSDK::NotifySendParams::PreferredChannel::TaggedSymbol
           )
+        RCS =
+          T.let(
+            :rcs,
+            PreludeSDK::NotifySendParams::PreferredChannel::TaggedSymbol
+          )
         WHATSAPP =
           T.let(
             :whatsapp,
