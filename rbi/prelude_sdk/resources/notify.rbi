@@ -114,8 +114,8 @@ module PreludeSDK
       )
       end
 
-      # Send transactional and marketing messages to your users via SMS and WhatsApp
-      # with automatic compliance enforcement.
+      # Send transactional and marketing messages to your users via SMS, RCS and
+      # WhatsApp with automatic compliance enforcement.
       sig do
         params(
           template_id: String,

@@ -106,12 +106,13 @@ module PreludeSDK
         def to_hash: -> { filename: String, url: String }
       end
 
-      type preferred_channel = :sms | :whatsapp
+      type preferred_channel = :sms | :rcs | :whatsapp
 
       module PreferredChannel
         extend PreludeSDK::Internal::Type::Enum
 
         SMS: :sms
+        RCS: :rcs
         WHATSAPP: :whatsapp
 
         def self?.values: -> ::Array[PreludeSDK::Models::NotifySendBatchParams::preferred_channel]

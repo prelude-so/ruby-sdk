@@ -156,8 +156,8 @@ module PreludeSDK
       # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::NotifySendParams} for more details.
       #
-      # Send transactional and marketing messages to your users via SMS and WhatsApp
-      # with automatic compliance enforcement.
+      # Send transactional and marketing messages to your users via SMS, RCS and
+      # WhatsApp with automatic compliance enforcement.
       #
       # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #

@@ -139,6 +139,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         SMS = :sms
+        RCS = :rcs
         WHATSAPP = :whatsapp
 
         # @!method self.values
