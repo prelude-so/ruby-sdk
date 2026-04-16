@@ -121,6 +121,7 @@ module PreludeSDK
           template_id: String,
           to: String,
           callback_url: String,
+          context: PreludeSDK::NotifySendParams::Context::OrHash,
           correlation_id: String,
           document: PreludeSDK::NotifySendParams::Document::OrHash,
           expires_at: Time,
@@ -129,6 +130,7 @@ module PreludeSDK
           preferred_channel:
             PreludeSDK::NotifySendParams::PreferredChannel::OrSymbol,
           schedule_at: Time,
+          text: String,
           variables: T::Hash[Symbol, String],
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(PreludeSDK::Models::NotifySendResponse)
@@ -140,6 +142,9 @@ module PreludeSDK
         to:,
         # The URL where webhooks will be sent for message delivery events.
         callback_url: nil,
+        # Context for replying to an inbound message. When provided, the message is sent
+        # as a WhatsApp reply within the 24-hour conversation window.
+        context: nil,
         # A user-defined identifier to correlate this message with your internal systems.
         # It is returned in the response and any webhook events that refer to this
         # message.
@@ -164,6 +169,10 @@ module PreludeSDK
         # can be scheduled up to 90 days in advance and will be automatically adjusted for
         # compliance with local time window restrictions.
         schedule_at: nil,
+        # The reply message body. Required when `context.reply_to` is provided. Used for
+        # 2-way WhatsApp messaging to send free-form text replies within a conversation
+        # window.
+        text: nil,
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
