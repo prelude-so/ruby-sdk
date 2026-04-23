@@ -69,13 +69,43 @@ module PreludeSDK
       #   @return [String, nil]
       optional :request_id, String
 
+      # @!attribute risk_factors
+      #   The risk factors that contributed to the verification being blocked. Only
+      #   present when status is "blocked" and the anti-fraud system detected specific
+      #   risk signals.
+      #
+      #   - `behavioral_pattern` - The phone number past behavior during verification
+      #     flows exhibits suspicious patterns.
+      #   - `device_attribute` - The device exhibits characteristics associated with
+      #     suspicious activity patterns.
+      #   - `fraud_database` - The phone number has been flagged as suspicious in one or
+      #     more of our fraud databases.
+      #   - `location_discrepancy` - The phone number prefix and IP address discrepancy
+      #     indicates potential fraud.
+      #   - `network_fingerprint` - The network connection exhibits characteristics
+      #     associated with suspicious activity patterns.
+      #   - `poor_conversion_history` - The phone number has a history of poorly
+      #     converting to a verified phone number.
+      #   - `prefix_concentration` - The phone number is part of a range known to be
+      #     associated with suspicious activity patterns.
+      #   - `suspected_request_tampering` - The SDK signature is invalid and the request
+      #     is considered to be tampered with.
+      #   - `suspicious_ip_address` - The IP address is deemed to be associated with
+      #     suspicious activity patterns.
+      #   - `temporary_phone_number` - The phone number is known to be a temporary or
+      #     disposable number.
+      #
+      #   @return [Array<Symbol, PreludeSDK::Models::VerificationCreateResponse::RiskFactor>, nil]
+      optional :risk_factors,
+               -> { PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::Models::VerificationCreateResponse::RiskFactor] }
+
       # @!attribute silent
       #   The silent verification specific properties.
       #
       #   @return [PreludeSDK::Models::VerificationCreateResponse::Silent, nil]
       optional :silent, -> { PreludeSDK::Models::VerificationCreateResponse::Silent }
 
-      # @!method initialize(id:, verification_method:, status:, channels: nil, metadata: nil, reason: nil, request_id: nil, silent: nil)
+      # @!method initialize(id:, verification_method:, status:, channels: nil, metadata: nil, reason: nil, request_id: nil, risk_factors: nil, silent: nil)
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::VerificationCreateResponse} for more details.
       #
@@ -92,6 +122,8 @@ module PreludeSDK
       #   @param reason [Symbol, PreludeSDK::Models::VerificationCreateResponse::Reason] The reason why the verification was blocked. Only present when status is "blocke
       #
       #   @param request_id [String]
+      #
+      #   @param risk_factors [Array<Symbol, PreludeSDK::Models::VerificationCreateResponse::RiskFactor>] The risk factors that contributed to the verification being blocked. Only presen
       #
       #   @param silent [PreludeSDK::Models::VerificationCreateResponse::Silent] The silent verification specific properties.
 
@@ -193,6 +225,24 @@ module PreludeSDK
         INVALID_SIGNATURE = :invalid_signature
         REPEATED_ATTEMPTS = :repeated_attempts
         SUSPICIOUS = :suspicious
+
+        # @!method self.values
+        #   @return [Array<Symbol>]
+      end
+
+      module RiskFactor
+        extend PreludeSDK::Internal::Type::Enum
+
+        BEHAVIORAL_PATTERN = :behavioral_pattern
+        DEVICE_ATTRIBUTE = :device_attribute
+        FRAUD_DATABASE = :fraud_database
+        LOCATION_DISCREPANCY = :location_discrepancy
+        NETWORK_FINGERPRINT = :network_fingerprint
+        POOR_CONVERSION_HISTORY = :poor_conversion_history
+        PREFIX_CONCENTRATION = :prefix_concentration
+        SUSPECTED_REQUEST_TAMPERING = :suspected_request_tampering
+        SUSPICIOUS_IP_ADDRESS = :suspicious_ip_address
+        TEMPORARY_PHONE_NUMBER = :temporary_phone_number
 
         # @!method self.values
         #   @return [Array<Symbol>]

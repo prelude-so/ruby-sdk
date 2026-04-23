@@ -19,6 +19,7 @@ class PreludeSDK::Test::Resources::VerificationTest < PreludeSDK::Test::Resource
         metadata: PreludeSDK::Models::VerificationCreateResponse::Metadata | nil,
         reason: PreludeSDK::Models::VerificationCreateResponse::Reason | nil,
         request_id: String | nil,
+        risk_factors: ^(PreludeSDK::Internal::Type::ArrayOf[enum: PreludeSDK::Models::VerificationCreateResponse::RiskFactor]) | nil,
         silent: PreludeSDK::Models::VerificationCreateResponse::Silent | nil
       }
     end
