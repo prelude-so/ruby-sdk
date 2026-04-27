@@ -14,7 +14,8 @@ module PreludeSDK
           )
         end
 
-      # A list of events to dispatch.
+      # A list of events to dispatch. A maximum of 100 events can be sent in a single
+      # request.
       sig { returns(T::Array[PreludeSDK::WatchSendEventsParams::Event]) }
       attr_accessor :events
 
@@ -25,7 +26,8 @@ module PreludeSDK
         ).returns(T.attached_class)
       end
       def self.new(
-        # A list of events to dispatch.
+        # A list of events to dispatch. A maximum of 100 events can be sent in a single
+        # request.
         events:,
         request_options: {}
       )
