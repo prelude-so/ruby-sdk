@@ -35,12 +35,15 @@ module PreludeSDK
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {PreludeSDK::Models::WatchSendEventsParams} for more details.
+      #
       # Send real-time event data from end-user interactions within your application.
       # Events will be analyzed for proactive fraud prevention and risk scoring.
       #
       # @overload send_events(events:, request_options: {})
       #
-      # @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>] A list of events to dispatch.
+      # @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>] A list of events to dispatch. A maximum of 100 events can be sent in a single re
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -58,12 +61,15 @@ module PreludeSDK
         )
       end
 
+      # Some parameter documentations has been truncated, see
+      # {PreludeSDK::Models::WatchSendFeedbacksParams} for more details.
+      #
       # Send feedback regarding your end-users verification funnel. Events will be
       # analyzed for proactive fraud prevention and risk scoring.
       #
       # @overload send_feedbacks(feedbacks:, request_options: {})
       #
-      # @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>] A list of feedbacks to send.
+      # @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>] A list of feedbacks to send. A maximum of 100 feedbacks can be sent in a single
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
