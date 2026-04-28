@@ -22,7 +22,7 @@ module PreludeSDK
       #
       # @param correlation_id [String] A user-defined identifier to correlate this transactional message with. It is re
       #
-      # @param document [PreludeSDK::Models::TransactionalSendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
+      # @param document [PreludeSDK::Models::TransactionalSendParams::Document] A media attachment to include in the message header. Supported on
       #
       # @param expires_at [String] The message expiration date.
       #
