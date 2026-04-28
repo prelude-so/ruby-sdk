@@ -41,8 +41,16 @@ module PreludeSDK
       optional :correlation_id, String
 
       # @!attribute document
-      #   A document to attach to the message. Only supported on WhatsApp templates that
-      #   have a document header.
+      #   A media attachment to include in the message header. Supported on WhatsApp
+      #   templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+      #   type is determined by the template's registered header format; send the matching
+      #   file type for each.
+      #
+      #   - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+      #     required and displayed to the recipient.
+      #   - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+      #     is ignored.
+      #   - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
       #
       #   @return [PreludeSDK::Models::NotifySendParams::Document, nil]
       optional :document, -> { PreludeSDK::NotifySendParams::Document }
@@ -112,7 +120,7 @@ module PreludeSDK
       #
       #   @param correlation_id [String] A user-defined identifier to correlate this message with your internal systems.
       #
-      #   @param document [PreludeSDK::Models::NotifySendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
+      #   @param document [PreludeSDK::Models::NotifySendParams::Document] A media attachment to include in the message header. Supported on
       #
       #   @param expires_at [Time] The message expiration date in RFC3339 format. The message will not be sent if t
       #
@@ -149,25 +157,39 @@ module PreludeSDK
       end
 
       class Document < PreludeSDK::Internal::Type::BaseModel
-        # @!attribute filename
-        #   The filename to display for the document.
-        #
-        #   @return [String]
-        required :filename, String
-
         # @!attribute url
-        #   The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+        #   HTTPS URL of the media file. The file extension must match the template's
+        #   registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+        #   for VIDEO).
         #
         #   @return [String]
         required :url, String
 
-        # @!method initialize(filename:, url:)
-        #   A document to attach to the message. Only supported on WhatsApp templates that
-        #   have a document header.
+        # @!attribute filename
+        #   Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+        #   header; ignored for `IMAGE` and `VIDEO` headers.
         #
-        #   @param filename [String] The filename to display for the document.
+        #   @return [String, nil]
+        optional :filename, String
+
+        # @!method initialize(url:, filename: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::NotifySendParams::Document} for more details.
         #
-        #   @param url [String] The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+        #   A media attachment to include in the message header. Supported on WhatsApp
+        #   templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+        #   type is determined by the template's registered header format; send the matching
+        #   file type for each.
+        #
+        #   - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+        #     required and displayed to the recipient.
+        #   - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+        #     is ignored.
+        #   - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
+        #
+        #   @param url [String] HTTPS URL of the media file. The file extension must match the template's regist
+        #
+        #   @param filename [String] Filename displayed to the recipient. Required for templates with a `DOCUMENT` he
       end
 
       # The preferred channel to be used in priority for message delivery. If the

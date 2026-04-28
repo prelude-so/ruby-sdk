@@ -171,7 +171,7 @@ module PreludeSDK
       #
       # @param correlation_id [String] A user-defined identifier to correlate this message with your internal systems.
       #
-      # @param document [PreludeSDK::Models::NotifySendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
+      # @param document [PreludeSDK::Models::NotifySendParams::Document] A media attachment to include in the message header. Supported on
       #
       # @param expires_at [Time] The message expiration date in RFC3339 format. The message will not be sent if t
       #
@@ -218,7 +218,7 @@ module PreludeSDK
       #
       # @param correlation_id [String] A user-defined identifier to correlate this request with your internal systems.
       #
-      # @param document [PreludeSDK::Models::NotifySendBatchParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
+      # @param document [PreludeSDK::Models::NotifySendBatchParams::Document] A media attachment to include in the message header. Supported on
       #
       # @param expires_at [Time] The message expiration date in RFC3339 format. Messages will not be sent after t
       #

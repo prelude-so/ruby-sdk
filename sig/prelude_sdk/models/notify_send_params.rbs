@@ -120,16 +120,18 @@ module PreludeSDK
         def to_hash: -> { reply_to: String }
       end
 
-      type document = { filename: String, url: String }
+      type document = { url: String, filename: String }
 
       class Document < PreludeSDK::Internal::Type::BaseModel
-        attr_accessor filename: String
-
         attr_accessor url: String
 
-        def initialize: (filename: String, url: String) -> void
+        attr_reader filename: String?
 
-        def to_hash: -> { filename: String, url: String }
+        def filename=: (String) -> String
+
+        def initialize: (url: String, ?filename: String) -> void
+
+        def to_hash: -> { url: String, filename: String }
       end
 
       type preferred_channel = :sms | :rcs | :whatsapp
