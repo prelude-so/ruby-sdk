@@ -25,6 +25,13 @@ module PreludeSDK
       #   @return [String, nil]
       optional :callback_url, String
 
+      # @!attribute context
+      #   Context for replying to an inbound message. When provided, the message is sent
+      #   as a WhatsApp reply within the 24-hour conversation window.
+      #
+      #   @return [PreludeSDK::Models::NotifySendParams::Context, nil]
+      optional :context, -> { PreludeSDK::NotifySendParams::Context }
+
       # @!attribute correlation_id
       #   A user-defined identifier to correlate this message with your internal systems.
       #   It is returned in the response and any webhook events that refer to this
@@ -34,8 +41,16 @@ module PreludeSDK
       optional :correlation_id, String
 
       # @!attribute document
-      #   A document to attach to the message. Only supported on WhatsApp templates that
-      #   have a document header.
+      #   A media attachment to include in the message header. Supported on WhatsApp
+      #   templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+      #   type is determined by the template's registered header format; send the matching
+      #   file type for each.
+      #
+      #   - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+      #     required and displayed to the recipient.
+      #   - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+      #     is ignored.
+      #   - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
       #
       #   @return [PreludeSDK::Models::NotifySendParams::Document, nil]
       optional :document, -> { PreludeSDK::NotifySendParams::Document }
@@ -77,13 +92,21 @@ module PreludeSDK
       #   @return [Time, nil]
       optional :schedule_at, Time
 
+      # @!attribute text
+      #   The reply message body. Required when `context.reply_to` is provided. Used for
+      #   2-way WhatsApp messaging to send free-form text replies within a conversation
+      #   window.
+      #
+      #   @return [String, nil]
+      optional :text, String
+
       # @!attribute variables
       #   The variables to be replaced in the template.
       #
       #   @return [Hash{Symbol=>String}, nil]
       optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-      # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @!method initialize(template_id:, to:, callback_url: nil, context: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, text: nil, variables: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::NotifySendParams} for more details.
       #
@@ -93,9 +116,11 @@ module PreludeSDK
       #
       #   @param callback_url [String] The URL where webhooks will be sent for message delivery events.
       #
+      #   @param context [PreludeSDK::Models::NotifySendParams::Context] Context for replying to an inbound message. When provided, the message is sent a
+      #
       #   @param correlation_id [String] A user-defined identifier to correlate this message with your internal systems.
       #
-      #   @param document [PreludeSDK::Models::NotifySendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
+      #   @param document [PreludeSDK::Models::NotifySendParams::Document] A media attachment to include in the message header. Supported on
       #
       #   @param expires_at [Time] The message expiration date in RFC3339 format. The message will not be sent if t
       #
@@ -107,30 +132,64 @@ module PreludeSDK
       #
       #   @param schedule_at [Time] Schedule the message for future delivery in RFC3339 format. Marketing messages c
       #
+      #   @param text [String] The reply message body. Required when `context.reply_to` is provided. Used for 2
+      #
       #   @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 
-      class Document < PreludeSDK::Internal::Type::BaseModel
-        # @!attribute filename
-        #   The filename to display for the document.
+      class Context < PreludeSDK::Internal::Type::BaseModel
+        # @!attribute reply_to
+        #   The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
+        #   the `inbound.message.received` webhook event.
         #
         #   @return [String]
-        required :filename, String
+        required :reply_to, String
 
+        # @!method initialize(reply_to:)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::NotifySendParams::Context} for more details.
+        #
+        #   Context for replying to an inbound message. When provided, the message is sent
+        #   as a WhatsApp reply within the 24-hour conversation window.
+        #
+        #   @param reply_to [String] The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
+      end
+
+      class Document < PreludeSDK::Internal::Type::BaseModel
         # @!attribute url
-        #   The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+        #   HTTPS URL of the media file. The file extension must match the template's
+        #   registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+        #   for VIDEO).
         #
         #   @return [String]
         required :url, String
 
-        # @!method initialize(filename:, url:)
-        #   A document to attach to the message. Only supported on WhatsApp templates that
-        #   have a document header.
+        # @!attribute filename
+        #   Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+        #   header; ignored for `IMAGE` and `VIDEO` headers.
         #
-        #   @param filename [String] The filename to display for the document.
+        #   @return [String, nil]
+        optional :filename, String
+
+        # @!method initialize(url:, filename: nil)
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::NotifySendParams::Document} for more details.
         #
-        #   @param url [String] The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+        #   A media attachment to include in the message header. Supported on WhatsApp
+        #   templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+        #   type is determined by the template's registered header format; send the matching
+        #   file type for each.
+        #
+        #   - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+        #     required and displayed to the recipient.
+        #   - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+        #     is ignored.
+        #   - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
+        #
+        #   @param url [String] HTTPS URL of the media file. The file extension must match the template's regist
+        #
+        #   @param filename [String] Filename displayed to the recipient. Required for templates with a `DOCUMENT` he
       end
 
       # The preferred channel to be used in priority for message delivery. If the
@@ -139,6 +198,7 @@ module PreludeSDK
         extend PreludeSDK::Internal::Type::Enum
 
         SMS = :sms
+        RCS = :rcs
         WHATSAPP = :whatsapp
 
         # @!method self.values

@@ -156,10 +156,10 @@ module PreludeSDK
       # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::NotifySendParams} for more details.
       #
-      # Send transactional and marketing messages to your users via SMS and WhatsApp
-      # with automatic compliance enforcement.
+      # Send transactional and marketing messages to your users via SMS, RCS and
+      # WhatsApp with automatic compliance enforcement.
       #
-      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @overload send_(template_id:, to:, callback_url: nil, context: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, text: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier configured by your Customer Success team.
       #
@@ -167,9 +167,11 @@ module PreludeSDK
       #
       # @param callback_url [String] The URL where webhooks will be sent for message delivery events.
       #
+      # @param context [PreludeSDK::Models::NotifySendParams::Context] Context for replying to an inbound message. When provided, the message is sent a
+      #
       # @param correlation_id [String] A user-defined identifier to correlate this message with your internal systems.
       #
-      # @param document [PreludeSDK::Models::NotifySendParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
+      # @param document [PreludeSDK::Models::NotifySendParams::Document] A media attachment to include in the message header. Supported on
       #
       # @param expires_at [Time] The message expiration date in RFC3339 format. The message will not be sent if t
       #
@@ -180,6 +182,8 @@ module PreludeSDK
       # @param preferred_channel [Symbol, PreludeSDK::Models::NotifySendParams::PreferredChannel] The preferred channel to be used in priority for message delivery. If the channe
       #
       # @param schedule_at [Time] Schedule the message for future delivery in RFC3339 format. Marketing messages c
+      #
+      # @param text [String] The reply message body. Required when `context.reply_to` is provided. Used for 2
       #
       # @param variables [Hash{Symbol=>String}] The variables to be replaced in the template.
       #
@@ -214,7 +218,7 @@ module PreludeSDK
       #
       # @param correlation_id [String] A user-defined identifier to correlate this request with your internal systems.
       #
-      # @param document [PreludeSDK::Models::NotifySendBatchParams::Document] A document to attach to the message. Only supported on WhatsApp templates that h
+      # @param document [PreludeSDK::Models::NotifySendBatchParams::Document] A media attachment to include in the message header. Supported on
       #
       # @param expires_at [Time] The message expiration date in RFC3339 format. Messages will not be sent after t
       #

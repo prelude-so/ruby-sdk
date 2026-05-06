@@ -37,7 +37,8 @@ module PreludeSDK
         ).returns(PreludeSDK::Models::WatchSendEventsResponse)
       end
       def send_events(
-        # A list of events to dispatch.
+        # A list of events to dispatch. A maximum of 100 events can be sent in a single
+        # request.
         events:,
         request_options: {}
       )
@@ -53,7 +54,8 @@ module PreludeSDK
         ).returns(PreludeSDK::Models::WatchSendFeedbacksResponse)
       end
       def send_feedbacks(
-        # A list of feedbacks to send.
+        # A list of feedbacks to send. A maximum of 100 feedbacks can be sent in a single
+        # request.
         feedbacks:,
         request_options: {}
       )

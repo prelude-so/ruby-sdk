@@ -114,13 +114,14 @@ module PreludeSDK
       )
       end
 
-      # Send transactional and marketing messages to your users via SMS and WhatsApp
-      # with automatic compliance enforcement.
+      # Send transactional and marketing messages to your users via SMS, RCS and
+      # WhatsApp with automatic compliance enforcement.
       sig do
         params(
           template_id: String,
           to: String,
           callback_url: String,
+          context: PreludeSDK::NotifySendParams::Context::OrHash,
           correlation_id: String,
           document: PreludeSDK::NotifySendParams::Document::OrHash,
           expires_at: Time,
@@ -129,6 +130,7 @@ module PreludeSDK
           preferred_channel:
             PreludeSDK::NotifySendParams::PreferredChannel::OrSymbol,
           schedule_at: Time,
+          text: String,
           variables: T::Hash[Symbol, String],
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(PreludeSDK::Models::NotifySendResponse)
@@ -140,12 +142,23 @@ module PreludeSDK
         to:,
         # The URL where webhooks will be sent for message delivery events.
         callback_url: nil,
+        # Context for replying to an inbound message. When provided, the message is sent
+        # as a WhatsApp reply within the 24-hour conversation window.
+        context: nil,
         # A user-defined identifier to correlate this message with your internal systems.
         # It is returned in the response and any webhook events that refer to this
         # message.
         correlation_id: nil,
-        # A document to attach to the message. Only supported on WhatsApp templates that
-        # have a document header.
+        # A media attachment to include in the message header. Supported on WhatsApp
+        # templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+        # type is determined by the template's registered header format; send the matching
+        # file type for each.
+        #
+        # - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+        #   required and displayed to the recipient.
+        # - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+        #   is ignored.
+        # - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
         document: nil,
         # The message expiration date in RFC3339 format. The message will not be sent if
         # this time is reached.
@@ -164,6 +177,10 @@ module PreludeSDK
         # can be scheduled up to 90 days in advance and will be automatically adjusted for
         # compliance with local time window restrictions.
         schedule_at: nil,
+        # The reply message body. Required when `context.reply_to` is provided. Used for
+        # 2-way WhatsApp messaging to send free-form text replies within a conversation
+        # window.
+        text: nil,
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
@@ -197,8 +214,16 @@ module PreludeSDK
         callback_url: nil,
         # A user-defined identifier to correlate this request with your internal systems.
         correlation_id: nil,
-        # A document to attach to the message. Only supported on WhatsApp templates that
-        # have a document header.
+        # A media attachment to include in the message header. Supported on WhatsApp
+        # templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+        # type is determined by the template's registered header format; send the matching
+        # file type for each.
+        #
+        # - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+        #   required and displayed to the recipient.
+        # - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+        #   is ignored.
+        # - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
         document: nil,
         # The message expiration date in RFC3339 format. Messages will not be sent after
         # this time.

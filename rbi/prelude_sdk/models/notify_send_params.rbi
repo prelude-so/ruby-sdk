@@ -26,6 +26,16 @@ module PreludeSDK
       sig { params(callback_url: String).void }
       attr_writer :callback_url
 
+      # Context for replying to an inbound message. When provided, the message is sent
+      # as a WhatsApp reply within the 24-hour conversation window.
+      sig { returns(T.nilable(PreludeSDK::NotifySendParams::Context)) }
+      attr_reader :context
+
+      sig do
+        params(context: PreludeSDK::NotifySendParams::Context::OrHash).void
+      end
+      attr_writer :context
+
       # A user-defined identifier to correlate this message with your internal systems.
       # It is returned in the response and any webhook events that refer to this
       # message.
@@ -35,8 +45,16 @@ module PreludeSDK
       sig { params(correlation_id: String).void }
       attr_writer :correlation_id
 
-      # A document to attach to the message. Only supported on WhatsApp templates that
-      # have a document header.
+      # A media attachment to include in the message header. Supported on WhatsApp
+      # templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+      # type is determined by the template's registered header format; send the matching
+      # file type for each.
+      #
+      # - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+      #   required and displayed to the recipient.
+      # - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+      #   is ignored.
+      # - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
       sig { returns(T.nilable(PreludeSDK::NotifySendParams::Document)) }
       attr_reader :document
 
@@ -96,6 +114,15 @@ module PreludeSDK
       sig { params(schedule_at: Time).void }
       attr_writer :schedule_at
 
+      # The reply message body. Required when `context.reply_to` is provided. Used for
+      # 2-way WhatsApp messaging to send free-form text replies within a conversation
+      # window.
+      sig { returns(T.nilable(String)) }
+      attr_reader :text
+
+      sig { params(text: String).void }
+      attr_writer :text
+
       # The variables to be replaced in the template.
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :variables
@@ -108,6 +135,7 @@ module PreludeSDK
           template_id: String,
           to: String,
           callback_url: String,
+          context: PreludeSDK::NotifySendParams::Context::OrHash,
           correlation_id: String,
           document: PreludeSDK::NotifySendParams::Document::OrHash,
           expires_at: Time,
@@ -116,6 +144,7 @@ module PreludeSDK
           preferred_channel:
             PreludeSDK::NotifySendParams::PreferredChannel::OrSymbol,
           schedule_at: Time,
+          text: String,
           variables: T::Hash[Symbol, String],
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -127,12 +156,23 @@ module PreludeSDK
         to:,
         # The URL where webhooks will be sent for message delivery events.
         callback_url: nil,
+        # Context for replying to an inbound message. When provided, the message is sent
+        # as a WhatsApp reply within the 24-hour conversation window.
+        context: nil,
         # A user-defined identifier to correlate this message with your internal systems.
         # It is returned in the response and any webhook events that refer to this
         # message.
         correlation_id: nil,
-        # A document to attach to the message. Only supported on WhatsApp templates that
-        # have a document header.
+        # A media attachment to include in the message header. Supported on WhatsApp
+        # templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+        # type is determined by the template's registered header format; send the matching
+        # file type for each.
+        #
+        # - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+        #   required and displayed to the recipient.
+        # - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+        #   is ignored.
+        # - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
         document: nil,
         # The message expiration date in RFC3339 format. The message will not be sent if
         # this time is reached.
@@ -151,6 +191,10 @@ module PreludeSDK
         # can be scheduled up to 90 days in advance and will be automatically adjusted for
         # compliance with local time window restrictions.
         schedule_at: nil,
+        # The reply message body. Required when `context.reply_to` is provided. Used for
+        # 2-way WhatsApp messaging to send free-form text replies within a conversation
+        # window.
+        text: nil,
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
@@ -163,6 +207,7 @@ module PreludeSDK
             template_id: String,
             to: String,
             callback_url: String,
+            context: PreludeSDK::NotifySendParams::Context,
             correlation_id: String,
             document: PreludeSDK::NotifySendParams::Document,
             expires_at: Time,
@@ -171,12 +216,42 @@ module PreludeSDK
             preferred_channel:
               PreludeSDK::NotifySendParams::PreferredChannel::OrSymbol,
             schedule_at: Time,
+            text: String,
             variables: T::Hash[Symbol, String],
             request_options: PreludeSDK::RequestOptions
           }
         )
       end
       def to_hash
+      end
+
+      class Context < PreludeSDK::Internal::Type::BaseModel
+        OrHash =
+          T.type_alias do
+            T.any(
+              PreludeSDK::NotifySendParams::Context,
+              PreludeSDK::Internal::AnyHash
+            )
+          end
+
+        # The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
+        # the `inbound.message.received` webhook event.
+        sig { returns(String) }
+        attr_accessor :reply_to
+
+        # Context for replying to an inbound message. When provided, the message is sent
+        # as a WhatsApp reply within the 24-hour conversation window.
+        sig { params(reply_to: String).returns(T.attached_class) }
+        def self.new(
+          # The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
+          # the `inbound.message.received` webhook event.
+          reply_to:
+        )
+        end
+
+        sig { override.returns({ reply_to: String }) }
+        def to_hash
+        end
       end
 
       class Document < PreludeSDK::Internal::Type::BaseModel
@@ -188,26 +263,43 @@ module PreludeSDK
             )
           end
 
-        # The filename to display for the document.
-        sig { returns(String) }
-        attr_accessor :filename
-
-        # The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+        # HTTPS URL of the media file. The file extension must match the template's
+        # registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+        # for VIDEO).
         sig { returns(String) }
         attr_accessor :url
 
-        # A document to attach to the message. Only supported on WhatsApp templates that
-        # have a document header.
-        sig { params(filename: String, url: String).returns(T.attached_class) }
+        # Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+        # header; ignored for `IMAGE` and `VIDEO` headers.
+        sig { returns(T.nilable(String)) }
+        attr_reader :filename
+
+        sig { params(filename: String).void }
+        attr_writer :filename
+
+        # A media attachment to include in the message header. Supported on WhatsApp
+        # templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+        # type is determined by the template's registered header format; send the matching
+        # file type for each.
+        #
+        # - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+        #   required and displayed to the recipient.
+        # - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+        #   is ignored.
+        # - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
+        sig { params(url: String, filename: String).returns(T.attached_class) }
         def self.new(
-          # The filename to display for the document.
-          filename:,
-          # The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
-          url:
+          # HTTPS URL of the media file. The file extension must match the template's
+          # registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+          # for VIDEO).
+          url:,
+          # Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+          # header; ignored for `IMAGE` and `VIDEO` headers.
+          filename: nil
         )
         end
 
-        sig { override.returns({ filename: String, url: String }) }
+        sig { override.returns({ url: String, filename: String }) }
         def to_hash
         end
       end
@@ -226,6 +318,11 @@ module PreludeSDK
         SMS =
           T.let(
             :sms,
+            PreludeSDK::NotifySendParams::PreferredChannel::TaggedSymbol
+          )
+        RCS =
+          T.let(
+            :rcs,
             PreludeSDK::NotifySendParams::PreferredChannel::TaggedSymbol
           )
         WHATSAPP =

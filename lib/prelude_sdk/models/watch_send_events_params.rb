@@ -8,13 +8,17 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute events
-      #   A list of events to dispatch.
+      #   A list of events to dispatch. A maximum of 100 events can be sent in a single
+      #   request.
       #
       #   @return [Array<PreludeSDK::Models::WatchSendEventsParams::Event>]
       required :events, -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::WatchSendEventsParams::Event] }
 
       # @!method initialize(events:, request_options: {})
-      #   @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>] A list of events to dispatch.
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::WatchSendEventsParams} for more details.
+      #
+      #   @param events [Array<PreludeSDK::Models::WatchSendEventsParams::Event>] A list of events to dispatch. A maximum of 100 events can be sent in a single re
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 

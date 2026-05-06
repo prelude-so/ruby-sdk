@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.4.0 (2026-04-30)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/prelude-so/ruby-sdk/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** api update ([6ef917b](https://github.com/prelude-so/ruby-sdk/commit/6ef917bcd3a32e40139d32528e20ad17ea3b8278))
+* **api:** api update ([f0ec5a8](https://github.com/prelude-so/ruby-sdk/commit/f0ec5a8d5121f7f8d541a3f9fbf5a2176380bdb2))
+* **api:** api update ([3041c86](https://github.com/prelude-so/ruby-sdk/commit/3041c8644933cc9a849dc02bdf2717c4405bf812))
+* **api:** api update ([3d94aa1](https://github.com/prelude-so/ruby-sdk/commit/3d94aa1539b0ee491fb1b852976aee745c72f08b))
+* **api:** api update ([3f9e6ce](https://github.com/prelude-so/ruby-sdk/commit/3f9e6ce6f97d66c574611befa9c1620b93eeeb76))
+* support setting headers via env ([755c4ac](https://github.com/prelude-so/ruby-sdk/commit/755c4acad1a339802b824f6f719a9084db6742fc))
+
+
+### Bug Fixes
+
+* align path encoding with RFC 3986 section 3.3 ([20f9b5e](https://github.com/prelude-so/ruby-sdk/commit/20f9b5e3571676a09e4b2aa5a1f554257d67c07d))
+* **internal:** correct multipart form field name encoding ([ba42aef](https://github.com/prelude-so/ruby-sdk/commit/ba42aeff39e77c2911fddb776676bf5ec3b6480d))
+* multipart encoding for file arrays ([00c8720](https://github.com/prelude-so/ruby-sdk/commit/00c87208d38c26848af8a20f0f2ab916d908ca95))
+* variable name typo ([2a83f6e](https://github.com/prelude-so/ruby-sdk/commit/2a83f6eff281991ab4736f6ce752cef42c7e4b60))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([ecdcd0b](https://github.com/prelude-so/ruby-sdk/commit/ecdcd0b15967ac9ab50887e24c9884804a72c2c7))
+* **ci:** support opting out of skipping builds on metadata-only commits ([86d205e](https://github.com/prelude-so/ruby-sdk/commit/86d205e651fbb5002655857a287ec09b0b2b4370))
+* **internal:** more robust bootstrap script ([1163c75](https://github.com/prelude-so/ruby-sdk/commit/1163c758b68ed31eb3ae60117d8850ba3417c829))
+* **tests:** bump steady to v0.19.6 ([9be6206](https://github.com/prelude-so/ruby-sdk/commit/9be6206e357ce0ab47da60230a356ed5d2e33bc3))
+* **tests:** bump steady to v0.19.7 ([e96d496](https://github.com/prelude-so/ruby-sdk/commit/e96d496b589f7a404288d92b8519ae25fc1f4c96))
+* **tests:** bump steady to v0.20.1 ([f9c136f](https://github.com/prelude-so/ruby-sdk/commit/f9c136fad7a342404cc80b6e5d10a0c5cce19d88))
+* **tests:** bump steady to v0.20.2 ([cf8ca21](https://github.com/prelude-so/ruby-sdk/commit/cf8ca215bacfb6606bfe3ca08db55bacef5c3d18))
+* **tests:** bump steady to v0.22.1 ([4223d7b](https://github.com/prelude-so/ruby-sdk/commit/4223d7b15d68b27d1029eb93e135a96e25244548))
+
 ## 0.3.0 (2026-03-23)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/prelude-so/ruby-sdk/compare/v0.2.0...v0.3.0)

@@ -8,14 +8,18 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute feedbacks
-      #   A list of feedbacks to send.
+      #   A list of feedbacks to send. A maximum of 100 feedbacks can be sent in a single
+      #   request.
       #
       #   @return [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>]
       required :feedbacks,
                -> { PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::WatchSendFeedbacksParams::Feedback] }
 
       # @!method initialize(feedbacks:, request_options: {})
-      #   @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>] A list of feedbacks to send.
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::WatchSendFeedbacksParams} for more details.
+      #
+      #   @param feedbacks [Array<PreludeSDK::Models::WatchSendFeedbacksParams::Feedback>] A list of feedbacks to send. A maximum of 100 feedbacks can be sent in a single
       #
       #   @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}]
 

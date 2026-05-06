@@ -14,7 +14,8 @@ module PreludeSDK
           )
         end
 
-      # A list of feedbacks to send.
+      # A list of feedbacks to send. A maximum of 100 feedbacks can be sent in a single
+      # request.
       sig { returns(T::Array[PreludeSDK::WatchSendFeedbacksParams::Feedback]) }
       attr_accessor :feedbacks
 
@@ -26,7 +27,8 @@ module PreludeSDK
         ).returns(T.attached_class)
       end
       def self.new(
-        # A list of feedbacks to send.
+        # A list of feedbacks to send. A maximum of 100 feedbacks can be sent in a single
+        # request.
         feedbacks:,
         request_options: {}
       )

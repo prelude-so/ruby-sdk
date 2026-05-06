@@ -36,8 +36,16 @@ module PreludeSDK
       sig { params(correlation_id: String).void }
       attr_writer :correlation_id
 
-      # A document to attach to the message. Only supported on WhatsApp templates that
-      # have a document header.
+      # A media attachment to include in the message header. Supported on WhatsApp
+      # templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+      # type is determined by the template's registered header format; send the matching
+      # file type for each.
+      #
+      # - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+      #   required and displayed to the recipient.
+      # - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+      #   is ignored.
+      # - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
       sig { returns(T.nilable(PreludeSDK::NotifySendBatchParams::Document)) }
       attr_reader :document
 
@@ -129,8 +137,16 @@ module PreludeSDK
         callback_url: nil,
         # A user-defined identifier to correlate this request with your internal systems.
         correlation_id: nil,
-        # A document to attach to the message. Only supported on WhatsApp templates that
-        # have a document header.
+        # A media attachment to include in the message header. Supported on WhatsApp
+        # templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+        # type is determined by the template's registered header format; send the matching
+        # file type for each.
+        #
+        # - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+        #   required and displayed to the recipient.
+        # - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+        #   is ignored.
+        # - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
         document: nil,
         # The message expiration date in RFC3339 format. Messages will not be sent after
         # this time.
@@ -181,26 +197,43 @@ module PreludeSDK
             )
           end
 
-        # The filename to display for the document.
-        sig { returns(String) }
-        attr_accessor :filename
-
-        # The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
+        # HTTPS URL of the media file. The file extension must match the template's
+        # registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+        # for VIDEO).
         sig { returns(String) }
         attr_accessor :url
 
-        # A document to attach to the message. Only supported on WhatsApp templates that
-        # have a document header.
-        sig { params(filename: String, url: String).returns(T.attached_class) }
+        # Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+        # header; ignored for `IMAGE` and `VIDEO` headers.
+        sig { returns(T.nilable(String)) }
+        attr_reader :filename
+
+        sig { params(filename: String).void }
+        attr_writer :filename
+
+        # A media attachment to include in the message header. Supported on WhatsApp
+        # templates registered with a `DOCUMENT`, `IMAGE`, or `VIDEO` header. The media
+        # type is determined by the template's registered header format; send the matching
+        # file type for each.
+        #
+        # - `DOCUMENT` headers accept PDF and other document formats; `filename` is
+        #   required and displayed to the recipient.
+        # - `IMAGE` headers accept `.png`, `.jpg`, `.jpeg`, and `.webp` URLs; `filename`
+        #   is ignored.
+        # - `VIDEO` headers accept `.mp4` and `.3gp` URLs; `filename` is ignored.
+        sig { params(url: String, filename: String).returns(T.attached_class) }
         def self.new(
-          # The filename to display for the document.
-          filename:,
-          # The URL of the document to attach. Must be a valid HTTP or HTTPS URL.
-          url:
+          # HTTPS URL of the media file. The file extension must match the template's
+          # registered header format (PDF for DOCUMENT; PNG/JPG/JPEG/WEBP for IMAGE; MP4/3GP
+          # for VIDEO).
+          url:,
+          # Filename displayed to the recipient. Required for templates with a `DOCUMENT`
+          # header; ignored for `IMAGE` and `VIDEO` headers.
+          filename: nil
         )
         end
 
-        sig { override.returns({ filename: String, url: String }) }
+        sig { override.returns({ url: String, filename: String }) }
         def to_hash
         end
       end
@@ -218,6 +251,11 @@ module PreludeSDK
         SMS =
           T.let(
             :sms,
+            PreludeSDK::NotifySendBatchParams::PreferredChannel::TaggedSymbol
+          )
+        RCS =
+          T.let(
+            :rcs,
             PreludeSDK::NotifySendBatchParams::PreferredChannel::TaggedSymbol
           )
         WHATSAPP =
