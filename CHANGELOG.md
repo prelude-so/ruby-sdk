@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0 (2026-05-07)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/prelude-so/ruby-sdk/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** api update ([4a28614](https://github.com/prelude-so/ruby-sdk/commit/4a286145c86c872f859225d1d892e98c640598af))
+* **api:** api update ([7beed1d](https://github.com/prelude-so/ruby-sdk/commit/7beed1dab00a7fd90594bba5f94f53261e22b549))
+
 ## 0.4.0 (2026-04-30)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/prelude-so/ruby-sdk/compare/v0.3.0...v0.4.0)
