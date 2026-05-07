@@ -27,6 +27,9 @@ module PreludeSDK
       #     non-voice channels only. This mode must be enabled for your customer account
       #     by Prelude support.
       #   - `blocked` - The verification was blocked.
+      #   - `shadow_blocked` - The verification triggered a block rule but the decision
+      #     was not enforced; this is used to dry-run anti-fraud configuration. This mode
+      #     must be enabled for your customer account by Prelude support.
       #
       #   @return [Symbol, PreludeSDK::Models::VerificationCreateResponse::Status]
       required :status, enum: -> { PreludeSDK::Models::VerificationCreateResponse::Status }
@@ -46,7 +49,7 @@ module PreludeSDK
 
       # @!attribute reason
       #   The reason why the verification was blocked. Only present when status is
-      #   "blocked".
+      #   "blocked" or "shadow_blocked".
       #
       #   - `expired_signature` - The signature of the SDK signals is expired. They should
       #     be sent within the hour following their collection.
@@ -71,8 +74,8 @@ module PreludeSDK
 
       # @!attribute risk_factors
       #   The risk factors that contributed to the verification being blocked. Only
-      #   present when status is "blocked" and the anti-fraud system detected specific
-      #   risk signals.
+      #   present when status is "blocked" or "shadow_blocked" and the anti-fraud system
+      #   detected specific risk signals.
       #
       #   - `behavioral_pattern` - The phone number past behavior during verification
       #     flows exhibits suspicious patterns.
@@ -150,6 +153,9 @@ module PreludeSDK
       #   non-voice channels only. This mode must be enabled for your customer account
       #   by Prelude support.
       # - `blocked` - The verification was blocked.
+      # - `shadow_blocked` - The verification triggered a block rule but the decision
+      #   was not enforced; this is used to dry-run anti-fraud configuration. This mode
+      #   must be enabled for your customer account by Prelude support.
       #
       # @see PreludeSDK::Models::VerificationCreateResponse#status
       module Status
@@ -159,6 +165,7 @@ module PreludeSDK
         RETRY = :retry
         CHALLENGED = :challenged
         BLOCKED = :blocked
+        SHADOW_BLOCKED = :shadow_blocked
 
         # @!method self.values
         #   @return [Array<Symbol>]
@@ -199,7 +206,7 @@ module PreludeSDK
       end
 
       # The reason why the verification was blocked. Only present when status is
-      # "blocked".
+      # "blocked" or "shadow_blocked".
       #
       # - `expired_signature` - The signature of the SDK signals is expired. They should
       #   be sent within the hour following their collection.
