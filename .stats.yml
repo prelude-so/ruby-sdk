@@ -1,4 +1,4 @@
 configured_endpoints: 19
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/prelude/prelude-e6abf13208908393fa09cd3ae5018d4d2a280c3c553ccf726b94cb937359fef0.yml
-openapi_spec_hash: e8ac9c4481ecb7bc728dedda55acf67f
-config_hash: eadca9fbad9aef6e556c2f09e09459c6
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/prelude/prelude-c77b94c169740230d8f8c7189df7e41921d96150c967f63ebf986b9d05506db3.yml
+openapi_spec_hash: f996d8bd71c14d404512c8c4db31364a
+config_hash: 0b19ac6d6a3497a5c361d53d22eacf71

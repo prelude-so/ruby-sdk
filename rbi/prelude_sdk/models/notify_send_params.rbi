@@ -26,16 +26,6 @@ module PreludeSDK
       sig { params(callback_url: String).void }
       attr_writer :callback_url
 
-      # Context for replying to an inbound message. When provided, the message is sent
-      # as a WhatsApp reply within the 24-hour conversation window.
-      sig { returns(T.nilable(PreludeSDK::NotifySendParams::Context)) }
-      attr_reader :context
-
-      sig do
-        params(context: PreludeSDK::NotifySendParams::Context::OrHash).void
-      end
-      attr_writer :context
-
       # A user-defined identifier to correlate this message with your internal systems.
       # It is returned in the response and any webhook events that refer to this
       # message.
@@ -114,15 +104,6 @@ module PreludeSDK
       sig { params(schedule_at: Time).void }
       attr_writer :schedule_at
 
-      # The reply message body. Required when `context.reply_to` is provided. Used for
-      # 2-way WhatsApp messaging to send free-form text replies within a conversation
-      # window.
-      sig { returns(T.nilable(String)) }
-      attr_reader :text
-
-      sig { params(text: String).void }
-      attr_writer :text
-
       # The variables to be replaced in the template.
       sig { returns(T.nilable(T::Hash[Symbol, String])) }
       attr_reader :variables
@@ -135,7 +116,6 @@ module PreludeSDK
           template_id: String,
           to: String,
           callback_url: String,
-          context: PreludeSDK::NotifySendParams::Context::OrHash,
           correlation_id: String,
           document: PreludeSDK::NotifySendParams::Document::OrHash,
           expires_at: Time,
@@ -144,7 +124,6 @@ module PreludeSDK
           preferred_channel:
             PreludeSDK::NotifySendParams::PreferredChannel::OrSymbol,
           schedule_at: Time,
-          text: String,
           variables: T::Hash[Symbol, String],
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(T.attached_class)
@@ -156,9 +135,6 @@ module PreludeSDK
         to:,
         # The URL where webhooks will be sent for message delivery events.
         callback_url: nil,
-        # Context for replying to an inbound message. When provided, the message is sent
-        # as a WhatsApp reply within the 24-hour conversation window.
-        context: nil,
         # A user-defined identifier to correlate this message with your internal systems.
         # It is returned in the response and any webhook events that refer to this
         # message.
@@ -191,10 +167,6 @@ module PreludeSDK
         # can be scheduled up to 90 days in advance and will be automatically adjusted for
         # compliance with local time window restrictions.
         schedule_at: nil,
-        # The reply message body. Required when `context.reply_to` is provided. Used for
-        # 2-way WhatsApp messaging to send free-form text replies within a conversation
-        # window.
-        text: nil,
         # The variables to be replaced in the template.
         variables: nil,
         request_options: {}
@@ -207,7 +179,6 @@ module PreludeSDK
             template_id: String,
             to: String,
             callback_url: String,
-            context: PreludeSDK::NotifySendParams::Context,
             correlation_id: String,
             document: PreludeSDK::NotifySendParams::Document,
             expires_at: Time,
@@ -216,42 +187,12 @@ module PreludeSDK
             preferred_channel:
               PreludeSDK::NotifySendParams::PreferredChannel::OrSymbol,
             schedule_at: Time,
-            text: String,
             variables: T::Hash[Symbol, String],
             request_options: PreludeSDK::RequestOptions
           }
         )
       end
       def to_hash
-      end
-
-      class Context < PreludeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              PreludeSDK::NotifySendParams::Context,
-              PreludeSDK::Internal::AnyHash
-            )
-          end
-
-        # The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
-        # the `inbound.message.received` webhook event.
-        sig { returns(String) }
-        attr_accessor :reply_to
-
-        # Context for replying to an inbound message. When provided, the message is sent
-        # as a WhatsApp reply within the 24-hour conversation window.
-        sig { params(reply_to: String).returns(T.attached_class) }
-        def self.new(
-          # The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
-          # the `inbound.message.received` webhook event.
-          reply_to:
-        )
-        end
-
-        sig { override.returns({ reply_to: String }) }
-        def to_hash
-        end
       end
 
       class Document < PreludeSDK::Internal::Type::BaseModel
