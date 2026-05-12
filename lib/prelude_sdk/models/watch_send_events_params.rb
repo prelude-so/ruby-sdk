@@ -24,7 +24,11 @@ module PreludeSDK
 
       class Event < PreludeSDK::Internal::Type::BaseModel
         # @!attribute confidence
-        #   A confidence level you want to assign to the event.
+        #   The level of trust you place in this event, in increasing order of trust:
+        #   `minimum`, `low`, `neutral`, `high`, `maximum`. Prelude uses this value to
+        #   weight your signals when scoring traffic — events flagged with `minimum`
+        #   confidence indicate end-users you trust the least to be legitimate, and the
+        #   pipeline will use these signals to filter them out.
         #
         #   @return [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence]
         required :confidence, enum: -> { PreludeSDK::WatchSendEventsParams::Event::Confidence }
@@ -42,13 +46,20 @@ module PreludeSDK
         required :target, -> { PreludeSDK::WatchSendEventsParams::Event::Target }
 
         # @!method initialize(confidence:, label:, target:)
-        #   @param confidence [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence] A confidence level you want to assign to the event.
+        #   Some parameter documentations has been truncated, see
+        #   {PreludeSDK::Models::WatchSendEventsParams::Event} for more details.
+        #
+        #   @param confidence [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Confidence] The level of trust you place in this event, in increasing order of trust: `minim
         #
         #   @param label [String] A label to describe what the event refers to.
         #
         #   @param target [PreludeSDK::Models::WatchSendEventsParams::Event::Target] The event target. Only supports phone numbers for now.
 
-        # A confidence level you want to assign to the event.
+        # The level of trust you place in this event, in increasing order of trust:
+        # `minimum`, `low`, `neutral`, `high`, `maximum`. Prelude uses this value to
+        # weight your signals when scoring traffic — events flagged with `minimum`
+        # confidence indicate end-users you trust the least to be legitimate, and the
+        # pipeline will use these signals to filter them out.
         #
         # @see PreludeSDK::Models::WatchSendEventsParams::Event#confidence
         module Confidence
