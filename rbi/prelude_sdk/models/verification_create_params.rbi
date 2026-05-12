@@ -275,6 +275,19 @@ module PreludeSDK
         sig { params(custom_code: String).void }
         attr_writer :custom_code
 
+        # When `true`, the verification is routed through challenge-safe channels
+        # (non-SMS/Voice) regardless of country eligibility or any antispam outcome. The
+        # resulting verification has `status: "challenged"`. Use this when you have your
+        # own signal that the request is suspicious and want stricter routing — the
+        # verification is **not** classified as fraud and does not contribute to
+        # anti-fraud counters or risk factors. This feature is disabled by default —
+        # contact Prelude support to enable it on your account.
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :force_challenge
+
+        sig { params(force_challenge: T::Boolean).void }
+        attr_writer :force_challenge
+
         # A BCP-47 formatted locale string with the language the text message will be sent
         # to. If there's no locale set, the language will be determined by the country
         # code of the phone number. If the language specified doesn't exist, it defaults
@@ -358,6 +371,7 @@ module PreludeSDK
             callback_url: String,
             code_size: Integer,
             custom_code: String,
+            force_challenge: T::Boolean,
             locale: String,
             verification_method:
               PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,
@@ -383,6 +397,14 @@ module PreludeSDK
           # contact us to enable it for your account. For more details, refer to
           # [Custom Code](/verify/v2/documentation/custom-codes).
           custom_code: nil,
+          # When `true`, the verification is routed through challenge-safe channels
+          # (non-SMS/Voice) regardless of country eligibility or any antispam outcome. The
+          # resulting verification has `status: "challenged"`. Use this when you have your
+          # own signal that the request is suspicious and want stricter routing — the
+          # verification is **not** classified as fraud and does not contribute to
+          # anti-fraud counters or risk factors. This feature is disabled by default —
+          # contact Prelude support to enable it on your account.
+          force_challenge: nil,
           # A BCP-47 formatted locale string with the language the text message will be sent
           # to. If there's no locale set, the language will be determined by the country
           # code of the phone number. If the language specified doesn't exist, it defaults
@@ -417,6 +439,7 @@ module PreludeSDK
               callback_url: String,
               code_size: Integer,
               custom_code: String,
+              force_challenge: T::Boolean,
               locale: String,
               verification_method:
                 PreludeSDK::VerificationCreateParams::Options::Method::OrSymbol,

@@ -140,6 +140,18 @@ module PreludeSDK
         #   @return [String, nil]
         optional :custom_code, String
 
+        # @!attribute force_challenge
+        #   When `true`, the verification is routed through challenge-safe channels
+        #   (non-SMS/Voice) regardless of country eligibility or any antispam outcome. The
+        #   resulting verification has `status: "challenged"`. Use this when you have your
+        #   own signal that the request is suspicious and want stricter routing — the
+        #   verification is **not** classified as fraud and does not contribute to
+        #   anti-fraud counters or risk factors. This feature is disabled by default —
+        #   contact Prelude support to enable it on your account.
+        #
+        #   @return [Boolean, nil]
+        optional :force_challenge, PreludeSDK::Internal::Type::Boolean
+
         # @!attribute locale
         #   A BCP-47 formatted locale string with the language the text message will be sent
         #   to. If there's no locale set, the language will be determined by the country
@@ -189,7 +201,7 @@ module PreludeSDK
         #   @return [Hash{Symbol=>String}, nil]
         optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
+        # @!method initialize(app_realm: nil, callback_url: nil, code_size: nil, custom_code: nil, force_challenge: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::VerificationCreateParams::Options} for more details.
         #
@@ -202,6 +214,8 @@ module PreludeSDK
         #   @param code_size [Integer] The size of the code generated. It should be between 4 and 8. Defaults to the co
         #
         #   @param custom_code [String] The custom code to use for OTP verification. To use the custom code feature, con
+        #
+        #   @param force_challenge [Boolean] When `true`, the verification is routed through challenge-safe channels (non-SMS
         #
         #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
         #
