@@ -26,7 +26,7 @@ class PreludeSDK::Test::Resources::WatchTest < PreludeSDK::Test::ResourceTest
         events: [
           {
             confidence: :maximum,
-            label: "onboarding.start",
+            label: "account.banned",
             target: {type: :phone_number, value: "+30123456789"}
           }
         ]

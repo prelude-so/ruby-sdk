@@ -8,7 +8,7 @@ module PreludeSDK
       include PreludeSDK::Internal::Type::RequestParameters
 
       # @!attribute target
-      #   The prediction target. Only supports phone numbers for now.
+      #   The signup identifier to score — a phone number or email address.
       #
       #   @return [PreludeSDK::Models::WatchPredictParams::Target]
       required :target, -> { PreludeSDK::WatchPredictParams::Target }
@@ -36,7 +36,7 @@ module PreludeSDK
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::WatchPredictParams} for more details.
       #
-      #   @param target [PreludeSDK::Models::WatchPredictParams::Target] The prediction target. Only supports phone numbers for now.
+      #   @param target [PreludeSDK::Models::WatchPredictParams::Target] The signup identifier to score — a phone number or email address.
       #
       #   @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
       #
@@ -60,7 +60,7 @@ module PreludeSDK
         required :value, String
 
         # @!method initialize(type:, value:)
-        #   The prediction target. Only supports phone numbers for now.
+        #   The signup identifier to score — a phone number or email address.
         #
         #   @param type [Symbol, PreludeSDK::Models::WatchPredictParams::Target::Type] The type of the target. Either "phone_number" or "email_address".
         #
