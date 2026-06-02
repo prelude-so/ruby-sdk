@@ -11,7 +11,9 @@ module PreludeSDK
           )
         end
 
-      # The status of the check.
+      # The status of the check. For `prelude:psd2` codes, `transaction_missing` is
+      # returned when the `psd2` block is omitted, and `transaction_mismatch` when the
+      # submitted variables differ from those provided at issuance.
       sig do
         returns(
           PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol
@@ -59,7 +61,9 @@ module PreludeSDK
         ).returns(T.attached_class)
       end
       def self.new(
-        # The status of the check.
+        # The status of the check. For `prelude:psd2` codes, `transaction_missing` is
+        # returned when the `psd2` block is omitted, and `transaction_mismatch` when the
+        # submitted variables differ from those provided at issuance.
         status:,
         # The verification identifier.
         id: nil,
@@ -83,7 +87,9 @@ module PreludeSDK
       def to_hash
       end
 
-      # The status of the check.
+      # The status of the check. For `prelude:psd2` codes, `transaction_missing` is
+      # returned when the `psd2` block is omitted, and `transaction_mismatch` when the
+      # submitted variables differ from those provided at issuance.
       module Status
         extend PreludeSDK::Internal::Type::Enum
 
@@ -106,6 +112,16 @@ module PreludeSDK
         EXPIRED_OR_NOT_FOUND =
           T.let(
             :expired_or_not_found,
+            PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol
+          )
+        TRANSACTION_MISSING =
+          T.let(
+            :transaction_missing,
+            PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol
+          )
+        TRANSACTION_MISMATCH =
+          T.let(
+            :transaction_mismatch,
             PreludeSDK::Models::VerificationCheckResponse::Status::TaggedSymbol
           )
 

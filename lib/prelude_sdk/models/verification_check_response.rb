@@ -5,7 +5,9 @@ module PreludeSDK
     # @see PreludeSDK::Resources::Verification#check
     class VerificationCheckResponse < PreludeSDK::Internal::Type::BaseModel
       # @!attribute status
-      #   The status of the check.
+      #   The status of the check. For `prelude:psd2` codes, `transaction_missing` is
+      #   returned when the `psd2` block is omitted, and `transaction_mismatch` when the
+      #   submitted variables differ from those provided at issuance.
       #
       #   @return [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status]
       required :status, enum: -> { PreludeSDK::Models::VerificationCheckResponse::Status }
@@ -28,7 +30,10 @@ module PreludeSDK
       optional :request_id, String
 
       # @!method initialize(status:, id: nil, metadata: nil, request_id: nil)
-      #   @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status] The status of the check.
+      #   Some parameter documentations has been truncated, see
+      #   {PreludeSDK::Models::VerificationCheckResponse} for more details.
+      #
+      #   @param status [Symbol, PreludeSDK::Models::VerificationCheckResponse::Status] The status of the check. For `prelude:psd2` codes, `transaction_missing` is retu
       #
       #   @param id [String] The verification identifier.
       #
@@ -36,7 +41,9 @@ module PreludeSDK
       #
       #   @param request_id [String]
 
-      # The status of the check.
+      # The status of the check. For `prelude:psd2` codes, `transaction_missing` is
+      # returned when the `psd2` block is omitted, and `transaction_mismatch` when the
+      # submitted variables differ from those provided at issuance.
       #
       # @see PreludeSDK::Models::VerificationCheckResponse#status
       module Status
@@ -45,6 +52,8 @@ module PreludeSDK
         SUCCESS = :success
         FAILURE = :failure
         EXPIRED_OR_NOT_FOUND = :expired_or_not_found
+        TRANSACTION_MISSING = :transaction_missing
+        TRANSACTION_MISMATCH = :transaction_mismatch
 
         # @!method self.values
         #   @return [Array<Symbol>]

@@ -44,11 +44,13 @@ module PreludeSDK
       #
       # Check the validity of a verification code.
       #
-      # @overload check(code:, target:, request_options: {})
+      # @overload check(code:, target:, psd2: nil, request_options: {})
       #
       # @param code [String] The OTP code to validate.
       #
       # @param target [PreludeSDK::Models::VerificationCheckParams::Target] The verification target. Either a phone number or an email address. To use the e
+      #
+      # @param psd2 [PreludeSDK::Models::VerificationCheckParams::Psd2] Required when checking a code issued under the `prelude:psd2` template. The subm
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #

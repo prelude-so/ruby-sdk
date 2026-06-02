@@ -1,7 +1,11 @@
 module PreludeSDK
   module Models
     type verification_check_params =
-      { code: String, target: PreludeSDK::VerificationCheckParams::Target }
+      {
+        code: String,
+        target: PreludeSDK::VerificationCheckParams::Target,
+        :psd2 => PreludeSDK::VerificationCheckParams::Psd2
+      }
       & PreludeSDK::Internal::Type::request_parameters
 
     class VerificationCheckParams < PreludeSDK::Internal::Type::BaseModel
@@ -12,15 +16,23 @@ module PreludeSDK
 
       attr_accessor target: PreludeSDK::VerificationCheckParams::Target
 
+      attr_reader psd2: PreludeSDK::VerificationCheckParams::Psd2?
+
+      def psd2=: (
+        PreludeSDK::VerificationCheckParams::Psd2
+      ) -> PreludeSDK::VerificationCheckParams::Psd2
+
       def initialize: (
         code: String,
         target: PreludeSDK::VerificationCheckParams::Target,
+        ?psd2: PreludeSDK::VerificationCheckParams::Psd2,
         ?request_options: PreludeSDK::request_opts
       ) -> void
 
       def to_hash: -> {
         code: String,
         target: PreludeSDK::VerificationCheckParams::Target,
+        :psd2 => PreludeSDK::VerificationCheckParams::Psd2,
         request_options: PreludeSDK::RequestOptions
       }
 
@@ -55,6 +67,24 @@ module PreludeSDK
 
           def self?.values: -> ::Array[PreludeSDK::Models::VerificationCheckParams::Target::type_]
         end
+      end
+
+      type psd2 = { amount: String, currency: String, recipient: String }
+
+      class Psd2 < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor amount: String
+
+        attr_accessor currency: String
+
+        attr_accessor recipient: String
+
+        def initialize: (
+          amount: String,
+          currency: String,
+          recipient: String
+        ) -> void
+
+        def to_hash: -> { amount: String, currency: String, recipient: String }
       end
     end
   end
