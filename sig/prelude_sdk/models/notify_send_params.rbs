@@ -10,6 +10,7 @@ module PreludeSDK
         expires_at: Time,
         from: String,
         locale: String,
+        max_auto_retries: Integer,
         preferred_channel: PreludeSDK::Models::NotifySendParams::preferred_channel,
         schedule_at: Time,
         variables: ::Hash[Symbol, String]
@@ -50,6 +51,10 @@ module PreludeSDK
 
       def locale=: (String) -> String
 
+      attr_reader max_auto_retries: Integer?
+
+      def max_auto_retries=: (Integer) -> Integer
+
       attr_reader preferred_channel: PreludeSDK::Models::NotifySendParams::preferred_channel?
 
       def preferred_channel=: (
@@ -73,6 +78,7 @@ module PreludeSDK
         ?expires_at: Time,
         ?from: String,
         ?locale: String,
+        ?max_auto_retries: Integer,
         ?preferred_channel: PreludeSDK::Models::NotifySendParams::preferred_channel,
         ?schedule_at: Time,
         ?variables: ::Hash[Symbol, String],
@@ -88,6 +94,7 @@ module PreludeSDK
         expires_at: Time,
         from: String,
         locale: String,
+        max_auto_retries: Integer,
         preferred_channel: PreludeSDK::Models::NotifySendParams::preferred_channel,
         schedule_at: Time,
         variables: ::Hash[Symbol, String],

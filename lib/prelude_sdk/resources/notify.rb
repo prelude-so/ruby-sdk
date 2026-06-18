@@ -159,7 +159,7 @@ module PreludeSDK
       # Send transactional and marketing messages to your users via SMS, RCS and
       # WhatsApp with automatic compliance enforcement.
       #
-      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, max_auto_retries: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier configured by your Customer Success team.
       #
@@ -176,6 +176,8 @@ module PreludeSDK
       # @param from [String] The Sender ID. Must be approved for your account.
       #
       # @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
+      #
+      # @param max_auto_retries [Integer] Maximum number of automatic retry attempts across channels for this send, in add
       #
       # @param preferred_channel [Symbol, PreludeSDK::Models::NotifySendParams::PreferredChannel] The preferred channel to be used in priority for message delivery. If the channe
       #
@@ -204,7 +206,7 @@ module PreludeSDK
       #
       # Send the same message to multiple recipients in a single request.
       #
-      # @overload send_batch(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @overload send_batch(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, max_auto_retries: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier configured by your Customer Success team.
       #
@@ -221,6 +223,8 @@ module PreludeSDK
       # @param from [String] The Sender ID. Must be approved for your account.
       #
       # @param locale [String] A BCP-47 formatted locale string.
+      #
+      # @param max_auto_retries [Integer] Maximum number of automatic retry attempts across channels for each send in the
       #
       # @param preferred_channel [Symbol, PreludeSDK::Models::NotifySendBatchParams::PreferredChannel] Preferred channel for delivery. If unavailable, automatic fallback applies.
       #

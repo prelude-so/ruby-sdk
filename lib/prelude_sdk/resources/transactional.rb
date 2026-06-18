@@ -12,7 +12,7 @@ module PreludeSDK
       # Legacy route maintained for backward compatibility. Migrate to `/v2/notify`
       # instead.
       #
-      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, variables: nil, request_options: {})
+      # @overload send_(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, max_auto_retries: nil, preferred_channel: nil, variables: nil, request_options: {})
       #
       # @param template_id [String] The template identifier.
       #
@@ -29,6 +29,8 @@ module PreludeSDK
       # @param from [String] The Sender ID.
       #
       # @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
+      #
+      # @param max_auto_retries [Integer] Maximum number of automatic retry attempts across channels for this send, in add
       #
       # @param preferred_channel [Symbol, PreludeSDK::Models::TransactionalSendParams::PreferredChannel] The preferred delivery channel for the message. When specified, the system will
       #
