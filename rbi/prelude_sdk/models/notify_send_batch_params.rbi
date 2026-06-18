@@ -78,6 +78,17 @@ module PreludeSDK
       sig { params(locale: String).void }
       attr_writer :locale
 
+      # Maximum number of automatic retry attempts across channels for each send in the
+      # batch, in addition to the first attempt. For example, `2` allows up to 3 total
+      # delivery attempts per recipient. Lower values reduce delivery cost on
+      # hard-to-reach numbers at the expense of deliverability. When omitted, your
+      # account's configured default applies.
+      sig { returns(T.nilable(Integer)) }
+      attr_reader :max_auto_retries
+
+      sig { params(max_auto_retries: Integer).void }
+      attr_writer :max_auto_retries
+
       # Preferred channel for delivery. If unavailable, automatic fallback applies.
       sig do
         returns(
@@ -121,6 +132,7 @@ module PreludeSDK
           expires_at: Time,
           from: String,
           locale: String,
+          max_auto_retries: Integer,
           preferred_channel:
             PreludeSDK::NotifySendBatchParams::PreferredChannel::OrSymbol,
           schedule_at: Time,
@@ -155,6 +167,12 @@ module PreludeSDK
         from: nil,
         # A BCP-47 formatted locale string.
         locale: nil,
+        # Maximum number of automatic retry attempts across channels for each send in the
+        # batch, in addition to the first attempt. For example, `2` allows up to 3 total
+        # delivery attempts per recipient. Lower values reduce delivery cost on
+        # hard-to-reach numbers at the expense of deliverability. When omitted, your
+        # account's configured default applies.
+        max_auto_retries: nil,
         # Preferred channel for delivery. If unavailable, automatic fallback applies.
         preferred_channel: nil,
         # Schedule delivery in RFC3339 format. Marketing sends may be adjusted to comply
@@ -177,6 +195,7 @@ module PreludeSDK
             expires_at: Time,
             from: String,
             locale: String,
+            max_auto_retries: Integer,
             preferred_channel:
               PreludeSDK::NotifySendBatchParams::PreferredChannel::OrSymbol,
             schedule_at: Time,

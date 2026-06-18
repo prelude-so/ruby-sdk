@@ -65,6 +65,16 @@ module PreludeSDK
       #   @return [String, nil]
       optional :locale, String
 
+      # @!attribute max_auto_retries
+      #   Maximum number of automatic retry attempts across channels for each send in the
+      #   batch, in addition to the first attempt. For example, `2` allows up to 3 total
+      #   delivery attempts per recipient. Lower values reduce delivery cost on
+      #   hard-to-reach numbers at the expense of deliverability. When omitted, your
+      #   account's configured default applies.
+      #
+      #   @return [Integer, nil]
+      optional :max_auto_retries, Integer
+
       # @!attribute preferred_channel
       #   Preferred channel for delivery. If unavailable, automatic fallback applies.
       #
@@ -84,7 +94,7 @@ module PreludeSDK
       #   @return [Hash{Symbol=>String}, nil]
       optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-      # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
+      # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, max_auto_retries: nil, preferred_channel: nil, schedule_at: nil, variables: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::NotifySendBatchParams} for more details.
       #
@@ -103,6 +113,8 @@ module PreludeSDK
       #   @param from [String] The Sender ID. Must be approved for your account.
       #
       #   @param locale [String] A BCP-47 formatted locale string.
+      #
+      #   @param max_auto_retries [Integer] Maximum number of automatic retry attempts across channels for each send in the
       #
       #   @param preferred_channel [Symbol, PreludeSDK::Models::NotifySendBatchParams::PreferredChannel] Preferred channel for delivery. If unavailable, automatic fallback applies.
       #

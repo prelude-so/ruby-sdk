@@ -126,6 +126,7 @@ module PreludeSDK
           expires_at: Time,
           from: String,
           locale: String,
+          max_auto_retries: Integer,
           preferred_channel:
             PreludeSDK::NotifySendParams::PreferredChannel::OrSymbol,
           schedule_at: Time,
@@ -165,6 +166,12 @@ module PreludeSDK
         # code of the phone number. If the language specified doesn't exist, the default
         # set on the template will be used.
         locale: nil,
+        # Maximum number of automatic retry attempts across channels for this send, in
+        # addition to the first attempt. For example, `2` allows up to 3 total delivery
+        # attempts. Lower values reduce delivery cost on hard-to-reach numbers at the
+        # expense of deliverability. When omitted, your account's configured default
+        # applies.
+        max_auto_retries: nil,
         # The preferred channel to be used in priority for message delivery. If the
         # channel is unavailable, the system will fallback to other available channels.
         preferred_channel: nil,
@@ -189,6 +196,7 @@ module PreludeSDK
           expires_at: Time,
           from: String,
           locale: String,
+          max_auto_retries: Integer,
           preferred_channel:
             PreludeSDK::NotifySendBatchParams::PreferredChannel::OrSymbol,
           schedule_at: Time,
@@ -223,6 +231,12 @@ module PreludeSDK
         from: nil,
         # A BCP-47 formatted locale string.
         locale: nil,
+        # Maximum number of automatic retry attempts across channels for each send in the
+        # batch, in addition to the first attempt. For example, `2` allows up to 3 total
+        # delivery attempts per recipient. Lower values reduce delivery cost on
+        # hard-to-reach numbers at the expense of deliverability. When omitted, your
+        # account's configured default applies.
+        max_auto_retries: nil,
         # Preferred channel for delivery. If unavailable, automatic fallback applies.
         preferred_channel: nil,
         # Schedule delivery in RFC3339 format. Marketing sends may be adjusted to comply

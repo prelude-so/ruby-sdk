@@ -69,6 +69,14 @@ module PreludeSDK
       #   @return [String, nil]
       optional :locale, String
 
+      # @!attribute max_auto_retries
+      #   Maximum number of automatic retry attempts across channels for this send, in
+      #   addition to the first attempt. For example, `2` allows up to 3 total delivery
+      #   attempts. When omitted, your account's configured default applies.
+      #
+      #   @return [Integer, nil]
+      optional :max_auto_retries, Integer
+
       # @!attribute preferred_channel
       #   The preferred delivery channel for the message. When specified, the system will
       #   prioritize sending via the requested channel if the template is configured for
@@ -89,7 +97,7 @@ module PreludeSDK
       #   @return [Hash{Symbol=>String}, nil]
       optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-      # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, preferred_channel: nil, variables: nil, request_options: {})
+      # @!method initialize(template_id:, to:, callback_url: nil, correlation_id: nil, document: nil, expires_at: nil, from: nil, locale: nil, max_auto_retries: nil, preferred_channel: nil, variables: nil, request_options: {})
       #   Some parameter documentations has been truncated, see
       #   {PreludeSDK::Models::TransactionalSendParams} for more details.
       #
@@ -108,6 +116,8 @@ module PreludeSDK
       #   @param from [String] The Sender ID.
       #
       #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
+      #
+      #   @param max_auto_retries [Integer] Maximum number of automatic retry attempts across channels for this send, in add
       #
       #   @param preferred_channel [Symbol, PreludeSDK::Models::TransactionalSendParams::PreferredChannel] The preferred delivery channel for the message. When specified, the system will
       #

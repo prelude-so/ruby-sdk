@@ -10,6 +10,7 @@ module PreludeSDK
         ?expires_at: String,
         ?from: String,
         ?locale: String,
+        ?max_auto_retries: Integer,
         ?preferred_channel: PreludeSDK::Models::TransactionalSendParams::preferred_channel,
         ?variables: ::Hash[Symbol, String],
         ?request_options: PreludeSDK::request_opts
