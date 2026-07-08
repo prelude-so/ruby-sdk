@@ -322,7 +322,12 @@ module PreludeSDK
         end
         attr_writer :verification_method
 
-        # The preferred channel to be used in priority for verification.
+        # The channel to prioritize when delivering the verification. Prelude prioritizes
+        # this channel on the first attempt and continues to prefer it on retries while an
+        # untried route on that channel remains; once those are exhausted, retries fall
+        # back to the next best available route. If the channel is unavailable (for
+        # example, when a verification is challenged), Prelude uses the best available
+        # route instead.
         sig do
           returns(
             T.nilable(
@@ -418,7 +423,12 @@ module PreludeSDK
           # skips silent verification, useful for scenarios requiring direct user
           # interaction.
           verification_method: nil,
-          # The preferred channel to be used in priority for verification.
+          # The channel to prioritize when delivering the verification. Prelude prioritizes
+          # this channel on the first attempt and continues to prefer it on retries while an
+          # untried route on that channel remains; once those are exhausted, retries fall
+          # back to the next best available route. If the channel is unavailable (for
+          # example, when a verification is challenged), Prelude uses the best available
+          # route instead.
           preferred_channel: nil,
           # The Sender ID to use for this message. The Sender ID needs to be enabled by
           # Prelude.
@@ -599,7 +609,12 @@ module PreludeSDK
           end
         end
 
-        # The preferred channel to be used in priority for verification.
+        # The channel to prioritize when delivering the verification. Prelude prioritizes
+        # this channel on the first attempt and continues to prefer it on retries while an
+        # untried route on that channel remains; once those are exhausted, retries fall
+        # back to the next best available route. If the channel is unavailable (for
+        # example, when a verification is challenged), Prelude uses the best available
+        # route instead.
         module PreferredChannel
           extend PreludeSDK::Internal::Type::Enum
 

@@ -176,7 +176,12 @@ module PreludeSDK
                  api_name: :method
 
         # @!attribute preferred_channel
-        #   The preferred channel to be used in priority for verification.
+        #   The channel to prioritize when delivering the verification. Prelude prioritizes
+        #   this channel on the first attempt and continues to prefer it on retries while an
+        #   untried route on that channel remains; once those are exhausted, retries fall
+        #   back to the next best available route. If the channel is unavailable (for
+        #   example, when a verification is challenged), Prelude uses the best available
+        #   route instead.
         #
         #   @return [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::PreferredChannel, nil]
         optional :preferred_channel, enum: -> { PreludeSDK::VerificationCreateParams::Options::PreferredChannel }
@@ -221,7 +226,7 @@ module PreludeSDK
         #
         #   @param verification_method [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method] The method used for verifying this phone number. The 'voice' option provides an
         #
-        #   @param preferred_channel [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::PreferredChannel] The preferred channel to be used in priority for verification.
+        #   @param preferred_channel [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::PreferredChannel] The channel to prioritize when delivering the verification. Prelude prioritizes
         #
         #   @param sender_id [String] The Sender ID to use for this message. The Sender ID needs to be enabled by Prel
         #
@@ -296,7 +301,12 @@ module PreludeSDK
           #   @return [Array<Symbol>]
         end
 
-        # The preferred channel to be used in priority for verification.
+        # The channel to prioritize when delivering the verification. Prelude prioritizes
+        # this channel on the first attempt and continues to prefer it on retries while an
+        # untried route on that channel remains; once those are exhausted, retries fall
+        # back to the next best available route. If the channel is unavailable (for
+        # example, when a verification is challenged), Prelude uses the best available
+        # route instead.
         #
         # @see PreludeSDK::Models::VerificationCreateParams::Options#preferred_channel
         module PreferredChannel
