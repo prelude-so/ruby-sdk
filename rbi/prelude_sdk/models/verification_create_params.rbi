@@ -258,6 +258,34 @@ module PreludeSDK
         sig { params(callback_url: String).void }
         attr_writer :callback_url
 
+        # The channels this verification may use, in the order they are tried. Channels
+        # you omit are never used, including on retries. Every channel you list must be
+        # enabled on your account and active in the destination country, otherwise the
+        # request fails with `channel_not_enabled_in_region`. Prelude still picks the best
+        # provider within each channel. Cannot be combined with `preferred_channel`. Voice
+        # is requested through `method` instead. Disabled by default — contact support to
+        # enable it.
+        sig do
+          returns(
+            T.nilable(
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Options::Channel::OrSymbol
+              ]
+            )
+          )
+        end
+        attr_reader :channels
+
+        sig do
+          params(
+            channels:
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Options::Channel::OrSymbol
+              ]
+          ).void
+        end
+        attr_writer :channels
+
         # The size of the code generated. It should be between 4 and 8. Defaults to the
         # code size specified from the Dashboard.
         sig { returns(T.nilable(Integer)) }
@@ -327,7 +355,7 @@ module PreludeSDK
         # untried route on that channel remains; once those are exhausted, retries fall
         # back to the next best available route. If the channel is unavailable (for
         # example, when a verification is challenged), Prelude uses the best available
-        # route instead.
+        # route instead. Cannot be combined with `channels`.
         sig do
           returns(
             T.nilable(
@@ -374,6 +402,10 @@ module PreludeSDK
             app_realm:
               PreludeSDK::VerificationCreateParams::Options::AppRealm::OrHash,
             callback_url: String,
+            channels:
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Options::Channel::OrSymbol
+              ],
             code_size: Integer,
             custom_code: String,
             force_challenge: T::Boolean,
@@ -395,6 +427,14 @@ module PreludeSDK
           # verification creation, attempt creation, and delivery status changes. For more
           # details, refer to [Webhook](/verify/v2/documentation/webhook).
           callback_url: nil,
+          # The channels this verification may use, in the order they are tried. Channels
+          # you omit are never used, including on retries. Every channel you list must be
+          # enabled on your account and active in the destination country, otherwise the
+          # request fails with `channel_not_enabled_in_region`. Prelude still picks the best
+          # provider within each channel. Cannot be combined with `preferred_channel`. Voice
+          # is requested through `method` instead. Disabled by default — contact support to
+          # enable it.
+          channels: nil,
           # The size of the code generated. It should be between 4 and 8. Defaults to the
           # code size specified from the Dashboard.
           code_size: nil,
@@ -428,7 +468,7 @@ module PreludeSDK
           # untried route on that channel remains; once those are exhausted, retries fall
           # back to the next best available route. If the channel is unavailable (for
           # example, when a verification is challenged), Prelude uses the best available
-          # route instead.
+          # route instead. Cannot be combined with `channels`.
           preferred_channel: nil,
           # The Sender ID to use for this message. The Sender ID needs to be enabled by
           # Prelude.
@@ -447,6 +487,10 @@ module PreludeSDK
               app_realm:
                 PreludeSDK::VerificationCreateParams::Options::AppRealm,
               callback_url: String,
+              channels:
+                T::Array[
+                  PreludeSDK::VerificationCreateParams::Options::Channel::OrSymbol
+                ],
               code_size: Integer,
               custom_code: String,
               force_challenge: T::Boolean,
@@ -563,6 +607,60 @@ module PreludeSDK
           end
         end
 
+        module Channel
+          extend PreludeSDK::Internal::Type::Enum
+
+          TaggedSymbol =
+            T.type_alias do
+              T.all(
+                Symbol,
+                PreludeSDK::VerificationCreateParams::Options::Channel
+              )
+            end
+          OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+          SMS =
+            T.let(
+              :sms,
+              PreludeSDK::VerificationCreateParams::Options::Channel::TaggedSymbol
+            )
+          RCS =
+            T.let(
+              :rcs,
+              PreludeSDK::VerificationCreateParams::Options::Channel::TaggedSymbol
+            )
+          WHATSAPP =
+            T.let(
+              :whatsapp,
+              PreludeSDK::VerificationCreateParams::Options::Channel::TaggedSymbol
+            )
+          VIBER =
+            T.let(
+              :viber,
+              PreludeSDK::VerificationCreateParams::Options::Channel::TaggedSymbol
+            )
+          ZALO =
+            T.let(
+              :zalo,
+              PreludeSDK::VerificationCreateParams::Options::Channel::TaggedSymbol
+            )
+          TELEGRAM =
+            T.let(
+              :telegram,
+              PreludeSDK::VerificationCreateParams::Options::Channel::TaggedSymbol
+            )
+
+          sig do
+            override.returns(
+              T::Array[
+                PreludeSDK::VerificationCreateParams::Options::Channel::TaggedSymbol
+              ]
+            )
+          end
+          def self.values
+          end
+        end
+
         # The method used for verifying this phone number. The 'voice' option provides an
         # accessible alternative for visually impaired users by delivering the
         # verification code through a phone call rather than a text message. It also
@@ -614,7 +712,7 @@ module PreludeSDK
         # untried route on that channel remains; once those are exhausted, retries fall
         # back to the next best available route. If the channel is unavailable (for
         # example, when a verification is challenged), Prelude uses the best available
-        # route instead.
+        # route instead. Cannot be combined with `channels`.
         module PreferredChannel
           extend PreludeSDK::Internal::Type::Enum
 
