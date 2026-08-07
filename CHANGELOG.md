@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.6.0 (2026-08-07)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/prelude-so/ruby-sdk/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** api update ([f50fa71](https://github.com/prelude-so/ruby-sdk/commit/f50fa71d8df49b0787d7db47a5510f44151f9e8d))
+* **api:** api update ([05e7092](https://github.com/prelude-so/ruby-sdk/commit/05e7092347c6b2b2c8824c3912843b751ee5139b))
+* **api:** api update ([9354ab4](https://github.com/prelude-so/ruby-sdk/commit/9354ab444b7f24f01f953071f76088c05d7b60e0))
+* **api:** api update ([8617519](https://github.com/prelude-so/ruby-sdk/commit/8617519ff89a67501d6a68a48e228f8f90c1acc5))
+* **api:** api update ([714bb99](https://github.com/prelude-so/ruby-sdk/commit/714bb99f625935f8e7320ff56fe30db697015bc6))
+* **api:** api update ([36cef75](https://github.com/prelude-so/ruby-sdk/commit/36cef7585d0e0217ef205a0de19a74cab7088ed6))
+* **api:** api update ([4f9e5d5](https://github.com/prelude-so/ruby-sdk/commit/4f9e5d5fed8221c84514419e8fc55b4fe9695bb4))
+* **api:** api update ([3a7d02a](https://github.com/prelude-so/ruby-sdk/commit/3a7d02aaff30f5db464a6669134125b645faccdb))
+* **api:** api update ([b481c73](https://github.com/prelude-so/ruby-sdk/commit/b481c73a09d3cea498b5449612e8f36ffd134b68))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([066b5f2](https://github.com/prelude-so/ruby-sdk/commit/066b5f29b4bf551e90d782fc5216a62669c7c415))
+
+
+### Bug Fixes
+
+* **client:** elide content type header on requests without body ([3b5e81c](https://github.com/prelude-so/ruby-sdk/commit/3b5e81cec044555fb0b3aecead5ae056eedb3373))
+* **client:** send content-type header for requests with an omitted optional body ([513ece3](https://github.com/prelude-so/ruby-sdk/commit/513ece3bc7f8c0282b8825bb7a817c3a27e5c795))
+
+
+### Chores
+
+* **internal:** bound formatter parallelism to CPU count ([8370b94](https://github.com/prelude-so/ruby-sdk/commit/8370b948890fbb6e4a981e63e4be6c0ee1fb0b1e))
+
 ## 0.5.0 (2026-05-07)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/prelude-so/ruby-sdk/compare/v0.4.0...v0.5.0)
