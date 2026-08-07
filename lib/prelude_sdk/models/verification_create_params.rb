@@ -127,12 +127,15 @@ module PreludeSDK
 
         # @!attribute channels
         #   The channels this verification may use, in the order they are tried. Channels
-        #   you omit are never used, including on retries. Every channel you list must be
-        #   enabled on your account and active in the destination country, otherwise the
-        #   request fails with `channel_not_enabled_in_region`. Prelude still picks the best
-        #   provider within each channel. Cannot be combined with `preferred_channel`. Voice
-        #   is requested through `method` instead. Disabled by default — contact support to
-        #   enable it.
+        #   you omit are never used, including on retries. This option can only be set when
+        #   the verification is created. The list is recorded on the verification and
+        #   applies for its whole lifecycle, so `channels` sent while retrying an existing
+        #   verification is ignored — unlike `preferred_channel`, which is honored on every
+        #   retry. Every channel you list must be enabled on your account and active in the
+        #   destination country, otherwise the request fails with
+        #   `channel_not_enabled_in_region`. Prelude still picks the best provider within
+        #   each channel. Cannot be combined with `preferred_channel`. Voice is requested
+        #   through `method` instead. Disabled by default — contact support to enable it.
         #
         #   @return [Array<Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Channel>, nil]
         optional :channels,
@@ -173,6 +176,26 @@ module PreludeSDK
         #
         #   @return [String, nil]
         optional :locale, String
+
+        # @!attribute max_auto_fallbacks
+        #   Maximum number of delivery attempts Prelude may add on its own after the one you
+        #   requested. `0` means a single attempt: if it cannot be delivered, Prelude
+        #   neither tries another provider nor another channel, and does not retry
+        #   automatically. `1` allows one additional attempt, and so on — a value larger
+        #   than the number of routes available for the destination simply behaves like the
+        #   default. When omitted, Prelude retries as your account is configured, across as
+        #   many channels as the route offers.
+        #
+        #   This option can only be set when the verification is created. The value is
+        #   recorded on the verification and applies for its whole lifecycle, so a
+        #   `max_auto_fallbacks` sent while retrying an existing verification is ignored —
+        #   the limit cannot be raised or lowered after the fact. A retry you ask for is not
+        #   an automatic attempt, so it gets a fresh allowance of the same limit. This
+        #   option is disabled by default — contact Prelude support to enable it on your
+        #   account.
+        #
+        #   @return [Integer, nil]
+        optional :max_auto_fallbacks, Integer
 
         # @!attribute verification_method
         #   The method used for verifying this phone number. The 'voice' option provides an
@@ -219,7 +242,7 @@ module PreludeSDK
         #   @return [Hash{Symbol=>String}, nil]
         optional :variables, PreludeSDK::Internal::Type::HashOf[String]
 
-        # @!method initialize(app_realm: nil, callback_url: nil, channels: nil, code_size: nil, custom_code: nil, force_challenge: nil, locale: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
+        # @!method initialize(app_realm: nil, callback_url: nil, channels: nil, code_size: nil, custom_code: nil, force_challenge: nil, locale: nil, max_auto_fallbacks: nil, verification_method: nil, preferred_channel: nil, sender_id: nil, template_id: nil, variables: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::VerificationCreateParams::Options} for more details.
         #
@@ -238,6 +261,8 @@ module PreludeSDK
         #   @param force_challenge [Boolean] When `true`, the verification is routed through challenge-safe channels (non-SMS
         #
         #   @param locale [String] A BCP-47 formatted locale string with the language the text message will be sent
+        #
+        #   @param max_auto_fallbacks [Integer] Maximum number of delivery attempts Prelude may add on its own after the one you
         #
         #   @param verification_method [Symbol, PreludeSDK::Models::VerificationCreateParams::Options::Method] The method used for verifying this phone number. The 'voice' option provides an
         #
