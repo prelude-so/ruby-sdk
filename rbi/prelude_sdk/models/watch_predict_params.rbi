@@ -11,7 +11,7 @@ module PreludeSDK
           T.any(PreludeSDK::WatchPredictParams, PreludeSDK::Internal::AnyHash)
         end
 
-      # The prediction target. Only supports phone numbers for now.
+      # The signup identifier to score — a phone number or email address.
       sig { returns(PreludeSDK::WatchPredictParams::Target) }
       attr_reader :target
 
@@ -56,7 +56,7 @@ module PreludeSDK
         ).returns(T.attached_class)
       end
       def self.new(
-        # The prediction target. Only supports phone numbers for now.
+        # The signup identifier to score — a phone number or email address.
         target:,
         # The identifier of the dispatch that came from the front-end SDK.
         dispatch_id: nil,
@@ -100,7 +100,7 @@ module PreludeSDK
         sig { returns(String) }
         attr_accessor :value
 
-        # The prediction target. Only supports phone numbers for now.
+        # The signup identifier to score — a phone number or email address.
         sig do
           params(
             type: PreludeSDK::WatchPredictParams::Target::Type::OrSymbol,

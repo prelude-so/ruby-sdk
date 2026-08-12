@@ -105,9 +105,12 @@ module PreludeSDK
         {
           app_realm: PreludeSDK::VerificationCreateParams::Options::AppRealm,
           callback_url: String,
+          channels: ::Array[PreludeSDK::Models::VerificationCreateParams::Options::channel],
           code_size: Integer,
           custom_code: String,
+          force_challenge: bool,
           locale: String,
+          max_auto_fallbacks: Integer,
           verification_method: PreludeSDK::Models::VerificationCreateParams::Options::method_,
           preferred_channel: PreludeSDK::Models::VerificationCreateParams::Options::preferred_channel,
           sender_id: String,
@@ -126,6 +129,12 @@ module PreludeSDK
 
         def callback_url=: (String) -> String
 
+        attr_reader channels: ::Array[PreludeSDK::Models::VerificationCreateParams::Options::channel]?
+
+        def channels=: (
+          ::Array[PreludeSDK::Models::VerificationCreateParams::Options::channel]
+        ) -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::channel]
+
         attr_reader code_size: Integer?
 
         def code_size=: (Integer) -> Integer
@@ -134,9 +143,17 @@ module PreludeSDK
 
         def custom_code=: (String) -> String
 
+        attr_reader force_challenge: bool?
+
+        def force_challenge=: (bool) -> bool
+
         attr_reader locale: String?
 
         def locale=: (String) -> String
+
+        attr_reader max_auto_fallbacks: Integer?
+
+        def max_auto_fallbacks=: (Integer) -> Integer
 
         attr_reader verification_method: PreludeSDK::Models::VerificationCreateParams::Options::method_?
 
@@ -165,9 +182,12 @@ module PreludeSDK
         def initialize: (
           ?app_realm: PreludeSDK::VerificationCreateParams::Options::AppRealm,
           ?callback_url: String,
+          ?channels: ::Array[PreludeSDK::Models::VerificationCreateParams::Options::channel],
           ?code_size: Integer,
           ?custom_code: String,
+          ?force_challenge: bool,
           ?locale: String,
+          ?max_auto_fallbacks: Integer,
           ?verification_method: PreludeSDK::Models::VerificationCreateParams::Options::method_,
           ?preferred_channel: PreludeSDK::Models::VerificationCreateParams::Options::preferred_channel,
           ?sender_id: String,
@@ -178,9 +198,12 @@ module PreludeSDK
         def to_hash: -> {
           app_realm: PreludeSDK::VerificationCreateParams::Options::AppRealm,
           callback_url: String,
+          channels: ::Array[PreludeSDK::Models::VerificationCreateParams::Options::channel],
           code_size: Integer,
           custom_code: String,
+          force_challenge: bool,
           locale: String,
+          max_auto_fallbacks: Integer,
           verification_method: PreludeSDK::Models::VerificationCreateParams::Options::method_,
           preferred_channel: PreludeSDK::Models::VerificationCreateParams::Options::preferred_channel,
           sender_id: String,
@@ -219,6 +242,21 @@ module PreludeSDK
 
             def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::AppRealm::platform]
           end
+        end
+
+        type channel = :sms | :rcs | :whatsapp | :viber | :zalo | :telegram
+
+        module Channel
+          extend PreludeSDK::Internal::Type::Enum
+
+          SMS: :sms
+          RCS: :rcs
+          WHATSAPP: :whatsapp
+          VIBER: :viber
+          ZALO: :zalo
+          TELEGRAM: :telegram
+
+          def self?.values: -> ::Array[PreludeSDK::Models::VerificationCreateParams::Options::channel]
         end
 
         type method_ = :auto | :voice | :message

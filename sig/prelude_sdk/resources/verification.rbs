@@ -13,6 +13,7 @@ module PreludeSDK
       def check: (
         code: String,
         target: PreludeSDK::VerificationCheckParams::Target,
+        ?psd2: PreludeSDK::VerificationCheckParams::Psd2,
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::VerificationCheckResponse
 

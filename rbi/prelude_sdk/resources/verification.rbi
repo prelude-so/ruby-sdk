@@ -40,6 +40,7 @@ module PreludeSDK
         params(
           code: String,
           target: PreludeSDK::VerificationCheckParams::Target::OrHash,
+          psd2: PreludeSDK::VerificationCheckParams::Psd2::OrHash,
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(PreludeSDK::Models::VerificationCheckResponse)
       end
@@ -49,6 +50,11 @@ module PreludeSDK
         # The verification target. Either a phone number or an email address. To use the
         # email verification feature contact us to discuss your use case.
         target:,
+        # Required when checking a code issued under the `prelude:psd2` template. The
+        # submitted variables must match those provided at issuance; any mismatch
+        # invalidates the code (PSD2 SCA RTS Article 5 dynamic linking). Ignored on
+        # non-PSD2 verifications.
+        psd2: nil,
         request_options: {}
       )
       end
