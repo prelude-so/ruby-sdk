@@ -28,6 +28,9 @@ module PreludeSDK
       #   when prediction is "suspicious" and the anti-fraud system detected specific risk
       #   signals.
       #
+      #   - `account_risk_profile` - The target matches a risk profile derived from the
+      #     outcomes reported on your own account, rather than from a signal shared across
+      #     accounts.
       #   - `behavioral_pattern` - The phone number past behavior during verification
       #     flows exhibits suspicious patterns.
       #   - `device_attribute` - The device exhibits characteristics associated with
@@ -81,6 +84,7 @@ module PreludeSDK
       module RiskFactor
         extend PreludeSDK::Internal::Type::Enum
 
+        ACCOUNT_RISK_PROFILE = :account_risk_profile
         BEHAVIORAL_PATTERN = :behavioral_pattern
         DEVICE_ATTRIBUTE = :device_attribute
         FRAUD_DATABASE = :fraud_database
