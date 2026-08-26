@@ -47,7 +47,8 @@ module PreludeSDK
       end
 
       type risk_factor =
-        :behavioral_pattern
+        :account_risk_profile
+        | :behavioral_pattern
         | :device_attribute
         | :fraud_database
         | :location_discrepancy
@@ -61,6 +62,7 @@ module PreludeSDK
       module RiskFactor
         extend PreludeSDK::Internal::Type::Enum
 
+        ACCOUNT_RISK_PROFILE: :account_risk_profile
         BEHAVIORAL_PATTERN: :behavioral_pattern
         DEVICE_ATTRIBUTE: :device_attribute
         FRAUD_DATABASE: :fraud_database

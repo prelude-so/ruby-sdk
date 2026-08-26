@@ -124,6 +124,16 @@ module PreludeSDK
         #   @return [Symbol, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform, nil]
         optional :device_platform, enum: -> { PreludeSDK::WatchPredictParams::Signals::DevicePlatform }
 
+        # @!attribute existing_user
+        #   Whether the end-user already exists in your system, for example an existing
+        #   account signing in again rather than a first-time signup. Unlike
+        #   `is_trusted_user`, this signal does not bypass fraud checks; it is taken into
+        #   account as one additional anti-fraud signal. For more details, refer to
+        #   [Signals](/verify/v2/documentation/prevent-fraud#signals).
+        #
+        #   @return [Boolean, nil]
+        optional :existing_user, PreludeSDK::Internal::Type::Boolean
+
         # @!attribute ip
         #   The public IP v4 or v6 address of the end-user's device. You should collect this
         #   from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
@@ -163,7 +173,7 @@ module PreludeSDK
         #   @return [String, nil]
         optional :user_agent, String
 
-        # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, ip: nil, is_trusted_user: nil, ja4_fingerprint: nil, os_version: nil, user_agent: nil)
+        # @!method initialize(app_version: nil, device_id: nil, device_model: nil, device_platform: nil, existing_user: nil, ip: nil, is_trusted_user: nil, ja4_fingerprint: nil, os_version: nil, user_agent: nil)
         #   Some parameter documentations has been truncated, see
         #   {PreludeSDK::Models::WatchPredictParams::Signals} for more details.
         #
@@ -177,6 +187,8 @@ module PreludeSDK
         #   @param device_model [String] The model of the user's device.
         #
         #   @param device_platform [Symbol, PreludeSDK::Models::WatchPredictParams::Signals::DevicePlatform] The type of the user's device.
+        #
+        #   @param existing_user [Boolean] Whether the end-user already exists in your system, for example an existing acco
         #
         #   @param ip [String] The public IP v4 or v6 address of the end-user's device. You should collect this
         #
