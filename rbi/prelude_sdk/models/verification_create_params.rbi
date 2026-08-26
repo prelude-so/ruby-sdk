@@ -863,6 +863,17 @@ module PreludeSDK
         end
         attr_writer :device_platform
 
+        # Whether the end-user already exists in your system, for example an existing
+        # account signing in again rather than a first-time signup. Unlike
+        # `is_trusted_user`, this signal does not bypass fraud checks; it is taken into
+        # account as one additional anti-fraud signal. For more details, refer to
+        # [Signals](/verify/v2/documentation/prevent-fraud#signals).
+        sig { returns(T.nilable(T::Boolean)) }
+        attr_reader :existing_user
+
+        sig { params(existing_user: T::Boolean).void }
+        attr_writer :existing_user
+
         # The public IP v4 or v6 address of the end-user's device. You should collect this
         # from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
         # `Forwarded`, `True-Client-IP`, `CF-Connecting-IP` or an equivalent header to get
@@ -916,6 +927,7 @@ module PreludeSDK
             device_model: String,
             device_platform:
               PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
+            existing_user: T::Boolean,
             ip: String,
             is_trusted_user: T::Boolean,
             ja4_fingerprint: String,
@@ -934,6 +946,12 @@ module PreludeSDK
           device_model: nil,
           # The type of the user's device.
           device_platform: nil,
+          # Whether the end-user already exists in your system, for example an existing
+          # account signing in again rather than a first-time signup. Unlike
+          # `is_trusted_user`, this signal does not bypass fraud checks; it is taken into
+          # account as one additional anti-fraud signal. For more details, refer to
+          # [Signals](/verify/v2/documentation/prevent-fraud#signals).
+          existing_user: nil,
           # The public IP v4 or v6 address of the end-user's device. You should collect this
           # from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
           # `Forwarded`, `True-Client-IP`, `CF-Connecting-IP` or an equivalent header to get
@@ -964,6 +982,7 @@ module PreludeSDK
               device_model: String,
               device_platform:
                 PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
+              existing_user: T::Boolean,
               ip: String,
               is_trusted_user: T::Boolean,
               ja4_fingerprint: String,
