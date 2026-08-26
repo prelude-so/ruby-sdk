@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.7.0 (2026-08-26)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/prelude-so/ruby-sdk/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** api update ([00dcf41](https://github.com/prelude-so/ruby-sdk/commit/00dcf41dcc28fe76ec0a112169c6d01da9937a53))
+* **api:** api update ([ebb1d68](https://github.com/prelude-so/ruby-sdk/commit/ebb1d682d35d4fc0f6a403aa06b903481ccae8fe))
+
+
+### Chores
+
+* **internal:** allow the mock server port to be set with STAINLESS_MOCK_PORT ([2c5f32b](https://github.com/prelude-so/ruby-sdk/commit/2c5f32b48b0859861875e96aceb3530daf400015))
+
 ## 0.6.0 (2026-08-07)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/prelude-so/ruby-sdk/compare/v0.5.0...v0.6.0)
