@@ -5,6 +5,8 @@ module PreludeSDK
     # Send transactional and marketing messages with compliance enforcement.
     class Notify
       # Retrieve a specific subscription management configuration by its ID.
+      #
+      # In order to get access to this endpoint, contact our support team.
       sig do
         params(
           config_id: String,
@@ -20,6 +22,8 @@ module PreludeSDK
 
       # Retrieve the current subscription status for a specific phone number within a
       # subscription configuration.
+      #
+      # In order to get access to this endpoint, contact our support team.
       sig do
         params(
           phone_number: String,
@@ -41,6 +45,8 @@ module PreludeSDK
       #
       # Each configuration represents a subscription management setup with phone numbers
       # for receiving opt-out/opt-in requests and a callback URL for webhook events.
+      #
+      # In order to get access to this endpoint, contact our support team.
       sig do
         params(
           cursor: String,
@@ -61,6 +67,8 @@ module PreludeSDK
       # phone number within a subscription configuration.
       #
       # Events are ordered by timestamp in descending order (most recent first).
+      #
+      # In order to get access to this endpoint, contact our support team.
       sig do
         params(
           phone_number: String,
@@ -89,6 +97,8 @@ module PreludeSDK
       # specific subscription configuration.
       #
       # You can optionally filter by subscription state (SUB or UNSUB).
+      #
+      # In order to get access to this endpoint, contact our support team.
       sig do
         params(
           config_id: String,
