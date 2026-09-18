@@ -39,6 +39,8 @@ module PreludeSDK
     mod.define_sorbet_constant!(const) { T.type_alias { mod.to_sorbet_type } }
   end
 
+  Intel = PreludeSDK::Models::Intel
+
   LookupLookupParams = PreludeSDK::Models::LookupLookupParams
 
   NotifyGetSubscriptionConfigParams = PreludeSDK::Models::NotifyGetSubscriptionConfigParams
@@ -52,15 +54,25 @@ module PreludeSDK
 
   NotifyListSubscriptionPhoneNumbersParams = PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams
 
+  NotifyReplyParams = PreludeSDK::Models::NotifyReplyParams
+
   NotifySendBatchParams = PreludeSDK::Models::NotifySendBatchParams
 
   NotifySendParams = PreludeSDK::Models::NotifySendParams
 
+  Signals = PreludeSDK::Models::Signals
+
+  Target = PreludeSDK::Models::Target
+
   TransactionalSendParams = PreludeSDK::Models::TransactionalSendParams
+
+  Verification = PreludeSDK::Models::Verification
 
   VerificationCheckParams = PreludeSDK::Models::VerificationCheckParams
 
   VerificationCreateParams = PreludeSDK::Models::VerificationCreateParams
+
+  VerificationManagement = PreludeSDK::Models::VerificationManagement
 
   VerificationManagementDeletePhoneNumberParams =
     PreludeSDK::Models::VerificationManagementDeletePhoneNumberParams
@@ -75,6 +87,8 @@ module PreludeSDK
 
   VerificationManagementSubmitSenderIDParams =
     PreludeSDK::Models::VerificationManagementSubmitSenderIDParams
+
+  WatchEvaluateParams = PreludeSDK::Models::WatchEvaluateParams
 
   WatchPredictParams = PreludeSDK::Models::WatchPredictParams
 

@@ -124,6 +124,37 @@ module PreludeSDK
       )
       end
 
+      # Send a free-form text reply to an inbound WhatsApp message within the 24-hour
+      # conversation window. See
+      # [WhatsApp 2-Way Messaging](/notify/v2/documentation/whatsapp) for details.
+      sig do
+        params(
+          reply_to: String,
+          text: String,
+          to: String,
+          callback_url: String,
+          correlation_id: String,
+          request_options: PreludeSDK::RequestOptions::OrHash
+        ).returns(PreludeSDK::Models::NotifyReplyResponse)
+      end
+      def reply(
+        # The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
+        # the `inbound.message.received` webhook event.
+        reply_to:,
+        # The reply message body sent as a free-form WhatsApp text.
+        text:,
+        # The recipient's phone number in E.164 format. Must match the phone number that
+        # sent the original inbound message.
+        to:,
+        # The URL where webhooks will be sent for delivery events of this reply.
+        callback_url: nil,
+        # A user-defined identifier to correlate this reply with your internal systems. It
+        # is returned in the response and any webhook events that refer to this message.
+        correlation_id: nil,
+        request_options: {}
+      )
+      end
+
       # Send transactional and marketing messages to your users via SMS, RCS and
       # WhatsApp with automatic compliance enforcement.
       sig do

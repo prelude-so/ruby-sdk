@@ -4,16 +4,19 @@ module PreludeSDK
   module Resources
     # Verify phone numbers.
     class Verification
+      sig { returns(PreludeSDK::Resources::Verification::Phone) }
+      attr_reader :phone
+
       # Create a new verification for a specific phone number. If another non-expired
       # verification exists (the request is performed within the verification window),
       # this endpoint will perform a retry instead.
       sig do
         params(
-          target: PreludeSDK::VerificationCreateParams::Target::OrHash,
+          target: PreludeSDK::Target::OrHash,
           dispatch_id: String,
           metadata: PreludeSDK::VerificationCreateParams::Metadata::OrHash,
           options: PreludeSDK::VerificationCreateParams::Options::OrHash,
-          signals: PreludeSDK::VerificationCreateParams::Signals::OrHash,
+          signals: PreludeSDK::Signals::OrHash,
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(PreludeSDK::Models::VerificationCreateResponse)
       end
@@ -39,7 +42,7 @@ module PreludeSDK
       sig do
         params(
           code: String,
-          target: PreludeSDK::VerificationCheckParams::Target::OrHash,
+          target: PreludeSDK::Target::OrHash,
           psd2: PreludeSDK::VerificationCheckParams::Psd2::OrHash,
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(PreludeSDK::Models::VerificationCheckResponse)

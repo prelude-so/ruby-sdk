@@ -16,14 +16,10 @@ module PreludeSDK
 
       # The verification target. Either a phone number or an email address. To use the
       # email verification feature contact us to discuss your use case.
-      sig { returns(PreludeSDK::VerificationCreateParams::Target) }
+      sig { returns(PreludeSDK::Target) }
       attr_reader :target
 
-      sig do
-        params(
-          target: PreludeSDK::VerificationCreateParams::Target::OrHash
-        ).void
-      end
+      sig { params(target: PreludeSDK::Target::OrHash).void }
       attr_writer :target
 
       # The identifier of the dispatch that came from the front-end SDK.
@@ -58,23 +54,19 @@ module PreludeSDK
 
       # The signals used for anti-fraud. For more details, refer to
       # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-      sig { returns(T.nilable(PreludeSDK::VerificationCreateParams::Signals)) }
+      sig { returns(T.nilable(PreludeSDK::Signals)) }
       attr_reader :signals
 
-      sig do
-        params(
-          signals: PreludeSDK::VerificationCreateParams::Signals::OrHash
-        ).void
-      end
+      sig { params(signals: PreludeSDK::Signals::OrHash).void }
       attr_writer :signals
 
       sig do
         params(
-          target: PreludeSDK::VerificationCreateParams::Target::OrHash,
+          target: PreludeSDK::Target::OrHash,
           dispatch_id: String,
           metadata: PreludeSDK::VerificationCreateParams::Metadata::OrHash,
           options: PreludeSDK::VerificationCreateParams::Options::OrHash,
-          signals: PreludeSDK::VerificationCreateParams::Signals::OrHash,
+          signals: PreludeSDK::Signals::OrHash,
           request_options: PreludeSDK::RequestOptions::OrHash
         ).returns(T.attached_class)
       end
@@ -99,96 +91,16 @@ module PreludeSDK
       sig do
         override.returns(
           {
-            target: PreludeSDK::VerificationCreateParams::Target,
+            target: PreludeSDK::Target,
             dispatch_id: String,
             metadata: PreludeSDK::VerificationCreateParams::Metadata,
             options: PreludeSDK::VerificationCreateParams::Options,
-            signals: PreludeSDK::VerificationCreateParams::Signals,
+            signals: PreludeSDK::Signals,
             request_options: PreludeSDK::RequestOptions
           }
         )
       end
       def to_hash
-      end
-
-      class Target < PreludeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              PreludeSDK::VerificationCreateParams::Target,
-              PreludeSDK::Internal::AnyHash
-            )
-          end
-
-        # The type of the target. Either "phone_number" or "email_address".
-        sig do
-          returns(PreludeSDK::VerificationCreateParams::Target::Type::OrSymbol)
-        end
-        attr_accessor :type
-
-        # An E.164 formatted phone number or an email address.
-        sig { returns(String) }
-        attr_accessor :value
-
-        # The verification target. Either a phone number or an email address. To use the
-        # email verification feature contact us to discuss your use case.
-        sig do
-          params(
-            type: PreludeSDK::VerificationCreateParams::Target::Type::OrSymbol,
-            value: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The type of the target. Either "phone_number" or "email_address".
-          type:,
-          # An E.164 formatted phone number or an email address.
-          value:
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              type:
-                PreludeSDK::VerificationCreateParams::Target::Type::OrSymbol,
-              value: String
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # The type of the target. Either "phone_number" or "email_address".
-        module Type
-          extend PreludeSDK::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(Symbol, PreludeSDK::VerificationCreateParams::Target::Type)
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          PHONE_NUMBER =
-            T.let(
-              :phone_number,
-              PreludeSDK::VerificationCreateParams::Target::Type::TaggedSymbol
-            )
-          EMAIL_ADDRESS =
-            T.let(
-              :email_address,
-              PreludeSDK::VerificationCreateParams::Target::Type::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                PreludeSDK::VerificationCreateParams::Target::Type::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
       end
 
       class Metadata < PreludeSDK::Internal::Type::BaseModel
@@ -805,238 +717,6 @@ module PreludeSDK
             override.returns(
               T::Array[
                 PreludeSDK::VerificationCreateParams::Options::PreferredChannel::TaggedSymbol
-              ]
-            )
-          end
-          def self.values
-          end
-        end
-      end
-
-      class Signals < PreludeSDK::Internal::Type::BaseModel
-        OrHash =
-          T.type_alias do
-            T.any(
-              PreludeSDK::VerificationCreateParams::Signals,
-              PreludeSDK::Internal::AnyHash
-            )
-          end
-
-        # The version of your application.
-        sig { returns(T.nilable(String)) }
-        attr_reader :app_version
-
-        sig { params(app_version: String).void }
-        attr_writer :app_version
-
-        # A unique ID for the user's device. You should ensure that each user device has a
-        # unique `device_id` value. Ideally, for Android, this corresponds to the
-        # `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
-        sig { returns(T.nilable(String)) }
-        attr_reader :device_id
-
-        sig { params(device_id: String).void }
-        attr_writer :device_id
-
-        # The model of the user's device.
-        sig { returns(T.nilable(String)) }
-        attr_reader :device_model
-
-        sig { params(device_model: String).void }
-        attr_writer :device_model
-
-        # The type of the user's device.
-        sig do
-          returns(
-            T.nilable(
-              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol
-            )
-          )
-        end
-        attr_reader :device_platform
-
-        sig do
-          params(
-            device_platform:
-              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol
-          ).void
-        end
-        attr_writer :device_platform
-
-        # Whether the end-user already exists in your system, for example an existing
-        # account signing in again rather than a first-time signup. Unlike
-        # `is_trusted_user`, this signal does not bypass fraud checks; it is taken into
-        # account as one additional anti-fraud signal. For more details, refer to
-        # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :existing_user
-
-        sig { params(existing_user: T::Boolean).void }
-        attr_writer :existing_user
-
-        # The public IP v4 or v6 address of the end-user's device. You should collect this
-        # from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
-        # `Forwarded`, `True-Client-IP`, `CF-Connecting-IP` or an equivalent header to get
-        # the actual public IP of the end-user's device.
-        sig { returns(T.nilable(String)) }
-        attr_reader :ip
-
-        sig { params(ip: String).void }
-        attr_writer :ip
-
-        # This signal should indicate a higher level of trust, explicitly stating that the
-        # user is genuine. Contact us to discuss your use case. For more details, refer to
-        # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-        sig { returns(T.nilable(T::Boolean)) }
-        attr_reader :is_trusted_user
-
-        sig { params(is_trusted_user: T::Boolean).void }
-        attr_writer :is_trusted_user
-
-        # The JA4 fingerprint observed for the end-user's connection. Prelude will infer
-        # it automatically when you use our Frontend SDKs (which use Prelude's edge
-        # network), but you can also forward the value if you terminate TLS yourself.
-        sig { returns(T.nilable(String)) }
-        attr_reader :ja4_fingerprint
-
-        sig { params(ja4_fingerprint: String).void }
-        attr_writer :ja4_fingerprint
-
-        # The version of the user's device operating system.
-        sig { returns(T.nilable(String)) }
-        attr_reader :os_version
-
-        sig { params(os_version: String).void }
-        attr_writer :os_version
-
-        # The user agent of the user's device. If the individual fields (os_version,
-        # device_platform, device_model) are provided, we will prioritize those values
-        # instead of parsing them from the user agent string.
-        sig { returns(T.nilable(String)) }
-        attr_reader :user_agent
-
-        sig { params(user_agent: String).void }
-        attr_writer :user_agent
-
-        # The signals used for anti-fraud. For more details, refer to
-        # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-        sig do
-          params(
-            app_version: String,
-            device_id: String,
-            device_model: String,
-            device_platform:
-              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
-            existing_user: T::Boolean,
-            ip: String,
-            is_trusted_user: T::Boolean,
-            ja4_fingerprint: String,
-            os_version: String,
-            user_agent: String
-          ).returns(T.attached_class)
-        end
-        def self.new(
-          # The version of your application.
-          app_version: nil,
-          # A unique ID for the user's device. You should ensure that each user device has a
-          # unique `device_id` value. Ideally, for Android, this corresponds to the
-          # `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
-          device_id: nil,
-          # The model of the user's device.
-          device_model: nil,
-          # The type of the user's device.
-          device_platform: nil,
-          # Whether the end-user already exists in your system, for example an existing
-          # account signing in again rather than a first-time signup. Unlike
-          # `is_trusted_user`, this signal does not bypass fraud checks; it is taken into
-          # account as one additional anti-fraud signal. For more details, refer to
-          # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-          existing_user: nil,
-          # The public IP v4 or v6 address of the end-user's device. You should collect this
-          # from your backend. If your backend is behind a proxy, use the `X-Forwarded-For`,
-          # `Forwarded`, `True-Client-IP`, `CF-Connecting-IP` or an equivalent header to get
-          # the actual public IP of the end-user's device.
-          ip: nil,
-          # This signal should indicate a higher level of trust, explicitly stating that the
-          # user is genuine. Contact us to discuss your use case. For more details, refer to
-          # [Signals](/verify/v2/documentation/prevent-fraud#signals).
-          is_trusted_user: nil,
-          # The JA4 fingerprint observed for the end-user's connection. Prelude will infer
-          # it automatically when you use our Frontend SDKs (which use Prelude's edge
-          # network), but you can also forward the value if you terminate TLS yourself.
-          ja4_fingerprint: nil,
-          # The version of the user's device operating system.
-          os_version: nil,
-          # The user agent of the user's device. If the individual fields (os_version,
-          # device_platform, device_model) are provided, we will prioritize those values
-          # instead of parsing them from the user agent string.
-          user_agent: nil
-        )
-        end
-
-        sig do
-          override.returns(
-            {
-              app_version: String,
-              device_id: String,
-              device_model: String,
-              device_platform:
-                PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::OrSymbol,
-              existing_user: T::Boolean,
-              ip: String,
-              is_trusted_user: T::Boolean,
-              ja4_fingerprint: String,
-              os_version: String,
-              user_agent: String
-            }
-          )
-        end
-        def to_hash
-        end
-
-        # The type of the user's device.
-        module DevicePlatform
-          extend PreludeSDK::Internal::Type::Enum
-
-          TaggedSymbol =
-            T.type_alias do
-              T.all(
-                Symbol,
-                PreludeSDK::VerificationCreateParams::Signals::DevicePlatform
-              )
-            end
-          OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-          ANDROID =
-            T.let(
-              :android,
-              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
-            )
-          IOS =
-            T.let(
-              :ios,
-              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
-            )
-          IPADOS =
-            T.let(
-              :ipados,
-              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
-            )
-          TVOS =
-            T.let(
-              :tvos,
-              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
-            )
-          WEB =
-            T.let(
-              :web,
-              PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
-            )
-
-          sig do
-            override.returns(
-              T::Array[
-                PreludeSDK::VerificationCreateParams::Signals::DevicePlatform::TaggedSymbol
               ]
             )
           end

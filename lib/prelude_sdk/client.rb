@@ -44,6 +44,9 @@ module PreludeSDK
     # @return [PreludeSDK::Resources::Watch]
     attr_reader :watch
 
+    # @return [PreludeSDK::Resources::Intel]
+    attr_reader :intel
+
     # @api private
     #
     # @return [Hash{String=>String}]
@@ -111,6 +114,7 @@ module PreludeSDK
       @verification = PreludeSDK::Resources::Verification.new(client: self)
       @verification_management = PreludeSDK::Resources::VerificationManagement.new(client: self)
       @watch = PreludeSDK::Resources::Watch.new(client: self)
+      @intel = PreludeSDK::Resources::Intel.new(client: self)
     end
   end
 end

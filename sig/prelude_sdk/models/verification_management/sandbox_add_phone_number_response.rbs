@@ -1,0 +1,18 @@
+module PreludeSDK
+  module Models
+    module VerificationManagement
+      type sandbox_add_phone_number_response =
+        { attempt_code: String, phone_number: String }
+
+      class SandboxAddPhoneNumberResponse < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor attempt_code: String
+
+        attr_accessor phone_number: String
+
+        def initialize: (attempt_code: String, phone_number: String) -> void
+
+        def to_hash: -> { attempt_code: String, phone_number: String }
+      end
+    end
+  end
+end

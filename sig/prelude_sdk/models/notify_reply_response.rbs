@@ -1,0 +1,54 @@
+module PreludeSDK
+  module Models
+    type notify_reply_response =
+      {
+        id: String,
+        created_at: Time,
+        reply_to: String,
+        text: String,
+        to: String,
+        callback_url: String,
+        correlation_id: String
+      }
+
+    class NotifyReplyResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor created_at: Time
+
+      attr_accessor reply_to: String
+
+      attr_accessor text: String
+
+      attr_accessor to: String
+
+      attr_reader callback_url: String?
+
+      def callback_url=: (String) -> String
+
+      attr_reader correlation_id: String?
+
+      def correlation_id=: (String) -> String
+
+      def initialize: (
+        id: String,
+        created_at: Time,
+        reply_to: String,
+        text: String,
+        to: String,
+        ?callback_url: String,
+        ?correlation_id: String
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        created_at: Time,
+        reply_to: String,
+        text: String,
+        to: String,
+        callback_url: String,
+        correlation_id: String
+      }
+    end
+  end
+end

@@ -34,6 +34,15 @@ module PreludeSDK
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersResponse
 
+      def reply: (
+        reply_to: String,
+        text: String,
+        to: String,
+        ?callback_url: String,
+        ?correlation_id: String,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::NotifyReplyResponse
+
       def send_: (
         template_id: String,
         to: String,

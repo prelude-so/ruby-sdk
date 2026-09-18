@@ -1,18 +1,20 @@
 module PreludeSDK
   module Resources
     class Verification
+      attr_reader phone: PreludeSDK::Resources::Verification::Phone
+
       def create: (
-        target: PreludeSDK::VerificationCreateParams::Target,
+        target: PreludeSDK::Target,
         ?dispatch_id: String,
         ?metadata: PreludeSDK::VerificationCreateParams::Metadata,
         ?options: PreludeSDK::VerificationCreateParams::Options,
-        ?signals: PreludeSDK::VerificationCreateParams::Signals,
+        ?signals: PreludeSDK::Signals,
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::VerificationCreateResponse
 
       def check: (
         code: String,
-        target: PreludeSDK::VerificationCheckParams::Target,
+        target: PreludeSDK::Target,
         ?psd2: PreludeSDK::VerificationCheckParams::Psd2,
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::VerificationCheckResponse

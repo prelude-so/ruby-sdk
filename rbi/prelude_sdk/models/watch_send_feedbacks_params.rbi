@@ -55,15 +55,10 @@ module PreludeSDK
           end
 
         # The feedback target. Only supports phone numbers for now.
-        sig { returns(PreludeSDK::WatchSendFeedbacksParams::Feedback::Target) }
+        sig { returns(PreludeSDK::Target) }
         attr_reader :target
 
-        sig do
-          params(
-            target:
-              PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::OrHash
-          ).void
-        end
+        sig { params(target: PreludeSDK::Target::OrHash).void }
         attr_writer :target
 
         # The type of feedback.
@@ -92,8 +87,7 @@ module PreludeSDK
 
         sig do
           params(
-            target:
-              PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::OrHash,
+            target: PreludeSDK::Target::OrHash,
             type:
               PreludeSDK::WatchSendFeedbacksParams::Feedback::Type::OrSymbol,
             metadata:
@@ -113,7 +107,7 @@ module PreludeSDK
         sig do
           override.returns(
             {
-              target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target,
+              target: PreludeSDK::Target,
               type:
                 PreludeSDK::WatchSendFeedbacksParams::Feedback::Type::OrSymbol,
               metadata: PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata
@@ -121,91 +115,6 @@ module PreludeSDK
           )
         end
         def to_hash
-        end
-
-        class Target < PreludeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                PreludeSDK::WatchSendFeedbacksParams::Feedback::Target,
-                PreludeSDK::Internal::AnyHash
-              )
-            end
-
-          # The type of the target. Either "phone_number" or "email_address".
-          sig do
-            returns(
-              PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::Type::OrSymbol
-            )
-          end
-          attr_accessor :type
-
-          # An E.164 formatted phone number or an email address.
-          sig { returns(String) }
-          attr_accessor :value
-
-          # The feedback target. Only supports phone numbers for now.
-          sig do
-            params(
-              type:
-                PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::Type::OrSymbol,
-              value: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The type of the target. Either "phone_number" or "email_address".
-            type:,
-            # An E.164 formatted phone number or an email address.
-            value:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                type:
-                  PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::Type::OrSymbol,
-                value: String
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # The type of the target. Either "phone_number" or "email_address".
-          module Type
-            extend PreludeSDK::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            PHONE_NUMBER =
-              T.let(
-                :phone_number,
-                PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol
-              )
-            EMAIL_ADDRESS =
-              T.let(
-                :email_address,
-                PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
-          end
         end
 
         # The type of feedback.

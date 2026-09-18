@@ -39,6 +39,9 @@ module PreludeSDK
     sig { returns(PreludeSDK::Resources::Watch) }
     attr_reader :watch
 
+    sig { returns(PreludeSDK::Resources::Intel) }
+    attr_reader :intel
+
     # @api private
     sig { override.returns(T::Hash[String, String]) }
     private def auth_headers

@@ -1,0 +1,29 @@
+module PreludeSDK
+  module Models
+    type target = { type: PreludeSDK::Models::Target::type_, value: String }
+
+    class Target < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor type: PreludeSDK::Models::Target::type_
+
+      attr_accessor value: String
+
+      def initialize: (
+        type: PreludeSDK::Models::Target::type_,
+        value: String
+      ) -> void
+
+      def to_hash: -> { type: PreludeSDK::Models::Target::type_, value: String }
+
+      type type_ = :phone_number | :email_address
+
+      module Type
+        extend PreludeSDK::Internal::Type::Enum
+
+        PHONE_NUMBER: :phone_number
+        EMAIL_ADDRESS: :email_address
+
+        def self?.values: -> ::Array[PreludeSDK::Models::Target::type_]
+      end
+    end
+  end
+end

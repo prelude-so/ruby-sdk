@@ -1,0 +1,32 @@
+module PreludeSDK
+  module Resources
+    class Verification
+      class Phone
+        class History
+          def retrieve: (
+            String id,
+            ?request_options: PreludeSDK::request_opts
+          ) -> PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse
+
+          def list: (
+            ?channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::channel],
+            ?cursor: String,
+            ?device_platform: PreludeSDK::Models::Verification::Phone::HistoryListParams::device_platform,
+            ?from: Time,
+            ?limit: Integer,
+            ?max_attempts: Integer,
+            ?min_attempts: Integer,
+            ?phone_number: String,
+            ?region: String,
+            ?status: PreludeSDK::Models::Verification::Phone::HistoryListParams::status,
+            ?template_id: String,
+            ?to: Time,
+            ?request_options: PreludeSDK::request_opts
+          ) -> PreludeSDK::Models::Verification::Phone::HistoryListResponse
+
+          def initialize: (client: PreludeSDK::Client) -> void
+        end
+      end
+    end
+  end
+end
