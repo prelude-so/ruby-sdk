@@ -88,7 +88,9 @@ module PreludeSDK
         # @!attribute rules
         #   One result per rule in the recipe, in membership order. Every rule runs — a
         #   score is only meaningful when complete, so there is no short-circuit on the
-        #   first trigger.
+        #   first trigger. The exception is a recipe whose verdict a preempting rule has
+        #   already determined, where a rule that could no longer change it may report
+        #   `SKIPPED` instead.
         #
         #   @return [Array<PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule>]
         required :rules,
@@ -149,6 +151,10 @@ module PreludeSDK
           #   - `NOT_EVALUATED` - The rule could not run, because something it reads never
           #     arrived. This is not a quieter `NOT_TRIGGERED`: it contributed nothing either
           #     way, and it is why `partial_evidence` is set on the recipe.
+          #   - `SKIPPED` - The rule was not run, because another rule had already determined
+          #     the recipe's verdict — see `determined_by`. Nothing was missing and nothing
+          #     failed, so `partial_evidence` is not set: `determined_by` is what accounts for
+          #     the recipe's score resting on fewer rules.
           #
           #   @return [Symbol, PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome]
           required :outcome, enum: -> { PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome }
@@ -160,6 +166,17 @@ module PreludeSDK
           #
           #   @return [String]
           required :rule_id, String
+
+          # @!attribute type
+          #   Who authored the rule, which is what says how much of the rest of this result
+          #   you get.
+          #
+          #   - `MANAGED` - Prelude-owned, shared with customers: `name` and `version_id` are
+          #     omitted, and `blocked_by` reports only `missing_data`.
+          #   - `CUSTOM` - Yours: every field is returned.
+          #
+          #   @return [Symbol, PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type]
+          required :type, enum: -> { PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type }
 
           # @!attribute weight
           #   What this rule contributes to the recipe's score when it triggers.
@@ -193,13 +210,23 @@ module PreludeSDK
           #   @return [Boolean, nil]
           optional :unavailable, PreludeSDK::Internal::Type::Boolean
 
-          # @!method initialize(outcome:, rule_id:, weight:, blocked_by: nil, name: nil, unavailable: nil)
+          # @!attribute version_id
+          #   The version of the rule that scored — the one this recipe is pinned to, or the
+          #   version current at evaluation time when it is not pinned. Present for a rule you
+          #   authored, and omitted for a Prelude-managed one.
+          #
+          #   @return [String, nil]
+          optional :version_id, String
+
+          # @!method initialize(outcome:, rule_id:, type:, weight:, blocked_by: nil, name: nil, unavailable: nil, version_id: nil)
           #   Some parameter documentations has been truncated, see
           #   {PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule} for more details.
           #
           #   @param outcome [Symbol, PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome] What the rule concluded.
           #
           #   @param rule_id [String] The rule that produced this result. Present whatever the rule's visibility, so a
+          #
+          #   @param type [Symbol, PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type] Who authored the rule, which is what says how much of the rest of this result yo
           #
           #   @param weight [Integer] What this rule contributes to the recipe's score when it triggers.
           #
@@ -208,6 +235,8 @@ module PreludeSDK
           #   @param name [String] The rule's name, present for a rule you authored and omitted for a Prelude-manag
           #
           #   @param unavailable [Boolean] The rule could not run for a reason on our side rather than anything about your
+          #
+          #   @param version_id [String] The version of the rule that scored — the one this recipe is pinned to, or the v
 
           # What the rule concluded.
           #
@@ -216,6 +245,10 @@ module PreludeSDK
           # - `NOT_EVALUATED` - The rule could not run, because something it reads never
           #   arrived. This is not a quieter `NOT_TRIGGERED`: it contributed nothing either
           #   way, and it is why `partial_evidence` is set on the recipe.
+          # - `SKIPPED` - The rule was not run, because another rule had already determined
+          #   the recipe's verdict — see `determined_by`. Nothing was missing and nothing
+          #   failed, so `partial_evidence` is not set: `determined_by` is what accounts for
+          #   the recipe's score resting on fewer rules.
           #
           # @see PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule#outcome
           module Outcome
@@ -224,6 +257,25 @@ module PreludeSDK
             TRIGGERED = :TRIGGERED
             NOT_TRIGGERED = :NOT_TRIGGERED
             NOT_EVALUATED = :NOT_EVALUATED
+            SKIPPED = :SKIPPED
+
+            # @!method self.values
+            #   @return [Array<Symbol>]
+          end
+
+          # Who authored the rule, which is what says how much of the rest of this result
+          # you get.
+          #
+          # - `MANAGED` - Prelude-owned, shared with customers: `name` and `version_id` are
+          #   omitted, and `blocked_by` reports only `missing_data`.
+          # - `CUSTOM` - Yours: every field is returned.
+          #
+          # @see PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule#type
+          module Type
+            extend PreludeSDK::Internal::Type::Enum
+
+            MANAGED = :MANAGED
+            CUSTOM = :CUSTOM
 
             # @!method self.values
             #   @return [Array<Symbol>]
