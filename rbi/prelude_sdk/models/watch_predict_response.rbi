@@ -32,6 +32,9 @@ module PreludeSDK
       # when prediction is "suspicious" and the anti-fraud system detected specific risk
       # signals.
       #
+      # - `account_risk_profile` - The target matches a risk profile derived from the
+      #   outcomes reported on your own account, rather than from a signal shared across
+      #   accounts.
       # - `behavioral_pattern` - The phone number past behavior during verification
       #   flows exhibits suspicious patterns.
       # - `device_attribute` - The device exhibits characteristics associated with
@@ -97,6 +100,9 @@ module PreludeSDK
         # when prediction is "suspicious" and the anti-fraud system detected specific risk
         # signals.
         #
+        # - `account_risk_profile` - The target matches a risk profile derived from the
+        #   outcomes reported on your own account, rather than from a signal shared across
+        #   accounts.
         # - `behavioral_pattern` - The phone number past behavior during verification
         #   flows exhibits suspicious patterns.
         # - `device_attribute` - The device exhibits characteristics associated with
@@ -179,6 +185,11 @@ module PreludeSDK
           end
         OrSymbol = T.type_alias { T.any(Symbol, String) }
 
+        ACCOUNT_RISK_PROFILE =
+          T.let(
+            :account_risk_profile,
+            PreludeSDK::Models::WatchPredictResponse::RiskFactor::TaggedSymbol
+          )
         BEHAVIORAL_PATTERN =
           T.let(
             :behavioral_pattern,

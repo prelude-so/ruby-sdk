@@ -294,6 +294,7 @@ module PreludeSDK
           device_id: String,
           device_model: String,
           device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
+          existing_user: bool,
           ip: String,
           is_trusted_user: bool,
           :ja4_fingerprint => String,
@@ -320,6 +321,10 @@ module PreludeSDK
           PreludeSDK::Models::VerificationCreateParams::Signals::device_platform
         ) -> PreludeSDK::Models::VerificationCreateParams::Signals::device_platform
 
+        attr_reader existing_user: bool?
+
+        def existing_user=: (bool) -> bool
+
         attr_reader ip: String?
 
         def ip=: (String) -> String
@@ -345,6 +350,7 @@ module PreludeSDK
           ?device_id: String,
           ?device_model: String,
           ?device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
+          ?existing_user: bool,
           ?ip: String,
           ?is_trusted_user: bool,
           ?ja4_fingerprint: String,
@@ -357,6 +363,7 @@ module PreludeSDK
           device_id: String,
           device_model: String,
           device_platform: PreludeSDK::Models::VerificationCreateParams::Signals::device_platform,
+          existing_user: bool,
           ip: String,
           is_trusted_user: bool,
           :ja4_fingerprint => String,

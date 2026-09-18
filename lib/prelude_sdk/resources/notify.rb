@@ -6,6 +6,8 @@ module PreludeSDK
     class Notify
       # Retrieve a specific subscription management configuration by its ID.
       #
+      # In order to get access to this endpoint, contact our support team.
+      #
       # @overload get_subscription_config(config_id, request_options: {})
       #
       # @param config_id [String] The subscription configuration ID
@@ -26,6 +28,8 @@ module PreludeSDK
 
       # Retrieve the current subscription status for a specific phone number within a
       # subscription configuration.
+      #
+      # In order to get access to this endpoint, contact our support team.
       #
       # @overload get_subscription_phone_number(phone_number, config_id:, request_options: {})
       #
@@ -58,6 +62,8 @@ module PreludeSDK
       # Each configuration represents a subscription management setup with phone numbers
       # for receiving opt-out/opt-in requests and a callback URL for webhook events.
       #
+      # In order to get access to this endpoint, contact our support team.
+      #
       # @overload list_subscription_configs(cursor: nil, limit: nil, request_options: {})
       #
       # @param cursor [String] Pagination cursor from the previous response
@@ -85,6 +91,8 @@ module PreludeSDK
       # phone number within a subscription configuration.
       #
       # Events are ordered by timestamp in descending order (most recent first).
+      #
+      # In order to get access to this endpoint, contact our support team.
       #
       # @overload list_subscription_phone_number_events(phone_number, config_id:, cursor: nil, limit: nil, request_options: {})
       #
@@ -125,6 +133,8 @@ module PreludeSDK
       # specific subscription configuration.
       #
       # You can optionally filter by subscription state (SUB or UNSUB).
+      #
+      # In order to get access to this endpoint, contact our support team.
       #
       # @overload list_subscription_phone_numbers(config_id, cursor: nil, limit: nil, state: nil, request_options: {})
       #
