@@ -1,0 +1,187 @@
+module PreludeSDK
+  module Models
+    module Verification
+      module Phone
+        type history_list_params =
+          {
+            channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::channel],
+            cursor: String,
+            device_platform: PreludeSDK::Models::Verification::Phone::HistoryListParams::device_platform,
+            from: Time,
+            limit: Integer,
+            max_attempts: Integer,
+            min_attempts: Integer,
+            phone_number: String,
+            region: String,
+            status: PreludeSDK::Models::Verification::Phone::HistoryListParams::status,
+            template_id: String,
+            to: Time
+          }
+          & PreludeSDK::Internal::Type::request_parameters
+
+        class HistoryListParams < PreludeSDK::Internal::Type::BaseModel
+          extend PreludeSDK::Internal::Type::RequestParameters::Converter
+          include PreludeSDK::Internal::Type::RequestParameters
+
+          attr_reader channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::channel]?
+
+          def channels=: (
+            ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::channel]
+          ) -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::channel]
+
+          attr_reader cursor: String?
+
+          def cursor=: (String) -> String
+
+          attr_reader device_platform: PreludeSDK::Models::Verification::Phone::HistoryListParams::device_platform?
+
+          def device_platform=: (
+            PreludeSDK::Models::Verification::Phone::HistoryListParams::device_platform
+          ) -> PreludeSDK::Models::Verification::Phone::HistoryListParams::device_platform
+
+          attr_reader from: Time?
+
+          def from=: (Time) -> Time
+
+          attr_reader limit: Integer?
+
+          def limit=: (Integer) -> Integer
+
+          attr_reader max_attempts: Integer?
+
+          def max_attempts=: (Integer) -> Integer
+
+          attr_reader min_attempts: Integer?
+
+          def min_attempts=: (Integer) -> Integer
+
+          attr_reader phone_number: String?
+
+          def phone_number=: (String) -> String
+
+          attr_reader region: String?
+
+          def region=: (String) -> String
+
+          attr_reader status: PreludeSDK::Models::Verification::Phone::HistoryListParams::status?
+
+          def status=: (
+            PreludeSDK::Models::Verification::Phone::HistoryListParams::status
+          ) -> PreludeSDK::Models::Verification::Phone::HistoryListParams::status
+
+          attr_reader template_id: String?
+
+          def template_id=: (String) -> String
+
+          attr_reader to: Time?
+
+          def to=: (Time) -> Time
+
+          def initialize: (
+            ?channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::channel],
+            ?cursor: String,
+            ?device_platform: PreludeSDK::Models::Verification::Phone::HistoryListParams::device_platform,
+            ?from: Time,
+            ?limit: Integer,
+            ?max_attempts: Integer,
+            ?min_attempts: Integer,
+            ?phone_number: String,
+            ?region: String,
+            ?status: PreludeSDK::Models::Verification::Phone::HistoryListParams::status,
+            ?template_id: String,
+            ?to: Time,
+            ?request_options: PreludeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::channel],
+            cursor: String,
+            device_platform: PreludeSDK::Models::Verification::Phone::HistoryListParams::device_platform,
+            from: Time,
+            limit: Integer,
+            max_attempts: Integer,
+            min_attempts: Integer,
+            phone_number: String,
+            region: String,
+            status: PreludeSDK::Models::Verification::Phone::HistoryListParams::status,
+            template_id: String,
+            to: Time,
+            request_options: PreludeSDK::RequestOptions
+          }
+
+          type channel =
+            :sms
+            | :rcs
+            | :whatsapp
+            | :viber
+            | :zalo
+            | :telegram
+            | :voice
+            | :silent
+
+          module Channel
+            extend PreludeSDK::Internal::Type::Enum
+
+            SMS: :sms
+            RCS: :rcs
+            WHATSAPP: :whatsapp
+            VIBER: :viber
+            ZALO: :zalo
+            TELEGRAM: :telegram
+            VOICE: :voice
+            SILENT: :silent
+
+            def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::channel]
+          end
+
+          type device_platform = :android | :ios | :ipados | :tvos | :web
+
+          module DevicePlatform
+            extend PreludeSDK::Internal::Type::Enum
+
+            ANDROID: :android
+            IOS: :ios
+            IPADOS: :ipados
+            TVOS: :tvos
+            WEB: :web
+
+            def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::device_platform]
+          end
+
+          type status =
+            :converted
+            | :not_converted
+            | :pending_check
+            | :sent
+            | :challenged
+            | :suspected_fraud
+            | :in_blocklist
+            | :invalid_line
+            | :invalid_number
+            | :rate_limited
+            | :expired_signals
+            | :shadowed
+
+          module Status
+            extend PreludeSDK::Internal::Type::Enum
+
+            CONVERTED: :converted
+            NOT_CONVERTED: :not_converted
+            PENDING_CHECK: :pending_check
+            SENT: :sent
+            CHALLENGED: :challenged
+            SUSPECTED_FRAUD: :suspected_fraud
+            IN_BLOCKLIST: :in_blocklist
+            INVALID_LINE: :invalid_line
+            INVALID_NUMBER: :invalid_number
+            RATE_LIMITED: :rate_limited
+            EXPIRED_SIGNALS: :expired_signals
+            SHADOWED: :shadowed
+
+            def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListParams::status]
+          end
+        end
+      end
+    end
+  end
+end

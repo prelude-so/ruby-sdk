@@ -438,11 +438,11 @@ module PreludeSDK
         # @return [Hash{Symbol=>Object}]
         #
         # @example
-        #   # `lookup_lookup_response` is a `PreludeSDK::Models::LookupLookupResponse`
-        #   lookup_lookup_response => {
-        #     caller_name: caller_name,
-        #     country_code: country_code,
-        #     flags: flags
+        #   # `signals` is a `PreludeSDK::Signals`
+        #   signals => {
+        #     app_version: app_version,
+        #     device_id: device_id,
+        #     device_model: device_model
         #   }
         def deconstruct_keys(keys)
           (keys || self.class.known_fields.keys)

@@ -1,0 +1,241 @@
+module PreludeSDK
+  module Models
+    module Verification
+      module Phone
+        type history_list_response =
+          {
+            verifications: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification],
+            next_cursor: String
+          }
+
+        class HistoryListResponse < PreludeSDK::Internal::Type::BaseModel
+          attr_accessor verifications: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification]
+
+          attr_reader next_cursor: String?
+
+          def next_cursor=: (String) -> String
+
+          def initialize: (
+            verifications: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification],
+            ?next_cursor: String
+          ) -> void
+
+          def to_hash: -> {
+            verifications: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification],
+            next_cursor: String
+          }
+
+          type verification =
+            {
+              id: String,
+              channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel],
+              created_at: Time,
+              delivered: bool,
+              phone_number: String,
+              status: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::status,
+              attempts: Integer,
+              converted_at: Time,
+              cost: PreludeSDK::Verification::Phone::PhoneVerificationMoney,
+              device_platform: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::device_platform,
+              phone_number_condition: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::phone_number_condition,
+              signals_hash_status: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::signals_hash_status
+            }
+
+          class Verification < PreludeSDK::Internal::Type::BaseModel
+            attr_accessor id: String
+
+            attr_accessor channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel]
+
+            attr_accessor created_at: Time
+
+            attr_accessor delivered: bool
+
+            attr_accessor phone_number: String
+
+            attr_accessor status: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::status
+
+            attr_reader attempts: Integer?
+
+            def attempts=: (Integer) -> Integer
+
+            attr_reader converted_at: Time?
+
+            def converted_at=: (Time) -> Time
+
+            attr_reader cost: PreludeSDK::Verification::Phone::PhoneVerificationMoney?
+
+            def cost=: (
+              PreludeSDK::Verification::Phone::PhoneVerificationMoney
+            ) -> PreludeSDK::Verification::Phone::PhoneVerificationMoney
+
+            attr_reader device_platform: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::device_platform?
+
+            def device_platform=: (
+              PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::device_platform
+            ) -> PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::device_platform
+
+            attr_reader phone_number_condition: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::phone_number_condition?
+
+            def phone_number_condition=: (
+              PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::phone_number_condition
+            ) -> PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::phone_number_condition
+
+            attr_reader signals_hash_status: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::signals_hash_status?
+
+            def signals_hash_status=: (
+              PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::signals_hash_status
+            ) -> PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::signals_hash_status
+
+            def initialize: (
+              id: String,
+              channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel],
+              created_at: Time,
+              delivered: bool,
+              phone_number: String,
+              status: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::status,
+              ?attempts: Integer,
+              ?converted_at: Time,
+              ?cost: PreludeSDK::Verification::Phone::PhoneVerificationMoney,
+              ?device_platform: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::device_platform,
+              ?phone_number_condition: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::phone_number_condition,
+              ?signals_hash_status: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::signals_hash_status
+            ) -> void
+
+            def to_hash: -> {
+              id: String,
+              channels: ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel],
+              created_at: Time,
+              delivered: bool,
+              phone_number: String,
+              status: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::status,
+              attempts: Integer,
+              converted_at: Time,
+              cost: PreludeSDK::Verification::Phone::PhoneVerificationMoney,
+              device_platform: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::device_platform,
+              phone_number_condition: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::phone_number_condition,
+              signals_hash_status: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::signals_hash_status
+            }
+
+            type channel =
+              {
+                channel: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel::channel,
+                converted: bool
+              }
+
+            class Channel < PreludeSDK::Internal::Type::BaseModel
+              attr_accessor channel: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel::channel
+
+              attr_accessor converted: bool
+
+              def initialize: (
+                channel: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel::channel,
+                converted: bool
+              ) -> void
+
+              def to_hash: -> {
+                channel: PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel::channel,
+                converted: bool
+              }
+
+              type channel =
+                :sms
+                | :rcs
+                | :whatsapp
+                | :viber
+                | :zalo
+                | :telegram
+                | :voice
+                | :silent
+
+              module Channel
+                extend PreludeSDK::Internal::Type::Enum
+
+                SMS: :sms
+                RCS: :rcs
+                WHATSAPP: :whatsapp
+                VIBER: :viber
+                ZALO: :zalo
+                TELEGRAM: :telegram
+                VOICE: :voice
+                SILENT: :silent
+
+                def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::Channel::channel]
+              end
+            end
+
+            type status =
+              :converted
+              | :not_converted
+              | :pending_check
+              | :sent
+              | :challenged
+              | :suspected_fraud
+              | :in_blocklist
+              | :invalid_line
+              | :invalid_number
+              | :rate_limited
+              | :expired_signals
+              | :shadowed
+
+            module Status
+              extend PreludeSDK::Internal::Type::Enum
+
+              CONVERTED: :converted
+              NOT_CONVERTED: :not_converted
+              PENDING_CHECK: :pending_check
+              SENT: :sent
+              CHALLENGED: :challenged
+              SUSPECTED_FRAUD: :suspected_fraud
+              IN_BLOCKLIST: :in_blocklist
+              INVALID_LINE: :invalid_line
+              INVALID_NUMBER: :invalid_number
+              RATE_LIMITED: :rate_limited
+              EXPIRED_SIGNALS: :expired_signals
+              SHADOWED: :shadowed
+
+              def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::status]
+            end
+
+            type device_platform = :android | :ios | :ipados | :tvos | :web
+
+            module DevicePlatform
+              extend PreludeSDK::Internal::Type::Enum
+
+              ANDROID: :android
+              IOS: :ios
+              IPADOS: :ipados
+              TVOS: :tvos
+              WEB: :web
+
+              def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::device_platform]
+            end
+
+            type phone_number_condition =
+              :allow_listed | :block_listed | :sandboxed
+
+            module PhoneNumberCondition
+              extend PreludeSDK::Internal::Type::Enum
+
+              ALLOW_LISTED: :allow_listed
+              BLOCK_LISTED: :block_listed
+              SANDBOXED: :sandboxed
+
+              def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::phone_number_condition]
+            end
+
+            type signals_hash_status = :valid | :invalid
+
+            module SignalsHashStatus
+              extend PreludeSDK::Internal::Type::Enum
+
+              VALID: :valid
+              INVALID: :invalid
+
+              def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryListResponse::Verification::signals_hash_status]
+            end
+          end
+        end
+      end
+    end
+  end
+end

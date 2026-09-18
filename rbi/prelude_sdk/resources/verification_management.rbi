@@ -4,6 +4,10 @@ module PreludeSDK
   module Resources
     # Verify phone numbers.
     class VerificationManagement
+      # Verify phone numbers.
+      sig { returns(PreludeSDK::Resources::VerificationManagement::Sandbox) }
+      attr_reader :sandbox
+
       # Remove a phone number from the allow or block list.
       #
       # This operation is idempotent - re-deleting the same phone number will not result

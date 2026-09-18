@@ -27,8 +27,8 @@ module PreludeSDK
         # @!attribute target
         #   The feedback target. Only supports phone numbers for now.
         #
-        #   @return [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target]
-        required :target, -> { PreludeSDK::WatchSendFeedbacksParams::Feedback::Target }
+        #   @return [PreludeSDK::Models::Target]
+        required :target, -> { PreludeSDK::Target }
 
         # @!attribute type
         #   The type of feedback.
@@ -43,46 +43,11 @@ module PreludeSDK
         optional :metadata, -> { PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata }
 
         # @!method initialize(target:, type:, metadata: nil)
-        #   @param target [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target] The feedback target. Only supports phone numbers for now.
+        #   @param target [PreludeSDK::Models::Target] The feedback target. Only supports phone numbers for now.
         #
         #   @param type [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Type] The type of feedback.
         #
         #   @param metadata [PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Metadata] The metadata for this feedback.
-
-        # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback#target
-        class Target < PreludeSDK::Internal::Type::BaseModel
-          # @!attribute type
-          #   The type of the target. Either "phone_number" or "email_address".
-          #
-          #   @return [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type]
-          required :type, enum: -> { PreludeSDK::WatchSendFeedbacksParams::Feedback::Target::Type }
-
-          # @!attribute value
-          #   An E.164 formatted phone number or an email address.
-          #
-          #   @return [String]
-          required :value, String
-
-          # @!method initialize(type:, value:)
-          #   The feedback target. Only supports phone numbers for now.
-          #
-          #   @param type [Symbol, PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::Type] The type of the target. Either "phone_number" or "email_address".
-          #
-          #   @param value [String] An E.164 formatted phone number or an email address.
-
-          # The type of the target. Either "phone_number" or "email_address".
-          #
-          # @see PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target#type
-          module Type
-            extend PreludeSDK::Internal::Type::Enum
-
-            PHONE_NUMBER = :phone_number
-            EMAIL_ADDRESS = :email_address
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
-        end
 
         # The type of feedback.
         #

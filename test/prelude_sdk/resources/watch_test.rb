@@ -3,6 +3,27 @@
 require_relative "../test_helper"
 
 class PreludeSDK::Test::Resources::WatchTest < PreludeSDK::Test::ResourceTest
+  def test_evaluate_required_params
+    response =
+      @prelude.watch.evaluate(
+        flow_id: "flo_01jc0t6fwwfgfsq1md24mhyztj",
+        target: {type: :phone_number, value: "+30123456789"}
+      )
+
+    assert_pattern do
+      response => PreludeSDK::Models::WatchEvaluateResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        action: PreludeSDK::Models::WatchEvaluateResponse::Action,
+        recipes: ^(PreludeSDK::Internal::Type::ArrayOf[PreludeSDK::Models::WatchEvaluateResponse::Recipe]),
+        verdict: PreludeSDK::Models::WatchEvaluateResponse::Verdict
+      }
+    end
+  end
+
   def test_predict_required_params
     response = @prelude.watch.predict(target: {type: :phone_number, value: "+30123456789"})
 

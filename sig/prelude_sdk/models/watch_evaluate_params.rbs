@@ -1,0 +1,52 @@
+module PreludeSDK
+  module Models
+    type watch_evaluate_params =
+      {
+        flow_id: String,
+        target: PreludeSDK::Target,
+        attributes: ::Hash[Symbol, String],
+        dispatch_id: String,
+        signals: PreludeSDK::Signals
+      }
+      & PreludeSDK::Internal::Type::request_parameters
+
+    class WatchEvaluateParams < PreludeSDK::Internal::Type::BaseModel
+      extend PreludeSDK::Internal::Type::RequestParameters::Converter
+      include PreludeSDK::Internal::Type::RequestParameters
+
+      attr_accessor flow_id: String
+
+      attr_accessor target: PreludeSDK::Target
+
+      attr_reader attributes: ::Hash[Symbol, String]?
+
+      def attributes=: (::Hash[Symbol, String]) -> ::Hash[Symbol, String]
+
+      attr_reader dispatch_id: String?
+
+      def dispatch_id=: (String) -> String
+
+      attr_reader signals: PreludeSDK::Signals?
+
+      def signals=: (PreludeSDK::Signals) -> PreludeSDK::Signals
+
+      def initialize: (
+        flow_id: String,
+        target: PreludeSDK::Target,
+        ?attributes: ::Hash[Symbol, String],
+        ?dispatch_id: String,
+        ?signals: PreludeSDK::Signals,
+        ?request_options: PreludeSDK::request_opts
+      ) -> void
+
+      def to_hash: -> {
+        flow_id: String,
+        target: PreludeSDK::Target,
+        attributes: ::Hash[Symbol, String],
+        dispatch_id: String,
+        signals: PreludeSDK::Signals,
+        request_options: PreludeSDK::RequestOptions
+      }
+    end
+  end
+end

@@ -1,0 +1,26 @@
+module PreludeSDK
+  module Models
+    module VerificationManagement
+      type sandbox_delete_phone_number_params =
+        { phone_number: String }
+        & PreludeSDK::Internal::Type::request_parameters
+
+      class SandboxDeletePhoneNumberParams < PreludeSDK::Internal::Type::BaseModel
+        extend PreludeSDK::Internal::Type::RequestParameters::Converter
+        include PreludeSDK::Internal::Type::RequestParameters
+
+        attr_accessor phone_number: String
+
+        def initialize: (
+          phone_number: String,
+          ?request_options: PreludeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          phone_number: String,
+          request_options: PreludeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end

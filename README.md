@@ -17,7 +17,7 @@ To use this gem, install via Bundler by adding the following to your application
 <!-- x-release-please-start-version -->
 
 ```ruby
-gem "prelude-sdk", "~> 0.7.0"
+gem "prelude-sdk", "~> 0.8.0"
 ```
 
 <!-- x-release-please-end -->
@@ -184,9 +184,7 @@ This library provides comprehensive [RBI](https://sorbet.org/docs/rbi) definitio
 You can provide typesafe request parameters like so:
 
 ```ruby
-prelude.verification.create(
-  target: PreludeSDK::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
-)
+prelude.verification.create(target: PreludeSDK::Target.new(type: "phone_number", value: "+30123456789"))
 ```
 
 Or, equivalently:
@@ -197,7 +195,7 @@ prelude.verification.create(target: {type: "phone_number", value: "+30123456789"
 
 # You can also splat a full Params class:
 params = PreludeSDK::VerificationCreateParams.new(
-  target: PreludeSDK::VerificationCreateParams::Target.new(type: "phone_number", value: "+30123456789")
+  target: PreludeSDK::Target.new(type: "phone_number", value: "+30123456789")
 )
 prelude.verification.create(**params)
 ```

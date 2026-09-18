@@ -5,6 +5,49 @@ module PreludeSDK
     # Evaluate email addresses and phone numbers for trustworthiness.
     class Watch
       # Some parameter documentations has been truncated, see
+      # {PreludeSDK::Models::WatchEvaluateParams} for more details.
+      #
+      # **Beta.** The request and response shapes may still change, and flows and
+      # recipes are configured by Prelude on your behalf for now. Talk to us before you
+      # build against it.
+      #
+      # Score a target against the rules configured for one moment in your product —
+      # signup, checkout, password reset. The flow selects which recipes run; each
+      # recipe scores its rules against a threshold and returns its own verdict, and the
+      # evaluation answers with the most severe verdict and action across them. Where
+      # Predict returns a single model-derived outcome, Eval returns the full breakdown,
+      # so you can see which rules fired and which could not run. Scoring-only — it does
+      # not update counters by itself.
+      #
+      # @overload evaluate(flow_id:, target:, attributes: nil, dispatch_id: nil, signals: nil, request_options: {})
+      #
+      # @param flow_id [String] The flow to evaluate. A flow names the moment you are guarding and selects the r
+      #
+      # @param target [PreludeSDK::Models::Target] The identifier to score — a phone number or email address.
+      #
+      # @param attributes [Hash{Symbol=>String}] Values for the attributes the flow's recipes declare, keyed without the `attr.`
+      #
+      # @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK. Signals it carr
+      #
+      # @param signals [PreludeSDK::Models::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
+      #
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [PreludeSDK::Models::WatchEvaluateResponse]
+      #
+      # @see PreludeSDK::Models::WatchEvaluateParams
+      def evaluate(params)
+        parsed, options = PreludeSDK::WatchEvaluateParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v2/watch/eval",
+          body: parsed,
+          model: PreludeSDK::Models::WatchEvaluateResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::WatchPredictParams} for more details.
       #
       # At signup, score the user's phone number or email address (target) as legitimate
@@ -16,13 +59,13 @@ module PreludeSDK
       #
       # @overload predict(target:, dispatch_id: nil, metadata: nil, signals: nil, request_options: {})
       #
-      # @param target [PreludeSDK::Models::WatchPredictParams::Target] The signup identifier to score — a phone number or email address.
+      # @param target [PreludeSDK::Models::Target] The signup identifier to score — a phone number or email address.
       #
       # @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
       #
       # @param metadata [PreludeSDK::Models::WatchPredictParams::Metadata] The metadata for this prediction.
       #
-      # @param signals [PreludeSDK::Models::WatchPredictParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
+      # @param signals [PreludeSDK::Models::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #

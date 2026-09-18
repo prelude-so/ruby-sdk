@@ -1,0 +1,276 @@
+module PreludeSDK
+  module Models
+    module Intel
+      type kyc_match_response =
+        {
+          address_match: PreludeSDK::Models::Intel::KYCMatchResponse::address_match,
+          address_match_score: Integer,
+          birthdate_match: PreludeSDK::Models::Intel::KYCMatchResponse::birthdate_match,
+          country_code: String,
+          country_match: PreludeSDK::Models::Intel::KYCMatchResponse::country_match,
+          email_match: PreludeSDK::Models::Intel::KYCMatchResponse::email_match,
+          email_match_score: Integer,
+          family_name_match: PreludeSDK::Models::Intel::KYCMatchResponse::family_name_match,
+          family_name_match_score: Integer,
+          given_name_match: PreludeSDK::Models::Intel::KYCMatchResponse::given_name_match,
+          given_name_match_score: Integer,
+          locality_match: PreludeSDK::Models::Intel::KYCMatchResponse::locality_match,
+          locality_match_score: Integer,
+          operator: String,
+          phone_number: String,
+          postal_code_match: PreludeSDK::Models::Intel::KYCMatchResponse::postal_code_match,
+          region_match: PreludeSDK::Models::Intel::KYCMatchResponse::region_match,
+          region_match_score: Integer,
+          request_id: String
+        }
+
+      class KYCMatchResponse < PreludeSDK::Internal::Type::BaseModel
+        attr_reader address_match: PreludeSDK::Models::Intel::KYCMatchResponse::address_match?
+
+        def address_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::address_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::address_match
+
+        attr_reader address_match_score: Integer?
+
+        def address_match_score=: (Integer) -> Integer
+
+        attr_reader birthdate_match: PreludeSDK::Models::Intel::KYCMatchResponse::birthdate_match?
+
+        def birthdate_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::birthdate_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::birthdate_match
+
+        attr_reader country_code: String?
+
+        def country_code=: (String) -> String
+
+        attr_reader country_match: PreludeSDK::Models::Intel::KYCMatchResponse::country_match?
+
+        def country_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::country_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::country_match
+
+        attr_reader email_match: PreludeSDK::Models::Intel::KYCMatchResponse::email_match?
+
+        def email_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::email_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::email_match
+
+        attr_reader email_match_score: Integer?
+
+        def email_match_score=: (Integer) -> Integer
+
+        attr_reader family_name_match: PreludeSDK::Models::Intel::KYCMatchResponse::family_name_match?
+
+        def family_name_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::family_name_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::family_name_match
+
+        attr_reader family_name_match_score: Integer?
+
+        def family_name_match_score=: (Integer) -> Integer
+
+        attr_reader given_name_match: PreludeSDK::Models::Intel::KYCMatchResponse::given_name_match?
+
+        def given_name_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::given_name_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::given_name_match
+
+        attr_reader given_name_match_score: Integer?
+
+        def given_name_match_score=: (Integer) -> Integer
+
+        attr_reader locality_match: PreludeSDK::Models::Intel::KYCMatchResponse::locality_match?
+
+        def locality_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::locality_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::locality_match
+
+        attr_reader locality_match_score: Integer?
+
+        def locality_match_score=: (Integer) -> Integer
+
+        attr_reader operator: String?
+
+        def operator=: (String) -> String
+
+        attr_reader phone_number: String?
+
+        def phone_number=: (String) -> String
+
+        attr_reader postal_code_match: PreludeSDK::Models::Intel::KYCMatchResponse::postal_code_match?
+
+        def postal_code_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::postal_code_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::postal_code_match
+
+        attr_reader region_match: PreludeSDK::Models::Intel::KYCMatchResponse::region_match?
+
+        def region_match=: (
+          PreludeSDK::Models::Intel::KYCMatchResponse::region_match
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse::region_match
+
+        attr_reader region_match_score: Integer?
+
+        def region_match_score=: (Integer) -> Integer
+
+        attr_reader request_id: String?
+
+        def request_id=: (String) -> String
+
+        def initialize: (
+          ?address_match: PreludeSDK::Models::Intel::KYCMatchResponse::address_match,
+          ?address_match_score: Integer,
+          ?birthdate_match: PreludeSDK::Models::Intel::KYCMatchResponse::birthdate_match,
+          ?country_code: String,
+          ?country_match: PreludeSDK::Models::Intel::KYCMatchResponse::country_match,
+          ?email_match: PreludeSDK::Models::Intel::KYCMatchResponse::email_match,
+          ?email_match_score: Integer,
+          ?family_name_match: PreludeSDK::Models::Intel::KYCMatchResponse::family_name_match,
+          ?family_name_match_score: Integer,
+          ?given_name_match: PreludeSDK::Models::Intel::KYCMatchResponse::given_name_match,
+          ?given_name_match_score: Integer,
+          ?locality_match: PreludeSDK::Models::Intel::KYCMatchResponse::locality_match,
+          ?locality_match_score: Integer,
+          ?operator: String,
+          ?phone_number: String,
+          ?postal_code_match: PreludeSDK::Models::Intel::KYCMatchResponse::postal_code_match,
+          ?region_match: PreludeSDK::Models::Intel::KYCMatchResponse::region_match,
+          ?region_match_score: Integer,
+          ?request_id: String
+        ) -> void
+
+        def to_hash: -> {
+          address_match: PreludeSDK::Models::Intel::KYCMatchResponse::address_match,
+          address_match_score: Integer,
+          birthdate_match: PreludeSDK::Models::Intel::KYCMatchResponse::birthdate_match,
+          country_code: String,
+          country_match: PreludeSDK::Models::Intel::KYCMatchResponse::country_match,
+          email_match: PreludeSDK::Models::Intel::KYCMatchResponse::email_match,
+          email_match_score: Integer,
+          family_name_match: PreludeSDK::Models::Intel::KYCMatchResponse::family_name_match,
+          family_name_match_score: Integer,
+          given_name_match: PreludeSDK::Models::Intel::KYCMatchResponse::given_name_match,
+          given_name_match_score: Integer,
+          locality_match: PreludeSDK::Models::Intel::KYCMatchResponse::locality_match,
+          locality_match_score: Integer,
+          operator: String,
+          phone_number: String,
+          postal_code_match: PreludeSDK::Models::Intel::KYCMatchResponse::postal_code_match,
+          region_match: PreludeSDK::Models::Intel::KYCMatchResponse::region_match,
+          region_match_score: Integer,
+          request_id: String
+        }
+
+        type address_match = :true | :false | :not_available
+
+        module AddressMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::address_match]
+        end
+
+        type birthdate_match = :true | :false | :not_available
+
+        module BirthdateMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::birthdate_match]
+        end
+
+        type country_match = :true | :false | :not_available
+
+        module CountryMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::country_match]
+        end
+
+        type email_match = :true | :false | :not_available
+
+        module EmailMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::email_match]
+        end
+
+        type family_name_match = :true | :false | :not_available
+
+        module FamilyNameMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::family_name_match]
+        end
+
+        type given_name_match = :true | :false | :not_available
+
+        module GivenNameMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::given_name_match]
+        end
+
+        type locality_match = :true | :false | :not_available
+
+        module LocalityMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::locality_match]
+        end
+
+        type postal_code_match = :true | :false | :not_available
+
+        module PostalCodeMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::postal_code_match]
+        end
+
+        type region_match = :true | :false | :not_available
+
+        module RegionMatch
+          extend PreludeSDK::Internal::Type::Enum
+
+          TRUE: :true
+          FALSE: :false
+          NOT_AVAILABLE: :not_available
+
+          def self?.values: -> ::Array[PreludeSDK::Models::Intel::KYCMatchResponse::region_match]
+        end
+      end
+    end
+  end
+end

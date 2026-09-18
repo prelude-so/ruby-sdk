@@ -1,0 +1,45 @@
+module PreludeSDK
+  module Models
+    module VerificationManagement
+      type sandbox_list_phone_numbers_response =
+        {
+          phone_numbers: ::Array[PreludeSDK::Models::VerificationManagement::SandboxListPhoneNumbersResponse::PhoneNumber]
+        }
+
+      class SandboxListPhoneNumbersResponse < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor phone_numbers: ::Array[PreludeSDK::Models::VerificationManagement::SandboxListPhoneNumbersResponse::PhoneNumber]
+
+        def initialize: (
+          phone_numbers: ::Array[PreludeSDK::Models::VerificationManagement::SandboxListPhoneNumbersResponse::PhoneNumber]
+        ) -> void
+
+        def to_hash: -> {
+          phone_numbers: ::Array[PreludeSDK::Models::VerificationManagement::SandboxListPhoneNumbersResponse::PhoneNumber]
+        }
+
+        type phone_number =
+          { attempt_code: String, created_at: Time, phone_number: String }
+
+        class PhoneNumber < PreludeSDK::Internal::Type::BaseModel
+          attr_accessor attempt_code: String
+
+          attr_accessor created_at: Time
+
+          attr_accessor phone_number: String
+
+          def initialize: (
+            attempt_code: String,
+            created_at: Time,
+            phone_number: String
+          ) -> void
+
+          def to_hash: -> {
+            attempt_code: String,
+            created_at: Time,
+            phone_number: String
+          }
+        end
+      end
+    end
+  end
+end

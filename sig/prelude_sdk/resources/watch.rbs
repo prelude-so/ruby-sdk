@@ -1,11 +1,20 @@
 module PreludeSDK
   module Resources
     class Watch
+      def evaluate: (
+        flow_id: String,
+        target: PreludeSDK::Target,
+        ?attributes: ::Hash[Symbol, String],
+        ?dispatch_id: String,
+        ?signals: PreludeSDK::Signals,
+        ?request_options: PreludeSDK::request_opts
+      ) -> PreludeSDK::Models::WatchEvaluateResponse
+
       def predict: (
-        target: PreludeSDK::WatchPredictParams::Target,
+        target: PreludeSDK::Target,
         ?dispatch_id: String,
         ?metadata: PreludeSDK::WatchPredictParams::Metadata,
-        ?signals: PreludeSDK::WatchPredictParams::Signals,
+        ?signals: PreludeSDK::Signals,
         ?request_options: PreludeSDK::request_opts
       ) -> PreludeSDK::Models::WatchPredictResponse
 

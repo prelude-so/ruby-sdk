@@ -1,0 +1,11 @@
+module PreludeSDK
+  module Resources
+    class Verification
+      class Phone
+        attr_reader history: PreludeSDK::Resources::Verification::Phone::History
+
+        def initialize: (client: PreludeSDK::Client) -> void
+      end
+    end
+  end
+end

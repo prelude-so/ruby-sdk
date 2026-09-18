@@ -1,0 +1,27 @@
+module PreludeSDK
+  module Models
+    module Verification
+      module Phone
+        type history_retrieve_params =
+          { id: String } & PreludeSDK::Internal::Type::request_parameters
+
+        class HistoryRetrieveParams < PreludeSDK::Internal::Type::BaseModel
+          extend PreludeSDK::Internal::Type::RequestParameters::Converter
+          include PreludeSDK::Internal::Type::RequestParameters
+
+          attr_accessor id: String
+
+          def initialize: (
+            id: String,
+            ?request_options: PreludeSDK::request_opts
+          ) -> void
+
+          def to_hash: -> {
+            id: String,
+            request_options: PreludeSDK::RequestOptions
+          }
+        end
+      end
+    end
+  end
+end

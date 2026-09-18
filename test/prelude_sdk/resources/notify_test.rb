@@ -87,6 +87,31 @@ class PreludeSDK::Test::Resources::NotifyTest < PreludeSDK::Test::ResourceTest
     end
   end
 
+  def test_reply_required_params
+    response =
+      @prelude.notify.reply(
+        reply_to: "im_01k8aq2zggeyssvt53zgvpx63a",
+        text: "Thanks for reaching out! We'll look into your request.",
+        to: "+33612345678"
+      )
+
+    assert_pattern do
+      response => PreludeSDK::Models::NotifyReplyResponse
+    end
+
+    assert_pattern do
+      response => {
+        id: String,
+        created_at: Time,
+        reply_to: String,
+        text: String,
+        to: String,
+        callback_url: String | nil,
+        correlation_id: String | nil
+      }
+    end
+  end
+
   def test_send__required_params
     response = @prelude.notify.send_(template_id: "template_01k8ap1btqf5r9fq2c8ax5fhc9", to: "+33612345678")
 

@@ -164,6 +164,41 @@ module PreludeSDK
       end
 
       # Some parameter documentations has been truncated, see
+      # {PreludeSDK::Models::NotifyReplyParams} for more details.
+      #
+      # Send a free-form text reply to an inbound WhatsApp message within the 24-hour
+      # conversation window. See
+      # [WhatsApp 2-Way Messaging](/notify/v2/documentation/whatsapp) for details.
+      #
+      # @overload reply(reply_to:, text:, to:, callback_url: nil, correlation_id: nil, request_options: {})
+      #
+      # @param reply_to [String] The inbound message ID (prefixed with `im_`) to reply to. This ID is provided in
+      #
+      # @param text [String] The reply message body sent as a free-form WhatsApp text.
+      #
+      # @param to [String] The recipient's phone number in E.164 format. Must match the phone number that s
+      #
+      # @param callback_url [String] The URL where webhooks will be sent for delivery events of this reply.
+      #
+      # @param correlation_id [String] A user-defined identifier to correlate this reply with your internal systems. It
+      #
+      # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
+      #
+      # @return [PreludeSDK::Models::NotifyReplyResponse]
+      #
+      # @see PreludeSDK::Models::NotifyReplyParams
+      def reply(params)
+        parsed, options = PreludeSDK::NotifyReplyParams.dump_request(params)
+        @client.request(
+          method: :post,
+          path: "v2/notify/reply",
+          body: parsed,
+          model: PreludeSDK::Models::NotifyReplyResponse,
+          options: options
+        )
+      end
+
+      # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::NotifySendParams} for more details.
       #
       # Send transactional and marketing messages to your users via SMS, RCS and

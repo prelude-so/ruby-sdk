@@ -1,6 +1,8 @@
 module PreludeSDK
   module Resources
     class VerificationManagement
+      attr_reader sandbox: PreludeSDK::Resources::VerificationManagement::Sandbox
+
       def delete_phone_number: (
         PreludeSDK::Models::VerificationManagementDeletePhoneNumberParams::action action,
         phone_number: String,
