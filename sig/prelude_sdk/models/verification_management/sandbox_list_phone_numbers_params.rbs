@@ -1,0 +1,17 @@
+module PreludeSDK
+  module Models
+    module VerificationManagement
+      type sandbox_list_phone_numbers_params =
+        {  } & PreludeSDK::Internal::Type::request_parameters
+
+      class SandboxListPhoneNumbersParams < PreludeSDK::Internal::Type::BaseModel
+        extend PreludeSDK::Internal::Type::RequestParameters::Converter
+        include PreludeSDK::Internal::Type::RequestParameters
+
+        def initialize: (?request_options: PreludeSDK::request_opts) -> void
+
+        def to_hash: -> { request_options: PreludeSDK::RequestOptions }
+      end
+    end
+  end
+end

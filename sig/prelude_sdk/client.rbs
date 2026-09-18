@@ -22,6 +22,8 @@ module PreludeSDK
 
     attr_reader watch: PreludeSDK::Resources::Watch
 
+    attr_reader intel: PreludeSDK::Resources::Intel
+
     private def auth_headers: -> ::Hash[String, String]
 
     def initialize: (

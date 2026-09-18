@@ -1,0 +1,37 @@
+module PreludeSDK
+  module Models
+    module Verification
+      class PhoneVerificationPsd2Transaction = Phone::PhoneVerificationPsd2Transaction
+
+      module Phone
+        type phone_verification_psd2_transaction =
+          {
+            amount: PreludeSDK::Verification::Phone::PhoneVerificationMoney,
+            recipient: String
+          }
+
+        class PhoneVerificationPsd2Transaction < PreludeSDK::Internal::Type::BaseModel
+          attr_reader amount: PreludeSDK::Verification::Phone::PhoneVerificationMoney?
+
+          def amount=: (
+            PreludeSDK::Verification::Phone::PhoneVerificationMoney
+          ) -> PreludeSDK::Verification::Phone::PhoneVerificationMoney
+
+          attr_reader recipient: String?
+
+          def recipient=: (String) -> String
+
+          def initialize: (
+            ?amount: PreludeSDK::Verification::Phone::PhoneVerificationMoney,
+            ?recipient: String
+          ) -> void
+
+          def to_hash: -> {
+            amount: PreludeSDK::Verification::Phone::PhoneVerificationMoney,
+            recipient: String
+          }
+        end
+      end
+    end
+  end
+end

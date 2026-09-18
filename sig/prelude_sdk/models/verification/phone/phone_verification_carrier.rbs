@@ -1,0 +1,23 @@
+module PreludeSDK
+  module Models
+    module Verification
+      class PhoneVerificationCarrier = Phone::PhoneVerificationCarrier
+
+      module Phone
+        type phone_verification_carrier = { mccmnc: String, name: String }
+
+        class PhoneVerificationCarrier < PreludeSDK::Internal::Type::BaseModel
+          attr_accessor mccmnc: String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          def initialize: (mccmnc: String, ?name: String) -> void
+
+          def to_hash: -> { mccmnc: String, name: String }
+        end
+      end
+    end
+  end
+end

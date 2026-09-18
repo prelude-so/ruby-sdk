@@ -46,8 +46,8 @@ module PreludeSDK
         # @!attribute target
         #   The event target. Only supports phone numbers for now.
         #
-        #   @return [PreludeSDK::Models::WatchSendEventsParams::Event::Target]
-        required :target, -> { PreludeSDK::WatchSendEventsParams::Event::Target }
+        #   @return [PreludeSDK::Models::Target]
+        required :target, -> { PreludeSDK::Target }
 
         # @!method initialize(confidence:, label:, target:)
         #   Some parameter documentations has been truncated, see
@@ -57,7 +57,7 @@ module PreludeSDK
         #
         #   @param label [String] A label to describe what the event refers to.
         #
-        #   @param target [PreludeSDK::Models::WatchSendEventsParams::Event::Target] The event target. Only supports phone numbers for now.
+        #   @param target [PreludeSDK::Models::Target] The event target. Only supports phone numbers for now.
 
         # How much this event tells us to trust the end-user's legitimacy — not how
         # certain you are that the event occurred. In increasing order of trust:
@@ -81,41 +81,6 @@ module PreludeSDK
 
           # @!method self.values
           #   @return [Array<Symbol>]
-        end
-
-        # @see PreludeSDK::Models::WatchSendEventsParams::Event#target
-        class Target < PreludeSDK::Internal::Type::BaseModel
-          # @!attribute type
-          #   The type of the target. Either "phone_number" or "email_address".
-          #
-          #   @return [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type]
-          required :type, enum: -> { PreludeSDK::WatchSendEventsParams::Event::Target::Type }
-
-          # @!attribute value
-          #   An E.164 formatted phone number or an email address.
-          #
-          #   @return [String]
-          required :value, String
-
-          # @!method initialize(type:, value:)
-          #   The event target. Only supports phone numbers for now.
-          #
-          #   @param type [Symbol, PreludeSDK::Models::WatchSendEventsParams::Event::Target::Type] The type of the target. Either "phone_number" or "email_address".
-          #
-          #   @param value [String] An E.164 formatted phone number or an email address.
-
-          # The type of the target. Either "phone_number" or "email_address".
-          #
-          # @see PreludeSDK::Models::WatchSendEventsParams::Event::Target#type
-          module Type
-            extend PreludeSDK::Internal::Type::Enum
-
-            PHONE_NUMBER = :phone_number
-            EMAIL_ADDRESS = :email_address
-
-            # @!method self.values
-            #   @return [Array<Symbol>]
-          end
         end
       end
     end

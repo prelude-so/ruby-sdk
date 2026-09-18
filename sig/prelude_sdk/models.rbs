@@ -1,4 +1,6 @@
 module PreludeSDK
+  module Intel = PreludeSDK::Models::Intel
+
   class LookupLookupParams = PreludeSDK::Models::LookupLookupParams
 
   class NotifyGetSubscriptionConfigParams = PreludeSDK::Models::NotifyGetSubscriptionConfigParams
@@ -11,15 +13,25 @@ module PreludeSDK
 
   class NotifyListSubscriptionPhoneNumbersParams = PreludeSDK::Models::NotifyListSubscriptionPhoneNumbersParams
 
+  class NotifyReplyParams = PreludeSDK::Models::NotifyReplyParams
+
   class NotifySendBatchParams = PreludeSDK::Models::NotifySendBatchParams
 
   class NotifySendParams = PreludeSDK::Models::NotifySendParams
 
+  class Signals = PreludeSDK::Models::Signals
+
+  class Target = PreludeSDK::Models::Target
+
   class TransactionalSendParams = PreludeSDK::Models::TransactionalSendParams
+
+  module Verification = PreludeSDK::Models::Verification
 
   class VerificationCheckParams = PreludeSDK::Models::VerificationCheckParams
 
   class VerificationCreateParams = PreludeSDK::Models::VerificationCreateParams
+
+  module VerificationManagement = PreludeSDK::Models::VerificationManagement
 
   class VerificationManagementDeletePhoneNumberParams = PreludeSDK::Models::VerificationManagementDeletePhoneNumberParams
 
@@ -30,6 +42,8 @@ module PreludeSDK
   class VerificationManagementSetPhoneNumberParams = PreludeSDK::Models::VerificationManagementSetPhoneNumberParams
 
   class VerificationManagementSubmitSenderIDParams = PreludeSDK::Models::VerificationManagementSubmitSenderIDParams
+
+  class WatchEvaluateParams = PreludeSDK::Models::WatchEvaluateParams
 
   class WatchPredictParams = PreludeSDK::Models::WatchPredictParams
 

@@ -1,0 +1,15 @@
+module PreludeSDK
+  module Models
+    module VerificationManagement
+      type sandbox_delete_phone_number_response = { phone_number: String }
+
+      class SandboxDeletePhoneNumberResponse < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor phone_number: String
+
+        def initialize: (phone_number: String) -> void
+
+        def to_hash: -> { phone_number: String }
+      end
+    end
+  end
+end

@@ -22,13 +22,13 @@ module PreludeSDK
 
       type feedback =
         {
-          target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target,
+          target: PreludeSDK::Target,
           type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_,
           metadata: PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata
         }
 
       class Feedback < PreludeSDK::Internal::Type::BaseModel
-        attr_accessor target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target
+        attr_accessor target: PreludeSDK::Target
 
         attr_accessor type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_
 
@@ -39,49 +39,16 @@ module PreludeSDK
         ) -> PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata
 
         def initialize: (
-          target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target,
+          target: PreludeSDK::Target,
           type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_,
           ?metadata: PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata
         ) -> void
 
         def to_hash: -> {
-          target: PreludeSDK::WatchSendFeedbacksParams::Feedback::Target,
+          target: PreludeSDK::Target,
           type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::type_,
           metadata: PreludeSDK::WatchSendFeedbacksParams::Feedback::Metadata
         }
-
-        type target =
-          {
-            type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_,
-            value: String
-          }
-
-        class Target < PreludeSDK::Internal::Type::BaseModel
-          attr_accessor type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_
-
-          attr_accessor value: String
-
-          def initialize: (
-            type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_,
-            value: String
-          ) -> void
-
-          def to_hash: -> {
-            type: PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_,
-            value: String
-          }
-
-          type type_ = :phone_number | :email_address
-
-          module Type
-            extend PreludeSDK::Internal::Type::Enum
-
-            PHONE_NUMBER: :phone_number
-            EMAIL_ADDRESS: :email_address
-
-            def self?.values: -> ::Array[PreludeSDK::Models::WatchSendFeedbacksParams::Feedback::Target::type_]
-          end
-        end
 
         type type_ = :"verification.started" | :"verification.completed"
 

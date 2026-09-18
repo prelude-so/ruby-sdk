@@ -74,14 +74,10 @@ module PreludeSDK
         attr_accessor :label
 
         # The event target. Only supports phone numbers for now.
-        sig { returns(PreludeSDK::WatchSendEventsParams::Event::Target) }
+        sig { returns(PreludeSDK::Target) }
         attr_reader :target
 
-        sig do
-          params(
-            target: PreludeSDK::WatchSendEventsParams::Event::Target::OrHash
-          ).void
-        end
+        sig { params(target: PreludeSDK::Target::OrHash).void }
         attr_writer :target
 
         sig do
@@ -89,7 +85,7 @@ module PreludeSDK
             confidence:
               PreludeSDK::WatchSendEventsParams::Event::Confidence::OrSymbol,
             label: String,
-            target: PreludeSDK::WatchSendEventsParams::Event::Target::OrHash
+            target: PreludeSDK::Target::OrHash
           ).returns(T.attached_class)
         end
         def self.new(
@@ -116,7 +112,7 @@ module PreludeSDK
               confidence:
                 PreludeSDK::WatchSendEventsParams::Event::Confidence::OrSymbol,
               label: String,
-              target: PreludeSDK::WatchSendEventsParams::Event::Target
+              target: PreludeSDK::Target
             }
           )
         end
@@ -178,91 +174,6 @@ module PreludeSDK
             )
           end
           def self.values
-          end
-        end
-
-        class Target < PreludeSDK::Internal::Type::BaseModel
-          OrHash =
-            T.type_alias do
-              T.any(
-                PreludeSDK::WatchSendEventsParams::Event::Target,
-                PreludeSDK::Internal::AnyHash
-              )
-            end
-
-          # The type of the target. Either "phone_number" or "email_address".
-          sig do
-            returns(
-              PreludeSDK::WatchSendEventsParams::Event::Target::Type::OrSymbol
-            )
-          end
-          attr_accessor :type
-
-          # An E.164 formatted phone number or an email address.
-          sig { returns(String) }
-          attr_accessor :value
-
-          # The event target. Only supports phone numbers for now.
-          sig do
-            params(
-              type:
-                PreludeSDK::WatchSendEventsParams::Event::Target::Type::OrSymbol,
-              value: String
-            ).returns(T.attached_class)
-          end
-          def self.new(
-            # The type of the target. Either "phone_number" or "email_address".
-            type:,
-            # An E.164 formatted phone number or an email address.
-            value:
-          )
-          end
-
-          sig do
-            override.returns(
-              {
-                type:
-                  PreludeSDK::WatchSendEventsParams::Event::Target::Type::OrSymbol,
-                value: String
-              }
-            )
-          end
-          def to_hash
-          end
-
-          # The type of the target. Either "phone_number" or "email_address".
-          module Type
-            extend PreludeSDK::Internal::Type::Enum
-
-            TaggedSymbol =
-              T.type_alias do
-                T.all(
-                  Symbol,
-                  PreludeSDK::WatchSendEventsParams::Event::Target::Type
-                )
-              end
-            OrSymbol = T.type_alias { T.any(Symbol, String) }
-
-            PHONE_NUMBER =
-              T.let(
-                :phone_number,
-                PreludeSDK::WatchSendEventsParams::Event::Target::Type::TaggedSymbol
-              )
-            EMAIL_ADDRESS =
-              T.let(
-                :email_address,
-                PreludeSDK::WatchSendEventsParams::Event::Target::Type::TaggedSymbol
-              )
-
-            sig do
-              override.returns(
-                T::Array[
-                  PreludeSDK::WatchSendEventsParams::Event::Target::Type::TaggedSymbol
-                ]
-              )
-            end
-            def self.values
-            end
           end
         end
       end

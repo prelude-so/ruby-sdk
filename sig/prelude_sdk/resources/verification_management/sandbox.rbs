@@ -1,0 +1,24 @@
+module PreludeSDK
+  module Resources
+    class VerificationManagement
+      class Sandbox
+        def add_phone_number: (
+          attempt_code: String,
+          phone_number: String,
+          ?request_options: PreludeSDK::request_opts
+        ) -> PreludeSDK::Models::VerificationManagement::SandboxAddPhoneNumberResponse
+
+        def delete_phone_number: (
+          String phone_number,
+          ?request_options: PreludeSDK::request_opts
+        ) -> PreludeSDK::Models::VerificationManagement::SandboxDeletePhoneNumberResponse
+
+        def list_phone_numbers: (
+          ?request_options: PreludeSDK::request_opts
+        ) -> PreludeSDK::Models::VerificationManagement::SandboxListPhoneNumbersResponse
+
+        def initialize: (client: PreludeSDK::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,101 @@
+module PreludeSDK
+  module Models
+    type signals =
+      {
+        app_version: String,
+        device_id: String,
+        device_model: String,
+        device_platform: PreludeSDK::Models::Signals::device_platform,
+        existing_user: bool,
+        ip: String,
+        is_trusted_user: bool,
+        :ja4_fingerprint => String,
+        os_version: String,
+        user_agent: String
+      }
+
+    class Signals < PreludeSDK::Internal::Type::BaseModel
+      attr_reader app_version: String?
+
+      def app_version=: (String) -> String
+
+      attr_reader device_id: String?
+
+      def device_id=: (String) -> String
+
+      attr_reader device_model: String?
+
+      def device_model=: (String) -> String
+
+      attr_reader device_platform: PreludeSDK::Models::Signals::device_platform?
+
+      def device_platform=: (
+        PreludeSDK::Models::Signals::device_platform
+      ) -> PreludeSDK::Models::Signals::device_platform
+
+      attr_reader existing_user: bool?
+
+      def existing_user=: (bool) -> bool
+
+      attr_reader ip: String?
+
+      def ip=: (String) -> String
+
+      attr_reader is_trusted_user: bool?
+
+      def is_trusted_user=: (bool) -> bool
+
+      attr_reader ja4_fingerprint: String?
+
+      def ja4_fingerprint=: (String) -> String
+
+      attr_reader os_version: String?
+
+      def os_version=: (String) -> String
+
+      attr_reader user_agent: String?
+
+      def user_agent=: (String) -> String
+
+      def initialize: (
+        ?app_version: String,
+        ?device_id: String,
+        ?device_model: String,
+        ?device_platform: PreludeSDK::Models::Signals::device_platform,
+        ?existing_user: bool,
+        ?ip: String,
+        ?is_trusted_user: bool,
+        ?ja4_fingerprint: String,
+        ?os_version: String,
+        ?user_agent: String
+      ) -> void
+
+      def to_hash: -> {
+        app_version: String,
+        device_id: String,
+        device_model: String,
+        device_platform: PreludeSDK::Models::Signals::device_platform,
+        existing_user: bool,
+        ip: String,
+        is_trusted_user: bool,
+        :ja4_fingerprint => String,
+        os_version: String,
+        user_agent: String
+      }
+
+      type device_platform = :android | :ios | :ipados | :tvos | :web
+
+      module DevicePlatform
+        extend PreludeSDK::Internal::Type::Enum
+
+        ANDROID: :android
+        IOS: :ios
+        IPADOS: :ipados
+        TVOS: :tvos
+        WEB: :web
+
+        def self?.values: -> ::Array[PreludeSDK::Models::Signals::device_platform]
+      end
+    end
+  end
+end

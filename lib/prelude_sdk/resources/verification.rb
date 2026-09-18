@@ -4,6 +4,9 @@ module PreludeSDK
   module Resources
     # Verify phone numbers.
     class Verification
+      # @return [PreludeSDK::Resources::Verification::Phone]
+      attr_reader :phone
+
       # Some parameter documentations has been truncated, see
       # {PreludeSDK::Models::VerificationCreateParams} for more details.
       #
@@ -13,7 +16,7 @@ module PreludeSDK
       #
       # @overload create(target:, dispatch_id: nil, metadata: nil, options: nil, signals: nil, request_options: {})
       #
-      # @param target [PreludeSDK::Models::VerificationCreateParams::Target] The verification target. Either a phone number or an email address. To use the e
+      # @param target [PreludeSDK::Models::Target] The verification target. Either a phone number or an email address. To use the e
       #
       # @param dispatch_id [String] The identifier of the dispatch that came from the front-end SDK.
       #
@@ -21,7 +24,7 @@ module PreludeSDK
       #
       # @param options [PreludeSDK::Models::VerificationCreateParams::Options] Verification options
       #
-      # @param signals [PreludeSDK::Models::VerificationCreateParams::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
+      # @param signals [PreludeSDK::Models::Signals] The signals used for anti-fraud. For more details, refer to [Signals](/verify/v2
       #
       # @param request_options [PreludeSDK::RequestOptions, Hash{Symbol=>Object}, nil]
       #
@@ -48,7 +51,7 @@ module PreludeSDK
       #
       # @param code [String] The OTP code to validate.
       #
-      # @param target [PreludeSDK::Models::VerificationCheckParams::Target] The verification target. Either a phone number or an email address. To use the e
+      # @param target [PreludeSDK::Models::Target] The verification target. Either a phone number or an email address. To use the e
       #
       # @param psd2 [PreludeSDK::Models::VerificationCheckParams::Psd2] Required when checking a code issued under the `prelude:psd2` template. The subm
       #
@@ -73,6 +76,7 @@ module PreludeSDK
       # @param client [PreludeSDK::Client]
       def initialize(client:)
         @client = client
+        @phone = PreludeSDK::Resources::Verification::Phone.new(client: client)
       end
     end
   end

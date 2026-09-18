@@ -1,0 +1,23 @@
+module PreludeSDK
+  module Resources
+    class Intel
+      class KYC
+        def match: (
+          String phone,
+          ?address: String,
+          ?birthdate: Date,
+          ?country: String,
+          ?email: String,
+          ?family_name: String,
+          ?given_name: String,
+          ?locality: String,
+          ?postal_code: String,
+          ?region: String,
+          ?request_options: PreludeSDK::request_opts
+        ) -> PreludeSDK::Models::Intel::KYCMatchResponse
+
+        def initialize: (client: PreludeSDK::Client) -> void
+      end
+    end
+  end
+end

@@ -1,0 +1,21 @@
+module PreludeSDK
+  module Models
+    module Verification
+      class PhoneVerificationMoney = Phone::PhoneVerificationMoney
+
+      module Phone
+        type phone_verification_money = { amount: String, currency: String }
+
+        class PhoneVerificationMoney < PreludeSDK::Internal::Type::BaseModel
+          attr_accessor amount: String
+
+          attr_accessor currency: String
+
+          def initialize: (amount: String, currency: String) -> void
+
+          def to_hash: -> { amount: String, currency: String }
+        end
+      end
+    end
+  end
+end

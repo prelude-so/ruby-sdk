@@ -1,0 +1,178 @@
+module PreludeSDK
+  module Models
+    type watch_evaluate_response =
+      {
+        id: String,
+        action: PreludeSDK::Models::WatchEvaluateResponse::action,
+        recipes: ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe],
+        verdict: PreludeSDK::Models::WatchEvaluateResponse::verdict
+      }
+
+    class WatchEvaluateResponse < PreludeSDK::Internal::Type::BaseModel
+      attr_accessor id: String
+
+      attr_accessor action: PreludeSDK::Models::WatchEvaluateResponse::action
+
+      attr_accessor recipes: ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe]
+
+      attr_accessor verdict: PreludeSDK::Models::WatchEvaluateResponse::verdict
+
+      def initialize: (
+        id: String,
+        action: PreludeSDK::Models::WatchEvaluateResponse::action,
+        recipes: ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe],
+        verdict: PreludeSDK::Models::WatchEvaluateResponse::verdict
+      ) -> void
+
+      def to_hash: -> {
+        id: String,
+        action: PreludeSDK::Models::WatchEvaluateResponse::action,
+        recipes: ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe],
+        verdict: PreludeSDK::Models::WatchEvaluateResponse::verdict
+      }
+
+      type action = :ALLOW | :BLOCK | :CHALLENGE
+
+      module Action
+        extend PreludeSDK::Internal::Type::Enum
+
+        ALLOW: :ALLOW
+        BLOCK: :BLOCK
+        CHALLENGE: :CHALLENGE
+
+        def self?.values: -> ::Array[PreludeSDK::Models::WatchEvaluateResponse::action]
+      end
+
+      type recipe =
+        {
+          partial_evidence: bool,
+          recipe_id: String,
+          rules: ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule],
+          score: Integer,
+          threshold: Integer,
+          verdict: PreludeSDK::Models::WatchEvaluateResponse::Recipe::verdict,
+          determined_by: String
+        }
+
+      class Recipe < PreludeSDK::Internal::Type::BaseModel
+        attr_accessor partial_evidence: bool
+
+        attr_accessor recipe_id: String
+
+        attr_accessor rules: ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule]
+
+        attr_accessor score: Integer
+
+        attr_accessor threshold: Integer
+
+        attr_accessor verdict: PreludeSDK::Models::WatchEvaluateResponse::Recipe::verdict
+
+        attr_reader determined_by: String?
+
+        def determined_by=: (String) -> String
+
+        def initialize: (
+          partial_evidence: bool,
+          recipe_id: String,
+          rules: ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule],
+          score: Integer,
+          threshold: Integer,
+          verdict: PreludeSDK::Models::WatchEvaluateResponse::Recipe::verdict,
+          ?determined_by: String
+        ) -> void
+
+        def to_hash: -> {
+          partial_evidence: bool,
+          recipe_id: String,
+          rules: ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule],
+          score: Integer,
+          threshold: Integer,
+          verdict: PreludeSDK::Models::WatchEvaluateResponse::Recipe::verdict,
+          determined_by: String
+        }
+
+        type rule =
+          {
+            outcome: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome,
+            rule_id: String,
+            weight: Integer,
+            blocked_by: String,
+            name: String,
+            unavailable: bool
+          }
+
+        class Rule < PreludeSDK::Internal::Type::BaseModel
+          attr_accessor outcome: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome
+
+          attr_accessor rule_id: String
+
+          attr_accessor weight: Integer
+
+          attr_reader blocked_by: String?
+
+          def blocked_by=: (String) -> String
+
+          attr_reader name: String?
+
+          def name=: (String) -> String
+
+          attr_reader unavailable: bool?
+
+          def unavailable=: (bool) -> bool
+
+          def initialize: (
+            outcome: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome,
+            rule_id: String,
+            weight: Integer,
+            ?blocked_by: String,
+            ?name: String,
+            ?unavailable: bool
+          ) -> void
+
+          def to_hash: -> {
+            outcome: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome,
+            rule_id: String,
+            weight: Integer,
+            blocked_by: String,
+            name: String,
+            unavailable: bool
+          }
+
+          type outcome = :TRIGGERED | :NOT_TRIGGERED | :NOT_EVALUATED
+
+          module Outcome
+            extend PreludeSDK::Internal::Type::Enum
+
+            TRIGGERED: :TRIGGERED
+            NOT_TRIGGERED: :NOT_TRIGGERED
+            NOT_EVALUATED: :NOT_EVALUATED
+
+            def self?.values: -> ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome]
+          end
+        end
+
+        type verdict = :PASS | :FLAG
+
+        module Verdict
+          extend PreludeSDK::Internal::Type::Enum
+
+          PASS: :PASS
+          FLAG: :FLAG
+
+          def self?.values: -> ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::verdict]
+        end
+      end
+
+      type verdict = :PASS | :FLAG
+
+      module Verdict
+        extend PreludeSDK::Internal::Type::Enum
+
+        PASS: :PASS
+        FLAG: :FLAG
+
+        def self?.values: -> ::Array[PreludeSDK::Models::WatchEvaluateResponse::verdict]
+      end
+    end
+  end
+end

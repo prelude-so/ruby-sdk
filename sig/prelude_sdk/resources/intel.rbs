@@ -1,0 +1,9 @@
+module PreludeSDK
+  module Resources
+    class Intel
+      attr_reader kyc: PreludeSDK::Resources::Intel::KYC
+
+      def initialize: (client: PreludeSDK::Client) -> void
+    end
+  end
+end

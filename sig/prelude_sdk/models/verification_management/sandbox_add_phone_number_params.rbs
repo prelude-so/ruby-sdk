@@ -1,0 +1,30 @@
+module PreludeSDK
+  module Models
+    module VerificationManagement
+      type sandbox_add_phone_number_params =
+        { attempt_code: String, phone_number: String }
+        & PreludeSDK::Internal::Type::request_parameters
+
+      class SandboxAddPhoneNumberParams < PreludeSDK::Internal::Type::BaseModel
+        extend PreludeSDK::Internal::Type::RequestParameters::Converter
+        include PreludeSDK::Internal::Type::RequestParameters
+
+        attr_accessor attempt_code: String
+
+        attr_accessor phone_number: String
+
+        def initialize: (
+          attempt_code: String,
+          phone_number: String,
+          ?request_options: PreludeSDK::request_opts
+        ) -> void
+
+        def to_hash: -> {
+          attempt_code: String,
+          phone_number: String,
+          request_options: PreludeSDK::RequestOptions
+        }
+      end
+    end
+  end
+end
