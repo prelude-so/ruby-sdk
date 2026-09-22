@@ -95,16 +95,20 @@ module PreludeSDK
           {
             outcome: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome,
             rule_id: String,
+            type: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::type_,
             weight: Integer,
             blocked_by: String,
             name: String,
-            unavailable: bool
+            unavailable: bool,
+            version_id: String
           }
 
         class Rule < PreludeSDK::Internal::Type::BaseModel
           attr_accessor outcome: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome
 
           attr_accessor rule_id: String
+
+          attr_accessor type: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::type_
 
           attr_accessor weight: Integer
 
@@ -120,25 +124,33 @@ module PreludeSDK
 
           def unavailable=: (bool) -> bool
 
+          attr_reader version_id: String?
+
+          def version_id=: (String) -> String
+
           def initialize: (
             outcome: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome,
             rule_id: String,
+            type: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::type_,
             weight: Integer,
             ?blocked_by: String,
             ?name: String,
-            ?unavailable: bool
+            ?unavailable: bool,
+            ?version_id: String
           ) -> void
 
           def to_hash: -> {
             outcome: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome,
             rule_id: String,
+            type: PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::type_,
             weight: Integer,
             blocked_by: String,
             name: String,
-            unavailable: bool
+            unavailable: bool,
+            version_id: String
           }
 
-          type outcome = :TRIGGERED | :NOT_TRIGGERED | :NOT_EVALUATED
+          type outcome = :TRIGGERED | :NOT_TRIGGERED | :NOT_EVALUATED | :SKIPPED
 
           module Outcome
             extend PreludeSDK::Internal::Type::Enum
@@ -146,8 +158,20 @@ module PreludeSDK
             TRIGGERED: :TRIGGERED
             NOT_TRIGGERED: :NOT_TRIGGERED
             NOT_EVALUATED: :NOT_EVALUATED
+            SKIPPED: :SKIPPED
 
             def self?.values: -> ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::outcome]
+          end
+
+          type type_ = :MANAGED | :CUSTOM
+
+          module Type
+            extend PreludeSDK::Internal::Type::Enum
+
+            MANAGED: :MANAGED
+            CUSTOM: :CUSTOM
+
+            def self?.values: -> ::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::type_]
           end
         end
 

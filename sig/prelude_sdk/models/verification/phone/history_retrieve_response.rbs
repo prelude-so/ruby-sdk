@@ -200,33 +200,47 @@ module PreludeSDK
           end
 
           type block_reason =
-            :behavioral_pattern
-            | :device_attribute
+            :automation_signature
+            | :carrier_not_permitted
+            | :client_fingerprint_mismatch
+            | :custom_policy
+            | :device_emulator
+            | :device_not_permitted
+            | :device_reuse
+            | :expired_signals
             | :fraud_database
-            | :location_discrepancy
+            | :invalid_signature
+            | :ip_concentration
+            | :ip_reputation
+            | :location_mismatch
             | :missing_signals
-            | :network_fingerprint
+            | :number_range_abuse
             | :poor_conversion_history
-            | :prefix_concentration
-            | :repeated_number
-            | :suspected_request_tampering
-            | :suspicious_ip_address
+            | :proxy_network
+            | :repeated_attempts
             | :temporary_phone_number
 
           module BlockReason
             extend PreludeSDK::Internal::Type::Enum
 
-            BEHAVIORAL_PATTERN: :behavioral_pattern
-            DEVICE_ATTRIBUTE: :device_attribute
+            AUTOMATION_SIGNATURE: :automation_signature
+            CARRIER_NOT_PERMITTED: :carrier_not_permitted
+            CLIENT_FINGERPRINT_MISMATCH: :client_fingerprint_mismatch
+            CUSTOM_POLICY: :custom_policy
+            DEVICE_EMULATOR: :device_emulator
+            DEVICE_NOT_PERMITTED: :device_not_permitted
+            DEVICE_REUSE: :device_reuse
+            EXPIRED_SIGNALS: :expired_signals
             FRAUD_DATABASE: :fraud_database
-            LOCATION_DISCREPANCY: :location_discrepancy
+            INVALID_SIGNATURE: :invalid_signature
+            IP_CONCENTRATION: :ip_concentration
+            IP_REPUTATION: :ip_reputation
+            LOCATION_MISMATCH: :location_mismatch
             MISSING_SIGNALS: :missing_signals
-            NETWORK_FINGERPRINT: :network_fingerprint
+            NUMBER_RANGE_ABUSE: :number_range_abuse
             POOR_CONVERSION_HISTORY: :poor_conversion_history
-            PREFIX_CONCENTRATION: :prefix_concentration
-            REPEATED_NUMBER: :repeated_number
-            SUSPECTED_REQUEST_TAMPERING: :suspected_request_tampering
-            SUSPICIOUS_IP_ADDRESS: :suspicious_ip_address
+            PROXY_NETWORK: :proxy_network
+            REPEATED_ATTEMPTS: :repeated_attempts
             TEMPORARY_PHONE_NUMBER: :temporary_phone_number
 
             def self?.values: -> ::Array[PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::block_reason]
