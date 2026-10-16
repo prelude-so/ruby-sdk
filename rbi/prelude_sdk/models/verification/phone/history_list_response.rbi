@@ -112,8 +112,8 @@ module PreludeSDK
             # - `invalid_line` - The phone number is not a valid line type.
             # - `invalid_number` - The phone number is not a valid number.
             # - `rate_limited` - The verification was refused by a rate limit.
-            # - `expired_signals` - The SDK signals were collected too long before the
-            #   request.
+            # - `expired_signals` - The SDK signals were collected too long before the request
+            #   to still attest to it.
             # - `shadowed` - The anti-fraud system flagged the verification without blocking
             #   it.
             sig do
@@ -264,8 +264,8 @@ module PreludeSDK
               # - `invalid_line` - The phone number is not a valid line type.
               # - `invalid_number` - The phone number is not a valid number.
               # - `rate_limited` - The verification was refused by a rate limit.
-              # - `expired_signals` - The SDK signals were collected too long before the
-              #   request.
+              # - `expired_signals` - The SDK signals were collected too long before the request
+              #   to still attest to it.
               # - `shadowed` - The anti-fraud system flagged the verification without blocking
               #   it.
               status:,
@@ -440,8 +440,8 @@ module PreludeSDK
             # - `invalid_line` - The phone number is not a valid line type.
             # - `invalid_number` - The phone number is not a valid number.
             # - `rate_limited` - The verification was refused by a rate limit.
-            # - `expired_signals` - The SDK signals were collected too long before the
-            #   request.
+            # - `expired_signals` - The SDK signals were collected too long before the request
+            #   to still attest to it.
             # - `shadowed` - The anti-fraud system flagged the verification without blocking
             #   it.
             module Status

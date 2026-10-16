@@ -41,8 +41,8 @@ module PreludeSDK
           # - `invalid_line` - The phone number is not a valid line type.
           # - `invalid_number` - The phone number is not a valid number.
           # - `rate_limited` - The verification was refused by a rate limit.
-          # - `expired_signals` - The SDK signals were collected too long before the
-          #   request.
+          # - `expired_signals` - The SDK signals were collected too long before the request
+          #   to still attest to it.
           # - `shadowed` - The anti-fraud system flagged the verification without blocking
           #   it.
           sig do
@@ -59,31 +59,44 @@ module PreludeSDK
           sig { params(app_version: String).void }
           attr_writer :app_version
 
-          # Why the anti-fraud system blocked the verification. Empty unless it did.
+          # Why the anti-fraud system blocked the verification. Empty unless it did. These
+          # are the same labels the Verify and Watch APIs serve as `risk_factors`.
           #
-          # - `behavioral_pattern` - The phone number past behavior during verification
-          #   flows exhibits suspicious patterns.
-          # - `device_attribute` - The end-user device reported attributes associated with
-          #   fraud or emulation.
-          # - `fraud_database` - The phone number appears in a fraud database.
-          # - `location_discrepancy` - The phone number region and the observed location
-          #   disagree.
+          # - `automation_signature` - The request appears to come from an automated client
+          #   rather than a person.
+          # - `carrier_not_permitted` - The destination carrier is one this account does not
+          #   accept traffic for.
+          # - `client_fingerprint_mismatch` - The client does not appear to be the platform
+          #   it identifies itself as.
+          # - `custom_policy` - A rule configured for your account matched this request.
+          # - `device_emulator` - The request appears to come from an emulator rather than a
+          #   physical device.
+          # - `device_not_permitted` - The device platform is one your account blocks.
+          # - `device_reuse` - One device is driving verifications for an unusual number of
+          #   phone numbers.
+          # - `expired_signals` - The SDK signals were collected too long before the request
+          #   to still attest to it.
+          # - `fraud_database` - The phone number is flagged in one or more of the fraud
+          #   databases Prelude consults.
+          # - `invalid_signature` - The SDK signature did not verify, so the request cannot
+          #   be attributed to the device it claims to come from.
+          # - `ip_concentration` - The request shares its origin with an unusual volume of
+          #   other verifications.
+          # - `ip_reputation` - The originating IP address is not trusted.
+          # - `location_mismatch` - The network location and the phone number's country are
+          #   inconsistent.
           # - `missing_signals` - The verification expected Prelude SDK signals and none
           #   arrived.
-          # - `network_fingerprint` - The network fingerprint matches known fraudulent
-          #   traffic.
-          # - `poor_conversion_history` - The phone number rarely completes the
-          #   verifications it starts.
-          # - `prefix_concentration` - The phone number is part of a range known to be
-          #   associated with suspicious activity patterns.
-          # - `repeated_number` - The phone number was used far more often than normal
-          #   traffic would explain.
-          # - `suspected_request_tampering` - The SDK signals were altered or expired
-          #   between collection and use.
-          # - `suspicious_ip_address` - The originating IP address is associated with
-          #   suspicious activity.
-          # - `temporary_phone_number` - The phone number is known to be a temporary or
-          #   disposable number.
+          # - `number_range_abuse` - The phone number belongs to a range currently
+          #   associated with abuse.
+          # - `poor_conversion_history` - Traffic resembling this request rarely completes a
+          #   verification.
+          # - `proxy_network` - The request did not arrive over the subscriber's own access
+          #   network.
+          # - `repeated_attempts` - The phone number exceeded the allowed number of
+          #   verification attempts in a short period.
+          # - `temporary_phone_number` - The phone number belongs to a disposable or
+          #   short-lived numbering service.
           sig do
             returns(
               T.nilable(
@@ -341,38 +354,51 @@ module PreludeSDK
             # - `invalid_line` - The phone number is not a valid line type.
             # - `invalid_number` - The phone number is not a valid number.
             # - `rate_limited` - The verification was refused by a rate limit.
-            # - `expired_signals` - The SDK signals were collected too long before the
-            #   request.
+            # - `expired_signals` - The SDK signals were collected too long before the request
+            #   to still attest to it.
             # - `shadowed` - The anti-fraud system flagged the verification without blocking
             #   it.
             status:,
             # Version of your application, when known.
             app_version: nil,
-            # Why the anti-fraud system blocked the verification. Empty unless it did.
+            # Why the anti-fraud system blocked the verification. Empty unless it did. These
+            # are the same labels the Verify and Watch APIs serve as `risk_factors`.
             #
-            # - `behavioral_pattern` - The phone number past behavior during verification
-            #   flows exhibits suspicious patterns.
-            # - `device_attribute` - The end-user device reported attributes associated with
-            #   fraud or emulation.
-            # - `fraud_database` - The phone number appears in a fraud database.
-            # - `location_discrepancy` - The phone number region and the observed location
-            #   disagree.
+            # - `automation_signature` - The request appears to come from an automated client
+            #   rather than a person.
+            # - `carrier_not_permitted` - The destination carrier is one this account does not
+            #   accept traffic for.
+            # - `client_fingerprint_mismatch` - The client does not appear to be the platform
+            #   it identifies itself as.
+            # - `custom_policy` - A rule configured for your account matched this request.
+            # - `device_emulator` - The request appears to come from an emulator rather than a
+            #   physical device.
+            # - `device_not_permitted` - The device platform is one your account blocks.
+            # - `device_reuse` - One device is driving verifications for an unusual number of
+            #   phone numbers.
+            # - `expired_signals` - The SDK signals were collected too long before the request
+            #   to still attest to it.
+            # - `fraud_database` - The phone number is flagged in one or more of the fraud
+            #   databases Prelude consults.
+            # - `invalid_signature` - The SDK signature did not verify, so the request cannot
+            #   be attributed to the device it claims to come from.
+            # - `ip_concentration` - The request shares its origin with an unusual volume of
+            #   other verifications.
+            # - `ip_reputation` - The originating IP address is not trusted.
+            # - `location_mismatch` - The network location and the phone number's country are
+            #   inconsistent.
             # - `missing_signals` - The verification expected Prelude SDK signals and none
             #   arrived.
-            # - `network_fingerprint` - The network fingerprint matches known fraudulent
-            #   traffic.
-            # - `poor_conversion_history` - The phone number rarely completes the
-            #   verifications it starts.
-            # - `prefix_concentration` - The phone number is part of a range known to be
-            #   associated with suspicious activity patterns.
-            # - `repeated_number` - The phone number was used far more often than normal
-            #   traffic would explain.
-            # - `suspected_request_tampering` - The SDK signals were altered or expired
-            #   between collection and use.
-            # - `suspicious_ip_address` - The originating IP address is associated with
-            #   suspicious activity.
-            # - `temporary_phone_number` - The phone number is known to be a temporary or
-            #   disposable number.
+            # - `number_range_abuse` - The phone number belongs to a range currently
+            #   associated with abuse.
+            # - `poor_conversion_history` - Traffic resembling this request rarely completes a
+            #   verification.
+            # - `proxy_network` - The request did not arrive over the subscriber's own access
+            #   network.
+            # - `repeated_attempts` - The phone number exceeded the allowed number of
+            #   verification attempts in a short period.
+            # - `temporary_phone_number` - The phone number belongs to a disposable or
+            #   short-lived numbering service.
             block_reasons: nil,
             # The end user's mobile network.
             carrier: nil,
@@ -463,8 +489,8 @@ module PreludeSDK
           # - `invalid_line` - The phone number is not a valid line type.
           # - `invalid_number` - The phone number is not a valid number.
           # - `rate_limited` - The verification was refused by a rate limit.
-          # - `expired_signals` - The SDK signals were collected too long before the
-          #   request.
+          # - `expired_signals` - The SDK signals were collected too long before the request
+          #   to still attest to it.
           # - `shadowed` - The anti-fraud system flagged the verification without blocking
           #   it.
           module Status
@@ -563,14 +589,44 @@ module PreludeSDK
               end
             OrSymbol = T.type_alias { T.any(Symbol, String) }
 
-            BEHAVIORAL_PATTERN =
+            AUTOMATION_SIGNATURE =
               T.let(
-                :behavioral_pattern,
+                :automation_signature,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
-            DEVICE_ATTRIBUTE =
+            CARRIER_NOT_PERMITTED =
               T.let(
-                :device_attribute,
+                :carrier_not_permitted,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            CLIENT_FINGERPRINT_MISMATCH =
+              T.let(
+                :client_fingerprint_mismatch,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            CUSTOM_POLICY =
+              T.let(
+                :custom_policy,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            DEVICE_EMULATOR =
+              T.let(
+                :device_emulator,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            DEVICE_NOT_PERMITTED =
+              T.let(
+                :device_not_permitted,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            DEVICE_REUSE =
+              T.let(
+                :device_reuse,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            EXPIRED_SIGNALS =
+              T.let(
+                :expired_signals,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
             FRAUD_DATABASE =
@@ -578,9 +634,24 @@ module PreludeSDK
                 :fraud_database,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
-            LOCATION_DISCREPANCY =
+            INVALID_SIGNATURE =
               T.let(
-                :location_discrepancy,
+                :invalid_signature,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            IP_CONCENTRATION =
+              T.let(
+                :ip_concentration,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            IP_REPUTATION =
+              T.let(
+                :ip_reputation,
+                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
+              )
+            LOCATION_MISMATCH =
+              T.let(
+                :location_mismatch,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
             MISSING_SIGNALS =
@@ -588,9 +659,9 @@ module PreludeSDK
                 :missing_signals,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
-            NETWORK_FINGERPRINT =
+            NUMBER_RANGE_ABUSE =
               T.let(
-                :network_fingerprint,
+                :number_range_abuse,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
             POOR_CONVERSION_HISTORY =
@@ -598,24 +669,14 @@ module PreludeSDK
                 :poor_conversion_history,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
-            PREFIX_CONCENTRATION =
+            PROXY_NETWORK =
               T.let(
-                :prefix_concentration,
+                :proxy_network,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
-            REPEATED_NUMBER =
+            REPEATED_ATTEMPTS =
               T.let(
-                :repeated_number,
-                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
-              )
-            SUSPECTED_REQUEST_TAMPERING =
-              T.let(
-                :suspected_request_tampering,
-                PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
-              )
-            SUSPICIOUS_IP_ADDRESS =
-              T.let(
-                :suspicious_ip_address,
+                :repeated_attempts,
                 PreludeSDK::Models::Verification::Phone::HistoryRetrieveResponse::BlockReason::TaggedSymbol
               )
             TEMPORARY_PHONE_NUMBER =

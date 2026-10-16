@@ -155,7 +155,9 @@ module PreludeSDK
 
         # One result per rule in the recipe, in membership order. Every rule runs — a
         # score is only meaningful when complete, so there is no short-circuit on the
-        # first trigger.
+        # first trigger. The exception is a recipe whose verdict a preempting rule has
+        # already determined, where a rule that could no longer change it may report
+        # `SKIPPED` instead.
         sig do
           returns(
             T::Array[PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule]
@@ -214,7 +216,9 @@ module PreludeSDK
           recipe_id:,
           # One result per rule in the recipe, in membership order. Every rule runs — a
           # score is only meaningful when complete, so there is no short-circuit on the
-          # first trigger.
+          # first trigger. The exception is a recipe whose verdict a preempting rule has
+          # already determined, where a rule that could no longer change it may report
+          # `SKIPPED` instead.
           rules:,
           # The sum of the weights of the rules that triggered, clamped to the range -100
           # to 100. Two scores at a bound are not comparable.
@@ -267,6 +271,10 @@ module PreludeSDK
           # - `NOT_EVALUATED` - The rule could not run, because something it reads never
           #   arrived. This is not a quieter `NOT_TRIGGERED`: it contributed nothing either
           #   way, and it is why `partial_evidence` is set on the recipe.
+          # - `SKIPPED` - The rule was not run, because another rule had already determined
+          #   the recipe's verdict — see `determined_by`. Nothing was missing and nothing
+          #   failed, so `partial_evidence` is not set: `determined_by` is what accounts for
+          #   the recipe's score resting on fewer rules.
           sig do
             returns(
               PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome::TaggedSymbol
@@ -279,6 +287,19 @@ module PreludeSDK
           # or ask us about.
           sig { returns(String) }
           attr_accessor :rule_id
+
+          # Who authored the rule, which is what says how much of the rest of this result
+          # you get.
+          #
+          # - `MANAGED` - Prelude-owned, shared with customers: `name` and `version_id` are
+          #   omitted, and `blocked_by` reports only `missing_data`.
+          # - `CUSTOM` - Yours: every field is returned.
+          sig do
+            returns(
+              PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type::TaggedSymbol
+            )
+          end
+          attr_accessor :type
 
           # What this rule contributes to the recipe's score when it triggers.
           sig { returns(Integer) }
@@ -313,15 +334,27 @@ module PreludeSDK
           sig { params(unavailable: T::Boolean).void }
           attr_writer :unavailable
 
+          # The version of the rule that scored — the one this recipe is pinned to, or the
+          # version current at evaluation time when it is not pinned. Present for a rule you
+          # authored, and omitted for a Prelude-managed one.
+          sig { returns(T.nilable(String)) }
+          attr_reader :version_id
+
+          sig { params(version_id: String).void }
+          attr_writer :version_id
+
           sig do
             params(
               outcome:
                 PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome::OrSymbol,
               rule_id: String,
+              type:
+                PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type::OrSymbol,
               weight: Integer,
               blocked_by: String,
               name: String,
-              unavailable: T::Boolean
+              unavailable: T::Boolean,
+              version_id: String
             ).returns(T.attached_class)
           end
           def self.new(
@@ -332,11 +365,22 @@ module PreludeSDK
             # - `NOT_EVALUATED` - The rule could not run, because something it reads never
             #   arrived. This is not a quieter `NOT_TRIGGERED`: it contributed nothing either
             #   way, and it is why `partial_evidence` is set on the recipe.
+            # - `SKIPPED` - The rule was not run, because another rule had already determined
+            #   the recipe's verdict — see `determined_by`. Nothing was missing and nothing
+            #   failed, so `partial_evidence` is not set: `determined_by` is what accounts for
+            #   the recipe's score resting on fewer rules.
             outcome:,
             # The rule that produced this result. Present whatever the rule's visibility, so a
             # rule you cannot see the condition of is still one you can reweight, switch off,
             # or ask us about.
             rule_id:,
+            # Who authored the rule, which is what says how much of the rest of this result
+            # you get.
+            #
+            # - `MANAGED` - Prelude-owned, shared with customers: `name` and `version_id` are
+            #   omitted, and `blocked_by` reports only `missing_data`.
+            # - `CUSTOM` - Yours: every field is returned.
+            type:,
             # What this rule contributes to the recipe's score when it triggers.
             weight:,
             # Why the rule could not run, set only when `outcome` is `NOT_EVALUATED`.
@@ -352,7 +396,11 @@ module PreludeSDK
             name: nil,
             # The rule could not run for a reason on our side rather than anything about your
             # request. `outcome` is `NOT_EVALUATED` and the failure is ours to fix.
-            unavailable: nil
+            unavailable: nil,
+            # The version of the rule that scored — the one this recipe is pinned to, or the
+            # version current at evaluation time when it is not pinned. Present for a rule you
+            # authored, and omitted for a Prelude-managed one.
+            version_id: nil
           )
           end
 
@@ -362,10 +410,13 @@ module PreludeSDK
                 outcome:
                   PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome::TaggedSymbol,
                 rule_id: String,
+                type:
+                  PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type::TaggedSymbol,
                 weight: Integer,
                 blocked_by: String,
                 name: String,
-                unavailable: T::Boolean
+                unavailable: T::Boolean,
+                version_id: String
               }
             )
           end
@@ -379,6 +430,10 @@ module PreludeSDK
           # - `NOT_EVALUATED` - The rule could not run, because something it reads never
           #   arrived. This is not a quieter `NOT_TRIGGERED`: it contributed nothing either
           #   way, and it is why `partial_evidence` is set on the recipe.
+          # - `SKIPPED` - The rule was not run, because another rule had already determined
+          #   the recipe's verdict — see `determined_by`. Nothing was missing and nothing
+          #   failed, so `partial_evidence` is not set: `determined_by` is what accounts for
+          #   the recipe's score resting on fewer rules.
           module Outcome
             extend PreludeSDK::Internal::Type::Enum
 
@@ -406,11 +461,56 @@ module PreludeSDK
                 :NOT_EVALUATED,
                 PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome::TaggedSymbol
               )
+            SKIPPED =
+              T.let(
+                :SKIPPED,
+                PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome::TaggedSymbol
+              )
 
             sig do
               override.returns(
                 T::Array[
                   PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Outcome::TaggedSymbol
+                ]
+              )
+            end
+            def self.values
+            end
+          end
+
+          # Who authored the rule, which is what says how much of the rest of this result
+          # you get.
+          #
+          # - `MANAGED` - Prelude-owned, shared with customers: `name` and `version_id` are
+          #   omitted, and `blocked_by` reports only `missing_data`.
+          # - `CUSTOM` - Yours: every field is returned.
+          module Type
+            extend PreludeSDK::Internal::Type::Enum
+
+            TaggedSymbol =
+              T.type_alias do
+                T.all(
+                  Symbol,
+                  PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type
+                )
+              end
+            OrSymbol = T.type_alias { T.any(Symbol, String) }
+
+            MANAGED =
+              T.let(
+                :MANAGED,
+                PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type::TaggedSymbol
+              )
+            CUSTOM =
+              T.let(
+                :CUSTOM,
+                PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type::TaggedSymbol
+              )
+
+            sig do
+              override.returns(
+                T::Array[
+                  PreludeSDK::Models::WatchEvaluateResponse::Recipe::Rule::Type::TaggedSymbol
                 ]
               )
             end
